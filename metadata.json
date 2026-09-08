@@ -1,0 +1,6 @@
+{
+  "name": "Skoda Slavia Guide & Showcase",
+  "description": "Comprehensive portfolio guide for Škoda Auto Volkswagen India featuring Czech Republic history from 1895, Volkswagen Group brand showcase (Audi, Porsche, Lamborghini, Bentley, Bugatti, SEAT, CUPRA, MAN, Scania), Dyno performance graphs, 260+ dealership locator, and 5-Star safety breakdown.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
