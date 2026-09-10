@@ -102,12 +102,12 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
             <button
               key={type}
               onClick={() => {
-                setFuelFilter(type);
                 if (type === "Diesel" && selectedEngine.fuelType !== "Diesel") {
                   const firstDiesel = engines.find(
                     (e) => e.fuelType === "Diesel",
                   );
-                  if (firstDiesel) handleSelectEngine(firstDiesel.id);
+                  if (!firstDiesel) return;
+                  handleSelectEngine(firstDiesel.id);
                 } else if (
                   type === "Petrol" &&
                   selectedEngine.fuelType !== "Petrol"
@@ -115,8 +115,10 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                   const firstPetrol = engines.find(
                     (e) => e.fuelType === "Petrol",
                   );
-                  if (firstPetrol) handleSelectEngine(firstPetrol.id);
+                  if (!firstPetrol) return;
+                  handleSelectEngine(firstPetrol.id);
                 }
+                setFuelFilter(type);
               }}
               className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${fuelFilter === type ? (type === "Diesel" ? "bg-amber-600 text-white shadow-md" : isVW ? "bg-blue-600 text-white shadow-md" : "bg-emerald-600 text-white shadow-md") : "text-zinc-400 hover:text-white"}`}
             >
@@ -129,7 +131,7 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
       </div>
 
       {/* Engine Selection Bar */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none scroll-fade-x">
         {filteredEngines.map((eng) => {
           const isSelected = selectedEngineId === eng.id;
           const isDiesel = eng.fuelType === "Diesel";

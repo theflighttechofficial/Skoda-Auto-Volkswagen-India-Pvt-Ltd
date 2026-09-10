@@ -31,7 +31,7 @@ export const VW_GROUP_BRANDS: VWGroupBrand[] = [
     foundedYear: 1937,
     joinedVWGroupYear: 1937,
     category: 'Core Volume',
-    tagline: 'Move People Forward',
+    tagline: 'Das Auto',
     brandIdentity: 'The bedrock of global mobility, democratic engineering, and platform innovation.',
     description:
       'Volkswagen is the founding flagship and technological bedrock of the entire group. From mobilizing millions with the historic Beetle and creating the hot-hatch segment with the Golf GTI, to pioneering the modular MQB architecture and MEB electric platform, Volkswagen engineering drives global automotive standards with timeless design, bulletproof build quality, and everyday usability.',

@@ -170,7 +170,7 @@ export const VolkswagenGroupProud = ({
         </div>
 
         {/* Category Filters */}
-        <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-1">
+        <div className="flex items-center gap-2 overflow-x-auto scrollbar-none scroll-fade-x pb-1">
           {categories.map((cat) => {
             const isSelected = activeCategory === cat;
             return (
@@ -194,7 +194,7 @@ export const VolkswagenGroupProud = ({
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.2 }}
-              className="group rounded-3xl bg-zinc-900/90 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-850 p-6 flex flex-col justify-between transition-all shadow-lg hover:shadow-black/60"
+              className="group rounded-3xl bg-zinc-900/90 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-800/80 p-6 flex flex-col justify-between transition-all shadow-lg hover:shadow-black/60"
             >
               <div className="space-y-4">
                 {/* Brand Header */}

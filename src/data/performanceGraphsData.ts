@@ -276,7 +276,7 @@ export const ENGINE_GRAPH_PROFILES: Record<string, EngineGraphProfile> = {
 
   '2.0-tsi-vrs': {
     id: '2.0-tsi-vrs',
-    name: '2.0L TSI EA888 EVO4 (The Rs Performance)',
+    name: '2.0L TSI EA888 EVO4 (vRS Performance)',
     badge: '2.0 TSI vRS (265 PS / 370–400 Nm)',
     displacement: '1,984 cc',
     cylinders: '4 Cylinders Motorsport Tuned',
@@ -602,7 +602,7 @@ export const MODEL_PERFORMANCE_PROFILES: ModelPerformanceProfile[] = [
   {
     id: 'octavia-vrs',
     name: 'Škoda Octavia vRS',
-    tagline: 'The Rs Performance Track Weapon & 265 PS Icon',
+    tagline: 'vRS Performance Track Weapon & 265 PS Icon',
     category: 'High-Performance Sports Sedan',
     primaryEngineId: '2.0-tsi-vrs',
     availableEngineIds: ['2.0-tsi-vrs'],
@@ -639,6 +639,111 @@ export const MODEL_PERFORMANCE_PROFILES: ModelPerformanceProfile[] = [
       'Aggressive front bumper with motorsport air intakes and gloss black aero slats',
       '20-inch aerodynamic alloy wheels with removable matte black aero-inserts',
       'Integrated rear dual trapezoidal exhaust tips with functional ground-effect diffuser'
+    ]
+  },
+  {
+    id: 'virtus',
+    name: 'Volkswagen Virtus',
+    tagline: '5-Star NCAP Sedan with German Autobahn-Tuned Stability',
+    category: 'Premium Sedan',
+    primaryEngineId: '1.5-tsi',
+    availableEngineIds: ['1.0-tsi', '1.5-tsi'],
+    weightKg: 1272,
+    dragCoefficient: '0.28 Cd',
+    braking100to0DistMeters: 36.5,
+    corneringGForce: 0.92,
+    powerToWeightRatio: '117.9 PS/tonne',
+    sprint0to100: '8.9 seconds',
+    topSpeed: '203 km/h',
+    suspensionType: 'German-Tuned MacPherson Strut Front & Torsion Beam Rear',
+    aerodynamicHighlights: [
+      'Autobahn-validated 0.28 Cd body shape for high-speed stability',
+      'Full underbody aero cladding for laminar airflow beneath the chassis',
+      'Integrated boot-lid spoiler generating usable downforce above 120 km/h'
+    ]
+  },
+  {
+    id: 'taigun',
+    name: 'Volkswagen Taigun',
+    tagline: 'German-Engineered Midsize SUV with Autobahn Poise',
+    category: 'Midsize SUV',
+    primaryEngineId: '1.5-tsi',
+    availableEngineIds: ['1.0-tsi', '1.5-tsi'],
+    weightKg: 1308,
+    dragCoefficient: '0.33 Cd',
+    braking100to0DistMeters: 37.8,
+    corneringGForce: 0.89,
+    powerToWeightRatio: '114.7 PS/tonne',
+    sprint0to100: '9.3 seconds',
+    topSpeed: '194 km/h',
+    suspensionType: 'Heavy-Duty Rough Road Package with Reinforced Anti-Roll Bar',
+    aerodynamicHighlights: [
+      'Underbody sump guard doubling as a front aerodynamic skidplate',
+      'A-pillar aero-deflectors reducing wind buffeting on the highway',
+      'Roof rails contoured to minimize aerodynamic whistle at speed'
+    ]
+  },
+  {
+    id: 'tiguan',
+    name: 'Volkswagen Tiguan',
+    tagline: '4MOTION All-Wheel-Drive Luxury SUV Benchmark',
+    category: 'Luxury 4x4 SUV',
+    primaryEngineId: '2.0-tsi',
+    availableEngineIds: ['2.0-tsi'],
+    weightKg: 1665,
+    dragCoefficient: '0.32 Cd',
+    braking100to0DistMeters: 36.2,
+    corneringGForce: 0.90,
+    powerToWeightRatio: '114.1 PS/tonne',
+    sprint0to100: '7.9 seconds',
+    topSpeed: '213 km/h',
+    suspensionType: '4MOTION Adaptive Chassis with Multi-Link Rear Suspension',
+    aerodynamicHighlights: [
+      'Wheel arch aero-spoilers deflecting turbulence around 18-inch wheels',
+      'Underfloor aerodynamic baffles smoothing airflow around the 4MOTION driveline',
+      'Extended roof spoiler with side aerodynamic finlets'
+    ]
+  },
+  {
+    id: 'golf-gti',
+    name: 'Volkswagen Golf GTI',
+    tagline: 'The Hot-Hatch Icon & 265 PS Benchmark',
+    category: 'High-Performance Hot Hatch',
+    primaryEngineId: '2.0-tsi-vrs',
+    availableEngineIds: ['2.0-tsi-vrs'],
+    weightKg: 1397,
+    dragCoefficient: '0.275 Cd',
+    braking100to0DistMeters: 33.2,
+    corneringGForce: 1.05,
+    powerToWeightRatio: '189.7 PS/tonne',
+    sprint0to100: '6.2 seconds',
+    topSpeed: '250 km/h (Electronically Limited)',
+    suspensionType: 'GTI Sports Suspension lowered 15mm with VAQ Electro-Mechanical LSD',
+    aerodynamicHighlights: [
+      'Functional GTI front apron with red pinstripe and side air curtains',
+      'Gloss black rear roof-edge spoiler with functional aerodynamic profile',
+      'Honeycomb rear diffuser reducing turbulence beneath the quad exhaust'
+    ]
+  },
+  {
+    id: 'tayron',
+    name: 'Volkswagen Tayron',
+    tagline: 'MQB Evo 7-Seater Flagship with 4MOTION AWD',
+    category: 'Luxury 4x4 7-Seater SUV',
+    primaryEngineId: '2.0-tsi',
+    availableEngineIds: ['2.0-tsi'],
+    weightKg: 1795,
+    dragCoefficient: '0.30 Cd',
+    braking100to0DistMeters: 37.0,
+    corneringGForce: 0.88,
+    powerToWeightRatio: '105.8 PS/tonne',
+    sprint0to100: '8.1 seconds',
+    topSpeed: '210 km/h',
+    suspensionType: 'DCC Pro Adaptive Dampers with 4MOTION All-Wheel Drive',
+    aerodynamicHighlights: [
+      'Illuminated LED lightbar integrated into an aero-optimized front fascia',
+      'Underfloor aerodynamic panelling smoothing airflow around the 3-row cabin',
+      'Roof-mounted aero spoiler reducing wake turbulence over the tailgate'
     ]
   }
 ];

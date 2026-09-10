@@ -734,6 +734,203 @@ export const VW_MODELS: CarModel[] = [
       { id: 'deep-black-tayron', name: 'Deep Black Pearl', hex: '#0f172a', availableOn: ['tayron-elegance'] },
       { id: 'cipresso-green-tayron', name: 'Cipresso Green Metallic', hex: '#14532d', availableOn: ['tayron-elegance'] }
     ]
+  },
+  {
+    id: 'jetta',
+    name: 'Volkswagen Jetta',
+    badge: 'Enthusiast Hall of Fame Sedan',
+    tagline: 'The German CKD sedan that brought TSI turbo-petrol and TDI diesel refinement to India (2008–2013)',
+    bodyType: 'Compact Sedan',
+    startingPrice: 'Hall of Fame Legend (2008–2013)',
+    startingExShowroom: 1390000,
+    priceRange: '₹13.90 – ₹19.66 Lakh (Final India Price List)',
+    rating: '5-Star Euro NCAP (Global Reference, 2011)',
+    safetyStars: 5,
+    engines: ['1.4L TSI Twincharger Petrol (122 PS / 160 Nm)', '2.0L TDI CR Diesel (140 PS / 320 Nm)'],
+    keyHighlights: [
+      'CKD-assembled at Volkswagen’s Chakan (Pune) plant from 2008 to 2013',
+      '1.4L TSI Twincharger combined supercharging and turbocharging for lag-free response',
+      '2.0L TDI diesel variant was the enthusiast favourite for its highway torque and efficiency',
+      '510-litre boot space — among the largest in the compact executive sedan class',
+      'Achieved a 5-Star Euro NCAP rating in global-spec testing, a rarity for its era',
+      'Predecessor to the Virtus in Volkswagen India’s sedan lineup philosophy'
+    ],
+    dimensions: {
+      length: '4,659 mm',
+      width: '1,778 mm',
+      height: '1,453 mm',
+      wheelbase: '2,651 mm',
+      groundClearance: '165 mm',
+      bootSpace: '510 Litres',
+      fuelTank: '55 Litres'
+    },
+    variants: [
+      {
+        id: 'jetta-trendline',
+        name: 'Jetta Trendline',
+        tagline: 'The essential German sedan entry with solid CKD build quality',
+        priceRange: '₹13.90 – ₹15.49 Lakh',
+        baseExShowroom: 1390000,
+        engineOptions: ['1.4L TSI Twincharger'],
+        transmissions: ['6-Speed Manual'],
+        keyFeatures: [
+          'Dual front and side airbags',
+          'ABS with EBD standard',
+          'Power steering and power windows',
+          '2-DIN audio system with USB and AUX input',
+          'Rear parking sensors'
+        ],
+        exteriorHighlights: ['15-inch steel wheels with covers', 'Chrome front grille strip', 'Halogen headlamps with LED DRLs'],
+        interiorHighlights: ['Black fabric upholstery', 'Manual air conditioning', 'Height-adjustable driver seat'],
+        badgeColor: 'bg-zinc-700 text-zinc-100'
+      },
+      {
+        id: 'jetta-comfortline',
+        name: 'Jetta Comfortline',
+        tagline: 'The balanced mid-range trim with TDI diesel torque option',
+        priceRange: '₹16.24 – ₹17.85 Lakh',
+        baseExShowroom: 1624000,
+        engineOptions: ['1.4L TSI Twincharger', '2.0L TDI CR Diesel'],
+        transmissions: ['6-Speed Manual', '6-Speed DSG'],
+        isPopular: true,
+        keyFeatures: [
+          '2.0L TDI diesel with 320 Nm of torque',
+          'Touchscreen infotainment with Bluetooth telephony',
+          'Alloy wheels with silver finish',
+          'Cruise control and steering-mounted controls',
+          'Climatronic automatic air conditioning'
+        ],
+        exteriorHighlights: ['16-inch Toronto alloy wheels', 'Chrome window beltline', 'Fog lamps with cornering function'],
+        interiorHighlights: ['Beige and black dual-tone cabin', 'Leather-wrapped steering wheel', 'Rear center armrest with cup holders'],
+        badgeColor: 'bg-blue-800 text-blue-100'
+      },
+      {
+        id: 'jetta-highline',
+        name: 'Jetta Highline TDI',
+        tagline: 'The flagship trim pairing the 2.0 TDI diesel with DSG and full luxury equipment',
+        priceRange: '₹18.36 – ₹19.66 Lakh',
+        baseExShowroom: 1836000,
+        engineOptions: ['2.0L TDI CR Diesel'],
+        transmissions: ['6-Speed DSG (Dual-Clutch)'],
+        isFlagship: true,
+        keyFeatures: [
+          '140 PS / 320 Nm 2.0 TDI diesel with 6-speed DSG',
+          'Leather seat upholstery with 8-way power driver seat',
+          'Dual-zone Climatronic automatic climate control',
+          'Rain-sensing wipers and auto-dimming interior mirror',
+          'Premium 8-speaker sound system'
+        ],
+        exteriorHighlights: ['16-inch Interlagos alloy wheels', 'Chrome exhaust tip garnish', 'Full LED tail lamps'],
+        interiorHighlights: ['Beige leather upholstery', 'Wood-finish dashboard inserts', 'Illuminated vanity mirrors'],
+        badgeColor: 'bg-amber-600 text-white'
+      }
+    ],
+    colors: [
+      { id: 'candy-white-jetta', name: 'Candy White', hex: '#f8fafc', availableOn: ['jetta-trendline', 'jetta-comfortline', 'jetta-highline'] },
+      { id: 'reflex-silver-jetta', name: 'Reflex Silver', hex: '#cbd5e1', availableOn: ['jetta-trendline', 'jetta-comfortline', 'jetta-highline'] },
+      { id: 'deep-black-jetta', name: 'Deep Black Pearl', hex: '#0f172a', availableOn: ['jetta-comfortline', 'jetta-highline'] },
+      { id: 'toffee-brown-jetta', name: 'Toffee Brown Metallic', hex: '#5b3a29', availableOn: ['jetta-highline'] },
+      { id: 'sky-blue-jetta', name: 'Sky Blue Metallic', hex: '#3b6ea5', availableOn: ['jetta-comfortline'] }
+    ]
+  },
+  {
+    id: 'passat',
+    name: 'Volkswagen Passat',
+    badge: 'Enthusiast Hall of Fame Executive Sedan',
+    tagline: 'The flagship executive sedan celebrated for its 350 Nm TDI diesel and presidential rear-seat comfort (2007–2022)',
+    bodyType: 'Executive Sedan',
+    startingPrice: 'Hall of Fame Legend (2007–2022)',
+    startingExShowroom: 2999000,
+    priceRange: '₹29.99 – ₹34.50 Lakh (Final CBU Price List)',
+    rating: '5-Star Euro NCAP (2014 Protocol)',
+    safetyStars: 5,
+    engines: ['2.0L TDI CR Diesel (177 PS / 350 Nm)', '1.8L TSI Petrol (180 PS / 250 Nm, Earlier Generations)'],
+    keyHighlights: [
+      'Volkswagen India’s long-running executive flagship across three generations (B6, B7, B8)',
+      '177 PS / 350 Nm 2.0L TDI diesel with 6-speed DSG defined the final CBU-import generation',
+      'Presidential rear legroom and 586-litre boot among the largest in the executive segment',
+      '5-Star Euro NCAP rating under the rigorous 2014 testing protocol',
+      'Final generation offered exclusively as a fully-imported CBU flagship from 2019',
+      'Discontinued in India in 2022, paving the way for the Volkswagen Tayron flagship SUV'
+    ],
+    dimensions: {
+      length: '4,767 mm',
+      width: '1,832 mm',
+      height: '1,456 mm',
+      wheelbase: '2,786 mm',
+      groundClearance: '140 mm',
+      bootSpace: '586 Litres (Expandable to 1,152L)',
+      fuelTank: '66 Litres'
+    },
+    variants: [
+      {
+        id: 'passat-comfortline',
+        name: 'Passat Comfortline TDI',
+        tagline: 'The executive entry with full CBU German build quality and TDI torque',
+        priceRange: '₹29.99 – ₹31.50 Lakh',
+        baseExShowroom: 2999000,
+        engineOptions: ['2.0L TDI CR Diesel'],
+        transmissions: ['6-Speed DSG (Dual-Clutch)'],
+        keyFeatures: [
+          '6 Airbags standard',
+          'Electronic Stability Control (ESC) with Multi-Collision Braking',
+          '8-inch touchscreen with Apple CarPlay & Android Auto',
+          'Dual-zone Climatronic automatic climate control',
+          'Leatherette seat upholstery'
+        ],
+        exteriorHighlights: ['17-inch alloy wheels', 'Chrome front grille and window surrounds', 'Bi-Xenon headlamps'],
+        interiorHighlights: ['Black leatherette cabin', 'Wood-finish dashboard trim', 'Rear sunblind'],
+        badgeColor: 'bg-zinc-700 text-zinc-100'
+      },
+      {
+        id: 'passat-highline',
+        name: 'Passat Highline TDI',
+        tagline: 'The balanced flagship trim with premium leather and driver assistance',
+        priceRange: '₹32.00 – ₹33.20 Lakh',
+        baseExShowroom: 3200000,
+        engineOptions: ['2.0L TDI CR Diesel'],
+        transmissions: ['6-Speed DSG (Dual-Clutch)'],
+        isPopular: true,
+        keyFeatures: [
+          'Genuine leather seat upholstery with 12-way power driver seat and memory',
+          'Adaptive Cruise Control with Front Assist',
+          'Panoramic electric sunroof',
+          'Bi-Xenon headlamps with dynamic cornering function',
+          'Fender premium sound system'
+        ],
+        exteriorHighlights: ['18-inch Nogaro alloy wheels', 'LED tail lamps with dynamic turn indicators', 'Chrome exhaust tips'],
+        interiorHighlights: ['Vienna leather upholstery in Titan Black', 'Ambient lighting package', 'Rear air-conditioning vents'],
+        badgeColor: 'bg-blue-800 text-blue-100'
+      },
+      {
+        id: 'passat-highline-plus',
+        name: 'Passat Highline Plus',
+        tagline: 'The final-generation CBU flagship with the complete luxury and safety suite',
+        priceRange: '₹33.90 – ₹34.50 Lakh',
+        baseExShowroom: 3390000,
+        engineOptions: ['2.0L TDI CR Diesel'],
+        transmissions: ['6-Speed DSG (Dual-Clutch)'],
+        isFlagship: true,
+        keyFeatures: [
+          'Massage function for the driver’s seat',
+          'Ventilated and heated front seats',
+          'Park Assist with automated parallel & perpendicular steering',
+          '360-degree Area View camera system',
+          'Adaptive Chassis Control (DCC) with selectable damping modes',
+          'Head-up display'
+        ],
+        exteriorHighlights: ['18-inch dual-tone diamond-cut alloys', 'Full LED Matrix headlights', 'Chrome-accented rear diffuser'],
+        interiorHighlights: ['Perforated Nappa leather upholstery', 'Piano black decorative inlays', 'Illuminated door sills'],
+        badgeColor: 'bg-amber-600 text-white'
+      }
+    ],
+    colors: [
+      { id: 'candy-white-passat', name: 'Candy White', hex: '#f8fafc', availableOn: ['passat-comfortline', 'passat-highline', 'passat-highline-plus'] },
+      { id: 'reflex-silver-passat', name: 'Reflex Silver', hex: '#cbd5e1', availableOn: ['passat-comfortline', 'passat-highline'] },
+      { id: 'deep-black-passat', name: 'Deep Black Pearl', hex: '#0f172a', availableOn: ['passat-highline', 'passat-highline-plus'] },
+      { id: 'toffee-brown-passat', name: 'Toffee Brown Metallic', hex: '#5b3a29', availableOn: ['passat-highline-plus'] },
+      { id: 'night-blue-passat', name: 'Night Blue Metallic', hex: '#1b263b', availableOn: ['passat-highline', 'passat-highline-plus'] }
+    ]
   }
 ];
 

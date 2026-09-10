@@ -3,7 +3,6 @@ import {
   Gauge,
   Sparkles,
   Luggage,
-  ArrowUpRight,
   ChevronRight,
   CheckCircle2,
   Fuel,
@@ -48,9 +47,19 @@ export const HeroOverview = ({
         className={`relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-950 border p-6 sm:p-8 lg:p-10 text-white shadow-2xl ${isVW ? "border-blue-900/40" : "border-emerald-900/40"}`}
       >
         <div
+          className="absolute inset-0 opacity-[0.05] pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
+            backgroundSize: "42px 42px",
+          }}
+        />
+        <div
           className={`absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isVW ? "bg-blue-600/15" : "bg-emerald-500/15"}`}
         />
-        <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-zinc-800/10 rounded-full blur-3xl pointer-events-none" />
+        <div
+          className={`absolute -bottom-16 left-1/3 w-80 h-80 rounded-full blur-3xl pointer-events-none ${isVW ? "bg-sky-500/10" : "bg-amber-500/10"}`}
+        />
 
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-8 space-y-5">
@@ -121,110 +130,104 @@ export const HeroOverview = ({
               )}
             </p>
 
-            {/* Quick Action Buttons with animated hover states */}
-            <div className="flex flex-wrap gap-3 pt-2">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                id="btn-explore-variants-hero"
-                onClick={() => onExploreVariants()}
-                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white text-sm font-semibold transition-all shadow-lg ${isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-950/60" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950/60"}`}
-              >
-                <span>Compare All {models.length} Models & Trims</span>
-                <ChevronRight className="w-4 h-4" />
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                id="btn-explore-engines-hero"
-                onClick={onExploreEngines}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-800/90 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 text-sm font-medium transition-all shadow-md"
-              >
-                <Fuel className="w-4 h-4 text-amber-400" />
-                <span>TSI Petrol & TDI Diesel Tech</span>
-                <ArrowUpRight className="w-4 h-4 text-zinc-400" />
-              </motion.button>
-
-              {onOpenRS && (
+            {/* Primary CTA + Secondary Quick-Action Chips */}
+            <div className="space-y-3 pt-2">
+              <div className="flex flex-wrap gap-3">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={onOpenRS}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-950/80 hover:bg-red-900/80 border border-red-700/80 text-red-300 text-sm font-semibold transition-all shadow-md shadow-red-950/40"
+                  id="btn-explore-variants-hero"
+                  onClick={() => onExploreVariants()}
+                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-bold transition-all shadow-lg ${isVW ? "bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 shadow-blue-950/60" : "bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 shadow-emerald-950/60"}`}
                 >
-                  <Flame className="w-4 h-4 text-red-500 animate-pulse" />
+                  <span>Compare All {models.length} Models & Trims</span>
+                  <ChevronRight className="w-4 h-4" />
+                </motion.button>
+
+                {onOpenRS && (
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={onOpenRS}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-red-950/80 hover:bg-red-900/80 border border-red-700/80 text-red-300 text-sm font-bold transition-all shadow-md shadow-red-950/40"
+                  >
+                    <Flame className="w-4 h-4 text-red-500 animate-pulse" />
+                    <span>
+                      {isVW
+                        ? "GT & GTI Performance (265 PS)"
+                        : "The vRS Performance (265 PS)"}
+                    </span>
+                  </motion.button>
+                )}
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={onOpenAdvisor}
+                  className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-zinc-900/90 hover:bg-zinc-800 border text-sm font-semibold transition-all shadow-md ${isVW ? "border-blue-700/60 text-blue-300" : "border-emerald-700/60 text-emerald-400"}`}
+                >
+                  <Sparkles className="w-4 h-4" />
                   <span>
-                    {isVW
-                      ? "GT & GTI Performance (265 PS)"
-                      : "The Rs Performance (265 PS)"}
+                    {isVW ? "Ask AI VW Advisor" : "Ask AI \u0160koda Advisor"}
                   </span>
                 </motion.button>
-              )}
+              </div>
 
-              {onOpenGraphs && (
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={onOpenGraphs}
-                  className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-800/90 hover:bg-zinc-700 border text-sm font-medium transition-all shadow-md ${isVW ? "border-blue-500/50 text-blue-400" : "border-emerald-500/50 text-emerald-400"}`}
+              {/* Secondary quick-links, scrollable on mobile */}
+              <div className="flex items-center gap-2 overflow-x-auto scrollbar-none scroll-fade-x pb-1">
+                <button
+                  id="btn-explore-engines-hero"
+                  onClick={onExploreEngines}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-zinc-900/70 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 text-xs font-medium transition-all whitespace-nowrap"
                 >
-                  <Activity className="w-4 h-4" />
-                  <span>Dyno & Telemetry Graphs</span>
-                </motion.button>
-              )}
+                  <Fuel className="w-3.5 h-3.5 text-amber-400" />
+                  <span>TSI & TDI Tech</span>
+                </button>
 
-              {onOpenDealerships && (
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={onOpenDealerships}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-800/90 hover:bg-zinc-700 border border-blue-500/50 text-blue-400 text-sm font-medium transition-all shadow-md"
-                >
-                  <MapPin className="w-4 h-4 text-blue-400" />
-                  <span>Locate Dealership</span>
-                </motion.button>
-              )}
+                {onOpenGraphs && (
+                  <button
+                    onClick={onOpenGraphs}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-zinc-900/70 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 text-xs font-medium transition-all whitespace-nowrap"
+                  >
+                    <Activity className="w-3.5 h-3.5 text-sky-400" />
+                    <span>Dyno & Telemetry</span>
+                  </button>
+                )}
 
-              {onOpenAbout && (
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={onOpenAbout}
-                  className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-800/90 hover:bg-zinc-700 border text-sm font-medium transition-all shadow-md ${isVW ? "border-blue-500/50 text-blue-400" : "border-emerald-500/50 text-emerald-400"}`}
-                >
-                  <HistoryIcon className="w-4 h-4" />
-                  <span>
-                    {isVW
-                      ? "Wolfsburg Heritage (1937)"
-                      : "Czech History (1895)"}
-                  </span>
-                </motion.button>
-              )}
+                {onOpenDealerships && (
+                  <button
+                    onClick={onOpenDealerships}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-zinc-900/70 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 text-xs font-medium transition-all whitespace-nowrap"
+                  >
+                    <MapPin className="w-3.5 h-3.5 text-blue-400" />
+                    <span>Locate Dealership</span>
+                  </button>
+                )}
 
-              {onOpenVWGroup && (
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={onOpenVWGroup}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-900/60 to-zinc-800 hover:from-blue-800/70 hover:to-zinc-700 border border-sky-500/50 text-sky-300 text-sm font-medium transition-all shadow-md"
-                >
-                  <Globe2 className="w-4 h-4 text-sky-400" />
-                  <span>Proud to be VW Group</span>
-                </motion.button>
-              )}
+                {onOpenAbout && (
+                  <button
+                    onClick={onOpenAbout}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-zinc-900/70 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 text-xs font-medium transition-all whitespace-nowrap"
+                  >
+                    <HistoryIcon
+                      className={`w-3.5 h-3.5 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    />
+                    <span>
+                      {isVW ? "Wolfsburg Heritage" : "Czech History"}
+                    </span>
+                  </button>
+                )}
 
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={onOpenAdvisor}
-                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-900/90 hover:bg-zinc-800 border text-sm font-medium transition-all shadow-md ${isVW ? "border-blue-700/60 text-blue-300" : "border-emerald-700/60 text-emerald-400"}`}
-              >
-                <Sparkles className="w-4 h-4" />
-                <span>
-                  {isVW ? "Ask AI VW Advisor" : "Ask AI \u0160koda Advisor"}
-                </span>
-              </motion.button>
+                {onOpenVWGroup && (
+                  <button
+                    onClick={onOpenVWGroup}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-zinc-900/70 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 text-xs font-medium transition-all whitespace-nowrap"
+                  >
+                    <Globe2 className="w-3.5 h-3.5 text-sky-400" />
+                    <span>VW Group</span>
+                  </button>
+                )}
+              </div>
             </div>
           </div>
 
@@ -638,7 +641,7 @@ export const HeroOverview = ({
                 <Flame className="w-3.5 h-3.5 animate-pulse" />
                 {isVW
                   ? "Volkswagen India \u2022 GT & GTI Performance"
-                  : "\u0160koda Auto India \u2022 The Rs Performance"}
+                  : "\u0160koda Auto India \u2022 The vRS Performance"}
               </span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
@@ -651,7 +654,7 @@ export const HeroOverview = ({
                 </>
               ) : (
                 <>
-                  The Rs Performance:{" "}
+                  The vRS Performance:{" "}
                   <span className="text-red-500">
                     Octavia vRS & Kodiaq vRS (265 PS)
                   </span>
@@ -677,7 +680,7 @@ export const HeroOverview = ({
                 <span>
                   {isVW
                     ? "Explore GT & GTI Performance"
-                    : "Explore The Rs Performance"}
+                    : "Explore The vRS Performance"}
                 </span>
                 <ChevronRight className="w-4 h-4" />
               </motion.button>

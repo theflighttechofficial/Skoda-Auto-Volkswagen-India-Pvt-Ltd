@@ -89,6 +89,9 @@ export const DealershipLocator = ({
     setBookingDealer(dealer);
     setBookingType(type);
     setBookingSubmitted(false);
+    setUserName("");
+    setUserPhone("");
+    setPreferredDate("");
     setIsBookingModalOpen(true);
   };
   const handleSubmitBooking = (e) => {
@@ -202,7 +205,7 @@ export const DealershipLocator = ({
               placeholder="Search by city, dealer, or PIN..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className={`w-full pl-9.5 pr-4 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs sm:text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors ${isVW ? "focus:border-blue-500" : "focus:border-emerald-500"}`}
+              className={`w-full pl-10 pr-4 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs sm:text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors ${isVW ? "focus:border-blue-500" : "focus:border-emerald-500"}`}
             />
             {searchQuery && (
               <button

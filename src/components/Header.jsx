@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import {
   ShieldCheck,
   Zap,
@@ -6,14 +6,130 @@ import {
   Sparkles,
   Flame,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Check,
   Building2,
+  LayoutGrid,
+  Car,
+  CarFront,
+  Truck,
+  Activity,
+  MapPin,
+  Fuel,
+  History as HistoryIcon,
+  Globe2,
+  Palette,
+  Calculator,
+  HelpCircle,
 } from "lucide-react";
+
+// Every model carries a bodyType string ("Compact SUV", "Premium Sedan", ...);
+// map it to a small representative icon so the lineup switcher reads at a
+// glance instead of being an undifferentiated wall of text.
+function bodyTypeIcon(bodyType = "") {
+  if (/suv/i.test(bodyType)) return Truck;
+  if (/sedan/i.test(bodyType)) return CarFront;
+  return Car;
+}
 import { motion, AnimatePresence } from "motion/react";
 import { SKODA_MODELS } from "../data/skodaData";
 import { VW_MODELS } from "../data/vwData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
+
+// Makes a horizontally-scrollable strip behave properly everywhere:
+// vertical mouse-wheel scrolls it sideways, it can be dragged with the
+// mouse like a native touch-scroll, and it exposes whether more content
+// sits off to either side so arrow affordances can be shown/hidden.
+function useHorizontalScroll() {
+  const ref = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+  const updateEdges = useCallback(() => {
+    const el = ref.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 4);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+  }, []);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    updateEdges();
+    const onWheel = (e) => {
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      if (el.scrollWidth <= el.clientWidth) return;
+      e.preventDefault();
+      el.scrollLeft += e.deltaY;
+    };
+    let isDown = false;
+    let startX = 0;
+    let startScroll = 0;
+    let dragged = false;
+    const onPointerDown = (e) => {
+      isDown = true;
+      dragged = false;
+      startX = e.clientX;
+      startScroll = el.scrollLeft;
+    };
+    const onPointerMove = (e) => {
+      if (!isDown) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 3) dragged = true;
+      el.scrollLeft = startScroll - dx;
+    };
+    const endDrag = () => {
+      isDown = false;
+    };
+    const onClickCapture = (e) => {
+      if (dragged) {
+        e.stopPropagation();
+        e.preventDefault();
+        dragged = false;
+      }
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    el.addEventListener("scroll", updateEdges, { passive: true });
+    el.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointerup", endDrag);
+    el.addEventListener("click", onClickCapture, true);
+    const resizeObserver = new ResizeObserver(updateEdges);
+    resizeObserver.observe(el);
+    return () => {
+      el.removeEventListener("wheel", onWheel);
+      el.removeEventListener("scroll", updateEdges);
+      el.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerup", endDrag);
+      el.removeEventListener("click", onClickCapture, true);
+      resizeObserver.disconnect();
+    };
+  }, [updateEdges]);
+  const scrollBy = (amount) => {
+    ref.current?.scrollBy({ left: amount, behavior: "smooth" });
+  };
+  return { ref, canScrollLeft, canScrollRight, scrollBy, updateEdges };
+}
+
+function ScrollEdgeButton({ direction, onClick, isVW, style }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      style={style}
+      aria-label={direction === "left" ? "Scroll left" : "Scroll right"}
+      className={`hidden sm:flex items-center justify-center shrink-0 w-6 h-6 rounded-full border transition-colors z-20 ${isVW ? "bg-blue-950/90 border-blue-800 text-blue-300 hover:bg-blue-900" : "bg-emerald-950/90 border-emerald-800 text-emerald-300 hover:bg-emerald-900"}`}
+    >
+      {direction === "left" ? (
+        <ChevronLeft className="w-3.5 h-3.5" />
+      ) : (
+        <ChevronRight className="w-3.5 h-3.5" />
+      )}
+    </button>
+  );
+}
+
 export const Header = ({
   activeBrand,
   setActiveBrand,
@@ -33,6 +149,24 @@ export const Header = ({
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+  const lineupScroll = useHorizontalScroll();
+  const navScroll = useHorizontalScroll();
+  const activeTabRef = useRef(null);
+  const activeModelRef = useRef(null);
+  useEffect(() => {
+    activeTabRef.current?.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
+  }, [activeTab]);
+  useEffect(() => {
+    activeModelRef.current?.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
+  }, [selectedModelId]);
   const handleSelectBrand = (brand) => {
     if (brand !== activeBrand) {
       setActiveBrand(brand);
@@ -43,26 +177,32 @@ export const Header = ({
   const isVW = activeBrand === "volkswagen";
   const currentModels = isVW ? VW_MODELS : SKODA_MODELS;
   const navItems = [
-    { id: "overview", label: "Portfolio Overview" },
-    { id: "models", label: "Models & Trims" },
+    { id: "overview", label: "Portfolio Overview", icon: LayoutGrid },
+    { id: "models", label: "Models & Trims", icon: Car },
     {
       id: "rs",
-      label: isVW ? "GT & GTI Performance" : "The Rs Performance",
+      label: isVW ? "GT & GTI Performance" : "The vRS Performance",
+      icon: Flame,
       isHot: true,
     },
-    { id: "graphs", label: "Performance Graphs" },
-    { id: "dealerships", label: "Dealership Locator" },
-    { id: "engines", label: "TSI & TDI Engines" },
-    { id: "safety", label: "5-Star Safety" },
-    { id: "about", label: isVW ? "About Volkswagen" : "About \u0160koda" },
-    { id: "vwgroup", label: "Proud to be VW Group" },
-    { id: "visualizer", label: "Color Explorer" },
-    { id: "calculator", label: "Price & EMI" },
+    { id: "graphs", label: "Performance Graphs", icon: Activity },
+    { id: "dealerships", label: "Dealership Locator", icon: MapPin },
+    { id: "engines", label: "TSI & TDI Engines", icon: Fuel },
+    { id: "safety", label: "5-Star Safety", icon: ShieldCheck },
+    {
+      id: "about",
+      label: isVW ? "About Volkswagen" : "About \u0160koda",
+      icon: HistoryIcon,
+    },
+    { id: "vwgroup", label: "Proud to be VW Group", icon: Globe2 },
+    { id: "visualizer", label: "Color Explorer", icon: Palette },
+    { id: "calculator", label: "Price & EMI", icon: Calculator },
     {
       id: "advisor",
       label: isVW ? "AI Volkswagen Advisor" : "AI \u0160koda Advisor",
+      icon: Sparkles,
     },
-    { id: "faq", label: "FAQ" },
+    { id: "faq", label: "FAQ", icon: HelpCircle },
   ];
   return (
     <header className="sticky top-0 z-50 bg-zinc-950/95 backdrop-blur-md border-b border-zinc-800 text-zinc-100 shadow-lg shadow-black/40">
@@ -159,7 +299,7 @@ export const Header = ({
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.96 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute left-0 top-full mt-2 w-72 sm:w-80 rounded-2xl bg-zinc-900 border border-zinc-700/90 shadow-2xl p-2 z-50 overflow-hidden"
+                    className="absolute left-0 top-full mt-2 w-[min(18rem,calc(100vw-2rem))] sm:w-80 rounded-2xl bg-zinc-900 border border-zinc-700/90 shadow-2xl p-2 z-50 overflow-hidden"
                   >
                     <div className="px-3 py-2 border-b border-zinc-800 mb-1.5">
                       <div className="flex items-center justify-between">
@@ -260,7 +400,7 @@ export const Header = ({
               <p className="text-xs text-zinc-400">
                 {isVW
                   ? "German Engineering, TSI EVO Powertrains & GT / GTI Performance"
-                  : "European Safety, TSI & TDI Powertrains & The Rs Performance"}
+                  : "European Safety, TSI & TDI Powertrains & The vRS Performance"}
               </p>
             </div>
           </div>
@@ -276,7 +416,7 @@ export const Header = ({
               <span className="font-black italic">
                 {isVW
                   ? "GT & GTI Performance (265 PS)"
-                  : "The Rs Performance (265 PS)"}
+                  : "The vRS Performance (265 PS)"}
               </span>
             </motion.button>
             <motion.div
@@ -320,35 +460,52 @@ export const Header = ({
         </div>
 
         {/* Model Selector Bar & Navigation Tabs */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-2 overflow-x-auto scrollbar-none">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-2">
           {/* Car Lineup Switcher */}
-          <div className="flex items-center gap-1.5 text-xs overflow-x-auto scrollbar-none py-1">
-            <span className="text-zinc-400 font-medium text-[11px] whitespace-nowrap mr-1 flex items-center gap-1">
-              <span
-                className={`w-1.5 h-1.5 rounded-full animate-pulse ${isVW ? "bg-blue-500" : "bg-emerald-500"}`}
-              />
-              {isVW ? "VW Lineup:" : "\u0160koda Lineup:"}
-            </span>
-            <button
-              id="btn-filter-all-models"
-              onClick={() => setSelectedModelId("all")}
-              className={`relative px-2.5 py-1 rounded-md font-medium text-xs whitespace-nowrap transition-all ${selectedModelId === "all" ? (isVW ? "bg-blue-600 text-white shadow-md shadow-blue-950" : "bg-emerald-600 text-white shadow-md shadow-emerald-950") : "bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800"}`}
+          <div className="flex items-center gap-1.5 min-w-0">
+            <ScrollEdgeButton
+              direction="left"
+              isVW={isVW}
+              onClick={() => lineupScroll.scrollBy(-160)}
+              style={{ visibility: lineupScroll.canScrollLeft ? "visible" : "hidden" }}
+            />
+            <div
+              ref={lineupScroll.ref}
+              className="flex items-center gap-1.5 text-xs overflow-x-auto scrollbar-none py-1.5 px-1.5 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 scroll-fade-x cursor-grab active:cursor-grabbing select-none"
             >
-              All Models ({currentModels.length})
-            </button>
-            {currentModels.map((car) => {
-              const isSelected = selectedModelId === car.id;
-              const shortName = car.name
-                .replace("\u0160koda ", "")
-                .replace("Volkswagen ", "");
-              return (
-                <button
-                  key={car.id}
-                  id={`btn-model-${car.id}`}
-                  onClick={() => setSelectedModelId(car.id)}
-                  className={`relative px-2.5 py-1 rounded-md font-medium text-xs whitespace-nowrap transition-all ${isSelected ? (isVW ? "bg-blue-600 text-white shadow-md shadow-blue-950 font-semibold" : "bg-emerald-600 text-white shadow-md shadow-emerald-950 font-semibold") : "bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800 hover:border-zinc-700"}`}
-                >
-                  {shortName}
+              <span className="text-zinc-400 font-medium text-[11px] whitespace-nowrap mr-1 flex items-center gap-1">
+                <span
+                  className={`w-1.5 h-1.5 rounded-full animate-pulse ${isVW ? "bg-blue-500" : "bg-emerald-500"}`}
+                />
+                {isVW ? "VW Lineup:" : "\u0160koda Lineup:"}
+              </span>
+              <button
+                id="btn-filter-all-models"
+                ref={selectedModelId === "all" ? activeModelRef : null}
+                onClick={() => setSelectedModelId("all")}
+                className={`relative px-2.5 py-1 rounded-md font-medium text-xs whitespace-nowrap transition-all ${selectedModelId === "all" ? (isVW ? "bg-blue-600 text-white shadow-md shadow-blue-950" : "bg-emerald-600 text-white shadow-md shadow-emerald-950") : "bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800"}`}
+              >
+                All Models ({currentModels.length})
+              </button>
+              {currentModels.map((car) => {
+                const isSelected = selectedModelId === car.id;
+                const shortName = car.name
+                  .replace("\u0160koda ", "")
+                  .replace("Volkswagen ", "");
+                const BodyIcon = bodyTypeIcon(car.bodyType);
+                return (
+                  <button
+                    key={car.id}
+                    id={`btn-model-${car.id}`}
+                    ref={isSelected ? activeModelRef : null}
+                    onClick={() => setSelectedModelId(car.id)}
+                    title={car.bodyType}
+                    className={`relative flex items-center gap-1 px-2.5 py-1 rounded-md font-medium text-xs whitespace-nowrap transition-all ${isSelected ? (isVW ? "bg-blue-600 text-white shadow-md shadow-blue-950 font-semibold" : "bg-emerald-600 text-white shadow-md shadow-emerald-950 font-semibold") : "bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800 hover:border-zinc-700"}`}
+                  >
+                    <BodyIcon
+                      className={`w-3 h-3 shrink-0 ${isSelected ? "text-white/90" : "text-zinc-500"}`}
+                    />
+                    {shortName}
                   {car.id === "golf-gti" && (
                     <span className="ml-1 px-1 py-0.2 rounded bg-red-500/20 text-red-300 text-[9px] border border-red-500/30">
                       GTI
@@ -364,50 +521,86 @@ export const Header = ({
                       Icon
                     </span>
                   )}
-                  {car.id === "kylaq" && (
-                    <span className="ml-1 px-1 py-0.2 rounded bg-emerald-500/20 text-emerald-300 text-[9px] border border-emerald-500/30">
-                      New
-                    </span>
-                  )}
-                </button>
-              );
-            })}
+                    {car.id === "kylaq" && (
+                      <span className="ml-1 px-1 py-0.2 rounded bg-emerald-500/20 text-emerald-300 text-[9px] border border-emerald-500/30">
+                        New
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+            <ScrollEdgeButton
+              direction="right"
+              isVW={isVW}
+              onClick={() => lineupScroll.scrollBy(160)}
+              style={{ visibility: lineupScroll.canScrollRight ? "visible" : "hidden" }}
+            />
           </div>
 
           {/* Section Tabs with Animated Indicator */}
-          <div className="flex items-center gap-1 overflow-x-auto scrollbar-none">
-            {navItems.map((item) => {
-              const isActive = activeTab === item.id;
-              return (
-                <button
-                  key={item.id}
-                  id={`nav-tab-${item.id}`}
-                  onClick={() => setActiveTab(item.id)}
-                  className={`relative px-3 py-1.5 rounded-md text-xs font-medium whitespace-nowrap transition-colors z-10 ${isActive ? "text-white font-semibold" : "text-zinc-400 hover:text-zinc-200"}`}
-                >
-                  {isActive && (
-                    <motion.span
-                      layoutId="header-active-tab-pill"
-                      className={`absolute inset-0 rounded-md border -z-10 shadow-sm ${isVW ? "bg-blue-950/80 border-blue-800" : "bg-zinc-800 border-zinc-700"}`}
-                      transition={{
-                        type: "spring",
-                        stiffness: 450,
-                        damping: 30,
-                      }}
-                    />
-                  )}
-                  {item.label}
-                  {item.isHot && (
-                    <span className="ml-1.5 px-1 py-0.2 rounded bg-red-600 text-white text-[9px] font-black italic tracking-wider shadow-sm shadow-red-900/50">
-                      {isVW ? "GT/GTI" : "vRS"}
-                    </span>
-                  )}
-                </button>
-              );
-            })}
+          <div className="flex items-center gap-1.5 min-w-0">
+            <ScrollEdgeButton
+              direction="left"
+              isVW={isVW}
+              onClick={() => navScroll.scrollBy(-160)}
+              style={{ visibility: navScroll.canScrollLeft ? "visible" : "hidden" }}
+            />
+            <div
+              ref={navScroll.ref}
+              className="flex items-center gap-1 p-1 rounded-2xl bg-zinc-900/60 border border-zinc-800/70 overflow-x-auto scrollbar-none scroll-fade-x cursor-grab active:cursor-grabbing select-none"
+            >
+              {navItems.map((item) => {
+                const isActive = activeTab === item.id;
+                const Icon = item.icon;
+                return (
+                  <motion.button
+                    key={item.id}
+                    id={`nav-tab-${item.id}`}
+                    ref={isActive ? activeTabRef : null}
+                    onClick={() => setActiveTab(item.id)}
+                    whileHover={{ y: -1 }}
+                    whileTap={{ scale: 0.97 }}
+                    className={`relative flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-colors z-10 ${isActive ? "text-white font-semibold" : "text-zinc-400 hover:text-zinc-100"}`}
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="header-active-tab-pill"
+                        className={`absolute inset-0 rounded-xl -z-10 shadow-md ${isVW ? "bg-gradient-to-r from-blue-600 to-blue-500 shadow-blue-950/60" : "bg-gradient-to-r from-emerald-600 to-emerald-500 shadow-emerald-950/60"}`}
+                        transition={{
+                          type: "spring",
+                          stiffness: 450,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                    {Icon && (
+                      <Icon
+                        className={`w-3.5 h-3.5 shrink-0 ${isActive ? "text-white" : "text-zinc-500"}`}
+                      />
+                    )}
+                    {item.label}
+                    {item.isHot && (
+                      <span className="ml-0.5 px-1 py-0.2 rounded bg-red-600 text-white text-[9px] font-black italic tracking-wider shadow-sm shadow-red-900/50">
+                        {isVW ? "GT/GTI" : "vRS"}
+                      </span>
+                    )}
+                  </motion.button>
+                );
+              })}
+            </div>
+            <ScrollEdgeButton
+              direction="right"
+              isVW={isVW}
+              onClick={() => navScroll.scrollBy(160)}
+              style={{ visibility: navScroll.canScrollRight ? "visible" : "hidden" }}
+            />
           </div>
         </div>
       </div>
+      <div
+        className={`h-[2px] w-full bg-gradient-to-r ${isVW ? "from-transparent via-blue-500/70 to-transparent" : "from-transparent via-emerald-500/70 to-transparent"}`}
+      />
     </header>
   );
 };

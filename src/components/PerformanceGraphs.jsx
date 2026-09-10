@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
   Activity,
   Zap,
@@ -31,6 +31,29 @@ export const PerformanceGraphs = ({
   const [isCompareMode, setIsCompareMode] = useState(false);
   const [compareEngineId, setCompareEngineId] = useState("2.0-tsi-vrs");
   const [hoveredRpmIndex, setHoveredRpmIndex] = useState(null);
+  useEffect(() => {
+    const brandModelIds = isVW
+      ? ["virtus", "taigun", "tiguan", "golf-gti", "tayron"]
+      : [
+          "kylaq",
+          "slavia",
+          "kushaq",
+          "octavia",
+          "kodiaq",
+          "superb",
+          "octavia-vrs",
+          "kodiaq-vrs",
+        ];
+    if (!brandModelIds.includes(selectedModelId)) {
+      const fallbackId = isVW ? "virtus" : "slavia";
+      setSelectedModelId(fallbackId);
+      const m = MODEL_PERFORMANCE_PROFILES.find((mod) => mod.id === fallbackId);
+      if (m && m.primaryEngineId) {
+        setSelectedEngineId(m.primaryEngineId);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [brand]);
   const activeEngine =
     ENGINE_GRAPH_PROFILES[selectedEngineId] || ENGINE_GRAPH_PROFILES["1.5-tsi"];
   const compareEngine =
@@ -110,8 +133,12 @@ export const PerformanceGraphs = ({
   return (
     <div className="space-y-8">
       {/* Top Banner */}
-      <div className="rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900/90 to-blue-950/40 border border-zinc-800 p-6 sm:p-8 relative overflow-hidden shadow-2xl">
-        <div className="absolute right-0 top-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div
+        className={`rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900/90 border border-zinc-800 p-6 sm:p-8 relative overflow-hidden shadow-2xl ${isVW ? "to-blue-950/40" : "to-emerald-950/40"}`}
+      >
+        <div
+          className={`absolute right-0 top-0 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isVW ? "bg-blue-600/10" : "bg-emerald-600/10"}`}
+        />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-3xl">
@@ -291,7 +318,7 @@ export const PerformanceGraphs = ({
         </div>
 
         {/* Step 3: Graph Mode Tabs */}
-        <div className="flex items-center gap-2 pt-2 border-t border-zinc-800/80 overflow-x-auto scrollbar-none">
+        <div className="flex items-center gap-2 pt-2 border-t border-zinc-800/80 overflow-x-auto scrollbar-none scroll-fade-x">
           <button
             onClick={() => setActiveGraphTab("dyno")}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${activeGraphTab === "dyno" ? "bg-zinc-100 text-zinc-950 shadow-md" : "bg-zinc-950 text-zinc-400 hover:text-white border border-zinc-800"}`}

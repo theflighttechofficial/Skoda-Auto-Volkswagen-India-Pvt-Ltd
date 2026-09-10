@@ -5,7 +5,7 @@ export interface SkodaModel {
   name: string;
   badge: string;
   tagline: string;
-  bodyType: 'Compact SUV' | 'Premium Sedan' | 'Midsize SUV' | 'Luxury 4x4 SUV' | 'Executive Sedan';
+  bodyType: 'Compact SUV' | 'Premium Sedan' | 'Midsize SUV' | 'Luxury 4x4 SUV' | 'Executive Sedan' | 'Compact Sedan' | 'Hatchback';
   startingPrice: string;
   startingExShowroom: number;
   priceRange: string;
@@ -763,6 +763,204 @@ export const SKODA_MODELS: SkodaModel[] = [
       { id: 'water-world-green', name: 'Water World Green', hex: '#1b3a32', availableOn: ['L&K'] },
       { id: 'magic-black-sup', name: 'Magic Black', hex: '#0f172a', availableOn: ['L&K', 'Sportline'] },
       { id: 'race-blue-sup', name: 'Race Blue Metallic', hex: '#1d4ed8', availableOn: ['Sportline'] }
+    ]
+  },
+  {
+    id: 'rapid',
+    name: 'Škoda Rapid',
+    badge: 'Enthusiast Hall of Fame Sedan',
+    tagline: 'The compact sedan pioneer that brought TSI turbo-petrol thrills to the Indian mid-size segment (2011–2023)',
+    bodyType: 'Compact Sedan',
+    startingPrice: 'Hall of Fame Legend (2011–2023)',
+    startingExShowroom: 819000,
+    priceRange: '₹8.19 – ₹12.09 Lakh (Final India Price List)',
+    rating: '4-Star Global NCAP (Legacy Protocol)',
+    safetyStars: 4,
+    engines: ['1.0L TSI (110 PS / 175 Nm)', '1.6L MPI Petrol (105 PS / 153 Nm, Pre-2019)'],
+    keyHighlights: [
+      'India’s original torque-converter automatic compact sedan, launched in 2011',
+      '460-litre boot space — among the largest in the compact sedan class of its era',
+      '1.0L TSI 3-cylinder turbo added in the 2019 facelift, replacing the naturally aspirated 1.6 MPI',
+      'Monte Carlo edition brought blacked-out sports styling to the value sedan segment',
+      'Succeeded by the Slavia in 2022 as Škoda’s MQB-A0-IN sedan flagship',
+      'Renowned for rock-solid PQ25 platform rigidity and confident 165 mm ground clearance'
+    ],
+    dimensions: {
+      length: '4,390 mm',
+      width: '1,699 mm',
+      height: '1,462 mm',
+      wheelbase: '2,552 mm',
+      groundClearance: '165 mm',
+      bootSpace: '460 Litres',
+      fuelTank: '55 Litres'
+    },
+    variants: [
+      {
+        id: 'rapid-ambition',
+        name: 'Rapid Ambition',
+        tagline: 'The value-focused entry with essential safety and Škoda build quality',
+        priceRange: '₹8.19 – ₹9.49 Lakh',
+        baseExShowroom: 819000,
+        engineOptions: ['1.0L TSI'],
+        transmissions: ['6-Speed Manual'],
+        keyFeatures: [
+          'Dual front airbags standard',
+          'Electronic Stability Control (ESC) on select trims',
+          'Rear parking sensors',
+          '8-inch touchscreen infotainment with Bluetooth',
+          'Front power windows and central locking'
+        ],
+        exteriorHighlights: ['15-inch steel wheels with covers', 'Chrome front grille strip', 'Halogen headlamps'],
+        interiorHighlights: ['Black fabric upholstery', 'Manual air conditioning', 'Height-adjustable driver seat'],
+        badgeColor: 'bg-zinc-700 text-zinc-100'
+      },
+      {
+        id: 'rapid-style',
+        name: 'Rapid Style / TSI',
+        tagline: 'The volume favourite pairing the 1.0 TSI turbo-petrol with automatic convenience',
+        priceRange: '₹9.99 – ₹11.29 Lakh',
+        baseExShowroom: 999000,
+        engineOptions: ['1.0L TSI'],
+        transmissions: ['6-Speed Manual', '6-Speed Torque Converter AT'],
+        isPopular: true,
+        keyFeatures: [
+          '110 PS / 175 Nm 1.0 TSI turbocharged petrol engine',
+          '8-inch touchscreen with Apple CarPlay & Android Auto',
+          'Rear parking camera',
+          'Cruise control and steering-mounted controls',
+          'Alloy wheels with silver finish'
+        ],
+        exteriorHighlights: ['15-inch dual-tone alloy wheels', 'LED daytime running lights', 'Shark fin antenna'],
+        interiorHighlights: ['Beige and black dual-tone cabin', 'Leatherette-wrapped steering wheel', 'Rear center armrest'],
+        badgeColor: 'bg-blue-600 text-white'
+      },
+      {
+        id: 'rapid-monte-carlo',
+        name: 'Rapid Monte Carlo',
+        tagline: 'Blacked-out sports styling that brought motorsport flair to the value sedan segment',
+        priceRange: '₹11.49 – ₹12.09 Lakh',
+        baseExShowroom: 1149000,
+        engineOptions: ['1.0L TSI'],
+        transmissions: ['6-Speed Manual', '6-Speed Torque Converter AT'],
+        isFlagship: true,
+        keyFeatures: [
+          'Gloss-black grille surround and black ORVMs',
+          '16-inch black diamond-cut alloy wheels',
+          'Black and red sports cabin theme',
+          'Rear defogger with heated ORVMs',
+          'Multi-function leather-wrapped sports steering wheel'
+        ],
+        exteriorHighlights: ['Black roof-mounted shark fin antenna', 'Monte Carlo red-accented badges', 'Smoked tail lamp clusters'],
+        interiorHighlights: ['Black upholstery with red contrast stitching', 'Monte Carlo branded scuff plates', 'Piano black dashboard trim'],
+        badgeColor: 'bg-red-700 text-white'
+      }
+    ],
+    colors: [
+      { id: 'candy-white-rap', name: 'Candy White', hex: '#f8fafc', availableOn: ['Ambition', 'Style', 'Monte Carlo'] },
+      { id: 'flash-red-rap', name: 'Flash Red', hex: '#b91c1c', availableOn: ['Style', 'Monte Carlo'] },
+      { id: 'tornado-red-rap', name: 'Tornado Red', hex: '#991b1b', availableOn: ['Style'] },
+      { id: 'carbon-steel-rap', name: 'Carbon Steel Grey', hex: '#4b5563', availableOn: ['Ambition', 'Style', 'Monte Carlo'] },
+      { id: 'brilliant-silver-rap', name: 'Brilliant Silver', hex: '#cbd5e1', availableOn: ['Ambition', 'Style'] },
+      { id: 'deep-black-rap', name: 'Deep Black Pearl', hex: '#0f172a', availableOn: ['Monte Carlo'] }
+    ]
+  },
+  {
+    id: 'fabia',
+    name: 'Škoda Fabia',
+    badge: 'Enthusiast Hall of Fame Hatchback',
+    tagline: 'The Czech-engineered premium hatchback that defined refined small-car dynamics in India (2008–2014)',
+    bodyType: 'Hatchback',
+    startingPrice: 'Hall of Fame Legend (2008–2014)',
+    startingExShowroom: 590000,
+    priceRange: '₹5.90 – ₹8.30 Lakh (Final India Price List)',
+    rating: 'Pre-NCAP India Era (Not Officially Crash-Tested)',
+    safetyStars: 0,
+    engines: ['1.6L MPI Petrol (105 PS / 153 Nm)', '1.2L TDI CR Diesel (75 PS / 180 Nm)'],
+    keyHighlights: [
+      'Premium hatchback positioning with genuine European ride and handling refinement',
+      'Spacious 315-litre boot — best-in-class for its era among premium hatchbacks',
+      '1.2L TDI three-cylinder Common Rail diesel offered exceptional 21+ km/l efficiency',
+      'Fabia Monte Carlo brought matte-black bonnet, roof, and red mirror caps to the hatch segment',
+      'Robust PQ25 platform shared with the Rapid and international Volkswagen Polo',
+      'Discontinued in 2014 to focus Škoda India’s lineup on sedans and SUVs'
+    ],
+    dimensions: {
+      length: '3,992 mm',
+      width: '1,642 mm',
+      height: '1,498 mm',
+      wheelbase: '2,465 mm',
+      groundClearance: '170 mm',
+      bootSpace: '315 Litres',
+      fuelTank: '45 Litres'
+    },
+    variants: [
+      {
+        id: 'fabia-active',
+        name: 'Fabia Active',
+        tagline: 'The accessible entry into premium European hatchback engineering',
+        priceRange: '₹5.90 – ₹6.79 Lakh',
+        baseExShowroom: 590000,
+        engineOptions: ['1.6L MPI Petrol'],
+        transmissions: ['5-Speed Manual'],
+        keyFeatures: [
+          'Dual front airbags',
+          'Power steering and power windows',
+          'Front fog lamps',
+          '2-DIN audio system with USB and AUX input',
+          'Rear parcel shelf'
+        ],
+        exteriorHighlights: ['14-inch steel wheels with covers', 'Body-colored bumpers', 'Halogen headlamps'],
+        interiorHighlights: ['Black and grey fabric upholstery', 'Manual air conditioning', 'Tilt-adjustable steering'],
+        badgeColor: 'bg-zinc-700 text-zinc-100'
+      },
+      {
+        id: 'fabia-ambition',
+        name: 'Fabia Ambition',
+        tagline: 'The well-equipped mid-range hatchback with diesel efficiency option',
+        priceRange: '₹6.99 – ₹7.79 Lakh',
+        baseExShowroom: 699000,
+        engineOptions: ['1.6L MPI Petrol', '1.2L TDI CR Diesel'],
+        transmissions: ['5-Speed Manual'],
+        isPopular: true,
+        keyFeatures: [
+          '1.2L TDI three-cylinder Common Rail diesel option',
+          'Alloy wheels',
+          'Electrically adjustable and foldable ORVMs',
+          'Rear parking sensors',
+          'Height-adjustable driver seat'
+        ],
+        exteriorHighlights: ['15-inch alloy wheels', 'Chrome accented grille', 'Body-colored door handles'],
+        interiorHighlights: ['Beige and black dual-tone cabin', 'Leatherette-wrapped steering wheel', 'Rear headrests'],
+        badgeColor: 'bg-blue-600 text-white'
+      },
+      {
+        id: 'fabia-monte-carlo',
+        name: 'Fabia Monte Carlo',
+        tagline: 'Motorsport-inspired blackout styling that brought sporty flair to the premium hatch segment',
+        priceRange: '₹7.85 – ₹8.30 Lakh',
+        baseExShowroom: 785000,
+        engineOptions: ['1.6L MPI Petrol'],
+        transmissions: ['5-Speed Manual'],
+        isFlagship: true,
+        keyFeatures: [
+          'Matte-black bonnet and roof wrap',
+          'Red-accented door mirror caps',
+          'Black diamond-cut alloy wheels',
+          'Sports front seats with red contrast stitching',
+          'Monte Carlo branded floor mats and scuff plates'
+        ],
+        exteriorHighlights: ['Matte-black roof and bonnet', 'Red ORVM caps', 'Black rear spoiler'],
+        interiorHighlights: ['Black upholstery with red stitching', 'Monte Carlo sports steering wheel', 'Piano black center console trim'],
+        badgeColor: 'bg-red-700 text-white'
+      }
+    ],
+    colors: [
+      { id: 'candy-white-fab', name: 'Candy White', hex: '#f8fafc', availableOn: ['Active', 'Ambition', 'Monte Carlo'] },
+      { id: 'corrida-red-fab', name: 'Corrida Red', hex: '#9e1b26', availableOn: ['Ambition', 'Monte Carlo'] },
+      { id: 'cappuccino-beige-fab', name: 'Cappuccino Beige', hex: '#c9b28a', availableOn: ['Active', 'Ambition'] },
+      { id: 'storm-blue-fab', name: 'Storm Blue', hex: '#1e3a5f', availableOn: ['Ambition'] },
+      { id: 'anthracite-grey-fab', name: 'Anthracite Grey', hex: '#3f3f46', availableOn: ['Active', 'Ambition', 'Monte Carlo'] },
+      { id: 'candy-black-fab', name: 'Candy Black', hex: '#18181b', availableOn: ['Monte Carlo'] }
     ]
   }
 ];

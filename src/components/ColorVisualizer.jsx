@@ -32,7 +32,7 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
   const currentColor =
     currentModel.colors.find((c) => c.id === selectedColorId) ||
     currentModel.colors[0];
-  const isSedan = currentModel.bodyType.includes("Sedan");
+  const isSedan = currentModel.bodyType?.includes("Sedan") ?? false;
   return (
     <div className="space-y-8">
       {/* Title & Model Selector */}

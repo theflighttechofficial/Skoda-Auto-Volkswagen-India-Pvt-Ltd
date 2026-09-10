@@ -14,3 +14,18 @@
 .animate-fadeIn {
   animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* Fades the right edge of horizontally-scrollable strips so mobile users
+   can tell there's more content to scroll, without needing a visible scrollbar. */
+.scroll-fade-x {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    black calc(100% - 24px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    black calc(100% - 24px),
+    transparent 100%
+  );
+}

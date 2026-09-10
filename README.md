@@ -1,6 +1,6 @@
 # Škoda Auto Guide & Volkswagen India Group Showcase 🚗⚡
 
-An interactive, feature-rich web application and buyer's guide for the **Škoda Slavia** sedan and the broader **Volkswagen Group** performance vehicle ecosystem. Designed for car enthusiasts, prospective buyers, and automotive aficionados, this application provides dynamic spec comparisons, performance telemetry charts, 360° color previews, safety deep dives, cost of ownership calculators, an AI-powered vehicle advisor, and dealership locators.
+An interactive, feature-rich web application and buyer's guide for the **Škoda cars** and the broader **Volkswagen Group** performance vehicle ecosystem. Designed for car enthusiasts, prospective buyers, and automotive aficionados, this application provides dynamic spec comparisons, performance telemetry charts, 360° color previews, safety deep dives, cost of ownership calculators, an AI-powered vehicle advisor, and dealership locators.
 
 ---
 

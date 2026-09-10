@@ -375,7 +375,7 @@ export default function App() {
                 className="flex items-center gap-1.5 cursor-pointer text-red-400 hover:text-red-300 font-bold transition-colors"
               >
                 <Flame className="w-4 h-4 text-red-500" />{" "}
-                {isVW ? "GT & GTI Performance" : "The Rs Performance"}
+                {isVW ? "GT & GTI Performance" : "The vRS Performance"}
               </span>
               <span
                 onClick={() => handleTabChange("graphs")}
@@ -385,9 +385,11 @@ export default function App() {
               </span>
               <span
                 onClick={() => handleTabChange("dealerships")}
-                className="flex items-center gap-1.5 cursor-pointer text-blue-400 hover:text-blue-300 font-bold transition-colors"
+                className={`flex items-center gap-1.5 cursor-pointer font-bold transition-colors ${isVW ? "text-blue-400 hover:text-blue-300" : "text-emerald-400 hover:text-emerald-300"}`}
               >
-                <MapPin className="w-4 h-4 text-blue-400" />{" "}
+                <MapPin
+                  className={`w-4 h-4 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                />{" "}
                 {isVW
                   ? "VW Dealership Locator (190+)"
                   : "\u0160koda Dealership Locator (260+)"}
@@ -416,7 +418,9 @@ export default function App() {
                   : "4-Year / 100,000 km Standard Warranty"}
               </span>
               <span className="flex items-center gap-1.5">
-                <HeartHandshake className="w-4 h-4 text-blue-400" />
+                <HeartHandshake
+                  className={`w-4 h-4 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                />
                 {isVW
                   ? "VW 24/7 Roadside Assistance: 1800 102 0909"
                   : "\u0160koda 24/7 Roadside Assistance: 1800 123 0955"}

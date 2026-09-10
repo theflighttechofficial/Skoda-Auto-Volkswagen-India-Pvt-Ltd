@@ -6,10 +6,12 @@ import { VolkswagenLogo } from "./VolkswagenLogo";
 export const FAQSection = ({ brand = "skoda" }) => {
   const isVW = brand === "volkswagen";
   const faqs = isVW ? ALL_VW_FAQS : ALL_SKODA_FAQS;
-  const [openIndices, setOpenIndices] = useState([0, 1]);
+  const [openQuestions, setOpenQuestions] = useState(
+    () => new Set(faqs.slice(0, 2).map((f) => f.question)),
+  );
   const [activeCategory, setActiveCategory] = useState("All");
   useEffect(() => {
-    setOpenIndices([0, 1]);
+    setOpenQuestions(new Set(faqs.slice(0, 2).map((f) => f.question)));
     setActiveCategory("All");
   }, [brand]);
   const categories = [
@@ -23,12 +25,16 @@ export const FAQSection = ({ brand = "skoda" }) => {
     activeCategory === "All"
       ? faqs
       : faqs.filter((f) => f.category === activeCategory);
-  const toggleIndex = (idx) => {
-    if (openIndices.includes(idx)) {
-      setOpenIndices(openIndices.filter((i) => i !== idx));
-    } else {
-      setOpenIndices([...openIndices, idx]);
-    }
+  const toggleQuestion = (question) => {
+    setOpenQuestions((prev) => {
+      const next = new Set(prev);
+      if (next.has(question)) {
+        next.delete(question);
+      } else {
+        next.add(question);
+      }
+      return next;
+    });
   };
   return (
     <div className="space-y-8 max-w-4xl mx-auto">
@@ -72,15 +78,15 @@ export const FAQSection = ({ brand = "skoda" }) => {
 
       {/* FAQ Accordion List */}
       <div className="space-y-3">
-        {filteredFaqs.map((faq, index) => {
-          const isOpen = openIndices.includes(index);
+        {filteredFaqs.map((faq) => {
+          const isOpen = openQuestions.has(faq.question);
           return (
             <div
-              key={index}
+              key={faq.question}
               className="rounded-xl bg-zinc-900/80 border border-zinc-800 overflow-hidden transition-all duration-200"
             >
               <button
-                onClick={() => toggleIndex(index)}
+                onClick={() => toggleQuestion(faq.question)}
                 className="w-full text-left p-4 sm:p-5 flex items-center justify-between gap-4 hover:bg-zinc-800/40 transition-colors cursor-pointer"
               >
                 <div className="flex items-center gap-3">

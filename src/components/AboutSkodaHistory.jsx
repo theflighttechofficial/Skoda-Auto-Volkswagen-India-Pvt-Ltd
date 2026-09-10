@@ -226,14 +226,14 @@ export const AboutSkodaHistory = ({
         </div>
 
         {/* Era Tab Selector Bar */}
-        <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-2">
+        <div className="flex items-center gap-2 overflow-x-auto scrollbar-none scroll-fade-x pb-2">
           {historyEras.map((era) => {
             const isSelected = era.id === selectedEraId;
             return (
               <button
                 key={era.id}
                 onClick={() => setSelectedEraId(era.id)}
-                className={`flex-shrink-0 px-4 py-3 rounded-2xl border text-left transition-all cursor-pointer ${isSelected ? (isVW ? "bg-blue-950/70 border-blue-500/80 text-white shadow-lg shadow-blue-950/50 ring-1 ring-blue-400/40" : "bg-emerald-950/70 border-emerald-500/80 text-white shadow-lg shadow-emerald-950/50 ring-1 ring-emerald-400/40") : "bg-zinc-900/80 border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-850 hover:border-zinc-700"}`}
+                className={`flex-shrink-0 px-4 py-3 rounded-2xl border text-left transition-all cursor-pointer ${isSelected ? (isVW ? "bg-blue-950/70 border-blue-500/80 text-white shadow-lg shadow-blue-950/50 ring-1 ring-blue-400/40" : "bg-emerald-950/70 border-emerald-500/80 text-white shadow-lg shadow-emerald-950/50 ring-1 ring-emerald-400/40") : "bg-zinc-900/80 border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/80 hover:border-zinc-700"}`}
               >
                 <div className="flex items-center gap-2 mb-0.5">
                   <span
