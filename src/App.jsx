@@ -27,6 +27,7 @@ import {
 import { motion, AnimatePresence } from "motion/react";
 import { SkodaLogo } from "./components/SkodaLogo";
 import { VolkswagenLogo } from "./components/VolkswagenLogo";
+import { AudiLogo } from "./components/AudiLogo";
 export default function App() {
   const [activeBrand, setActiveBrand] = useState("skoda");
   const [activeTab, setActiveTab] = useState("overview");
@@ -88,9 +89,12 @@ export default function App() {
     handleTabChange("advisor");
   };
   const isVW = activeBrand === "volkswagen";
+  const isAudi = activeBrand === "audi";
+  const defaultModelId = isAudi ? "a4" : isVW ? "virtus" : "octavia";
+  const defaultGraphModelId = isAudi ? "a4" : isVW ? "virtus" : "slavia";
   return (
     <div
-      className={`min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased ${isVW ? "selection:bg-blue-600" : "selection:bg-emerald-500"} selection:text-white relative`}
+      className={`min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased ${isAudi ? "selection:bg-red-600" : isVW ? "selection:bg-blue-600" : "selection:bg-emerald-500"} selection:text-white relative`}
     >
       {/* Top Navigation */}
       <Header
@@ -132,11 +136,7 @@ export default function App() {
                 <VariantExplorer
                   brand={activeBrand}
                   initialModelId={
-                    selectedModelId !== "all"
-                      ? selectedModelId
-                      : isVW
-                        ? "virtus"
-                        : "octavia"
+                    selectedModelId !== "all" ? selectedModelId : defaultModelId
                   }
                 />
               </div>
@@ -163,11 +163,7 @@ export default function App() {
               <VariantExplorer
                 brand={activeBrand}
                 initialModelId={
-                  selectedModelId !== "all"
-                    ? selectedModelId
-                    : isVW
-                      ? "virtus"
-                      : "octavia"
+                  selectedModelId !== "all" ? selectedModelId : defaultModelId
                 }
               />
             </motion.div>
@@ -202,9 +198,7 @@ export default function App() {
                 initialModelId={
                   selectedModelId !== "all"
                     ? selectedModelId
-                    : isVW
-                      ? "virtus"
-                      : "slavia"
+                    : defaultGraphModelId
                 }
                 onSelectModel={(modelId) => setSelectedModelId(modelId)}
               />
@@ -309,11 +303,7 @@ export default function App() {
               <CostCalculator
                 brand={activeBrand}
                 initialModelId={
-                  selectedModelId !== "all"
-                    ? selectedModelId
-                    : isVW
-                      ? "virtus"
-                      : "octavia"
+                  selectedModelId !== "all" ? selectedModelId : defaultModelId
                 }
               />
             </motion.div>
@@ -350,21 +340,27 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="flex items-center gap-3">
-              {isVW ? (
+              {isAudi ? (
+                <AudiLogo variant="full" size="md" animated={true} />
+              ) : isVW ? (
                 <VolkswagenLogo variant="full" size="md" animated={true} />
               ) : (
                 <SkodaLogo variant="full" size="md" animated={true} />
               )}
               <div className="border-l border-zinc-800 pl-3">
                 <p className="font-bold text-white text-sm">
-                  {isVW
-                    ? "Volkswagen Passenger Cars India"
-                    : "\u0160koda Auto India"}
+                  {isAudi
+                    ? "Audi India"
+                    : isVW
+                      ? "Volkswagen Passenger Cars India"
+                      : "\u0160koda Auto India"}
                 </p>
                 <p className="text-[11px] text-zinc-400">
-                  {isVW
-                    ? "SAVWIPL \u2022 German Engineering, 4EVER Care, TSI Turbo-Petrol & GT Performance"
-                    : "SAVWIPL \u2022 European Safety, TSI Turbo-Petrol & TDI Diesel Engineering"}
+                  {isAudi
+                    ? "Progressive Luxury \u2022 quattro All-Wheel Drive, TFSI Turbo-Petrol & Audi Sport RS/S Performance"
+                    : isVW
+                      ? "SAVWIPL \u2022 German Engineering, 4EVER Care, TSI Turbo-Petrol & GT Performance"
+                      : "SAVWIPL \u2022 European Safety, TSI Turbo-Petrol & TDI Diesel Engineering"}
                 </p>
               </div>
             </div>
@@ -375,33 +371,41 @@ export default function App() {
                 className="flex items-center gap-1.5 cursor-pointer text-red-400 hover:text-red-300 font-bold transition-colors"
               >
                 <Flame className="w-4 h-4 text-red-500" />{" "}
-                {isVW ? "GT & GTI Performance" : "The vRS Performance"}
+                {isAudi
+                  ? "Audi Sport RS & S Performance"
+                  : isVW
+                    ? "GT & GTI Performance"
+                    : "The vRS Performance"}
               </span>
               <span
                 onClick={() => handleTabChange("graphs")}
-                className={`flex items-center gap-1.5 cursor-pointer ${isVW ? "text-blue-400 hover:text-blue-300" : "text-emerald-400 hover:text-emerald-300"} font-bold transition-colors`}
+                className={`flex items-center gap-1.5 cursor-pointer ${isAudi ? "text-red-400 hover:text-red-300" : isVW ? "text-blue-400 hover:text-blue-300" : "text-emerald-400 hover:text-emerald-300"} font-bold transition-colors`}
               >
                 <Activity className="w-4 h-4" /> Performance Graphs
               </span>
               <span
                 onClick={() => handleTabChange("dealerships")}
-                className={`flex items-center gap-1.5 cursor-pointer font-bold transition-colors ${isVW ? "text-blue-400 hover:text-blue-300" : "text-emerald-400 hover:text-emerald-300"}`}
+                className={`flex items-center gap-1.5 cursor-pointer font-bold transition-colors ${isAudi ? "text-red-400 hover:text-red-300" : isVW ? "text-blue-400 hover:text-blue-300" : "text-emerald-400 hover:text-emerald-300"}`}
               >
                 <MapPin
-                  className={`w-4 h-4 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 />{" "}
-                {isVW
-                  ? "VW Dealership Locator (190+)"
-                  : "\u0160koda Dealership Locator (260+)"}
+                {isAudi
+                  ? "Audi Dealership Locator (40+)"
+                  : isVW
+                    ? "VW Dealership Locator (190+)"
+                    : "\u0160koda Dealership Locator (260+)"}
               </span>
               <span
                 onClick={() => handleTabChange("about")}
-                className={`flex items-center gap-1.5 cursor-pointer ${isVW ? "text-blue-400 hover:text-blue-300" : "text-emerald-400 hover:text-emerald-300"} font-bold transition-colors`}
+                className={`flex items-center gap-1.5 cursor-pointer ${isAudi ? "text-red-400 hover:text-red-300" : isVW ? "text-blue-400 hover:text-blue-300" : "text-emerald-400 hover:text-emerald-300"} font-bold transition-colors`}
               >
                 <HistoryIcon className="w-4 h-4" />{" "}
-                {isVW
-                  ? "About Volkswagen & Wolfsburg History"
-                  : "About \u0160koda & Czech History (1895)"}
+                {isAudi
+                  ? "About Audi & Ingolstadt History"
+                  : isVW
+                    ? "About Volkswagen & Wolfsburg History"
+                    : "About \u0160koda & Czech History (1895)"}
               </span>
               <span
                 onClick={() => handleTabChange("vwgroup")}
@@ -411,25 +415,31 @@ export default function App() {
               </span>
               <span className="flex items-center gap-1.5">
                 <ShieldCheck
-                  className={`w-4 h-4 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 />
-                {isVW
-                  ? "4EVER Care: 4-Year Warranty / 100,000 km"
-                  : "4-Year / 100,000 km Standard Warranty"}
+                {isAudi
+                  ? "Audi Advantage: 4-Year Warranty / Unlimited km"
+                  : isVW
+                    ? "4EVER Care: 4-Year Warranty / 100,000 km"
+                    : "4-Year / 100,000 km Standard Warranty"}
               </span>
               <span className="flex items-center gap-1.5">
                 <HeartHandshake
-                  className={`w-4 h-4 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 />
-                {isVW
-                  ? "VW 24/7 Roadside Assistance: 1800 102 0909"
-                  : "\u0160koda 24/7 Roadside Assistance: 1800 123 0955"}
+                {isAudi
+                  ? "Audi 24/7 Roadside Assistance: 1800 209 3232"
+                  : isVW
+                    ? "VW 24/7 Roadside Assistance: 1800 102 0909"
+                    : "\u0160koda 24/7 Roadside Assistance: 1800 123 0955"}
               </span>
               <span className="flex items-center gap-1.5">
                 <Fuel className="w-4 h-4 text-amber-400" />
-                {isVW
-                  ? "TSI Turbo-Petrol & Active Cylinder Technology"
-                  : "TSI Petrol & TDI Diesel Powertrains"}
+                {isAudi
+                  ? "TFSI Turbo-Petrol & quattro All-Wheel Drive"
+                  : isVW
+                    ? "TSI Turbo-Petrol & Active Cylinder Technology"
+                    : "TSI Petrol & TDI Diesel Powertrains"}
               </span>
             </div>
           </div>
@@ -476,9 +486,11 @@ export default function App() {
             </p>
             <div className="flex items-center gap-4">
               <p className="tracking-wide hidden md:block">
-                {isVW
-                  ? "Virtus & Virtus GT Plus \u2022 Taigun & GT Line \u2022 Tiguan 4MOTION \u2022 Tayron \u2022 Golf GTI"
-                  : "Kylaq \u2022 Slavia \u2022 Kushaq \u2022 Octavia & Octavia vRS \u2022 Kodiaq & Kodiaq vRS \u2022 Superb"}
+                {isAudi
+                  ? "A4 \u2022 A6 \u2022 Q3 \u2022 Q5 \u2022 Q7 \u2022 Q8"
+                  : isVW
+                    ? "Virtus & Virtus GT Plus \u2022 Taigun & GT Line \u2022 Tiguan 4MOTION \u2022 Tayron \u2022 Golf GTI"
+                    : "Kylaq \u2022 Slavia \u2022 Kushaq \u2022 Octavia & Octavia vRS \u2022 Kodiaq & Kodiaq vRS \u2022 Superb"}
               </p>
               <button
                 onClick={scrollToTop}
@@ -502,7 +514,7 @@ export default function App() {
             transition={{ duration: 0.2 }}
             onClick={scrollToTop}
             aria-label="Scroll to top of website"
-            className={`fixed bottom-6 right-6 z-50 p-3 sm:px-4 sm:py-3 rounded-2xl ${isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-950/90 border-blue-400/40" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950/90 border-emerald-400/40"} text-white shadow-2xl border flex items-center gap-2 group cursor-pointer transition-all hover:scale-105 active:scale-95`}
+            className={`fixed bottom-6 right-6 z-50 p-3 sm:px-4 sm:py-3 rounded-2xl ${isAudi ? "bg-red-600 hover:bg-red-500 shadow-red-950/90 border-red-400/40" : isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-950/90 border-blue-400/40" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950/90 border-emerald-400/40"} text-white shadow-2xl border flex items-center gap-2 group cursor-pointer transition-all hover:scale-105 active:scale-95`}
           >
             <ArrowUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
             <span className="text-xs font-bold hidden sm:inline">

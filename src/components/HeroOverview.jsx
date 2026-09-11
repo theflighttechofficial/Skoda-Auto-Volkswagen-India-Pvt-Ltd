@@ -15,8 +15,10 @@ import {
 import { motion, AnimatePresence } from "motion/react";
 import { SKODA_MODELS, SIMPLY_CLEVER_FEATURES } from "../data/skodaData";
 import { VW_MODELS, VW_GERMAN_ENGINEERING_FEATURES } from "../data/vwData";
+import { AUDI_MODELS, AUDI_PROGRESSIVE_LUXURY_FEATURES } from "../data/audiData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
+import { AudiLogo } from "./AudiLogo";
 export const HeroOverview = ({
   brand = "skoda",
   selectedModelId,
@@ -32,10 +34,13 @@ export const HeroOverview = ({
   onOpenVWGroup,
 }) => {
   const isVW = brand === "volkswagen";
-  const models = isVW ? VW_MODELS : SKODA_MODELS;
-  const features = isVW
-    ? VW_GERMAN_ENGINEERING_FEATURES
-    : SIMPLY_CLEVER_FEATURES;
+  const isAudi = brand === "audi";
+  const models = isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
+  const features = isAudi
+    ? AUDI_PROGRESSIVE_LUXURY_FEATURES
+    : isVW
+      ? VW_GERMAN_ENGINEERING_FEATURES
+      : SIMPLY_CLEVER_FEATURES;
   const currentModel = models.find((m) => m.id === selectedModelId);
   return (
     <div className="space-y-10">
@@ -68,15 +73,19 @@ export const HeroOverview = ({
               <div
                 className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-semibold shadow-inner ${isVW ? "bg-blue-950/80 border-blue-800/60 text-blue-300" : "bg-emerald-950/80 border-emerald-800/60 text-emerald-400"}`}
               >
-                {isVW ? (
+                {isAudi ? (
+                  <AudiLogo variant="emblem" size="sm" />
+                ) : isVW ? (
                   <VolkswagenLogo variant="emblem" size="sm" />
                 ) : (
                   <SkodaLogo variant="emblem" size="sm" />
                 )}
                 <span>
-                  {isVW
-                    ? "Official Volkswagen Passenger Cars India"
-                    : "Official \u0160koda Auto India Portfolio"}
+                  {isAudi
+                    ? "Official Audi India Portfolio"
+                    : isVW
+                      ? "Official Volkswagen Passenger Cars India"
+                      : "Official \u0160koda Auto India Portfolio"}
                 </span>
               </div>
               <span className="text-xs text-zinc-400 font-medium px-2.5 py-1 rounded-full bg-zinc-800/80 border border-zinc-700/60">
@@ -85,7 +94,12 @@ export const HeroOverview = ({
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-              {isVW ? (
+              {isAudi ? (
+                <>
+                  Progressive Luxury,{" "}
+                  <span className="text-red-400">quattro TFSI</span> Power
+                </>
+              ) : isVW ? (
                 <>
                   German Engineering,{" "}
                   <span className="text-blue-400">GT TSI & TDI</span> Power
@@ -100,7 +114,18 @@ export const HeroOverview = ({
             </h1>
 
             <p className="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-2xl">
-              {isVW ? (
+              {isAudi ? (
+                <>
+                  Explore the complete Audi India lineup. From the progressive{" "}
+                  <strong className="text-white">A4</strong> sedan and
+                  quattro-equipped <strong className="text-white">A6</strong>,
+                  to the compact <strong className="text-white">Q3</strong>,
+                  benchmark <strong className="text-white">Q5</strong>,
+                  flagship 7-seater{" "}
+                  <strong className="text-white">Q7</strong>, and coupe-SUV
+                  halo <strong className="text-white">Q8</strong>.
+                </>
+              ) : isVW ? (
                 <>
                   Explore the complete Volkswagen India lineup. From the
                   record-breaking 5-Star{" "}
@@ -153,9 +178,11 @@ export const HeroOverview = ({
                   >
                     <Flame className="w-4 h-4 text-red-500 animate-pulse" />
                     <span>
-                      {isVW
-                        ? "GT & GTI Performance (265 PS)"
-                        : "The vRS Performance (265 PS)"}
+                      {isAudi
+                        ? "Audi Sport RS Performance (600 PS)"
+                        : isVW
+                          ? "GT & GTI Performance (265 PS)"
+                          : "The vRS Performance (265 PS)"}
                     </span>
                   </motion.button>
                 )}
@@ -164,11 +191,15 @@ export const HeroOverview = ({
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={onOpenAdvisor}
-                  className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-zinc-900/90 hover:bg-zinc-800 border text-sm font-semibold transition-all shadow-md ${isVW ? "border-blue-700/60 text-blue-300" : "border-emerald-700/60 text-emerald-400"}`}
+                  className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-zinc-900/90 hover:bg-zinc-800 border text-sm font-semibold transition-all shadow-md ${isAudi ? "border-red-700/60 text-red-300" : isVW ? "border-blue-700/60 text-blue-300" : "border-emerald-700/60 text-emerald-400"}`}
                 >
                   <Sparkles className="w-4 h-4" />
                   <span>
-                    {isVW ? "Ask AI VW Advisor" : "Ask AI \u0160koda Advisor"}
+                    {isAudi
+                      ? "Ask AI Audi Advisor"
+                      : isVW
+                        ? "Ask AI VW Advisor"
+                        : "Ask AI \u0160koda Advisor"}
                   </span>
                 </motion.button>
               </div>
@@ -210,10 +241,14 @@ export const HeroOverview = ({
                     className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-zinc-900/70 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 text-xs font-medium transition-all whitespace-nowrap"
                   >
                     <HistoryIcon
-                      className={`w-3.5 h-3.5 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                      className={`w-3.5 h-3.5 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                     />
                     <span>
-                      {isVW ? "Wolfsburg Heritage" : "Czech History"}
+                      {isAudi
+                        ? "Ingolstadt Heritage"
+                        : isVW
+                          ? "Wolfsburg Heritage"
+                          : "Czech History"}
                     </span>
                   </button>
                 )}
@@ -240,17 +275,23 @@ export const HeroOverview = ({
           >
             <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
               <div className="flex items-center gap-2">
-                {isVW ? (
+                {isAudi ? (
+                  <AudiLogo variant="emblem" size="sm" />
+                ) : isVW ? (
                   <VolkswagenLogo variant="emblem" size="sm" />
                 ) : (
                   <SkodaLogo variant="emblem" size="sm" />
                 )}
                 <span className="text-xs uppercase font-bold tracking-wider text-zinc-300">
-                  {isVW ? "The Volkswagen Standard" : "The \u0160koda Standard"}
+                  {isAudi
+                    ? "The Audi Standard"
+                    : isVW
+                      ? "The Volkswagen Standard"
+                      : "The \u0160koda Standard"}
                 </span>
               </div>
               <span
-                className={`text-xs font-semibold px-2 py-0.5 rounded border ${isVW ? "bg-blue-500/20 text-blue-300 border-blue-500/30" : "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"}`}
+                className={`text-xs font-semibold px-2 py-0.5 rounded border ${isAudi ? "bg-red-500/20 text-red-300 border-red-500/30" : isVW ? "bg-blue-500/20 text-blue-300 border-blue-500/30" : "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"}`}
               >
                 5-Star Rated
               </span>
@@ -260,7 +301,7 @@ export const HeroOverview = ({
               <div className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/70 border border-zinc-800/60">
                 <span className="text-zinc-400">Crash Protection</span>
                 <span
-                  className={`font-bold flex items-center gap-1 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`font-bold flex items-center gap-1 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   <ShieldCheck className="w-3.5 h-3.5" /> 5-Star Bharat & Global
                   NCAP
@@ -465,15 +506,19 @@ export const HeroOverview = ({
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
                 <h2 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
-                  {isVW ? (
+                  {isAudi ? (
+                    <AudiLogo variant="emblem" size="sm" />
+                  ) : isVW ? (
                     <VolkswagenLogo variant="emblem" size="sm" />
                   ) : (
                     <SkodaLogo variant="emblem" size="sm" />
                   )}
                   <span>
-                    {isVW
-                      ? "The Complete Volkswagen Lineup in India"
-                      : "The Complete \u0160koda Lineup in India"}
+                    {isAudi
+                      ? "The Complete Audi Lineup in India"
+                      : isVW
+                        ? "The Complete Volkswagen Lineup in India"
+                        : "The Complete \u0160koda Lineup in India"}
                   </span>
                 </h2>
                 <p className="text-sm text-zinc-400">
@@ -635,17 +680,26 @@ export const HeroOverview = ({
           <div className="space-y-2 max-w-2xl">
             <div className="flex items-center gap-2">
               <span className="px-2 py-0.5 rounded bg-red-600 text-white font-black italic tracking-widest text-[11px] shadow-sm shadow-red-900/50">
-                {isVW ? "GTI / GT" : "vRS"}
+                {isAudi ? "RS / S" : isVW ? "GTI / GT" : "vRS"}
               </span>
               <span className="text-red-400 font-bold uppercase tracking-wider text-xs flex items-center gap-1">
                 <Flame className="w-3.5 h-3.5 animate-pulse" />
-                {isVW
-                  ? "Volkswagen India \u2022 GT & GTI Performance"
-                  : "\u0160koda Auto India \u2022 The vRS Performance"}
+                {isAudi
+                  ? "Audi India \u2022 Audi Sport RS & S Performance"
+                  : isVW
+                    ? "Volkswagen India \u2022 GT & GTI Performance"
+                    : "\u0160koda Auto India \u2022 The vRS Performance"}
               </span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              {isVW ? (
+              {isAudi ? (
+                <>
+                  Audi Sport RS Wing:{" "}
+                  <span className="text-red-500">
+                    RS5 & RS Q8 (450\u2013600 PS)
+                  </span>
+                </>
+              ) : isVW ? (
                 <>
                   Volkswagen GT & GTI Wing:{" "}
                   <span className="text-red-500">
@@ -662,9 +716,11 @@ export const HeroOverview = ({
               )}
             </h3>
             <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-              {isVW
-                ? "Experience the 265 PS EA888 EVO4 engine, VAQ mechanical limited-slip differential, Clark tartan heritage seats, sub-6-second sprints, and comparison against luxury sports cars."
-                : "Experience the razor-sharp mechanical front VAQ differential, DCC adaptive dampers, quad-exhaust acoustic notes, and compare directly against luxury market rivals."}
+              {isAudi
+                ? "Experience hand-built twin-turbo V6 and V8 engines, quattro sport differentials, electromechanical active roll stabilization, and comparison against Lamborghini, Porsche, and BMW M rivals."
+                : isVW
+                  ? "Experience the 265 PS EA888 EVO4 engine, VAQ mechanical limited-slip differential, Clark tartan heritage seats, sub-6-second sprints, and comparison against luxury sports cars."
+                  : "Experience the razor-sharp mechanical front VAQ differential, DCC adaptive dampers, quad-exhaust acoustic notes, and compare directly against luxury market rivals."}
             </p>
           </div>
 
@@ -678,9 +734,11 @@ export const HeroOverview = ({
               >
                 <Flame className="w-4 h-4" />
                 <span>
-                  {isVW
-                    ? "Explore GT & GTI Performance"
-                    : "Explore The vRS Performance"}
+                  {isAudi
+                    ? "Explore Audi Sport RS Performance"
+                    : isVW
+                      ? "Explore GT & GTI Performance"
+                      : "Explore The vRS Performance"}
                 </span>
                 <ChevronRight className="w-4 h-4" />
               </motion.button>
@@ -700,27 +758,35 @@ export const HeroOverview = ({
         <div className="flex items-center justify-between flex-wrap gap-4">
           <div>
             <div
-              className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+              className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>
-                {isVW
-                  ? "German Engineering Innovations"
-                  : "Human-Centred Engineering"}
+                {isAudi
+                  ? "Progressive Luxury Innovations"
+                  : isVW
+                    ? "German Engineering Innovations"
+                    : "Human-Centred Engineering"}
               </span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-white mt-1">
-              {isVW
-                ? "Volkswagen German Engineering & Tech Innovations"
-                : '\u0160koda "Simply Clever" Innovations'}
+              {isAudi
+                ? "Audi Progressive Luxury & Tech Innovations"
+                : isVW
+                  ? "Volkswagen German Engineering & Tech Innovations"
+                  : '\u0160koda "Simply Clever" Innovations'}
             </h3>
             <p className="text-sm text-zinc-400">
-              {isVW
-                ? "Precision manufacturing, structural safety, and high-performance engineering tailored for India"
-                : "Thoughtful details engineered into everyday life across our vehicles"}
+              {isAudi
+                ? "quattro traction, digital cockpit precision, and driver-assistance technology tailored for India"
+                : isVW
+                  ? "Precision manufacturing, structural safety, and high-performance engineering tailored for India"
+                  : "Thoughtful details engineered into everyday life across our vehicles"}
             </p>
           </div>
-          {isVW ? (
+          {isAudi ? (
+            <AudiLogo variant="emblem" size="md" />
+          ) : isVW ? (
             <VolkswagenLogo variant="emblem" size="md" />
           ) : (
             <SkodaLogo variant="emblem" size="md" />

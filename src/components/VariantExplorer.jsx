@@ -3,11 +3,13 @@ import { Check, ShieldCheck } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { SKODA_MODELS } from "../data/skodaData";
 import { VW_MODELS } from "../data/vwData";
+import { AUDI_MODELS } from "../data/audiData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 export const VariantExplorer = ({ brand = "skoda", initialModelId }) => {
   const isVW = brand === "volkswagen";
-  const models = isVW ? VW_MODELS : SKODA_MODELS;
+  const isAudi = brand === "audi";
+  const models = isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
   const defaultModel = models.find((m) => m.id === initialModelId) || models[0];
   const [selectedModelId, setSelectedModelId] = useState(defaultModel.id);
   useEffect(() => {

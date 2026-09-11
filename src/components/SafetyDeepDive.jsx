@@ -2,21 +2,26 @@ import { ShieldCheck } from "lucide-react";
 import { motion } from "motion/react";
 import { SKODA_SAFETY_SUITE, SKODA_MODELS } from "../data/skodaData";
 import { VW_SAFETY_SUITE, VW_MODELS } from "../data/vwData";
+import { AUDI_SAFETY_SUITE, AUDI_MODELS } from "../data/audiData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
+import { AudiLogo } from "./AudiLogo";
 export const SafetyDeepDive = ({ brand = "skoda" }) => {
   const isVW = brand === "volkswagen";
-  const models = isVW ? VW_MODELS : SKODA_MODELS;
-  const safetySuite = isVW ? VW_SAFETY_SUITE : SKODA_SAFETY_SUITE;
+  const isAudi = brand === "audi";
+  const models = isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
+  const safetySuite = isAudi ? AUDI_SAFETY_SUITE : isVW ? VW_SAFETY_SUITE : SKODA_SAFETY_SUITE;
   return (
     <div className="space-y-8">
       {/* Title with Logo */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div
-            className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-1 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+            className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-1 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
           >
-            {isVW ? (
+            {isAudi ? (
+              <AudiLogo variant="emblem" size="sm" />
+            ) : isVW ? (
               <VolkswagenLogo variant="emblem" size="sm" />
             ) : (
               <SkodaLogo variant="emblem" size="sm" />
@@ -24,14 +29,18 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
             <span>Zero Compromise Safety Philosophy</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-            {isVW
-              ? "Volkswagen 5-Star Safety Architecture"
-              : "\u0160koda 5-Star Safety Architecture"}
+            {isAudi
+              ? "Audi 5-Star Safety Architecture"
+              : isVW
+                ? "Volkswagen 5-Star Safety Architecture"
+                : "\u0160koda 5-Star Safety Architecture"}
           </h2>
           <p className="text-sm text-zinc-400">
-            {isVW
-              ? "German engineering integrity: 100% 5-Star crash safety rating across the entire India 2.0 portfolio"
-              : "\u0160koda is the only manufacturer in India with a 100% 5-Star crash safety rating across its tested portfolio"}
+            {isAudi
+              ? "Progressive luxury engineering: 5-Star Euro NCAP crash safety rating standard across the current Audi India portfolio"
+              : isVW
+                ? "German engineering integrity: 100% 5-Star crash safety rating across the entire India 2.0 portfolio"
+                : "\u0160koda is the only manufacturer in India with a 100% 5-Star crash safety rating across its tested portfolio"}
           </p>
         </div>
 
@@ -39,7 +48,7 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
           className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-bold self-start ${isVW ? "bg-blue-950/80 border-blue-800 text-blue-300" : "bg-emerald-950/80 border-emerald-800 text-emerald-300"}`}
         >
           <ShieldCheck
-            className={`w-4 h-4 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+            className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
           />
           <span>Global NCAP & Euro NCAP Certified</span>
         </div>
@@ -61,14 +70,16 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
               <span>Full 5-Star Adult & Child Crash Rating</span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-black text-white">
-              {isVW
-                ? "Rigid German Safety Cell (MQB-A0-IN)"
-                : "Engineered to Protect What Matters Most"}
+              {isAudi
+                ? "Rigid Progressive Luxury Safety Cell (MLB/MQB Evo)"
+                : isVW
+                  ? "Rigid German Safety Cell (MQB-A0-IN)"
+                  : "Engineered to Protect What Matters Most"}
             </h3>
             <p className="text-zinc-300 text-sm leading-relaxed max-w-2xl">
               Under Global NCAP’s stringent revised protocols—testing front
               offset, side mobile barrier, side pole impact, and ESC
-              functionality—{isVW ? "Volkswagen\u2019s" : "\u0160koda\u2019s"}{" "}
+              functionality—{isAudi ? "Audi\u2019s" : isVW ? "Volkswagen\u2019s" : "\u0160koda\u2019s"}{" "}
               laser-welded, hot-formed steel platform set the gold standard in
               Indian automotive safety.
             </p>
@@ -81,13 +92,13 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
                   Adult Occupant Protection
                 </span>
                 <span
-                  className={`text-xl font-bold ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`text-xl font-bold ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   5-Star (29.71 / 34)
                 </span>
               </div>
               <ShieldCheck
-                className={`w-7 h-7 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                className={`w-7 h-7 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
               />
             </div>
             <div className="p-4 rounded-2xl bg-zinc-950/90 border border-zinc-800 flex items-center justify-between shadow-sm">
@@ -96,13 +107,13 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
                   Child Occupant Protection
                 </span>
                 <span
-                  className={`text-xl font-bold ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`text-xl font-bold ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   5-Star (42.00 / 49)
                 </span>
               </div>
               <ShieldCheck
-                className={`w-7 h-7 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                className={`w-7 h-7 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
               />
             </div>
           </div>
@@ -124,7 +135,7 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
             <div className="flex items-start justify-between flex-wrap gap-2">
               <div>
                 <span
-                  className={`text-xs font-semibold ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`text-xs font-semibold ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   {item.subtitle}
                 </span>
@@ -157,13 +168,15 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
           <div>
             <h4 className="text-base font-bold text-white">
               Standard Safety Equipment Across the{" "}
-              {isVW ? "Volkswagen" : "\u0160koda"} Portfolio
+              {isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} Portfolio
             </h4>
             <p className="text-xs text-zinc-400 mt-0.5">
               Every vehicle is built with hot-formed high-strength steel cages
             </p>
           </div>
-          {isVW ? (
+          {isAudi ? (
+            <AudiLogo variant="emblem" size="sm" />
+          ) : isVW ? (
             <VolkswagenLogo variant="emblem" size="sm" />
           ) : (
             <SkodaLogo variant="emblem" size="sm" />
@@ -184,8 +197,14 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
             <tbody className="divide-y divide-zinc-800/60">
               {models.map((car) => {
                 let airbagText = "6 Airbags Standard";
-                let chassisText = "MQB-A0-IN High-Tensile";
-                if (car.id === "kodiaq" || car.id === "superb") {
+                let chassisText = isAudi ? "MLB Evo High-Tensile" : "MQB-A0-IN High-Tensile";
+                if (car.id === "q7" || car.id === "q8") {
+                  airbagText = "8 Airbags Standard";
+                  chassisText = "MLB Evo (quattro AWD)";
+                } else if (car.id === "q5" || car.id === "q3") {
+                  airbagText = "7 Airbags Standard";
+                  chassisText = "MQB Evo (quattro AWD)";
+                } else if (car.id === "kodiaq" || car.id === "superb") {
                   airbagText = "9 Airbags Standard";
                   chassisText = "MQB-B / MQB-Evo";
                 } else if (car.id === "octavia") {
@@ -212,7 +231,7 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
                       )}
                     </td>
                     <td
-                      className={`py-3 px-4 font-semibold ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                      className={`py-3 px-4 font-semibold ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                     >
                       {car.rating}
                     </td>

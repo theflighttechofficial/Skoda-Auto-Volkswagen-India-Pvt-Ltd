@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { Check } from "lucide-react";
 import { SKODA_MODELS } from "../data/skodaData";
 import { VW_MODELS } from "../data/vwData";
+import { AUDI_MODELS } from "../data/audiData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 export const ColorVisualizer = ({ brand = "skoda" }) => {
   const isVW = brand === "volkswagen";
-  const models = isVW ? VW_MODELS : SKODA_MODELS;
+  const isAudi = brand === "audi";
+  const models = isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
   const [selectedModelId, setSelectedModelId] = useState(models[0].id);
   useEffect(() => {
     setSelectedModelId(models[0].id);

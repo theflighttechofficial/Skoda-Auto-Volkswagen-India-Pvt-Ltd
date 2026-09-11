@@ -23,18 +23,26 @@ import {
   VW_HISTORY_ERAS,
   GERMAN_HERITAGE_ELEMENTS,
 } from "../data/vwHistoryData";
+import {
+  AUDI_HISTORY_ERAS,
+  AUDI_HERITAGE_ELEMENTS,
+} from "../data/audiHistoryData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
+import { AudiLogo } from "./AudiLogo";
 export const AboutSkodaHistory = ({
   brand = "skoda",
   onExploreVWGroup,
   onExploreLineup,
 }) => {
   const isVW = brand === "volkswagen";
-  const historyEras = isVW ? VW_HISTORY_ERAS : SKODA_HISTORY_ERAS;
-  const heritageElements = isVW
-    ? GERMAN_HERITAGE_ELEMENTS
-    : CZECH_HERITAGE_ELEMENTS;
+  const isAudi = brand === "audi";
+  const historyEras = isAudi ? AUDI_HISTORY_ERAS : isVW ? VW_HISTORY_ERAS : SKODA_HISTORY_ERAS;
+  const heritageElements = isAudi
+    ? AUDI_HERITAGE_ELEMENTS
+    : isVW
+      ? GERMAN_HERITAGE_ELEMENTS
+      : CZECH_HERITAGE_ELEMENTS;
   const [selectedEraId, setSelectedEraId] = useState(historyEras[0].id);
   useEffect(() => {
     setSelectedEraId(historyEras[0].id);
@@ -60,20 +68,37 @@ export const AboutSkodaHistory = ({
               className={`w-3.5 h-3.5 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
             />
             <span>
-              {isVW
-                ? "Wolfsburg, Lower Saxony, Germany \u2022 Est. 1937"
-                : "Mlad\xE1 Boleslav, Czech Republic \u2022 Est. December 1895"}
+              {isAudi
+                ? "Ingolstadt, Bavaria, Germany \u2022 Est. 1899"
+                : isVW
+                  ? "Wolfsburg, Lower Saxony, Germany \u2022 Est. 1937"
+                  : "Mlad\xE1 Boleslav, Czech Republic \u2022 Est. December 1895"}
             </span>
           </div>
 
           <div className="space-y-3">
             <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-              {isVW
-                ? "Volkswagen: Over 85 Years of Pure German Automotive Heritage"
-                : "The Czech Legend: Over 130 Years of Automotive Ingenuity"}
+              {isAudi
+                ? "Audi: Over 125 Years of Progressive Luxury Engineering"
+                : isVW
+                  ? "Volkswagen: Over 85 Years of Pure German Automotive Heritage"
+                  : "The Czech Legend: Over 130 Years of Automotive Ingenuity"}
             </h1>
             <p className="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-3xl">
-              {isVW ? (
+              {isAudi ? (
+                <>
+                  From August Horch's founding of{" "}
+                  <span className="text-red-400 font-semibold">Audi</span> in
+                  1899, to the four-rings union of{" "}
+                  <span className="text-red-400 font-semibold">Auto Union</span>{" "}
+                  in 1932, and the 1980{" "}
+                  <span className="text-red-400 font-semibold">
+                    Ur-Quattro
+                  </span>{" "}
+                  revolution that redefined all-wheel drive, discover Audi's
+                  celebrated engineering odyssey.
+                </>
+              ) : isVW ? (
                 <>
                   From the legendary{" "}
                   <span className="text-blue-400 font-semibold">Beetle</span>{" "}
@@ -116,10 +141,14 @@ export const AboutSkodaHistory = ({
                 </span>
               </div>
               <p className="text-2xl font-black text-white">
-                {isVW ? "1937" : "1895"}
+                {isAudi ? "1899" : isVW ? "1937" : "1895"}
               </p>
               <p className="text-[11px] text-zinc-400">
-                {isVW ? "85+ Years of Engineering" : "130+ Years of Innovation"}
+                {isAudi
+                  ? "125+ Years of Engineering"
+                  : isVW
+                    ? "85+ Years of Engineering"
+                    : "130+ Years of Innovation"}
               </p>
             </div>
 
@@ -131,12 +160,14 @@ export const AboutSkodaHistory = ({
                 </span>
               </div>
               <p className="text-xl font-bold text-white truncate">
-                {isVW ? "Wolfsburg, Germany" : "Czech Republic"}
+                {isAudi ? "Ingolstadt, Germany" : isVW ? "Wolfsburg, Germany" : "Czech Republic"}
               </p>
               <p className="text-[11px] text-zinc-400">
-                {isVW
+                {isAudi
                   ? "Global Headquarters"
-                  : "Mlad\xE1 Boleslav, Central Bohemia"}
+                  : isVW
+                    ? "Global Headquarters"
+                    : "Mlad\xE1 Boleslav, Central Bohemia"}
               </p>
             </div>
 
@@ -148,12 +179,14 @@ export const AboutSkodaHistory = ({
                 </span>
               </div>
               <p className="text-2xl font-black text-white">
-                {isVW ? "150+ Countries" : "100+ Countries"}
+                {isAudi ? "100+ Countries" : isVW ? "150+ Countries" : "100+ Countries"}
               </p>
               <p className="text-[11px] text-zinc-400">
-                {isVW
-                  ? "Over 4.8 Million Cars Annually"
-                  : "Over 870,000+ Cars Annually"}
+                {isAudi
+                  ? "Over 1.7 Million Cars Annually"
+                  : isVW
+                    ? "Over 4.8 Million Cars Annually"
+                    : "Over 870,000+ Cars Annually"}
               </p>
             </div>
 
@@ -214,9 +247,11 @@ export const AboutSkodaHistory = ({
               <span>Chronicles of Craftsmanship</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              {isVW
-                ? "Interactive History: The Volkswagen Journey"
-                : "Interactive History: From Bohemia to Bharat"}
+              {isAudi
+                ? "Interactive History: The Audi Journey"
+                : isVW
+                  ? "Interactive History: The Volkswagen Journey"
+                  : "Interactive History: From Bohemia to Bharat"}
             </h2>
             <p className="text-zinc-400 text-sm mt-1">
               Select an era below to discover pivotal milestones, breakthrough
@@ -290,7 +325,19 @@ export const AboutSkodaHistory = ({
 
                 {/* Symbolic Era Visual Badge */}
                 <div className="flex-shrink-0 w-36 h-36 rounded-2xl bg-zinc-950 border border-zinc-800 p-4 flex flex-col items-center justify-center text-center shadow-inner">
-                  {isVW ? (
+                  {isAudi ? (
+                    <>
+                      <div className="w-12 h-12 flex items-center justify-center mb-2">
+                        <AudiLogo variant="emblem" size="md" />
+                      </div>
+                      <span className="text-[11px] font-bold text-zinc-200">
+                        Audi
+                      </span>
+                      <span className="text-[9px] text-zinc-500">
+                        {activeEra.period}
+                      </span>
+                    </>
+                  ) : isVW ? (
                     <>
                       <div className="w-12 h-12 flex items-center justify-center mb-2">
                         <VolkswagenLogo variant="emblem" size="md" />
@@ -421,17 +468,27 @@ export const AboutSkodaHistory = ({
             className={`flex items-center gap-2 text-xs font-bold tracking-wider uppercase mb-1 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
           >
             <Sparkles className="w-4 h-4" />
-            <span>{isVW ? "German Engineering DNA" : "Bohemian Soul"}</span>
+            <span>
+              {isAudi
+                ? "Progressive Luxury DNA"
+                : isVW
+                  ? "German Engineering DNA"
+                  : "Bohemian Soul"}
+            </span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-            {isVW
-              ? "The Pillars of German Engineering in Every Modern Volkswagen"
-              : "The Pillars of Czech Heritage in Every Modern \u0160koda"}
+            {isAudi
+              ? "The Pillars of Progressive Luxury in Every Modern Audi"
+              : isVW
+                ? "The Pillars of German Engineering in Every Modern Volkswagen"
+                : "The Pillars of Czech Heritage in Every Modern \u0160koda"}
           </h2>
           <p className="text-zinc-400 text-sm mt-1">
-            {isVW
-              ? "How decades of Autobahn chassis tuning, TSI forced-induction mastery, and uncompromising build quality shape the car you drive today."
-              : "How centuries of Bohemian cut glass art, Prague Cubist sculpture, and pragmatic Czech \u0161ikovnost shape the car you drive today."}
+            {isAudi
+              ? "How quattro rally heritage, hand-built Audi Sport engineering, and digital cockpit innovation shape the car you drive today."
+              : isVW
+                ? "How decades of Autobahn chassis tuning, TSI forced-induction mastery, and uncompromising build quality shape the car you drive today."
+                : "How centuries of Bohemian cut glass art, Prague Cubist sculpture, and pragmatic Czech \u0161ikovnost shape the car you drive today."}
           </p>
         </div>
 
@@ -515,8 +572,9 @@ export const AboutSkodaHistory = ({
               </span>
             </div>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              Produces the MQB-A0-IN platform models (
-              {isVW ? "Virtus, Taigun" : "Kylaq, Slavia, Kushaq"}). Features
+              {isAudi
+                ? "Produces the group's Kylaq, Slavia, Kushaq, Virtus, and Taigun on the MQB-A0-IN platform, while Audi models are CKD-assembled separately at Aurangabad. Features"
+                : `Produces the MQB-A0-IN platform models (${isVW ? "Virtus, Taigun" : "Kylaq, Slavia, Kushaq"}). Features`}
               press shop with high-precision tooling, body shop with 90%+
               robotic laser welding, cathodic electro-dip paint shop, and an
               engine testing facility. Home to an 18.5 MW rooftop solar
@@ -536,11 +594,9 @@ export const AboutSkodaHistory = ({
               </span>
             </div>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              Assembles executive and luxury models (
-              {isVW ? "Tiguan 4x4" : "Kodiaq 4x4, Superb, Octavia"}), alongside
-              executive luxury Audi models (A4, A6, Q3, Q5, Q7). Certified with
-              ISO 14001 environmental standards and zero-liquid-discharge water
-              management.
+              {isAudi
+                ? "The CKD assembly home of the Audi A4, A6, Q3, Q5, and Q7, alongside executive and luxury Škoda and Volkswagen models (Kodiaq 4x4, Superb, Octavia, Tiguan 4x4). Certified with ISO 14001 environmental standards and zero-liquid-discharge water management."
+                : `Assembles executive and luxury models (${isVW ? "Tiguan 4x4" : "Kodiaq 4x4, Superb, Octavia"}), alongside executive luxury Audi models (A4, A6, Q3, Q5, Q7). Certified with ISO 14001 environmental standards and zero-liquid-discharge water management.`}
             </p>
           </div>
         </div>
@@ -558,7 +614,7 @@ export const AboutSkodaHistory = ({
               Proud to be a part of the Volkswagen Group
             </h3>
             <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-              Discover how {isVW ? "Volkswagen" : "\u0160koda"} synergizes with
+              Discover how {isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} synergizes with
               iconic sister marques like Audi, Porsche, Lamborghini, Bentley,
               Bugatti, SEAT, CUPRA, MAN, and Scania under the world’s leading
               automotive group.

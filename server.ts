@@ -22,9 +22,10 @@ function getGeminiClient(): GoogleGenAI | null {
 }
 
 // Built-in intelligent fallback for offline or unconfigured API key environments
-function generateSmartSkodaResponse(question: string, modelContext?: string, engineContext?: string): string {
+function generateSmartSkodaResponse(question: string, modelContext?: string, engineContext?: string, brandContext?: string): string {
   const q = question.toLowerCase();
   const selectedModel = (modelContext && modelContext !== 'All') ? modelContext.toLowerCase() : '';
+  const isAudiBrand = brandContext === 'audi';
 
   // Volkswagen specific queries or when VW model is selected
   if (q.includes('golf') || q.includes('gti') || q.includes('virtus') || q.includes('taigun') || q.includes('tiguan') || q.includes('tayron') || q.includes('polo') || selectedModel.includes('virtus') || selectedModel.includes('taigun') || selectedModel.includes('tiguan') || selectedModel.includes('tayron') || selectedModel.includes('golf')) {
@@ -78,6 +79,80 @@ Volkswagen represents German engineering excellence, robust laser-welded build q
 - **Volkswagen Tiguan:** 190 PS 2.0L TSI with 4MOTION All-Wheel Drive & IQ.LIGHT, priced at ₹35.17 Lakh.
 - **Volkswagen Golf GTI:** 265 PS EA888 EVO4 track legend with VAQ mechanical diff.
 - **Warranty:** 4EVER Care includes 4-Year / 100,000 km warranty, 4-Year Roadside Assistance, and 3 free services.`;
+  }
+
+  // Audi specific queries, when an Audi model is selected, or when the active site brand is Audi
+  if (isAudiBrand || q.includes('audi') || q.includes('quattro') || q.includes('tfsi') || q.includes(' a4') || q.includes(' a6') || q.includes('q3') || q.includes('q5') || q.includes('q7') || q.includes('q8') || q.includes('rs5') || q.includes('rs q8') || selectedModel.includes('a4') || selectedModel.includes('a6') || selectedModel.includes('q3') || selectedModel.includes('q5') || selectedModel.includes('q7') || selectedModel.includes('q8') || selectedModel.includes('rs5')) {
+    if (q.includes('rs5') || q.includes('rs q8') || q.includes('rs') || selectedModel.includes('rs')) {
+      return `### Audi Sport RS Performance Division (Hand-Built Motorsport DNA)
+Hand-assembled by Audi Sport in Neckarsulm, Germany, the RS lineup brings motorsport-derived engineering to India:
+
+#### 1. Audi RS5 (The Hand-Built V6 Track Weapon)
+- **Powertrain:** 2.9L TFSI Twin-Turbo V6 (Audi Sport) producing **450 PS** & **600 Nm torque**.
+- **Transmission & Differential:** 8-Speed Tiptronic with **quattro Sport Differential** actively vectoring torque between rear wheels.
+- **Acceleration:** 0 to 100 km/h in **3.9 seconds** | Top speed: **250–280 km/h** (RS Dynamic Package).
+- **Chassis:** RS Sport Suspension Plus with Dynamic Ride Control (DRC), 375 mm front discs with red RS calipers.
+
+#### 2. Audi RS Q8 (The Fastest, Most Powerful SUV Audi Has Ever Built)
+- **Powertrain:** 4.0L TFSI Twin-Turbo V8 (Audi Sport) delivering **600 PS** & **800 Nm torque**, shared with the Lamborghini Urus.
+- **Drivetrain:** quattro permanent AWD with electromechanical active roll stabilization.
+- **Acceleration:** 0 to 100 km/h in **3.8 seconds** | Top speed: **250 km/h** (305 km/h with RS Dynamic Plus).
+- **Heritage:** Set the production SUV Nürburgring Nordschleife lap record (7:42.253) at its 2020 debut.`;
+    }
+
+    if (q.includes('a4') || selectedModel === 'a4') {
+      return `### Audi A4 (The Progressive Executive Sedan)
+- **Price:** ₹46.05 Lakh to ₹49.99 Lakh (Ex-showroom).
+- **Engine:** 2.0 TFSI Turbo-Petrol (190 PS / 320 Nm), 7-Speed S tronic, Front-Wheel Drive.
+- **Highlights:** 5-Star Euro NCAP, 12.3-inch Audi Virtual Cockpit, 480L boot, MLB Evo platform.
+- **Competitors:** BMW 3 Series, Mercedes-Benz C-Class.`;
+    }
+
+    if (q.includes('a6') || selectedModel === 'a6') {
+      return `### Audi A6 (The Executive Autobahn Cruiser)
+- **Price:** ₹63.15 Lakh to ₹72.40 Lakh.
+- **Engine:** 2.0 TFSI quattro Turbo-Petrol (249 PS / 370 Nm), 7-Speed S tronic quattro.
+- **Highlights:** Standard quattro all-wheel drive, adaptive air suspension option, twin-display MMI touch response, 530L boot.`;
+    }
+
+    if (q.includes('q3') || selectedModel === 'q3') {
+      return `### Audi Q3 (The Compact Luxury SUV)
+- **Price:** ₹46.38 Lakh to ₹53.68 Lakh.
+- **Engine:** 2.0 TFSI Turbo-Petrol (190 PS / 320 Nm).
+- **Highlights:** Also offered as coupe-roofline Q3 Sportback, 10.25-inch Virtual Cockpit, up to 675L boot.`;
+    }
+
+    if (q.includes('q5') || selectedModel === 'q5') {
+      return `### Audi Q5 (The Benchmark Midsize Luxury SUV)
+- **Price:** ₹65.10 Lakh to ₹71.20 Lakh.
+- **Engine:** 2.0 TFSI quattro Turbo-Petrol (249 PS / 370 Nm), standard quattro ultra all-wheel drive.
+- **Highlights:** Adaptive air suspension option, 520L boot expandable to 1,520L.`;
+    }
+
+    if (q.includes('q7') || selectedModel === 'q7') {
+      return `### Audi Q7 (The 7-Seater Flagship SUV)
+- **Price:** ₹85.30 Lakh to ₹90.30 Lakh.
+- **Engine:** 3.0 TFSI V6 quattro Turbo-Petrol (340 PS / 500 Nm), 8-Speed Tiptronic.
+- **Highlights:** Genuine adult-usable 3-row 7-seater, adaptive air suspension with off-road mode.`;
+    }
+
+    if (q.includes('q8') || selectedModel === 'q8') {
+      return `### Audi Q8 (The Coupe-SUV Halo Flagship)
+- **Price:** ₹1.17 Crore to ₹1.30 Crore.
+- **Engine:** 3.0 TFSI V6 quattro Turbo-Petrol (340 PS / 500 Nm).
+- **Highlights:** Coupe-SUV roofline, OLED full-width rear light strip, shares platform with Porsche Cayenne & Lamborghini Urus.`;
+    }
+
+    return `### Audi India Portfolio Overview
+Audi represents progressive luxury, quattro all-wheel-drive traction, and 5-Star Euro NCAP safety:
+- **Audi A4:** Progressive executive sedan with 2.0 TFSI (190 PS), starting ₹46.05 Lakh.
+- **Audi A6:** Executive autobahn cruiser with standard quattro, starting ₹63.15 Lakh.
+- **Audi Q3:** Compact luxury SUV, starting ₹46.38 Lakh.
+- **Audi Q5:** Benchmark midsize luxury SUV with quattro, starting ₹65.10 Lakh.
+- **Audi Q7:** 7-seater flagship SUV, starting ₹85.30 Lakh.
+- **Audi Q8:** Coupe-SUV halo flagship, starting ₹1.17 Crore.
+- **Audi Sport RS:** RS5 (450 PS) and RS Q8 (600 PS) hand-built performance flagships.
+- **Warranty:** 2-year unlimited-km standard warranty, extendable to 5 years, with Audi Advantage service packages.`;
   }
 
   if (q.includes('vrs') || q.includes('rs performance') || q.includes('rs') || selectedModel.includes('vrs')) {
@@ -235,17 +310,70 @@ async function startServer() {
         return;
       }
 
+      const userBrand = req.body.brand || (question.toLowerCase().includes('audi') || question.toLowerCase().includes('quattro') || question.toLowerCase().includes('tfsi') ? 'audi' : question.toLowerCase().includes('volkswagen') || question.toLowerCase().includes('virtus') || question.toLowerCase().includes('taigun') || question.toLowerCase().includes('tiguan') || question.toLowerCase().includes('golf') ? 'volkswagen' : 'skoda');
+      const isVW = userBrand === 'volkswagen';
+      const isAudi = userBrand === 'audi';
+
       const ai = getGeminiClient();
       if (!ai) {
-        const fallbackText = generateSmartSkodaResponse(question, model, engine);
+        const fallbackText = generateSmartSkodaResponse(question, model, engine, userBrand);
         res.json({ answer: fallbackText });
         return;
       }
 
-      const userBrand = req.body.brand || (question.toLowerCase().includes('volkswagen') || question.toLowerCase().includes('virtus') || question.toLowerCase().includes('taigun') || question.toLowerCase().includes('tiguan') || question.toLowerCase().includes('golf') ? 'volkswagen' : 'skoda');
-      const isVW = userBrand === 'volkswagen';
+      const systemPrompt = isAudi
+        ? `You are the official Audi India AI Consultant. Your mission is to provide accurate, objective, helpful, and beautifully structured automotive guidance on the entire Audi India lineup.
 
-      const systemPrompt = isVW 
+KNOWLEDGE BASE & FACTS:
+1. Audi A4 (The Progressive Executive Sedan):
+   - Price: ₹46.05 Lakh to ₹49.99 Lakh (Ex-showroom).
+   - Engine: 2.0 TFSI Turbo-Petrol (190 PS / 320 Nm), 7-Speed S tronic, Front-Wheel Drive.
+   - Highlights: 5-Star Euro NCAP, 12.3-inch Audi Virtual Cockpit, 480L boot, MLB Evo platform.
+   - Competitors: BMW 3 Series, Mercedes C-Class.
+
+2. Audi A6 (The Executive Autobahn Cruiser):
+   - Price: ₹63.15 Lakh to ₹72.40 Lakh.
+   - Engine: 2.0 TFSI quattro Turbo-Petrol (249 PS / 370 Nm), 7-Speed S tronic quattro.
+   - Highlights: Standard quattro AWD, adaptive air suspension option, twin-display MMI touch response, 530L boot.
+
+3. Audi Q3 (The Compact Luxury SUV):
+   - Price: ₹46.38 Lakh to ₹53.68 Lakh.
+   - Engine: 2.0 TFSI Turbo-Petrol (190 PS / 320 Nm).
+   - Highlights: Also offered as coupe-roofline Q3 Sportback, 10.25-inch Virtual Cockpit, up to 675L boot.
+
+4. Audi Q5 (The Benchmark Midsize Luxury SUV):
+   - Price: ₹65.10 Lakh to ₹71.20 Lakh.
+   - Engine: 2.0 TFSI quattro Turbo-Petrol (249 PS / 370 Nm), standard quattro ultra AWD.
+   - Highlights: Adaptive air suspension option, 520L boot expandable to 1,520L.
+
+5. Audi Q7 (The 7-Seater Flagship SUV):
+   - Price: ₹85.30 Lakh to ₹90.30 Lakh.
+   - Engine: 3.0 TFSI V6 quattro Turbo-Petrol (340 PS / 500 Nm), 8-Speed Tiptronic.
+   - Highlights: Genuine adult-usable 3-row 7-seater, adaptive air suspension with off-road mode.
+
+6. Audi Q8 (The Coupe-SUV Halo Flagship):
+   - Price: ₹1.17 Crore to ₹1.30 Crore.
+   - Engine: 3.0 TFSI V6 quattro Turbo-Petrol (340 PS / 500 Nm).
+   - Highlights: Coupe-SUV roofline, OLED full-width rear light strip, shares platform with Porsche Cayenne & Lamborghini Urus.
+
+7. Audi Sport RS Performance Division:
+   - Audi RS5: 2.9 TFSI Twin-Turbo V6 (450 PS / 600 Nm), hand-built by Audi Sport in Neckarsulm, quattro sport differential, 0-100 km/h in 3.9s.
+   - Audi RS Q8: 4.0 TFSI Twin-Turbo V8 (600 PS / 800 Nm), shared engine with Lamborghini Urus, electromechanical active roll stabilization, 0-100 km/h in 3.8s, set a production SUV Nürburgring lap record at its 2020 debut.
+
+8. quattro & TFSI Technology:
+   - quattro permanent all-wheel drive: self-locking center differential, standard on A6/Q5/Q7/Q8, first introduced on the 1980 Ur-Quattro.
+   - TFSI turbo-petrol direct injection engines ranging from 190 PS (2.0 TFSI) to 600 PS (4.0 TFSI V8 in RS Q8).
+
+9. Ownership & Warranty:
+   - 2-year unlimited-kilometre standard warranty, extendable up to 5 years.
+   - Audi Advantage service packages covering scheduled maintenance up to 4 years.
+   - Audi Terminal 1 dealership network with pickup-and-drop servicing in major metros.
+
+INSTRUCTIONS:
+- Answer with progressive-luxury precision, professional enthusiasm, and clear markdown formatting.
+- Keep answers well-structured and objective.
+- User Context: Model=${model || 'All'}, Variant=${variant || 'General'}, Engine=${engine || 'All'}.`
+        : isVW
         ? `You are the official Volkswagen India AI Consultant. Your mission is to provide accurate, objective, helpful, and beautifully structured automotive guidance on the entire Volkswagen India lineup.
 
 KNOWLEDGE BASE & FACTS:
@@ -351,12 +479,12 @@ INSTRUCTIONS:
       );
 
       const response: any = await Promise.race([generatePromise, timeoutPromise]);
-      const generatedText = response.text || generateSmartSkodaResponse(question, model, engine);
+      const generatedText = response.text || generateSmartSkodaResponse(question, model, engine, userBrand);
       res.json({ answer: generatedText });
     } catch (err: any) {
       console.error("AI Generation error:", err);
       // Seamlessly fallback to the built-in knowledge response on any network or API issue
-      const fallbackText = generateSmartSkodaResponse(req.body.question, req.body.model, req.body.engine);
+      const fallbackText = generateSmartSkodaResponse(req.body.question, req.body.model, req.body.engine, req.body.brand);
       res.json({ answer: fallbackText });
     }
   };

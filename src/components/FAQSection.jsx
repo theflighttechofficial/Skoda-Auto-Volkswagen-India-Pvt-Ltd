@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import { ALL_SKODA_FAQS } from "../data/skodaData";
 import { ALL_VW_FAQS } from "../data/vwData";
+import { ALL_AUDI_FAQS } from "../data/audiData";
 import { VolkswagenLogo } from "./VolkswagenLogo";
+import { AudiLogo } from "./AudiLogo";
 export const FAQSection = ({ brand = "skoda" }) => {
   const isVW = brand === "volkswagen";
-  const faqs = isVW ? ALL_VW_FAQS : ALL_SKODA_FAQS;
+  const isAudi = brand === "audi";
+  const faqs = isAudi ? ALL_AUDI_FAQS : isVW ? ALL_VW_FAQS : ALL_SKODA_FAQS;
   const [openQuestions, setOpenQuestions] = useState(
     () => new Set(faqs.slice(0, 2).map((f) => f.question)),
   );
@@ -41,17 +44,21 @@ export const FAQSection = ({ brand = "skoda" }) => {
       {/* Title */}
       <div className="text-center space-y-2">
         <div
-          className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-semibold ${isVW ? "bg-blue-950/80 border-blue-800 text-blue-400" : "bg-emerald-950/80 border-emerald-800 text-emerald-400"}`}
+          className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-semibold ${isAudi ? "bg-red-950/80 border-red-800 text-red-400" : isVW ? "bg-blue-950/80 border-blue-800 text-blue-400" : "bg-emerald-950/80 border-emerald-800 text-emerald-400"}`}
         >
-          {isVW ? (
+          {isAudi ? (
+            <AudiLogo variant="emblem" size="sm" />
+          ) : isVW ? (
             <VolkswagenLogo variant="emblem" size="sm" />
           ) : (
             <HelpCircle className="w-3.5 h-3.5" />
           )}
           <span>
-            {isVW
-              ? "Volkswagen Ownership & Engineering Guide"
-              : "Knowledge & Ownership Guide"}
+            {isAudi
+              ? "Audi Ownership & Engineering Guide"
+              : isVW
+                ? "Volkswagen Ownership & Engineering Guide"
+                : "Knowledge & Ownership Guide"}
           </span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
@@ -69,7 +76,7 @@ export const FAQSection = ({ brand = "skoda" }) => {
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${activeCategory === cat ? (isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white"}`}
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${activeCategory === cat ? (isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white"}`}
           >
             {cat}
           </button>
@@ -91,7 +98,7 @@ export const FAQSection = ({ brand = "skoda" }) => {
               >
                 <div className="flex items-center gap-3">
                   <span
-                    className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-zinc-800 border border-zinc-700 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-zinc-800 border border-zinc-700 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     {faq.category}
                   </span>
@@ -100,7 +107,7 @@ export const FAQSection = ({ brand = "skoda" }) => {
                   </span>
                 </div>
                 <ChevronDown
-                  className={`w-4 h-4 text-zinc-400 transition-transform duration-200 flex-shrink-0 ${isOpen ? (isVW ? "rotate-180 text-blue-400" : "rotate-180 text-emerald-400") : ""}`}
+                  className={`w-4 h-4 text-zinc-400 transition-transform duration-200 flex-shrink-0 ${isOpen ? (isAudi ? "rotate-180 text-red-400" : isVW ? "rotate-180 text-blue-400" : "rotate-180 text-emerald-400") : ""}`}
                 />
               </button>
 

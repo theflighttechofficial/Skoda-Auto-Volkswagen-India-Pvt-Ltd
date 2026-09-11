@@ -35,8 +35,10 @@ function bodyTypeIcon(bodyType = "") {
 import { motion, AnimatePresence } from "motion/react";
 import { SKODA_MODELS } from "../data/skodaData";
 import { VW_MODELS } from "../data/vwData";
+import { AUDI_MODELS } from "../data/audiData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
+import { AudiLogo } from "./AudiLogo";
 
 // Makes a horizontally-scrollable strip behave properly everywhere:
 // vertical mouse-wheel scrolls it sideways, it can be dragged with the
@@ -112,14 +114,20 @@ function useHorizontalScroll() {
   return { ref, canScrollLeft, canScrollRight, scrollBy, updateEdges };
 }
 
-function ScrollEdgeButton({ direction, onClick, isVW, style }) {
+function ScrollEdgeButton({ direction, onClick, accent, style }) {
+  const accentClasses =
+    accent === "red"
+      ? "bg-red-950/90 border-red-800 text-red-300 hover:bg-red-900"
+      : accent === "blue"
+        ? "bg-blue-950/90 border-blue-800 text-blue-300 hover:bg-blue-900"
+        : "bg-emerald-950/90 border-emerald-800 text-emerald-300 hover:bg-emerald-900";
   return (
     <button
       type="button"
       onClick={onClick}
       style={style}
       aria-label={direction === "left" ? "Scroll left" : "Scroll right"}
-      className={`hidden sm:flex items-center justify-center shrink-0 w-6 h-6 rounded-full border transition-colors z-20 ${isVW ? "bg-blue-950/90 border-blue-800 text-blue-300 hover:bg-blue-900" : "bg-emerald-950/90 border-emerald-800 text-emerald-300 hover:bg-emerald-900"}`}
+      className={`hidden sm:flex items-center justify-center shrink-0 w-6 h-6 rounded-full border transition-colors z-20 ${accentClasses}`}
     >
       {direction === "left" ? (
         <ChevronLeft className="w-3.5 h-3.5" />
@@ -175,23 +183,36 @@ export const Header = ({
     setIsBrandDropdownOpen(false);
   };
   const isVW = activeBrand === "volkswagen";
-  const currentModels = isVW ? VW_MODELS : SKODA_MODELS;
+  const isAudi = activeBrand === "audi";
+  const accent = isAudi ? "red" : isVW ? "blue" : "emerald";
+  const currentModels = isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
+  const brandLabel = isAudi
+    ? "Audi India"
+    : isVW
+      ? "Volkswagen India"
+      : "Škoda India";
+  const rsLabel = isAudi
+    ? "Audi Sport RS & S Performance"
+    : isVW
+      ? "GT & GTI Performance"
+      : "The vRS Performance";
+  const rsShortBadge = isAudi ? "RS/S" : isVW ? "GT/GTI" : "vRS";
   const navItems = [
     { id: "overview", label: "Portfolio Overview", icon: LayoutGrid },
     { id: "models", label: "Models & Trims", icon: Car },
     {
       id: "rs",
-      label: isVW ? "GT & GTI Performance" : "The vRS Performance",
+      label: rsLabel,
       icon: Flame,
       isHot: true,
     },
     { id: "graphs", label: "Performance Graphs", icon: Activity },
     { id: "dealerships", label: "Dealership Locator", icon: MapPin },
-    { id: "engines", label: "TSI & TDI Engines", icon: Fuel },
+    { id: "engines", label: isAudi ? "TFSI Engines" : "TSI & TDI Engines", icon: Fuel },
     { id: "safety", label: "5-Star Safety", icon: ShieldCheck },
     {
       id: "about",
-      label: isVW ? "About Volkswagen" : "About \u0160koda",
+      label: isAudi ? "About Audi" : isVW ? "About Volkswagen" : "About Škoda",
       icon: HistoryIcon,
     },
     { id: "vwgroup", label: "Proud to be VW Group", icon: Globe2 },
@@ -199,11 +220,53 @@ export const Header = ({
     { id: "calculator", label: "Price & EMI", icon: Calculator },
     {
       id: "advisor",
-      label: isVW ? "AI Volkswagen Advisor" : "AI \u0160koda Advisor",
+      label: isAudi
+        ? "AI Audi Advisor"
+        : isVW
+          ? "AI Volkswagen Advisor"
+          : "AI Škoda Advisor",
       icon: Sparkles,
     },
     { id: "faq", label: "FAQ", icon: HelpCircle },
   ];
+  const activePillBg =
+    accent === "red"
+      ? "bg-gradient-to-r from-red-600 to-red-500 shadow-red-950/60"
+      : accent === "blue"
+        ? "bg-gradient-to-r from-blue-600 to-blue-500 shadow-blue-950/60"
+        : "bg-gradient-to-r from-emerald-600 to-emerald-500 shadow-emerald-950/60";
+  const accentText =
+    accent === "red" ? "text-red-400" : accent === "blue" ? "text-blue-400" : "text-emerald-400";
+  const accentButtonBg =
+    accent === "red"
+      ? "bg-red-600 hover:bg-red-500 shadow-red-900/40"
+      : accent === "blue"
+        ? "bg-blue-600 hover:bg-blue-500 shadow-blue-900/40"
+        : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-900/40";
+  const accentSelectedBg =
+    accent === "red"
+      ? "bg-red-600 text-white shadow-md shadow-red-950"
+      : accent === "blue"
+        ? "bg-blue-600 text-white shadow-md shadow-blue-950"
+        : "bg-emerald-600 text-white shadow-md shadow-emerald-950";
+  const accentSelectedBgBold =
+    accent === "red"
+      ? "bg-red-600 text-white shadow-md shadow-red-950 font-semibold"
+      : accent === "blue"
+        ? "bg-blue-600 text-white shadow-md shadow-blue-950 font-semibold"
+        : "bg-emerald-600 text-white shadow-md shadow-emerald-950 font-semibold";
+  const dropdownButtonBg =
+    accent === "red"
+      ? "bg-red-950/40 hover:bg-red-950/70 border-red-800/80 hover:border-red-700"
+      : accent === "blue"
+        ? "bg-blue-950/40 hover:bg-blue-950/70 border-blue-800/80 hover:border-blue-700"
+        : "bg-emerald-950/40 hover:bg-emerald-950/70 border-emerald-800/80 hover:border-emerald-700";
+  const gradientDivider =
+    accent === "red"
+      ? "from-transparent via-red-500/70 to-transparent"
+      : accent === "blue"
+        ? "from-transparent via-blue-500/70 to-transparent"
+        : "from-transparent via-emerald-500/70 to-transparent";
   return (
     <header className="sticky top-0 z-50 bg-zinc-950/95 backdrop-blur-md border-b border-zinc-800 text-zinc-100 shadow-lg shadow-black/40">
       {/* Corporate Top Strip for Škoda Auto Volkswagen India Pvt. Ltd. */}
@@ -215,22 +278,26 @@ export const Header = ({
               className="font-bold text-white tracking-wide flex items-center gap-1.5 cursor-pointer hover:text-blue-300 transition-colors"
             >
               <span
-                className={`w-2 h-2 rounded-full inline-block animate-pulse ${isVW ? "bg-blue-400" : "bg-emerald-400"}`}
+                className={`w-2 h-2 rounded-full inline-block animate-pulse ${accent === "red" ? "bg-red-400" : accent === "blue" ? "bg-blue-400" : "bg-emerald-400"}`}
               />
-              Škoda Auto Volkswagen India Private Limited (SAVWIPL)
+              {isAudi
+                ? "Audi India (Volkswagen Group Premium Brand)"
+                : "Škoda Auto Volkswagen India Private Limited (SAVWIPL)"}
             </span>
             <span className="text-zinc-600 hidden sm:inline">•</span>
             <span
               onClick={() => setActiveTab("about")}
-              className={`hover:underline hidden sm:inline cursor-pointer font-medium transition-colors ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+              className={`hover:underline hidden sm:inline cursor-pointer font-medium transition-colors ${accentText}`}
             >
-              {isVW
-                ? "Wolfsburg, Germany (Est. 1937)"
-                : "Mlad\xE1 Boleslav, Czech Republic (Est. 1895)"}
+              {isAudi
+                ? "Ingolstadt, Germany (Est. 1909)"
+                : isVW
+                  ? "Wolfsburg, Germany (Est. 1937)"
+                  : "Mlad\xE1 Boleslav, Czech Republic (Est. 1895)"}
             </span>
             <span className="text-zinc-600 hidden md:inline">•</span>
             <span className="text-zinc-400 hidden md:inline">
-              Chakan (Pune) & Aurangabad Plants
+              {isAudi ? "Aurangabad CKD Assembly Plant" : "Chakan (Pune) & Aurangabad Plants"}
             </span>
           </div>
           <div className="flex items-center gap-3 text-[10px]">
@@ -242,7 +309,7 @@ export const Header = ({
             </span>
             <button
               onClick={() => handleSelectBrand("skoda")}
-              className={`font-bold transition-all px-2 py-0.5 rounded cursor-pointer ${!isVW ? "bg-emerald-950/90 text-emerald-300 border border-emerald-700" : "text-zinc-400 hover:text-emerald-300"}`}
+              className={`font-bold transition-all px-2 py-0.5 rounded cursor-pointer ${!isVW && !isAudi ? "bg-emerald-950/90 text-emerald-300 border border-emerald-700" : "text-zinc-400 hover:text-emerald-300"}`}
             >
               Škoda India
             </button>
@@ -252,6 +319,13 @@ export const Header = ({
               className={`font-bold transition-all px-2 py-0.5 rounded cursor-pointer ${isVW ? "bg-blue-950/90 text-blue-300 border border-blue-700" : "text-zinc-400 hover:text-blue-300"}`}
             >
               Volkswagen India
+            </button>
+            <span className="text-zinc-600">|</span>
+            <button
+              onClick={() => handleSelectBrand("audi")}
+              className={`font-bold transition-all px-2 py-0.5 rounded cursor-pointer ${isAudi ? "bg-red-950/90 text-red-300 border border-red-700" : "text-zinc-400 hover:text-red-300"}`}
+            >
+              Audi India
             </button>
             <span className="text-zinc-600">|</span>
             <span
@@ -273,10 +347,12 @@ export const Header = ({
               <button
                 id="btn-brand-switcher-dropdown"
                 onClick={() => setIsBrandDropdownOpen(!isBrandDropdownOpen)}
-                className={`flex items-center gap-2.5 px-3 py-1.5 rounded-xl border transition-all cursor-pointer shadow-md group ${isVW ? "bg-blue-950/40 hover:bg-blue-950/70 border-blue-800/80 hover:border-blue-700" : "bg-emerald-950/40 hover:bg-emerald-950/70 border-emerald-800/80 hover:border-emerald-700"}`}
-                title="Click to toggle between Škoda India and Volkswagen India"
+                className={`flex items-center gap-2.5 px-3 py-1.5 rounded-xl border transition-all cursor-pointer shadow-md group ${dropdownButtonBg}`}
+                title="Click to switch between Škoda India, Volkswagen India, and Audi India"
               >
-                {isVW ? (
+                {isAudi ? (
+                  <AudiLogo variant="full" size="md" animated={true} />
+                ) : isVW ? (
                   <VolkswagenLogo variant="full" size="md" animated={true} />
                 ) : (
                   <SkodaLogo variant="full" size="md" animated={true} />
@@ -308,7 +384,7 @@ export const Header = ({
                           Select Active Brand
                         </span>
                         <span className="text-[10px] text-zinc-500">
-                          SAVWIPL Group
+                          VW Group India
                         </span>
                       </div>
                     </div>
@@ -317,7 +393,7 @@ export const Header = ({
                     <button
                       id="opt-switch-brand-skoda"
                       onClick={() => handleSelectBrand("skoda")}
-                      className={`w-full text-left p-3 rounded-xl transition-all flex items-start gap-3 cursor-pointer ${!isVW ? "bg-emerald-950/60 border border-emerald-700/70 text-white" : "hover:bg-zinc-800/80 text-zinc-300 border border-transparent"}`}
+                      className={`w-full text-left p-3 rounded-xl transition-all flex items-start gap-3 cursor-pointer ${!isVW && !isAudi ? "bg-emerald-950/60 border border-emerald-700/70 text-white" : "hover:bg-zinc-800/80 text-zinc-300 border border-transparent"}`}
                     >
                       <div className="p-1 rounded-lg bg-zinc-950/80 border border-zinc-800 shrink-0 mt-0.5">
                         <SkodaLogo variant="emblem" size="md" />
@@ -327,7 +403,7 @@ export const Header = ({
                           <span className="font-bold text-sm text-white">
                             Škoda Auto India
                           </span>
-                          {!isVW && (
+                          {!isVW && !isAudi && (
                             <span className="flex items-center gap-1 text-[10px] font-bold text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded border border-emerald-800">
                               <Check className="w-3 h-3" /> Active
                             </span>
@@ -371,6 +447,35 @@ export const Header = ({
                       </div>
                     </button>
 
+                    {/* Audi India Option */}
+                    <button
+                      id="opt-switch-brand-audi"
+                      onClick={() => handleSelectBrand("audi")}
+                      className={`w-full text-left p-3 rounded-xl transition-all flex items-start gap-3 cursor-pointer mt-1 ${isAudi ? "bg-red-950/60 border border-red-700/70 text-white" : "hover:bg-zinc-800/80 text-zinc-300 border border-transparent"}`}
+                    >
+                      <div className="p-1 rounded-lg bg-zinc-950/80 border border-zinc-800 shrink-0 mt-0.5">
+                        <AudiLogo variant="emblem" size="md" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-sm text-white">
+                            Audi India
+                          </span>
+                          {isAudi && (
+                            <span className="flex items-center gap-1 text-[10px] font-bold text-red-400 bg-red-950/80 px-1.5 py-0.5 rounded border border-red-800">
+                              <Check className="w-3 h-3" /> Active
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-[11px] text-red-400/90 mt-0.5">
+                          Vorsprung durch Technik • Est. 1909
+                        </p>
+                        <p className="text-[10px] text-zinc-400 mt-1 truncate">
+                          A4, A6, Q3, Q5, Q7, Q8
+                        </p>
+                      </div>
+                    </button>
+
                     {/* Group info footer */}
                     <div className="mt-2 pt-2 border-t border-zinc-800/80 px-2 flex items-center justify-between text-[10px] text-zinc-500">
                       <span>Shared Chakan & Aurangabad hub</span>
@@ -391,16 +496,20 @@ export const Header = ({
 
             <div className="hidden md:block pl-3 border-l border-zinc-800">
               <p
-                className={`text-[11px] font-semibold tracking-wider uppercase ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                className={`text-[11px] font-semibold tracking-wider uppercase ${accentText}`}
               >
-                {isVW
-                  ? "Volkswagen Passenger Cars India"
-                  : "\u0160koda Auto Volkswagen India Pvt. Ltd."}
+                {isAudi
+                  ? "Audi India (Progressive Luxury)"
+                  : isVW
+                    ? "Volkswagen Passenger Cars India"
+                    : "Škoda Auto Volkswagen India Pvt. Ltd."}
               </p>
               <p className="text-xs text-zinc-400">
-                {isVW
-                  ? "German Engineering, TSI EVO Powertrains & GT / GTI Performance"
-                  : "European Safety, TSI & TDI Powertrains & The vRS Performance"}
+                {isAudi
+                  ? "Progressive Luxury, quattro All-Wheel Drive & Audi Sport RS/S Performance"
+                  : isVW
+                    ? "German Engineering, TSI EVO Powertrains & GT / GTI Performance"
+                    : "European Safety, TSI & TDI Powertrains & The vRS Performance"}
               </p>
             </div>
           </div>
@@ -414,26 +523,28 @@ export const Header = ({
             >
               <Flame className="w-3.5 h-3.5 text-red-500 animate-pulse" />
               <span className="font-black italic">
-                {isVW
-                  ? "GT & GTI Performance (265 PS)"
-                  : "The vRS Performance (265 PS)"}
+                {isAudi
+                  ? "Audi Sport RS Performance (600 PS)"
+                  : isVW
+                    ? "GT & GTI Performance (265 PS)"
+                    : "The vRS Performance (265 PS)"}
               </span>
             </motion.button>
             <motion.div
               whileHover={{ scale: 1.03 }}
               className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-zinc-900/90 border border-zinc-800 text-zinc-300 shadow-sm"
             >
-              <ShieldCheck
-                className={`w-3.5 h-3.5 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
-              />
-              <span>100% 5-Star Safety Pedigree</span>
+              <ShieldCheck className={`w-3.5 h-3.5 ${accentText}`} />
+              <span>
+                {isAudi ? "5-Star Euro NCAP Safety" : "100% 5-Star Safety Pedigree"}
+              </span>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.03 }}
               className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-zinc-900/90 border border-zinc-800 text-zinc-300 shadow-sm"
             >
               <Zap className="w-3.5 h-3.5 text-amber-400" />
-              <span>TSI Turbo Petrol & DSG</span>
+              <span>{isAudi ? "TFSI Turbo Petrol & quattro" : "TSI Turbo Petrol & DSG"}</span>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.03 }}
@@ -441,7 +552,11 @@ export const Header = ({
             >
               <Award className="w-3.5 h-3.5 text-blue-400" />
               <span>
-                {isVW ? "4EVER Care Package" : "4-Yr Peace of Mind Warranty"}
+                {isAudi
+                  ? "Audi Advantage Care Package"
+                  : isVW
+                    ? "4EVER Care Package"
+                    : "4-Yr Peace of Mind Warranty"}
               </span>
             </motion.div>
           </div>
@@ -451,7 +566,7 @@ export const Header = ({
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setActiveTab("advisor")}
-              className={`px-3 py-1.5 rounded-lg text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm ${isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-900/40" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-900/40"}`}
+              className={`px-3 py-1.5 rounded-lg text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm ${accentButtonBg}`}
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>AI Advisor</span>
@@ -465,7 +580,7 @@ export const Header = ({
           <div className="flex items-center gap-1.5 min-w-0">
             <ScrollEdgeButton
               direction="left"
-              isVW={isVW}
+              accent={accent}
               onClick={() => lineupScroll.scrollBy(-160)}
               style={{ visibility: lineupScroll.canScrollLeft ? "visible" : "hidden" }}
             />
@@ -475,23 +590,24 @@ export const Header = ({
             >
               <span className="text-zinc-400 font-medium text-[11px] whitespace-nowrap mr-1 flex items-center gap-1">
                 <span
-                  className={`w-1.5 h-1.5 rounded-full animate-pulse ${isVW ? "bg-blue-500" : "bg-emerald-500"}`}
+                  className={`w-1.5 h-1.5 rounded-full animate-pulse ${accent === "red" ? "bg-red-500" : accent === "blue" ? "bg-blue-500" : "bg-emerald-500"}`}
                 />
-                {isVW ? "VW Lineup:" : "\u0160koda Lineup:"}
+                {isAudi ? "Audi Lineup:" : isVW ? "VW Lineup:" : "Škoda Lineup:"}
               </span>
               <button
                 id="btn-filter-all-models"
                 ref={selectedModelId === "all" ? activeModelRef : null}
                 onClick={() => setSelectedModelId("all")}
-                className={`relative px-2.5 py-1 rounded-md font-medium text-xs whitespace-nowrap transition-all ${selectedModelId === "all" ? (isVW ? "bg-blue-600 text-white shadow-md shadow-blue-950" : "bg-emerald-600 text-white shadow-md shadow-emerald-950") : "bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800"}`}
+                className={`relative px-2.5 py-1 rounded-md font-medium text-xs whitespace-nowrap transition-all ${selectedModelId === "all" ? accentSelectedBg : "bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800"}`}
               >
                 All Models ({currentModels.length})
               </button>
               {currentModels.map((car) => {
                 const isSelected = selectedModelId === car.id;
                 const shortName = car.name
-                  .replace("\u0160koda ", "")
-                  .replace("Volkswagen ", "");
+                  .replace("Škoda ", "")
+                  .replace("Volkswagen ", "")
+                  .replace("Audi ", "");
                 const BodyIcon = bodyTypeIcon(car.bodyType);
                 return (
                   <button
@@ -500,7 +616,7 @@ export const Header = ({
                     ref={isSelected ? activeModelRef : null}
                     onClick={() => setSelectedModelId(car.id)}
                     title={car.bodyType}
-                    className={`relative flex items-center gap-1 px-2.5 py-1 rounded-md font-medium text-xs whitespace-nowrap transition-all ${isSelected ? (isVW ? "bg-blue-600 text-white shadow-md shadow-blue-950 font-semibold" : "bg-emerald-600 text-white shadow-md shadow-emerald-950 font-semibold") : "bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800 hover:border-zinc-700"}`}
+                    className={`relative flex items-center gap-1 px-2.5 py-1 rounded-md font-medium text-xs whitespace-nowrap transition-all ${isSelected ? accentSelectedBgBold : "bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800 hover:border-zinc-700"}`}
                   >
                     <BodyIcon
                       className={`w-3 h-3 shrink-0 ${isSelected ? "text-white/90" : "text-zinc-500"}`}
@@ -526,13 +642,18 @@ export const Header = ({
                         New
                       </span>
                     )}
+                    {car.id === "q8" && (
+                      <span className="ml-1 px-1 py-0.2 rounded bg-red-500/20 text-red-300 text-[9px] border border-red-500/30">
+                        Halo
+                      </span>
+                    )}
                   </button>
                 );
               })}
             </div>
             <ScrollEdgeButton
               direction="right"
-              isVW={isVW}
+              accent={accent}
               onClick={() => lineupScroll.scrollBy(160)}
               style={{ visibility: lineupScroll.canScrollRight ? "visible" : "hidden" }}
             />
@@ -542,7 +663,7 @@ export const Header = ({
           <div className="flex items-center gap-1.5 min-w-0">
             <ScrollEdgeButton
               direction="left"
-              isVW={isVW}
+              accent={accent}
               onClick={() => navScroll.scrollBy(-160)}
               style={{ visibility: navScroll.canScrollLeft ? "visible" : "hidden" }}
             />
@@ -566,7 +687,7 @@ export const Header = ({
                     {isActive && (
                       <motion.span
                         layoutId="header-active-tab-pill"
-                        className={`absolute inset-0 rounded-xl -z-10 shadow-md ${isVW ? "bg-gradient-to-r from-blue-600 to-blue-500 shadow-blue-950/60" : "bg-gradient-to-r from-emerald-600 to-emerald-500 shadow-emerald-950/60"}`}
+                        className={`absolute inset-0 rounded-xl -z-10 shadow-md ${activePillBg}`}
                         transition={{
                           type: "spring",
                           stiffness: 450,
@@ -582,7 +703,7 @@ export const Header = ({
                     {item.label}
                     {item.isHot && (
                       <span className="ml-0.5 px-1 py-0.2 rounded bg-red-600 text-white text-[9px] font-black italic tracking-wider shadow-sm shadow-red-900/50">
-                        {isVW ? "GT/GTI" : "vRS"}
+                        {rsShortBadge}
                       </span>
                     )}
                   </motion.button>
@@ -591,7 +712,7 @@ export const Header = ({
             </div>
             <ScrollEdgeButton
               direction="right"
-              isVW={isVW}
+              accent={accent}
               onClick={() => navScroll.scrollBy(160)}
               style={{ visibility: navScroll.canScrollRight ? "visible" : "hidden" }}
             />
@@ -599,7 +720,7 @@ export const Header = ({
         </div>
       </div>
       <div
-        className={`h-[2px] w-full bg-gradient-to-r ${isVW ? "from-transparent via-blue-500/70 to-transparent" : "from-transparent via-emerald-500/70 to-transparent"}`}
+        className={`h-[2px] w-full bg-gradient-to-r ${gradientDivider}`}
       />
     </header>
   );

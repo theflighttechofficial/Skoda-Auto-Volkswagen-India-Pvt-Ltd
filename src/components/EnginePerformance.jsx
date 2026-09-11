@@ -10,11 +10,14 @@ import {
 import { motion, AnimatePresence } from "motion/react";
 import { ALL_SKODA_ENGINES } from "../data/skodaData";
 import { ALL_VW_ENGINES } from "../data/vwData";
+import { ALL_AUDI_ENGINES } from "../data/audiData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
+import { AudiLogo } from "./AudiLogo";
 export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
   const isVW = brand === "volkswagen";
-  const engines = isVW ? ALL_VW_ENGINES : ALL_SKODA_ENGINES;
+  const isAudi = brand === "audi";
+  const engines = isAudi ? ALL_AUDI_ENGINES : isVW ? ALL_VW_ENGINES : ALL_SKODA_ENGINES;
   const [selectedEngineId, setSelectedEngineId] = useState(engines[0].id);
   const [fuelFilter, setFuelFilter] = useState("All");
   const [monthlyKm, setMonthlyKm] = useState(1200);
@@ -49,6 +52,11 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
     "2.0-tsi-gti": 9.8,
     "1.2-tsi-polo": 15,
     "2.0-tdi-vw": 17.2,
+    "2.0-tfsi-190": 15.6,
+    "2.0-tfsi-249-quattro": 12.3,
+    "3.0-tfsi-v6-340": 10.1,
+    "2.9-tfsi-v6-rs": 8.5,
+    "4.0-tfsi-v8-rs": 7.2,
   };
   const filteredEngines =
     fuelFilter === "All"
@@ -73,26 +81,32 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            {isVW ? (
+            {isAudi ? (
+              <AudiLogo variant="emblem" size="sm" />
+            ) : isVW ? (
               <VolkswagenLogo variant="emblem" size="sm" />
             ) : (
               <SkodaLogo variant="emblem" size="sm" />
             )}
             <span
-              className={`text-xs uppercase font-bold tracking-wider ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+              className={`text-xs uppercase font-bold tracking-wider ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
             >
               German Powertrain Engineering
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-            {isVW
-              ? "Volkswagen TSI, GT & TDI Powertrain Suite"
-              : "\u0160koda TSI & TDI Turbocharged Suite"}
+            {isAudi
+              ? "Audi TFSI quattro Powertrain Suite"
+              : isVW
+                ? "Volkswagen TSI, GT & TDI Powertrain Suite"
+                : "\u0160koda TSI & TDI Turbocharged Suite"}
           </h2>
           <p className="text-sm text-zinc-400 mt-0.5">
-            {isVW
-              ? "From everyday 1.0 TSI to ACT cylinder-deactivation 1.5 TSI, 265 PS EA888 EVO4 GTI, and high-torque TDI diesel"
-              : "Direct-injection TSI turbo-petrol & monumental torque TDI turbo-diesel engines"}
+            {isAudi
+              ? "From the accessible 2.0 TFSI to the flagship 600 PS 4.0 TFSI V8 in the RS Q8, every engine paired with quattro all-wheel drive"
+              : isVW
+                ? "From everyday 1.0 TSI to ACT cylinder-deactivation 1.5 TSI, 265 PS EA888 EVO4 GTI, and high-torque TDI diesel"
+                : "Direct-injection TSI turbo-petrol & monumental torque TDI turbo-diesel engines"}
           </p>
         </div>
 
@@ -459,9 +473,11 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                 <span>
                   Estimated on mixed real-world driving cycles (~
                   {currentAvgMileage} km/l). On open highways,{" "}
-                  {isVW
-                    ? "Volkswagen TDI and ACT TSI engines"
-                    : "\u0160koda TDI diesel powertrains"}{" "}
+                  {isAudi
+                    ? "Audi TFSI quattro engines"
+                    : isVW
+                      ? "Volkswagen TDI and ACT TSI engines"
+                      : "\u0160koda TDI diesel powertrains"}{" "}
                   frequently achieve exceptional economy allowing 850–1,000+ km
                   touring range on a single tank.
                 </span>

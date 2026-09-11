@@ -30,15 +30,29 @@ import {
   GTI_HERITAGE,
   VW_RIVAL_COMPARISONS,
 } from "../data/vwPerformanceData";
+import {
+  AUDI_RS_MODELS,
+  AUDI_SPORT_HERITAGE,
+  AUDI_RIVAL_COMPARISONS,
+} from "../data/audiPerformanceData";
 export const RSPerformance = ({
   brand = "skoda",
   onOpenAdvisor,
   onOpenCalculator,
 }) => {
   const isVW = brand === "volkswagen";
-  const performanceModels = isVW ? VW_GT_MODELS : RS_MODELS;
-  const performanceHeritage = isVW ? GTI_HERITAGE : RS_HERITAGE;
-  const rivalComparisons = isVW ? VW_RIVAL_COMPARISONS : RIVAL_COMPARISONS;
+  const isAudi = brand === "audi";
+  const performanceModels = isAudi ? AUDI_RS_MODELS : isVW ? VW_GT_MODELS : RS_MODELS;
+  const performanceHeritage = isAudi
+    ? AUDI_SPORT_HERITAGE
+    : isVW
+      ? GTI_HERITAGE
+      : RS_HERITAGE;
+  const rivalComparisons = isAudi
+    ? AUDI_RIVAL_COMPARISONS
+    : isVW
+      ? VW_RIVAL_COMPARISONS
+      : RIVAL_COMPARISONS;
   const [selectedModelId, setSelectedModelId] = useState("octavia-vrs");
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const [driveMode, setDriveMode] = useState("vrs");
@@ -165,7 +179,12 @@ export const RSPerformance = ({
           <div className="space-y-4 max-w-3xl">
             {/* Motorsport Badge */}
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-red-950/80 border border-red-800 text-red-300 text-xs font-black tracking-widest uppercase">
-              {isVW ? (
+              {isAudi ? (
+                <span className="flex items-center gap-1 font-black italic">
+                  <span className="text-zinc-200">R</span>
+                  <span className="text-red-500">S</span>
+                </span>
+              ) : isVW ? (
                 <span className="flex items-center gap-1 font-black italic">
                   <span className="text-blue-400">GT</span>
                   <span className="text-red-500">GTI</span>
@@ -178,20 +197,36 @@ export const RSPerformance = ({
               )}
               <span className="text-zinc-400">|</span>
               <span className="text-zinc-200">
-                {isVW
-                  ? "Volkswagen India Performance"
-                  : "\u0160koda Auto Volkswagen India Pvt. Ltd."}
+                {isAudi
+                  ? "Audi Sport India Performance"
+                  : isVW
+                    ? "Volkswagen India Performance"
+                    : "\u0160koda Auto Volkswagen India Pvt. Ltd."}
               </span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase italic">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-400 to-amber-400">
-                {isVW ? "The GT & GTI Performance" : "The vRS Performance"}
+                {isAudi
+                  ? "Audi Sport RS & S Performance"
+                  : isVW
+                    ? "The GT & GTI Performance"
+                    : "The vRS Performance"}
               </span>
             </h1>
 
             <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-              {isVW ? (
+              {isAudi ? (
+                <>
+                  Hand-built by Audi Sport in Neckarsulm for track-honed
+                  precision. Discover the ferocious{" "}
+                  <strong className="text-white">RS5</strong> (450 PS
+                  hand-assembled 2.9 TFSI V6, quattro sport differential) and
+                  the record-setting{" "}
+                  <strong className="text-white">RS Q8</strong> (600 PS 4.0
+                  TFSI V8, the fastest SUV Audi has ever built).
+                </>
+              ) : isVW ? (
                 <>
                   Born on the German Autobahn and Nürburgring Nordschleife.
                   Discover the iconic{" "}
@@ -221,18 +256,22 @@ export const RSPerformance = ({
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-900/90 border border-zinc-800">
                 <Trophy className="w-4 h-4 text-amber-400" />
                 <span className="font-semibold text-white">
-                  {isVW ? "Nearly 50 Years" : "50+ Years"}
+                  {isAudi ? "40+ Years" : isVW ? "Nearly 50 Years" : "50+ Years"}
                 </span>{" "}
-                {isVW ? "of GTI Legacy" : "of RS Heritage"}
+                {isAudi ? "of quattro Legacy" : isVW ? "of GTI Legacy" : "of RS Heritage"}
               </div>
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-900/90 border border-zinc-800">
                 <Flame className="w-4 h-4 text-red-500" />
-                <span className="font-semibold text-white">265 PS</span> EA888
-                EVO4 Firepower
+                <span className="font-semibold text-white">
+                  {isAudi ? "600 PS" : "265 PS"}
+                </span>{" "}
+                {isAudi ? "4.0 TFSI V8 Firepower" : "EA888 EVO4 Firepower"}
               </div>
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-900/90 border border-zinc-800">
                 <Activity className="w-4 h-4 text-emerald-400" />
-                <span className="font-semibold text-white">DCC Pro</span>{" "}
+                <span className="font-semibold text-white">
+                  {isAudi ? "RS Adaptive Air" : "DCC Pro"}
+                </span>{" "}
                 Adaptive Chassis
               </div>
             </div>
@@ -298,7 +337,7 @@ export const RSPerformance = ({
           <div>
             <div className="flex items-center gap-2.5 mb-1.5">
               <span className="px-2 py-0.5 rounded bg-red-500 text-white text-[10px] font-black italic tracking-wider">
-                {isVW ? "GTI EXCLUSIVE" : "vRS EXCLUSIVE"}
+                {isAudi ? "RS EXCLUSIVE" : isVW ? "GTI EXCLUSIVE" : "vRS EXCLUSIVE"}
               </span>
               <span className="text-xs text-zinc-400 uppercase tracking-widest font-semibold">
                 {activeModel.category}
@@ -494,7 +533,13 @@ export const RSPerformance = ({
                 onClick={() => setDriveMode(m)}
                 className={`px-3 py-1.5 rounded-lg font-bold uppercase transition-all ${driveMode === m ? (m === "vrs" ? "bg-red-600 text-white shadow-md shadow-red-900/50" : "bg-zinc-800 text-white") : "text-zinc-400 hover:text-white"}`}
               >
-                {m === "vrs" ? (isVW ? "\u26A1 GTI Mode" : "\u26A1 vRS Mode") : m}
+                {m === "vrs"
+                  ? isAudi
+                    ? "\u26A1 RS Mode"
+                    : isVW
+                      ? "\u26A1 GTI Mode"
+                      : "\u26A1 vRS Mode"
+                  : m}
               </button>
             ))}
           </div>
@@ -645,7 +690,7 @@ export const RSPerformance = ({
               </h4>
 
               <p className="text-xs text-zinc-400 leading-relaxed">
-                {isVW ? "Volkswagen's" : "Škoda's"} electronic Launch Control
+                {isAudi ? "Audi's" : isVW ? "Volkswagen's" : "Škoda's"} electronic Launch Control
                 synchronizes the wet multi-plate DSG clutches with the EA888
                 turbocharger wastegate to prevent wheel spin and achieve
                 instant forward velocity.
@@ -781,7 +826,11 @@ export const RSPerformance = ({
               Driver Centric Ergonomics
             </span>
             <h3 className="text-xl font-black text-white tracking-tight">
-              {isVW ? "Exclusive GTI Cockpit Architecture" : "Exclusive vRS Cockpit Architecture"}
+              {isAudi
+                ? "Exclusive RS Cockpit Architecture"
+                : isVW
+                  ? "Exclusive GTI Cockpit Architecture"
+                  : "Exclusive vRS Cockpit Architecture"}
             </h3>
           </div>
           <span className="text-xs font-mono text-zinc-400">
@@ -816,19 +865,29 @@ export const RSPerformance = ({
             <div className="flex items-center gap-2 mb-1.5">
               <span className="px-2.5 py-0.5 rounded-full bg-red-950 text-red-300 text-[11px] font-black italic tracking-wider border border-red-800 flex items-center gap-1.5">
                 <Swords className="w-3.5 h-3.5 text-red-400" />
-                {isVW ? "GT & GTI PERFORMANCE BENCHMARKS" : "vRS PERFORMANCE BENCHMARKS"}
+                {isAudi
+                  ? "AUDI SPORT RS & S BENCHMARKS"
+                  : isVW
+                    ? "GT & GTI PERFORMANCE BENCHMARKS"
+                    : "vRS PERFORMANCE BENCHMARKS"}
               </span>
               <span className="text-xs text-zinc-400 uppercase tracking-wider font-semibold">
-                Škoda Auto Volkswagen India Pvt. Ltd.
+                {isAudi ? "Audi India (Volkswagen Group)" : "Škoda Auto Volkswagen India Pvt. Ltd."}
               </span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-black text-white italic tracking-tight">
-              {isVW ? "GT & GTI Performance vs. Market Rivals" : "The vRS Performance vs. Market Rivals"}
+              {isAudi
+                ? "Audi Sport RS & S Performance vs. Market Rivals"
+                : isVW
+                  ? "GT & GTI Performance vs. Market Rivals"
+                  : "The vRS Performance vs. Market Rivals"}
             </h3>
             <p className="text-xs sm:text-sm text-zinc-300 mt-1 max-w-3xl">
-              {isVW
-                ? "How Volkswagen's GT and GTI performance range stacks up against hot hatches, performance sedans, and executive rivals from BMW, Mercedes-AMG, Hyundai, and Honda in the Indian market."
-                : "How Škoda's 265 PS track-tuned weapons stack up against executive luxury sedans, hot hatches, and performance SUVs from BMW, Mercedes-AMG, Audi, and Toyota in the Indian market."}
+              {isAudi
+                ? "How Audi Sport's hand-built RS5 and RS Q8 stack up against performance rivals from BMW M, Mercedes-AMG, Lamborghini, and Porsche in the Indian market."
+                : isVW
+                  ? "How Volkswagen's GT and GTI performance range stacks up against hot hatches, performance sedans, and executive rivals from BMW, Mercedes-AMG, Hyundai, and Honda in the Indian market."
+                  : "How Škoda's 265 PS track-tuned weapons stack up against executive luxury sedans, hot hatches, and performance SUVs from BMW, Mercedes-AMG, Audi, and Toyota in the Indian market."}
             </p>
           </div>
 
@@ -836,15 +895,23 @@ export const RSPerformance = ({
           <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-zinc-950 border border-zinc-800 shrink-0">
             <button
               onClick={() => setRivalModelTab("octavia-vrs")}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${rivalModelTab === "octavia-vrs" ? (isVW ? "bg-blue-600 text-white shadow-lg shadow-blue-900/40" : "bg-emerald-600 text-white shadow-lg shadow-emerald-900/40") : "text-zinc-400 hover:text-white"}`}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${rivalModelTab === "octavia-vrs" ? (isAudi ? "bg-red-600 text-white shadow-lg shadow-red-900/40" : isVW ? "bg-blue-600 text-white shadow-lg shadow-blue-900/40" : "bg-emerald-600 text-white shadow-lg shadow-emerald-900/40") : "text-zinc-400 hover:text-white"}`}
             >
-              {isVW ? "Golf GTI vs Hatch Rivals" : "Octavia vRS vs Sedan Rivals"}
+              {isAudi
+                ? "RS5 vs Sports Sedan Rivals"
+                : isVW
+                  ? "Golf GTI vs Hatch Rivals"
+                  : "Octavia vRS vs Sedan Rivals"}
             </button>
             <button
               onClick={() => setRivalModelTab("kodiaq-vrs")}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${rivalModelTab === "kodiaq-vrs" ? "bg-red-600 text-white shadow-lg shadow-red-900/40" : "text-zinc-400 hover:text-white"}`}
             >
-              {isVW ? "Virtus GT Plus vs Sedan Rivals" : "Kodiaq vRS vs SUV Rivals"}
+              {isAudi
+                ? "RS Q8 vs Super SUV Rivals"
+                : isVW
+                  ? "Virtus GT Plus vs Sedan Rivals"
+                  : "Kodiaq vRS vs SUV Rivals"}
             </button>
           </div>
         </div>
@@ -894,14 +961,18 @@ export const RSPerformance = ({
           {/* Left: vRS Performance Car */}
           <div className="lg:col-span-5 p-6 rounded-3xl bg-zinc-950 border-2 border-red-500/60 space-y-4 shadow-xl relative overflow-hidden">
             <div className="absolute top-0 right-0 px-3 py-1 bg-red-600 text-white font-black italic text-[10px] rounded-bl-xl uppercase tracking-wider">
-              {isVW ? "GT & GTI Performance" : "The vRS Performance"}
+              {isAudi
+                ? "Audi Sport RS & S Performance"
+                : isVW
+                  ? "GT & GTI Performance"
+                  : "The vRS Performance"}
             </div>
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <span
-                  className={`text-[10px] px-2 py-0.5 rounded font-bold border ${isVW ? "bg-blue-950 text-blue-300 border-blue-800" : "bg-emerald-950 text-emerald-300 border-emerald-800"}`}
+                  className={`text-[10px] px-2 py-0.5 rounded font-bold border ${isAudi ? "bg-red-950 text-red-300 border-red-800" : isVW ? "bg-blue-950 text-blue-300 border-blue-800" : "bg-emerald-950 text-emerald-300 border-emerald-800"}`}
                 >
-                  Škoda Auto Volkswagen India
+                  {isAudi ? "Audi India" : "Škoda Auto Volkswagen India"}
                 </span>
               </div>
               <h4 className="text-2xl font-black text-white italic">
@@ -1149,7 +1220,12 @@ export const RSPerformance = ({
               <Trophy className="w-4 h-4" />
             </span>
             <h4 className="text-base font-black text-white italic">
-              {isVW ? "The GT & GTI Performance Advantage" : "The vRS Performance Advantage"} vs {activeRival.name}
+              {isAudi
+                ? "The Audi Sport RS Advantage"
+                : isVW
+                  ? "The GT & GTI Performance Advantage"
+                  : "The vRS Performance Advantage"}{" "}
+              vs {activeRival.name}
             </h4>
           </div>
           <p className="text-xs sm:text-sm text-zinc-200 leading-relaxed font-sans">
@@ -1213,7 +1289,7 @@ export const RSPerformance = ({
                 <tr className="bg-red-950/30 font-semibold border-l-4 border-l-red-500">
                   <td className="py-3.5 px-4 font-sans font-black text-white flex items-center gap-1.5">
                     <span className="px-1.5 py-0.5 rounded bg-red-600 text-white text-[9px] font-black italic">
-                      {isVW ? "GTI" : "vRS"}
+                      {isAudi ? "RS" : isVW ? "GTI" : "vRS"}
                     </span>
                     {activeSkodaForRival.name}
                   </td>
@@ -1318,7 +1394,7 @@ export const RSPerformance = ({
               <div className="flex justify-between text-xs mb-1 font-mono">
                 <span className="font-bold text-white flex items-center gap-1.5">
                   <span className="px-1 py-0.2 rounded bg-red-600 text-white text-[9px]">
-                    {isVW ? "GTI" : "vRS"}
+                    {isAudi ? "RS" : isVW ? "GTI" : "vRS"}
                   </span>
                   {activeSkodaForRival.name}
                 </span>
@@ -1386,8 +1462,8 @@ export const RSPerformance = ({
             </h3>
             <p className="text-xs text-zinc-400">
               Two distinct expressions of{" "}
-              {isVW ? "Volkswagen's" : "Škoda's"} 265 PS performance
-              philosophy
+              {isAudi ? "Audi Sport's" : isVW ? "Volkswagen's" : "Škoda's"}{" "}
+              performance philosophy
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -1521,9 +1597,11 @@ export const RSPerformance = ({
               Motorsport Pedigree
             </span>
             <h3 className="text-xl font-black text-white tracking-tight">
-              {isVW
-                ? "The Legend of Volkswagen GTI & GT Line"
-                : "The Legend of \u0160koda Rally Sport (RS)"}
+              {isAudi
+                ? "The Legend of Audi Sport & quattro"
+                : isVW
+                  ? "The Legend of Volkswagen GTI & GT Line"
+                  : "The Legend of \u0160koda Rally Sport (RS)"}
             </h3>
           </div>
           <Flag className="w-5 h-5 text-red-500" />
@@ -1553,14 +1631,18 @@ export const RSPerformance = ({
       <div className="rounded-3xl bg-gradient-to-r from-red-950/60 via-zinc-900 to-zinc-950 border border-red-800/40 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
         <div className="space-y-1 text-center sm:text-left">
           <h4 className="text-xl font-black text-white italic">
-            {isVW
-              ? "Ready to Experience True GT & GTI Performance?"
-              : "Ready to Experience True Rally Sport Exhilaration?"}
+            {isAudi
+              ? "Ready to Experience True Audi Sport RS Performance?"
+              : isVW
+                ? "Ready to Experience True GT & GTI Performance?"
+                : "Ready to Experience True Rally Sport Exhilaration?"}
           </h4>
           <p className="text-xs text-zinc-300">
-            {isVW
-              ? "Consult our AI specialist on Golf GTI bookings, Virtus GT specs, or compute customized on-road figures."
-              : "Consult our AI specialist on vRS allocations, track-day setups, or compute on-road figures."}
+            {isAudi
+              ? "Consult our AI specialist on RS5 and RS Q8 bookings, quattro specs, or compute customized on-road figures."
+              : isVW
+                ? "Consult our AI specialist on Golf GTI bookings, Virtus GT specs, or compute customized on-road figures."
+                : "Consult our AI specialist on vRS allocations, track-day setups, or compute on-road figures."}
           </p>
         </div>
 
@@ -1569,7 +1651,7 @@ export const RSPerformance = ({
             <button
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
-                onOpenCalculator(isVW ? "virtus" : "octavia");
+                onOpenCalculator(isAudi ? "a4" : isVW ? "virtus" : "octavia");
               }}
               className="px-4 py-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-bold border border-zinc-700 transition-colors cursor-pointer"
             >
@@ -1581,9 +1663,11 @@ export const RSPerformance = ({
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
                 onOpenAdvisor(
-                  isVW
-                    ? "I want to learn more about the Volkswagen Golf GTI and Virtus GT Plus in India."
-                    : "I want to learn more about booking and owning an Octavia vRS or Kodiaq vRS in India.",
+                  isAudi
+                    ? "I want to learn more about the Audi RS5 and RS Q8 in India."
+                    : isVW
+                      ? "I want to learn more about the Volkswagen Golf GTI and Virtus GT Plus in India."
+                      : "I want to learn more about booking and owning an Octavia vRS or Kodiaq vRS in India.",
                 );
               }}
               className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-black transition-colors flex items-center gap-2 shadow-lg shadow-red-900/40 cursor-pointer"

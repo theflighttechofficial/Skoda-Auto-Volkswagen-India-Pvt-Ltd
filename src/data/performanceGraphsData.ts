@@ -1534,6 +1534,336 @@ export const ENGINE_GRAPH_PROFILES: Record<string, EngineGraphProfile> = {
       'Prioritizes affordability and low running costs over outright performance',
       'Shared with the international Volkswagen Polo/Vento small-car range'
     ]
+  },
+
+  '2.0-tfsi-190': {
+    id: '2.0-tfsi-190',
+    name: '2.0L TFSI Turbo-Petrol',
+    badge: '2.0 TFSI (190 PS / 320 Nm)',
+    displacement: '1,984 cc',
+    cylinders: '4 Cylinders',
+    fuelType: 'Petrol',
+    peakPowerStr: '190 PS @ 4,200–6,000 RPM',
+    peakTorqueStr: '320 Nm @ 1,500–4,180 RPM',
+    maxPowerHp: 190,
+    maxTorqueNm: 320,
+    powerRpmRange: '4,200 – 6,000 RPM',
+    torqueRpmRange: '1,500 – 4,180 RPM',
+    redlineRpm: 6600,
+    idleRpm: 800,
+    highwayCruiseRpm100Kmh: 1700,
+    highwayCruiseRpm120Kmh: 2050,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 38, torqueNm: 220, boostBar: 0.5 },
+      { rpm: 1500, powerHp: 68, torqueNm: 320, boostBar: 1.3 },
+      { rpm: 2000, powerHp: 90, torqueNm: 320, boostBar: 1.3 },
+      { rpm: 2500, powerHp: 113, torqueNm: 320, boostBar: 1.3 },
+      { rpm: 3000, powerHp: 135, torqueNm: 320, boostBar: 1.25 },
+      { rpm: 3500, powerHp: 158, torqueNm: 320, boostBar: 1.2 },
+      { rpm: 4200, powerHp: 190, torqueNm: 318, boostBar: 1.15 },
+      { rpm: 5000, powerHp: 190, torqueNm: 267, boostBar: 1.05 },
+      { rpm: 5500, powerHp: 190, torqueNm: 243, boostBar: 0.95 },
+      { rpm: 6000, powerHp: 190, torqueNm: 223, boostBar: 0.85 },
+      { rpm: 6600, powerHp: 172, torqueNm: 187, boostBar: 0.65 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.9, speedKmh: 30, gForce: 0.66, gear: 1 },
+      { timeSec: 1.9, speedKmh: 52, gForce: 0.56, gear: 1 },
+      { timeSec: 3.0, speedKmh: 72, gForce: 0.47, gear: 2 },
+      { timeSec: 4.6, speedKmh: 88, gForce: 0.39, gear: 2 },
+      { timeSec: 6.1, speedKmh: 96, gForce: 0.34, gear: 3 },
+      { timeSec: 7.8, speedKmh: 100, gForce: 0.31, gear: 3 },
+      { timeSec: 10.3, speedKmh: 125, gForce: 0.24, gear: 4 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.56', speedAt1000Rpm: 8.8, speedAt3000Rpm: 26.4, speedAt6000Rpm: 52.8, redlineSpeed: 58 },
+      { gear: '2nd', ratio: '2.14', speedAt1000Rpm: 14.6, speedAt3000Rpm: 43.8, speedAt6000Rpm: 87.6, redlineSpeed: 96 },
+      { gear: '3rd', ratio: '1.42', speedAt1000Rpm: 22.0, speedAt3000Rpm: 66.0, speedAt6000Rpm: 132.0, redlineSpeed: 145 },
+      { gear: '4th', ratio: '1.03', speedAt1000Rpm: 30.3, speedAt3000Rpm: 90.9, speedAt6000Rpm: 181.8, redlineSpeed: 200 },
+      { gear: '5th', ratio: '0.81', speedAt1000Rpm: 38.5, speedAt3000Rpm: 115.5, speedAt6000Rpm: 231.0, redlineSpeed: 220 },
+      { gear: '6th', ratio: '0.67', speedAt1000Rpm: 46.6, speedAt3000Rpm: 139.8, speedAt6000Rpm: 279.6, redlineSpeed: 237 },
+      { gear: '7th', ratio: '0.52', speedAt1000Rpm: 59.7, speedAt3000Rpm: 179.1, speedAt6000Rpm: 358.2, redlineSpeed: 237 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 8.6, engineRpm: 1400 },
+      { speedKmh: 40, fuelConsumptionKmpl: 11.2, engineRpm: 1350 },
+      { speedKmh: 60, fuelConsumptionKmpl: 15.0, engineRpm: 1300 },
+      { speedKmh: 80, fuelConsumptionKmpl: 17.4, engineRpm: 1400 },
+      { speedKmh: 100, fuelConsumptionKmpl: 15.8, engineRpm: 1700 },
+      { speedKmh: 120, fuelConsumptionKmpl: 13.9, engineRpm: 2050 },
+      { speedKmh: 140, fuelConsumptionKmpl: 11.4, engineRpm: 2400 }
+    ],
+    technicalFeatures: [
+      'Entry powertrain for the Audi A4 sedan and Q3 compact SUV in India',
+      'EA888 turbo-petrol architecture shared across the Volkswagen Group',
+      'Progressive Steering and Audi Drive Select with adjustable driving modes',
+      'Front-wheel drive configuration for the A4, quattro-optional on the Q3'
+    ]
+  },
+
+  '2.0-tfsi-249-quattro': {
+    id: '2.0-tfsi-249-quattro',
+    name: '2.0L TFSI Turbo-Petrol quattro',
+    badge: '2.0 TFSI quattro (249 PS / 370 Nm)',
+    displacement: '1,984 cc',
+    cylinders: '4 Cylinders',
+    fuelType: 'Petrol',
+    peakPowerStr: '249 PS @ 4,200–6,000 RPM',
+    peakTorqueStr: '370 Nm @ 1,600–4,500 RPM',
+    maxPowerHp: 249,
+    maxTorqueNm: 370,
+    powerRpmRange: '4,200 – 6,000 RPM',
+    torqueRpmRange: '1,600 – 4,500 RPM',
+    redlineRpm: 6700,
+    idleRpm: 800,
+    highwayCruiseRpm100Kmh: 1650,
+    highwayCruiseRpm120Kmh: 1980,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 46, torqueNm: 255, boostBar: 0.6 },
+      { rpm: 1600, powerHp: 82, torqueNm: 370, boostBar: 1.5 },
+      { rpm: 2000, powerHp: 103, torqueNm: 370, boostBar: 1.5 },
+      { rpm: 2500, powerHp: 129, torqueNm: 370, boostBar: 1.45 },
+      { rpm: 3000, powerHp: 155, torqueNm: 370, boostBar: 1.4 },
+      { rpm: 3500, powerHp: 181, torqueNm: 370, boostBar: 1.35 },
+      { rpm: 4200, powerHp: 249, torqueNm: 366, boostBar: 1.3 },
+      { rpm: 5000, powerHp: 249, torqueNm: 308, boostBar: 1.15 },
+      { rpm: 5500, powerHp: 249, torqueNm: 280, boostBar: 1.05 },
+      { rpm: 6000, powerHp: 249, torqueNm: 257, boostBar: 0.95 },
+      { rpm: 6700, powerHp: 225, torqueNm: 215, boostBar: 0.75 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.7, speedKmh: 32, gForce: 0.76, gear: 1 },
+      { timeSec: 1.5, speedKmh: 56, gForce: 0.66, gear: 1 },
+      { timeSec: 2.4, speedKmh: 76, gForce: 0.55, gear: 2 },
+      { timeSec: 3.7, speedKmh: 92, gForce: 0.46, gear: 2 },
+      { timeSec: 4.9, speedKmh: 100, gForce: 0.41, gear: 3 },
+      { timeSec: 6.2, speedKmh: 120, gForce: 0.35, gear: 3 },
+      { timeSec: 8.5, speedKmh: 145, gForce: 0.27, gear: 4 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.56', speedAt1000Rpm: 9.1, speedAt3000Rpm: 27.3, speedAt6000Rpm: 54.6, redlineSpeed: 61 },
+      { gear: '2nd', ratio: '2.14', speedAt1000Rpm: 15.1, speedAt3000Rpm: 45.3, speedAt6000Rpm: 90.6, redlineSpeed: 101 },
+      { gear: '3rd', ratio: '1.42', speedAt1000Rpm: 22.8, speedAt3000Rpm: 68.4, speedAt6000Rpm: 136.8, redlineSpeed: 153 },
+      { gear: '4th', ratio: '1.03', speedAt1000Rpm: 31.4, speedAt3000Rpm: 94.2, speedAt6000Rpm: 188.4, redlineSpeed: 210 },
+      { gear: '5th', ratio: '0.81', speedAt1000Rpm: 39.9, speedAt3000Rpm: 119.7, speedAt6000Rpm: 239.4, redlineSpeed: 245 },
+      { gear: '6th', ratio: '0.67', speedAt1000Rpm: 48.3, speedAt3000Rpm: 144.9, speedAt6000Rpm: 289.8, redlineSpeed: 245 },
+      { gear: '7th', ratio: '0.52', speedAt1000Rpm: 62.0, speedAt3000Rpm: 186.0, speedAt6000Rpm: 372.0, redlineSpeed: 245 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 7.0, engineRpm: 1450 },
+      { speedKmh: 40, fuelConsumptionKmpl: 9.2, engineRpm: 1400 },
+      { speedKmh: 60, fuelConsumptionKmpl: 12.5, engineRpm: 1350 },
+      { speedKmh: 80, fuelConsumptionKmpl: 14.4, engineRpm: 1450 },
+      { speedKmh: 100, fuelConsumptionKmpl: 12.9, engineRpm: 1650 },
+      { speedKmh: 120, fuelConsumptionKmpl: 11.2, engineRpm: 1980 },
+      { speedKmh: 140, fuelConsumptionKmpl: 9.4, engineRpm: 2320 }
+    ],
+    technicalFeatures: [
+      'High-output tune of the EA888 engine powering the A6 sedan and Q5 SUV',
+      'Permanent quattro all-wheel drive for confident all-weather traction',
+      'Paired exclusively with the ultra-fast 7-speed S tronic dual-clutch gearbox',
+      'Progressive Dynamic steering rack sharpens response at low speeds'
+    ]
+  },
+
+  '3.0-tfsi-v6-340': {
+    id: '3.0-tfsi-v6-340',
+    name: '3.0L TFSI V6 Turbo-Petrol quattro',
+    badge: '3.0 TFSI V6 quattro (340 PS / 500 Nm)',
+    displacement: '2,995 cc',
+    cylinders: '6 Cylinders (V6 Configuration)',
+    fuelType: 'Petrol',
+    peakPowerStr: '340 PS @ 5,200–6,400 RPM',
+    peakTorqueStr: '500 Nm @ 1,370–4,500 RPM',
+    maxPowerHp: 340,
+    maxTorqueNm: 500,
+    powerRpmRange: '5,200 – 6,400 RPM',
+    torqueRpmRange: '1,370 – 4,500 RPM',
+    redlineRpm: 6800,
+    idleRpm: 780,
+    highwayCruiseRpm100Kmh: 1500,
+    highwayCruiseRpm120Kmh: 1800,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 62, torqueNm: 340, boostBar: 0.7 },
+      { rpm: 1370, powerHp: 90, torqueNm: 500, boostBar: 1.4 },
+      { rpm: 2000, powerHp: 131, torqueNm: 500, boostBar: 1.4 },
+      { rpm: 2500, powerHp: 164, torqueNm: 500, boostBar: 1.35 },
+      { rpm: 3000, powerHp: 197, torqueNm: 500, boostBar: 1.3 },
+      { rpm: 3500, powerHp: 230, torqueNm: 500, boostBar: 1.25 },
+      { rpm: 4500, powerHp: 296, torqueNm: 495, boostBar: 1.2 },
+      { rpm: 5200, powerHp: 340, torqueNm: 460, boostBar: 1.1 },
+      { rpm: 6000, powerHp: 340, torqueNm: 398, boostBar: 0.95 },
+      { rpm: 6400, powerHp: 340, torqueNm: 373, boostBar: 0.9 },
+      { rpm: 6800, powerHp: 305, torqueNm: 320, boostBar: 0.7 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.7, speedKmh: 34, gForce: 0.82, gear: 1 },
+      { timeSec: 1.4, speedKmh: 58, gForce: 0.71, gear: 2 },
+      { timeSec: 2.2, speedKmh: 78, gForce: 0.58, gear: 2 },
+      { timeSec: 3.4, speedKmh: 96, gForce: 0.48, gear: 3 },
+      { timeSec: 4.5, speedKmh: 100, gForce: 0.44, gear: 3 },
+      { timeSec: 5.9, speedKmh: 130, gForce: 0.34, gear: 4 },
+      { timeSec: 8.2, speedKmh: 160, gForce: 0.25, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '4.71', speedAt1000Rpm: 8.4, speedAt3000Rpm: 25.2, speedAt6000Rpm: 50.4, redlineSpeed: 57 },
+      { gear: '2nd', ratio: '3.14', speedAt1000Rpm: 12.6, speedAt3000Rpm: 37.8, speedAt6000Rpm: 75.6, redlineSpeed: 85 },
+      { gear: '3rd', ratio: '2.11', speedAt1000Rpm: 18.7, speedAt3000Rpm: 56.1, speedAt6000Rpm: 112.2, redlineSpeed: 127 },
+      { gear: '4th', ratio: '1.67', speedAt1000Rpm: 23.7, speedAt3000Rpm: 71.1, speedAt6000Rpm: 142.2, redlineSpeed: 161 },
+      { gear: '5th', ratio: '1.29', speedAt1000Rpm: 30.7, speedAt3000Rpm: 92.1, speedAt6000Rpm: 184.2, redlineSpeed: 208 },
+      { gear: '6th', ratio: '1.00', speedAt1000Rpm: 39.6, speedAt3000Rpm: 118.8, speedAt6000Rpm: 237.6, redlineSpeed: 250 },
+      { gear: '7th', ratio: '0.84', speedAt1000Rpm: 47.1, speedAt3000Rpm: 141.3, speedAt6000Rpm: 282.6, redlineSpeed: 250 },
+      { gear: '8th', ratio: '0.67', speedAt1000Rpm: 59.1, speedAt3000Rpm: 177.3, speedAt6000Rpm: 354.6, redlineSpeed: 250 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 6.2, engineRpm: 1150 },
+      { speedKmh: 40, fuelConsumptionKmpl: 7.8, engineRpm: 1050 },
+      { speedKmh: 60, fuelConsumptionKmpl: 9.6, engineRpm: 1000 },
+      { speedKmh: 80, fuelConsumptionKmpl: 10.8, engineRpm: 1100 },
+      { speedKmh: 100, fuelConsumptionKmpl: 10.0, engineRpm: 1500 },
+      { speedKmh: 120, fuelConsumptionKmpl: 8.8, engineRpm: 1800 },
+      { speedKmh: 140, fuelConsumptionKmpl: 7.4, engineRpm: 2100 }
+    ],
+    technicalFeatures: [
+      'Flagship non-RS V6 turbo-petrol powering the Q7 and Q8 luxury SUVs',
+      'Permanent quattro all-wheel drive with a self-locking center differential',
+      'Massive 500 Nm torque plateau available from just 1,370 RPM',
+      'Paired with Audi’s smooth 8-speed Tiptronic torque-converter automatic'
+    ]
+  },
+
+  '2.9-tfsi-v6-rs': {
+    id: '2.9-tfsi-v6-rs',
+    name: '2.9L TFSI Twin-Turbo V6 (Audi Sport)',
+    badge: '2.9 TFSI V6 Bi-Turbo (450 PS / 600 Nm)',
+    displacement: '2,894 cc',
+    cylinders: '6 Cylinders (Twin-Turbo V6)',
+    fuelType: 'Petrol',
+    peakPowerStr: '450 PS @ 5,700–6,700 RPM',
+    peakTorqueStr: '600 Nm @ 1,900–5,000 RPM',
+    maxPowerHp: 450,
+    maxTorqueNm: 600,
+    powerRpmRange: '5,700 – 6,700 RPM',
+    torqueRpmRange: '1,900 – 5,000 RPM',
+    redlineRpm: 7000,
+    idleRpm: 800,
+    highwayCruiseRpm100Kmh: 1550,
+    highwayCruiseRpm120Kmh: 1850,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 75, torqueNm: 420, boostBar: 0.9 },
+      { rpm: 1900, powerHp: 145, torqueNm: 600, boostBar: 1.8 },
+      { rpm: 2500, powerHp: 190, torqueNm: 600, boostBar: 1.8 },
+      { rpm: 3000, powerHp: 228, torqueNm: 600, boostBar: 1.75 },
+      { rpm: 3500, powerHp: 266, torqueNm: 600, boostBar: 1.7 },
+      { rpm: 4000, powerHp: 304, torqueNm: 600, boostBar: 1.65 },
+      { rpm: 5000, powerHp: 380, torqueNm: 597, boostBar: 1.55 },
+      { rpm: 5700, powerHp: 450, torqueNm: 566, boostBar: 1.45 },
+      { rpm: 6700, powerHp: 450, torqueNm: 482, boostBar: 1.25 },
+      { rpm: 7000, powerHp: 410, torqueNm: 430, boostBar: 1.05 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.6, speedKmh: 36, gForce: 0.95, gear: 1 },
+      { timeSec: 1.2, speedKmh: 62, gForce: 0.82, gear: 2 },
+      { timeSec: 1.9, speedKmh: 86, gForce: 0.68, gear: 2 },
+      { timeSec: 2.8, speedKmh: 100, gForce: 0.58, gear: 3 },
+      { timeSec: 3.9, speedKmh: 130, gForce: 0.46, gear: 3 },
+      { timeSec: 5.4, speedKmh: 160, gForce: 0.34, gear: 4 },
+      { timeSec: 7.6, speedKmh: 200, gForce: 0.24, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '4.71', speedAt1000Rpm: 9.0, speedAt3000Rpm: 27.0, speedAt6000Rpm: 54.0, redlineSpeed: 63 },
+      { gear: '2nd', ratio: '3.14', speedAt1000Rpm: 13.5, speedAt3000Rpm: 40.5, speedAt6000Rpm: 81.0, redlineSpeed: 95 },
+      { gear: '3rd', ratio: '2.11', speedAt1000Rpm: 20.0, speedAt3000Rpm: 60.0, speedAt6000Rpm: 120.0, redlineSpeed: 140 },
+      { gear: '4th', ratio: '1.67', speedAt1000Rpm: 25.4, speedAt3000Rpm: 76.2, speedAt6000Rpm: 152.4, redlineSpeed: 178 },
+      { gear: '5th', ratio: '1.29', speedAt1000Rpm: 32.9, speedAt3000Rpm: 98.7, speedAt6000Rpm: 197.4, redlineSpeed: 230 },
+      { gear: '6th', ratio: '1.00', speedAt1000Rpm: 42.4, speedAt3000Rpm: 127.2, speedAt6000Rpm: 254.4, redlineSpeed: 280 },
+      { gear: '7th', ratio: '0.84', speedAt1000Rpm: 50.5, speedAt3000Rpm: 151.5, speedAt6000Rpm: 303.0, redlineSpeed: 280 },
+      { gear: '8th', ratio: '0.67', speedAt1000Rpm: 63.3, speedAt3000Rpm: 189.9, speedAt6000Rpm: 379.8, redlineSpeed: 280 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 5.5, engineRpm: 1200 },
+      { speedKmh: 40, fuelConsumptionKmpl: 6.8, engineRpm: 1100 },
+      { speedKmh: 60, fuelConsumptionKmpl: 8.2, engineRpm: 1050 },
+      { speedKmh: 80, fuelConsumptionKmpl: 9.2, engineRpm: 1150 },
+      { speedKmh: 100, fuelConsumptionKmpl: 8.6, engineRpm: 1550 },
+      { speedKmh: 120, fuelConsumptionKmpl: 7.5, engineRpm: 1850 },
+      { speedKmh: 140, fuelConsumptionKmpl: 6.3, engineRpm: 2150 }
+    ],
+    technicalFeatures: [
+      'Hand-assembled twin-turbo V6 developed by Audi Sport in Neckarsulm',
+      'Powers the RS5 Coupé and RS5 Sportback performance flagships',
+      'quattro all-wheel drive with a sport rear differential for torque vectoring',
+      'Broad 600 Nm torque plateau from just 1,900 RPM for relentless mid-range punch'
+    ]
+  },
+
+  '4.0-tfsi-v8-rs': {
+    id: '4.0-tfsi-v8-rs',
+    name: '4.0L TFSI Twin-Turbo V8 (Audi Sport)',
+    badge: '4.0 TFSI V8 Bi-Turbo (600 PS / 800 Nm)',
+    displacement: '3,996 cc',
+    cylinders: '8 Cylinders (Twin-Turbo V8)',
+    fuelType: 'Petrol',
+    peakPowerStr: '600 PS @ 6,000 RPM',
+    peakTorqueStr: '800 Nm @ 2,200–4,500 RPM',
+    maxPowerHp: 600,
+    maxTorqueNm: 800,
+    powerRpmRange: '6,000 RPM',
+    torqueRpmRange: '2,200 – 4,500 RPM',
+    redlineRpm: 6800,
+    idleRpm: 750,
+    highwayCruiseRpm100Kmh: 1400,
+    highwayCruiseRpm120Kmh: 1700,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 95, torqueNm: 560, boostBar: 1.0 },
+      { rpm: 2200, powerHp: 225, torqueNm: 800, boostBar: 1.9 },
+      { rpm: 2800, powerHp: 280, torqueNm: 800, boostBar: 1.9 },
+      { rpm: 3400, powerHp: 340, torqueNm: 800, boostBar: 1.85 },
+      { rpm: 4000, powerHp: 410, torqueNm: 800, boostBar: 1.8 },
+      { rpm: 4500, powerHp: 470, torqueNm: 800, boostBar: 1.75 },
+      { rpm: 5200, powerHp: 545, torqueNm: 780, boostBar: 1.6 },
+      { rpm: 6000, powerHp: 600, torqueNm: 716, boostBar: 1.45 },
+      { rpm: 6800, powerHp: 560, torqueNm: 625, boostBar: 1.2 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.5, speedKmh: 38, gForce: 1.05, gear: 1 },
+      { timeSec: 1.1, speedKmh: 66, gForce: 0.90, gear: 2 },
+      { timeSec: 1.8, speedKmh: 90, gForce: 0.74, gear: 2 },
+      { timeSec: 2.7, speedKmh: 100, gForce: 0.64, gear: 3 },
+      { timeSec: 3.8, speedKmh: 140, gForce: 0.50, gear: 3 },
+      { timeSec: 5.2, speedKmh: 170, gForce: 0.38, gear: 4 },
+      { timeSec: 7.5, speedKmh: 210, gForce: 0.27, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '4.71', speedAt1000Rpm: 9.4, speedAt3000Rpm: 28.2, speedAt6000Rpm: 56.4, redlineSpeed: 64 },
+      { gear: '2nd', ratio: '3.14', speedAt1000Rpm: 14.1, speedAt3000Rpm: 42.3, speedAt6000Rpm: 84.6, redlineSpeed: 96 },
+      { gear: '3rd', ratio: '2.11', speedAt1000Rpm: 20.9, speedAt3000Rpm: 62.7, speedAt6000Rpm: 125.4, redlineSpeed: 143 },
+      { gear: '4th', ratio: '1.67', speedAt1000Rpm: 26.4, speedAt3000Rpm: 79.2, speedAt6000Rpm: 158.4, redlineSpeed: 181 },
+      { gear: '5th', ratio: '1.29', speedAt1000Rpm: 34.2, speedAt3000Rpm: 102.6, speedAt6000Rpm: 205.2, redlineSpeed: 234 },
+      { gear: '6th', ratio: '1.00', speedAt1000Rpm: 44.1, speedAt3000Rpm: 132.3, speedAt6000Rpm: 264.6, redlineSpeed: 250 },
+      { gear: '7th', ratio: '0.84', speedAt1000Rpm: 52.5, speedAt3000Rpm: 157.5, speedAt6000Rpm: 315.0, redlineSpeed: 250 },
+      { gear: '8th', ratio: '0.67', speedAt1000Rpm: 65.8, speedAt3000Rpm: 197.4, speedAt6000Rpm: 394.8, redlineSpeed: 250 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 4.5, engineRpm: 1100 },
+      { speedKmh: 40, fuelConsumptionKmpl: 5.6, engineRpm: 1000 },
+      { speedKmh: 60, fuelConsumptionKmpl: 6.8, engineRpm: 950 },
+      { speedKmh: 80, fuelConsumptionKmpl: 7.6, engineRpm: 1050 },
+      { speedKmh: 100, fuelConsumptionKmpl: 7.0, engineRpm: 1400 },
+      { speedKmh: 120, fuelConsumptionKmpl: 6.1, engineRpm: 1700 },
+      { speedKmh: 140, fuelConsumptionKmpl: 5.2, engineRpm: 1980 }
+    ],
+    technicalFeatures: [
+      'Hand-built twin-turbo V8 shared with the Lamborghini Urus and Porsche Cayenne Turbo',
+      'Powers the RS Q8, Audi’s fastest and most powerful SUV ever sold in India',
+      'Massive 800 Nm torque plateau from just 2,200 RPM',
+      'Electromechanical active roll stabilization for flat, composed high-speed cornering'
+    ]
   }
 };
 
@@ -2124,6 +2454,174 @@ export const MODEL_PERFORMANCE_PROFILES: ModelPerformanceProfile[] = [
       'Coupe-SUV roofline with contrasting roof color reducing visual and aerodynamic bulk',
       'Sculpted wheel arches channeling airflow around 18-inch alloy wheels',
       'Roof-edge spoiler integrated into the tailgate reducing rear-end turbulence'
+    ]
+  },
+  {
+    id: 'a4',
+    name: 'Audi A4',
+    tagline: 'The Progressive Executive Sedan',
+    category: 'Executive Sedan',
+    primaryEngineId: '2.0-tfsi-190',
+    availableEngineIds: ['2.0-tfsi-190'],
+    weightKg: 1495,
+    dragCoefficient: '0.27 Cd',
+    braking100to0DistMeters: 35.8,
+    corneringGForce: 0.88,
+    powerToWeightRatio: '127.1 PS/tonne',
+    sprint0to100: '7.7 seconds',
+    topSpeed: '237 km/h',
+    suspensionType: 'Five-Link Front & Rear Independent Suspension (MLB Evo Platform)',
+    aerodynamicHighlights: [
+      'Sculpted single-frame grille and flush door handles for a class-leading 0.27 Cd drag coefficient',
+      'Active radiator shutters closing at highway speed to reduce cooling drag',
+      'Integrated boot-lid spoiler generating stability-enhancing downforce above 130 km/h'
+    ]
+  },
+  {
+    id: 'a6',
+    name: 'Audi A6',
+    tagline: 'The Executive Autobahn Cruiser',
+    category: 'Executive Sedan',
+    primaryEngineId: '2.0-tfsi-249-quattro',
+    availableEngineIds: ['2.0-tfsi-249-quattro'],
+    weightKg: 1660,
+    dragCoefficient: '0.26 Cd',
+    braking100to0DistMeters: 34.6,
+    corneringGForce: 0.91,
+    powerToWeightRatio: '150.0 PS/tonne',
+    sprint0to100: '6.1 seconds',
+    topSpeed: '245 km/h',
+    suspensionType: 'Adaptive Air Suspension with quattro Permanent All-Wheel Drive',
+    aerodynamicHighlights: [
+      'Benchmark 0.26 Cd aerodynamic profile among executive quattro sedans',
+      'Adaptive air suspension automatically lowers ride height at speed to cut drag',
+      'Flush-fitted twin-display cabin architecture paired with a smooth, encapsulated underbody'
+    ]
+  },
+  {
+    id: 'q3',
+    name: 'Audi Q3',
+    tagline: 'The Compact Luxury SUV',
+    category: 'Compact SUV',
+    primaryEngineId: '2.0-tfsi-190',
+    availableEngineIds: ['2.0-tfsi-190'],
+    weightKg: 1560,
+    dragCoefficient: '0.32 Cd',
+    braking100to0DistMeters: 36.9,
+    corneringGForce: 0.85,
+    powerToWeightRatio: '121.8 PS/tonne',
+    sprint0to100: '8.2 seconds',
+    topSpeed: '210 km/h',
+    suspensionType: 'MacPherson Strut Front & Multi-Link Rear (MQB Evo Platform)',
+    aerodynamicHighlights: [
+      'Oversized single-frame octagonal grille shaped to manage frontal airflow',
+      'Sportback coupe-roofline variant trims drag further versus the standard SUV body',
+      'Roof-mounted spoiler with integrated third brake light reducing rear-end turbulence'
+    ]
+  },
+  {
+    id: 'q5',
+    name: 'Audi Q5',
+    tagline: 'The Benchmark Midsize Luxury SUV',
+    category: 'Midsize SUV',
+    primaryEngineId: '2.0-tfsi-249-quattro',
+    availableEngineIds: ['2.0-tfsi-249-quattro'],
+    weightKg: 1795,
+    dragCoefficient: '0.30 Cd',
+    braking100to0DistMeters: 36.2,
+    corneringGForce: 0.87,
+    powerToWeightRatio: '138.7 PS/tonne',
+    sprint0to100: '6.3 seconds',
+    topSpeed: '237 km/h',
+    suspensionType: 'Adaptive Air Suspension with quattro ultra All-Wheel Drive',
+    aerodynamicHighlights: [
+      'Sculpted bonnet and A-pillar geometry optimized for a 0.30 Cd drag coefficient',
+      'Active radiator grille shutters reducing drag at highway cruising speeds',
+      'Wheel arch aero-spoilers deflecting turbulence around 20-inch alloy wheels'
+    ]
+  },
+  {
+    id: 'q7',
+    name: 'Audi Q7',
+    tagline: 'The 7-Seater Flagship SUV',
+    category: 'Luxury 4x4 SUV',
+    primaryEngineId: '3.0-tfsi-v6-340',
+    availableEngineIds: ['3.0-tfsi-v6-340'],
+    weightKg: 2135,
+    dragCoefficient: '0.32 Cd',
+    braking100to0DistMeters: 37.6,
+    corneringGForce: 0.82,
+    powerToWeightRatio: '159.3 PS/tonne',
+    sprint0to100: '6.1 seconds',
+    topSpeed: '250 km/h (Electronically Governed)',
+    suspensionType: 'Adaptive Air Suspension with Off-Road Mode & quattro Permanent AWD',
+    aerodynamicHighlights: [
+      'Illuminated Audi rings and dynamic LED signature integrated into an aero-optimized fascia',
+      'Adjustable air suspension lowers automatically at speed to reduce frontal drag',
+      'Roof rails and wheel-arch claddings contoured to minimize crosswind sensitivity'
+    ]
+  },
+  {
+    id: 'q8',
+    name: 'Audi Q8',
+    tagline: 'The Coupe-SUV Halo Flagship',
+    category: 'Luxury 4x4 SUV',
+    primaryEngineId: '3.0-tfsi-v6-340',
+    availableEngineIds: ['3.0-tfsi-v6-340'],
+    weightKg: 2145,
+    dragCoefficient: '0.31 Cd',
+    braking100to0DistMeters: 37.0,
+    corneringGForce: 0.84,
+    powerToWeightRatio: '158.5 PS/tonne',
+    sprint0to100: '5.9 seconds',
+    topSpeed: '250 km/h (Electronically Governed)',
+    suspensionType: 'Adaptive Air Suspension with quattro Permanent All-Wheel Drive',
+    aerodynamicHighlights: [
+      'Coupe-SUV roofline shaving drag versus the boxier Q7 while sharing its platform',
+      'OLED full-width rear light strip integrated into a smooth, sculpted tailgate',
+      'Active air suspension continuously optimizes ride height for aerodynamic efficiency'
+    ]
+  },
+  {
+    id: 'rs5',
+    name: 'Audi RS5',
+    tagline: 'Audi Sport’s Hand-Built V6 Track Weapon',
+    category: 'High-Performance Sports Sedan',
+    primaryEngineId: '2.9-tfsi-v6-rs',
+    availableEngineIds: ['2.9-tfsi-v6-rs'],
+    weightKg: 1655,
+    dragCoefficient: '0.29 Cd with Functional Downforce',
+    braking100to0DistMeters: 32.6,
+    corneringGForce: 1.05,
+    powerToWeightRatio: '271.9 PS/tonne',
+    sprint0to100: '3.9 seconds',
+    topSpeed: '250 – 280 km/h (RS Dynamic Package)',
+    suspensionType: 'RS Sport Suspension Plus with Dynamic Ride Control & quattro Sport Differential',
+    aerodynamicHighlights: [
+      'Functional RS front apron with enlarged air intakes for engine and brake cooling',
+      'Gloss black rear diffuser and quad exhaust tips shaping high-speed rear airflow',
+      'Standard rear spoiler generating usable downforce above 150 km/h'
+    ]
+  },
+  {
+    id: 'rs-q8',
+    name: 'Audi RS Q8',
+    tagline: 'The Fastest, Most Powerful SUV Audi Has Ever Built',
+    category: 'High-Performance Luxury SUV',
+    primaryEngineId: '4.0-tfsi-v8-rs',
+    availableEngineIds: ['4.0-tfsi-v8-rs'],
+    weightKg: 2300,
+    dragCoefficient: '0.34 Cd',
+    braking100to0DistMeters: 33.8,
+    corneringGForce: 0.98,
+    powerToWeightRatio: '260.9 PS/tonne',
+    sprint0to100: '3.8 seconds',
+    topSpeed: '250 km/h (305 km/h with RS Dynamic Plus Package)',
+    suspensionType: 'RS Adaptive Air Suspension with Electromechanical Active Roll Stabilization',
+    aerodynamicHighlights: [
+      'Massive front air intakes feeding the twin-turbo V8’s intercoolers and RS brake package',
+      'Gloss black roof-edge spoiler and oval quad exhaust tips reducing rear-end lift',
+      'Electromechanical active anti-roll bars keep the body flat at speed, aiding high-speed stability'
     ]
   }
 ];
