@@ -5,7 +5,7 @@ export interface SkodaModel {
   name: string;
   badge: string;
   tagline: string;
-  bodyType: 'Compact SUV' | 'Premium Sedan' | 'Midsize SUV' | 'Luxury 4x4 SUV' | 'Executive Sedan' | 'Compact Sedan' | 'Hatchback';
+  bodyType: 'Compact SUV' | 'Premium Sedan' | 'Midsize SUV' | 'Luxury 4x4 SUV' | 'Executive Sedan' | 'Compact Sedan' | 'Hatchback' | 'Estate';
   startingPrice: string;
   startingExShowroom: number;
   priceRange: string;
@@ -156,6 +156,162 @@ export const ALL_SKODA_ENGINES: EngineSpec[] = [
       'Executive flagship powertrain powering the Superb and Octavia'
     ],
     description: 'The executive diesel powerhouse. Combines 400 Nm of relentless pulling power with silky gear shifts, high-speed acoustic isolation, and unmatched cross-continent cruising range.'
+  },
+  {
+    id: '1.8-tsi-160',
+    name: '1.8L TSI EA888 Turbo-Petrol',
+    badge: '1.8 TSI (4-Cylinder, 160 PS)',
+    fuelType: 'Petrol',
+    fuelPriceDefault: 102,
+    displacement: '1,798 cc',
+    cylinders: 4,
+    power: '160 PS (118 kW) @ 4,500–6,200 RPM',
+    powerHp: 160,
+    torque: '250 Nm @ 1,500–4,200 RPM',
+    torqueNm: 250,
+    transmissions: ['6-Speed Manual', '6-Speed DSG Automatic'],
+    acceleration: '0–100 km/h in 8.9–9.3s',
+    topSpeed: '203 km/h',
+    claimedMileage: '13.5 – 14.2 km/l',
+    realWorldCity: '8.5 – 10.0 km/l',
+    realWorldHighway: '13.0 – 15.5 km/l',
+    keyHighlights: [
+      'Powered the Škoda Laura and Yeti 4x4 as the enthusiast petrol pick of its era',
+      'EA888 turbo-petrol architecture with fully variable valve timing',
+      'Strong mid-range torque plateau from just 1,500 RPM',
+      'Renowned for smooth, refined power delivery versus contemporary diesels'
+    ],
+    description: 'A refined 4-cylinder turbo-petrol from the celebrated EA888 family, offering strong, linear performance and a smoother, quieter alternative to the common-rail diesels of its generation.'
+  },
+  {
+    id: '1.8-tsi-combi',
+    name: '1.8L Turbo-Petrol (Octavia Combi Era)',
+    badge: '1.8 Turbo (4-Cylinder, 150 PS)',
+    fuelType: 'Petrol',
+    fuelPriceDefault: 102,
+    displacement: '1,781 cc',
+    cylinders: 4,
+    power: '150 PS (110 kW) @ 4,000 RPM',
+    powerHp: 150,
+    torque: '210 Nm @ 1,750–4,600 RPM',
+    torqueNm: 210,
+    transmissions: ['5-Speed Manual'],
+    acceleration: '0–100 km/h in 9.5s',
+    topSpeed: '212 km/h',
+    claimedMileage: '12.5 – 13.5 km/l',
+    realWorldCity: '8.0 – 9.5 km/l',
+    realWorldHighway: '12.5 – 14.5 km/l',
+    keyHighlights: [
+      'Powered the original India-market Octavia Combi vRS estate',
+      'Classic 20-valve turbocharged inline-4 from the Volkswagen Group EA827 lineage',
+      'Broad, usable torque band ideal for estate-car cruising with a full load',
+      'A cult favorite among early Škoda India performance enthusiasts'
+    ],
+    description: 'The turbo-petrol heart of the original Octavia Combi vRS, offering brisk performance and a distinctive turbo growl that built an early enthusiast following for Škoda in India.'
+  },
+  {
+    id: '1.9-tdi-pd90',
+    name: '1.9L TDI PD Turbo-Diesel',
+    badge: '1.9 TDI (4-Cylinder, 90 PS)',
+    fuelType: 'Diesel',
+    fuelPriceDefault: 90,
+    displacement: '1,896 cc',
+    cylinders: 4,
+    power: '90 PS (66 kW) @ 4,000 RPM',
+    powerHp: 90,
+    torque: '210 Nm @ 1,900 RPM',
+    torqueNm: 210,
+    transmissions: ['5-Speed Manual'],
+    acceleration: '0–100 km/h in 13.5s',
+    topSpeed: '178 km/h',
+    claimedMileage: '17.5 – 18.5 km/l',
+    realWorldCity: '13.0 – 14.5 km/l',
+    realWorldHighway: '17.5 – 20.0 km/l',
+    keyHighlights: [
+      'Pump-Duse (PD) unit-injector diesel technology for high injection pressure',
+      'Base engine option for the India-market Octavia Combi estate',
+      'Renowned for reliability and long service intervals',
+      'Modest output prioritizes efficiency and low-end drivability'
+    ],
+    description: 'A dependable pump-duse diesel unit known across the Volkswagen Group for its longevity and frugal running costs, if modest in outright power.'
+  },
+  {
+    id: '1.9-tdi-pd105',
+    name: '1.9L TDI PD Turbo-Diesel',
+    badge: '1.9 TDI (4-Cylinder, 105 PS)',
+    fuelType: 'Diesel',
+    fuelPriceDefault: 90,
+    displacement: '1,896 cc',
+    cylinders: 4,
+    power: '105 PS (77 kW) @ 4,000 RPM',
+    powerHp: 105,
+    torque: '250 Nm @ 1,900 RPM',
+    torqueNm: 250,
+    transmissions: ['5-Speed Manual'],
+    acceleration: '0–100 km/h in 11.3s',
+    topSpeed: '185 km/h',
+    claimedMileage: '17.0 – 18.0 km/l',
+    realWorldCity: '12.5 – 14.0 km/l',
+    realWorldHighway: '17.0 – 19.5 km/l',
+    keyHighlights: [
+      'Base diesel option across the Škoda Laura sedan lineup',
+      'Pump-Duse (PD) unit-injector diesel technology',
+      'Strong low-end torque suited to Indian city and highway driving',
+      'One of the most trusted diesel engines of its generation'
+    ],
+    description: 'The workhorse diesel of the Laura range, prized for its robust torque delivery and long-term reliability across hundreds of thousands of kilometers.'
+  },
+  {
+    id: '2.0-tdi-140',
+    name: '2.0L TDI CR Turbo-Diesel',
+    badge: '2.0 TDI CR (4-Cylinder, 140 PS)',
+    fuelType: 'Diesel',
+    fuelPriceDefault: 90,
+    displacement: '1,968 cc',
+    cylinders: 4,
+    power: '140 PS (103 kW) @ 4,200 RPM',
+    powerHp: 140,
+    torque: '320 Nm @ 1,750–2,500 RPM',
+    torqueNm: 320,
+    transmissions: ['6-Speed Manual', '6-Speed DSG Automatic'],
+    acceleration: '0–100 km/h in 9.8s',
+    topSpeed: '198 km/h',
+    claimedMileage: '18.5 – 19.5 km/l',
+    realWorldCity: '13.0 – 14.5 km/l',
+    realWorldHighway: '18.0 – 21.0 km/l',
+    keyHighlights: [
+      'Powered the flagship Laura 2.0 TDI AT L&K and the Yeti 4x4 Elegance',
+      'Common-rail direct injection replacing the earlier pump-duse units',
+      'Strong 320 Nm torque plateau ideal for 4x4 towing and overtaking',
+      'Paired with Škoda’s proven 6-speed DSG automatic'
+    ],
+    description: 'The flagship common-rail diesel of its generation, offering a muscular torque band and refined cruising manners across both the Laura sedan and Yeti 4x4.'
+  },
+  {
+    id: '2.0-tdi-110',
+    name: '2.0L TDI CR Turbo-Diesel',
+    badge: '2.0 TDI CR (4-Cylinder, 110 PS)',
+    fuelType: 'Diesel',
+    fuelPriceDefault: 90,
+    displacement: '1,968 cc',
+    cylinders: 4,
+    power: '110 PS (81 kW) @ 4,200 RPM',
+    powerHp: 110,
+    torque: '250 Nm @ 1,500–2,500 RPM',
+    torqueNm: 250,
+    transmissions: ['5-Speed Manual', '6-Speed Manual'],
+    acceleration: '0–100 km/h in 11.8s',
+    topSpeed: '175 km/h',
+    claimedMileage: '19.5 – 20.5 km/l',
+    realWorldCity: '14.5 – 16.0 km/l',
+    realWorldHighway: '19.0 – 21.5 km/l',
+    keyHighlights: [
+      'Entry-level 4x2 diesel option across the Škoda Yeti Ambition and Elegance trims',
+      'High-pressure common-rail direct injection',
+      'ARAI-tested mileage of up to 17.7 km/l for the 4x4 variant',
+      'Favored for its low running costs among compact SUV buyers'
+    ],
+    description: 'The efficient entry-point diesel of the Yeti range, offering strong fuel economy and adequate everyday performance for front-wheel-drive city and highway use.'
   }
 ];
 
@@ -961,6 +1117,341 @@ export const SKODA_MODELS: SkodaModel[] = [
       { id: 'storm-blue-fab', name: 'Storm Blue', hex: '#1e3a5f', availableOn: ['Ambition'] },
       { id: 'anthracite-grey-fab', name: 'Anthracite Grey', hex: '#3f3f46', availableOn: ['Active', 'Ambition', 'Monte Carlo'] },
       { id: 'candy-black-fab', name: 'Candy Black', hex: '#18181b', availableOn: ['Monte Carlo'] }
+    ]
+  },
+  {
+    id: 'octavia-combi',
+    name: 'Škoda Octavia Combi',
+    badge: 'Enthusiast Hall of Fame Estate',
+    tagline: 'The premium European estate that brought sedan luxury with hatchback-beating cargo versatility to India (2005–2010)',
+    bodyType: 'Estate',
+    startingPrice: 'Hall of Fame Legend (2005–2010)',
+    startingExShowroom: 1350000,
+    priceRange: '₹13.50 – ₹17.20 Lakh (Final India Price List)',
+    rating: 'Pre-NCAP India Era (Not Officially Crash-Tested)',
+    safetyStars: 0,
+    engines: ['1.8 Turbo Petrol (150 PS / 210 Nm)', '1.9L TDI PD Diesel (90 PS / 210 Nm)'],
+    keyHighlights: [
+      'India’s first genuine premium estate (station wagon), combining sedan comfort with hatchback practicality',
+      '640-litre boot space expandable to a cavernous 1,512 litres with rear seats folded',
+      'Available in both the value-focused L&K trim and the sportier vRS turbo-petrol estate',
+      'Xenon headlamps with power washers and cruise control were segment-first luxuries at launch',
+      'Built on the second-generation Octavia PQ34 platform shared with the Laura sedan',
+      'A cult favorite among Indian enthusiasts for its rare turbo-petrol estate body style'
+    ],
+    dimensions: {
+      length: '4,572 mm',
+      width: '1,769 mm',
+      height: '1,468 mm',
+      wheelbase: '2,578 mm',
+      groundClearance: '155 mm',
+      bootSpace: '640 Litres (Expandable to 1,512 Litres)',
+      fuelTank: '60 Litres'
+    },
+    variants: [
+      {
+        id: 'octavia-combi-lk',
+        name: 'Octavia Combi L&K',
+        tagline: 'The luxury-focused diesel estate for discerning long-distance families',
+        priceRange: '₹13.50 – ₹15.20 Lakh',
+        baseExShowroom: 1350000,
+        engineOptions: ['1.9L TDI PD Diesel'],
+        transmissions: ['5-Speed Manual'],
+        isPopular: true,
+        keyFeatures: [
+          'Xenon headlamps with power washers',
+          'Cruise control and dual-zone climate control',
+          'Leather seat upholstery',
+          'Wood-finish dashboard inserts',
+          'Six airbags across the range-topping trim'
+        ],
+        exteriorHighlights: ['16-inch alloy wheels', 'Chrome window beltline', 'Roof rails'],
+        interiorHighlights: ['Beige leather cabin', 'Wood-trim dashboard', 'Rear center armrest with cup holders'],
+        badgeColor: 'bg-amber-600 text-white'
+      },
+      {
+        id: 'octavia-combi-vrs',
+        name: 'Octavia Combi vRS',
+        tagline: 'The rare turbo-petrol performance estate for enthusiasts who need cargo space',
+        priceRange: '₹16.50 – ₹17.20 Lakh',
+        baseExShowroom: 1650000,
+        engineOptions: ['1.8 Turbo Petrol'],
+        transmissions: ['5-Speed Manual'],
+        isFlagship: true,
+        keyFeatures: [
+          '1.8 Turbo petrol delivering brisk, linear performance',
+          'Sports-tuned suspension for confident estate-car handling',
+          'Twin exhaust tips and vRS badging',
+          'Sports front seats with red contrast stitching',
+          'Rear roof spoiler integrated into the tailgate'
+        ],
+        exteriorHighlights: ['vRS front bumper and grille', 'Twin chrome exhaust tips', 'Sports alloy wheels'],
+        interiorHighlights: ['Black sports upholstery with red stitching', 'vRS-branded sports steering wheel', 'Aluminum pedal covers'],
+        badgeColor: 'bg-red-700 text-white'
+      }
+    ],
+    colors: [
+      { id: 'candy-white-combi', name: 'Candy White', hex: '#f8fafc', availableOn: ['L&K', 'vRS'] },
+      { id: 'flash-red-combi', name: 'Flash Red', hex: '#b91c1c', availableOn: ['vRS'] },
+      { id: 'brilliant-silver-combi', name: 'Brilliant Silver', hex: '#cbd5e1', availableOn: ['L&K', 'vRS'] },
+      { id: 'deep-black-combi', name: 'Deep Black Pearl', hex: '#0f172a', availableOn: ['L&K', 'vRS'] },
+      { id: 'racing-blue-combi', name: 'Racing Blue', hex: '#1e3a8a', availableOn: ['vRS'] }
+    ]
+  },
+  {
+    id: 'laura',
+    name: 'Škoda Laura',
+    badge: 'Enthusiast Hall of Fame Sedan',
+    tagline: 'The India-market name for the second-generation Octavia, defining premium sedan value with class-leading boot space (2010–2013)',
+    bodyType: 'Executive Sedan',
+    startingPrice: 'Hall of Fame Legend (2010–2013)',
+    startingExShowroom: 1258000,
+    priceRange: '₹12.58 – ₹19.43 Lakh (Final India Price List)',
+    rating: '4-Star Euro NCAP (Global Reference Platform)',
+    safetyStars: 4,
+    engines: ['1.8 TSI Petrol (160 PS / 250 Nm)', '1.9L TDI PD Diesel (105 PS / 250 Nm)', '2.0L TDI CR Diesel (140 PS / 320 Nm)'],
+    keyHighlights: [
+      'India-specific rebadge of the internationally acclaimed second-generation Octavia',
+      'Renowned for a cavernous 560-litre boot, among the largest in the executive sedan class',
+      'Available with three distinct engines spanning value diesel to enthusiast turbo-petrol',
+      'L&K 2.0 TDI AT flagship paired Škoda’s first 6-speed DSG automatic with 320 Nm of torque',
+      'Renamed back to Octavia in 2013 when Škoda unified its global model naming strategy',
+      'Remembered as one of the most robust and reliable sedans ever sold in India'
+    ],
+    dimensions: {
+      length: '4,572 mm',
+      width: '1,769 mm',
+      height: '1,462 mm',
+      wheelbase: '2,578 mm',
+      groundClearance: '155 mm',
+      bootSpace: '560 Litres',
+      fuelTank: '55 Litres'
+    },
+    variants: [
+      {
+        id: 'laura-ambiente',
+        name: 'Laura Ambiente',
+        tagline: 'The value-focused entry pairing turbo-petrol thrills with essential comfort',
+        priceRange: '₹12.58 – ₹13.77 Lakh',
+        baseExShowroom: 1258000,
+        engineOptions: ['1.8 TSI Petrol'],
+        transmissions: ['6-Speed Manual'],
+        keyFeatures: [
+          'Dual front airbags and ABS with EBD',
+          '1.8 TSI turbo-petrol with 160 PS output',
+          'Power steering, power windows, and central locking',
+          '2-DIN audio system with USB and AUX input',
+          'Height-adjustable driver seat'
+        ],
+        exteriorHighlights: ['15-inch alloy wheels', 'Body-colored bumpers', 'Halogen headlamps'],
+        interiorHighlights: ['Black fabric upholstery', 'Manual air conditioning', 'Tilt-adjustable steering'],
+        badgeColor: 'bg-zinc-700 text-zinc-100'
+      },
+      {
+        id: 'laura-ambition',
+        name: 'Laura Ambition',
+        tagline: 'The balanced mid-range trim with the dependable 1.9 TDI diesel option',
+        priceRange: '₹14.20 – ₹16.67 Lakh',
+        baseExShowroom: 1420000,
+        engineOptions: ['1.8 TSI Petrol', '1.9L TDI PD Diesel'],
+        transmissions: ['6-Speed Manual', '5-Speed Manual'],
+        isPopular: true,
+        keyFeatures: [
+          'Robust 1.9 TDI diesel with strong low-end torque',
+          'Touchscreen-ready audio with Bluetooth telephony',
+          'Alloy wheels with silver finish',
+          'Cruise control and steering-mounted controls',
+          'Climatronic automatic air conditioning'
+        ],
+        exteriorHighlights: ['16-inch alloy wheels', 'Chrome window beltline', 'Fog lamps'],
+        interiorHighlights: ['Beige and black dual-tone cabin', 'Leather-wrapped steering wheel', 'Rear center armrest'],
+        badgeColor: 'bg-blue-600 text-white'
+      },
+      {
+        id: 'laura-lk-at',
+        name: 'Laura L&K 2.0 TDI AT',
+        tagline: 'The flagship trim pairing the muscular 2.0 TDI CR diesel with Škoda’s first DSG automatic',
+        priceRange: '₹18.36 – ₹19.43 Lakh',
+        baseExShowroom: 1836000,
+        engineOptions: ['2.0L TDI CR Diesel'],
+        transmissions: ['6-Speed DSG Automatic'],
+        isFlagship: true,
+        keyFeatures: [
+          '140 PS / 320 Nm 2.0 TDI CR diesel with 6-speed DSG',
+          'Leather seat upholstery with 8-way power driver seat',
+          'Dual-zone Climatronic automatic climate control',
+          'Rain-sensing wipers and auto-dimming interior mirror',
+          'Premium 8-speaker sound system'
+        ],
+        exteriorHighlights: ['17-inch alloy wheels', 'Chrome exhaust tip garnish', 'Full LED tail lamps'],
+        interiorHighlights: ['Beige leather upholstery', 'Wood-finish dashboard inserts', 'Illuminated vanity mirrors'],
+        badgeColor: 'bg-amber-600 text-white'
+      }
+    ],
+    colors: [
+      { id: 'candy-white-laura', name: 'Candy White', hex: '#f8fafc', availableOn: ['Ambiente', 'Ambition', 'L&K'] },
+      { id: 'flash-red-laura', name: 'Flash Red', hex: '#b91c1c', availableOn: ['Ambition', 'L&K'] },
+      { id: 'brilliant-silver-laura', name: 'Brilliant Silver', hex: '#cbd5e1', availableOn: ['Ambiente', 'Ambition'] },
+      { id: 'carbon-steel-laura', name: 'Carbon Steel Grey', hex: '#4b5563', availableOn: ['Ambiente', 'Ambition', 'L&K'] },
+      { id: 'deep-black-laura', name: 'Deep Black Pearl', hex: '#0f172a', availableOn: ['L&K'] }
+    ]
+  },
+  {
+    id: 'yeti',
+    name: 'Škoda Yeti',
+    badge: 'Enthusiast Hall of Fame Compact SUV',
+    tagline: 'The go-anywhere compact SUV that introduced genuine Haldex 4x4 capability to Škoda’s Indian lineup (2010–2017)',
+    bodyType: 'Compact SUV',
+    startingPrice: 'Hall of Fame Legend (2010–2017)',
+    startingExShowroom: 1899000,
+    priceRange: '₹18.99 – ₹24.28 Lakh (Final India Price List)',
+    rating: '4-Star Euro NCAP (Global Reference Platform)',
+    safetyStars: 4,
+    engines: ['2.0L TDI CR Diesel 4x2 (110 PS / 250 Nm)', '2.0L TDI CR Diesel 4x4 (140 PS / 320 Nm)', '1.8 TSI Petrol 4x4 (160 PS / 250 Nm)'],
+    keyHighlights: [
+      'Škoda’s first true compact SUV in India, blending boxy practicality with genuine off-road ability',
+      'Haldex-based 4x4 system with an electronically controlled multi-plate clutch for all-weather traction',
+      'Distinctive upright, boxy design maximized cabin space and outward visibility',
+      'Offered in both efficient 4x2 diesel and capable 4x4 diesel/petrol configurations',
+      'Later facelift (2013) brought a revised front fascia and 1.8 TSI petrol 4x4 option',
+      'A beloved cult favorite among Indian off-road and adventure-touring enthusiasts'
+    ],
+    dimensions: {
+      length: '4,222 mm',
+      width: '1,793 mm',
+      height: '1,691 mm',
+      wheelbase: '2,578 mm',
+      groundClearance: '180 mm',
+      bootSpace: '405 Litres (Expandable to 1,760 Litres)',
+      fuelTank: '60 Litres'
+    },
+    variants: [
+      {
+        id: 'yeti-ambition',
+        name: 'Yeti Ambition 4x2',
+        tagline: 'The efficient front-wheel-drive entry with essential SUV capability',
+        priceRange: '₹18.99 – ₹20.50 Lakh',
+        baseExShowroom: 1899000,
+        engineOptions: ['2.0L TDI CR Diesel 4x2'],
+        transmissions: ['5-Speed Manual'],
+        keyFeatures: [
+          'Dual front and side airbags',
+          '2.0 TDI CR diesel with 110 PS output',
+          'Height-adjustable driver seat with lumbar support',
+          '180 mm ground clearance for confident city and highway use',
+          'Roof rails for additional cargo capacity'
+        ],
+        exteriorHighlights: ['16-inch alloy wheels', 'Body-colored roof rails', 'Halogen fog lamps'],
+        interiorHighlights: ['Black fabric upholstery', 'Manual air conditioning', 'Multi-function steering wheel'],
+        badgeColor: 'bg-zinc-700 text-zinc-100'
+      },
+      {
+        id: 'yeti-elegance-4x4',
+        name: 'Yeti Elegance 4x4',
+        tagline: 'The flagship diesel 4x4 for genuine all-weather and light off-road capability',
+        priceRange: '₹22.50 – ₹24.28 Lakh',
+        baseExShowroom: 2250000,
+        engineOptions: ['2.0L TDI CR Diesel 4x4'],
+        transmissions: ['6-Speed Manual', '6-Speed DSG Automatic'],
+        isFlagship: true,
+        keyFeatures: [
+          'Haldex electronically controlled 4x4 system',
+          '140 PS / 320 Nm 2.0 TDI CR diesel',
+          'Leather seat upholstery with heated front seats',
+          'Panoramic sunroof',
+          'Off-Road driving mode with hill-descent assist'
+        ],
+        exteriorHighlights: ['17-inch alloy wheels', 'Silver skid plates front and rear', 'Roof rails with cross bars'],
+        interiorHighlights: ['Beige leather cabin', 'Heated front seats', 'Rear parking camera display'],
+        badgeColor: 'bg-amber-600 text-white'
+      },
+      {
+        id: 'yeti-monte-carlo-4x4',
+        name: 'Yeti Monte Carlo 4x4',
+        tagline: 'The sportier turbo-petrol 4x4 with blacked-out styling for enthusiast buyers',
+        priceRange: '₹23.50 – ₹24.28 Lakh',
+        baseExShowroom: 2350000,
+        engineOptions: ['1.8 TSI Petrol 4x4'],
+        transmissions: ['6-Speed Manual'],
+        isPopular: true,
+        keyFeatures: [
+          '1.8 TSI turbo-petrol with 160 PS and Haldex 4x4',
+          'Matte-black roof and bonnet wrap',
+          'Black diamond-cut alloy wheels',
+          'Sports front seats with red contrast stitching',
+          'Monte Carlo branded scuff plates'
+        ],
+        exteriorHighlights: ['Matte-black roof', 'Red brake calipers', 'Black skid plates'],
+        interiorHighlights: ['Black upholstery with red stitching', 'Monte Carlo sports steering wheel', 'Piano black trim'],
+        badgeColor: 'bg-red-700 text-white'
+      }
+    ],
+    colors: [
+      { id: 'candy-white-yeti', name: 'Candy White', hex: '#f8fafc', availableOn: ['Ambition', 'Elegance', 'Monte Carlo'] },
+      { id: 'sprint-yellow-yeti', name: 'Sprint Yellow', hex: '#eab308', availableOn: ['Elegance', 'Monte Carlo'] },
+      { id: 'flash-red-yeti', name: 'Flash Red', hex: '#b91c1c', availableOn: ['Elegance', 'Monte Carlo'] },
+      { id: 'carbon-steel-yeti', name: 'Carbon Steel Grey', hex: '#4b5563', availableOn: ['Ambition', 'Elegance'] },
+      { id: 'deep-black-yeti', name: 'Deep Black Pearl', hex: '#0f172a', availableOn: ['Monte Carlo'] }
+    ]
+  },
+  {
+    id: 'karoq',
+    name: 'Škoda Karoq',
+    badge: 'CBU Import Flagship SUV',
+    tagline: 'The refined European midsize SUV brought to India via the CBU route as a premium alternative to the locally-built Kushaq (2020–2022)',
+    bodyType: 'Midsize SUV',
+    startingPrice: '₹24.99 Lakh (CBU, 2020–2022)',
+    startingExShowroom: 2499000,
+    priceRange: '₹24.99 Lakh (Single Fully-Loaded Trim)',
+    rating: '5-Star Euro NCAP',
+    safetyStars: 5,
+    engines: ['1.5L TSI EVO Petrol (150 PS / 250 Nm)'],
+    keyHighlights: [
+      'Imported to India as a fully-built CBU unit, commanding a premium over locally-assembled rivals',
+      'Built on the international MQB platform shared with the global Volkswagen Tiguan',
+      'Segment-first virtual cockpit digital instrument cluster at launch',
+      '9 airbags and a comprehensive electronic safety suite as standard',
+      'Positioned as a premium alternative for buyers seeking full European engineering',
+      'Discontinued in 2022 as Škoda consolidated its India SUV lineup around the Kushaq and Kodiaq'
+    ],
+    dimensions: {
+      length: '4,382 mm',
+      width: '1,841 mm',
+      height: '1,603 mm',
+      wheelbase: '2,638 mm',
+      groundClearance: '182 mm',
+      bootSpace: '521 Litres',
+      fuelTank: '50 Litres'
+    },
+    variants: [
+      {
+        id: 'karoq-style',
+        name: 'Karoq Style',
+        tagline: 'The single, fully-loaded CBU trim offering complete European luxury and safety',
+        priceRange: '₹24.99 Lakh',
+        baseExShowroom: 2499000,
+        engineOptions: ['1.5L TSI EVO Petrol'],
+        transmissions: ['7-Speed DSG Automatic'],
+        isFlagship: true,
+        isPopular: true,
+        keyFeatures: [
+          '10.25-inch Virtual Cockpit digital instrument cluster',
+          '8-inch touchscreen infotainment with SmartLink connectivity',
+          '9 airbags and Electronic Stability Control',
+          'Dual-zone Climatronic automatic climate control',
+          '12-way electronically adjustable driver seat with memory function'
+        ],
+        exteriorHighlights: ['18-inch alloy wheels', 'LED matrix headlamps', 'Panoramic sunroof'],
+        interiorHighlights: ['Ambient interior lighting', 'Leatherette upholstery', 'Wireless smartphone charging'],
+        badgeColor: 'bg-emerald-600 text-white'
+      }
+    ],
+    colors: [
+      { id: 'candy-white-karoq', name: 'Candy White', hex: '#f8fafc', availableOn: ['Style'] },
+      { id: 'lava-blue-karoq', name: 'Lava Blue Metallic', hex: '#17365d', availableOn: ['Style'] },
+      { id: 'magic-black-karoq', name: 'Magic Black Metallic', hex: '#111827', availableOn: ['Style'] },
+      { id: 'brilliant-silver-karoq', name: 'Brilliant Silver', hex: '#cbd5e1', availableOn: ['Style'] },
+      { id: 'race-blue-karoq', name: 'Race Blue Metallic', hex: '#1d4ed8', availableOn: ['Style'] }
     ]
   }
 ];

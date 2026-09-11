@@ -159,6 +159,110 @@ export const ALL_VW_ENGINES: EngineSpec[] = [
       'Powered the legendary Volkswagen Passat and Jetta sedans in India'
     ],
     description: 'The golden era of German diesel engineering in India. Revered for its mountain-moving low-end grunt, vault-like highway stability, and peerless 20+ km/l economy.'
+  },
+  {
+    id: '1.4-tsi-beetle',
+    name: '1.4L TSI Turbo-Petrol (EA211)',
+    badge: '1.4 TSI (4-Cylinder, 150 PS)',
+    fuelType: 'Petrol',
+    fuelPriceDefault: 102,
+    displacement: '1,395 cc',
+    cylinders: 4,
+    power: '150 PS (110 kW) @ 5,000–6,000 RPM',
+    powerHp: 150,
+    torque: '250 Nm @ 1,500–3,500 RPM',
+    torqueNm: 250,
+    transmissions: ['7-Speed DSG (Dual-Clutch)'],
+    acceleration: '0–100 km/h in 8.4s',
+    topSpeed: '204 km/h',
+    claimedMileage: '17.2 – 17.7 km/l',
+    realWorldCity: '10.5 – 12.0 km/l',
+    realWorldHighway: '16.0 – 18.5 km/l',
+    keyHighlights: [
+      'Exclusive CBU import engine for the third-generation Volkswagen Beetle in India',
+      '4-cylinder EA211 turbo-petrol with fully variable valve timing',
+      'Paired exclusively with a 7-speed DSG dual-clutch automatic',
+      'Delivers spirited performance befitting the Beetle’s sporty coupe character'
+    ],
+    description: 'A punchy, refined turbo-petrol four-cylinder that gave the reborn Beetle genuine sporting credibility alongside its retro-modern design.'
+  },
+  {
+    id: '3.0-tdi-v6',
+    name: '3.0L TDI V6 Turbo-Diesel',
+    badge: '3.0 TDI V6 (245 PS)',
+    fuelType: 'Diesel',
+    fuelPriceDefault: 90,
+    displacement: '2,967 cc',
+    cylinders: 6,
+    power: '245 PS (180 kW) @ 3,800–4,400 RPM',
+    powerHp: 245,
+    torque: '550 Nm @ 1,750–2,750 RPM',
+    torqueNm: 550,
+    transmissions: ['8-Speed Automatic Torque Converter (Tiptronic)'],
+    acceleration: '0–100 km/h in 7.8–8.8s',
+    topSpeed: '224 – 234 km/h',
+    claimedMileage: '12.0 – 12.5 km/l',
+    realWorldCity: '7.5 – 9.0 km/l',
+    realWorldHighway: '11.5 – 14.0 km/l',
+    keyHighlights: [
+      'Flagship V6 diesel shared across the Volkswagen Touareg SUV and Phaeton luxury sedan',
+      'Massive 550 Nm torque plateau for effortless high-speed cruising and towing',
+      '4MOTION permanent all-wheel drive standard on the Touareg',
+      'Renowned for silent, refined operation befitting flagship luxury vehicles'
+    ],
+    description: 'Volkswagen’s flagship diesel V6, combining commanding low-end torque with hushed refinement — the powerplant of choice for the brand’s most luxurious SUV and sedan.'
+  },
+  {
+    id: '1.5-tdi',
+    name: '1.5L TDI Turbo-Diesel',
+    badge: '1.5 TDI (4-Cylinder, 110 PS)',
+    fuelType: 'Diesel',
+    fuelPriceDefault: 90,
+    displacement: '1,498 cc',
+    cylinders: 4,
+    power: '110 PS (81 kW) @ 4,000 RPM',
+    powerHp: 110,
+    torque: '250 Nm @ 1,500–2,500 RPM',
+    torqueNm: 250,
+    transmissions: ['5-Speed Manual', '7-Speed DSG (Dual-Clutch)'],
+    acceleration: '0–100 km/h in 10.7s',
+    topSpeed: '182 km/h',
+    claimedMileage: '20.0 – 21.7 km/l',
+    realWorldCity: '15.0 – 17.0 km/l',
+    realWorldHighway: '19.5 – 22.5 km/l',
+    keyHighlights: [
+      'Shared diesel engine across the Vento sedan and Ameo compact sedan',
+      'Common-rail direct injection with a compact 4-cylinder layout',
+      'Among the most fuel-efficient diesels ever sold by Volkswagen in India',
+      'Available with Volkswagen’s smooth 7-speed DSG dual-clutch automatic'
+    ],
+    description: 'A frugal, dependable diesel that powered two generations of Volkswagen’s compact sedans in India, prized for its exceptional real-world fuel economy.'
+  },
+  {
+    id: '1.2-mpi-75',
+    name: '1.2L MPI Naturally Aspirated Petrol',
+    badge: '1.2 MPI (3-Cylinder, 75 PS)',
+    fuelType: 'Petrol',
+    fuelPriceDefault: 102,
+    displacement: '1,198 cc',
+    cylinders: 3,
+    power: '75 PS (55 kW) @ 5,400 RPM',
+    powerHp: 75,
+    torque: '110 Nm @ 3,750 RPM',
+    torqueNm: 110,
+    transmissions: ['5-Speed Manual'],
+    acceleration: '0–100 km/h in 16.5s',
+    topSpeed: '160 km/h',
+    claimedMileage: '18.0 km/l',
+    realWorldCity: '12.5 – 14.5 km/l',
+    realWorldHighway: '17.5 – 19.5 km/l',
+    keyHighlights: [
+      'Entry-level naturally aspirated engine for the sub-4-metre Ameo compact sedan',
+      'Simple, low-maintenance 3-cylinder architecture with no turbocharger',
+      'Prioritizes affordability and low running costs over outright performance',
+      'Shared with the international Volkswagen Polo/Vento small-car range'
+    ],
+    description: 'A simple, unstressed naturally aspirated 3-cylinder that kept the entry-level Ameo accessible and easy to maintain, if modest in outright pace.'
   }
 ];
 
@@ -930,6 +1034,459 @@ export const VW_MODELS: CarModel[] = [
       { id: 'deep-black-passat', name: 'Deep Black Pearl', hex: '#0f172a', availableOn: ['passat-highline', 'passat-highline-plus'] },
       { id: 'toffee-brown-passat', name: 'Toffee Brown Metallic', hex: '#5b3a29', availableOn: ['passat-highline-plus'] },
       { id: 'night-blue-passat', name: 'Night Blue Metallic', hex: '#1b263b', availableOn: ['passat-highline', 'passat-highline-plus'] }
+    ]
+  },
+  {
+    id: 'beetle',
+    name: 'Volkswagen Beetle',
+    badge: 'CBU Import Icon',
+    tagline: 'The reborn cultural icon that brought retro-modern coupe styling to India via the CBU import route (2009–2019)',
+    bodyType: 'Hatchback',
+    startingPrice: 'CBU Import Legend (2009–2019)',
+    startingExShowroom: 2200000,
+    priceRange: '₹22.00 – ₹28.73 Lakh (Final India Price List)',
+    rating: '5-Star Euro NCAP (Global Reference Platform)',
+    safetyStars: 5,
+    engines: ['1.4L TSI Turbo-Petrol (150 PS / 250 Nm)'],
+    keyHighlights: [
+      'India’s only genuine retro-modern 2-door coupe, imported as a fully-built CBU unit',
+      'Third-generation "New Beetle" design paid tribute to the original 1938 Type 1 silhouette',
+      '1.4 TSI turbo-petrol exclusively paired with a smooth 7-speed DSG automatic',
+      'Signature dashboard-top "flower vase" styling touch carried from the original air-cooled Beetle',
+      'A low-volume halo model that showcased Volkswagen’s design heritage in the Indian market',
+      'Discontinued globally in 2019, ending 81 years of the Beetle nameplate'
+    ],
+    dimensions: {
+      length: '4,278 mm',
+      width: '1,808 mm',
+      height: '1,486 mm',
+      wheelbase: '2,537 mm',
+      groundClearance: '135 mm',
+      bootSpace: '310 Litres',
+      fuelTank: '55 Litres'
+    },
+    variants: [
+      {
+        id: 'beetle-cbu',
+        name: 'Beetle 1.4 TSI',
+        tagline: 'The single, fully-loaded CBU trim bringing retro coupe styling to Indian roads',
+        priceRange: '₹28.73 Lakh',
+        baseExShowroom: 2873000,
+        engineOptions: ['1.4L TSI Turbo-Petrol'],
+        transmissions: ['7-Speed DSG (Dual-Clutch)'],
+        isFlagship: true,
+        isPopular: true,
+        keyFeatures: [
+          'Climatronic dual-zone automatic climate control',
+          'Fender premium sound system',
+          'Cruise control with multi-function leather steering wheel',
+          'Rain-sensing wipers and auto headlamps',
+          'Six airbags and ESC as standard'
+        ],
+        exteriorHighlights: ['17-inch alloy wheels', 'Panoramic sunroof', 'LED daytime running lights'],
+        interiorHighlights: ['Dashboard-top flower vase design accent', 'Leatherette upholstery', 'Body-colored dashboard trim'],
+        badgeColor: 'bg-orange-600 text-white'
+      }
+    ],
+    colors: [
+      { id: 'habanero-orange-beetle', name: 'Habanero Orange', hex: '#c2410c', availableOn: ['1.4 TSI'] },
+      { id: 'oryx-white-beetle', name: 'Oryx White', hex: '#f8fafc', availableOn: ['1.4 TSI'] },
+      { id: 'tornado-red-beetle', name: 'Tornado Red', hex: '#b91c1c', availableOn: ['1.4 TSI'] },
+      { id: 'blue-silk-beetle', name: 'Blue Silk Metallic', hex: '#1d4ed8', availableOn: ['1.4 TSI'] }
+    ]
+  },
+  {
+    id: 'touareg',
+    name: 'Volkswagen Touareg',
+    badge: 'Flagship Luxury 4x4 SUV',
+    tagline: 'Volkswagen’s range-topping luxury SUV, engineered with V6 diesel muscle and permanent 4MOTION all-wheel drive (2011–2020)',
+    bodyType: 'Luxury 4x4 SUV',
+    startingPrice: 'CBU Import Flagship (2011–2020)',
+    startingExShowroom: 5850000,
+    priceRange: '₹58.50 – ₹70.00 Lakh (Final India Price List)',
+    rating: '5-Star Euro NCAP',
+    safetyStars: 5,
+    engines: ['3.0L TDI V6 Diesel (245 PS / 550 Nm)'],
+    keyHighlights: [
+      'Volkswagen India’s flagship luxury SUV, positioned above the Tiguan for maximum capability',
+      'Permanent 4MOTION all-wheel drive with a genuine low-range transfer case option globally',
+      '4-corner adaptive air suspension with electronic damping control',
+      'Massive 550 Nm torque plateau for effortless towing and highway overtaking',
+      'Shares its V6 TDI powertrain lineage with sibling luxury SUVs across the Volkswagen Group',
+      'Imported fully-built (CBU) throughout its entire run in India'
+    ],
+    dimensions: {
+      length: '4,795 mm',
+      width: '1,940 mm',
+      height: '1,709 mm',
+      wheelbase: '2,893 mm',
+      groundClearance: '190 – 300 mm (Adjustable Air Suspension)',
+      bootSpace: '580 Litres (Expandable to 1,642 Litres)',
+      fuelTank: '85 Litres'
+    },
+    variants: [
+      {
+        id: 'touareg-comfortline',
+        name: 'Touareg Comfortline',
+        tagline: 'The essential flagship SUV trim with complete luxury and off-road equipment',
+        priceRange: '₹58.50 – ₹62.00 Lakh',
+        baseExShowroom: 5850000,
+        engineOptions: ['3.0L TDI V6 Diesel'],
+        transmissions: ['8-Speed Automatic Torque Converter (Tiptronic)'],
+        isPopular: true,
+        keyFeatures: [
+          '4-corner adaptive air suspension',
+          'Park Distance Control with 360-degree camera',
+          'Electrically adjustable and heated front seats',
+          'Bi-Xenon headlamps with cornering function',
+          'Hill descent control and off-road driving mode'
+        ],
+        exteriorHighlights: ['19-inch alloy wheels', 'Chrome-accented skid plates', 'Panoramic sunroof'],
+        interiorHighlights: ['Leather upholstery', 'Wood-finish dashboard inserts', 'Dual-zone Climatronic climate control'],
+        badgeColor: 'bg-blue-800 text-blue-100'
+      },
+      {
+        id: 'touareg-highline',
+        name: 'Touareg Highline',
+        tagline: 'The range-topping flagship with the complete luxury and driver-assistance suite',
+        priceRange: '₹66.00 – ₹70.00 Lakh',
+        baseExShowroom: 6600000,
+        engineOptions: ['3.0L TDI V6 Diesel'],
+        transmissions: ['8-Speed Automatic Torque Converter (Tiptronic)'],
+        isFlagship: true,
+        keyFeatures: [
+          'Adaptive Cruise Control with Front Assist',
+          'Premium Dynaudio surround sound system',
+          'Ventilated and massage-function front seats',
+          'Full LED matrix headlamps with dynamic cornering light',
+          '360-degree Area View camera with Park Assist'
+        ],
+        exteriorHighlights: ['20-inch alloy wheels', 'Full LED matrix headlamps', 'Illuminated chrome door sills'],
+        interiorHighlights: ['Nappa leather upholstery', 'Piano black decorative inlays', 'Ambient interior lighting'],
+        badgeColor: 'bg-amber-600 text-white'
+      }
+    ],
+    colors: [
+      { id: 'candy-white-touareg', name: 'Candy White', hex: '#f8fafc', availableOn: ['Comfortline', 'Highline'] },
+      { id: 'deep-black-touareg', name: 'Deep Black Pearl', hex: '#0f172a', availableOn: ['Comfortline', 'Highline'] },
+      { id: 'reflex-silver-touareg', name: 'Reflex Silver', hex: '#cbd5e1', availableOn: ['Comfortline', 'Highline'] },
+      { id: 'night-blue-touareg', name: 'Night Blue Metallic', hex: '#1b263b', availableOn: ['Highline'] },
+      { id: 'toffee-brown-touareg', name: 'Toffee Brown Metallic', hex: '#5b3a29', availableOn: ['Highline'] }
+    ]
+  },
+  {
+    id: 'phaeton',
+    name: 'Volkswagen Phaeton',
+    badge: 'Ultra-Luxury Flagship Sedan',
+    tagline: 'Volkswagen’s audacious presidential flagship sedan, engineered to out-luxury Mercedes and Audi at their own game (2010–2016)',
+    bodyType: 'Executive Sedan',
+    startingPrice: 'CBU Import Flagship (2010–2016)',
+    startingExShowroom: 6500000,
+    priceRange: '₹65.00 – ₹77.16 Lakh (Final India Price List)',
+    rating: '5-Star Euro NCAP',
+    safetyStars: 5,
+    engines: ['3.0L TDI V6 Diesel (245 PS / 550 Nm)'],
+    keyHighlights: [
+      'Volkswagen’s most ambitious project: a hand-built ultra-luxury sedan to rival S-Class and A8',
+      'Assembled at the glass-walled "Transparent Factory" (Gläserne Manufaktur) in Dresden, Germany',
+      '4-corner air suspension and dual-layer acoustic glass for limousine-grade silence',
+      'Long-wheelbase cabin offered presidential rear legroom and individual reclining rear seats',
+      'One of the only Volkswagens ever engineered with true W12-class chassis and NVH standards',
+      'A commercial rarity in India, discontinued globally in 2016 due to limited demand'
+    ],
+    dimensions: {
+      length: '5,059 mm (Long Wheelbase)',
+      width: '1,903 mm',
+      height: '1,450 mm',
+      wheelbase: '3,002 mm',
+      groundClearance: '130 mm',
+      bootSpace: '500 Litres',
+      fuelTank: '100 Litres'
+    },
+    variants: [
+      {
+        id: 'phaeton-lwb',
+        name: 'Phaeton 3.0 TDI Long Wheelbase',
+        tagline: 'The presidential long-wheelbase flagship for chauffeur-driven ultra-luxury',
+        priceRange: '₹65.00 – ₹77.16 Lakh',
+        baseExShowroom: 6500000,
+        engineOptions: ['3.0L TDI V6 Diesel'],
+        transmissions: ['6-Speed Automatic Torque Converter (Tiptronic)'],
+        isFlagship: true,
+        keyFeatures: [
+          'Individual reclining rear seats with massage function',
+          '4-corner air suspension with continuous damping control',
+          'Dual-layer acoustic laminated glass throughout the cabin',
+          'Four-zone Climatronic automatic climate control',
+          'Analog cabin clock and real wood/metal interior trim'
+        ],
+        exteriorHighlights: ['18-inch alloy wheels', 'Bi-Xenon headlamps with washer system', 'Chrome window surrounds'],
+        interiorHighlights: ['Nappa leather upholstery', 'Real wood and brushed aluminum trim', 'Rear individual reclining seats'],
+        badgeColor: 'bg-indigo-800 text-indigo-100'
+      }
+    ],
+    colors: [
+      { id: 'candy-white-phaeton', name: 'Candy White', hex: '#f8fafc', availableOn: ['Long Wheelbase'] },
+      { id: 'deep-black-phaeton', name: 'Deep Black Pearl', hex: '#0f172a', availableOn: ['Long Wheelbase'] },
+      { id: 'reflex-silver-phaeton', name: 'Reflex Silver', hex: '#cbd5e1', availableOn: ['Long Wheelbase'] },
+      { id: 'night-blue-phaeton', name: 'Night Blue Metallic', hex: '#1b263b', availableOn: ['Long Wheelbase'] }
+    ]
+  },
+  {
+    id: 'vento',
+    name: 'Volkswagen Vento',
+    badge: 'Enthusiast Hall of Fame Sedan',
+    tagline: 'The German-engineered compact sedan that defined "German thud" build quality for a generation of Indian buyers (2010–2022)',
+    bodyType: 'Compact Sedan',
+    startingPrice: 'Hall of Fame Legend (2010–2022)',
+    startingExShowroom: 869000,
+    priceRange: '₹8.69 – ₹14.79 Lakh (Final India Price List)',
+    rating: '4-Star Global NCAP',
+    safetyStars: 4,
+    engines: ['1.6L MPI Petrol (105 PS / 153 Nm)', '1.2L TSI Petrol (105 PS / 175 Nm)', '1.5L TDI Diesel (110 PS / 250 Nm)'],
+    keyHighlights: [
+      'One of Volkswagen India’s longest-running and best-selling nameplates across 12 years',
+      'Renowned for laser-welded galvanized steel body construction and reassuring "German thud" solidity',
+      'Available across naturally-aspirated petrol, turbo-petrol, and turbo-diesel powertrains over its lifecycle',
+      '494-litre boot space was among the largest in the compact sedan segment',
+      'Highline Plus and Turbo Edition trims brought sporty styling and connected infotainment late in its run',
+      'Discontinued in 2022 as Volkswagen consolidated its India lineup around the Virtus'
+    ],
+    dimensions: {
+      length: '4,391 mm',
+      width: '1,699 mm',
+      height: '1,465 mm',
+      wheelbase: '2,470 mm',
+      groundClearance: '163 mm',
+      bootSpace: '494 Litres',
+      fuelTank: '55 Litres'
+    },
+    variants: [
+      {
+        id: 'vento-trendline',
+        name: 'Vento Trendline',
+        tagline: 'The value-focused entry with essential safety and German build quality',
+        priceRange: '₹8.69 – ₹9.99 Lakh',
+        baseExShowroom: 869000,
+        engineOptions: ['1.6L MPI Petrol'],
+        transmissions: ['5-Speed Manual'],
+        keyFeatures: [
+          'Dual front airbags standard',
+          'ABS with EBD',
+          'Power steering and power windows',
+          '2-DIN audio system with USB and AUX input',
+          'Rear parking sensors'
+        ],
+        exteriorHighlights: ['15-inch steel wheels with covers', 'Chrome front grille strip', 'Halogen headlamps'],
+        interiorHighlights: ['Black fabric upholstery', 'Manual air conditioning', 'Height-adjustable driver seat'],
+        badgeColor: 'bg-zinc-700 text-zinc-100'
+      },
+      {
+        id: 'vento-highline',
+        name: 'Vento Highline',
+        tagline: 'The volume favourite pairing turbo-petrol or diesel power with premium comfort',
+        priceRange: '₹11.50 – ₹13.20 Lakh',
+        baseExShowroom: 1150000,
+        engineOptions: ['1.2L TSI Petrol', '1.5L TDI Diesel'],
+        transmissions: ['6-Speed Manual', '7-Speed DSG (Dual-Clutch)'],
+        isPopular: true,
+        keyFeatures: [
+          'Touchscreen infotainment with Apple CarPlay & Android Auto',
+          'Rear parking camera',
+          'Cruise control and steering-mounted controls',
+          'Alloy wheels with silver finish',
+          'Automatic climate control'
+        ],
+        exteriorHighlights: ['16-inch dual-tone alloy wheels', 'LED daytime running lights', 'Shark fin antenna'],
+        interiorHighlights: ['Beige and black dual-tone cabin', 'Leatherette-wrapped steering wheel', 'Rear center armrest'],
+        badgeColor: 'bg-blue-600 text-white'
+      },
+      {
+        id: 'vento-highline-plus-turbo',
+        name: 'Vento Highline Plus / Turbo Edition',
+        tagline: 'The sporty, fully-loaded flagship with connected infotainment and blacked-out styling',
+        priceRange: '₹13.80 – ₹14.79 Lakh',
+        baseExShowroom: 1380000,
+        engineOptions: ['1.2L TSI Petrol'],
+        transmissions: ['6-Speed Manual', '7-Speed DSG (Dual-Clutch)'],
+        isFlagship: true,
+        keyFeatures: [
+          'Gloss-black grille surround and black ORVMs',
+          'Wireless smartphone connectivity with voice assistant',
+          'Ventilated front seats on top trims',
+          'Rain-sensing wipers and auto-dimming interior mirror',
+          '6 airbags and Electronic Stability Control'
+        ],
+        exteriorHighlights: ['16-inch black diamond-cut alloy wheels', 'Red brake calipers', 'Smoked tail lamp clusters'],
+        interiorHighlights: ['Black upholstery with red contrast stitching', 'Turbo Edition branded scuff plates', 'Piano black dashboard trim'],
+        badgeColor: 'bg-red-700 text-white'
+      }
+    ],
+    colors: [
+      { id: 'candy-white-vento', name: 'Candy White', hex: '#f8fafc', availableOn: ['Trendline', 'Highline', 'Turbo Edition'] },
+      { id: 'flash-red-vento', name: 'Flash Red', hex: '#b91c1c', availableOn: ['Highline', 'Turbo Edition'] },
+      { id: 'carbon-steel-vento', name: 'Carbon Steel Grey', hex: '#4b5563', availableOn: ['Trendline', 'Highline', 'Turbo Edition'] },
+      { id: 'reflex-silver-vento', name: 'Reflex Silver', hex: '#cbd5e1', availableOn: ['Trendline', 'Highline'] },
+      { id: 'deep-black-vento', name: 'Deep Black Pearl', hex: '#0f172a', availableOn: ['Turbo Edition'] }
+    ]
+  },
+  {
+    id: 'ameo',
+    name: 'Volkswagen Ameo',
+    badge: 'India-Exclusive Compact Sedan',
+    tagline: 'The India-only sub-4-metre compact sedan engineered specifically to compete in India’s tax-friendly small-car segment (2016–2020)',
+    bodyType: 'Compact Sedan',
+    startingPrice: 'Hall of Fame Legend (2016–2020)',
+    startingExShowroom: 560000,
+    priceRange: '₹5.60 – ₹9.99 Lakh (Final India Price List)',
+    rating: '4-Star Global NCAP',
+    safetyStars: 4,
+    engines: ['1.2L MPI Petrol (75 PS / 110 Nm)', '1.5L TDI Diesel (110 PS / 250 Nm)'],
+    keyHighlights: [
+      'Developed exclusively for India as a sub-4-metre sedan to benefit from favorable excise duty slabs',
+      'Based on the Polo/Vento platform but with a distinct, India-specific notchback boot design',
+      'First sub-4-metre sedan in India to offer a diesel-DSG automatic combination',
+      'Renowned for segment-leading German build quality and torsional rigidity',
+      '330-litre boot space was among the largest in the compact sedan tax-bracket segment',
+      'Discontinued in 2020 as Volkswagen streamlined its India entry-level lineup'
+    ],
+    dimensions: {
+      length: '3,995 mm',
+      width: '1,704 mm',
+      height: '1,467 mm',
+      wheelbase: '2,470 mm',
+      groundClearance: '163 mm',
+      bootSpace: '330 Litres',
+      fuelTank: '45 Litres'
+    },
+    variants: [
+      {
+        id: 'ameo-trendline',
+        name: 'Ameo Trendline',
+        tagline: 'The accessible entry into sub-4-metre German build quality',
+        priceRange: '₹5.60 – ₹6.79 Lakh',
+        baseExShowroom: 560000,
+        engineOptions: ['1.2L MPI Petrol'],
+        transmissions: ['5-Speed Manual'],
+        keyFeatures: [
+          'Dual front airbags',
+          'Power steering and power windows',
+          '2-DIN audio system with USB and AUX input',
+          'Rear parking sensors',
+          'Height-adjustable driver seat'
+        ],
+        exteriorHighlights: ['14-inch steel wheels with covers', 'Body-colored bumpers', 'Halogen headlamps'],
+        interiorHighlights: ['Black fabric upholstery', 'Manual air conditioning', 'Tilt-adjustable steering'],
+        badgeColor: 'bg-zinc-700 text-zinc-100'
+      },
+      {
+        id: 'ameo-comfortline',
+        name: 'Ameo Comfortline',
+        tagline: 'The balanced mid-range trim with the efficient 1.5 TDI diesel option',
+        priceRange: '₹7.50 – ₹8.80 Lakh',
+        baseExShowroom: 750000,
+        engineOptions: ['1.2L MPI Petrol', '1.5L TDI Diesel'],
+        transmissions: ['5-Speed Manual'],
+        isPopular: true,
+        keyFeatures: [
+          '1.5 TDI diesel with 250 Nm of torque',
+          'Touchscreen infotainment with Bluetooth telephony',
+          'Alloy wheels with silver finish',
+          'Rear parking camera',
+          'Height-adjustable driver seat with lumbar support'
+        ],
+        exteriorHighlights: ['15-inch alloy wheels', 'Chrome window beltline', 'Fog lamps'],
+        interiorHighlights: ['Beige and black dual-tone cabin', 'Leatherette-wrapped steering wheel', 'Rear headrests'],
+        badgeColor: 'bg-blue-600 text-white'
+      },
+      {
+        id: 'ameo-highline-dsg',
+        name: 'Ameo Highline 1.5 TDI DSG',
+        tagline: 'The flagship trim pairing diesel torque with India’s first sub-4-metre sedan DSG automatic',
+        priceRange: '₹9.20 – ₹9.99 Lakh',
+        baseExShowroom: 920000,
+        engineOptions: ['1.5L TDI Diesel'],
+        transmissions: ['7-Speed DSG (Dual-Clutch)'],
+        isFlagship: true,
+        keyFeatures: [
+          'India’s first sub-4-metre sedan with a diesel-DSG combination',
+          'Touchscreen infotainment with Apple CarPlay & Android Auto',
+          'Cruise control and steering-mounted controls',
+          'Rear defogger with heated ORVMs',
+          'Rain-sensing wipers'
+        ],
+        exteriorHighlights: ['15-inch dual-tone alloy wheels', 'LED daytime running lights', 'Shark fin antenna'],
+        interiorHighlights: ['Beige and black dual-tone cabin', 'Leather-wrapped steering wheel', 'Rear center armrest'],
+        badgeColor: 'bg-amber-600 text-white'
+      }
+    ],
+    colors: [
+      { id: 'candy-white-ameo', name: 'Candy White', hex: '#f8fafc', availableOn: ['Trendline', 'Comfortline', 'Highline'] },
+      { id: 'flash-red-ameo', name: 'Flash Red', hex: '#b91c1c', availableOn: ['Comfortline', 'Highline'] },
+      { id: 'carbon-steel-ameo', name: 'Carbon Steel Grey', hex: '#4b5563', availableOn: ['Trendline', 'Comfortline', 'Highline'] },
+      { id: 'reflex-silver-ameo', name: 'Reflex Silver', hex: '#cbd5e1', availableOn: ['Trendline', 'Comfortline'] },
+      { id: 'toffee-brown-ameo', name: 'Toffee Brown Metallic', hex: '#5b3a29', availableOn: ['Highline'] }
+    ]
+  },
+  {
+    id: 't-roc',
+    name: 'Volkswagen T-Roc',
+    badge: 'CBU Import Compact SUV',
+    tagline: 'Volkswagen’s stylish CBU compact SUV, bringing bold coupe-SUV design and turbo-petrol performance to India (2020–2022)',
+    bodyType: 'Compact SUV',
+    startingPrice: 'CBU Import (2020–2022)',
+    startingExShowroom: 2135000,
+    priceRange: '₹21.35 – ₹23.00 Lakh (Final India Price List)',
+    rating: '5-Star Euro NCAP',
+    safetyStars: 5,
+    engines: ['1.5L TSI EVO Petrol with ACT (150 PS / 250 Nm)'],
+    keyHighlights: [
+      'Imported to India as a fully-built CBU unit, positioned as a stylish alternative to the Tiguan',
+      'Distinctive two-tone coupe-SUV roofline with a contrasting roof color option',
+      '1.5 TSI EVO with Active Cylinder Technology (ACT) for a blend of performance and efficiency',
+      'Segment-leading 17.85 km/l fuel efficiency despite its turbo-petrol performance',
+      'Comprehensive Level 2 safety suite including 6 airbags and ESC as standard',
+      'Discontinued in 2022 alongside the Passat as Volkswagen streamlined its CBU portfolio'
+    ],
+    dimensions: {
+      length: '4,234 mm',
+      width: '1,819 mm',
+      height: '1,573 mm',
+      wheelbase: '2,590 mm',
+      groundClearance: '187 mm',
+      bootSpace: '445 Litres',
+      fuelTank: '50 Litres'
+    },
+    variants: [
+      {
+        id: 't-roc-cbu',
+        name: 'T-Roc 1.5 TSI',
+        tagline: 'The single, fully-loaded CBU trim with complete European style and safety',
+        priceRange: '₹21.35 – ₹23.00 Lakh',
+        baseExShowroom: 2135000,
+        engineOptions: ['1.5L TSI EVO Petrol with ACT'],
+        transmissions: ['7-Speed DSG (Dual-Clutch)'],
+        isFlagship: true,
+        isPopular: true,
+        keyFeatures: [
+          'Active Cylinder Technology (ACT) for improved highway efficiency',
+          'Two-tone contrasting roof color options',
+          'Digital Cockpit fully digital instrument cluster',
+          'Panoramic sunroof',
+          '6 airbags and Electronic Stability Control'
+        ],
+        exteriorHighlights: ['18-inch alloy wheels', 'Contrasting roof color', 'LED headlamps with LED tail lamps'],
+        interiorHighlights: ['Leatherette upholstery', 'Ambient interior lighting', 'Wireless smartphone charging'],
+        badgeColor: 'bg-sky-600 text-white'
+      }
+    ],
+    colors: [
+      { id: 'kurkuma-yellow-troc', name: 'Kurkuma Yellow', hex: '#eab308', availableOn: ['1.5 TSI'] },
+      { id: 'pure-white-troc', name: 'Pure White', hex: '#f8fafc', availableOn: ['1.5 TSI'] },
+      { id: 'ravenna-blue-troc', name: 'Ravenna Blue', hex: '#1d4ed8', availableOn: ['1.5 TSI'] },
+      { id: 'indium-grey-troc', name: 'Indium Grey', hex: '#4b5563', availableOn: ['1.5 TSI'] },
+      { id: 'flash-red-troc', name: 'Flash Red', hex: '#b91c1c', availableOn: ['1.5 TSI'] },
+      { id: 'deep-black-troc', name: 'Deep Black', hex: '#0f172a', availableOn: ['1.5 TSI'] }
     ]
   }
 ];

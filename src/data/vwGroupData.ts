@@ -65,7 +65,7 @@ export const VW_GROUP_BRANDS: VWGroupBrand[] = [
     foundedYear: 1895,
     joinedVWGroupYear: 1991,
     category: 'Core Volume',
-    tagline: 'Let’s Explore / Simply Clever',
+    tagline: 'Simply Clever',
     brandIdentity: 'Human touch, crystalline Bohemian elegance, peerless interior space, and 100% 5-Star safety.',
     description:
       'One of the world’s four oldest continuously operating automotive companies (founded 1895). Škoda combines Czech crystalline artistry, monumental boot capacities, and "Simply Clever" practical touches with robust German engineering. Škoda proudly leads the Volkswagen Group’s strategic expansion in emerging powerhouses like India (leading the SAVWIPL India 2.0 initiative), ASEAN, and the Middle East.',
@@ -133,7 +133,7 @@ export const VW_GROUP_BRANDS: VWGroupBrand[] = [
     foundedYear: 1950,
     joinedVWGroupYear: 1986,
     category: 'Core Volume',
-    tagline: 'Created in Barcelona',
+    tagline: 'Auto Emoción (Car Emotion)',
     brandIdentity: 'Mediterranean passion, spirited youth appeal, and accessible urban agility.',
     description:
       'SEAT brought Mediterranean design flair and youthful exuberance to the Volkswagen Group when it joined in 1986 as the group’s first major non-German subsidiary. Based right outside Barcelona in Martorell, SEAT is renowned for emotional styling, sharp chassis dynamics, and creating compact mobility staples like the Ibiza and Leon that have defined European youth culture for decades.',
@@ -166,7 +166,7 @@ export const VW_GROUP_BRANDS: VWGroupBrand[] = [
     foundedYear: 2018,
     joinedVWGroupYear: 2018,
     category: 'Sport & Luxury',
-    tagline: 'Another Way / Driven by Passion',
+    tagline: 'Passion for Performance',
     brandIdentity: 'Unconventional high-performance challenger brand with avant-garde copper aesthetics.',
     description:
       'Spun off from SEAT’s high-performance motorsport wing in 2018, CUPRA is the fastest-growing automotive brand in Europe. Embracing a daring, unconventional persona with signature copper accents, dark petrol blues, and sculptured parametric surfaces, CUPRA delivers emotional driving machines for enthusiasts who reject traditional corporate uniformity.',
@@ -233,7 +233,7 @@ export const VW_GROUP_BRANDS: VWGroupBrand[] = [
     foundedYear: 1963,
     joinedVWGroupYear: 1998,
     category: 'Sport & Luxury',
-    tagline: 'Driving Humans Beyond',
+    tagline: 'Expect the Unexpected',
     brandIdentity: 'Uncompromising Italian super sports cars, screaming V10 & V12 engines, and stealth-fighter styling.',
     description:
       'Founded by Ferruccio Lamborghini in 1963 to build the ultimate super sports car, Automobili Lamborghini joined the Volkswagen Group (via Audi) in 1998. The union brought German precision manufacturing and financial stability to Italian artistic madness. From the jaw-dropping Miura that invented the supercar to the Countach, Diablo, Aventador, and the hybrid Revuelto, Lamborghini creates raw emotional theater on wheels.',
@@ -267,7 +267,7 @@ export const VW_GROUP_BRANDS: VWGroupBrand[] = [
     foundedYear: 1919,
     joinedVWGroupYear: 1998,
     category: 'Sport & Luxury',
-    tagline: 'Be Extraordinary',
+    tagline: 'Relentlessly Extraordinary',
     brandIdentity: 'The world’s most sought-after luxury car brand, pairing bespoke artisan craftsmanship with unstoppable power.',
     description:
       'Founded in 1919 by W.O. Bentley with the mission "to build a fast car, a good car, the best in its class," Bentley is synonymous with grand touring luxury. Joining the Volkswagen Group in 1998, Bentley transformed its historic Crewe factory into a carbon-neutral temple of handcrafted leather, book-matched veneers, and mighty W12 and V8 engines capable of effortlessly crossing continents at 200 mph.',
@@ -334,7 +334,7 @@ export const VW_GROUP_BRANDS: VWGroupBrand[] = [
     foundedYear: 1758,
     joinedVWGroupYear: 2011,
     category: 'Commercial & Transport',
-    tagline: 'Simplifying Business',
+    tagline: 'Ultramodern Vehicles, Sustainable Solutions',
     brandIdentity: 'Heavy-duty transport titan, world-class European logistics backbone, and clean e-mobility trucks.',
     description:
       'With roots tracing back to 1758 as the St. Antony ironworks (where Rudolf Diesel developed the world’s first diesel engine at MAN in 1893–1897), MAN is an industrial giant. Part of the Volkswagen Group’s commercial vehicle division TRATON GROUP, MAN builds heavy-duty long-haul trucks, city and touring buses, vans, and diesel/gas power engines that keep global trade moving.',

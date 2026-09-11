@@ -917,6 +917,623 @@ export const ENGINE_GRAPH_PROFILES: Record<string, EngineGraphProfile> = {
       'Combined with 7-speed DSG and 4MOTION all-wheel drive for confident 3-row family towing capability',
       'Meets latest RDE (Real Driving Emissions) regulations with a close-coupled particulate filter'
     ]
+  },
+
+  '1.8-tsi-160': {
+    id: '1.8-tsi-160',
+    name: '1.8L TSI EA888 Turbo-Petrol',
+    badge: '1.8 TSI (160 PS / 250 Nm)',
+    displacement: '1,798 cc',
+    cylinders: '4 Cylinders',
+    fuelType: 'Petrol',
+    peakPowerStr: '160 PS @ 4,500–6,200 RPM',
+    peakTorqueStr: '250 Nm @ 1,500–4,200 RPM',
+    maxPowerHp: 160,
+    maxTorqueNm: 250,
+    powerRpmRange: '4,500 – 6,200 RPM',
+    torqueRpmRange: '1,500 – 4,200 RPM',
+    redlineRpm: 6500,
+    idleRpm: 850,
+    highwayCruiseRpm100Kmh: 2050,
+    highwayCruiseRpm120Kmh: 2450,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 26, torqueNm: 150, boostBar: 0.4 },
+      { rpm: 1500, powerHp: 44, torqueNm: 250, boostBar: 1.1 },
+      { rpm: 2000, powerHp: 59, torqueNm: 250, boostBar: 1.1 },
+      { rpm: 2500, powerHp: 73, torqueNm: 250, boostBar: 1.1 },
+      { rpm: 3000, powerHp: 88, torqueNm: 250, boostBar: 1.05 },
+      { rpm: 3500, powerHp: 103, torqueNm: 250, boostBar: 1.0 },
+      { rpm: 4200, powerHp: 130, torqueNm: 248, boostBar: 0.95 },
+      { rpm: 4500, powerHp: 143, torqueNm: 240, boostBar: 0.9 },
+      { rpm: 5000, powerHp: 155, torqueNm: 222, boostBar: 0.85 },
+      { rpm: 5500, powerHp: 160, torqueNm: 204, boostBar: 0.8 },
+      { rpm: 6200, powerHp: 158, torqueNm: 178, boostBar: 0.65 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 1.2, speedKmh: 26, gForce: 0.48, gear: 1 },
+      { timeSec: 2.4, speedKmh: 44, gForce: 0.42, gear: 1 },
+      { timeSec: 3.7, speedKmh: 58, gForce: 0.36, gear: 2 },
+      { timeSec: 5.4, speedKmh: 73, gForce: 0.31, gear: 2 },
+      { timeSec: 7.4, speedKmh: 86, gForce: 0.26, gear: 3 },
+      { timeSec: 9.1, speedKmh: 100, gForce: 0.23, gear: 3 },
+      { timeSec: 11.8, speedKmh: 120, gForce: 0.19, gear: 4 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.78', speedAt1000Rpm: 7.8, speedAt3000Rpm: 23.4, speedAt6000Rpm: 46.8, redlineSpeed: 51 },
+      { gear: '2nd', ratio: '2.12', speedAt1000Rpm: 13.9, speedAt3000Rpm: 41.7, speedAt6000Rpm: 83.4, redlineSpeed: 90 },
+      { gear: '3rd', ratio: '1.36', speedAt1000Rpm: 21.7, speedAt3000Rpm: 65.1, speedAt6000Rpm: 130.2, redlineSpeed: 141 },
+      { gear: '4th', ratio: '0.97', speedAt1000Rpm: 30.4, speedAt3000Rpm: 91.2, speedAt6000Rpm: 182.4, redlineSpeed: 195 },
+      { gear: '5th', ratio: '0.78', speedAt1000Rpm: 37.8, speedAt3000Rpm: 113.4, speedAt6000Rpm: 226.8, redlineSpeed: 203 },
+      { gear: '6th', ratio: '0.63', speedAt1000Rpm: 46.8, speedAt3000Rpm: 140.4, speedAt6000Rpm: 280.8, redlineSpeed: 203 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 9.8, engineRpm: 1750 },
+      { speedKmh: 40, fuelConsumptionKmpl: 12.6, engineRpm: 1650 },
+      { speedKmh: 60, fuelConsumptionKmpl: 15.8, engineRpm: 1600 },
+      { speedKmh: 80, fuelConsumptionKmpl: 17.2, engineRpm: 1800 },
+      { speedKmh: 100, fuelConsumptionKmpl: 14.8, engineRpm: 2050 },
+      { speedKmh: 120, fuelConsumptionKmpl: 12.4, engineRpm: 2450 }
+    ],
+    technicalFeatures: [
+      'EA888 turbo-petrol architecture with fully variable intake and exhaust valve timing',
+      'Powered both the Škoda Laura sedan and the Yeti 4x4 Monte Carlo edition',
+      'Strong mid-range torque plateau from 1,500 RPM for confident overtaking',
+      'Renowned for smooth, refined power delivery relative to period diesels'
+    ]
+  },
+
+  '1.8-tsi-combi': {
+    id: '1.8-tsi-combi',
+    name: '1.8L Turbo-Petrol (EA827 Lineage)',
+    badge: '1.8 Turbo (150 PS / 210 Nm)',
+    displacement: '1,781 cc',
+    cylinders: '4 Cylinders',
+    fuelType: 'Petrol',
+    peakPowerStr: '150 PS @ 4,000 RPM',
+    peakTorqueStr: '210 Nm @ 1,750–4,600 RPM',
+    maxPowerHp: 150,
+    maxTorqueNm: 210,
+    powerRpmRange: '4,000 RPM',
+    torqueRpmRange: '1,750 – 4,600 RPM',
+    redlineRpm: 6200,
+    idleRpm: 900,
+    highwayCruiseRpm100Kmh: 2350,
+    highwayCruiseRpm120Kmh: 2800,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 24, torqueNm: 130, boostBar: 0.3 },
+      { rpm: 1750, powerHp: 51, torqueNm: 210, boostBar: 0.9 },
+      { rpm: 2000, powerHp: 58, torqueNm: 210, boostBar: 0.9 },
+      { rpm: 2500, powerHp: 73, torqueNm: 210, boostBar: 0.9 },
+      { rpm: 3000, powerHp: 87, torqueNm: 210, boostBar: 0.85 },
+      { rpm: 3500, powerHp: 102, torqueNm: 210, boostBar: 0.8 },
+      { rpm: 4000, powerHp: 150, torqueNm: 208, boostBar: 0.8 },
+      { rpm: 4600, powerHp: 145, torqueNm: 195, boostBar: 0.7 },
+      { rpm: 5500, powerHp: 130, torqueNm: 158, boostBar: 0.55 },
+      { rpm: 6200, powerHp: 112, torqueNm: 128, boostBar: 0.4 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 1.4, speedKmh: 24, gForce: 0.42, gear: 1 },
+      { timeSec: 2.9, speedKmh: 40, gForce: 0.36, gear: 1 },
+      { timeSec: 4.4, speedKmh: 53, gForce: 0.31, gear: 2 },
+      { timeSec: 6.4, speedKmh: 68, gForce: 0.27, gear: 2 },
+      { timeSec: 8.6, speedKmh: 82, gForce: 0.23, gear: 3 },
+      { timeSec: 9.5, speedKmh: 100, gForce: 0.21, gear: 3 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.45', speedAt1000Rpm: 8.3, speedAt3000Rpm: 24.9, speedAt6000Rpm: 49.8, redlineSpeed: 51 },
+      { gear: '2nd', ratio: '1.94', speedAt1000Rpm: 14.8, speedAt3000Rpm: 44.4, speedAt6000Rpm: 88.8, redlineSpeed: 92 },
+      { gear: '3rd', ratio: '1.29', speedAt1000Rpm: 22.2, speedAt3000Rpm: 66.6, speedAt6000Rpm: 133.2, redlineSpeed: 138 },
+      { gear: '4th', ratio: '0.94', speedAt1000Rpm: 30.5, speedAt3000Rpm: 91.5, speedAt6000Rpm: 183.0, redlineSpeed: 189 },
+      { gear: '5th', ratio: '0.75', speedAt1000Rpm: 38.2, speedAt3000Rpm: 114.6, speedAt6000Rpm: 229.2, redlineSpeed: 212 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 9.2, engineRpm: 1850 },
+      { speedKmh: 40, fuelConsumptionKmpl: 11.6, engineRpm: 1750 },
+      { speedKmh: 60, fuelConsumptionKmpl: 14.5, engineRpm: 1700 },
+      { speedKmh: 80, fuelConsumptionKmpl: 15.8, engineRpm: 1900 },
+      { speedKmh: 100, fuelConsumptionKmpl: 13.5, engineRpm: 2350 },
+      { speedKmh: 120, fuelConsumptionKmpl: 11.2, engineRpm: 2800 }
+    ],
+    technicalFeatures: [
+      'Classic 20-valve turbocharged inline-4 from the Volkswagen Group EA827 lineage',
+      'Powered the original India-market Octavia Combi vRS estate',
+      'Broad, usable torque band ideal for fully-loaded estate-car cruising',
+      'Built an early enthusiast following for turbo-petrol performance in Škoda India'
+    ]
+  },
+
+  '1.9-tdi-pd90': {
+    id: '1.9-tdi-pd90',
+    name: '1.9L TDI PD Turbo-Diesel',
+    badge: '1.9 TDI (90 PS / 210 Nm)',
+    displacement: '1,896 cc',
+    cylinders: '4 Cylinders Pump-Duse',
+    fuelType: 'Diesel',
+    peakPowerStr: '90 PS @ 4,000 RPM',
+    peakTorqueStr: '210 Nm @ 1,900 RPM',
+    maxPowerHp: 90,
+    maxTorqueNm: 210,
+    powerRpmRange: '4,000 RPM',
+    torqueRpmRange: '1,900 RPM',
+    redlineRpm: 4800,
+    idleRpm: 850,
+    highwayCruiseRpm100Kmh: 2250,
+    highwayCruiseRpm120Kmh: 2700,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 20, torqueNm: 140, boostBar: 0.5 },
+      { rpm: 1500, powerHp: 34, torqueNm: 195, boostBar: 1.0 },
+      { rpm: 1900, powerHp: 44, torqueNm: 210, boostBar: 1.2 },
+      { rpm: 2500, powerHp: 55, torqueNm: 208, boostBar: 1.1 },
+      { rpm: 3000, powerHp: 63, torqueNm: 195, boostBar: 1.0 },
+      { rpm: 3500, powerHp: 72, torqueNm: 180, boostBar: 0.9 },
+      { rpm: 4000, powerHp: 90, torqueNm: 165, boostBar: 0.8 },
+      { rpm: 4800, powerHp: 78, torqueNm: 132, boostBar: 0.6 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 2.2, speedKmh: 20, gForce: 0.26, gear: 1 },
+      { timeSec: 4.5, speedKmh: 36, gForce: 0.22, gear: 2 },
+      { timeSec: 7.2, speedKmh: 50, gForce: 0.19, gear: 2 },
+      { timeSec: 10.3, speedKmh: 63, gForce: 0.16, gear: 3 },
+      { timeSec: 14.0, speedKmh: 78, gForce: 0.13, gear: 4 },
+      { timeSec: 18.5, speedKmh: 90, gForce: 0.10, gear: 4 },
+      { timeSec: 24.0, speedKmh: 100, gForce: 0.08, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.45', speedAt1000Rpm: 8.0, speedAt3000Rpm: 24.0, speedAt6000Rpm: 38.0, redlineSpeed: 38 },
+      { gear: '2nd', ratio: '1.94', speedAt1000Rpm: 14.2, speedAt3000Rpm: 42.6, speedAt6000Rpm: 68.0, redlineSpeed: 68 },
+      { gear: '3rd', ratio: '1.29', speedAt1000Rpm: 21.5, speedAt3000Rpm: 64.5, speedAt6000Rpm: 103.0, redlineSpeed: 103 },
+      { gear: '4th', ratio: '0.94', speedAt1000Rpm: 29.5, speedAt3000Rpm: 88.5, speedAt6000Rpm: 141.0, redlineSpeed: 141 },
+      { gear: '5th', ratio: '0.75', speedAt1000Rpm: 37.0, speedAt3000Rpm: 111.0, speedAt6000Rpm: 178.0, redlineSpeed: 178 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 15.2, engineRpm: 1550 },
+      { speedKmh: 40, fuelConsumptionKmpl: 18.5, engineRpm: 1450 },
+      { speedKmh: 60, fuelConsumptionKmpl: 21.8, engineRpm: 1400 },
+      { speedKmh: 80, fuelConsumptionKmpl: 23.5, engineRpm: 1550 },
+      { speedKmh: 100, fuelConsumptionKmpl: 20.2, engineRpm: 2250 },
+      { speedKmh: 120, fuelConsumptionKmpl: 16.8, engineRpm: 2700 }
+    ],
+    technicalFeatures: [
+      'Pump-Duse (PD) unit-injector diesel technology for high per-cylinder injection pressure',
+      'Base engine option for the India-market Octavia Combi estate',
+      'Renowned across the Volkswagen Group for reliability and long service intervals',
+      'Modest output prioritizes efficiency and low-end drivability over outright pace'
+    ]
+  },
+
+  '1.9-tdi-pd105': {
+    id: '1.9-tdi-pd105',
+    name: '1.9L TDI PD Turbo-Diesel',
+    badge: '1.9 TDI (105 PS / 250 Nm)',
+    displacement: '1,896 cc',
+    cylinders: '4 Cylinders Pump-Duse',
+    fuelType: 'Diesel',
+    peakPowerStr: '105 PS @ 4,000 RPM',
+    peakTorqueStr: '250 Nm @ 1,900 RPM',
+    maxPowerHp: 105,
+    maxTorqueNm: 250,
+    powerRpmRange: '4,000 RPM',
+    torqueRpmRange: '1,900 RPM',
+    redlineRpm: 4900,
+    idleRpm: 850,
+    highwayCruiseRpm100Kmh: 2150,
+    highwayCruiseRpm120Kmh: 2600,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 24, torqueNm: 165, boostBar: 0.6 },
+      { rpm: 1500, powerHp: 40, torqueNm: 230, boostBar: 1.2 },
+      { rpm: 1900, powerHp: 52, torqueNm: 250, boostBar: 1.4 },
+      { rpm: 2500, powerHp: 65, torqueNm: 245, boostBar: 1.3 },
+      { rpm: 3000, powerHp: 75, torqueNm: 230, boostBar: 1.2 },
+      { rpm: 3500, powerHp: 85, torqueNm: 210, boostBar: 1.05 },
+      { rpm: 4000, powerHp: 105, torqueNm: 195, boostBar: 0.9 },
+      { rpm: 4900, powerHp: 92, torqueNm: 155, boostBar: 0.7 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 1.8, speedKmh: 22, gForce: 0.32, gear: 1 },
+      { timeSec: 3.8, speedKmh: 40, gForce: 0.28, gear: 2 },
+      { timeSec: 6.0, speedKmh: 55, gForce: 0.24, gear: 2 },
+      { timeSec: 8.6, speedKmh: 70, gForce: 0.20, gear: 3 },
+      { timeSec: 11.8, speedKmh: 85, gForce: 0.17, gear: 4 },
+      { timeSec: 15.5, speedKmh: 100, gForce: 0.14, gear: 4 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.45', speedAt1000Rpm: 8.4, speedAt3000Rpm: 25.2, speedAt6000Rpm: 42.0, redlineSpeed: 42 },
+      { gear: '2nd', ratio: '1.94', speedAt1000Rpm: 15.0, speedAt3000Rpm: 45.0, speedAt6000Rpm: 75.0, redlineSpeed: 75 },
+      { gear: '3rd', ratio: '1.29', speedAt1000Rpm: 22.7, speedAt3000Rpm: 68.1, speedAt6000Rpm: 113.5, redlineSpeed: 113 },
+      { gear: '4th', ratio: '0.94', speedAt1000Rpm: 31.2, speedAt3000Rpm: 93.6, speedAt6000Rpm: 156.0, redlineSpeed: 156 },
+      { gear: '5th', ratio: '0.75', speedAt1000Rpm: 39.0, speedAt3000Rpm: 117.0, speedAt6000Rpm: 185.0, redlineSpeed: 185 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 14.5, engineRpm: 1500 },
+      { speedKmh: 40, fuelConsumptionKmpl: 17.8, engineRpm: 1400 },
+      { speedKmh: 60, fuelConsumptionKmpl: 21.2, engineRpm: 1350 },
+      { speedKmh: 80, fuelConsumptionKmpl: 22.8, engineRpm: 1500 },
+      { speedKmh: 100, fuelConsumptionKmpl: 19.5, engineRpm: 2150 },
+      { speedKmh: 120, fuelConsumptionKmpl: 16.2, engineRpm: 2600 }
+    ],
+    technicalFeatures: [
+      'Base diesel option across the Škoda Laura sedan lineup',
+      'Pump-Duse (PD) unit-injector technology delivering strong low-end torque',
+      'One of the most trusted and durable diesel engines of its generation',
+      'Favored for reliability across hundreds of thousands of kilometers'
+    ]
+  },
+
+  '2.0-tdi-140': {
+    id: '2.0-tdi-140',
+    name: '2.0L TDI CR Turbo-Diesel',
+    badge: '2.0 TDI CR (140 PS / 320 Nm)',
+    displacement: '1,968 cc',
+    cylinders: '4 Cylinders Common Rail',
+    fuelType: 'Diesel',
+    peakPowerStr: '140 PS @ 4,200 RPM',
+    peakTorqueStr: '320 Nm @ 1,750–2,500 RPM',
+    maxPowerHp: 140,
+    maxTorqueNm: 320,
+    powerRpmRange: '4,200 RPM',
+    torqueRpmRange: '1,750 – 2,500 RPM',
+    redlineRpm: 5000,
+    idleRpm: 820,
+    highwayCruiseRpm100Kmh: 1850,
+    highwayCruiseRpm120Kmh: 2250,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 32, torqueNm: 220, boostBar: 0.8 },
+      { rpm: 1500, powerHp: 56, torqueNm: 300, boostBar: 1.5 },
+      { rpm: 1750, powerHp: 72, torqueNm: 320, boostBar: 1.7 },
+      { rpm: 2000, powerHp: 82, torqueNm: 320, boostBar: 1.7 },
+      { rpm: 2500, powerHp: 103, torqueNm: 320, boostBar: 1.65 },
+      { rpm: 3000, powerHp: 122, torqueNm: 300, boostBar: 1.5 },
+      { rpm: 3500, powerHp: 133, torqueNm: 270, boostBar: 1.3 },
+      { rpm: 4200, powerHp: 140, torqueNm: 227, boostBar: 1.05 },
+      { rpm: 5000, powerHp: 118, torqueNm: 172, boostBar: 0.75 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 1.3, speedKmh: 26, gForce: 0.46, gear: 1 },
+      { timeSec: 2.7, speedKmh: 44, gForce: 0.40, gear: 1 },
+      { timeSec: 4.2, speedKmh: 58, gForce: 0.34, gear: 2 },
+      { timeSec: 6.1, speedKmh: 72, gForce: 0.29, gear: 2 },
+      { timeSec: 8.2, speedKmh: 86, gForce: 0.24, gear: 3 },
+      { timeSec: 9.8, speedKmh: 100, gForce: 0.21, gear: 3 },
+      { timeSec: 12.8, speedKmh: 120, gForce: 0.17, gear: 4 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.68', speedAt1000Rpm: 7.9, speedAt3000Rpm: 23.7, speedAt6000Rpm: 47.4, redlineSpeed: 48 },
+      { gear: '2nd', ratio: '2.06', speedAt1000Rpm: 14.1, speedAt3000Rpm: 42.3, speedAt6000Rpm: 84.6, redlineSpeed: 86 },
+      { gear: '3rd', ratio: '1.36', speedAt1000Rpm: 21.4, speedAt3000Rpm: 64.2, speedAt6000Rpm: 128.4, redlineSpeed: 130 },
+      { gear: '4th', ratio: '0.97', speedAt1000Rpm: 30.0, speedAt3000Rpm: 90.0, speedAt6000Rpm: 180.0, redlineSpeed: 182 },
+      { gear: '5th', ratio: '0.78', speedAt1000Rpm: 37.3, speedAt3000Rpm: 111.9, speedAt6000Rpm: 223.8, redlineSpeed: 198 },
+      { gear: '6th (DSG)', ratio: '0.65', speedAt1000Rpm: 44.8, speedAt3000Rpm: 134.4, speedAt6000Rpm: 268.8, redlineSpeed: 198 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 13.8, engineRpm: 1450 },
+      { speedKmh: 40, fuelConsumptionKmpl: 17.2, engineRpm: 1350 },
+      { speedKmh: 60, fuelConsumptionKmpl: 20.5, engineRpm: 1300 },
+      { speedKmh: 80, fuelConsumptionKmpl: 22.4, engineRpm: 1450 },
+      { speedKmh: 100, fuelConsumptionKmpl: 19.2, engineRpm: 1850 },
+      { speedKmh: 120, fuelConsumptionKmpl: 16.0, engineRpm: 2250 }
+    ],
+    technicalFeatures: [
+      'Powered the flagship Laura 2.0 TDI AT L&K sedan and the Yeti 4x4 Elegance',
+      'Common-rail direct injection replacing earlier pump-duse units for cleaner combustion',
+      'Strong 320 Nm torque plateau ideal for 4x4 traction and confident overtaking',
+      'Paired with Škoda’s proven 6-speed DSG automatic transmission'
+    ]
+  },
+
+  '2.0-tdi-110': {
+    id: '2.0-tdi-110',
+    name: '2.0L TDI CR Turbo-Diesel',
+    badge: '2.0 TDI CR (110 PS / 250 Nm)',
+    displacement: '1,968 cc',
+    cylinders: '4 Cylinders Common Rail',
+    fuelType: 'Diesel',
+    peakPowerStr: '110 PS @ 4,200 RPM',
+    peakTorqueStr: '250 Nm @ 1,500–2,500 RPM',
+    maxPowerHp: 110,
+    maxTorqueNm: 250,
+    powerRpmRange: '4,200 RPM',
+    torqueRpmRange: '1,500 – 2,500 RPM',
+    redlineRpm: 4900,
+    idleRpm: 820,
+    highwayCruiseRpm100Kmh: 1950,
+    highwayCruiseRpm120Kmh: 2350,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 26, torqueNm: 185, boostBar: 0.7 },
+      { rpm: 1500, powerHp: 44, torqueNm: 250, boostBar: 1.4 },
+      { rpm: 2000, powerHp: 58, torqueNm: 250, boostBar: 1.35 },
+      { rpm: 2500, powerHp: 72, torqueNm: 245, boostBar: 1.25 },
+      { rpm: 3000, powerHp: 85, torqueNm: 225, boostBar: 1.1 },
+      { rpm: 3500, powerHp: 95, torqueNm: 205, boostBar: 0.95 },
+      { rpm: 4200, powerHp: 110, torqueNm: 178, boostBar: 0.8 },
+      { rpm: 4900, powerHp: 96, torqueNm: 140, boostBar: 0.6 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 1.7, speedKmh: 24, gForce: 0.36, gear: 1 },
+      { timeSec: 3.5, speedKmh: 41, gForce: 0.31, gear: 2 },
+      { timeSec: 5.6, speedKmh: 56, gForce: 0.26, gear: 2 },
+      { timeSec: 8.0, speedKmh: 70, gForce: 0.22, gear: 3 },
+      { timeSec: 11.0, speedKmh: 85, gForce: 0.18, gear: 4 },
+      { timeSec: 14.5, speedKmh: 100, gForce: 0.15, gear: 4 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.68', speedAt1000Rpm: 7.7, speedAt3000Rpm: 23.1, speedAt6000Rpm: 46.2, redlineSpeed: 47 },
+      { gear: '2nd', ratio: '2.06', speedAt1000Rpm: 13.8, speedAt3000Rpm: 41.4, speedAt6000Rpm: 82.8, redlineSpeed: 84 },
+      { gear: '3rd', ratio: '1.36', speedAt1000Rpm: 21.0, speedAt3000Rpm: 63.0, speedAt6000Rpm: 126.0, redlineSpeed: 128 },
+      { gear: '4th', ratio: '0.97', speedAt1000Rpm: 29.4, speedAt3000Rpm: 88.2, speedAt6000Rpm: 176.4, redlineSpeed: 178 },
+      { gear: '5th', ratio: '0.78', speedAt1000Rpm: 36.6, speedAt3000Rpm: 109.8, speedAt6000Rpm: 219.6, redlineSpeed: 175 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 15.5, engineRpm: 1400 },
+      { speedKmh: 40, fuelConsumptionKmpl: 18.8, engineRpm: 1300 },
+      { speedKmh: 60, fuelConsumptionKmpl: 22.0, engineRpm: 1250 },
+      { speedKmh: 80, fuelConsumptionKmpl: 23.8, engineRpm: 1400 },
+      { speedKmh: 100, fuelConsumptionKmpl: 20.8, engineRpm: 1950 },
+      { speedKmh: 120, fuelConsumptionKmpl: 17.2, engineRpm: 2350 }
+    ],
+    technicalFeatures: [
+      'Entry-level 4x2 diesel option across the Škoda Yeti Ambition and Elegance trims',
+      'High-pressure common-rail direct injection for cleaner, quieter combustion',
+      'ARAI-tested mileage of up to 17.7 km/l in the related 4x4 configuration',
+      'Favored for low running costs among compact SUV buyers of its era'
+    ]
+  },
+
+  '1.4-tsi-beetle': {
+    id: '1.4-tsi-beetle',
+    name: '1.4L TSI Turbo-Petrol (EA211)',
+    badge: '1.4 TSI (150 PS / 250 Nm)',
+    displacement: '1,395 cc',
+    cylinders: '4 Cylinders',
+    fuelType: 'Petrol',
+    peakPowerStr: '150 PS @ 5,000–6,000 RPM',
+    peakTorqueStr: '250 Nm @ 1,500–3,500 RPM',
+    maxPowerHp: 150,
+    maxTorqueNm: 250,
+    powerRpmRange: '5,000 – 6,000 RPM',
+    torqueRpmRange: '1,500 – 3,500 RPM',
+    redlineRpm: 6500,
+    idleRpm: 850,
+    highwayCruiseRpm100Kmh: 1900,
+    highwayCruiseRpm120Kmh: 2300,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 27, torqueNm: 155, boostBar: 0.3 },
+      { rpm: 1500, powerHp: 45, torqueNm: 250, boostBar: 1.2 },
+      { rpm: 2000, powerHp: 61, torqueNm: 250, boostBar: 1.2 },
+      { rpm: 2500, powerHp: 77, torqueNm: 250, boostBar: 1.2 },
+      { rpm: 3000, powerHp: 92, torqueNm: 250, boostBar: 1.15 },
+      { rpm: 3500, powerHp: 108, torqueNm: 250, boostBar: 1.1 },
+      { rpm: 4000, powerHp: 122, torqueNm: 240, boostBar: 1.0 },
+      { rpm: 5000, powerHp: 150, torqueNm: 210, boostBar: 0.9 },
+      { rpm: 5500, powerHp: 150, torqueNm: 191, boostBar: 0.8 },
+      { rpm: 6000, powerHp: 150, torqueNm: 175, boostBar: 0.7 },
+      { rpm: 6500, powerHp: 136, torqueNm: 146, boostBar: 0.55 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 1.0, speedKmh: 28, gForce: 0.60, gear: 1 },
+      { timeSec: 2.1, speedKmh: 48, gForce: 0.52, gear: 1 },
+      { timeSec: 3.4, speedKmh: 64, gForce: 0.43, gear: 2 },
+      { timeSec: 5.1, speedKmh: 80, gForce: 0.37, gear: 2 },
+      { timeSec: 6.9, speedKmh: 92, gForce: 0.31, gear: 3 },
+      { timeSec: 8.4, speedKmh: 100, gForce: 0.27, gear: 3 },
+      { timeSec: 10.9, speedKmh: 120, gForce: 0.21, gear: 4 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.76', speedAt1000Rpm: 8.0, speedAt3000Rpm: 24.0, speedAt6000Rpm: 48.0, redlineSpeed: 52 },
+      { gear: '2nd', ratio: '2.08', speedAt1000Rpm: 14.4, speedAt3000Rpm: 43.2, speedAt6000Rpm: 86.4, redlineSpeed: 94 },
+      { gear: '3rd', ratio: '1.34', speedAt1000Rpm: 22.4, speedAt3000Rpm: 67.2, speedAt6000Rpm: 134.4, redlineSpeed: 145 },
+      { gear: '4th', ratio: '0.98', speedAt1000Rpm: 30.6, speedAt3000Rpm: 91.8, speedAt6000Rpm: 183.6, redlineSpeed: 195 },
+      { gear: '5th', ratio: '0.80', speedAt1000Rpm: 37.5, speedAt3000Rpm: 112.5, speedAt6000Rpm: 225.0, redlineSpeed: 204 },
+      { gear: '6th', ratio: '0.66', speedAt1000Rpm: 45.5, speedAt3000Rpm: 136.5, speedAt6000Rpm: 273.0, redlineSpeed: 204 },
+      { gear: '7th (DSG)', ratio: '0.54', speedAt1000Rpm: 53.3, speedAt3000Rpm: 159.9, speedAt6000Rpm: 319.8, redlineSpeed: 204 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 10.8, engineRpm: 1650 },
+      { speedKmh: 40, fuelConsumptionKmpl: 14.2, engineRpm: 1550 },
+      { speedKmh: 60, fuelConsumptionKmpl: 18.8, engineRpm: 1500 },
+      { speedKmh: 80, fuelConsumptionKmpl: 20.6, engineRpm: 1650 },
+      { speedKmh: 100, fuelConsumptionKmpl: 17.5, engineRpm: 1900 },
+      { speedKmh: 120, fuelConsumptionKmpl: 14.8, engineRpm: 2300 }
+    ],
+    technicalFeatures: [
+      'Exclusive CBU import engine for the third-generation Volkswagen Beetle in India',
+      '4-cylinder EA211 turbo-petrol with fully variable valve timing',
+      'Paired exclusively with a smooth 7-speed DSG dual-clutch automatic',
+      'Delivered spirited performance befitting the Beetle’s sporty coupe character'
+    ]
+  },
+
+  '3.0-tdi-v6': {
+    id: '3.0-tdi-v6',
+    name: '3.0L TDI V6 Turbo-Diesel',
+    badge: '3.0 TDI V6 (245 PS / 550 Nm)',
+    displacement: '2,967 cc',
+    cylinders: '6 Cylinders (V6 Configuration)',
+    fuelType: 'Diesel',
+    peakPowerStr: '245 PS @ 3,800–4,400 RPM',
+    peakTorqueStr: '550 Nm @ 1,750–2,750 RPM',
+    maxPowerHp: 245,
+    maxTorqueNm: 550,
+    powerRpmRange: '3,800 – 4,400 RPM',
+    torqueRpmRange: '1,750 – 2,750 RPM',
+    redlineRpm: 4800,
+    idleRpm: 750,
+    highwayCruiseRpm100Kmh: 1450,
+    highwayCruiseRpm120Kmh: 1750,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 55, torqueNm: 380, boostBar: 0.9 },
+      { rpm: 1500, powerHp: 92, torqueNm: 500, boostBar: 1.6 },
+      { rpm: 1750, powerHp: 115, torqueNm: 550, boostBar: 1.9 },
+      { rpm: 2000, powerHp: 132, torqueNm: 550, boostBar: 1.9 },
+      { rpm: 2500, powerHp: 165, torqueNm: 550, boostBar: 1.85 },
+      { rpm: 2750, powerHp: 182, torqueNm: 550, boostBar: 1.8 },
+      { rpm: 3000, powerHp: 198, torqueNm: 540, boostBar: 1.7 },
+      { rpm: 3500, powerHp: 225, torqueNm: 500, boostBar: 1.5 },
+      { rpm: 3800, powerHp: 245, torqueNm: 462, boostBar: 1.35 },
+      { rpm: 4400, powerHp: 245, torqueNm: 400, boostBar: 1.1 },
+      { rpm: 4800, powerHp: 220, torqueNm: 330, boostBar: 0.85 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.9, speedKmh: 30, gForce: 0.62, gear: 1 },
+      { timeSec: 1.9, speedKmh: 52, gForce: 0.54, gear: 2 },
+      { timeSec: 3.2, speedKmh: 72, gForce: 0.44, gear: 2 },
+      { timeSec: 4.9, speedKmh: 90, gForce: 0.36, gear: 3 },
+      { timeSec: 6.6, speedKmh: 100, gForce: 0.31, gear: 3 },
+      { timeSec: 8.8, speedKmh: 125, gForce: 0.24, gear: 4 },
+      { timeSec: 12.5, speedKmh: 150, gForce: 0.17, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '4.71', speedAt1000Rpm: 7.4, speedAt3000Rpm: 22.2, speedAt6000Rpm: 44.4, redlineSpeed: 36 },
+      { gear: '2nd', ratio: '3.14', speedAt1000Rpm: 11.1, speedAt3000Rpm: 33.3, speedAt6000Rpm: 66.6, redlineSpeed: 53 },
+      { gear: '3rd', ratio: '2.11', speedAt1000Rpm: 16.5, speedAt3000Rpm: 49.5, speedAt6000Rpm: 99.0, redlineSpeed: 79 },
+      { gear: '4th', ratio: '1.67', speedAt1000Rpm: 20.9, speedAt3000Rpm: 62.7, speedAt6000Rpm: 125.4, redlineSpeed: 100 },
+      { gear: '5th', ratio: '1.29', speedAt1000Rpm: 27.0, speedAt3000Rpm: 81.0, speedAt6000Rpm: 162.0, redlineSpeed: 130 },
+      { gear: '6th', ratio: '1.00', speedAt1000Rpm: 34.9, speedAt3000Rpm: 104.7, speedAt6000Rpm: 209.4, redlineSpeed: 167 },
+      { gear: '7th', ratio: '0.84', speedAt1000Rpm: 41.5, speedAt3000Rpm: 124.5, speedAt6000Rpm: 249.0, redlineSpeed: 199 },
+      { gear: '8th', ratio: '0.67', speedAt1000Rpm: 52.1, speedAt3000Rpm: 156.3, speedAt6000Rpm: 312.6, redlineSpeed: 234 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 9.5, engineRpm: 1150 },
+      { speedKmh: 40, fuelConsumptionKmpl: 11.8, engineRpm: 1050 },
+      { speedKmh: 60, fuelConsumptionKmpl: 13.5, engineRpm: 1000 },
+      { speedKmh: 80, fuelConsumptionKmpl: 14.2, engineRpm: 1100 },
+      { speedKmh: 100, fuelConsumptionKmpl: 12.5, engineRpm: 1450 },
+      { speedKmh: 120, fuelConsumptionKmpl: 10.8, engineRpm: 1750 },
+      { speedKmh: 140, fuelConsumptionKmpl: 9.0, engineRpm: 2050 }
+    ],
+    technicalFeatures: [
+      'Flagship V6 diesel shared across the Volkswagen Touareg SUV and Phaeton luxury sedan',
+      'Massive 550 Nm torque plateau for effortless high-speed cruising and towing',
+      '4MOTION permanent all-wheel drive standard on the Touareg application',
+      'Renowned for silent, refined operation befitting flagship luxury vehicles'
+    ]
+  },
+
+  '1.5-tdi': {
+    id: '1.5-tdi',
+    name: '1.5L TDI Turbo-Diesel',
+    badge: '1.5 TDI (110 PS / 250 Nm)',
+    displacement: '1,498 cc',
+    cylinders: '4 Cylinders Common Rail',
+    fuelType: 'Diesel',
+    peakPowerStr: '110 PS @ 4,000 RPM',
+    peakTorqueStr: '250 Nm @ 1,500–2,500 RPM',
+    maxPowerHp: 110,
+    maxTorqueNm: 250,
+    powerRpmRange: '4,000 RPM',
+    torqueRpmRange: '1,500 – 2,500 RPM',
+    redlineRpm: 4900,
+    idleRpm: 820,
+    highwayCruiseRpm100Kmh: 1900,
+    highwayCruiseRpm120Kmh: 2300,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 25, torqueNm: 180, boostBar: 0.7 },
+      { rpm: 1500, powerHp: 43, torqueNm: 250, boostBar: 1.4 },
+      { rpm: 2000, powerHp: 57, torqueNm: 250, boostBar: 1.35 },
+      { rpm: 2500, powerHp: 71, torqueNm: 248, boostBar: 1.25 },
+      { rpm: 3000, powerHp: 84, torqueNm: 228, boostBar: 1.1 },
+      { rpm: 3500, powerHp: 94, torqueNm: 206, boostBar: 0.95 },
+      { rpm: 4000, powerHp: 110, torqueNm: 178, boostBar: 0.8 },
+      { rpm: 4900, powerHp: 95, torqueNm: 139, boostBar: 0.6 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 1.6, speedKmh: 24, gForce: 0.38, gear: 1 },
+      { timeSec: 3.3, speedKmh: 42, gForce: 0.33, gear: 2 },
+      { timeSec: 5.2, speedKmh: 58, gForce: 0.28, gear: 2 },
+      { timeSec: 7.5, speedKmh: 73, gForce: 0.23, gear: 3 },
+      { timeSec: 10.2, speedKmh: 88, gForce: 0.19, gear: 4 },
+      { timeSec: 10.7, speedKmh: 100, gForce: 0.18, gear: 4 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.45', speedAt1000Rpm: 8.2, speedAt3000Rpm: 24.6, speedAt6000Rpm: 49.2, redlineSpeed: 50 },
+      { gear: '2nd', ratio: '1.94', speedAt1000Rpm: 14.6, speedAt3000Rpm: 43.8, speedAt6000Rpm: 87.6, redlineSpeed: 89 },
+      { gear: '3rd', ratio: '1.29', speedAt1000Rpm: 22.0, speedAt3000Rpm: 66.0, speedAt6000Rpm: 132.0, redlineSpeed: 134 },
+      { gear: '4th', ratio: '0.94', speedAt1000Rpm: 30.2, speedAt3000Rpm: 90.6, speedAt6000Rpm: 181.2, redlineSpeed: 183 },
+      { gear: '5th', ratio: '0.75', speedAt1000Rpm: 37.8, speedAt3000Rpm: 113.4, speedAt6000Rpm: 226.8, redlineSpeed: 182 },
+      { gear: '6th (DSG)', ratio: '0.62', speedAt1000Rpm: 45.7, speedAt3000Rpm: 137.1, speedAt6000Rpm: 274.2, redlineSpeed: 182 },
+      { gear: '7th (DSG)', ratio: '0.52', speedAt1000Rpm: 54.5, speedAt3000Rpm: 163.5, speedAt6000Rpm: 327.0, redlineSpeed: 182 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 16.5, engineRpm: 1400 },
+      { speedKmh: 40, fuelConsumptionKmpl: 20.2, engineRpm: 1300 },
+      { speedKmh: 60, fuelConsumptionKmpl: 23.8, engineRpm: 1250 },
+      { speedKmh: 80, fuelConsumptionKmpl: 25.5, engineRpm: 1400 },
+      { speedKmh: 100, fuelConsumptionKmpl: 21.8, engineRpm: 1900 },
+      { speedKmh: 120, fuelConsumptionKmpl: 18.2, engineRpm: 2300 }
+    ],
+    technicalFeatures: [
+      'Shared diesel engine across the Vento sedan and Ameo compact sedan',
+      'Common-rail direct injection with a compact, efficient 4-cylinder layout',
+      'Among the most fuel-efficient diesels ever sold by Volkswagen in India',
+      'Available with Volkswagen’s smooth 7-speed DSG dual-clutch automatic'
+    ]
+  },
+
+  '1.2-mpi-75': {
+    id: '1.2-mpi-75',
+    name: '1.2L MPI Naturally Aspirated Petrol',
+    badge: '1.2 MPI (75 PS / 110 Nm)',
+    displacement: '1,198 cc',
+    cylinders: '3 Cylinders (Naturally Aspirated)',
+    fuelType: 'Petrol',
+    peakPowerStr: '75 PS @ 5,400 RPM',
+    peakTorqueStr: '110 Nm @ 3,750 RPM',
+    maxPowerHp: 75,
+    maxTorqueNm: 110,
+    powerRpmRange: '5,400 RPM',
+    torqueRpmRange: '3,750 RPM',
+    redlineRpm: 6200,
+    idleRpm: 850,
+    highwayCruiseRpm100Kmh: 2700,
+    highwayCruiseRpm120Kmh: 3250,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 9, torqueNm: 62, boostBar: 0 },
+      { rpm: 1500, powerHp: 15, torqueNm: 75, boostBar: 0 },
+      { rpm: 2000, powerHp: 22, torqueNm: 85, boostBar: 0 },
+      { rpm: 2500, powerHp: 29, torqueNm: 92, boostBar: 0 },
+      { rpm: 3000, powerHp: 37, torqueNm: 100, boostBar: 0 },
+      { rpm: 3750, powerHp: 47, torqueNm: 110, boostBar: 0 },
+      { rpm: 4500, powerHp: 62, torqueNm: 107, boostBar: 0 },
+      { rpm: 5400, powerHp: 75, torqueNm: 100, boostBar: 0 },
+      { rpm: 6200, powerHp: 67, torqueNm: 82, boostBar: 0 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 2.5, speedKmh: 20, gForce: 0.24, gear: 1 },
+      { timeSec: 5.2, speedKmh: 36, gForce: 0.20, gear: 2 },
+      { timeSec: 8.5, speedKmh: 50, gForce: 0.17, gear: 2 },
+      { timeSec: 12.5, speedKmh: 63, gForce: 0.14, gear: 3 },
+      { timeSec: 16.5, speedKmh: 100, gForce: 0.09, gear: 4 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.94', speedAt1000Rpm: 7.2, speedAt3000Rpm: 21.6, speedAt6000Rpm: 43.2, redlineSpeed: 45 },
+      { gear: '2nd', ratio: '2.13', speedAt1000Rpm: 13.3, speedAt3000Rpm: 39.9, speedAt6000Rpm: 79.8, redlineSpeed: 82 },
+      { gear: '3rd', ratio: '1.36', speedAt1000Rpm: 20.9, speedAt3000Rpm: 62.7, speedAt6000Rpm: 125.4, redlineSpeed: 129 },
+      { gear: '4th', ratio: '0.97', speedAt1000Rpm: 29.3, speedAt3000Rpm: 87.9, speedAt6000Rpm: 175.8, redlineSpeed: 160 },
+      { gear: '5th', ratio: '0.78', speedAt1000Rpm: 36.5, speedAt3000Rpm: 109.5, speedAt6000Rpm: 219.0, redlineSpeed: 160 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 11.5, engineRpm: 2100 },
+      { speedKmh: 40, fuelConsumptionKmpl: 14.8, engineRpm: 2000 },
+      { speedKmh: 60, fuelConsumptionKmpl: 17.5, engineRpm: 2050 },
+      { speedKmh: 80, fuelConsumptionKmpl: 18.8, engineRpm: 2300 },
+      { speedKmh: 100, fuelConsumptionKmpl: 15.6, engineRpm: 2700 },
+      { speedKmh: 120, fuelConsumptionKmpl: 12.8, engineRpm: 3250 }
+    ],
+    technicalFeatures: [
+      'Entry-level naturally aspirated engine for the sub-4-metre Ameo compact sedan',
+      'Simple, low-maintenance 3-cylinder architecture with no turbocharger',
+      'Prioritizes affordability and low running costs over outright performance',
+      'Shared with the international Volkswagen Polo/Vento small-car range'
+    ]
   }
 };
 
@@ -1297,6 +1914,216 @@ export const MODEL_PERFORMANCE_PROFILES: ModelPerformanceProfile[] = [
       'Long, low executive silhouette optimized for German Autobahn cruising stability',
       'Active radiator shutters on later CBU imports reducing cooling drag at speed',
       'Flush-fitted glazing and door handles minimizing wind noise and drag coefficient'
+    ]
+  },
+  {
+    id: 'octavia-combi',
+    name: 'Škoda Octavia Combi',
+    tagline: 'Hall of Fame Premium Estate with Turbo-Petrol Performance (2005–2010)',
+    category: 'Estate / Station Wagon (Legacy)',
+    primaryEngineId: '1.8-tsi-combi',
+    availableEngineIds: ['1.8-tsi-combi', '1.9-tdi-pd90'],
+    weightKg: 1345,
+    dragCoefficient: '0.29 Cd',
+    braking100to0DistMeters: 38.0,
+    corneringGForce: 0.83,
+    powerToWeightRatio: '111.5 PS/tonne',
+    sprint0to100: '9.5 seconds',
+    topSpeed: '212 km/h',
+    suspensionType: 'MacPherson Strut Front & Multi-Link Rear (PQ34 Platform)',
+    aerodynamicHighlights: [
+      'Extended estate roofline tapering into an integrated rear roof spoiler',
+      'Smooth D-pillar contouring to reduce turbulence over the tailgate glass',
+      'Flat underbody paneling ahead of the rear axle for a lower drag coefficient than typical wagons'
+    ]
+  },
+  {
+    id: 'laura',
+    name: 'Škoda Laura',
+    tagline: 'Hall of Fame Sedan with Class-Leading Boot Space (2010–2013)',
+    category: 'Executive Sedan (Legacy)',
+    primaryEngineId: '1.8-tsi-160',
+    availableEngineIds: ['1.8-tsi-160', '1.9-tdi-pd105', '2.0-tdi-140'],
+    weightKg: 1320,
+    dragCoefficient: '0.28 Cd',
+    braking100to0DistMeters: 37.4,
+    corneringGForce: 0.86,
+    powerToWeightRatio: '121.2 PS/tonne',
+    sprint0to100: '8.9 seconds',
+    topSpeed: '203 km/h',
+    suspensionType: 'MacPherson Strut Front & Multi-Link Rear (PQ34 Platform)',
+    aerodynamicHighlights: [
+      'Clean three-box sedan silhouette shared with the international second-generation Octavia',
+      'Underbody aero paneling ahead of the fuel tank smoothing airflow beneath the cabin',
+      'Boot-lid character line acting as a subtle lip spoiler reducing rear-end lift'
+    ]
+  },
+  {
+    id: 'yeti',
+    name: 'Škoda Yeti',
+    tagline: 'Hall of Fame Compact SUV with Genuine Haldex 4x4 (2010–2017)',
+    category: 'Compact SUV (Legacy)',
+    primaryEngineId: '2.0-tdi-140',
+    availableEngineIds: ['2.0-tdi-110', '2.0-tdi-140', '1.8-tsi-160'],
+    weightKg: 1475,
+    dragCoefficient: '0.35 Cd',
+    braking100to0DistMeters: 38.5,
+    corneringGForce: 0.80,
+    powerToWeightRatio: '94.9 PS/tonne',
+    sprint0to100: '9.8 seconds',
+    topSpeed: '198 km/h',
+    suspensionType: 'MacPherson Strut Front & Multi-Link Rear with Haldex 4x4 Coupling',
+    aerodynamicHighlights: [
+      'Distinctive upright, boxy silhouette prioritizing cabin space over slippery aerodynamics',
+      'Roof rails integrated into the roofline to minimize wind noise at highway speed',
+      'Front skid plate doubling as an aerodynamic underbody deflector'
+    ]
+  },
+  {
+    id: 'karoq',
+    name: 'Škoda Karoq',
+    tagline: 'CBU Import Flagship SUV with Full European Engineering (2020–2022)',
+    category: 'Midsize SUV',
+    primaryEngineId: '1.5-tsi',
+    availableEngineIds: ['1.5-tsi'],
+    weightKg: 1445,
+    dragCoefficient: '0.32 Cd',
+    braking100to0DistMeters: 37.0,
+    corneringGForce: 0.88,
+    powerToWeightRatio: '103.8 PS/tonne',
+    sprint0to100: '9.2 seconds',
+    topSpeed: '201 km/h',
+    suspensionType: 'MacPherson Strut Front & Multi-Link Rear (MQB Platform)',
+    aerodynamicHighlights: [
+      'Sculpted bonnet and A-pillar geometry shared with the global Volkswagen Tiguan platform',
+      'Active radiator grille shutters reducing drag at highway cruising speeds',
+      'Roof-mounted spoiler with integrated third brake light reducing rear-end turbulence'
+    ]
+  },
+  {
+    id: 'beetle',
+    name: 'Volkswagen Beetle',
+    tagline: 'CBU Import Icon with Retro-Modern Coupe Styling (2009–2019)',
+    category: 'Coupe Hatchback (Legacy)',
+    primaryEngineId: '1.4-tsi-beetle',
+    availableEngineIds: ['1.4-tsi-beetle'],
+    weightKg: 1395,
+    dragCoefficient: '0.33 Cd',
+    braking100to0DistMeters: 36.8,
+    corneringGForce: 0.87,
+    powerToWeightRatio: '107.5 PS/tonne',
+    sprint0to100: '8.4 seconds',
+    topSpeed: '204 km/h',
+    suspensionType: 'MacPherson Strut Front & Multi-Link Rear (PQ35 Platform)',
+    aerodynamicHighlights: [
+      'Signature rounded coupe roofline paying tribute to the original 1938 Type 1 silhouette',
+      'Smooth, flush-fitted body panels minimizing panel-gap turbulence',
+      'Integrated rear roof-edge spoiler shaping airflow off the tailgate'
+    ]
+  },
+  {
+    id: 'touareg',
+    name: 'Volkswagen Touareg',
+    tagline: 'Flagship Luxury 4x4 SUV with V6 Diesel Muscle (2011–2020)',
+    category: 'Luxury 4x4 SUV',
+    primaryEngineId: '3.0-tdi-v6',
+    availableEngineIds: ['3.0-tdi-v6'],
+    weightKg: 2075,
+    dragCoefficient: '0.35 Cd',
+    braking100to0DistMeters: 37.8,
+    corneringGForce: 0.82,
+    powerToWeightRatio: '118.1 PS/tonne',
+    sprint0to100: '7.8 seconds',
+    topSpeed: '224 km/h',
+    suspensionType: '4-Corner Adaptive Air Suspension with Permanent 4MOTION AWD',
+    aerodynamicHighlights: [
+      'Active radiator shutters and underbody paneling reducing cooling drag at speed',
+      'Adjustable air suspension automatically lowers ride height at highway speeds to cut drag',
+      'Roof rails and wheel-arch claddings contoured to minimize crosswind sensitivity'
+    ]
+  },
+  {
+    id: 'phaeton',
+    name: 'Volkswagen Phaeton',
+    tagline: 'Ultra-Luxury Flagship Sedan Built at the Transparent Factory (2010–2016)',
+    category: 'Executive Sedan (Legacy)',
+    primaryEngineId: '3.0-tdi-v6',
+    availableEngineIds: ['3.0-tdi-v6'],
+    weightKg: 2200,
+    dragCoefficient: '0.29 Cd',
+    braking100to0DistMeters: 38.2,
+    corneringGForce: 0.78,
+    powerToWeightRatio: '111.4 PS/tonne',
+    sprint0to100: '8.8 seconds',
+    topSpeed: '234 km/h',
+    suspensionType: '4-Corner Air Suspension with Continuous Damping Control',
+    aerodynamicHighlights: [
+      'Long-wheelbase limousine proportions tuned for silent, stable high-speed cruising',
+      'Dual-layer acoustic laminated glass reducing wind noise and buffeting',
+      'Flush door handles and underbody encapsulation for a low 0.29 Cd drag coefficient'
+    ]
+  },
+  {
+    id: 'vento',
+    name: 'Volkswagen Vento',
+    tagline: 'Hall of Fame Sedan with "German Thud" Build Quality (2010–2022)',
+    category: 'Compact Sedan (Legacy)',
+    primaryEngineId: '1.2-tsi-polo',
+    availableEngineIds: ['1.6-mpi', '1.2-tsi-polo', '1.5-tdi'],
+    weightKg: 1215,
+    dragCoefficient: '0.30 Cd',
+    braking100to0DistMeters: 37.5,
+    corneringGForce: 0.85,
+    powerToWeightRatio: '86.4 PS/tonne',
+    sprint0to100: '9.7 seconds',
+    topSpeed: '190 km/h',
+    suspensionType: 'MacPherson Strut Front & Torsion Beam Rear (PQ25 Platform)',
+    aerodynamicHighlights: [
+      'Laser-welded galvanized steel body shell renowned for high-speed structural rigidity',
+      'Simple three-box sedan silhouette shared with the international Volkswagen Vento/Polo Sedan',
+      'Chrome-accented front grille shaped to smooth airflow around the bumper'
+    ]
+  },
+  {
+    id: 'ameo',
+    name: 'Volkswagen Ameo',
+    tagline: 'India-Exclusive Sub-4-Metre Compact Sedan (2016–2020)',
+    category: 'Compact Sedan (Legacy)',
+    primaryEngineId: '1.5-tdi',
+    availableEngineIds: ['1.2-mpi-75', '1.5-tdi'],
+    weightKg: 1155,
+    dragCoefficient: '0.31 Cd',
+    braking100to0DistMeters: 37.9,
+    corneringGForce: 0.84,
+    powerToWeightRatio: '95.2 PS/tonne',
+    sprint0to100: '10.7 seconds',
+    topSpeed: '182 km/h',
+    suspensionType: 'MacPherson Strut Front & Torsion Beam Rear (PQ25 Platform)',
+    aerodynamicHighlights: [
+      'Notchback boot design distinct from the international Polo/Vento silhouette',
+      'Compact overhangs reducing frontal area and aerodynamic lift',
+      'Chrome window beltline trim smoothing airflow along the greenhouse'
+    ]
+  },
+  {
+    id: 't-roc',
+    name: 'Volkswagen T-Roc',
+    tagline: 'CBU Import Compact SUV with Coupe-SUV Styling (2020–2022)',
+    category: 'Compact SUV (Legacy)',
+    primaryEngineId: '1.5-tsi',
+    availableEngineIds: ['1.5-tsi'],
+    weightKg: 1395,
+    dragCoefficient: '0.33 Cd',
+    braking100to0DistMeters: 37.2,
+    corneringGForce: 0.87,
+    powerToWeightRatio: '107.5 PS/tonne',
+    sprint0to100: '8.4 seconds',
+    topSpeed: '199 km/h',
+    suspensionType: 'MacPherson Strut Front & Multi-Link Rear (MQB Platform)',
+    aerodynamicHighlights: [
+      'Coupe-SUV roofline with contrasting roof color reducing visual and aerodynamic bulk',
+      'Sculpted wheel arches channeling airflow around 18-inch alloy wheels',
+      'Roof-edge spoiler integrated into the tailgate reducing rear-end turbulence'
     ]
   }
 ];
