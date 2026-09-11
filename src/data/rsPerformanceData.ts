@@ -23,6 +23,9 @@ export interface RSModelData {
   suspension: string;
   boostPsi: number;
   revLimit: number;
+  tractionType: string;
+  bootAndSeating: string;
+  keyWeaponSummary: string;
   heroColorHex: string;
   heroColorName: string;
   colors: Array<{ name: string; hex: string; desc: string }>;
@@ -68,6 +71,9 @@ export const RS_MODELS: RSModelData[] = [
     suspension: 'RS Sport Chassis lowered by 15 mm with DCC Plus (15 Damping Levels)',
     boostPsi: 21.8,
     revLimit: 6800,
+    tractionType: 'VAQ E-Diff',
+    bootAndSeating: '5 Seats • 600L–1,555L Liftback',
+    keyWeaponSummary: 'Electro-mechanical VAQ multi-plate LSD physically locks torque to the outside front wheel, eliminating understeer.',
     heroColorHex: '#1d4ed8',
     heroColorName: 'Race Blue Metallic',
     colors: [
@@ -151,6 +157,9 @@ export const RS_MODELS: RSModelData[] = [
     suspension: 'Adaptive DCC Plus with Off-Road & Dedicated RS Sport Modes',
     boostPsi: 22.4,
     revLimit: 6700,
+    tractionType: '4x4 AWD',
+    bootAndSeating: '7 Seats • 835L–2,065L',
+    keyWeaponSummary: 'Nürburgring 7-seater lap record holder (9m 29s) with DCC Plus 15-stage dual-valve adaptive damping.',
     heroColorHex: '#b91c1c',
     heroColorName: 'Velvet Red Metallic',
     colors: [
@@ -235,7 +244,7 @@ export const RS_HERITAGE = [
   {
     year: 'Today',
     title: 'The Modern Era: 265 PS EA888 EVO4 Mastery',
-    desc: 'With VAQ front e-diffs, DCC Plus dual-valve suspension, and 265 PS direct-injection muscle, the modern Octavia vRS and Kodiaq vRS define everyday everyday motorsport exhilaration.'
+    desc: 'With VAQ front e-diffs, DCC Plus dual-valve suspension, and 265 PS direct-injection muscle, the modern Octavia vRS and Kodiaq vRS define everyday motorsport exhilaration.'
   }
 ];
 

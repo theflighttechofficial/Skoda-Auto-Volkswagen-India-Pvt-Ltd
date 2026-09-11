@@ -968,7 +968,7 @@ export const VW_GERMAN_ENGINEERING_FEATURES = [
   },
   {
     title: 'Hot-Formed Ultra-High-Strength Steel',
-    description: 'B-pillars and crash crash-load pathways are forged under 950°C and rapidly quenched, forming a protective survival cell that earns 5 Stars in Bharat NCAP.'
+    description: 'B-pillars and crash-load pathways are forged under 950°C and rapidly quenched, forming a protective survival cell that earns 5 Stars in Bharat NCAP.'
   },
   {
     title: 'Active Cylinder Technology (ACT)',

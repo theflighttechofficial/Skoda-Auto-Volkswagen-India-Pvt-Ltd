@@ -43,12 +43,12 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
     "2.0-tsi": 10.8,
     "1.8-tdi": 17.5,
     "2.0-tdi": 16.8,
-    "vw-1.0-tsi": 14.2,
-    "vw-1.5-tsi-act": 13.8,
-    "vw-2.0-tsi-4motion": 10.5,
-    "vw-2.0-gti-ea888": 9.8,
-    "vw-1.2-tsi-polo": 15,
-    "vw-2.0-tdi": 17.2,
+    "1.0-tsi-vw": 14.2,
+    "1.5-tsi-vw": 13.8,
+    "2.0-tsi-vw": 10.5,
+    "2.0-tsi-gti": 9.8,
+    "1.2-tsi-polo": 15,
+    "2.0-tdi-vw": 17.2,
   };
   const filteredEngines =
     fuelFilter === "All"

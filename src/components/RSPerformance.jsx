@@ -25,7 +25,11 @@ import {
   RS_HERITAGE,
   RIVAL_COMPARISONS,
 } from "../data/rsPerformanceData";
-import { VW_GT_MODELS, GTI_HERITAGE } from "../data/vwPerformanceData";
+import {
+  VW_GT_MODELS,
+  GTI_HERITAGE,
+  VW_RIVAL_COMPARISONS,
+} from "../data/vwPerformanceData";
 export const RSPerformance = ({
   brand = "skoda",
   onOpenAdvisor,
@@ -34,6 +38,7 @@ export const RSPerformance = ({
   const isVW = brand === "volkswagen";
   const performanceModels = isVW ? VW_GT_MODELS : RS_MODELS;
   const performanceHeritage = isVW ? GTI_HERITAGE : RS_HERITAGE;
+  const rivalComparisons = isVW ? VW_RIVAL_COMPARISONS : RIVAL_COMPARISONS;
   const [selectedModelId, setSelectedModelId] = useState("octavia-vrs");
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const [driveMode, setDriveMode] = useState("vrs");
@@ -49,8 +54,8 @@ export const RSPerformance = ({
     performanceModels.find((m) => m.id === selectedModelId) ||
     performanceModels[0];
   const currentRivalGroup =
-    RIVAL_COMPARISONS.find((g) => g.skodaModelId === rivalModelTab) ||
-    RIVAL_COMPARISONS[0];
+    rivalComparisons.find((g) => g.skodaModelId === rivalModelTab) ||
+    rivalComparisons[0];
   const activeRival =
     currentRivalGroup.rivals.find((r) => r.id === selectedRivalId) ||
     currentRivalGroup.rivals[0];
@@ -62,7 +67,11 @@ export const RSPerformance = ({
     resetLaunch();
   }, [selectedModelId]);
   useEffect(() => {
-    const group = RIVAL_COMPARISONS.find(
+    setSelectedModelId(performanceModels[0].id);
+    setRivalModelTab(performanceModels[0].id);
+  }, [brand]);
+  useEffect(() => {
+    const group = rivalComparisons.find(
       (g) => g.skodaModelId === rivalModelTab,
     );
     if (group && group.rivals.length > 0) {
@@ -93,7 +102,7 @@ export const RSPerformance = ({
     setLaunchState("launching");
     const targetTime = activeModel.accelSeconds;
     const startTime = Date.now();
-    const peakG = activeModel.id === "kodiaq-vrs" ? 1.18 : 1.05;
+    const peakG = activeModel.tractionType === "4x4 AWD" ? 1.18 : 1.05;
     const interval = setInterval(() => {
       const elapsed = (Date.now() - startTime) / 1e3;
       setElapsedTime(Math.min(elapsed, targetTime));
@@ -289,7 +298,7 @@ export const RSPerformance = ({
           <div>
             <div className="flex items-center gap-2.5 mb-1.5">
               <span className="px-2 py-0.5 rounded bg-red-500 text-white text-[10px] font-black italic tracking-wider">
-                vRS EXCLUSIVE
+                {isVW ? "GTI EXCLUSIVE" : "vRS EXCLUSIVE"}
               </span>
               <span className="text-xs text-zinc-400 uppercase tracking-widest font-semibold">
                 {activeModel.category}
@@ -355,7 +364,9 @@ export const RSPerformance = ({
             <div className="text-2xl font-black text-white tracking-tight">
               {activeModel.powerHp} PS
             </div>
-            <span className="text-[10px] text-zinc-400">195 kW Direct-Inj</span>
+            <span className="text-[10px] text-zinc-400">
+              {activeModel.power.match(/\(([^)]+)\)/)?.[1] || ""} Direct-Inj
+            </span>
           </div>
 
           <div className="p-4 rounded-2xl bg-zinc-950/80 border border-zinc-800/80 space-y-1">
@@ -369,7 +380,7 @@ export const RSPerformance = ({
               {activeModel.torqueNm} Nm
             </div>
             <span className="text-[10px] text-zinc-400">
-              1,600–4,350 RPM flat
+              {activeModel.torque.split("@")[1]?.trim() || ""} flat
             </span>
           </div>
 
@@ -394,7 +405,7 @@ export const RSPerformance = ({
               <Activity className="w-4 h-4 text-emerald-400" />
             </div>
             <div className="text-base font-black text-white leading-tight mt-1">
-              {activeModel.id === "octavia-vrs" ? "VAQ E-Diff" : "4x4 AWD"}
+              {activeModel.tractionType}
             </div>
             <span className="text-[10px] text-emerald-400 font-medium">
               100% Torque Lock
@@ -483,7 +494,7 @@ export const RSPerformance = ({
                 onClick={() => setDriveMode(m)}
                 className={`px-3 py-1.5 rounded-lg font-bold uppercase transition-all ${driveMode === m ? (m === "vrs" ? "bg-red-600 text-white shadow-md shadow-red-900/50" : "bg-zinc-800 text-white") : "text-zinc-400 hover:text-white"}`}
               >
-                {m === "vrs" ? "\u26A1 vRS Mode" : m}
+                {m === "vrs" ? (isVW ? "\u26A1 GTI Mode" : "\u26A1 vRS Mode") : m}
               </button>
             ))}
           </div>
@@ -770,7 +781,7 @@ export const RSPerformance = ({
               Driver Centric Ergonomics
             </span>
             <h3 className="text-xl font-black text-white tracking-tight">
-              Exclusive vRS Cockpit Architecture
+              {isVW ? "Exclusive GTI Cockpit Architecture" : "Exclusive vRS Cockpit Architecture"}
             </h3>
           </div>
           <span className="text-xs font-mono text-zinc-400">
@@ -805,7 +816,7 @@ export const RSPerformance = ({
             <div className="flex items-center gap-2 mb-1.5">
               <span className="px-2.5 py-0.5 rounded-full bg-red-950 text-red-300 text-[11px] font-black italic tracking-wider border border-red-800 flex items-center gap-1.5">
                 <Swords className="w-3.5 h-3.5 text-red-400" />
-                vRS PERFORMANCE BENCHMARKS
+                {isVW ? "GT & GTI PERFORMANCE BENCHMARKS" : "vRS PERFORMANCE BENCHMARKS"}
               </span>
               <span className="text-xs text-zinc-400 uppercase tracking-wider font-semibold">
                 Škoda Auto Volkswagen India Pvt. Ltd.
@@ -816,7 +827,7 @@ export const RSPerformance = ({
             </h3>
             <p className="text-xs sm:text-sm text-zinc-300 mt-1 max-w-3xl">
               {isVW
-                ? "How Volkswagen's 265 PS track-tuned weapons stack up against executive luxury sedans, hot hatches, and performance SUVs from BMW, Mercedes-AMG, Audi, and Toyota in the Indian market."
+                ? "How Volkswagen's GT and GTI performance range stacks up against hot hatches, performance sedans, and executive rivals from BMW, Mercedes-AMG, Hyundai, and Honda in the Indian market."
                 : "How Škoda's 265 PS track-tuned weapons stack up against executive luxury sedans, hot hatches, and performance SUVs from BMW, Mercedes-AMG, Audi, and Toyota in the Indian market."}
             </p>
           </div>
@@ -938,9 +949,7 @@ export const RSPerformance = ({
                   Differential / AWD
                 </span>
                 <span className="text-[11px] font-bold text-white block mt-0.5 leading-tight">
-                  {activeSkodaForRival.id === "octavia-vrs"
-                    ? "VAQ Mechanical 100% Lock"
-                    : "Intelligent 4x4 AWD Multi-Plate"}
+                  {activeSkodaForRival.tractionType}
                 </span>
               </div>
               <div className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
@@ -948,9 +957,7 @@ export const RSPerformance = ({
                   Utility & Luggage
                 </span>
                 <span className="text-[11px] font-bold text-white block mt-0.5 leading-tight">
-                  {activeSkodaForRival.id === "octavia-vrs"
-                    ? "600L\u20131,555L Liftback"
-                    : "7 Seats \u2022 835L\u20132,065L"}
+                  {activeSkodaForRival.bootAndSeating}
                 </span>
               </div>
             </div>
@@ -960,9 +967,7 @@ export const RSPerformance = ({
                 <Trophy className="w-3.5 h-3.5 text-amber-400" /> Key Weapon:
               </span>
               <p className="text-[11px] leading-relaxed text-zinc-300">
-                {activeSkodaForRival.id === "octavia-vrs"
-                  ? "Electro-mechanical VAQ multi-plate LSD physically locks torque to outside front wheel, eliminating understeer."
-                  : "N\xFCrburgring 7-seater lap record holder (9m 29s) with DCC Plus 15-stage dual-valve adaptive damping."}
+                {activeSkodaForRival.keyWeaponSummary}
               </p>
             </div>
           </div>
@@ -1144,7 +1149,7 @@ export const RSPerformance = ({
               <Trophy className="w-4 h-4" />
             </span>
             <h4 className="text-base font-black text-white italic">
-              The vRS Performance Advantage vs {activeRival.name}
+              {isVW ? "The GT & GTI Performance Advantage" : "The vRS Performance Advantage"} vs {activeRival.name}
             </h4>
           </div>
           <p className="text-xs sm:text-sm text-zinc-200 leading-relaxed font-sans">
@@ -1208,12 +1213,12 @@ export const RSPerformance = ({
                 <tr className="bg-red-950/30 font-semibold border-l-4 border-l-red-500">
                   <td className="py-3.5 px-4 font-sans font-black text-white flex items-center gap-1.5">
                     <span className="px-1.5 py-0.5 rounded bg-red-600 text-white text-[9px] font-black italic">
-                      vRS
+                      {isVW ? "GTI" : "vRS"}
                     </span>
                     {activeSkodaForRival.name}
                   </td>
                   <td className="py-3.5 px-4 font-sans text-zinc-300">
-                    2.0L TSI EA888 EVO
+                    {activeSkodaForRival.engine.split("(")[0].trim()}
                   </td>
                   <td className="py-3.5 px-4 font-black text-red-400">
                     {activeSkodaForRival.powerHp} PS
@@ -1225,14 +1230,10 @@ export const RSPerformance = ({
                     {activeSkodaForRival.acceleration0to100}
                   </td>
                   <td className="py-3.5 px-4 font-sans text-emerald-300">
-                    {activeSkodaForRival.id === "octavia-vrs"
-                      ? "VAQ Mechanical LSD"
-                      : "Intelligent 4x4 AWD"}
+                    {activeSkodaForRival.tractionType}
                   </td>
                   <td className="py-3.5 px-4 font-sans text-zinc-300">
-                    {activeSkodaForRival.id === "octavia-vrs"
-                      ? "5 Seats (600L Liftback)"
-                      : "7 Seats (835L\u20132,065L)"}
+                    {activeSkodaForRival.bootAndSeating}
                   </td>
                   <td className="py-3.5 px-4 text-emerald-400 font-black">
                     {activeSkodaForRival.expectedPrice}
@@ -1317,7 +1318,7 @@ export const RSPerformance = ({
               <div className="flex justify-between text-xs mb-1 font-mono">
                 <span className="font-bold text-white flex items-center gap-1.5">
                   <span className="px-1 py-0.2 rounded bg-red-600 text-white text-[9px]">
-                    vRS
+                    {isVW ? "GTI" : "vRS"}
                   </span>
                   {activeSkodaForRival.name}
                 </span>

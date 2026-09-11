@@ -493,7 +493,9 @@ export const AboutSkodaHistory = ({
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <div className="px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-black text-xs flex items-center gap-1.5">
+            <div
+              className={`px-3 py-1.5 rounded-xl font-black text-xs flex items-center gap-1.5 ${isVW ? "bg-blue-500/10 border border-blue-500/30 text-blue-300" : "bg-emerald-500/10 border border-emerald-500/30 text-emerald-300"}`}
+            >
               <ShieldCheck className="w-4 h-4" />
               <span>100% 5-Star Certified</span>
             </div>
@@ -527,7 +529,9 @@ export const AboutSkodaHistory = ({
               <h4 className="font-bold text-white text-sm">
                 Shendra Plant (Aurangabad)
               </h4>
-              <span className="text-[10px] text-blue-400 font-bold px-2 py-0.5 rounded bg-blue-950 border border-blue-800">
+              <span
+                className={`text-[10px] font-bold px-2 py-0.5 rounded border ${isVW ? "text-blue-400 bg-blue-950 border-blue-800" : "text-emerald-400 bg-emerald-950 border-emerald-800"}`}
+              >
                 Executive & Luxury Assembly
               </span>
             </div>
