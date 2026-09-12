@@ -45,7 +45,7 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
         </div>
 
         <div
-          className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-bold self-start ${isVW ? "bg-blue-950/80 border-blue-800 text-blue-300" : "bg-emerald-950/80 border-emerald-800 text-emerald-300"}`}
+          className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-bold self-start ${isAudi ? "bg-red-950/80 border-red-800 text-red-300" : isVW ? "bg-blue-950/80 border-blue-800 text-blue-300" : "bg-emerald-950/80 border-emerald-800 text-emerald-300"}`}
         >
           <ShieldCheck
             className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
@@ -59,12 +59,12 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className={`relative overflow-hidden rounded-3xl bg-gradient-to-r via-zinc-900 to-zinc-950 border p-6 sm:p-8 shadow-xl ${isVW ? "from-blue-950/70 border-blue-800/40" : "from-emerald-950/70 border-emerald-800/40"}`}
+        className={`relative overflow-hidden rounded-3xl bg-gradient-to-r via-zinc-900 to-zinc-950 border p-6 sm:p-8 shadow-xl ${isAudi ? "from-red-950/70 border-red-800/40" : isVW ? "from-blue-950/70 border-blue-800/40" : "from-emerald-950/70 border-emerald-800/40"}`}
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
           <div className="lg:col-span-8 space-y-3">
             <div
-              className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold border ${isVW ? "bg-blue-500/20 text-blue-300 border-blue-500/30" : "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"}`}
+              className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold border ${isAudi ? "bg-red-500/20 text-red-300 border-red-500/30" : isVW ? "bg-blue-500/20 text-blue-300 border-blue-500/30" : "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"}`}
             >
               <ShieldCheck className="w-4 h-4" />
               <span>Full 5-Star Adult & Child Crash Rating</span>
@@ -130,7 +130,7 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
             viewport={{ once: true }}
             transition={{ delay: idx * 0.08, duration: 0.35 }}
             whileHover={{ y: -3 }}
-            className={`p-6 rounded-3xl bg-zinc-900/80 border border-zinc-800 space-y-3 transition-all shadow-md ${isVW ? "hover:border-blue-600/50" : "hover:border-emerald-600/50"}`}
+            className={`p-6 rounded-3xl bg-zinc-900/80 border border-zinc-800 space-y-3 transition-all shadow-md ${isAudi ? "hover:border-red-600/50" : isVW ? "hover:border-blue-600/50" : "hover:border-emerald-600/50"}`}
           >
             <div className="flex items-start justify-between flex-wrap gap-2">
               <div>
@@ -144,7 +144,7 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
                 </h4>
               </div>
               <span
-                className={`px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap border ${isVW ? "bg-blue-950 border-blue-800 text-blue-300" : "bg-emerald-950 border-emerald-800 text-emerald-300"}`}
+                className={`px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap border ${isAudi ? "bg-red-950 border-red-800 text-red-300" : isVW ? "bg-blue-950 border-blue-800 text-blue-300" : "bg-emerald-950 border-emerald-800 text-emerald-300"}`}
               >
                 {item.metric}
               </span>

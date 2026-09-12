@@ -1860,9 +1860,74 @@ export const ENGINE_GRAPH_PROFILES: Record<string, EngineGraphProfile> = {
     ],
     technicalFeatures: [
       'Hand-built twin-turbo V8 shared with the Lamborghini Urus and Porsche Cayenne Turbo',
-      'Powers the RS Q8, Audi’s fastest and most powerful SUV ever sold in India',
+      'Powers both the RS Q8 SUV and the RS6 Avant performance estate',
       'Massive 800 Nm torque plateau from just 2,200 RPM',
       'Electromechanical active roll stabilization for flat, composed high-speed cornering'
+    ]
+  },
+
+  '1.4-tfsi-150': {
+    id: '1.4-tfsi-150',
+    name: '1.4L TFSI Turbo-Petrol',
+    badge: '1.4 TFSI (150 PS / 250 Nm)',
+    displacement: '1,395 cc',
+    cylinders: '4 Cylinders',
+    fuelType: 'Petrol',
+    peakPowerStr: '150 PS @ 5,000–6,000 RPM',
+    peakTorqueStr: '250 Nm @ 1,500–3,500 RPM',
+    maxPowerHp: 150,
+    maxTorqueNm: 250,
+    powerRpmRange: '5,000 – 6,000 RPM',
+    torqueRpmRange: '1,500 – 3,500 RPM',
+    redlineRpm: 6500,
+    idleRpm: 850,
+    highwayCruiseRpm100Kmh: 1900,
+    highwayCruiseRpm120Kmh: 2300,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 27, torqueNm: 155, boostBar: 0.3 },
+      { rpm: 1500, powerHp: 45, torqueNm: 250, boostBar: 1.2 },
+      { rpm: 2000, powerHp: 61, torqueNm: 250, boostBar: 1.2 },
+      { rpm: 2500, powerHp: 77, torqueNm: 250, boostBar: 1.2 },
+      { rpm: 3000, powerHp: 92, torqueNm: 250, boostBar: 1.15 },
+      { rpm: 3500, powerHp: 108, torqueNm: 250, boostBar: 1.1 },
+      { rpm: 4000, powerHp: 122, torqueNm: 240, boostBar: 1.0 },
+      { rpm: 5000, powerHp: 150, torqueNm: 210, boostBar: 0.9 },
+      { rpm: 5500, powerHp: 150, torqueNm: 191, boostBar: 0.8 },
+      { rpm: 6000, powerHp: 150, torqueNm: 175, boostBar: 0.7 },
+      { rpm: 6500, powerHp: 136, torqueNm: 146, boostBar: 0.55 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 1.0, speedKmh: 28, gForce: 0.60, gear: 1 },
+      { timeSec: 2.1, speedKmh: 48, gForce: 0.52, gear: 1 },
+      { timeSec: 3.4, speedKmh: 64, gForce: 0.43, gear: 2 },
+      { timeSec: 5.1, speedKmh: 80, gForce: 0.37, gear: 2 },
+      { timeSec: 6.9, speedKmh: 92, gForce: 0.31, gear: 3 },
+      { timeSec: 8.4, speedKmh: 100, gForce: 0.27, gear: 3 },
+      { timeSec: 11.5, speedKmh: 120, gForce: 0.20, gear: 4 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.76', speedAt1000Rpm: 8.0, speedAt3000Rpm: 24.0, speedAt6000Rpm: 48.0, redlineSpeed: 52 },
+      { gear: '2nd', ratio: '2.08', speedAt1000Rpm: 14.4, speedAt3000Rpm: 43.2, speedAt6000Rpm: 86.4, redlineSpeed: 94 },
+      { gear: '3rd', ratio: '1.34', speedAt1000Rpm: 22.4, speedAt3000Rpm: 67.2, speedAt6000Rpm: 134.4, redlineSpeed: 145 },
+      { gear: '4th', ratio: '0.98', speedAt1000Rpm: 30.6, speedAt3000Rpm: 91.8, speedAt6000Rpm: 183.6, redlineSpeed: 195 },
+      { gear: '5th', ratio: '0.80', speedAt1000Rpm: 37.5, speedAt3000Rpm: 112.5, speedAt6000Rpm: 225.0, redlineSpeed: 204 },
+      { gear: '6th', ratio: '0.66', speedAt1000Rpm: 45.5, speedAt3000Rpm: 136.5, speedAt6000Rpm: 273.0, redlineSpeed: 216 },
+      { gear: '7th (S tronic)', ratio: '0.54', speedAt1000Rpm: 53.3, speedAt3000Rpm: 159.9, speedAt6000Rpm: 319.8, redlineSpeed: 216 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 10.8, engineRpm: 1650 },
+      { speedKmh: 40, fuelConsumptionKmpl: 14.2, engineRpm: 1550 },
+      { speedKmh: 60, fuelConsumptionKmpl: 18.4, engineRpm: 1500 },
+      { speedKmh: 80, fuelConsumptionKmpl: 20.2, engineRpm: 1650 },
+      { speedKmh: 100, fuelConsumptionKmpl: 17.6, engineRpm: 1900 },
+      { speedKmh: 120, fuelConsumptionKmpl: 14.8, engineRpm: 2300 }
+    ],
+    technicalFeatures: [
+      'Exclusive CBU/CKD import engine for the compact Audi A3 sedan in India',
+      'EA211 turbo-petrol architecture shared across the Volkswagen Group',
+      'Paired exclusively with a smooth 7-speed S tronic dual-clutch transmission',
+      'Front-wheel drive configuration for agile, efficient compact-luxury motoring'
     ]
   }
 };
@@ -2622,6 +2687,69 @@ export const MODEL_PERFORMANCE_PROFILES: ModelPerformanceProfile[] = [
       'Massive front air intakes feeding the twin-turbo V8’s intercoolers and RS brake package',
       'Gloss black roof-edge spoiler and oval quad exhaust tips reducing rear-end lift',
       'Electromechanical active anti-roll bars keep the body flat at speed, aiding high-speed stability'
+    ]
+  },
+  {
+    id: 'a3',
+    name: 'Audi A3',
+    tagline: 'Hall of Fame Compact Luxury Sedan (2014–2020)',
+    category: 'Compact Sedan (Legacy)',
+    primaryEngineId: '1.4-tfsi-150',
+    availableEngineIds: ['1.4-tfsi-150'],
+    weightKg: 1345,
+    dragCoefficient: '0.30 Cd',
+    braking100to0DistMeters: 36.5,
+    corneringGForce: 0.86,
+    powerToWeightRatio: '111.5 PS/tonne',
+    sprint0to100: '8.4 seconds',
+    topSpeed: '216 km/h',
+    suspensionType: 'MacPherson Strut Front & Multi-Link Rear (MQB Platform)',
+    aerodynamicHighlights: [
+      'Compact three-box sedan silhouette with a low, wide single-frame grille',
+      'Flush-fitted glazing and door handles reducing drag versus its hatchback sibling',
+      'Boot-lid character line acting as a subtle lip spoiler reducing rear-end lift'
+    ]
+  },
+  {
+    id: 'a8',
+    name: 'Audi A8 L',
+    tagline: 'The Presidential Flagship Limousine',
+    category: 'Executive Sedan',
+    primaryEngineId: '3.0-tfsi-v6-340',
+    availableEngineIds: ['3.0-tfsi-v6-340'],
+    weightKg: 1995,
+    dragCoefficient: '0.25 Cd',
+    braking100to0DistMeters: 35.4,
+    corneringGForce: 0.85,
+    powerToWeightRatio: '170.4 PS/tonne',
+    sprint0to100: '5.8 seconds',
+    topSpeed: '250 km/h (Electronically Governed)',
+    suspensionType: 'Predictive Adaptive Air Suspension with quattro Permanent All-Wheel Drive',
+    aerodynamicHighlights: [
+      'Benchmark 0.25 Cd drag coefficient among long-wheelbase luxury limousines',
+      'Predictive air suspension lowers automatically at speed to reduce frontal drag',
+      'Flush door handles and fully enclosed underbody paneling for laminar airflow'
+    ]
+  },
+  {
+    id: 'rs6',
+    name: 'Audi RS6 Avant',
+    tagline: 'Audi Sport’s 600 PS Load-Carrying Missile',
+    category: 'High-Performance Estate',
+    primaryEngineId: '4.0-tfsi-v8-rs',
+    availableEngineIds: ['4.0-tfsi-v8-rs'],
+    weightKg: 2075,
+    dragCoefficient: '0.32 Cd',
+    braking100to0DistMeters: 32.9,
+    corneringGForce: 1.02,
+    powerToWeightRatio: '289.2 PS/tonne',
+    sprint0to100: '3.6 seconds',
+    topSpeed: '250 km/h (280 km/h with RS Dynamic Package)',
+    suspensionType: 'RS Adaptive Air Suspension with quattro Sport Differential',
+    aerodynamicHighlights: [
+      'Muscular flared wheel arches housing 22-inch wheels while managing turbulent airflow',
+      'Functional roof-edge spoiler on the estate tailgate generating rear-axle stability',
+      'Massive front air intakes feeding the twin-turbo V8’s intercoolers and RS brake package'
     ]
   }
 ];

@@ -471,7 +471,7 @@ export const Header = ({
                           Vorsprung durch Technik • Est. 1909
                         </p>
                         <p className="text-[10px] text-zinc-400 mt-1 truncate">
-                          A4, A6, Q3, Q5, Q7, Q8
+                          A3, A4, A6, A8, Q3, Q5, Q7, Q8
                         </p>
                       </div>
                     </button>

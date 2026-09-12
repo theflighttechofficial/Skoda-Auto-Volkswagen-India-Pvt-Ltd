@@ -82,8 +82,8 @@ Volkswagen represents German engineering excellence, robust laser-welded build q
   }
 
   // Audi specific queries, when an Audi model is selected, or when the active site brand is Audi
-  if (isAudiBrand || q.includes('audi') || q.includes('quattro') || q.includes('tfsi') || q.includes(' a4') || q.includes(' a6') || q.includes('q3') || q.includes('q5') || q.includes('q7') || q.includes('q8') || q.includes('rs5') || q.includes('rs q8') || selectedModel.includes('a4') || selectedModel.includes('a6') || selectedModel.includes('q3') || selectedModel.includes('q5') || selectedModel.includes('q7') || selectedModel.includes('q8') || selectedModel.includes('rs5')) {
-    if (q.includes('rs5') || q.includes('rs q8') || q.includes('rs') || selectedModel.includes('rs')) {
+  if (isAudiBrand || q.includes('audi') || q.includes('quattro') || q.includes('tfsi') || q.includes(' a3') || q.includes(' a4') || q.includes(' a6') || q.includes(' a8') || q.includes('q3') || q.includes('q5') || q.includes('q7') || q.includes('q8') || q.includes('rs5') || q.includes('rs6') || q.includes('rs q8') || selectedModel.includes('a3') || selectedModel.includes('a4') || selectedModel.includes('a6') || selectedModel.includes('a8') || selectedModel.includes('q3') || selectedModel.includes('q5') || selectedModel.includes('q7') || selectedModel.includes('q8') || selectedModel.includes('rs5') || selectedModel.includes('rs6')) {
+    if (q.includes('rs5') || q.includes('rs6') || q.includes('rs q8') || q.includes('rs') || selectedModel.includes('rs')) {
       return `### Audi Sport RS Performance Division (Hand-Built Motorsport DNA)
 Hand-assembled by Audi Sport in Neckarsulm, Germany, the RS lineup brings motorsport-derived engineering to India:
 
@@ -93,11 +93,24 @@ Hand-assembled by Audi Sport in Neckarsulm, Germany, the RS lineup brings motors
 - **Acceleration:** 0 to 100 km/h in **3.9 seconds** | Top speed: **250–280 km/h** (RS Dynamic Package).
 - **Chassis:** RS Sport Suspension Plus with Dynamic Ride Control (DRC), 375 mm front discs with red RS calipers.
 
-#### 2. Audi RS Q8 (The Fastest, Most Powerful SUV Audi Has Ever Built)
+#### 2. Audi RS6 Avant (The 600 PS Load-Carrying Missile)
+- **Powertrain:** 4.0L TFSI Twin-Turbo V8 (Audi Sport) delivering **600 PS** & **800 Nm torque**.
+- **Drivetrain:** quattro permanent AWD with a sport rear differential actively vectoring torque.
+- **Acceleration:** 0 to 100 km/h in **3.6 seconds** | Top speed: **250 km/h** (280 km/h with RS Dynamic Package).
+- **Practicality:** A genuine 565L-boot performance estate, expandable to 1,680L with seats folded.
+
+#### 3. Audi RS Q8 (The Fastest, Most Powerful SUV Audi Has Ever Built)
 - **Powertrain:** 4.0L TFSI Twin-Turbo V8 (Audi Sport) delivering **600 PS** & **800 Nm torque**, shared with the Lamborghini Urus.
 - **Drivetrain:** quattro permanent AWD with electromechanical active roll stabilization.
 - **Acceleration:** 0 to 100 km/h in **3.8 seconds** | Top speed: **250 km/h** (305 km/h with RS Dynamic Plus).
 - **Heritage:** Set the production SUV Nürburgring Nordschleife lap record (7:42.253) at its 2020 debut.`;
+    }
+
+    if (q.includes('a3') || selectedModel === 'a3') {
+      return `### Audi A3 (Hall of Fame Compact Luxury Sedan, 2014-2020)
+- **Price:** ₹31.00 Lakh to ₹37.30 Lakh (Final India Price List).
+- **Engine:** 1.4 TFSI Turbo-Petrol (150 PS / 250 Nm), 7-Speed S tronic, Front-Wheel Drive.
+- **Highlights:** Audi India's most accessible model, 425L boot, MQB platform. Discontinued in 2020 as Audi consolidated its lineup around SUVs.`;
     }
 
     if (q.includes('a4') || selectedModel === 'a4') {
@@ -143,15 +156,24 @@ Hand-assembled by Audi Sport in Neckarsulm, Germany, the RS lineup brings motors
 - **Highlights:** Coupe-SUV roofline, OLED full-width rear light strip, shares platform with Porsche Cayenne & Lamborghini Urus.`;
     }
 
+    if (q.includes('a8') || selectedModel === 'a8') {
+      return `### Audi A8 L (The Presidential Flagship Limousine)
+- **Price:** ₹1.29 Crore to ₹1.60 Crore.
+- **Engine:** 3.0 TFSI V6 quattro Turbo-Petrol (340 PS / 500 Nm), 8-Speed Tiptronic.
+- **Highlights:** Long-wheelbase-only "L" bodystyle, predictive adaptive air suspension, rear seat relaxation package, 505L boot. Rivals the Mercedes S-Class and BMW 7 Series.`;
+    }
+
     return `### Audi India Portfolio Overview
 Audi represents progressive luxury, quattro all-wheel-drive traction, and 5-Star Euro NCAP safety:
+- **Audi A3:** Hall of Fame compact luxury sedan (2014-2020), from ₹31.00 Lakh.
 - **Audi A4:** Progressive executive sedan with 2.0 TFSI (190 PS), starting ₹46.05 Lakh.
 - **Audi A6:** Executive autobahn cruiser with standard quattro, starting ₹63.15 Lakh.
+- **Audi A8 L:** Presidential flagship limousine with quattro, starting ₹1.29 Crore.
 - **Audi Q3:** Compact luxury SUV, starting ₹46.38 Lakh.
 - **Audi Q5:** Benchmark midsize luxury SUV with quattro, starting ₹65.10 Lakh.
 - **Audi Q7:** 7-seater flagship SUV, starting ₹85.30 Lakh.
 - **Audi Q8:** Coupe-SUV halo flagship, starting ₹1.17 Crore.
-- **Audi Sport RS:** RS5 (450 PS) and RS Q8 (600 PS) hand-built performance flagships.
+- **Audi Sport RS:** RS5 (450 PS), RS6 Avant (600 PS), and RS Q8 (600 PS) hand-built performance flagships.
 - **Warranty:** 2-year unlimited-km standard warranty, extendable to 5 years, with Audi Advantage service packages.`;
   }
 
@@ -325,7 +347,12 @@ async function startServer() {
         ? `You are the official Audi India AI Consultant. Your mission is to provide accurate, objective, helpful, and beautifully structured automotive guidance on the entire Audi India lineup.
 
 KNOWLEDGE BASE & FACTS:
-1. Audi A4 (The Progressive Executive Sedan):
+1. Audi A3 (Hall of Fame Compact Luxury Sedan, 2014-2020):
+   - Price: ₹31.00 Lakh to ₹37.30 Lakh (Final India Price List).
+   - Engine: 1.4 TFSI Turbo-Petrol (150 PS / 250 Nm), 7-Speed S tronic, Front-Wheel Drive.
+   - Highlights: Audi India's most accessible model, 425L boot, discontinued in 2020 as Audi consolidated around SUVs.
+
+1a. Audi A4 (The Progressive Executive Sedan):
    - Price: ₹46.05 Lakh to ₹49.99 Lakh (Ex-showroom).
    - Engine: 2.0 TFSI Turbo-Petrol (190 PS / 320 Nm), 7-Speed S tronic, Front-Wheel Drive.
    - Highlights: 5-Star Euro NCAP, 12.3-inch Audi Virtual Cockpit, 480L boot, MLB Evo platform.
@@ -356,13 +383,19 @@ KNOWLEDGE BASE & FACTS:
    - Engine: 3.0 TFSI V6 quattro Turbo-Petrol (340 PS / 500 Nm).
    - Highlights: Coupe-SUV roofline, OLED full-width rear light strip, shares platform with Porsche Cayenne & Lamborghini Urus.
 
+6a. Audi A8 L (The Presidential Flagship Limousine):
+   - Price: ₹1.29 Crore to ₹1.60 Crore.
+   - Engine: 3.0 TFSI V6 quattro Turbo-Petrol (340 PS / 500 Nm), 8-Speed Tiptronic.
+   - Highlights: Long-wheelbase-only "L" bodystyle, predictive adaptive air suspension, rear seat relaxation package, 505L boot. Rivals the Mercedes S-Class and BMW 7 Series.
+
 7. Audi Sport RS Performance Division:
    - Audi RS5: 2.9 TFSI Twin-Turbo V6 (450 PS / 600 Nm), hand-built by Audi Sport in Neckarsulm, quattro sport differential, 0-100 km/h in 3.9s.
+   - Audi RS6 Avant: 4.0 TFSI Twin-Turbo V8 (600 PS / 800 Nm), quattro sport differential, 0-100 km/h in 3.6s, a practical 565L-boot performance estate.
    - Audi RS Q8: 4.0 TFSI Twin-Turbo V8 (600 PS / 800 Nm), shared engine with Lamborghini Urus, electromechanical active roll stabilization, 0-100 km/h in 3.8s, set a production SUV Nürburgring lap record at its 2020 debut.
 
 8. quattro & TFSI Technology:
-   - quattro permanent all-wheel drive: self-locking center differential, standard on A6/Q5/Q7/Q8, first introduced on the 1980 Ur-Quattro.
-   - TFSI turbo-petrol direct injection engines ranging from 190 PS (2.0 TFSI) to 600 PS (4.0 TFSI V8 in RS Q8).
+   - quattro permanent all-wheel drive: self-locking center differential, standard on A6/A8/Q5/Q7/Q8, first introduced on the 1980 Ur-Quattro.
+   - TFSI turbo-petrol direct injection engines ranging from 150 PS (1.4 TFSI in the A3) to 600 PS (4.0 TFSI V8 in RS6 Avant/RS Q8).
 
 9. Ownership & Warranty:
    - 2-year unlimited-kilometre standard warranty, extendable up to 5 years.

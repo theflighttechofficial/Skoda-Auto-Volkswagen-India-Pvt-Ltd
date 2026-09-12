@@ -128,17 +128,44 @@ export const ALL_AUDI_ENGINES: EngineSpec[] = [
     realWorldHighway: '7.0 – 8.5 km/l',
     keyHighlights: [
       'Hand-built twin-turbo V8 shared with the Lamborghini Urus and Porsche Cayenne Turbo',
-      'Powers the RS Q8, Audi’s fastest and most powerful SUV ever sold in India',
+      'Powers both the RS Q8 SUV and the RS6 Avant performance estate',
       'Massive 800 Nm torque plateau from just 2,200 RPM',
       'Electromechanical active roll stabilization for flat, composed high-speed cornering'
     ],
-    description: 'A shared-platform hand-built V8 that turns the RS Q8 into the fastest production SUV ever timed around the Nürburgring Nordschleife at its debut.'
+    description: 'A shared-platform hand-built V8 that turns the RS Q8 into the fastest production SUV ever timed around the Nürburgring Nordschleife, and the RS6 Avant into a 600 PS load-carrying missile.'
+  },
+  {
+    id: '1.4-tfsi-a3',
+    name: '1.4L TFSI Turbo-Petrol',
+    badge: '1.4 TFSI (150 PS)',
+    fuelType: 'Petrol',
+    fuelPriceDefault: 102,
+    displacement: '1,395 cc',
+    cylinders: 4,
+    power: '150 PS (110 kW) @ 5,000–6,000 RPM',
+    powerHp: 150,
+    torque: '250 Nm @ 1,500–3,500 RPM',
+    torqueNm: 250,
+    transmissions: ['7-Speed S tronic Dual-Clutch'],
+    acceleration: '0–100 km/h in 8.4s',
+    topSpeed: '216 km/h',
+    claimedMileage: '17.6 km/l',
+    realWorldCity: '10.5 – 12.0 km/l',
+    realWorldHighway: '16.0 – 18.5 km/l',
+    keyHighlights: [
+      'Exclusive CBU/CKD import engine for the compact Audi A3 sedan in India',
+      'EA211 turbo-petrol architecture shared across the Volkswagen Group',
+      'Paired exclusively with a smooth 7-speed S tronic dual-clutch transmission',
+      'Front-wheel drive configuration for agile, efficient compact-luxury motoring'
+    ],
+    description: 'A refined, efficient turbo-petrol four-cylinder that gave the compact Audi A3 brisk performance without the fuel costs of a larger engine.'
   }
 ];
 
 export const AUDI_MODELS: CarModel[] = [
   {
     id: 'a4',
+    image: '/cars/a4.jpg',
     name: 'Audi A4',
     badge: 'The Progressive Executive Sedan',
     tagline: 'Understated luxury, digital cockpit precision, and effortless turbo-petrol performance',
@@ -218,6 +245,7 @@ export const AUDI_MODELS: CarModel[] = [
   },
   {
     id: 'a6',
+    image: '/cars/a6.jpg',
     name: 'Audi A6',
     badge: 'The Executive Autobahn Cruiser',
     tagline: 'Quattro-equipped executive luxury with commanding highway presence',
@@ -297,6 +325,7 @@ export const AUDI_MODELS: CarModel[] = [
   },
   {
     id: 'q3',
+    image: '/cars/20250609122007_Audi_Q3_Sportback_Daytona_Gray_Pearlescent-1-.avif',
     name: 'Audi Q3',
     badge: 'The Compact Luxury SUV',
     tagline: 'Agile, tech-forward compact SUV that brings quattro capability to the entry-luxury segment',
@@ -376,6 +405,7 @@ export const AUDI_MODELS: CarModel[] = [
   },
   {
     id: 'q5',
+    image: '/cars/q5.jpg',
     name: 'Audi Q5',
     badge: 'The Benchmark Midsize Luxury SUV',
     tagline: 'quattro-equipped midsize SUV blending sports-car agility with everyday luxury SUV comfort',
@@ -455,6 +485,7 @@ export const AUDI_MODELS: CarModel[] = [
   },
   {
     id: 'q7',
+    image: '/cars/20240130053543_2024_audi_q7_rear_left_three_quarter.avif',
     name: 'Audi Q7',
     badge: 'The 7-Seater Flagship SUV',
     tagline: 'Full-size 7-seater luxury SUV combining V6 muscle with commanding road presence',
@@ -534,6 +565,7 @@ export const AUDI_MODELS: CarModel[] = [
   },
   {
     id: 'q8',
+    image: '/cars/Audi-Q8-front-static.avif',
     name: 'Audi Q8',
     badge: 'The Coupe-SUV Halo Flagship',
     tagline: 'Audi’s most striking SUV, pairing coupe-roofline design with V6 quattro muscle',
@@ -589,6 +621,145 @@ export const AUDI_MODELS: CarModel[] = [
       { id: 'mythos-black-q8', name: 'Mythos Black Metallic', hex: '#18181b', availableOn: ['Technology'] },
       { id: 'samurai-grey-q8', name: 'Samurai Grey Metallic', hex: '#52525b', availableOn: ['Technology'] },
       { id: 'navarra-blue-q8', name: 'Navarra Blue Metallic', hex: '#1e3a8a', availableOn: ['Technology'] }
+    ]
+  },
+  {
+    id: 'a3',
+    image: '/cars/a3.jpg',
+    name: 'Audi A3',
+    badge: 'Hall of Fame Compact Luxury Sedan',
+    tagline: 'The accessible entry point into Audi ownership that introduced a generation of Indian buyers to the four rings (2014–2020)',
+    bodyType: 'Compact Sedan',
+    startingPrice: 'Hall of Fame Legend (2014–2020)',
+    startingExShowroom: 3100000,
+    priceRange: '₹31.00 – ₹37.30 Lakh (Final India Price List)',
+    rating: '5-Star Euro NCAP',
+    safetyStars: 5,
+    engines: ['1.4 TFSI Turbo-Petrol (150 PS / 250 Nm)'],
+    keyHighlights: [
+      'Audi India’s most accessible model, bringing progressive luxury to a wider audience',
+      'Compact sedan proportions with a spacious 425-litre boot',
+      '7-speed S tronic dual-clutch transmission standard across the range',
+      'MQB platform underpinnings shared with the Volkswagen Group’s premium compact cars',
+      'Renowned for taut handling and a genuinely premium cabin ambience at its price point',
+      'Discontinued in India in 2020 as Audi consolidated its lineup around SUVs'
+    ],
+    dimensions: {
+      length: '4,467 mm',
+      width: '1,796 mm',
+      height: '1,416 mm',
+      wheelbase: '2,631 mm',
+      groundClearance: '155 mm',
+      bootSpace: '425 Litres',
+      fuelTank: '50 Litres'
+    },
+    variants: [
+      {
+        id: 'a3-premium',
+        name: 'A3 Premium',
+        tagline: 'The essential entry into Audi ownership with complete safety equipment',
+        priceRange: '₹31.00 – ₹33.50 Lakh',
+        baseExShowroom: 3100000,
+        engineOptions: ['1.4 TFSI Turbo-Petrol'],
+        transmissions: ['7-Speed S tronic Dual-Clutch'],
+        keyFeatures: [
+          'MMI touch infotainment with Bluetooth telephony',
+          'Xenon headlamps with LED daytime running lights',
+          'Dual-zone automatic climate control',
+          'Audi Pre Sense Basic safety suite',
+          '6 airbags standard'
+        ],
+        exteriorHighlights: ['16-inch alloy wheels', 'Xenon headlamps', 'Single-frame chrome grille'],
+        interiorHighlights: ['Leatherette upholstery', 'Aluminum interior inlays', 'Flat-bottom sport steering wheel'],
+        badgeColor: 'bg-zinc-700 text-zinc-100'
+      },
+      {
+        id: 'a3-premium-plus',
+        name: 'A3 Premium Plus',
+        tagline: 'The flagship trim with the complete technology and comfort suite',
+        priceRange: '₹35.00 – ₹37.30 Lakh',
+        baseExShowroom: 3500000,
+        engineOptions: ['1.4 TFSI Turbo-Petrol'],
+        transmissions: ['7-Speed S tronic Dual-Clutch'],
+        isFlagship: true,
+        isPopular: true,
+        keyFeatures: [
+          'Bang & Olufsen premium sound system',
+          'Sunroof and ambient interior lighting',
+          'Wireless smartphone connectivity',
+          'Leather upholstery with heated front seats',
+          'Rear parking camera with sensors'
+        ],
+        exteriorHighlights: ['17-inch alloy wheels', 'LED headlamps', 'S line exterior styling package'],
+        interiorHighlights: ['Extended leather upholstery', 'Aluminum and piano black trim', 'Ambient lighting'],
+        badgeColor: 'bg-red-700 text-white'
+      }
+    ],
+    colors: [
+      { id: 'glacier-white-a3', name: 'Glacier White Metallic', hex: '#f1f5f9', availableOn: ['Premium', 'Premium Plus'] },
+      { id: 'mythos-black-a3', name: 'Mythos Black Metallic', hex: '#18181b', availableOn: ['Premium', 'Premium Plus'] },
+      { id: 'floret-silver-a3', name: 'Floret Silver Metallic', hex: '#94a3b8', availableOn: ['Premium', 'Premium Plus'] },
+      { id: 'misano-red-a3', name: 'Misano Red Pearl', hex: '#991b1b', availableOn: ['Premium Plus'] }
+    ]
+  },
+  {
+    id: 'a8',
+    image: '/cars/a8.jpg',
+    name: 'Audi A8 L',
+    badge: 'The Presidential Flagship Limousine',
+    tagline: 'Audi’s technological flagship, offering chauffeur-grade rear luxury and quattro-equipped V6 authority',
+    bodyType: 'Executive Sedan',
+    startingPrice: '₹1.29 Crore Onwards',
+    startingExShowroom: 12900000,
+    priceRange: '₹1.29 – ₹1.60 Crore',
+    rating: '5-Star Euro NCAP',
+    safetyStars: 5,
+    engines: ['3.0 TFSI V6 quattro Turbo-Petrol (340 PS / 500 Nm)'],
+    keyHighlights: [
+      'Long-wheelbase-only "L" bodystyle sold in India for maximum rear legroom',
+      'Standard quattro permanent all-wheel drive with predictive adaptive air suspension',
+      'Audi AI active suspension-ready platform with 48-volt mild-hybrid assistance',
+      'Rear seat relaxation package with reclining seats, footrests, and rear touch remote',
+      'Level 2 ADAS suite including adaptive cruise assist and predictive efficiency assist',
+      'Positioned as Audi India’s halo flagship against the Mercedes S-Class and BMW 7 Series'
+    ],
+    dimensions: {
+      length: '5,302 mm',
+      width: '1,945 mm',
+      height: '1,488 mm',
+      wheelbase: '3,128 mm',
+      groundClearance: '135 mm (Adjustable Air Suspension)',
+      bootSpace: '505 Litres',
+      fuelTank: '82 Litres'
+    },
+    variants: [
+      {
+        id: 'a8-l-technology',
+        name: 'A8 L Technology',
+        tagline: 'The single, fully-loaded flagship trim with the complete presidential luxury suite',
+        priceRange: '₹1.29 – ₹1.60 Crore',
+        baseExShowroom: 12900000,
+        engineOptions: ['3.0 TFSI V6 quattro Turbo-Petrol'],
+        transmissions: ['8-Speed Tiptronic Automatic quattro'],
+        isFlagship: true,
+        isPopular: true,
+        keyFeatures: [
+          'Rear seat relaxation package with reclining and massage function',
+          'Bang & Olufsen 3D Advanced Sound System with 23 speakers',
+          'Predictive adaptive air suspension with active roll stabilization',
+          'Matrix LED headlamps with laser high beam',
+          'Rear-seat touch remote controlling climate, seats, and entertainment'
+        ],
+        exteriorHighlights: ['20-inch alloy wheels', 'Illuminated Audi rings', 'OLED rear light signature'],
+        interiorHighlights: ['Valcona leather upholstery', 'Wood and aluminum interior trim', 'Four-zone Climatronic with rear touch panel'],
+        badgeColor: 'bg-red-700 text-white'
+      }
+    ],
+    colors: [
+      { id: 'glacier-white-a8', name: 'Glacier White Metallic', hex: '#f1f5f9', availableOn: ['Technology'] },
+      { id: 'mythos-black-a8', name: 'Mythos Black Metallic', hex: '#18181b', availableOn: ['Technology'] },
+      { id: 'floret-silver-a8', name: 'Floret Silver Metallic', hex: '#94a3b8', availableOn: ['Technology'] },
+      { id: 'navarra-blue-a8', name: 'Navarra Blue Metallic', hex: '#1e3a8a', availableOn: ['Technology'] }
     ]
   }
 ];

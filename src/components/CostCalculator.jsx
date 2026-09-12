@@ -4,6 +4,7 @@ import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
+import { AudiLogo } from "./AudiLogo";
 export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
@@ -63,23 +64,27 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-1">
-            {isVW ? (
+            {isAudi ? (
+              <AudiLogo variant="emblem" size="sm" />
+            ) : isVW ? (
               <VolkswagenLogo variant="emblem" size="sm" />
             ) : (
               <SkodaLogo variant="emblem" size="sm" />
             )}
-            <span className={isVW ? "text-blue-400" : "text-emerald-400"}>
+            <span className={isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}>
               Financial Planning
             </span>
           </div>
           <h2 className="text-2xl font-bold text-white tracking-tight mt-1">
-            {isVW
-              ? "Volkswagen On-Road Price & EMI Calculator"
-              : "\u0160koda On-Road Price & EMI Calculator"}
+            {isAudi
+              ? "Audi On-Road Price & EMI Calculator"
+              : isVW
+                ? "Volkswagen On-Road Price & EMI Calculator"
+                : "\u0160koda On-Road Price & EMI Calculator"}
           </h2>
           <p className="text-sm text-zinc-400">
             Customize loan tenure, state taxes, down payment, and insurance for
-            any {isVW ? "Volkswagen" : "\u0160koda"} variant
+            any {isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} variant
           </p>
         </div>
 
@@ -88,12 +93,13 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
           {models.map((car) => {
             const shortName = car.name
               .replace("\u0160koda ", "")
-              .replace("Volkswagen ", "");
+              .replace("Volkswagen ", "")
+              .replace("Audi ", "");
             return (
               <button
                 key={car.id}
                 onClick={() => handleModelChange(car.id)}
-                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all cursor-pointer ${selectedModelId === car.id ? (isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "text-zinc-400 hover:text-white hover:bg-zinc-800"}`}
+                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all cursor-pointer ${selectedModelId === car.id ? (isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "text-zinc-400 hover:text-white hover:bg-zinc-800"}`}
               >
                 {shortName}
               </button>
@@ -110,7 +116,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
             <div className="flex items-start justify-between border-b border-zinc-800 pb-4">
               <div>
                 <span
-                  className={`text-xs font-semibold ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`text-xs font-semibold ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   {currentModel.name}
                 </span>
@@ -130,7 +136,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                 <select
                   value={selectedVariantId}
                   onChange={(e) => setSelectedVariantId(e.target.value)}
-                  className={`w-full text-xs p-2 rounded-lg bg-zinc-950 border border-zinc-700 text-white focus:outline-none ${isVW ? "focus:border-blue-500" : "focus:border-emerald-500"}`}
+                  className={`w-full text-xs p-2 rounded-lg bg-zinc-950 border border-zinc-700 text-white focus:outline-none ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : "focus:border-emerald-500"}`}
                 >
                   {currentModel.variants.map((v) => (
                     <option key={v.id} value={v.id}>
@@ -170,7 +176,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                     <button
                       key={st.state}
                       onClick={() => setRtoRate(st.rate)}
-                      className={`text-[10px] px-2 py-1 rounded border transition-colors cursor-pointer ${rtoRate === st.rate ? (isVW ? "bg-blue-600 text-white border-blue-500" : "bg-emerald-600 text-white border-emerald-500") : "bg-zinc-950 text-zinc-400 border-zinc-800 hover:text-white"}`}
+                      className={`text-[10px] px-2 py-1 rounded border transition-colors cursor-pointer ${rtoRate === st.rate ? (isAudi ? "bg-red-600 text-white border-red-500" : isVW ? "bg-blue-600 text-white border-blue-500" : "bg-emerald-600 text-white border-emerald-500") : "bg-zinc-950 text-zinc-400 border-zinc-800 hover:text-white"}`}
                     >
                       {st.state}
                     </button>
@@ -201,7 +207,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                   Estimated On-Road Price
                 </span>
                 <span
-                  className={`text-xl font-black ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`text-xl font-black ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   ₹{totalOnRoad.toLocaleString()}
                 </span>
@@ -235,7 +241,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                 step="5"
                 value={downPaymentPercent}
                 onChange={(e) => setDownPaymentPercent(Number(e.target.value))}
-                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isVW ? "accent-blue-500" : "accent-emerald-500"}`}
+                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
               />
             </div>
 
@@ -257,7 +263,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                 step="1"
                 value={tenureYears}
                 onChange={(e) => setTenureYears(Number(e.target.value))}
-                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isVW ? "accent-blue-500" : "accent-emerald-500"}`}
+                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
               />
             </div>
 
@@ -276,7 +282,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                 step="0.25"
                 value={interestRate}
                 onChange={(e) => setInterestRate(Number(e.target.value))}
-                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isVW ? "accent-blue-500" : "accent-emerald-500"}`}
+                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
               />
             </div>
 
@@ -288,7 +294,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                     Estimated Monthly EMI
                   </span>
                   <span
-                    className={`text-3xl font-black ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`text-3xl font-black ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     ₹{emi.toLocaleString()}
                   </span>

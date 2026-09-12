@@ -175,6 +175,91 @@ export const AUDI_RS_MODELS: AudiPerformanceModelData[] = [
       braking100to0: '33.8 Metres',
       nurburgringLegacy: 'Set the production SUV lap record at the Nürburgring Nordschleife (7:42.253) at its 2020 debut'
     }
+  },
+  {
+    id: 'rs6' as any, // Audi RS6 Avant
+    name: 'Audi RS6 Avant',
+    badge: 'The 600 PS Load-Carrying Missile',
+    tagline: '600 PS of twin-turbo V8 firepower packed into a practical estate body, with a cavernous 565-litre boot for the school run.',
+    category: 'High-Performance Estate',
+    expectedPrice: '₹1.40 – ₹1.50 Crore (CBU)',
+    priceNumeric: 14000000,
+    engine: '4.0L TFSI Twin-Turbo V8 (Audi Sport)',
+    power: '600 PS (441 kW) @ 6,000 RPM',
+    powerHp: 600,
+    torque: '800 Nm @ 2,050–4,500 RPM',
+    torqueNm: 800,
+    acceleration0to100: '3.6 Seconds',
+    accelSeconds: 3.6,
+    topSpeed: '250 km/h (280 km/h with RS Dynamic Package)',
+    topSpeedKmh: 280,
+    transmission: '8-Speed Tiptronic Automatic with Launch Control',
+    drivetrain: 'quattro Permanent All-Wheel Drive with Sport Differential',
+    diffOrAwd: 'quattro Sport Rear Differential with Active Torque Vectoring',
+    exhaustSystem: 'RS Sport Exhaust with Black Oval Tailpipes & Dynamic Sound',
+    brakes: '420 mm Front Ventilated Discs with Red RS Calipers (Carbon-Ceramic Optional)',
+    suspension: 'RS Adaptive Air Suspension with Dynamic Ride Control (DRC)',
+    boostPsi: 26.1,
+    revLimit: 6800,
+    tractionType: 'quattro AWD',
+    bootAndSeating: '5 Seats • 565L Boot (Expandable to 1,680L)',
+    keyWeaponSummary: 'A shared-platform hand-built V8 delivering supercar-humbling acceleration with an estate body that swallows an entire family’s luggage and a set of track-day wheels.',
+    heroColorHex: '#18181b',
+    heroColorName: 'Mythos Black Metallic',
+    colors: [
+      { name: 'Mythos Black Metallic', hex: '#18181b', desc: 'Menacing flagship stealth finish' },
+      { name: 'Tango Red Metallic', hex: '#dc2626', desc: 'Signature Audi Sport racing red' },
+      { name: 'Nardo Grey', hex: '#71717a', desc: 'Motorsport-homologation matte-look grey' },
+      { name: 'Navarra Blue Metallic', hex: '#1e3a8a', desc: 'Deep flagship performance blue' },
+      { name: 'Glacier White Metallic', hex: '#f1f5f9', desc: 'Crisp contrast with gloss black RS pack' }
+    ],
+    weaponry: [
+      {
+        title: 'Twin-Turbo 4.0 TFSI V8',
+        badge: 'All-Weather Traction',
+        description: 'Shared platform-engine with the RS Q8, delivering 800 Nm from just 2,050 RPM through all four wheels via quattro permanent all-wheel drive.',
+        icon: 'Zap'
+      },
+      {
+        title: 'quattro Sport Differential',
+        badge: 'Cornering Weapon',
+        description: 'Actively vectors torque between the rear wheels, pushing power to the outside wheel through corners for razor-sharp turn-in despite the estate’s size.',
+        icon: 'Flame'
+      },
+      {
+        title: 'RS Adaptive Air Suspension',
+        badge: 'Dual Personality',
+        description: 'Transforms from a cloud-soft family estate into a flat-cornering canyon carver at the touch of the RS Mode button, all while carrying a full load.',
+        icon: 'Activity'
+      },
+      {
+        title: '22-Inch RS Design Wheels',
+        badge: 'High-Speed Aerodynamics',
+        description: 'Forged alloy wheels paired with 420 mm front discs (carbon-ceramic optional) for repeated track-day stopping power.',
+        icon: 'Gauge'
+      },
+      {
+        title: 'Cavernous 565L Estate Boot',
+        badge: 'Versatile Speed',
+        description: 'Despite its supercar-humbling pace, the RS6 Avant retains a 565-litre boot expandable to 1,680 litres — practicality without compromise.',
+        icon: 'Luggage'
+      }
+    ],
+    cockpitFeatures: [
+      'RS Super Sport seats in Valcona leather with honeycomb stitching and illuminated RS logos',
+      'RS-specific flat-bottom steering wheel with drive select and RS Mode shortcut buttons',
+      '12.3-inch Audi Virtual Cockpit with RS-exclusive circular tachometer display',
+      'Carbon-fiber and Dinamica cabin trim inlays',
+      'Bang & Olufsen 3D Advanced Sound System with 16 speakers',
+      'Matrix LED headlamps with dynamic RS welcome light animation'
+    ],
+    trackTelemetry: {
+      lateralG: '1.02 G (Dry Skidpad)',
+      weightDistribution: '57 / 43 (Front/Rear)',
+      powerToWeight: '289 PS / Tonne',
+      braking100to0: '32.9 Metres',
+      nurburgringLegacy: 'RS6 Avant lineage has lapped the Nürburgring Nordschleife in under 7:45, remarkable for a full-size estate'
+    }
   }
 ];
 

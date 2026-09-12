@@ -24,7 +24,7 @@ import { AUDI_MODELS } from "../data/audiData";
 // MODEL_PERFORMANCE_PROFILES entries but aren't part of the base model
 // catalogs above, so their ids have to be added in explicitly per brand.
 const SKODA_PERFORMANCE_ONLY_IDS = ["octavia-vrs", "kodiaq-vrs"];
-const AUDI_PERFORMANCE_ONLY_IDS = ["rs5", "rs-q8"];
+const AUDI_PERFORMANCE_ONLY_IDS = ["rs5", "rs-q8", "rs6"];
 export const PerformanceGraphs = ({
   brand = "skoda",
   initialEngineId = "1.5-tsi",

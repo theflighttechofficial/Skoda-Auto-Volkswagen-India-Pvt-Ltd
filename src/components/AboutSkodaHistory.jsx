@@ -53,19 +53,19 @@ export const AboutSkodaHistory = ({
     <div className="space-y-12 pb-16">
       {/* Hero Header */}
       <div
-        className={`relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-950 via-zinc-900 border border-zinc-800 p-6 sm:p-10 shadow-2xl ${isVW ? "to-blue-950/40" : "to-emerald-950/40"}`}
+        className={`relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-950 via-zinc-900 border border-zinc-800 p-6 sm:p-10 shadow-2xl ${isAudi ? "to-red-950/40" : isVW ? "to-blue-950/40" : "to-emerald-950/40"}`}
       >
         <div
-          className={`absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isVW ? "bg-blue-500/10" : "bg-emerald-500/10"}`}
+          className={`absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isAudi ? "bg-red-500/10" : isVW ? "bg-blue-500/10" : "bg-emerald-500/10"}`}
         />
         <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-zinc-700/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-4xl space-y-6">
           <div
-            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-semibold tracking-wide ${isVW ? "bg-blue-950/80 border-blue-700/50 text-blue-300" : "bg-emerald-950/80 border-emerald-700/50 text-emerald-300"}`}
+            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-semibold tracking-wide ${isAudi ? "bg-red-950/80 border-red-700/50 text-red-300" : isVW ? "bg-blue-950/80 border-blue-700/50 text-blue-300" : "bg-emerald-950/80 border-emerald-700/50 text-emerald-300"}`}
           >
             <Flag
-              className={`w-3.5 h-3.5 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+              className={`w-3.5 h-3.5 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
             />
             <span>
               {isAudi
@@ -133,7 +133,7 @@ export const AboutSkodaHistory = ({
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
             <div className="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800/80">
               <div
-                className={`flex items-center gap-2 mb-1 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                className={`flex items-center gap-2 mb-1 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
               >
                 <Clock className="w-4 h-4" />
                 <span className="text-xs font-bold uppercase tracking-wider">
@@ -192,7 +192,7 @@ export const AboutSkodaHistory = ({
 
             <div className="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800/80">
               <div
-                className={`flex items-center gap-2 mb-1 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                className={`flex items-center gap-2 mb-1 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
               >
                 <ShieldCheck className="w-4 h-4" />
                 <span className="text-xs font-bold uppercase tracking-wider">
@@ -241,7 +241,7 @@ export const AboutSkodaHistory = ({
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
             <div
-              className={`flex items-center gap-2 text-xs font-bold tracking-wider uppercase mb-1 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+              className={`flex items-center gap-2 text-xs font-bold tracking-wider uppercase mb-1 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
             >
               <HistoryIcon className="w-4 h-4" />
               <span>Chronicles of Craftsmanship</span>
@@ -268,11 +268,11 @@ export const AboutSkodaHistory = ({
               <button
                 key={era.id}
                 onClick={() => setSelectedEraId(era.id)}
-                className={`flex-shrink-0 px-4 py-3 rounded-2xl border text-left transition-all cursor-pointer ${isSelected ? (isVW ? "bg-blue-950/70 border-blue-500/80 text-white shadow-lg shadow-blue-950/50 ring-1 ring-blue-400/40" : "bg-emerald-950/70 border-emerald-500/80 text-white shadow-lg shadow-emerald-950/50 ring-1 ring-emerald-400/40") : "bg-zinc-900/80 border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/80 hover:border-zinc-700"}`}
+                className={`flex-shrink-0 px-4 py-3 rounded-2xl border text-left transition-all cursor-pointer ${isSelected ? (isAudi ? "bg-red-950/70 border-red-500/80 text-white shadow-lg shadow-red-950/50 ring-1 ring-red-400/40" : isVW ? "bg-blue-950/70 border-blue-500/80 text-white shadow-lg shadow-blue-950/50 ring-1 ring-blue-400/40" : "bg-emerald-950/70 border-emerald-500/80 text-white shadow-lg shadow-emerald-950/50 ring-1 ring-emerald-400/40") : "bg-zinc-900/80 border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/80 hover:border-zinc-700"}`}
               >
                 <div className="flex items-center gap-2 mb-0.5">
                   <span
-                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${isSelected ? (isVW ? "bg-blue-500 text-white font-black" : "bg-emerald-500 text-zinc-950 font-black") : "bg-zinc-800 text-zinc-400"}`}
+                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${isSelected ? (isAudi ? "bg-red-500 text-white font-black" : isVW ? "bg-blue-500 text-white font-black" : "bg-emerald-500 text-zinc-950 font-black") : "bg-zinc-800 text-zinc-400"}`}
                   >
                     {era.period}
                   </span>
@@ -301,7 +301,7 @@ export const AboutSkodaHistory = ({
                 <div className="space-y-2 max-w-3xl">
                   <div className="flex flex-wrap items-center gap-2">
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-black border ${isVW ? "bg-blue-500/20 border-blue-500/40 text-blue-300" : "bg-emerald-500/20 border-emerald-500/40 text-emerald-300"}`}
+                      className={`px-3 py-1 rounded-full text-xs font-black border ${isAudi ? "bg-red-500/20 border-red-500/40 text-red-300" : isVW ? "bg-blue-500/20 border-blue-500/40 text-blue-300" : "bg-emerald-500/20 border-emerald-500/40 text-emerald-300"}`}
                     >
                       {activeEra.period}
                     </span>
@@ -314,7 +314,7 @@ export const AboutSkodaHistory = ({
                     {activeEra.title}
                   </h3>
                   <p
-                    className={`font-medium text-sm italic ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`font-medium text-sm italic ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     {activeEra.tagline}
                   </p>
@@ -387,7 +387,7 @@ export const AboutSkodaHistory = ({
                 {/* Specific Milestones */}
                 <div className="lg:col-span-2 space-y-3">
                   <h4
-                    className={`text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     <Award className="w-3.5 h-3.5" />
                     Key Historic Milestones
@@ -399,7 +399,7 @@ export const AboutSkodaHistory = ({
                         className="p-4 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 flex items-start gap-3.5"
                       >
                         <div
-                          className={`px-2.5 py-1 rounded-lg bg-zinc-800 border border-zinc-700 text-xs font-black shrink-0 ${isVW ? "text-blue-300" : "text-emerald-300"}`}
+                          className={`px-2.5 py-1 rounded-lg bg-zinc-800 border border-zinc-700 text-xs font-black shrink-0 ${isAudi ? "text-red-300" : isVW ? "text-blue-300" : "text-emerald-300"}`}
                         >
                           {m.year}
                         </div>
@@ -430,7 +430,7 @@ export const AboutSkodaHistory = ({
                           className="flex items-start gap-2 text-xs text-zinc-300"
                         >
                           <CheckCircle2
-                            className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                            className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                           />
                           <span>{inv}</span>
                         </li>
@@ -465,7 +465,7 @@ export const AboutSkodaHistory = ({
       <div className="space-y-6">
         <div>
           <div
-            className={`flex items-center gap-2 text-xs font-bold tracking-wider uppercase mb-1 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+            className={`flex items-center gap-2 text-xs font-bold tracking-wider uppercase mb-1 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
           >
             <Sparkles className="w-4 h-4" />
             <span>
@@ -502,13 +502,13 @@ export const AboutSkodaHistory = ({
                 <div className="space-y-1">
                   <h3 className="text-lg font-bold text-white">{el.title}</h3>
                   <p
-                    className={`text-xs font-medium ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`text-xs font-medium ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     {el.subtitle}
                   </p>
                 </div>
                 <div
-                  className={`w-10 h-10 rounded-xl bg-zinc-800/80 border border-zinc-700 flex items-center justify-center shrink-0 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`w-10 h-10 rounded-xl bg-zinc-800/80 border border-zinc-700 flex items-center justify-center shrink-0 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   <Sparkles className="w-5 h-5 text-amber-400" />
                 </div>
@@ -534,7 +534,7 @@ export const AboutSkodaHistory = ({
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1 max-w-2xl">
             <div
-              className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+              className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
             >
               <Factory className="w-4 h-4" />
               <span>SAVWIPL Manufacturing Footprint</span>
@@ -551,7 +551,7 @@ export const AboutSkodaHistory = ({
           </div>
           <div className="flex items-center gap-2">
             <div
-              className={`px-3 py-1.5 rounded-xl font-black text-xs flex items-center gap-1.5 ${isVW ? "bg-blue-500/10 border border-blue-500/30 text-blue-300" : "bg-emerald-500/10 border border-emerald-500/30 text-emerald-300"}`}
+              className={`px-3 py-1.5 rounded-xl font-black text-xs flex items-center gap-1.5 ${isAudi ? "bg-red-500/10 border border-red-500/30 text-red-300" : isVW ? "bg-blue-500/10 border border-blue-500/30 text-blue-300" : "bg-emerald-500/10 border border-emerald-500/30 text-emerald-300"}`}
             >
               <ShieldCheck className="w-4 h-4" />
               <span>100% 5-Star Certified</span>
@@ -566,7 +566,7 @@ export const AboutSkodaHistory = ({
                 Chakan Mega-Plant (Pune)
               </h4>
               <span
-                className={`text-[10px] font-bold px-2 py-0.5 rounded border ${isVW ? "text-blue-400 bg-blue-950 border-blue-800" : "text-emerald-400 bg-emerald-950 border-emerald-800"}`}
+                className={`text-[10px] font-bold px-2 py-0.5 rounded border ${isAudi ? "text-red-400 bg-red-950 border-red-800" : isVW ? "text-blue-400 bg-blue-950 border-blue-800" : "text-emerald-400 bg-emerald-950 border-emerald-800"}`}
               >
                 540 Acres
               </span>
@@ -588,7 +588,7 @@ export const AboutSkodaHistory = ({
                 Shendra Plant (Aurangabad)
               </h4>
               <span
-                className={`text-[10px] font-bold px-2 py-0.5 rounded border ${isVW ? "text-blue-400 bg-blue-950 border-blue-800" : "text-emerald-400 bg-emerald-950 border-emerald-800"}`}
+                className={`text-[10px] font-bold px-2 py-0.5 rounded border ${isAudi ? "text-red-400 bg-red-950 border-red-800" : isVW ? "text-blue-400 bg-blue-950 border-blue-800" : "text-emerald-400 bg-emerald-950 border-emerald-800"}`}
               >
                 Executive & Luxury Assembly
               </span>

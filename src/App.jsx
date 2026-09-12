@@ -487,7 +487,7 @@ export default function App() {
             <div className="flex items-center gap-4">
               <p className="tracking-wide hidden md:block">
                 {isAudi
-                  ? "A4 \u2022 A6 \u2022 Q3 \u2022 Q5 \u2022 Q7 \u2022 Q8"
+                  ? "A3 \u2022 A4 \u2022 A6 \u2022 A8 \u2022 Q3 \u2022 Q5 \u2022 Q7 \u2022 Q8 \u2022 RS5 \u2022 RS6 \u2022 RS Q8"
                   : isVW
                     ? "Virtus & Virtus GT Plus \u2022 Taigun & GT Line \u2022 Tiguan 4MOTION \u2022 Tayron \u2022 Golf GTI"
                     : "Kylaq \u2022 Slavia \u2022 Kushaq \u2022 Octavia & Octavia vRS \u2022 Kodiaq & Kodiaq vRS \u2022 Superb"}

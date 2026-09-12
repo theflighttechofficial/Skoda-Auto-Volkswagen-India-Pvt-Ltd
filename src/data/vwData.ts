@@ -269,6 +269,7 @@ export const ALL_VW_ENGINES: EngineSpec[] = [
 export const VW_MODELS: CarModel[] = [
   {
     id: 'virtus',
+    image: '/cars/virtus-exterior-right-front-three-quarter-6.avif',
     name: 'Volkswagen Virtus',
     badge: 'The Benchmark Sedan',
     tagline: 'Striking German aesthetics, 5-Star NCAP safety, and thrilling GT TSI performance',
@@ -427,6 +428,7 @@ export const VW_MODELS: CarModel[] = [
   },
   {
     id: 'taigun',
+    image: '/cars/volkswagen-taigun-trail-edition-030132723-16x9_0.avif',
     name: 'Volkswagen Taigun',
     badge: 'Dynamic German SUV',
     tagline: 'Muscular presence, segment-longest wheelbase, and unshakeable 5-Star safety',
@@ -565,6 +567,7 @@ export const VW_MODELS: CarModel[] = [
   },
   {
     id: 'tiguan',
+    image: '/cars/2022-volkswagen-tiguan-1-1280x720.jpg',
     name: 'Volkswagen Tiguan',
     badge: 'Executive 4MOTION SUV',
     tagline: 'Engineered for absolute capability with 190 PS TSI, 4MOTION AWD, and IQ.LIGHT',
@@ -645,6 +648,7 @@ export const VW_MODELS: CarModel[] = [
   },
   {
     id: 'golf-gti',
+    image: '/cars/golf-gti.avif',
     name: 'Volkswagen Golf GTI',
     badge: 'The Global Hot-Hatch Icon',
     tagline: '265 PS EA888 EVO4 engine, VAQ limited-slip differential, and Nürburgring heritage',
@@ -725,6 +729,7 @@ export const VW_MODELS: CarModel[] = [
   },
   {
     id: 'polo-legend',
+    image: '/cars/2020_Volkswagen_Polo_GT_TSI_-India-_front_view.png',
     name: 'Volkswagen Polo & GT TSI',
     badge: 'Enthusiast Hall of Fame',
     tagline: 'The timeless hot-hatch that pioneered turbocharged performance and tuning in India',
@@ -783,6 +788,7 @@ export const VW_MODELS: CarModel[] = [
   },
   {
     id: 'tayron',
+    image: '/cars/tayron.jpg',
     name: 'Volkswagen Tayron',
     badge: 'Upcoming 7-Seater Luxury SUV',
     tagline: 'Next-generation MQB Evo architecture, spacious 3-row comfort, and 4MOTION AWD',
@@ -841,6 +847,7 @@ export const VW_MODELS: CarModel[] = [
   },
   {
     id: 'jetta',
+    image: '/cars/jetta.jpg',
     name: 'Volkswagen Jetta',
     badge: 'Enthusiast Hall of Fame Sedan',
     tagline: 'The German CKD sedan that brought TSI turbo-petrol and TDI diesel refinement to India (2008–2013)',
@@ -939,6 +946,7 @@ export const VW_MODELS: CarModel[] = [
   },
   {
     id: 'passat',
+    image: '/cars/passat.jpg',
     name: 'Volkswagen Passat',
     badge: 'Enthusiast Hall of Fame Executive Sedan',
     tagline: 'The flagship executive sedan celebrated for its 350 Nm TDI diesel and presidential rear-seat comfort (2007–2022)',
@@ -1038,6 +1046,7 @@ export const VW_MODELS: CarModel[] = [
   },
   {
     id: 'beetle',
+    image: '/cars/bettle.jpg',
     name: 'Volkswagen Beetle',
     badge: 'CBU Import Icon',
     tagline: 'The reborn cultural icon that brought retro-modern coupe styling to India via the CBU import route (2009–2019)',
@@ -1097,6 +1106,7 @@ export const VW_MODELS: CarModel[] = [
   },
   {
     id: 'touareg',
+    image: '/cars/touareg.jpg',
     name: 'Volkswagen Touareg',
     badge: 'Flagship Luxury 4x4 SUV',
     tagline: 'Volkswagen’s range-topping luxury SUV, engineered with V6 diesel muscle and permanent 4MOTION all-wheel drive (2011–2020)',
@@ -1176,6 +1186,7 @@ export const VW_MODELS: CarModel[] = [
   },
   {
     id: 'phaeton',
+    image: '/cars/phaeton.jpg',
     name: 'Volkswagen Phaeton',
     badge: 'Ultra-Luxury Flagship Sedan',
     tagline: 'Volkswagen’s audacious presidential flagship sedan, engineered to out-luxury Mercedes and Audi at their own game (2010–2016)',
@@ -1234,6 +1245,7 @@ export const VW_MODELS: CarModel[] = [
   },
   {
     id: 'vento',
+    image: '/cars/volkswagen-vento-tdi-dsg-1.jpg',
     name: 'Volkswagen Vento',
     badge: 'Enthusiast Hall of Fame Sedan',
     tagline: 'The German-engineered compact sedan that defined "German thud" build quality for a generation of Indian buyers (2010–2022)',
@@ -1332,6 +1344,7 @@ export const VW_MODELS: CarModel[] = [
   },
   {
     id: 'ameo',
+    image: '/cars/ameo.avif',
     name: 'Volkswagen Ameo',
     badge: 'India-Exclusive Compact Sedan',
     tagline: 'The India-only sub-4-metre compact sedan engineered specifically to compete in India’s tax-friendly small-car segment (2016–2020)',
@@ -1430,6 +1443,7 @@ export const VW_MODELS: CarModel[] = [
   },
   {
     id: 't-roc',
+    image: '/cars/t-roc.jpg',
     name: 'Volkswagen T-Roc',
     badge: 'CBU Import Compact SUV',
     tagline: 'Volkswagen’s stylish CBU compact SUV, bringing bold coupe-SUV design and turbo-petrol performance to India (2020–2022)',

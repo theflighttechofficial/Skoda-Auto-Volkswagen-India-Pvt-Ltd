@@ -1789,7 +1789,7 @@ export const DEALERSHIPS: Dealership[] = [
     timing: 'Mon–Sun: 09:30 AM – 08:00 PM',
     coordinates: { lat: 18.9986, lng: 72.8174 },
     amenities: ['Audi Terminal 1 Design Studio', 'Valet Delivery Experience', 'RS & S Line Specialist Desk'],
-    modelsAvailableForTestDrive: ['A4', 'A6', 'Q3', 'Q5', 'Q7', 'Q8'],
+    modelsAvailableForTestDrive: ['A4', 'A6', 'A8', 'Q3', 'Q5', 'Q7', 'Q8'],
     googleMapsUrl: 'https://maps.google.com/?q=Audi+Mumbai+Worli'
   },
   {
@@ -1811,7 +1811,7 @@ export const DEALERSHIPS: Dealership[] = [
     timing: 'Mon–Sun: 09:30 AM – 08:00 PM',
     coordinates: { lat: 28.5657, lng: 77.2717 },
     amenities: ['Audi Terminal 1 Design Studio', 'Executive Concierge Delivery', 'Certified Pre-Owned :Audi Approved Plus'],
-    modelsAvailableForTestDrive: ['A4', 'A6', 'Q3', 'Q5', 'Q7', 'Q8'],
+    modelsAvailableForTestDrive: ['A4', 'A6', 'A8', 'Q3', 'Q5', 'Q7', 'Q8'],
     googleMapsUrl: 'https://maps.google.com/?q=Audi+Delhi+Mathura+Road'
   },
   {
@@ -1833,7 +1833,7 @@ export const DEALERSHIPS: Dealership[] = [
     timing: 'Mon–Sun: 09:30 AM – 08:00 PM',
     coordinates: { lat: 28.4382, lng: 77.1025 },
     amenities: ['Audi Terminal 1 Design Studio', 'quattro Test Drive Track', 'RS & S Line Specialist Desk'],
-    modelsAvailableForTestDrive: ['A4', 'A6', 'Q3', 'Q5', 'Q7', 'Q8'],
+    modelsAvailableForTestDrive: ['A4', 'A6', 'A8', 'Q3', 'Q5', 'Q7', 'Q8'],
     googleMapsUrl: 'https://maps.google.com/?q=Audi+Gurugram+Golf+Course+Road'
   },
   {
@@ -1899,7 +1899,7 @@ export const DEALERSHIPS: Dealership[] = [
     timing: 'Mon–Sun: 09:30 AM – 08:00 PM',
     coordinates: { lat: 17.4126, lng: 78.4478 },
     amenities: ['Audi Terminal 1 Design Studio', 'Premium VIP Showroom Floor', 'RS & S Line Specialist Desk'],
-    modelsAvailableForTestDrive: ['A4', 'A6', 'Q3', 'Q5', 'Q7', 'Q8'],
+    modelsAvailableForTestDrive: ['A4', 'A6', 'A8', 'Q3', 'Q5', 'Q7', 'Q8'],
     googleMapsUrl: 'https://maps.google.com/?q=Audi+Hyderabad+Banjara+Hills'
   },
   {

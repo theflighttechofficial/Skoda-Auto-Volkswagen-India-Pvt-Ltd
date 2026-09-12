@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 
 // Audi's four-rings emblem rendered as inline SVG (no external image asset needed).
 const AudiRings = ({ className = "" }) => (
-  <svg viewBox="0 0 200 60" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 219 60" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="30" cy="30" r="26" stroke="currentColor" strokeWidth="7" />
     <circle cx="83" cy="30" r="26" stroke="currentColor" strokeWidth="7" />
     <circle cx="136" cy="30" r="26" stroke="currentColor" strokeWidth="7" />

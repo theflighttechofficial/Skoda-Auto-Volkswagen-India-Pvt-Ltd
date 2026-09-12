@@ -6,6 +6,7 @@ import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
+import { AudiLogo } from "./AudiLogo";
 export const VariantExplorer = ({ brand = "skoda", initialModelId }) => {
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
@@ -40,26 +41,32 @@ export const VariantExplorer = ({ brand = "skoda", initialModelId }) => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            {isVW ? (
+            {isAudi ? (
+              <AudiLogo variant="emblem" size="sm" />
+            ) : isVW ? (
               <VolkswagenLogo variant="emblem" size="sm" />
             ) : (
               <SkodaLogo variant="emblem" size="sm" />
             )}
             <span
-              className={`text-xs uppercase font-bold tracking-wider ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+              className={`text-xs uppercase font-bold tracking-wider ${isAudi ? "text-red-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
             >
               Trims & Configurations
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-            {isVW
-              ? "Volkswagen Models & Trim Guide"
-              : "\u0160koda Models & Trim Guide"}
+            {isAudi
+              ? "Audi Models & Trim Guide"
+              : isVW
+                ? "Volkswagen Models & Trim Guide"
+                : "\u0160koda Models & Trim Guide"}
           </h2>
           <p className="text-sm text-zinc-400">
-            {isVW
-              ? "Compare features, pricing, and appointments across Comfortline, Highline, Topline, and GT Plus trims"
-              : "Compare features, pricing, and appointments across Classic, Signature, Prestige, Sportline, and L&K trims"}
+            {isAudi
+              ? "Compare features, pricing, and appointments across Premium Plus and Technology trims"
+              : isVW
+                ? "Compare features, pricing, and appointments across Comfortline, Highline, Topline, and GT Plus trims"
+                : "Compare features, pricing, and appointments across Classic, Signature, Prestige, Sportline, and L&K trims"}
           </p>
         </div>
 
@@ -74,7 +81,7 @@ export const VariantExplorer = ({ brand = "skoda", initialModelId }) => {
               <button
                 key={car.id}
                 onClick={() => handleModelChange(car.id)}
-                className={`relative px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${isSelected ? (isVW ? "bg-blue-600 text-white shadow-md shadow-blue-950" : "bg-emerald-600 text-white shadow-md shadow-emerald-950") : "text-zinc-400 hover:text-white hover:bg-zinc-800"}`}
+                className={`relative px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${isSelected ? (isAudi ? "bg-red-600 text-white shadow-md shadow-red-950" : isVW ? "bg-blue-600 text-white shadow-md shadow-blue-950" : "bg-emerald-600 text-white shadow-md shadow-emerald-950") : "text-zinc-400 hover:text-white hover:bg-zinc-800"}`}
               >
                 {shortName}
                 {car.id === "golf-gti" && (
@@ -101,19 +108,24 @@ export const VariantExplorer = ({ brand = "skoda", initialModelId }) => {
         className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 text-xs shadow-md"
       >
         <div className="flex items-center gap-3">
+          <img
+            src={currentModel.image}
+            alt={currentModel.name}
+            className="w-16 h-11 object-cover rounded-lg border border-zinc-700 shrink-0"
+          />
           <span className="font-bold text-white text-sm">
             {currentModel.name}
           </span>
-          <span className="text-zinc-600">•</span>
-          <span className="text-zinc-300">{currentModel.tagline}</span>
+          <span className="text-zinc-600 hidden sm:inline">•</span>
+          <span className="text-zinc-300 hidden sm:inline">{currentModel.tagline}</span>
         </div>
         <div
-          className={`flex items-center gap-3 font-medium ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+          className={`flex items-center gap-3 font-medium ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
         >
           <span>{currentModel.priceRange}</span>
           <span className="text-zinc-700 hidden sm:inline">|</span>
           <span
-            className={`flex items-center gap-1 ${isVW ? "text-blue-300" : "text-emerald-300"}`}
+            className={`flex items-center gap-1 ${isAudi ? "text-red-300" : isVW ? "text-blue-300" : "text-emerald-300"}`}
           >
             <ShieldCheck className="w-3.5 h-3.5" /> {currentModel.rating}
           </span>
@@ -130,7 +142,7 @@ export const VariantExplorer = ({ brand = "skoda", initialModelId }) => {
               whileTap={{ scale: 0.98 }}
               id={`variant-tab-${variant.id}`}
               onClick={() => setSelectedVariantId(variant.id)}
-              className={`text-left p-4 rounded-2xl border transition-all duration-200 relative flex flex-col justify-between cursor-pointer ${isSelected ? (isVW ? "bg-zinc-900 border-blue-500 shadow-lg shadow-blue-950/40 ring-1 ring-blue-500/50" : "bg-zinc-900 border-emerald-500 shadow-lg shadow-emerald-950/40 ring-1 ring-emerald-500/50") : "bg-zinc-900/50 border-zinc-800 hover:border-zinc-700 hover:bg-zinc-900/80"}`}
+              className={`text-left p-4 rounded-2xl border transition-all duration-200 relative flex flex-col justify-between cursor-pointer ${isSelected ? (isAudi ? "bg-zinc-900 border-red-500 shadow-lg shadow-red-950/40 ring-1 ring-red-500/50" : isVW ? "bg-zinc-900 border-blue-500 shadow-lg shadow-blue-950/40 ring-1 ring-blue-500/50" : "bg-zinc-900 border-emerald-500 shadow-lg shadow-emerald-950/40 ring-1 ring-emerald-500/50") : "bg-zinc-900/50 border-zinc-800 hover:border-zinc-700 hover:bg-zinc-900/80"}`}
             >
               <div>
                 <div className="flex items-center justify-between mb-1.5 flex-wrap gap-1">
@@ -144,7 +156,7 @@ export const VariantExplorer = ({ brand = "skoda", initialModelId }) => {
                   )}
                   {variant.isFlagship && (
                     <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                      {isVW ? "GT Sport" : "L&K Luxury"}
+                      {isAudi ? "Technology" : isVW ? "GT Sport" : "L&K Luxury"}
                     </span>
                   )}
                 </div>
@@ -155,7 +167,7 @@ export const VariantExplorer = ({ brand = "skoda", initialModelId }) => {
 
               <div className="mt-3 pt-2 border-t border-zinc-800/80 flex items-center justify-between text-xs">
                 <span
-                  className={`font-bold ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`font-bold ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   {variant.priceRange}
                 </span>
@@ -183,7 +195,7 @@ export const VariantExplorer = ({ brand = "skoda", initialModelId }) => {
               <div>
                 <div className="flex items-center gap-2">
                   <span
-                    className={`text-xs uppercase font-bold tracking-wider ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`text-xs uppercase font-bold tracking-wider ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     {currentModel.name} Trim Specification
                   </span>
@@ -194,7 +206,7 @@ export const VariantExplorer = ({ brand = "skoda", initialModelId }) => {
                   )}
                   {activeVariant.isFlagship && (
                     <span className="px-2 py-0.5 rounded text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                      {isVW ? "GT Performance" : "L&K Luxury"}
+                      {isAudi ? "Technology" : isVW ? "GT Performance" : "L&K Luxury"}
                     </span>
                   )}
                 </div>
@@ -209,7 +221,7 @@ export const VariantExplorer = ({ brand = "skoda", initialModelId }) => {
                   Estimated Ex-Showroom
                 </span>
                 <span
-                  className={`text-2xl font-black ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`text-2xl font-black ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   {activeVariant.priceRange}
                 </span>
@@ -259,7 +271,7 @@ export const VariantExplorer = ({ brand = "skoda", initialModelId }) => {
               {/* Standard Equipment */}
               <div className="space-y-3">
                 <h4
-                  className={`text-xs font-bold uppercase tracking-wider border-b border-zinc-800 pb-2 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`text-xs font-bold uppercase tracking-wider border-b border-zinc-800 pb-2 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   Core Equipment & Electronics
                 </h4>
@@ -267,7 +279,7 @@ export const VariantExplorer = ({ brand = "skoda", initialModelId }) => {
                   {activeVariant.keyFeatures.map((feat, idx) => (
                     <li key={idx} className="flex items-start gap-2">
                       <Check
-                        className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                        className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                       />
                       <span>{feat}</span>
                     </li>

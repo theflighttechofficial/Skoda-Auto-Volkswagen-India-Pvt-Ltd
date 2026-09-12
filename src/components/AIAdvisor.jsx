@@ -27,6 +27,9 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
         "Tell me about the Audi RS Q8's N\u00fcrburgring lap record and 4.0 TFSI V8.",
         "Audi Advantage: What is included in warranty & service packages?",
         "How does the Q3 Sportback compare to the standard Q3 SUV?",
+        "Tell me about the Audi RS6 Avant's practicality and 600 PS performance.",
+        "What made the Audi A3 a great entry point into Audi ownership?",
+        "Is the Audi A8 L worth it over the A6 for a chauffeur-driven flagship?",
       ]
     : isVW
       ? [
@@ -48,7 +51,7 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
           "1.0L TSI vs 1.5L TSI EVO with ACT: Which should I buy for Slavia/Kushaq?",
         ];
   const modelOptions = isAudi
-    ? ["All", "RS5", "RS Q8", "A4", "A6", "Q3", "Q5", "Q7", "Q8"]
+    ? ["All", "RS5", "RS6", "RS Q8", "A3", "A4", "A6", "A8", "Q3", "Q5", "Q7", "Q8"]
     : isVW
       ? [
           "All",

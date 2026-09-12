@@ -5,6 +5,7 @@ import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
+import { AudiLogo } from "./AudiLogo";
 export const ColorVisualizer = ({ brand = "skoda" }) => {
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
@@ -41,23 +42,27 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-1">
-            {isVW ? (
+            {isAudi ? (
+              <AudiLogo variant="emblem" size="sm" />
+            ) : isVW ? (
               <VolkswagenLogo variant="emblem" size="sm" />
             ) : (
               <SkodaLogo variant="emblem" size="sm" />
             )}
-            <span className={isVW ? "text-blue-400" : "text-emerald-400"}>
+            <span className={isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}>
               Interactive Studio
             </span>
           </div>
           <h2 className="text-2xl font-bold text-white tracking-tight mt-1">
-            {isVW
-              ? "Official Volkswagen Color Explorer"
-              : "Official \u0160koda Exterior Color Explorer"}
+            {isAudi
+              ? "Official Audi Color Explorer"
+              : isVW
+                ? "Official Volkswagen Color Explorer"
+                : "Official \u0160koda Exterior Color Explorer"}
           </h2>
           <p className="text-sm text-zinc-400">
             Preview factory paint choices and dual-tone finishes across all{" "}
-            {isVW ? "Volkswagen" : "\u0160koda"} models
+            {isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} models
           </p>
         </div>
 
@@ -66,12 +71,13 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
           {models.map((car) => {
             const shortName = car.name
               .replace("\u0160koda ", "")
-              .replace("Volkswagen ", "");
+              .replace("Volkswagen ", "")
+              .replace("Audi ", "");
             return (
               <button
                 key={car.id}
                 onClick={() => handleModelChange(car.id)}
-                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all cursor-pointer ${selectedModelId === car.id ? (isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "text-zinc-400 hover:text-white hover:bg-zinc-800"}`}
+                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all cursor-pointer ${selectedModelId === car.id ? (isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "text-zinc-400 hover:text-white hover:bg-zinc-800"}`}
               >
                 {shortName}
               </button>
@@ -268,7 +274,7 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
                 {/* Headlights & Tail lights */}
                 <polygon
                   points="120,230 145,225 140,240 120,240"
-                  fill={isVW ? "#60a5fa" : "#34d399"}
+                  fill={isAudi ? "#f87171" : isVW ? "#60a5fa" : "#34d399"}
                   opacity="0.9"
                 />
                 <polygon
@@ -364,7 +370,7 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
                 {/* Headlights & Tail lights */}
                 <polygon
                   points="120,215 145,212 140,230 118,225"
-                  fill={isVW ? "#60a5fa" : "#34d399"}
+                  fill={isAudi ? "#f87171" : isVW ? "#60a5fa" : "#34d399"}
                   opacity="0.9"
                 />
                 <polygon
@@ -399,7 +405,7 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
                 cx="252"
                 cy="235"
                 r="5"
-                fill={isVW ? "#3b82f6" : "#10b981"}
+                fill={isAudi ? "#ef4444" : isVW ? "#3b82f6" : "#10b981"}
               />
             </g>
 
@@ -427,7 +433,7 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
                 cx="587"
                 cy="235"
                 r="5"
-                fill={isVW ? "#3b82f6" : "#10b981"}
+                fill={isAudi ? "#ef4444" : isVW ? "#3b82f6" : "#10b981"}
               />
             </g>
           </svg>
@@ -453,7 +459,7 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
                     key={c.id}
                     id={`color-swatch-${c.id}`}
                     onClick={() => setSelectedColorId(c.id)}
-                    className={`group relative p-1 rounded-full transition-all duration-200 cursor-pointer ${isSelected ? (isVW ? "ring-2 ring-blue-400 scale-110" : "ring-2 ring-emerald-400 scale-110") : "hover:scale-105 opacity-80 hover:opacity-100"}`}
+                    className={`group relative p-1 rounded-full transition-all duration-200 cursor-pointer ${isSelected ? (isAudi ? "ring-2 ring-red-400 scale-110" : isVW ? "ring-2 ring-blue-400 scale-110" : "ring-2 ring-emerald-400 scale-110") : "hover:scale-105 opacity-80 hover:opacity-100"}`}
                     title={c.name}
                   >
                     <span

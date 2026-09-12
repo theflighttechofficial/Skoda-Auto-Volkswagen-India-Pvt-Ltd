@@ -42,6 +42,11 @@ export const HeroOverview = ({
       ? VW_GERMAN_ENGINEERING_FEATURES
       : SIMPLY_CLEVER_FEATURES;
   const currentModel = models.find((m) => m.id === selectedModelId);
+  const iconicModel = isAudi
+    ? models.find((m) => m.id === "q8")
+    : isVW
+      ? models.find((m) => m.id === "golf-gti")
+      : models.find((m) => m.id === "octavia");
   return (
     <div className="space-y-10">
       {/* Brand Hero Banner */}
@@ -49,8 +54,18 @@ export const HeroOverview = ({
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-950 border p-6 sm:p-8 lg:p-10 text-white shadow-2xl ${isVW ? "border-blue-900/40" : "border-emerald-900/40"}`}
+        className={`relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-950 border p-6 sm:p-8 lg:p-10 text-white shadow-2xl ${isAudi ? "border-red-900/40" : isVW ? "border-blue-900/40" : "border-emerald-900/40"}`}
       >
+        {iconicModel?.image && (
+          <>
+            <img
+              src={iconicModel.image}
+              alt={iconicModel.name}
+              className="absolute inset-0 w-full h-full object-cover opacity-25"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/85 to-zinc-950/40" />
+          </>
+        )}
         <div
           className="absolute inset-0 opacity-[0.05] pointer-events-none"
           style={{
@@ -60,10 +75,10 @@ export const HeroOverview = ({
           }}
         />
         <div
-          className={`absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isVW ? "bg-blue-600/15" : "bg-emerald-500/15"}`}
+          className={`absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isAudi ? "bg-red-600/15" : isVW ? "bg-blue-600/15" : "bg-emerald-500/15"}`}
         />
         <div
-          className={`absolute -bottom-16 left-1/3 w-80 h-80 rounded-full blur-3xl pointer-events-none ${isVW ? "bg-sky-500/10" : "bg-amber-500/10"}`}
+          className={`absolute -bottom-16 left-1/3 w-80 h-80 rounded-full blur-3xl pointer-events-none ${isAudi ? "bg-red-400/10" : isVW ? "bg-sky-500/10" : "bg-amber-500/10"}`}
         />
 
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -71,7 +86,7 @@ export const HeroOverview = ({
             {/* Top Badge with Official Logo */}
             <div className="flex flex-wrap items-center gap-3">
               <div
-                className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-semibold shadow-inner ${isVW ? "bg-blue-950/80 border-blue-800/60 text-blue-300" : "bg-emerald-950/80 border-emerald-800/60 text-emerald-400"}`}
+                className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-semibold shadow-inner ${isAudi ? "bg-red-950/80 border-red-800/60 text-red-300" : isVW ? "bg-blue-950/80 border-blue-800/60 text-blue-300" : "bg-emerald-950/80 border-emerald-800/60 text-emerald-400"}`}
               >
                 {isAudi ? (
                   <AudiLogo variant="emblem" size="sm" />
@@ -163,7 +178,7 @@ export const HeroOverview = ({
                   whileTap={{ scale: 0.98 }}
                   id="btn-explore-variants-hero"
                   onClick={() => onExploreVariants()}
-                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-bold transition-all shadow-lg ${isVW ? "bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 shadow-blue-950/60" : "bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 shadow-emerald-950/60"}`}
+                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-bold transition-all shadow-lg ${isAudi ? "bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 shadow-red-950/60" : isVW ? "bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 shadow-blue-950/60" : "bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 shadow-emerald-950/60"}`}
                 >
                   <span>Compare All {models.length} Models & Trims</span>
                   <ChevronRight className="w-4 h-4" />
@@ -191,7 +206,7 @@ export const HeroOverview = ({
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={onOpenAdvisor}
-                  className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-zinc-900/90 hover:bg-zinc-800 border text-sm font-semibold transition-all shadow-md ${isAudi ? "border-red-700/60 text-red-300" : isVW ? "border-blue-700/60 text-blue-300" : "border-emerald-700/60 text-emerald-400"}`}
+                  className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-zinc-900/90 hover:bg-zinc-800 border text-sm font-semibold transition-all shadow-md ${isAudi ? "border-red-700/60 text-red-300" : isAudi ? "border-red-700/60 text-red-300" : isVW ? "border-blue-700/60 text-blue-300" : "border-emerald-700/60 text-emerald-400"}`}
                 >
                   <Sparkles className="w-4 h-4" />
                   <span>
@@ -241,7 +256,7 @@ export const HeroOverview = ({
                     className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-zinc-900/70 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 text-xs font-medium transition-all whitespace-nowrap"
                   >
                     <HistoryIcon
-                      className={`w-3.5 h-3.5 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                      className={`w-3.5 h-3.5 ${isAudi ? "text-red-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                     />
                     <span>
                       {isAudi
@@ -291,7 +306,7 @@ export const HeroOverview = ({
                 </span>
               </div>
               <span
-                className={`text-xs font-semibold px-2 py-0.5 rounded border ${isAudi ? "bg-red-500/20 text-red-300 border-red-500/30" : isVW ? "bg-blue-500/20 text-blue-300 border-blue-500/30" : "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"}`}
+                className={`text-xs font-semibold px-2 py-0.5 rounded border ${isAudi ? "bg-red-500/20 text-red-300 border-red-500/30" : isAudi ? "bg-red-500/20 text-red-300 border-red-500/30" : isVW ? "bg-blue-500/20 text-blue-300 border-blue-500/30" : "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"}`}
               >
                 5-Star Rated
               </span>
@@ -301,7 +316,7 @@ export const HeroOverview = ({
               <div className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/70 border border-zinc-800/60">
                 <span className="text-zinc-400">Crash Protection</span>
                 <span
-                  className={`font-bold flex items-center gap-1 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`font-bold flex items-center gap-1 ${isAudi ? "text-red-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   <ShieldCheck className="w-3.5 h-3.5" /> 5-Star Bharat & Global
                   NCAP
@@ -325,7 +340,7 @@ export const HeroOverview = ({
               <div className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/70 border border-zinc-800/60">
                 <span className="text-zinc-400">Body Engineering</span>
                 <span
-                  className={`font-bold ${isVW ? "text-blue-300" : "text-emerald-300"}`}
+                  className={`font-bold ${isAudi ? "text-red-300" : isVW ? "text-blue-300" : "text-emerald-300"}`}
                 >
                   Laser-Welded Roof Technology
                 </span>
@@ -334,7 +349,7 @@ export const HeroOverview = ({
               <div className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/70 border border-zinc-800/60">
                 <span className="text-zinc-400">Starting Price Point</span>
                 <span
-                  className={`font-bold ${isVW ? "text-blue-300" : "text-emerald-300"}`}
+                  className={`font-bold ${isAudi ? "text-red-300" : isVW ? "text-blue-300" : "text-emerald-300"}`}
                 >
                   {models[0]?.startingPrice} onwards
                 </span>
@@ -356,11 +371,21 @@ export const HeroOverview = ({
             transition={{ duration: 0.35 }}
             className="space-y-6"
           >
+            {currentModel.image && (
+              <div className="relative w-full h-56 sm:h-72 lg:h-80 rounded-3xl overflow-hidden border border-zinc-800 shadow-xl">
+                <img
+                  src={currentModel.image}
+                  alt={currentModel.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/10 to-transparent" />
+              </div>
+            )}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <div className="flex items-center gap-2">
                   <span
-                    className={`text-xs font-bold uppercase tracking-wider ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`text-xs font-bold uppercase tracking-wider ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     {currentModel.bodyType}
                   </span>
@@ -401,7 +426,7 @@ export const HeroOverview = ({
                 </button>
                 <button
                   onClick={() => onExploreVariants(currentModel.id)}
-                  className={`text-xs px-3.5 py-1.5 rounded-lg text-white font-semibold transition-colors shadow-md cursor-pointer ${isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-950" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950"}`}
+                  className={`text-xs px-3.5 py-1.5 rounded-lg text-white font-semibold transition-colors shadow-md cursor-pointer ${isAudi ? "bg-red-600 hover:bg-red-500 shadow-red-950" : isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-950" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950"}`}
                 >
                   View {currentModel.variants.length} Trims & Specs
                 </button>
@@ -414,7 +439,7 @@ export const HeroOverview = ({
               <div className="bg-zinc-900/90 rounded-2xl border border-zinc-800 p-5 space-y-4 shadow-lg">
                 <div className="flex items-center gap-2 text-white font-semibold text-sm border-b border-zinc-800 pb-3">
                   <Luggage
-                    className={`w-4 h-4 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   />
                   <span>Dimensions & Storage</span>
                 </div>
@@ -436,7 +461,7 @@ export const HeroOverview = ({
                       Ground Clearance
                     </span>
                     <span
-                      className={`font-medium ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                      className={`font-medium ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                     >
                       {currentModel.dimensions.groundClearance}
                     </span>
@@ -484,7 +509,7 @@ export const HeroOverview = ({
                   {currentModel.keyHighlights.slice(0, 4).map((h, i) => (
                     <li key={i} className="flex items-start gap-2">
                       <CheckCircle2
-                        className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                        className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                       />
                       <span>{h}</span>
                     </li>
@@ -539,19 +564,29 @@ export const HeroOverview = ({
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.06, duration: 0.4 }}
                   whileHover={{ y: -4 }}
-                  className={`group relative bg-zinc-900/80 hover:bg-zinc-900 rounded-3xl border p-6 flex flex-col justify-between transition-all duration-300 shadow-xl ${isVW ? "border-zinc-800 hover:border-blue-600/60 hover:shadow-blue-950/30" : "border-zinc-800 hover:border-emerald-600/60 hover:shadow-emerald-950/30"}`}
+                  className={`group relative bg-zinc-900/80 hover:bg-zinc-900 rounded-3xl border overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-xl ${isAudi ? "border-zinc-800 hover:border-red-600/60 hover:shadow-red-950/30" : isVW ? "border-zinc-800 hover:border-blue-600/60 hover:shadow-blue-950/30" : "border-zinc-800 hover:border-emerald-600/60 hover:shadow-emerald-950/30"}`}
                 >
-                  <div className="space-y-4">
+                  {car.image && (
+                    <div className="relative w-full h-44 overflow-hidden">
+                      <img
+                        src={car.image}
+                        alt={car.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent" />
+                    </div>
+                  )}
+                  <div className="space-y-4 p-6">
                     {/* Card Header */}
                     <div className="flex items-start justify-between">
                       <div>
                         <span
-                          className={`text-[11px] font-semibold tracking-wider uppercase ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                          className={`text-[11px] font-semibold tracking-wider uppercase ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                         >
                           {car.bodyType}
                         </span>
                         <h3
-                          className={`text-xl font-bold text-white transition-colors flex items-center gap-2 ${isVW ? "group-hover:text-blue-300" : "group-hover:text-emerald-300"}`}
+                          className={`text-xl font-bold text-white transition-colors flex items-center gap-2 ${isAudi ? "group-hover:text-red-300" : isVW ? "group-hover:text-blue-300" : "group-hover:text-emerald-300"}`}
                         >
                           <span>{car.name}</span>
                           {car.id === "golf-gti" && (
@@ -577,7 +612,7 @@ export const HeroOverview = ({
                         </h3>
                       </div>
                       <span
-                        className={`text-xs font-bold px-2.5 py-1 rounded-md border flex items-center gap-1 ${isVW ? "bg-blue-950/80 border-blue-700/50 text-blue-300" : "bg-emerald-950/80 border-emerald-700/50 text-emerald-300"}`}
+                        className={`text-xs font-bold px-2.5 py-1 rounded-md border flex items-center gap-1 ${isAudi ? "bg-red-950/80 border-red-700/50 text-red-300" : isVW ? "bg-blue-950/80 border-blue-700/50 text-blue-300" : "bg-emerald-950/80 border-emerald-700/50 text-emerald-300"}`}
                       >
                         <ShieldCheck className="w-3.5 h-3.5" /> 5-Star
                       </span>
@@ -625,7 +660,7 @@ export const HeroOverview = ({
                           className="flex items-center gap-2 text-xs text-zinc-300"
                         >
                           <CheckCircle2
-                            className={`w-3 h-3 flex-shrink-0 ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                            className={`w-3 h-3 flex-shrink-0 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                           />
                           <span className="truncate">{hl}</span>
                         </div>
@@ -634,7 +669,7 @@ export const HeroOverview = ({
                   </div>
 
                   {/* Card Footer with Pricing & Action */}
-                  <div className="pt-6 mt-6 border-t border-zinc-800/80 flex items-center justify-between">
+                  <div className="px-6 pb-6 pt-6 mt-6 border-t border-zinc-800/80 flex items-center justify-between">
                     <div>
                       <span className="text-[10px] text-zinc-500 block uppercase font-medium">
                         Starting Ex-Showroom
@@ -653,7 +688,7 @@ export const HeroOverview = ({
                       </button>
                       <button
                         onClick={() => onExploreVariants(car.id)}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold text-white flex items-center gap-1 transition-colors shadow-md cursor-pointer ${isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-950" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950"}`}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold text-white flex items-center gap-1 transition-colors shadow-md cursor-pointer ${isAudi ? "bg-red-600 hover:bg-red-500 shadow-red-950" : isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-950" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950"}`}
                       >
                         <span>Trims</span>
                         <ChevronRight className="w-3 h-3" />
@@ -758,7 +793,7 @@ export const HeroOverview = ({
         <div className="flex items-center justify-between flex-wrap gap-4">
           <div>
             <div
-              className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+              className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${isAudi ? "text-red-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>
@@ -801,7 +836,7 @@ export const HeroOverview = ({
               className="p-4 rounded-2xl bg-zinc-950/80 border border-zinc-800/80 space-y-2 shadow-sm transition-all"
             >
               <span
-                className={`text-xs font-bold ${isVW ? "text-blue-400" : "text-emerald-400"}`}
+                className={`text-xs font-bold ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
               >
                 {item.title}
               </span>
