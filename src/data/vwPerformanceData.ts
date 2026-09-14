@@ -163,6 +163,164 @@ export const VW_GT_MODELS: VWPerformanceModelData[] = [
       braking100to0: '38.2 Metres',
       nurburgringLegacy: 'Tested across 1.5 Million Km in Extreme Indian & German Conditions'
     }
+  },
+  {
+    id: 'polo-gti',
+    name: 'Volkswagen Polo GTI',
+    badge: 'The Pocket-Rocket Hot Hatch',
+    tagline: '207 PS EA888 turbo-four squeezed into Volkswagen\'s lightest, smallest, most flickable GTI body.',
+    category: 'Compact Hot Hatch / CBU Icon',
+    expectedPrice: '₹33.00 – ₹35.50 Lakh (CBU)',
+    priceNumeric: 3300000,
+    engine: '2.0L TSI EA888 Turbocharged Petrol (Polo GTI Tune)',
+    power: '207 PS (152 kW) @ 4,400–6,000 RPM',
+    powerHp: 207,
+    torque: '320 Nm @ 1,500–4,400 RPM',
+    torqueNm: 320,
+    acceleration0to100: '6.5 Seconds',
+    accelSeconds: 6.5,
+    topSpeed: '237 km/h (Governed)',
+    topSpeedKmh: 237,
+    transmission: '7-Speed DSG Dual-Clutch with Launch Control',
+    drivetrain: 'Front-Wheel Drive with Progressive Sport Steering',
+    diffOrAwd: 'XDS Electronic Differential Lock via Brake Vectoring',
+    exhaustSystem: 'GTI Dual Chrome Outlets with Overrun Acoustics',
+    brakes: '312 mm Front Ventilated Discs with Red 2-Piston Calipers',
+    suspension: 'Sport Select Adaptive Chassis with Sport, Individual & Comfort Profiles',
+    boostPsi: 19.5,
+    revLimit: 6500,
+    tractionType: 'XDS E-Diff',
+    bootAndSeating: '5 Seats • 351L Hatchback Boot',
+    keyWeaponSummary: 'The lightest body in the entire GTI family means every one of its 207 horses has less mass to shift, translating raw power into pure go-kart agility.',
+    heroColorHex: '#991b1b',
+    heroColorName: 'Kings Red Metallic',
+    heritageOrigin: 'Wolfsburg, Germany (Polo GTI first launched in 1998)',
+    tuningCulture: 'Spiritual successor to India\'s Polo GT TSI, the car that built the country\'s hot-hatch tuning scene',
+    colors: [
+      { name: 'Kings Red Metallic', hex: '#991b1b', desc: 'Signature GTI racing red with honeycomb contrasting accents.' },
+      { name: 'Pure White', hex: '#f8fafc', desc: 'Classic contrast white highlighting the red bumper stripe.' },
+      { name: 'Deep Black Pearl', hex: '#0a0a0a', desc: 'Sinister blackout presence with gleaming red GTI badges.' },
+      { name: 'Reflex Silver', hex: '#cbd5e1', desc: 'Understated metallic finish favored by daily-driven track-day cars.' }
+    ],
+    weaponry: [
+      {
+        title: 'Featherweight GTI Chassis',
+        description: 'At barely over 1,300 kg, the Polo GTI carries the least mass of any car in the GTI family, turning every one of its 207 PS into immediate, tossable agility.',
+        badge: 'Best Power-to-Weight',
+        icon: 'Gauge'
+      },
+      {
+        title: 'EA888 207 PS Turbo-Four',
+        description: 'The same globally-proven EA888 architecture as the Golf GTI, tuned down slightly to suit the Polo\'s compact chassis without sacrificing mid-range punch.',
+        badge: '320 Nm Torque Plateau',
+        icon: 'Zap'
+      },
+      {
+        title: 'Sport Select Adaptive Chassis',
+        description: 'Electronically controlled dampers switch between plush Comfort and track-focused Sport modes, tuned specifically for the Polo\'s shorter wheelbase.',
+        badge: 'Split Personality',
+        icon: 'Activity'
+      },
+      {
+        title: 'XDS Electronic Diff Lock',
+        description: 'Brake-based torque vectoring brakes the inside front wheel mid-corner, mimicking a mechanical limited-slip differential without the added unsprung weight.',
+        badge: 'Corner Sharpener',
+        icon: 'Flame'
+      }
+    ],
+    cockpitFeatures: [
+      'Iconic "Clark" Tartan pattern bucket sports seats with integrated head restraints',
+      'GTI sports leather steering wheel with flat-bottom grip',
+      'Digital Cockpit Pro with GTI-exclusive central circular tachometer',
+      'Honeycomb-pattern GTI door sill plates and pedal cluster',
+      'Red ambient interior illumination synchronized to Sport mode'
+    ],
+    trackTelemetry: {
+      lateralG: '1.01 G (on 18-inch Brescia alloys)',
+      weightDistribution: '63% Front / 37% Rear',
+      powerToWeight: '158.5 PS / Tonne',
+      braking100to0: '35.1 Metres',
+      nurburgringLegacy: 'Nordschleife-tested sibling chassis tune to the Golf GTI, scaled for the shorter Polo wheelbase'
+    }
+  },
+  {
+    id: 'jetta-gli',
+    name: 'Volkswagen Jetta GLI',
+    badge: 'The Sedan-Shaped GTI',
+    tagline: '228 PS EA888 sports-sedan tune, GLI-firmed suspension, and 510L of boot space for a genuine daily track-day weapon.',
+    category: 'Performance Sports Sedan / CBU Icon',
+    expectedPrice: '₹39.50 – ₹42.50 Lakh (CBU)',
+    priceNumeric: 3950000,
+    engine: '2.0L TSI EA888 Turbocharged Petrol (Jetta GLI Tune)',
+    power: '228 PS (168 kW) @ 5,000–6,200 RPM',
+    powerHp: 228,
+    torque: '350 Nm @ 1,600–4,300 RPM',
+    torqueNm: 350,
+    acceleration0to100: '6.3 Seconds',
+    accelSeconds: 6.3,
+    topSpeed: '240 km/h (Governed)',
+    topSpeedKmh: 240,
+    transmission: '7-Speed DSG Dual-Clutch with Launch Control',
+    drivetrain: 'Front-Wheel Drive with GLI-Tuned Front Differential Lock',
+    diffOrAwd: 'Electronic Differential Lock (EDL) with GLI Sport Calibration',
+    exhaustSystem: 'GLI Dual Chrome Outlets with Overrun Acoustics',
+    brakes: '340 mm Front Ventilated Discs with Red 2-Piston Calipers',
+    suspension: 'GLI-Specific Firmer Springs & Dampers with Stiffened Anti-Roll Bar',
+    boostPsi: 20.5,
+    revLimit: 6600,
+    tractionType: 'GLI E-Diff',
+    bootAndSeating: '5 Seats • 510L Sedan Boot',
+    keyWeaponSummary: 'The GLI badge has meant "GTI in a sedan suit" since 1983 — 228 PS, a firmed-up chassis, and a proper boot deep enough for a full set of track wheels.',
+    heroColorHex: '#991b1b',
+    heroColorName: 'Kings Red Metallic',
+    heritageOrigin: 'Wolfsburg, Germany (GLI nameplate debuted on the Mk1 Jetta in 1983)',
+    tuningCulture: 'Volkswagen\'s longest-running sports sedan badge, prized for combining GTI pace with genuine three-box practicality',
+    colors: [
+      { name: 'Kings Red Metallic', hex: '#991b1b', desc: 'Signature GLI racing red with dark chrome contrasting accents.' },
+      { name: 'Pure White', hex: '#f8fafc', desc: 'Clean contrast white highlighting the red brake calipers.' },
+      { name: 'Deep Black Pearl', hex: '#0a0a0a', desc: 'Understated executive stance with red GLI badges.' },
+      { name: 'Platinum Grey Metallic', hex: '#52525b', desc: 'Business-casual grey favored by daily-driven sleeper builds.' }
+    ],
+    weaponry: [
+      {
+        title: 'GLI-Tuned Firmer Chassis',
+        description: 'Springs, dampers, and anti-roll bars stiffened beyond the standard Jetta setup, sharpening turn-in without destroying everyday ride comfort.',
+        badge: 'Sedan Sharpener',
+        icon: 'Activity'
+      },
+      {
+        title: 'EA888 228 PS Turbo-Four',
+        description: 'The highest state of tune of the EA888 in the Jetta lineup, using the same architecture that powers the Golf GTI and Polo GTI.',
+        badge: '350 Nm Torque Plateau',
+        icon: 'Zap'
+      },
+      {
+        title: 'GLI-Calibrated Electronic Diff Lock',
+        description: 'Braking-based torque vectoring specifically remapped for the Jetta\'s longer wheelbase, taming understeer under hard corner exit throttle.',
+        badge: 'Corner Sharpener',
+        icon: 'Flame'
+      },
+      {
+        title: '510-Litre Track-Day Boot',
+        description: 'The largest boot of any car in the GTI performance family — room for a full toolkit, spare wheels, and a track-day tyre set without a roof box.',
+        badge: 'Practicality Weapon',
+        icon: 'Luggage'
+      }
+    ],
+    cockpitFeatures: [
+      'Iconic "Clark" Tartan pattern bucket sports seats with integrated head restraints',
+      'GLI sports leather steering wheel with flat-bottom grip and red stitching',
+      'Digital Cockpit Pro with red-backlit GLI-exclusive sport gauge cluster',
+      'Dark chrome honeycomb door sill plates and aluminium pedal cluster',
+      'Red ambient interior illumination synchronized to Sport mode'
+    ],
+    trackTelemetry: {
+      lateralG: '0.98 G (on 18-inch Richmond alloys)',
+      weightDistribution: '60% Front / 40% Rear',
+      powerToWeight: '160.6 PS / Tonne',
+      braking100to0: '34.5 Metres',
+      nurburgringLegacy: 'Chassis tune developed alongside the Golf GTI at the Nürburgring Nordschleife test track'
+    }
   }
 ];
 
@@ -183,14 +341,24 @@ export const GTI_HERITAGE = [
     desc: 'Introduced 2.0 TFSI direct-injection turbo and lightning-fast DSG dual-clutch transmission to hot hatches.'
   },
   {
+    year: '1983',
+    title: 'Jetta GLI Mk1: "GTI in a Suit"',
+    desc: 'Volkswagen badges a three-box Jetta with GTI running gear as the GLI — Gran Luxe Injection — birthing the world\'s longest-running sports sedan nameplate.'
+  },
+  {
+    year: '1998',
+    title: 'Polo GTI Mk3: The Pocket-Rocket Arrives',
+    desc: 'Volkswagen shrinks GTI DNA into its smallest hatchback body, proving hot-hatch thrills don\'t need a big footprint.'
+  },
+  {
     year: '2013',
     title: 'Polo GT TSI In India: Cult Legend',
     desc: 'Brought 1.2 TSI and 7-Speed DSG to Indian petrolheads, becoming the undisputed tuning king of the country.'
   },
   {
     year: '2024+',
-    title: 'Golf GTI Mk8 & Virtus GT Plus',
-    desc: '265 PS EA888 EVO4 with VAQ mechanical diff alongside India’s favorite 150 PS Virtus GT Plus Sport.'
+    title: 'Golf GTI Mk8, Polo GTI, Jetta GLI & Virtus GT Plus',
+    desc: '265 PS EA888 EVO4 Golf GTI and 207 PS Polo GTI hot hatches, alongside the 228 PS Jetta GLI sports sedan and India\'s favorite 150 PS Virtus GT Plus Sport.'
   }
 ];
 

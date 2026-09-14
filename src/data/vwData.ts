@@ -109,6 +109,58 @@ export const ALL_VW_ENGINES: EngineSpec[] = [
     description: 'The apex of hot-hatch engineering. Developed at the Nürburgring Nordschleife, transmitting 265 horsepower to the tarmac with zero torque steer via the active VAQ diff.'
   },
   {
+    id: '2.0-tsi-polo-gti',
+    name: '2.0L TSI EA888 Hot-Hatch Powerhouse (Polo GTI Tune)',
+    badge: '2.0 TSI Polo GTI (Compact Firepower)',
+    fuelType: 'Petrol',
+    fuelPriceDefault: 102,
+    displacement: '1,984 cc',
+    cylinders: 4,
+    power: '207 PS (152 kW) @ 4,400–6,000 RPM',
+    powerHp: 207,
+    torque: '320 Nm @ 1,500–4,400 RPM',
+    torqueNm: 320,
+    transmissions: ['7-Speed DSG (Dual-Clutch) with Launch Control'],
+    acceleration: '0–100 km/h in 6.5s',
+    topSpeed: '237 km/h (Electronically Governed)',
+    claimedMileage: '15.8 km/l',
+    realWorldCity: '9.0 – 10.5 km/l',
+    realWorldHighway: '14.5 – 16.5 km/l',
+    keyHighlights: [
+      'Shrinks the Golf GTI\'s EA888 architecture into the smallest hot hatch in the Volkswagen family',
+      'Sport Select adaptive chassis with dedicated Sport, Individual and Eco driving profiles',
+      'Progressive steering rack shared with the Golf GTI for razor-sharp turn-in',
+      'Powers the compact-but-mighty Polo GTI CBU icon'
+    ],
+    description: 'Proof that big turbo power fits in a small package. The Polo GTI borrows the Golf\'s hot-hatch DNA and wraps it in the lightest, most flickable body in the GTI family.'
+  },
+  {
+    id: '2.0-tsi-jetta-gli',
+    name: '2.0L TSI EA888 High-Output Sports Sedan Tune',
+    badge: '2.0 TSI Jetta GLI (Sport Sedan)',
+    fuelType: 'Petrol',
+    fuelPriceDefault: 102,
+    displacement: '1,984 cc',
+    cylinders: 4,
+    power: '228 PS (168 kW) @ 5,000–6,200 RPM',
+    powerHp: 228,
+    torque: '350 Nm @ 1,600–4,300 RPM',
+    torqueNm: 350,
+    transmissions: ['7-Speed DSG (Dual-Clutch) with Launch Control'],
+    acceleration: '0–100 km/h in 6.3s',
+    topSpeed: '240 km/h (Electronically Governed)',
+    claimedMileage: '14.6 km/l',
+    realWorldCity: '8.5 – 10.0 km/l',
+    realWorldHighway: '13.5 – 15.5 km/l',
+    keyHighlights: [
+      'The GLI badge dates back to 1983 — "GLI" is simply GTI dressed in a three-box sedan',
+      'VAQ-style front differential lock tuned specifically for the longer Jetta wheelbase',
+      'Firmer GLI-specific spring and damper rates over the standard Jetta',
+      'Powers the enthusiast-favourite Jetta GLI sports sedan CBU icon'
+    ],
+    description: 'The sedan-shaped answer to "what if a GTI needed a proper boot?" — a tuned EA888 four delivering hot-hatch pace with three-box practicality.'
+  },
+  {
     id: '1.2-tsi-polo',
     name: '1.2L TSI Turbo-Petrol (Polo GT Legend)',
     badge: '1.2 TSI (4-Cylinder Heritage)',
@@ -270,6 +322,7 @@ export const VW_MODELS: CarModel[] = [
   {
     id: 'virtus',
     image: '/cars/virtus-exterior-right-front-three-quarter-6.avif',
+    enthusiastNote: 'Virtus is Latin for "virtue" or "excellence" — continuing Volkswagen\'s long tradition of naming sedans after abstract Latin and wind-themed concepts.',
     name: 'Volkswagen Virtus',
     badge: 'The Benchmark Sedan',
     tagline: 'Striking German aesthetics, 5-Star NCAP safety, and thrilling GT TSI performance',
@@ -429,6 +482,7 @@ export const VW_MODELS: CarModel[] = [
   {
     id: 'taigun',
     image: '/cars/volkswagen-taigun-trail-edition-030132723-16x9_0.avif',
+    enthusiastNote: 'The Taigun nameplate first appeared on a 2012 Volkswagen concept car, over eight years before it reached production for the Indian market.',
     name: 'Volkswagen Taigun',
     badge: 'Dynamic German SUV',
     tagline: 'Muscular presence, segment-longest wheelbase, and unshakeable 5-Star safety',
@@ -568,6 +622,7 @@ export const VW_MODELS: CarModel[] = [
   {
     id: 'tiguan',
     image: '/cars/2022-volkswagen-tiguan-1-1280x720.jpg',
+    enthusiastNote: 'Tiguan is a portmanteau of the German words for "tiger" and "leguan" (iguana) — the winning entry from a public magazine naming poll in 2006.',
     name: 'Volkswagen Tiguan',
     badge: 'Executive 4MOTION SUV',
     tagline: 'Engineered for absolute capability with 190 PS TSI, 4MOTION AWD, and IQ.LIGHT',
@@ -649,6 +704,7 @@ export const VW_MODELS: CarModel[] = [
   {
     id: 'golf-gti',
     image: '/cars/golf-gti.avif',
+    enthusiastNote: 'The original 1976 Golf GTI wasn\'t an official factory programme — it began as an unofficial after-hours project by a small group of enthusiast VW engineers.',
     name: 'Volkswagen Golf GTI',
     badge: 'The Global Hot-Hatch Icon',
     tagline: '265 PS EA888 EVO4 engine, VAQ limited-slip differential, and Nürburgring heritage',
@@ -730,6 +786,7 @@ export const VW_MODELS: CarModel[] = [
   {
     id: 'polo-legend',
     image: '/cars/2020_Volkswagen_Polo_GT_TSI_-India-_front_view.png',
+    enthusiastNote: 'Continuing Volkswagen\'s sport-themed naming tradition, the Polo is named after the sport of polo — much like the Golf takes its name from golf.',
     name: 'Volkswagen Polo & GT TSI',
     badge: 'Enthusiast Hall of Fame',
     tagline: 'The timeless hot-hatch that pioneered turbocharged performance and tuning in India',
@@ -789,6 +846,7 @@ export const VW_MODELS: CarModel[] = [
   {
     id: 'tayron',
     image: '/cars/tayron.jpg',
+    enthusiastNote: 'The Tayron name blends "tailor" and "iron" — signalling a 7-seater tailored for families, built on rock-solid German engineering.',
     name: 'Volkswagen Tayron',
     badge: 'Upcoming 7-Seater Luxury SUV',
     tagline: 'Next-generation MQB Evo architecture, spacious 3-row comfort, and 4MOTION AWD',
@@ -848,6 +906,7 @@ export const VW_MODELS: CarModel[] = [
   {
     id: 'jetta',
     image: '/cars/jetta.jpg',
+    enthusiastNote: 'Jetta takes its name from the jet stream, continuing Volkswagen\'s 1970s–80s tradition of naming cars after winds and weather (Golf, Scirocco, Passat).',
     name: 'Volkswagen Jetta',
     badge: 'Enthusiast Hall of Fame Sedan',
     tagline: 'The German CKD sedan that brought TSI turbo-petrol and TDI diesel refinement to India (2008–2013)',
@@ -947,6 +1006,7 @@ export const VW_MODELS: CarModel[] = [
   {
     id: 'passat',
     image: '/cars/passat.jpg',
+    enthusiastNote: 'Passat is German for "trade wind" — part of the same wind-themed Volkswagen naming family as the Scirocco and Bora.',
     name: 'Volkswagen Passat',
     badge: 'Enthusiast Hall of Fame Executive Sedan',
     tagline: 'The flagship executive sedan celebrated for its 350 Nm TDI diesel and presidential rear-seat comfort (2007–2022)',
@@ -1047,6 +1107,7 @@ export const VW_MODELS: CarModel[] = [
   {
     id: 'beetle',
     image: '/cars/bettle.jpg',
+    enthusiastNote: 'Ferdinand Porsche engineered the Beetle\'s timeless silhouette, which went on to become the best-selling single car platform in automotive history.',
     name: 'Volkswagen Beetle',
     badge: 'CBU Import Icon',
     tagline: 'The reborn cultural icon that brought retro-modern coupe styling to India via the CBU import route (2009–2019)',
@@ -1107,6 +1168,7 @@ export const VW_MODELS: CarModel[] = [
   {
     id: 'touareg',
     image: '/cars/touareg.jpg',
+    enthusiastNote: 'Named after the Tuareg people, nomadic desert dwellers of the Sahara, chosen specifically to emphasize the SUV\'s serious off-road capability.',
     name: 'Volkswagen Touareg',
     badge: 'Flagship Luxury 4x4 SUV',
     tagline: 'Volkswagen’s range-topping luxury SUV, engineered with V6 diesel muscle and permanent 4MOTION all-wheel drive (2011–2020)',
@@ -1187,6 +1249,7 @@ export const VW_MODELS: CarModel[] = [
   {
     id: 'phaeton',
     image: '/cars/phaeton.jpg',
+    enthusiastNote: 'Named after Phaethon, the mythological son of the Greek sun god Helios, the Phaeton was Volkswagen\'s audacious first attempt at a Mercedes S-Class rival.',
     name: 'Volkswagen Phaeton',
     badge: 'Ultra-Luxury Flagship Sedan',
     tagline: 'Volkswagen’s audacious presidential flagship sedan, engineered to out-luxury Mercedes and Audi at their own game (2010–2016)',
@@ -1246,6 +1309,7 @@ export const VW_MODELS: CarModel[] = [
   {
     id: 'vento',
     image: '/cars/volkswagen-vento-tdi-dsg-1.jpg',
+    enthusiastNote: 'Vento is Italian for "wind" — yet another entry in Volkswagen\'s decades-spanning wind-themed naming convention.',
     name: 'Volkswagen Vento',
     badge: 'Enthusiast Hall of Fame Sedan',
     tagline: 'The German-engineered compact sedan that defined "German thud" build quality for a generation of Indian buyers (2010–2022)',
@@ -1345,6 +1409,7 @@ export const VW_MODELS: CarModel[] = [
   {
     id: 'ameo',
     image: '/cars/ameo.avif',
+    enthusiastNote: 'The Ameo was developed specifically for India — one of the very few Volkswagen models ever engineered exclusively for a single market.',
     name: 'Volkswagen Ameo',
     badge: 'India-Exclusive Compact Sedan',
     tagline: 'The India-only sub-4-metre compact sedan engineered specifically to compete in India’s tax-friendly small-car segment (2016–2020)',
@@ -1444,6 +1509,7 @@ export const VW_MODELS: CarModel[] = [
   {
     id: 't-roc',
     image: '/cars/t-roc.jpg',
+    enthusiastNote: 'T-Roc blends "Roc", a mythical bird of prey from Arabian folklore, with the "T" prefix shared across Volkswagen\'s SUV lineup.',
     name: 'Volkswagen T-Roc',
     badge: 'CBU Import Compact SUV',
     tagline: 'Volkswagen’s stylish CBU compact SUV, bringing bold coupe-SUV design and turbo-petrol performance to India (2020–2022)',
@@ -1501,6 +1567,128 @@ export const VW_MODELS: CarModel[] = [
       { id: 'indium-grey-troc', name: 'Indium Grey', hex: '#4b5563', availableOn: ['1.5 TSI'] },
       { id: 'flash-red-troc', name: 'Flash Red', hex: '#b91c1c', availableOn: ['1.5 TSI'] },
       { id: 'deep-black-troc', name: 'Deep Black', hex: '#0f172a', availableOn: ['1.5 TSI'] }
+    ]
+  },
+  {
+    id: 'polo-gti',
+    image: '/cars/2020_Volkswagen_Polo_GT_TSI_-India-_front_view.png',
+    enthusiastNote: 'Volkswagen didn\'t build an official Polo GTI until 1998 — over two decades after the original Golf GTI proved the hot-hatch formula could work.',
+    name: 'Volkswagen Polo GTI',
+    badge: 'CBU Enthusiast Hot Hatch Icon',
+    tagline: 'The pocket-rocket successor to the Polo GT TSI legend — 207 PS crammed into Volkswagen\'s smallest, lightest hot hatch body',
+    bodyType: 'Hatchback',
+    startingPrice: 'CBU Import (Enthusiast Edition)',
+    startingExShowroom: 3300000,
+    priceRange: '₹33.00 – ₹35.50 Lakh (CBU Import)',
+    rating: '5-Star Euro NCAP',
+    safetyStars: 5,
+    engines: ['2.0L TSI EA888 (Polo GTI Tune) (207 PS / 320 Nm)'],
+    keyHighlights: [
+      'Spiritual successor to the cult-favourite Polo GT TSI that built India\'s hot-hatch tuning scene',
+      'Lightest, most flickable chassis in the entire GTI family thanks to the compact Polo body',
+      'Sport Select adaptive chassis control with Sport, Individual, and Comfort damper profiles',
+      'Honeycomb front grille with signature GTI red accent strip and red brake calipers',
+      'Digital Cockpit Pro with GTI-exclusive central circular tachometer display',
+      'CBU-only enthusiast import positioned as the accessible entry into VW\'s GTI performance family'
+    ],
+    dimensions: {
+      length: '4,074 mm',
+      width: '1,751 mm',
+      height: '1,438 mm',
+      wheelbase: '2,548 mm',
+      groundClearance: '167 mm',
+      bootSpace: '351 Litres',
+      fuelTank: '40 Litres'
+    },
+    variants: [
+      {
+        id: 'polo-gti-cbu',
+        name: 'Polo GTI',
+        tagline: 'The single, fully-loaded CBU trim with the complete GTI performance and styling package',
+        priceRange: '₹33.00 – ₹35.50 Lakh',
+        baseExShowroom: 3300000,
+        engineOptions: ['2.0L TSI EA888 (Polo GTI Tune)'],
+        transmissions: ['7-Speed DSG (Dual-Clutch)'],
+        isFlagship: true,
+        isPopular: true,
+        keyFeatures: [
+          'Sport Select adaptive chassis control',
+          'Digital Cockpit Pro with GTI tachometer view',
+          'Progressive sport steering rack',
+          'Red front brake calipers and honeycomb grille accent',
+          '6 airbags and Electronic Stability Control standard'
+        ],
+        exteriorHighlights: ['18-inch "Brescia" alloy wheels', 'GTI honeycomb front grille with red strip', 'Twin chrome exhaust outlets'],
+        interiorHighlights: ['Clark Tartan-pattern sport seats', 'Flat-bottom GTI sport steering wheel', 'Red ambient interior lighting'],
+        badgeColor: 'bg-red-700 text-white'
+      }
+    ],
+    colors: [
+      { id: 'kings-red-polo-gti', name: 'Kings Red Metallic', hex: '#991b1b', availableOn: ['Polo GTI'] },
+      { id: 'pure-white-polo-gti', name: 'Pure White', hex: '#f8fafc', availableOn: ['Polo GTI'] },
+      { id: 'deep-black-polo-gti', name: 'Deep Black Pearl', hex: '#0a0a0a', availableOn: ['Polo GTI'] },
+      { id: 'reflex-silver-polo-gti', name: 'Reflex Silver', hex: '#cbd5e1', availableOn: ['Polo GTI'] }
+    ]
+  },
+  {
+    id: 'jetta-gli',
+    image: '/cars/jetta.jpg',
+    enthusiastNote: 'The GLI badge — "Gran Luxe Injection" — has run on the Jetta since 1983, making it Volkswagen\'s longest continuously-produced sports sedan nameplate.',
+    name: 'Volkswagen Jetta GLI',
+    badge: 'CBU Enthusiast Sports Sedan Icon',
+    tagline: 'A GTI in a three-box suit — 228 PS of EA888 punch, firm GLI-tuned suspension, and a proper boot for track-day gear',
+    bodyType: 'Compact Sedan',
+    startingPrice: 'CBU Import (Enthusiast Edition)',
+    startingExShowroom: 3950000,
+    priceRange: '₹39.50 – ₹42.50 Lakh (CBU Import)',
+    rating: '5-Star Euro NCAP',
+    safetyStars: 5,
+    engines: ['2.0L TSI EA888 (Jetta GLI Tune) (228 PS / 350 Nm)'],
+    keyHighlights: [
+      'GLI nameplate traces back to 1983 — Volkswagen\'s longest-running sports sedan badge',
+      'GLI-specific firmer spring and damper rates with a front differential lock for sharper turn-in',
+      'Largest boot in the GTI performance family thanks to its three-box sedan body',
+      'Dark chrome honeycomb grille with red accent strip and dual chrome exhaust tips',
+      'Digital Cockpit Pro with GLI-exclusive red-backlit sport gauge cluster',
+      'CBU-only enthusiast import for buyers who want GTI pace with sedan practicality'
+    ],
+    dimensions: {
+      length: '4,702 mm',
+      width: '1,798 mm',
+      height: '1,459 mm',
+      wheelbase: '2,686 mm',
+      groundClearance: '132 mm',
+      bootSpace: '510 Litres',
+      fuelTank: '50 Litres'
+    },
+    variants: [
+      {
+        id: 'jetta-gli-cbu',
+        name: 'Jetta GLI',
+        tagline: 'The single, fully-loaded CBU trim with the complete GLI sports sedan package',
+        priceRange: '₹39.50 – ₹42.50 Lakh',
+        baseExShowroom: 3950000,
+        engineOptions: ['2.0L TSI EA888 (Jetta GLI Tune)'],
+        transmissions: ['7-Speed DSG (Dual-Clutch)'],
+        isFlagship: true,
+        isPopular: true,
+        keyFeatures: [
+          'GLI-tuned firmer sport suspension with front differential lock',
+          'Digital Cockpit Pro with red-backlit GLI sport gauges',
+          'Progressive sport steering rack',
+          'Red front brake calipers and dark chrome honeycomb grille',
+          '6 airbags and Electronic Stability Control standard'
+        ],
+        exteriorHighlights: ['18-inch "Richmond" alloy wheels', 'Dark chrome honeycomb grille with red strip', 'Dual chrome exhaust outlets'],
+        interiorHighlights: ['Clark Tartan-pattern sport seats', 'Flat-bottom GLI sport steering wheel', 'Red ambient interior lighting'],
+        badgeColor: 'bg-red-700 text-white'
+      }
+    ],
+    colors: [
+      { id: 'kings-red-jetta-gli', name: 'Kings Red Metallic', hex: '#991b1b', availableOn: ['Jetta GLI'] },
+      { id: 'pure-white-jetta-gli', name: 'Pure White', hex: '#f8fafc', availableOn: ['Jetta GLI'] },
+      { id: 'deep-black-jetta-gli', name: 'Deep Black Pearl', hex: '#0a0a0a', availableOn: ['Jetta GLI'] },
+      { id: 'platinum-grey-jetta-gli', name: 'Platinum Grey Metallic', hex: '#52525b', availableOn: ['Jetta GLI'] }
     ]
   }
 ];

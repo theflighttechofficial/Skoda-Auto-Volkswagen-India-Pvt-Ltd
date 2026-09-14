@@ -5,12 +5,36 @@ import { EnginePerformance } from "./components/EnginePerformance";
 import { VariantExplorer } from "./components/VariantExplorer";
 import { SafetyDeepDive } from "./components/SafetyDeepDive";
 import { ColorVisualizer } from "./components/ColorVisualizer";
+import { ConfiguratorBuilder } from "./components/ConfiguratorBuilder";
+import { RaceMode } from "./components/RaceMode";
+import { UnderTheSkin } from "./components/UnderTheSkin";
+import { GroupDNA } from "./components/GroupDNA";
+import { GuessTheCar } from "./components/GuessTheCar";
+import { EnthusiastGarage } from "./components/EnthusiastGarage";
 import { CostCalculator } from "./components/CostCalculator";
 import { FAQSection } from "./components/FAQSection";
 import { AIAdvisor } from "./components/AIAdvisor";
 import { RSPerformance } from "./components/RSPerformance";
 import { DealershipLocator } from "./components/DealershipLocator";
 import { PerformanceGraphs } from "./components/PerformanceGraphs";
+import { EngineSoundGallery } from "./components/EngineSoundGallery";
+import { ReliabilityExplorer } from "./components/ReliabilityExplorer";
+import { FuelEconomySimulator } from "./components/FuelEconomySimulator";
+import { IndiaGroupMap } from "./components/IndiaGroupMap";
+import { MadeInIndiaStory } from "./components/MadeInIndiaStory";
+import { EngineeringLab } from "./components/EngineeringLab";
+import { CarThroughDecades } from "./components/CarThroughDecades";
+import { PlatformDetective } from "./components/PlatformDetective";
+import { GroupPersonalities } from "./components/GroupPersonalities";
+import { LaunchScreen } from "./components/LaunchScreen";
+import { BrandLoadingScreen } from "./components/BrandLoadingScreen";
+import {
+  RacingHudOverlay,
+  GtiThemeOverlay,
+  QuattroVizOverlay,
+  WolfsburgModeOverlay,
+} from "./components/EasterEggOverlays";
+import { useEasterEggs } from "./utils/useEasterEggs";
 import { AboutSkodaHistory } from "./components/AboutSkodaHistory";
 import { VolkswagenGroupProud } from "./components/VolkswagenGroupProud";
 import {
@@ -31,9 +55,13 @@ import { AudiLogo } from "./components/AudiLogo";
 export default function App() {
   const [activeBrand, setActiveBrand] = useState("skoda");
   const [activeTab, setActiveTab] = useState("overview");
+  const [hasEntered, setHasEntered] = useState(false);
+  const [isLoadingBrand, setIsLoadingBrand] = useState(false);
+  const [pendingBrand, setPendingBrand] = useState(null);
   const [selectedModelId, setSelectedModelId] = useState("all");
   const [advisorPrompt, setAdvisorPrompt] = useState();
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const { racingHud, gtiTheme, quattroViz, wolfsburgMode, registerLogoClick } = useEasterEggs();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     if (document.documentElement) {
@@ -55,6 +83,21 @@ export default function App() {
     setSelectedModelId("all");
     scrollToTop();
   };
+  const handleEnterSite = (brand) => {
+    setPendingBrand(brand);
+    setIsLoadingBrand(true);
+  };
+  useEffect(() => {
+    if (!isLoadingBrand || !pendingBrand) return;
+    const timer = setTimeout(() => {
+      setActiveBrand(pendingBrand);
+      setSelectedModelId("all");
+      setActiveTab("overview");
+      setHasEntered(true);
+      setIsLoadingBrand(false);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [isLoadingBrand, pendingBrand]);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 300) {
@@ -92,8 +135,39 @@ export default function App() {
   const isAudi = activeBrand === "audi";
   const defaultModelId = isAudi ? "a4" : isVW ? "virtus" : "octavia";
   const defaultGraphModelId = isAudi ? "a4" : isVW ? "virtus" : "slavia";
+
+  if (!hasEntered) {
+    return (
+      <AnimatePresence mode="wait">
+        {isLoadingBrand ? (
+          <motion.div
+            key="brand-loading-screen"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
+          >
+            <BrandLoadingScreen brand={pendingBrand} durationMs={5000} />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="launch-screen"
+            exit={{ opacity: 0, scale: 1.02 }}
+            transition={{ duration: 0.35 }}
+          >
+            <LaunchScreen onEnter={handleEnterSite} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    );
+  }
+
   return (
-    <div
+    <motion.div
+      key="main-site"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4 }}
       className={`min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased ${isAudi ? "selection:bg-red-600" : isVW ? "selection:bg-blue-600" : "selection:bg-emerald-500"} selection:text-white relative`}
     >
       {/* Top Navigation */}
@@ -182,6 +256,30 @@ export default function App() {
                 onOpenAdvisor={handleOpenAdvisor}
                 onOpenCalculator={handleOpenCalculator}
               />
+            </motion.div>
+          )}
+
+          {activeTab === "race" && (
+            <motion.div
+              key={`tab-race-${activeBrand}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <RaceMode brand={activeBrand} />
+            </motion.div>
+          )}
+
+          {activeTab === "underskin" && (
+            <motion.div
+              key="tab-underskin"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <UnderTheSkin brand={activeBrand} onSwitchBrand={handleBrandChange} />
             </motion.div>
           )}
 
@@ -280,6 +378,42 @@ export default function App() {
             </motion.div>
           )}
 
+          {activeTab === "dna" && (
+            <motion.div
+              key="tab-dna"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <GroupDNA />
+            </motion.div>
+          )}
+
+          {activeTab === "guessgame" && (
+            <motion.div
+              key="tab-guessgame"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <GuessTheCar />
+            </motion.div>
+          )}
+
+          {activeTab === "garage" && (
+            <motion.div
+              key="tab-garage"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <EnthusiastGarage />
+            </motion.div>
+          )}
+
           {activeTab === "visualizer" && (
             <motion.div
               key={`tab-visualizer-${activeBrand}`}
@@ -289,6 +423,22 @@ export default function App() {
               transition={{ duration: 0.3 }}
             >
               <ColorVisualizer brand={activeBrand} />
+            </motion.div>
+          )}
+
+          {activeTab === "configurator" && (
+            <motion.div
+              key={`tab-configurator-${activeBrand}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ConfiguratorBuilder
+                brand={activeBrand}
+                onSwitchBrand={handleBrandChange}
+                onOpenAdvisor={handleOpenAdvisor}
+              />
             </motion.div>
           )}
 
@@ -321,6 +471,125 @@ export default function App() {
             </motion.div>
           )}
 
+          {activeTab === "enginesounds" && (
+            <motion.div
+              key="tab-enginesounds"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <EngineSoundGallery />
+            </motion.div>
+          )}
+
+          {activeTab === "reliability" && (
+            <motion.div
+              key="tab-reliability"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ReliabilityExplorer />
+            </motion.div>
+          )}
+
+          {activeTab === "fueleconomy" && (
+            <motion.div
+              key={`tab-fueleconomy-${activeBrand}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <FuelEconomySimulator
+                brand={activeBrand}
+                initialModelId={
+                  selectedModelId !== "all" ? selectedModelId : defaultModelId
+                }
+                onOpenCalculator={handleOpenCalculator}
+              />
+            </motion.div>
+          )}
+
+          {activeTab === "indiamap" && (
+            <motion.div
+              key="tab-indiamap"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <IndiaGroupMap onOpenDealershipLocator={() => handleTabChange("dealerships")} />
+            </motion.div>
+          )}
+
+          {activeTab === "madeinindia" && (
+            <motion.div
+              key="tab-madeinindia"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <MadeInIndiaStory onOpenMap={() => handleTabChange("indiamap")} />
+            </motion.div>
+          )}
+
+          {activeTab === "lab" && (
+            <motion.div
+              key="tab-lab"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <EngineeringLab />
+            </motion.div>
+          )}
+
+          {activeTab === "decades" && (
+            <motion.div
+              key="tab-decades"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <CarThroughDecades />
+            </motion.div>
+          )}
+
+          {activeTab === "platformdetective" && (
+            <motion.div
+              key="tab-platformdetective"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <PlatformDetective />
+            </motion.div>
+          )}
+
+          {activeTab === "personalities" && (
+            <motion.div
+              key="tab-personalities"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <GroupPersonalities
+                onSelectBrand={(b) => {
+                  handleBrandChange(b);
+                  handleTabChange("overview");
+                }}
+              />
+            </motion.div>
+          )}
+
           {activeTab === "faq" && (
             <motion.div
               key={`tab-faq-${activeBrand}`}
@@ -339,7 +608,11 @@ export default function App() {
       <footer className="border-t border-zinc-800/80 bg-zinc-950 py-12 mt-16 text-xs text-zinc-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
+            <div
+              className="flex items-center gap-3 cursor-pointer"
+              onClick={registerLogoClick}
+              title="Psst..."
+            >
               {isAudi ? (
                 <AudiLogo variant="full" size="md" animated={true} />
               ) : isVW ? (
@@ -504,6 +777,12 @@ export default function App() {
         </div>
       </footer>
 
+      {/* Hidden Easter Eggs: type "DSG", "GTI", or "QUATTRO" anywhere, or click the footer logo 7 times */}
+      <RacingHudOverlay active={racingHud} />
+      <GtiThemeOverlay active={gtiTheme} />
+      <QuattroVizOverlay active={quattroViz} />
+      <WolfsburgModeOverlay active={wolfsburgMode} />
+
       {/* Floating Back to Top Button */}
       <AnimatePresence>
         {showScrollTop && (
@@ -523,6 +802,6 @@ export default function App() {
           </motion.button>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }

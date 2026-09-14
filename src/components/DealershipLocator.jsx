@@ -17,6 +17,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { DEALERSHIPS, INDIAN_STATES } from "../data/dealershipData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
+import { AudiLogo } from "./AudiLogo";
 export const DealershipLocator = ({
   brand = "skoda",
   initialCity,

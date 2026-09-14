@@ -22,14 +22,33 @@ function generateSmartSkodaResponse(question: string, modelContext?: string, eng
   const isAudiBrand = brandContext === 'audi';
 
   // Volkswagen specific queries or when VW model is selected
-  if (q.includes('golf') || q.includes('gti') || q.includes('virtus') || q.includes('taigun') || q.includes('tiguan') || q.includes('tayron') || q.includes('polo') || selectedModel.includes('virtus') || selectedModel.includes('taigun') || selectedModel.includes('tiguan') || selectedModel.includes('tayron') || selectedModel.includes('golf')) {
-    if (q.includes('golf') || q.includes('gti') || selectedModel.includes('golf')) {
+  if (brandContext === 'volkswagen' || q.includes('golf') || q.includes('gti') || q.includes('gli') || q.includes('virtus') || q.includes('taigun') || q.includes('tiguan') || q.includes('tayron') || q.includes('polo') || q.includes('jetta') || selectedModel.includes('virtus') || selectedModel.includes('taigun') || selectedModel.includes('tiguan') || selectedModel.includes('tayron') || selectedModel.includes('golf') || selectedModel.includes('polo') || selectedModel.includes('jetta')) {
+    if ((q.includes('golf') || q.includes('gti')) && !q.includes('polo') || selectedModel === 'golf-gti') {
       return `### Volkswagen Golf GTI (The Hot Hatch Benchmark)
 - **Powertrain:** 2.0L TSI EA888 EVO4 Turbo-Petrol producing **265 PS** and **370 Nm torque**.
 - **Differential & Traction:** **VAQ Mechanical Multi-Plate Limited-Slip Differential** that transfers up to 100% torque to the outer wheel, eliminating understeer in sharp apexes.
 - **Sprint:** 0 to 100 km/h in **5.9 seconds** | Top speed: **250 km/h** (Electronically limited).
 - **Cabin & Heritage:** Classic "Clark" Tartan sports bucket seats, 10.25-inch Digital Cockpit Pro with GTI central rev counter, DCC 15-stage adaptive dampers, and dual chrome exhaust pipes with overrun crackles.
 - **Price Range:** Expected ₹45.00 – ₹49.00 Lakh (CBU import for enthusiasts).`;
+    }
+
+    if (q.includes('polo') || selectedModel === 'polo-gti') {
+      return `### Volkswagen Polo GTI (The Pocket-Rocket Hot Hatch)
+- **Powertrain:** 2.0L TSI EA888 Turbo-Petrol (Polo GTI Tune) producing **207 PS** and **320 Nm torque**.
+- **Chassis:** The lightest body in the entire GTI family, with Sport Select adaptive dampers and an XDS electronic front differential lock.
+- **Sprint:** 0 to 100 km/h in **6.5 seconds** | Top speed: **237 km/h** (Electronically limited).
+- **Heritage:** Spiritual successor to India's cult-favourite Polo GT TSI, which built the country's hot-hatch tuning scene from 2013 onward.
+- **Price Range:** Expected ₹33.00 – ₹35.50 Lakh (CBU import for enthusiasts).`;
+    }
+
+    if (q.includes('jetta') || q.includes('gli') || selectedModel === 'jetta-gli') {
+      return `### Volkswagen Jetta GLI (The Sedan-Shaped GTI)
+- **Powertrain:** 2.0L TSI EA888 Turbo-Petrol (Jetta GLI Tune) producing **228 PS** and **350 Nm torque** — the highest state of tune of any Jetta engine.
+- **Chassis:** GLI-specific firmer springs, dampers, and anti-roll bars, plus a front differential lock tuned for the longer Jetta wheelbase.
+- **Sprint:** 0 to 100 km/h in **6.3 seconds** | Top speed: **240 km/h** (Electronically limited).
+- **Practicality:** 510-litre boot, the largest of any car in the GTI performance family — room for a full track-day toolkit and spare wheels.
+- **Heritage:** The GLI badge ("Gran Luxe Injection") has run on the Jetta since 1983, making it Volkswagen's longest-running sports sedan nameplate.
+- **Price Range:** Expected ₹39.50 – ₹42.50 Lakh (CBU import for enthusiasts).`;
     }
 
     if (q.includes('virtus') || selectedModel === 'virtus') {
@@ -72,6 +91,8 @@ Volkswagen represents German engineering excellence, robust laser-welded build q
 - **Volkswagen Taigun:** Dynamic European SUV with 188 mm ground clearance & 5-Star safety, starting ₹11.70 Lakh.
 - **Volkswagen Tiguan:** 190 PS 2.0L TSI with 4MOTION All-Wheel Drive & IQ.LIGHT, priced at ₹35.17 Lakh.
 - **Volkswagen Golf GTI:** 265 PS EA888 EVO4 track legend with VAQ mechanical diff.
+- **Volkswagen Polo GTI:** 207 PS pocket-rocket hot hatch, the lightest car in the GTI family.
+- **Volkswagen Jetta GLI:** 228 PS sports sedan with a 510L boot — a GTI in a three-box suit.
 - **Warranty:** 4EVER Care includes 4-Year / 100,000 km warranty, 4-Year Roadside Assistance, and 3 free services.`;
   }
 
@@ -171,6 +192,15 @@ Audi represents progressive luxury, quattro all-wheel-drive traction, and 5-Star
 - **Warranty:** 2-year unlimited-km standard warranty, extendable to 5 years, with Audi Advantage service packages.`;
   }
 
+  if (q.includes('combi') || selectedModel.includes('combi-vrs')) {
+    return `### Škoda Octavia Combi vRS (The Estate Enthusiast's Secret Weapon)
+- **Powertrain:** 2.0L TSI EA888 EVO4 Turbo-Petrol producing **265 PS** & **370 Nm torque** — identical output to the Octavia vRS liftback.
+- **Transmission & Differential:** 7-Speed DSG with **VAQ electro-mechanical limited-slip front differential**.
+- **Acceleration:** 0 to 100 km/h in **6.5 seconds** | Electronically limited top speed: **250 km/h**.
+- **Practicality:** A cavernous 640-litre boot (expandable to 1,700L) with self-levelling rear suspension to keep the chassis balanced when fully loaded — the largest boot of any vRS Škoda has ever built.
+- **Claim to Fame:** The plug-in hybrid Octavia Combi vRS iV holds a Guinness World Record as the fastest production estate car.`;
+  }
+
   if (q.includes('vrs') || q.includes('rs performance') || q.includes('rs') || selectedModel.includes('vrs')) {
     return `### Škoda vRS Performance Division (Motorsport DNA)
 Born on the rally stages and honed on the Nürburgring Nordschleife, Škoda's vRS lineup brings race-bred engineering to India:
@@ -182,7 +212,13 @@ Born on the rally stages and honed on the Nürburgring Nordschleife, Škoda's vR
 - **Chassis & Hardware:** 15 mm lowered sports suspension, progressive rack steering, ventilated 340 mm front brake discs with red calipers, twin active sports exhaust tips.
 - **Cockpit:** Carbon-weave dashboard, Alcantara & leather sports bucket seats with red vRS diamond quilting.
 
-#### 2. Škoda Kodiaq vRS (The Nürburgring Record-Holding 7-Seat Super-SUV)
+#### 2. Škoda Octavia Combi vRS (The Estate Enthusiast's Secret Weapon)
+- **Powertrain:** Identical 265 PS / 370 Nm EA888 EVO4 and VAQ front differential as the liftback, wrapped in a 640-litre estate body.
+- **Acceleration:** 0 to 100 km/h in **6.5 seconds** | Top speed: **250 km/h**.
+- **Practicality:** 640L–1,700L boot with self-levelling rear suspension — the largest boot of any vRS Škoda has built.
+- **Claim to Fame:** The hybrid Combi vRS iV holds a Guinness World Record for the fastest production estate car.
+
+#### 3. Škoda Kodiaq vRS (The Nürburgring Record-Holding 7-Seat Super-SUV)
 - **Powertrain:** 2.0L TSI High-Output Turbo-Petrol delivering **265 PS** & **400 Nm torque**.
 - **Drivetrain:** 7-Speed DSG paired with **Intelligent 4x4 All-Wheel Drive** and integrated **Launch Control**.
 - **Acceleration:** 0 to 100 km/h in **6.3 seconds** | Top speed: **232 km/h**.
@@ -425,6 +461,16 @@ KNOWLEDGE BASE & FACTS:
    - Traction: VAQ mechanical limited-slip differential. 0-100 km/h in 5.9s, top speed 250 km/h.
    - Highlights: Clark Tartan bucket seats, Digital Cockpit Pro with central circular tachometer, DCC 15-level adaptive dampers.
 
+5a. Volkswagen Polo GTI (The Pocket-Rocket Hot Hatch):
+   - Price: ₹33.00 – ₹35.50 Lakh (CBU Import).
+   - Engine: 2.0L TSI EA888 Polo GTI tune (207 PS / 320 Nm). 7-Speed DSG. 0-100 km/h in 6.5s.
+   - Highlights: Lightest body in the GTI family, Sport Select adaptive chassis, XDS electronic diff lock. Spiritual successor to India's Polo GT TSI.
+
+5b. Volkswagen Jetta GLI (The Sedan-Shaped GTI):
+   - Price: ₹39.50 – ₹42.50 Lakh (CBU Import).
+   - Engine: 2.0L TSI EA888 Jetta GLI tune (228 PS / 350 Nm), the highest state of tune of any Jetta engine. 7-Speed DSG. 0-100 km/h in 6.3s.
+   - Highlights: GLI-specific firmer suspension, 510L boot (largest in the GTI family), GLI badge has run since 1983 — VW's longest-running sports sedan nameplate.
+
 6. 4EVER Care Ownership & Warranty:
    - 4-Year / 100,000 km standard manufacturer warranty (extendable to 7 years / 150,000 km).
    - 4-Year 24/7 complimentary Roadside Assistance across India.
@@ -473,6 +519,7 @@ KNOWLEDGE BASE & FACTS:
 
 7. Škoda vRS Performance Division (Motorsport Heritage):
    - Škoda Octavia vRS: 2.0L TSI EA888 EVO4 (265 PS / 370 Nm), 7-speed DSG with VAQ electro-mechanical differential lock, 0-100 km/h in 6.4s, top speed 250 km/h. 15mm lowered sports chassis, progressive steering, twin dual exhausts, 19" Elias alloys, Alcantara bucket seats.
+   - Škoda Octavia Combi vRS: Identical 265 PS / 370 Nm EA888 EVO4 and VAQ front differential as the liftback, in a 640L-1,700L estate body with self-levelling rear suspension — the largest boot of any vRS Škoda has built. 0-100 km/h in 6.5s. The plug-in hybrid Combi vRS iV holds a Guinness World Record for the fastest production estate car.
    - Škoda Kodiaq vRS: 2.0L TSI EA888 (265 PS / 400 Nm), 7-speed DSG with intelligent 4x4 AWD & Launch Control. 0-100 km/h in 6.3s. DCC Plus dynamic chassis control with 15 damping stages, dual twin-pipe active acoustic exhaust, Nürburgring 7-seater lap record holder (9m 29.84s).
 
 8. TSI Petrol & TDI Diesel Technology:

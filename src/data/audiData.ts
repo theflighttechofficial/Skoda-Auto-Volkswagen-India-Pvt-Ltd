@@ -166,6 +166,7 @@ export const AUDI_MODELS: CarModel[] = [
   {
     id: 'a4',
     image: '/cars/a4.jpg',
+    enthusiastNote: 'Audi\'s alphanumeric "A" naming system launched in 1994; the A4 directly replaced the Audi 80 nameplate that had run continuously since 1972.',
     name: 'Audi A4',
     badge: 'The Progressive Executive Sedan',
     tagline: 'Understated luxury, digital cockpit precision, and effortless turbo-petrol performance',
@@ -246,6 +247,7 @@ export const AUDI_MODELS: CarModel[] = [
   {
     id: 'a6',
     image: '/cars/a6.jpg',
+    enthusiastNote: 'The A6 traces its lineage back to the original Audi 100 of 1968, making it one of the oldest continuous model lines in the Audi range.',
     name: 'Audi A6',
     badge: 'The Executive Autobahn Cruiser',
     tagline: 'Quattro-equipped executive luxury with commanding highway presence',
@@ -326,6 +328,7 @@ export const AUDI_MODELS: CarModel[] = [
   {
     id: 'q3',
     image: '/cars/20250609122007_Audi_Q3_Sportback_Daytona_Gray_Pearlescent-1-.avif',
+    enthusiastNote: 'Audi\'s "Q" SUV badge and its famous "quattro" all-wheel-drive branding share the same Latin root: "quattro", simply meaning "four".',
     name: 'Audi Q3',
     badge: 'The Compact Luxury SUV',
     tagline: 'Agile, tech-forward compact SUV that brings quattro capability to the entry-luxury segment',
@@ -406,6 +409,7 @@ export const AUDI_MODELS: CarModel[] = [
   {
     id: 'q5',
     image: '/cars/q5.jpg',
+    enthusiastNote: 'The Q5, launched in 2008, was Audi\'s first-ever compact SUV — built specifically to go head-to-head with the BMW X3.',
     name: 'Audi Q5',
     badge: 'The Benchmark Midsize Luxury SUV',
     tagline: 'quattro-equipped midsize SUV blending sports-car agility with everyday luxury SUV comfort',
@@ -486,6 +490,7 @@ export const AUDI_MODELS: CarModel[] = [
   {
     id: 'q7',
     image: '/cars/20240130053543_2024_audi_q7_rear_left_three_quarter.avif',
+    enthusiastNote: 'The Q7 was Audi\'s very first SUV nameplate, launched in 2005 sharing its platform architecture with the Porsche Cayenne and VW Touareg.',
     name: 'Audi Q7',
     badge: 'The 7-Seater Flagship SUV',
     tagline: 'Full-size 7-seater luxury SUV combining V6 muscle with commanding road presence',
@@ -566,6 +571,7 @@ export const AUDI_MODELS: CarModel[] = [
   {
     id: 'q8',
     image: '/cars/Audi-Q8-front-static.avif',
+    enthusiastNote: 'Audi first trademarked the "Q8" name for a 1990s concept car — the production version didn\'t actually reach showrooms until 2018.',
     name: 'Audi Q8',
     badge: 'The Coupe-SUV Halo Flagship',
     tagline: 'Audi’s most striking SUV, pairing coupe-roofline design with V6 quattro muscle',
@@ -626,6 +632,7 @@ export const AUDI_MODELS: CarModel[] = [
   {
     id: 'a3',
     image: '/cars/a3.jpg',
+    enthusiastNote: 'The 1996 Audi A3 was the first Volkswagen Group car built on the compact modular platform that now underpins nearly every VW Group hatchback.',
     name: 'Audi A3',
     badge: 'Hall of Fame Compact Luxury Sedan',
     tagline: 'The accessible entry point into Audi ownership that introduced a generation of Indian buyers to the four rings (2014–2020)',
@@ -705,6 +712,7 @@ export const AUDI_MODELS: CarModel[] = [
   {
     id: 'a8',
     image: '/cars/a8.jpg',
+    enthusiastNote: 'The A8 was the world\'s first mass-production car with an all-aluminium "Audi Space Frame" body, a manufacturing first when it launched in 1994.',
     name: 'Audi A8 L',
     badge: 'The Presidential Flagship Limousine',
     tagline: 'Audi’s technological flagship, offering chauffeur-grade rear luxury and quattro-equipped V6 authority',

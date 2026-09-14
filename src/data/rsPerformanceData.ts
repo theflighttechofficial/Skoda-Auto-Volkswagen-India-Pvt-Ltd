@@ -1,5 +1,5 @@
 export interface RSModelData {
-  id: 'octavia-vrs' | 'kodiaq-vrs';
+  id: string;
   name: string;
   badge: string;
   tagline: string;
@@ -217,6 +217,92 @@ export const RS_MODELS: RSModelData[] = [
       braking100to0: '35.6 Metres',
       nurburgringLegacy: 'Holder of the 7-seater SUV Nürburgring Nordschleife lap record (9:29.84 by Sabine Schmitz)'
     }
+  },
+  {
+    id: 'octavia-combi-vrs',
+    name: 'Škoda Octavia Combi vRS',
+    badge: 'The Estate Enthusiast\'s Secret Weapon',
+    tagline: '265 PS of EA888 EVO4 fury wrapped in a 640-litre Combi estate body — the vRS purists whisper about.',
+    category: 'Performance Estate / Shooting Brake',
+    expectedPrice: '₹44.50 – ₹47.50 Lakh (CBU)',
+    priceNumeric: 4450000,
+    engine: '2.0L TSI EA888 EVO4 Turbocharged Petrol',
+    power: '265 PS (195 kW) @ 5,250–6,500 RPM',
+    powerHp: 265,
+    torque: '370 Nm @ 1,600–4,300 RPM',
+    torqueNm: 370,
+    acceleration0to100: '6.5 Seconds',
+    accelSeconds: 6.5,
+    topSpeed: '250 km/h (Electronically Governed)',
+    topSpeedKmh: 250,
+    transmission: '7-Speed DSG Dual-Clutch with Shift-by-Wire & Launch Control',
+    drivetrain: 'Front-Wheel Drive with VAQ Electro-Mechanical Limited-Slip Diff',
+    diffOrAwd: 'VAQ Front Limited-Slip Differential with 100% Torque Vectoring Lock',
+    exhaustSystem: 'Twin Trapezoidal Chrome Sports Exhaust with Dynamic Sound Booster',
+    brakes: '17-inch Ventilated Discs with Fiery Gloss Red RS Calipers',
+    suspension: 'RS Sport Chassis lowered by 15 mm with DCC Plus (15 Damping Levels) & self-levelling rear',
+    boostPsi: 21.8,
+    revLimit: 6800,
+    tractionType: 'VAQ E-Diff',
+    bootAndSeating: '5 Seats • 640L–1,700L Estate (largest boot of any vRS ever built)',
+    keyWeaponSummary: 'Same VAQ front differential and 265 PS EA888 as the liftback, but stretched into a 640-litre load-lugging estate body — the enthusiast\'s answer to "why not both".',
+    heroColorHex: '#84cc16',
+    heroColorName: 'Mamba Green',
+    colors: [
+      { name: 'Mamba Green', hex: '#84cc16', desc: 'The estate-only signature acid hue, rarely seen outside Europe' },
+      { name: 'Race Blue Metallic', hex: '#1d4ed8', desc: 'Signature RS racing livery shade' },
+      { name: 'Velvet Red Metallic', hex: '#b91c1c', desc: 'Deep crimson performance finish' },
+      { name: 'Magic Black Pearl', hex: '#0f172a', desc: 'Stealth blackout night runner finish' },
+      { name: 'Moon White Metallic', hex: '#f8fafc', desc: 'Crisp rally contrast with gloss black pack' }
+    ],
+    weaponry: [
+      {
+        title: 'VAQ Electro-Mechanical Limited Slip Differential',
+        badge: 'Cornering Weapon',
+        description: 'The identical multi-plate front diff from the Octavia vRS liftback, unchanged despite the estate\'s longer wheelbase and extra 55 kg of rear bodywork.',
+        icon: 'Flame'
+      },
+      {
+        title: 'Self-Levelling Rear Suspension',
+        badge: 'Estate-Exclusive Hardware',
+        description: 'Hydro-pneumatic self-levelling struts compensate automatically for a fully loaded 640L boot, keeping the DCC Plus geometry — and the VAQ diff\'s bite — consistent whether empty or packed for a track-day trailer run.',
+        icon: 'Activity'
+      },
+      {
+        title: 'EA888 EVO4 High-Output Turbo-Four',
+        badge: '265 PS / 370 Nm',
+        description: '350-bar direct injection and electronic wastegate deliver instant boost from 1,600 RPM — identical output to the liftback despite hauling more metal.',
+        icon: 'Zap'
+      },
+      {
+        title: 'Powered Tailgate with Virtual Pedal',
+        badge: 'Practicality Weapon',
+        description: 'A foot-swipe under the rear bumper opens the tailgate hands-free — because a real enthusiast\'s estate still needs to carry four track wheels and a toolbox.',
+        icon: 'Luggage'
+      },
+      {
+        title: 'World\'s Quickest Production Estate (at launch)',
+        badge: 'Guinness-Verified Record',
+        description: 'The Octavia Combi vRS iV plug-in variant set a Guinness World Record for the fastest production estate car, cementing the Combi vRS body style\'s enthusiast cult status.',
+        icon: 'Trophy'
+      }
+    ],
+    cockpitFeatures: [
+      'Alcantara / Suedia front sport bucket seats with integrated headrests and embossed vRS emblems',
+      'Fiery red contrast cross-stitching on dashboard, gear selector, and door panels',
+      '3-spoke flat-bottom perforated leather sport steering wheel with dedicated RS Mode button',
+      '10.25-inch Virtual Cockpit with exclusive RS Rev Counter & G-Meter sport display view',
+      'Folding 60:40 rear bench with ski-hatch pass-through for long cargo runs',
+      'Dynamic Sound Generator pumping visceral mechanical intake roar through the cabin',
+      '12-Speaker 600W Canton Surround Sound with subwoofer'
+    ],
+    trackTelemetry: {
+      lateralG: '1.00 G (Dry Skidpad, marginally softer than the liftback)',
+      weightDistribution: '60 / 40 (Front/Rear)',
+      powerToWeight: '169 PS / Tonne',
+      braking100to0: '34.8 Metres',
+      nurburgringLegacy: 'Shares its VAQ diff and chassis tune with the Nordschleife-honed Octavia vRS liftback'
+    }
   }
 ];
 
@@ -242,9 +328,14 @@ export const RS_HERITAGE = [
     desc: 'Queen of the Ring Sabine Schmitz blasts the 7-seater Kodiaq vRS around the treacherous Green Hell in 9 minutes 29.84 seconds, setting the world benchmark for 7-seat SUVs.'
   },
   {
+    year: '2020',
+    title: 'Octavia Combi vRS iV Sets a Guinness World Record',
+    desc: 'The plug-in hybrid Combi vRS iV is certified by Guinness World Records as the fastest production estate car, proving 640 litres of boot space and vRS performance were never mutually exclusive.'
+  },
+  {
     year: 'Today',
     title: 'The Modern Era: 265 PS EA888 EVO4 Mastery',
-    desc: 'With VAQ front e-diffs, DCC Plus dual-valve suspension, and 265 PS direct-injection muscle, the modern Octavia vRS and Kodiaq vRS define everyday motorsport exhilaration.'
+    desc: 'With VAQ front e-diffs, DCC Plus dual-valve suspension, and 265 PS direct-injection muscle, the modern Octavia vRS, Octavia Combi vRS, and Kodiaq vRS define everyday motorsport exhilaration.'
   }
 ];
 

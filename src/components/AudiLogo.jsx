@@ -1,12 +1,14 @@
 import { motion } from "motion/react";
 
 // Audi's four-rings emblem rendered as inline SVG (no external image asset needed).
+// Ring centers are spaced closer than 2×radius so each ring visibly overlaps
+// its neighbor, like the real Audi emblem's interlocking rings.
 const AudiRings = ({ className = "" }) => (
-  <svg viewBox="0 0 219 60" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="30" cy="30" r="26" stroke="currentColor" strokeWidth="7" />
-    <circle cx="83" cy="30" r="26" stroke="currentColor" strokeWidth="7" />
-    <circle cx="136" cy="30" r="26" stroke="currentColor" strokeWidth="7" />
-    <circle cx="189" cy="30" r="26" stroke="currentColor" strokeWidth="7" />
+  <svg viewBox="0 0 180 60" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30" cy="30" r="26" stroke="currentColor" strokeWidth="6.5" />
+    <circle cx="70" cy="30" r="26" stroke="currentColor" strokeWidth="6.5" />
+    <circle cx="110" cy="30" r="26" stroke="currentColor" strokeWidth="6.5" />
+    <circle cx="150" cy="30" r="26" stroke="currentColor" strokeWidth="6.5" />
   </svg>
 );
 
@@ -17,10 +19,10 @@ export const AudiLogo = ({
   animated = false,
 }) => {
   const sizeMap = {
-    sm: { emblem: "w-8 h-3", text: "text-sm", gap: "gap-1.5" },
-    md: { emblem: "w-10 h-4", text: "text-base", gap: "gap-2" },
-    lg: { emblem: "w-14 h-5", text: "text-lg", gap: "gap-2.5" },
-    xl: { emblem: "w-20 h-7", text: "text-2xl", gap: "gap-3.5" },
+    sm: { emblem: "w-9 h-3", text: "text-sm", gap: "gap-1.5" },
+    md: { emblem: "w-12 h-4", text: "text-base", gap: "gap-2" },
+    lg: { emblem: "w-[4.5rem] h-6", text: "text-lg", gap: "gap-2.5" },
+    xl: { emblem: "w-24 h-8", text: "text-2xl", gap: "gap-3.5" },
   };
   const { emblem: emblemSize, text: textSize, gap } = sizeMap[size];
   const EmblemImg = (
@@ -51,7 +53,7 @@ export const AudiLogo = ({
     return (
       <div className={`inline-flex items-center ${className}`}>
         <span
-          className={`font-black tracking-[0.22em] text-white ${textSize} select-none`}
+          className={`font-black tracking-normal text-white ${textSize} select-none`}
         >
           AUDI
         </span>
@@ -67,7 +69,7 @@ export const AudiLogo = ({
       <div className="flex flex-col">
         <div className="flex items-center gap-1.5">
           <span
-            className={`font-black tracking-[0.18em] text-white ${textSize} leading-none group-hover:text-red-400 transition-colors`}
+            className={`font-black tracking-normal text-white ${textSize} leading-none group-hover:text-red-400 transition-colors`}
           >
             AUDI
           </span>

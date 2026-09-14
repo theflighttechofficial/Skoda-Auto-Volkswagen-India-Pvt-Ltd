@@ -6,6 +6,7 @@ export interface SkodaModel {
   badge: string;
   tagline: string;
   image: string;
+  enthusiastNote?: string;
   bodyType: 'Compact SUV' | 'Premium Sedan' | 'Midsize SUV' | 'Luxury 4x4 SUV' | 'Executive Sedan' | 'Compact Sedan' | 'Hatchback' | 'Estate';
   startingPrice: string;
   startingExShowroom: number;
@@ -320,6 +321,7 @@ export const SKODA_MODELS: SkodaModel[] = [
   {
     id: 'kylaq',
     image: '/cars/kylaq.jpg',
+    enthusiastNote: 'The Kylaq\'s name is rooted in the Sanskrit word for growth — Škoda\'s India lineup (Kushaq, Kylaq) draws deliberately from Sanskrit and Indian-language roots.',
     name: 'Škoda Kylaq',
     badge: 'New Sub-4m Compact SUV',
     tagline: 'Bold, agile, and engineered with uncompromised European safety',
@@ -422,6 +424,7 @@ export const SKODA_MODELS: SkodaModel[] = [
   {
     id: 'slavia',
     image: '/cars/slavia.jpg',
+    enthusiastNote: 'Named after the pan-Slavic cultural identity — reviving the spirit of Škoda\'s own pre-war "Slavia" cars built in the 1930s.',
     name: 'Škoda Slavia',
     badge: 'Premium Midsize Sedan',
     tagline: 'The drivers’ sedan with benchmark boot space, safety, and 1.5L TSI DSG',
@@ -547,6 +550,7 @@ export const SKODA_MODELS: SkodaModel[] = [
   {
     id: 'kushaq',
     image: '/cars/kushaq.avif',
+    enthusiastNote: 'Kushaq translates to "ruler" or "emperor" in Sanskrit — it was the first Škoda nameplate engineered from a blank sheet specifically for India.',
     name: 'Škoda Kushaq',
     badge: 'Midsize SUV',
     tagline: 'Solid European SUV presence with 188 mm ground clearance & 5-Star safety',
@@ -670,6 +674,7 @@ export const SKODA_MODELS: SkodaModel[] = [
   {
     id: 'kodiaq',
     image: '/cars/kodiaq-exterior-right-rear-three-quarter-2.avif',
+    enthusiastNote: 'Named after Kodiak Island, Alaska — home to the Kodiak bear, one of the largest bear species on Earth, fitting Škoda\'s flagship SUV stature.',
     name: 'Škoda Kodiaq',
     badge: 'Flagship 7-Seater 4x4 Luxury SUV',
     tagline: 'European luxury flagship with 190 PS 2.0L TSI, 4x4, and Dynamic Chassis Control',
@@ -749,6 +754,7 @@ export const SKODA_MODELS: SkodaModel[] = [
   {
     id: 'octavia',
     image: '/cars/skoda-octavia-india-launch-delayed-because-of-covid-19.avif',
+    enthusiastNote: 'The very first 1959 Octavia earned its name for being Škoda\'s eighth post-war model design — "octavus" is Latin for eighth.',
     name: 'Škoda Octavia',
     badge: 'Executive Liftback Legend',
     tagline: 'The benchmark of driver luxury, high-speed poise, and cavernous 600L liftback versatility',
@@ -850,6 +856,7 @@ export const SKODA_MODELS: SkodaModel[] = [
   {
     id: 'superb',
     image: '/cars/superb.jpg',
+    enthusiastNote: 'The Superb nameplate dates all the way back to 1934, making it one of the oldest continuously-revived model names in the entire auto industry.',
     name: 'Škoda Superb',
     badge: 'Executive Flagship Sedan',
     tagline: 'Presidential class legroom, acoustic serenity, and twin 2.0L TSI & TDI diesel mastery',
@@ -931,6 +938,7 @@ export const SKODA_MODELS: SkodaModel[] = [
   {
     id: 'rapid',
     image: '/cars/rapid.jpg',
+    enthusiastNote: 'Škoda revived the Rapid badge from a streamlined 1930s roadster that was once raced competitively across pre-war Europe.',
     name: 'Škoda Rapid',
     badge: 'Enthusiast Hall of Fame Sedan',
     tagline: 'The compact sedan pioneer that brought TSI turbo-petrol thrills to the Indian mid-size segment (2011–2023)',
@@ -1031,6 +1039,7 @@ export const SKODA_MODELS: SkodaModel[] = [
   {
     id: 'fabia',
     image: '/cars/fabia.avif',
+    enthusiastNote: 'Named after Quintus Fabius Maximus, the Roman general famous for his patient, strategic delaying tactics — the origin of the word "Fabian".',
     name: 'Škoda Fabia',
     badge: 'Enthusiast Hall of Fame Hatchback',
     tagline: 'The Czech-engineered premium hatchback that defined refined small-car dynamics in India (2008–2014)',
@@ -1131,6 +1140,7 @@ export const SKODA_MODELS: SkodaModel[] = [
   {
     id: 'octavia-combi',
     image: '/cars/2005-Skoda-Octavia-Combi-Struggles-to-Find-a-New-Home-in-India.jpg',
+    enthusiastNote: 'Škoda has used the "Combi" badge since the 1960s to denote its estate/wagon bodystyles — a naming tradition older than the Octavia nameplate itself.',
     name: 'Škoda Octavia Combi',
     badge: 'Enthusiast Hall of Fame Estate',
     tagline: 'The premium European estate that brought sedan luxury with hatchback-beating cargo versatility to India (2005–2010)',
@@ -1211,6 +1221,7 @@ export const SKODA_MODELS: SkodaModel[] = [
   {
     id: 'laura',
     image: '/cars/laura.jpg',
+    enthusiastNote: 'Sold as "Laura" exclusively in India while badged "Octavia" everywhere else in the world, after a trademark dispute with an unrelated Indian company.',
     name: 'Škoda Laura',
     badge: 'Enthusiast Hall of Fame Sedan',
     tagline: 'The India-market name for the second-generation Octavia, defining premium sedan value with class-leading boot space (2010–2013)',
@@ -1310,6 +1321,7 @@ export const SKODA_MODELS: SkodaModel[] = [
   {
     id: 'yeti',
     image: '/cars/Yeti-open-news_0.avif',
+    enthusiastNote: 'Named after the mythical Himalayan snow creature — a fitting badge for an SUV engineered to tackle challenging, high-altitude terrain.',
     name: 'Škoda Yeti',
     badge: 'Enthusiast Hall of Fame Compact SUV',
     tagline: 'The go-anywhere compact SUV that introduced genuine Haldex 4x4 capability to Škoda’s Indian lineup (2010–2017)',
@@ -1409,6 +1421,7 @@ export const SKODA_MODELS: SkodaModel[] = [
   {
     id: 'karoq',
     image: '/cars/karoq-1.jpg',
+    enthusiastNote: '"Karoq" was coined from two Alutiiq (Native Alaskan) words that together translate loosely to "vehicle for the row you sit in" — continuing Škoda\'s Alaskan-inspired SUV naming after the Kodiaq.',
     name: 'Škoda Karoq',
     badge: 'CBU Import Flagship SUV',
     tagline: 'The refined European midsize SUV brought to India via the CBU route as a premium alternative to the locally-built Kushaq (2020–2022)',

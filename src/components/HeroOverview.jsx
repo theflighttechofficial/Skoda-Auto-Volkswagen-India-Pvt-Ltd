@@ -11,6 +11,14 @@ import {
   Activity,
   History as HistoryIcon,
   Globe2,
+  Lightbulb,
+  Star,
+  ThumbsUp,
+  ThumbsDown,
+  Wallet,
+  TrendingUp,
+  Quote,
+  Award,
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { SKODA_MODELS, SIMPLY_CLEVER_FEATURES } from "../data/skodaData";
@@ -19,6 +27,32 @@ import { AUDI_MODELS, AUDI_PROGRESSIVE_LUXURY_FEATURES } from "../data/audiData"
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
+import {
+  getRatings,
+  getProsAndCons,
+  getOwnershipInsight,
+  getBadges,
+  getOwnerQuotes,
+} from "../utils/carInsights";
+
+function RatingBar({ label, score, accentClass }) {
+  return (
+    <div className="space-y-1">
+      <div className="flex items-center justify-between text-[11px]">
+        <span className="text-zinc-400">{label}</span>
+        <span className="font-semibold text-zinc-200">{score.toFixed(1)}/5</span>
+      </div>
+      <div className="h-1.5 rounded-full bg-zinc-800 overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: `${(score / 5) * 100}%` }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className={`h-full rounded-full ${accentClass}`}
+        />
+      </div>
+    </div>
+  );
+}
 export const HeroOverview = ({
   brand = "skoda",
   selectedModelId,
@@ -47,8 +81,134 @@ export const HeroOverview = ({
     : isVW
       ? models.find((m) => m.id === "golf-gti")
       : models.find((m) => m.id === "octavia");
+  const currentRatings = currentModel ? getRatings(currentModel) : null;
+  const currentProsCons = currentModel ? getProsAndCons(currentModel) : null;
+  const currentOwnership = currentModel ? getOwnershipInsight(currentModel, brand) : null;
+  const currentBadges = currentModel ? getBadges(currentModel, brand) : [];
+  const currentQuotes = currentModel ? getOwnerQuotes(currentModel) : [];
+  const brandDisplayName = isAudi ? "Audi India" : isVW ? "Volkswagen India" : "Škoda India";
+  const brandTagline = isAudi
+    ? "Vorsprung durch Technik"
+    : isVW
+      ? "Das Auto"
+      : "Simply Clever";
   return (
     <div className="space-y-10">
+      {/* Big Welcome Banner */}
+      <motion.div
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={`relative overflow-hidden rounded-[2rem] border p-10 sm:p-16 text-center shadow-2xl ${
+          isAudi
+            ? "bg-gradient-to-br from-red-950/60 via-zinc-950 to-black border-red-900/50 shadow-red-950/40"
+            : isVW
+              ? "bg-gradient-to-br from-blue-950/60 via-zinc-950 to-black border-blue-900/50 shadow-blue-950/40"
+              : "bg-gradient-to-br from-emerald-950/60 via-zinc-950 to-black border-emerald-900/50 shadow-emerald-950/40"
+        }`}
+      >
+        {/* Fine grid texture */}
+        <div
+          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
+            backgroundSize: "36px 36px",
+          }}
+        />
+        {/* Dual ambient glows */}
+        <motion.div
+          animate={{ opacity: [0.5, 0.9, 0.5] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className={`absolute -top-28 left-1/2 -translate-x-1/2 w-[32rem] h-[32rem] rounded-full blur-3xl pointer-events-none ${
+            isAudi ? "bg-red-600/20" : isVW ? "bg-blue-600/20" : "bg-emerald-500/20"
+          }`}
+        />
+        <div
+          className={`absolute -bottom-20 -right-16 w-72 h-72 rounded-full blur-3xl pointer-events-none ${
+            isAudi ? "bg-red-500/10" : isVW ? "bg-sky-500/10" : "bg-amber-500/10"
+          }`}
+        />
+        <div
+          className={`absolute -bottom-20 -left-16 w-72 h-72 rounded-full blur-3xl pointer-events-none ${
+            isAudi ? "bg-red-500/10" : isVW ? "bg-sky-500/10" : "bg-amber-500/10"
+          }`}
+        />
+
+        <div className="relative z-10 flex flex-col items-center gap-5">
+          <motion.span
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[10px] font-bold uppercase tracking-widest ${
+              isAudi
+                ? "bg-red-950/70 border-red-800 text-red-300"
+                : isVW
+                  ? "bg-blue-950/70 border-blue-800 text-blue-300"
+                  : "bg-emerald-950/70 border-emerald-800 text-emerald-300"
+            }`}
+          >
+            Official India Showcase
+          </motion.span>
+
+          <motion.div
+            initial={{ scale: 0.6, opacity: 0, rotate: -6 }}
+            animate={{ scale: 1, opacity: 1, rotate: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, type: "spring", stiffness: 140 }}
+            className={`p-5 rounded-full border-2 bg-zinc-950/60 backdrop-blur-sm ${
+              isAudi ? "border-red-700/50" : isVW ? "border-blue-700/50" : "border-emerald-700/50"
+            }`}
+          >
+            {isAudi ? (
+              <AudiLogo variant="emblem" size="xl" animated />
+            ) : isVW ? (
+              <VolkswagenLogo variant="emblem" size="xl" animated />
+            ) : (
+              <SkodaLogo variant="emblem" size="xl" animated />
+            )}
+          </motion.div>
+
+          <h1
+            className="text-4xl sm:text-6xl font-black tracking-tight text-white leading-none"
+            style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
+          >
+            Welcome to{" "}
+            <span
+              className={
+                isAudi
+                  ? "bg-gradient-to-r from-red-400 to-red-200 bg-clip-text text-transparent"
+                  : isVW
+                    ? "bg-gradient-to-r from-blue-400 to-sky-200 bg-clip-text text-transparent"
+                    : "bg-gradient-to-r from-emerald-400 to-emerald-200 bg-clip-text text-transparent"
+              }
+            >
+              {brandDisplayName}
+            </span>
+          </h1>
+
+          <div className="flex items-center gap-3">
+            <span
+              className={`h-px w-10 sm:w-16 ${
+                isAudi ? "bg-red-700/60" : isVW ? "bg-blue-700/60" : "bg-emerald-700/60"
+              }`}
+            />
+            <p
+              className={`text-lg sm:text-2xl font-semibold italic ${
+                isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"
+              }`}
+              style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
+            >
+              {brandTagline}
+            </p>
+            <span
+              className={`h-px w-10 sm:w-16 ${
+                isAudi ? "bg-red-700/60" : isVW ? "bg-blue-700/60" : "bg-emerald-700/60"
+              }`}
+            />
+          </div>
+        </div>
+      </motion.div>
+
       {/* Brand Hero Banner */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
@@ -394,7 +554,7 @@ export const HeroOverview = ({
                     {currentModel.badge}
                   </span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+                <h2 className="text-2xl sm:text-3xl font-bold text-white flex flex-wrap items-center gap-x-3 gap-y-2">
                   <span>{currentModel.name}</span>
                   {currentModel.id === "virtus" && (
                     <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/40 font-semibold">
@@ -411,10 +571,32 @@ export const HeroOverview = ({
                       Executive Legend
                     </span>
                   )}
+                  {currentBadges.map((badge) => (
+                    <span
+                      key={badge}
+                      className="text-xs px-2.5 py-0.5 rounded-full bg-zinc-800/80 text-zinc-200 border border-zinc-700 font-semibold flex items-center gap-1"
+                    >
+                      <Award className="w-3 h-3 text-amber-400" />
+                      {badge}
+                    </span>
+                  ))}
                 </h2>
                 <p className="text-sm text-zinc-400 mt-1">
                   {currentModel.tagline}
                 </p>
+                {currentModel.enthusiastNote && (
+                  <p
+                    className={`text-xs mt-2 flex items-start gap-1.5 max-w-2xl ${isAudi ? "text-red-300/90" : isVW ? "text-blue-300/90" : "text-emerald-300/90"}`}
+                  >
+                    <Lightbulb className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                    <span>
+                      <span className="font-semibold text-zinc-200">
+                        Enthusiast Corner:{" "}
+                      </span>
+                      {currentModel.enthusiastNote}
+                    </span>
+                  </p>
+                )}
               </div>
 
               <div className="flex items-center gap-2">
@@ -515,6 +697,100 @@ export const HeroOverview = ({
                     </li>
                   ))}
                 </ul>
+              </div>
+            </div>
+
+            {/* Enthusiast Ratings, Ownership Insight & Owner Voices */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+              {/* Enthusiast Ratings */}
+              <div className="bg-zinc-900/90 rounded-2xl border border-zinc-800 p-5 space-y-4 shadow-lg">
+                <div className="flex items-center gap-2 text-white font-semibold text-sm border-b border-zinc-800 pb-3">
+                  <Star className="w-4 h-4 text-amber-400" />
+                  <span>Enthusiast Ratings</span>
+                </div>
+                <div className="space-y-3">
+                  <RatingBar
+                    label="Safety"
+                    score={currentRatings.safety}
+                    accentClass={isAudi ? "bg-red-500" : isVW ? "bg-blue-500" : "bg-emerald-500"}
+                  />
+                  <RatingBar
+                    label="Performance"
+                    score={currentRatings.performance}
+                    accentClass="bg-amber-500"
+                  />
+                  <RatingBar label="Comfort" score={currentRatings.comfort} accentClass="bg-sky-500" />
+                  <RatingBar label="Value" score={currentRatings.value} accentClass="bg-purple-500" />
+                  <RatingBar
+                    label="Tech Features"
+                    score={currentRatings.techFeatures}
+                    accentClass="bg-fuchsia-500"
+                  />
+                </div>
+                <div className="pt-3 border-t border-zinc-800 space-y-2">
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-emerald-400">
+                    <ThumbsUp className="w-3.5 h-3.5" /> What Owners Love
+                  </div>
+                  <ul className="space-y-1 text-[11px] text-zinc-300">
+                    {currentProsCons.pros.map((p, i) => (
+                      <li key={i}>• {p}</li>
+                    ))}
+                  </ul>
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-red-400 pt-1">
+                    <ThumbsDown className="w-3.5 h-3.5" /> Worth Knowing
+                  </div>
+                  <ul className="space-y-1 text-[11px] text-zinc-300">
+                    {currentProsCons.cons.map((c, i) => (
+                      <li key={i}>• {c}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Ownership Insight */}
+              <div className="bg-zinc-900/90 rounded-2xl border border-zinc-800 p-5 space-y-3 shadow-lg">
+                <div className="flex items-center gap-2 text-white font-semibold text-sm border-b border-zinc-800 pb-3">
+                  <Wallet className="w-4 h-4 text-emerald-400" />
+                  <span>Ownership Insight</span>
+                </div>
+                <div className="space-y-1">
+                  <span className="text-[11px] text-zinc-500 flex items-center gap-1">
+                    <TrendingUp className="w-3 h-3" /> Resale Value
+                  </span>
+                  <p className="text-xs text-zinc-300">{currentOwnership.resaleValue}</p>
+                </div>
+                <div className="space-y-1 pt-2 border-t border-zinc-800">
+                  <span className="text-[11px] text-zinc-500">Estimated 5-Year Cost of Ownership</span>
+                  <p className="text-xs font-semibold text-white">{currentOwnership.fiveYearTCO}</p>
+                </div>
+                <div className="space-y-1.5 pt-2 border-t border-zinc-800">
+                  <span className="text-[11px] text-zinc-500">Driver-Assist & Connected Tech</span>
+                  <ul className="space-y-1 text-[11px] text-zinc-300">
+                    {currentOwnership.adasHighlights.map((a, i) => (
+                      <li key={i} className="flex items-start gap-1.5">
+                        <CheckCircle2
+                          className={`w-3 h-3 shrink-0 mt-0.5 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                        />
+                        <span>{a}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Owner Voices */}
+              <div className="bg-zinc-900/90 rounded-2xl border border-zinc-800 p-5 space-y-3 shadow-lg">
+                <div className="flex items-center gap-2 text-white font-semibold text-sm border-b border-zinc-800 pb-3">
+                  <Quote className="w-4 h-4 text-sky-400" />
+                  <span>Owner Voices</span>
+                </div>
+                <div className="space-y-3">
+                  {currentQuotes.map((q, i) => (
+                    <p key={i} className="text-[11px] text-zinc-300 leading-relaxed italic">
+                      {q}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
@@ -621,6 +897,14 @@ export const HeroOverview = ({
                     <p className="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
                       {car.tagline}
                     </p>
+                    {car.enthusiastNote && (
+                      <p
+                        className={`text-[11px] line-clamp-2 flex items-start gap-1.5 ${isAudi ? "text-red-300/80" : isVW ? "text-blue-300/80" : "text-emerald-300/80"}`}
+                      >
+                        <Lightbulb className="w-3 h-3 shrink-0 mt-0.5" />
+                        <span>{car.enthusiastNote}</span>
+                      </p>
+                    )}
 
                     {/* Dimension & Spec Pills */}
                     <div className="grid grid-cols-2 gap-2 text-[11px] pt-1">
@@ -651,6 +935,31 @@ export const HeroOverview = ({
                         </span>
                       ))}
                     </div>
+
+                    {/* Enthusiast rating + badge chips */}
+                    {(() => {
+                      const r = getRatings(car);
+                      const overall = (
+                        (r.safety + r.performance + r.comfort + r.value + r.techFeatures) /
+                        5
+                      ).toFixed(1);
+                      const badges = getBadges(car, brand);
+                      return (
+                        <div className="flex items-center flex-wrap gap-2 pt-1">
+                          <span className="flex items-center gap-1 text-[11px] font-semibold text-amber-400">
+                            <Star className="w-3 h-3 fill-amber-400" /> {overall}/5
+                          </span>
+                          {badges.map((b) => (
+                            <span
+                              key={b}
+                              className="text-[9px] px-1.5 py-0.5 rounded bg-zinc-800/80 text-zinc-300 border border-zinc-700 font-semibold uppercase tracking-wide"
+                            >
+                              {b}
+                            </span>
+                          ))}
+                        </div>
+                      );
+                    })()}
 
                     {/* Highlights Bullet List */}
                     <div className="space-y-1.5 pt-1">

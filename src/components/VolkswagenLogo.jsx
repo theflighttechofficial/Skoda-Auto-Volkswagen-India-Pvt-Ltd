@@ -42,7 +42,7 @@ export const VolkswagenLogo = ({
     return (
       <div className={`inline-flex items-center ${className}`}>
         <span
-          className={`font-black tracking-[0.22em] text-white ${textSize} select-none`}
+          className={`font-black tracking-normal text-white ${textSize} select-none`}
         >
           VOLKSWAGEN
         </span>
@@ -58,7 +58,7 @@ export const VolkswagenLogo = ({
       <div className="flex flex-col">
         <div className="flex items-center gap-1.5">
           <span
-            className={`font-black tracking-[0.18em] text-white ${textSize} leading-none group-hover:text-blue-400 transition-colors`}
+            className={`font-black tracking-normal text-white ${textSize} leading-none group-hover:text-blue-400 transition-colors`}
           >
             VOLKSWAGEN
           </span>
