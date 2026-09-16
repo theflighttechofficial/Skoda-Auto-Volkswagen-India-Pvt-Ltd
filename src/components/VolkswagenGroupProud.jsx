@@ -21,12 +21,25 @@ import {
   VW_GROUP_SHARED_TECH,
 } from "../data/vwGroupData";
 export const VolkswagenGroupProud = ({
+  brand = "skoda",
   onExploreSkodaHistory,
   onExploreLineup,
 }) => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const isVW = brand === "volkswagen";
+  const isAudi = brand === "audi";
+  const isPorsche = brand === "porsche";
+  const activeBrandName = isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda";
+  const activeBrandFoundedYear = isPorsche ? 1931 : isAudi ? 1909 : isVW ? 1937 : 1895;
+  const membershipBlurb = isPorsche
+    ? "Porsche AG and Volkswagen AG have been bound together through a complex cross-holding structure since 2012 — Porsche SE holds a majority stake in Volkswagen AG, which in turn owns Porsche AG outright."
+    : isAudi
+      ? "Since Volkswagen acquired Auto Union in 1964, Audi has stood as the Group’s progressive-technology pillar."
+      : isVW
+        ? "As the Volkswagen Group’s founding marque since 1937, Volkswagen Passenger Cars remains the core foundation the entire group is built around."
+        : "Since joining on April 16, 1991, Škoda Auto has stood as a core foundation pillar of the world’s leading automotive group.";
   const categories = [
     "All",
     "Core Volume",
@@ -77,9 +90,7 @@ export const VolkswagenGroupProud = ({
               </span>
             </h1>
             <p className="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-3xl">
-              Since joining on April 16, 1991, Škoda Auto has stood as a core
-              foundation pillar of the world’s leading automotive group.
-              Together with sister marques{" "}
+              {membershipBlurb} Together with sister marques{" "}
               <strong className="text-white">
                 Volkswagen, Audi, Porsche, Lamborghini, Bentley, Bugatti, SEAT,
                 CUPRA, MAN, and Scania
@@ -119,7 +130,7 @@ export const VolkswagenGroupProud = ({
                 }}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs shadow-lg shadow-emerald-900/30 transition-all cursor-pointer"
               >
-                <span>Read Škoda Czech History (1895–Present)</span>
+                <span>Read {activeBrandName} History ({activeBrandFoundedYear}–Present)</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             )}
@@ -205,7 +216,7 @@ export const VolkswagenGroupProud = ({
                       <h3 className="text-xl font-black text-white group-hover:text-blue-300 transition-colors">
                         {brand.name}
                       </h3>
-                      {brand.id === "skoda" && (
+                      {brand.id === (isPorsche ? "porsche" : isAudi ? "audi" : isVW ? "volkswagen" : "skoda") && (
                         <span className="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30">
                           Host
                         </span>
@@ -281,10 +292,10 @@ export const VolkswagenGroupProud = ({
             <span>Shared DNA & Engineering Superiority</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-            How Volkswagen Group Synergies Elevate Every Škoda
+            How Volkswagen Group Synergies Elevate Every {activeBrandName}
           </h2>
           <p className="text-zinc-400 text-sm mt-1">
-            When you purchase a Škoda, you inherit decades of multi-billion Euro
+            When you purchase a {activeBrandName}, you inherit decades of multi-billion Euro
             research shared across Audi, Porsche, and Volkswagen.
           </p>
         </div>
@@ -386,12 +397,22 @@ export const VolkswagenGroupProud = ({
             130 Years of Automotive Heritage
           </span>
           <h3 className="text-xl sm:text-2xl font-black text-white">
-            Explore Škoda’s Heritage: From Laurin & Klement (1895) to India 2.0
+            {isPorsche
+              ? "Explore Porsche’s Heritage: From Stuttgart (1931) to India"
+              : isAudi
+                ? "Explore Audi’s Heritage: From Zwickau (1909) to India 2.0"
+                : isVW
+                  ? "Explore Volkswagen’s Heritage: From Wolfsburg (1937) to India 2.0"
+                  : "Explore Škoda’s Heritage: From Laurin & Klement (1895) to India 2.0"}
           </h3>
           <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-            Delve into the historic journey of Václav Laurin & Václav Klement,
-            the legendary Slavia bicycle, classic roadsters, and how Škoda
-            became an engineering pillar of the Volkswagen Group.
+            {isPorsche
+              ? "Delve into the historic journey from Ferdinand Porsche’s Stuttgart design office, the rear-engine 911’s continuous production since 1963, and how Porsche's cross-holding with Volkswagen AG binds the two companies together."
+              : isAudi
+                ? "Delve into the historic journey from August Horch’s founding of Audi, the four-rings merger of 1932, and how Audi became the Group’s progressive-technology pillar."
+                : isVW
+                  ? "Delve into the historic journey from the Wolfsburg factory’s founding, the original Beetle, and how Volkswagen became the core marque of the Group."
+                  : "Delve into the historic journey of Václav Laurin & Václav Klement, the legendary Slavia bicycle, classic roadsters, and how Škoda became an engineering pillar of the Volkswagen Group."}
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3 shrink-0">
@@ -403,7 +424,7 @@ export const VolkswagenGroupProud = ({
               }}
               className="px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-emerald-900/40 transition-all cursor-pointer"
             >
-              <span>Read Škoda History</span>
+              <span>Read {activeBrandName} History</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           )}

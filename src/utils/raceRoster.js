@@ -1,6 +1,8 @@
 import { RS_MODELS } from "../data/rsPerformanceData";
 import { VW_GT_MODELS } from "../data/vwPerformanceData";
 import { AUDI_RS_MODELS } from "../data/audiPerformanceData";
+import { PORSCHE_GT_MODELS } from "../data/porschePerformanceData";
+import { getBodyShape } from "./bodyShape";
 
 function slugify(str) {
   return str
@@ -33,6 +35,7 @@ function normalize(model, brand) {
     powerToWeight: model.trackTelemetry?.powerToWeight,
     heroColorHex: model.heroColorHex,
     isSedan,
+    shape: getBodyShape(model.category),
     priceNumeric: model.priceNumeric,
     expectedPrice: model.expectedPrice,
   };
@@ -51,5 +54,6 @@ export function getRaceRoster() {
     ...RS_MODELS.map((m) => normalize(m, "skoda")),
     ...VW_GT_MODELS.map((m) => normalize(m, "volkswagen")),
     ...AUDI_RS_MODELS.map((m) => normalize(m, "audi")),
+    ...PORSCHE_GT_MODELS.map((m) => normalize(m, "porsche")),
   ];
 }

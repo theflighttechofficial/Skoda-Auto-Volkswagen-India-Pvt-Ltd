@@ -16,9 +16,10 @@ import {
 import { motion, AnimatePresence } from "motion/react";
 import { CarSilhouette } from "./CarSilhouette";
 import { getGarageablePool, computeGarageStats, loadGarage, saveGarage } from "../utils/garageStats";
+import { getBodyShape } from "../utils/bodyShape";
 
-const BRAND_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444" };
-const BRAND_LABEL = { skoda: "Škoda", volkswagen: "Volkswagen", audi: "Audi" };
+const BRAND_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b" };
+const BRAND_LABEL = { skoda: "Škoda", volkswagen: "Volkswagen", audi: "Audi", porsche: "Porsche" };
 
 function formatINR(amount) {
   if (!amount) return "₹0";
@@ -63,8 +64,8 @@ export const EnthusiastGarage = () => {
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Enthusiast Garage</h2>
           <p className="text-sm text-zinc-400 max-w-2xl">
-            Build a dream garage from every Škoda, Volkswagen and Audi model — including the vRS/GTI/RS
-            performance icons — and see what it adds up to.
+            Build a dream garage from every Škoda, Volkswagen, Audi and Porsche model — including the
+            vRS/GTI/RS/GT performance icons — and see what it adds up to.
           </p>
         </div>
         <button
@@ -111,7 +112,7 @@ export const EnthusiastGarage = () => {
                       <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                     ) : (
                       <div className="w-full h-full p-3">
-                        <CarSilhouette colorHex={item.heroColorHex || "#a1a1aa"} isSedan accentHex={BRAND_HEX[item.brand]} />
+                        <CarSilhouette colorHex={item.heroColorHex || "#a1a1aa"} shape={getBodyShape(item.bodyType)} accentHex={BRAND_HEX[item.brand]} />
                       </div>
                     )}
                   </div>
@@ -206,7 +207,7 @@ export const EnthusiastGarage = () => {
                   />
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {["all", "skoda", "volkswagen", "audi"].map((b) => (
+                  {["all", "skoda", "volkswagen", "audi", "porsche"].map((b) => (
                     <button
                       key={b}
                       onClick={() => setBrandFilter(b)}

@@ -3,10 +3,14 @@ import { Fuel, Gauge, Wind, Building2, TreePine, Flame, Calculator } from "lucid
 import { SKODA_MODELS, ALL_SKODA_ENGINES } from "../data/skodaData";
 import { VW_MODELS, ALL_VW_ENGINES } from "../data/vwData";
 import { AUDI_MODELS, ALL_AUDI_ENGINES } from "../data/audiData";
+import { PORSCHE_MODELS, ALL_PORSCHE_ENGINES } from "../data/porscheData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
+import { PorscheLogo } from "./PorscheLogo";
 import { matchEngineSpecs, estimateFuelEconomy } from "../utils/fuelEconomy";
+
+const BRAND_LOGO = { skoda: SkodaLogo, volkswagen: VolkswagenLogo, audi: AudiLogo, porsche: PorscheLogo };
 
 function SliderRow({ icon: Icon, label, leftLabel, rightLabel, value, onChange, accentClass }) {
   return (
@@ -38,12 +42,14 @@ function SliderRow({ icon: Icon, label, leftLabel, rightLabel, value, onChange, 
 export const FuelEconomySimulator = ({ brand = "skoda", initialModelId, onOpenCalculator }) => {
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
-  const models = isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
-  const allEngineSpecs = isAudi ? ALL_AUDI_ENGINES : isVW ? ALL_VW_ENGINES : ALL_SKODA_ENGINES;
-  const accent = isAudi ? "red" : isVW ? "blue" : "emerald";
-  const accentText = accent === "red" ? "text-red-400" : accent === "blue" ? "text-blue-400" : "text-emerald-400";
-  const accentBg = accent === "red" ? "bg-red-600" : accent === "blue" ? "bg-blue-600" : "bg-emerald-600";
-  const accentAccent = accent === "red" ? "accent-red-500" : accent === "blue" ? "accent-blue-500" : "accent-emerald-500";
+  const isPorsche = brand === "porsche";
+  const models = isPorsche ? PORSCHE_MODELS : isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
+  const allEngineSpecs = isPorsche ? ALL_PORSCHE_ENGINES : isAudi ? ALL_AUDI_ENGINES : isVW ? ALL_VW_ENGINES : ALL_SKODA_ENGINES;
+  const accent = isPorsche ? "amber" : isAudi ? "red" : isVW ? "blue" : "emerald";
+  const accentText = accent === "amber" ? "text-amber-400" : accent === "red" ? "text-red-400" : accent === "blue" ? "text-blue-400" : "text-emerald-400";
+  const accentBg = accent === "amber" ? "bg-amber-600" : accent === "red" ? "bg-red-600" : accent === "blue" ? "bg-blue-600" : "bg-emerald-600";
+  const accentAccent = accent === "amber" ? "accent-amber-500" : accent === "red" ? "accent-red-500" : accent === "blue" ? "accent-blue-500" : "accent-emerald-500";
+  const BrandLogo = BRAND_LOGO[brand] || SkodaLogo;
 
   const defaultModel = models.find((m) => m.id === initialModelId) || models[0];
   const [selectedModelId, setSelectedModelId] = useState(defaultModel.id);
@@ -88,13 +94,7 @@ export const FuelEconomySimulator = ({ brand = "skoda", initialModelId, onOpenCa
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-1">
-            {isAudi ? (
-              <AudiLogo variant="emblem" size="sm" />
-            ) : isVW ? (
-              <VolkswagenLogo variant="emblem" size="sm" />
-            ) : (
-              <SkodaLogo variant="emblem" size="sm" />
-            )}
+            <BrandLogo variant="emblem" size="sm" />
             <span className={accentText}>Real-World Estimator</span>
           </div>
           <h2 className="text-2xl font-bold text-white tracking-tight mt-1">
@@ -108,7 +108,7 @@ export const FuelEconomySimulator = ({ brand = "skoda", initialModelId, onOpenCa
 
         <div className="inline-flex flex-wrap p-1 rounded-lg bg-zinc-900 border border-zinc-800 self-start">
           {models.map((car) => {
-            const shortName = car.name.replace("Škoda ", "").replace("Volkswagen ", "").replace("Audi ", "");
+            const shortName = car.name.replace("Škoda ", "").replace("Volkswagen ", "").replace("Audi ", "").replace("Porsche ", "");
             return (
               <button
                 key={car.id}
@@ -118,6 +118,11 @@ export const FuelEconomySimulator = ({ brand = "skoda", initialModelId, onOpenCa
                 }`}
               >
                 {shortName}
+                {car.notSoldInIndia && (
+                  <span className="ml-1 text-[9px] px-1 py-0.2 rounded bg-zinc-700/60 text-zinc-300">
+                    Not in India
+                  </span>
+                )}
               </button>
             );
           })}

@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
+import { PorscheLogo } from "./PorscheLogo";
 
 const BRAND_META = {
   skoda: {
@@ -30,6 +31,15 @@ const BRAND_META = {
     ring: "border-red-500/40",
     glow: "bg-red-600/20",
     bar: "from-red-600 to-red-400",
+  },
+  porsche: {
+    Logo: PorscheLogo,
+    name: "Porsche",
+    tagline: "There Is No Substitute",
+    accent: "text-amber-400",
+    ring: "border-amber-500/40",
+    glow: "bg-amber-600/20",
+    bar: "from-amber-600 to-amber-400",
   },
 };
 

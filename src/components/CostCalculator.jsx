@@ -2,13 +2,22 @@ import { useState, useEffect } from "react";
 import { SKODA_MODELS } from "../data/skodaData";
 import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
+import { PORSCHE_MODELS } from "../data/porscheData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
+import { PorscheLogo } from "./PorscheLogo";
 export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
-  const models = isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
+  const isPorsche = brand === "porsche";
+  const models = isPorsche
+    ? PORSCHE_MODELS
+    : isAudi
+      ? AUDI_MODELS
+      : isVW
+        ? VW_MODELS
+        : SKODA_MODELS;
   const defaultModel = models.find((m) => m.id === initialModelId) || models[0];
   const [selectedModelId, setSelectedModelId] = useState(defaultModel.id);
   useEffect(() => {
@@ -64,27 +73,31 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-1">
-            {isAudi ? (
+            {isPorsche ? (
+              <PorscheLogo variant="emblem" size="sm" />
+            ) : isAudi ? (
               <AudiLogo variant="emblem" size="sm" />
             ) : isVW ? (
               <VolkswagenLogo variant="emblem" size="sm" />
             ) : (
               <SkodaLogo variant="emblem" size="sm" />
             )}
-            <span className={isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}>
+            <span className={isPorsche ? "text-amber-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}>
               Financial Planning
             </span>
           </div>
           <h2 className="text-2xl font-bold text-white tracking-tight mt-1">
-            {isAudi
-              ? "Audi On-Road Price & EMI Calculator"
-              : isVW
-                ? "Volkswagen On-Road Price & EMI Calculator"
-                : "\u0160koda On-Road Price & EMI Calculator"}
+            {isPorsche
+              ? "Porsche On-Road Price & EMI Calculator"
+              : isAudi
+                ? "Audi On-Road Price & EMI Calculator"
+                : isVW
+                  ? "Volkswagen On-Road Price & EMI Calculator"
+                  : "\u0160koda On-Road Price & EMI Calculator"}
           </h2>
           <p className="text-sm text-zinc-400">
             Customize loan tenure, state taxes, down payment, and insurance for
-            any {isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} variant
+            any {isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} variant
           </p>
         </div>
 
@@ -94,19 +107,36 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
             const shortName = car.name
               .replace("\u0160koda ", "")
               .replace("Volkswagen ", "")
-              .replace("Audi ", "");
+              .replace("Audi ", "")
+              .replace("Porsche ", "");
             return (
               <button
                 key={car.id}
                 onClick={() => handleModelChange(car.id)}
-                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all cursor-pointer ${selectedModelId === car.id ? (isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "text-zinc-400 hover:text-white hover:bg-zinc-800"}`}
+                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all cursor-pointer ${selectedModelId === car.id ? (isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "text-zinc-400 hover:text-white hover:bg-zinc-800"}`}
               >
                 {shortName}
+                {car.notSoldInIndia && (
+                  <span className="ml-1 text-[9px] px-1 py-0.2 rounded bg-zinc-700/60 text-zinc-300">
+                    Not in India
+                  </span>
+                )}
               </button>
             );
           })}
         </div>
       </div>
+
+      {currentModel.notSoldInIndia && (
+        <div className="flex items-start gap-2 p-3.5 rounded-xl bg-amber-950/40 border border-amber-800/60 text-amber-300 text-xs">
+          <span className="shrink-0 mt-0.5">⚠</span>
+          <p>
+            <strong>Not Sold in India.</strong> The {currentModel.name} is not officially available
+            in India, so the figures below are illustrative only — based on its global list price,
+            not a real Indian on-road price.
+          </p>
+        </div>
+      )}
 
       {/* Main Grid: Left Breakdown, Right EMI Simulator */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -116,7 +146,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
             <div className="flex items-start justify-between border-b border-zinc-800 pb-4">
               <div>
                 <span
-                  className={`text-xs font-semibold ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`text-xs font-semibold ${isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   {currentModel.name}
                 </span>
@@ -136,7 +166,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                 <select
                   value={selectedVariantId}
                   onChange={(e) => setSelectedVariantId(e.target.value)}
-                  className={`w-full text-xs p-2 rounded-lg bg-zinc-950 border border-zinc-700 text-white focus:outline-none ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : "focus:border-emerald-500"}`}
+                  className={`w-full text-xs p-2 rounded-lg bg-zinc-950 border border-zinc-700 text-white focus:outline-none ${isPorsche ? "focus:border-amber-500" : isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : "focus:border-emerald-500"}`}
                 >
                   {currentModel.variants.map((v) => (
                     <option key={v.id} value={v.id}>
@@ -176,7 +206,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                     <button
                       key={st.state}
                       onClick={() => setRtoRate(st.rate)}
-                      className={`text-[10px] px-2 py-1 rounded border transition-colors cursor-pointer ${rtoRate === st.rate ? (isAudi ? "bg-red-600 text-white border-red-500" : isVW ? "bg-blue-600 text-white border-blue-500" : "bg-emerald-600 text-white border-emerald-500") : "bg-zinc-950 text-zinc-400 border-zinc-800 hover:text-white"}`}
+                      className={`text-[10px] px-2 py-1 rounded border transition-colors cursor-pointer ${rtoRate === st.rate ? (isPorsche ? "bg-amber-600 text-white border-amber-500" : isAudi ? "bg-red-600 text-white border-red-500" : isVW ? "bg-blue-600 text-white border-blue-500" : "bg-emerald-600 text-white border-emerald-500") : "bg-zinc-950 text-zinc-400 border-zinc-800 hover:text-white"}`}
                     >
                       {st.state}
                     </button>
@@ -207,7 +237,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                   Estimated On-Road Price
                 </span>
                 <span
-                  className={`text-xl font-black ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`text-xl font-black ${isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   ₹{totalOnRoad.toLocaleString()}
                 </span>
@@ -241,7 +271,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                 step="5"
                 value={downPaymentPercent}
                 onChange={(e) => setDownPaymentPercent(Number(e.target.value))}
-                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
+                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isPorsche ? "accent-amber-500" : isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
               />
             </div>
 
@@ -263,7 +293,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                 step="1"
                 value={tenureYears}
                 onChange={(e) => setTenureYears(Number(e.target.value))}
-                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
+                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isPorsche ? "accent-amber-500" : isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
               />
             </div>
 
@@ -282,7 +312,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                 step="0.25"
                 value={interestRate}
                 onChange={(e) => setInterestRate(Number(e.target.value))}
-                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
+                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isPorsche ? "accent-amber-500" : isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
               />
             </div>
 
@@ -294,7 +324,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                     Estimated Monthly EMI
                   </span>
                   <span
-                    className={`text-3xl font-black ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`text-3xl font-black ${isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     ₹{emi.toLocaleString()}
                   </span>

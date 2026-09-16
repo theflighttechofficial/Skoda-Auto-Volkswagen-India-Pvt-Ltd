@@ -20,10 +20,13 @@ import { motion, AnimatePresence } from "motion/react";
 import { SKODA_MODELS } from "../data/skodaData";
 import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
+import { PORSCHE_MODELS } from "../data/porscheData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
+import { PorscheLogo } from "./PorscheLogo";
 import { CarSilhouette } from "./CarSilhouette";
+import { getBodyShape } from "../utils/bodyShape";
 import {
   getWheelOptions,
   getInteriorOptions,
@@ -35,7 +38,7 @@ import {
 import { generateBuildImage } from "../utils/generateBuildImage";
 
 const STORAGE_KEY = "vwgroup_saved_builds";
-const BRAND_ACCENT_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444" };
+const BRAND_ACCENT_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b" };
 
 function loadSavedBuilds() {
   try {
@@ -68,12 +71,13 @@ function decodeSharedBuild() {
 export const ConfiguratorBuilder = ({ brand = "skoda", onSwitchBrand, onOpenAdvisor }) => {
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
-  const models = isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
+  const isPorsche = brand === "porsche";
+  const models = isPorsche ? PORSCHE_MODELS : isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
   const accentHex = BRAND_ACCENT_HEX[brand];
-  const accentText = isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400";
-  const accentBg = isAudi ? "bg-red-600 hover:bg-red-500" : isVW ? "bg-blue-600 hover:bg-blue-500" : "bg-emerald-600 hover:bg-emerald-500";
-  const accentBorder = isAudi ? "border-red-500/60" : isVW ? "border-blue-500/60" : "border-emerald-500/60";
-  const accentRing = isAudi ? "ring-red-500/60" : isVW ? "ring-blue-500/60" : "ring-emerald-500/60";
+  const accentText = isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400";
+  const accentBg = isPorsche ? "bg-amber-600 hover:bg-amber-500" : isAudi ? "bg-red-600 hover:bg-red-500" : isVW ? "bg-blue-600 hover:bg-blue-500" : "bg-emerald-600 hover:bg-emerald-500";
+  const accentBorder = isPorsche ? "border-amber-500/60" : isAudi ? "border-red-500/60" : isVW ? "border-blue-500/60" : "border-emerald-500/60";
+  const accentRing = isPorsche ? "ring-amber-500/60" : isAudi ? "ring-red-500/60" : isVW ? "ring-blue-500/60" : "ring-emerald-500/60";
 
   const [selectedModelId, setSelectedModelId] = useState(models[0].id);
   const currentModel = models.find((m) => m.id === selectedModelId) || models[0];
@@ -172,7 +176,7 @@ export const ConfiguratorBuilder = ({ brand = "skoda", onSwitchBrand, onOpenAdvi
     options: selectedOptions,
   });
 
-  const isSedan = !currentModel.bodyType?.includes("SUV") && !currentModel.bodyType?.includes("4x4");
+  const bodyShape = getBodyShape(currentModel.bodyType);
 
   const buildSnapshot = () => ({
     id: `build-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
@@ -260,11 +264,11 @@ export const ConfiguratorBuilder = ({ brand = "skoda", onSwitchBrand, onOpenAdvi
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-1">
-            {isAudi ? <AudiLogo variant="emblem" size="sm" /> : isVW ? <VolkswagenLogo variant="emblem" size="sm" /> : <SkodaLogo variant="emblem" size="sm" />}
+            {isPorsche ? <PorscheLogo variant="emblem" size="sm" /> : isAudi ? <AudiLogo variant="emblem" size="sm" /> : isVW ? <VolkswagenLogo variant="emblem" size="sm" /> : <SkodaLogo variant="emblem" size="sm" />}
             <span className={accentText}>Interactive Configurator</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-            Build Your {isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda"}
+            Build Your {isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda"}
           </h2>
           <p className="text-sm text-zinc-400">
             Pick a model, trim, engine, colour, wheels and interior — then save, share, or export your build.
@@ -275,7 +279,7 @@ export const ConfiguratorBuilder = ({ brand = "skoda", onSwitchBrand, onOpenAdvi
       {sharedBanner && (
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-amber-950/40 border border-amber-700/50 text-sm text-amber-200">
           <span>
-            This shared build is for <strong>{sharedBanner.brand === "audi" ? "Audi" : sharedBanner.brand === "volkswagen" ? "Volkswagen" : "Škoda"}</strong> — switch brands to load it.
+            This shared build is for <strong>{sharedBanner.brand === "porsche" ? "Porsche" : sharedBanner.brand === "audi" ? "Audi" : sharedBanner.brand === "volkswagen" ? "Volkswagen" : "Škoda"}</strong> — switch brands to load it.
           </span>
           {onSwitchBrand && (
             <button
@@ -297,16 +301,21 @@ export const ConfiguratorBuilder = ({ brand = "skoda", onSwitchBrand, onOpenAdvi
           {/* Model */}
           <ConfigSection title="1. Choose Model" icon={Cog} accentText={accentText}>
             <div className="flex flex-wrap gap-2">
-              {models.map((m) => (
-                <button
-                  key={m.id}
-                  onClick={() => setSelectedModelId(m.id)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer border ${selectedModelId === m.id ? `${accentBg} text-white border-transparent shadow-md` : "bg-zinc-900 text-zinc-400 border-zinc-800 hover:text-white hover:border-zinc-700"}`}
-                >
-                  {m.name.replace("Škoda ", "").replace("Volkswagen ", "").replace("Audi ", "")}
-                </button>
-              ))}
+              {models
+                .filter((m) => !m.notSoldInIndia)
+                .map((m) => (
+                  <button
+                    key={m.id}
+                    onClick={() => setSelectedModelId(m.id)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer border ${selectedModelId === m.id ? `${accentBg} text-white border-transparent shadow-md` : "bg-zinc-900 text-zinc-400 border-zinc-800 hover:text-white hover:border-zinc-700"}`}
+                  >
+                    {m.name.replace("Škoda ", "").replace("Volkswagen ", "").replace("Audi ", "").replace("Porsche ", "")}
+                  </button>
+                ))}
             </div>
+            <p className="text-[10px] text-zinc-500 mt-1.5">
+              Global-market-only models not officially sold in India (e.g. Jetta GLI) aren't configurable here.
+            </p>
           </ConfigSection>
 
           {/* Variant */}
@@ -463,7 +472,7 @@ export const ConfiguratorBuilder = ({ brand = "skoda", onSwitchBrand, onOpenAdvi
                 <CarSilhouette
                   colorHex={selectedColor?.hex}
                   isDualTone={!!selectedColor?.isDualTone}
-                  isSedan={isSedan}
+                  shape={bodyShape}
                   accentHex={accentHex}
                 />
               </div>

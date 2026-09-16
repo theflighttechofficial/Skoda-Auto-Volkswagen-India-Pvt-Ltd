@@ -28,7 +28,12 @@ export const LaunchScreen = ({ onEnter }) => {
       {/* Main launch content */}
       <div className="relative z-10 flex-1 flex items-center justify-center px-4 py-10">
         <div className="w-full max-w-5xl">
-          <GroupPersonalities onSelectBrand={onEnter} />
+          <GroupPersonalities
+            onSelectBrand={onEnter}
+            badgeLabel="The Volkswagen Group"
+            heading="Different Personalities. Shared DNA."
+            description="Škoda, Volkswagen, and Audi — three distinct personalities built on shared Volkswagen Group engineering. Click a brand to enter its world."
+          />
         </div>
       </div>
 

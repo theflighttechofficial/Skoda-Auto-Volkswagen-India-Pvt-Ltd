@@ -3,6 +3,8 @@ import { RSModelData, RivalVehicle, ModelRivalComparison } from './rsPerformance
 export interface VWPerformanceModelData extends RSModelData {
   heritageOrigin?: string;
   tuningCulture?: string;
+  /** True for global-market cars (e.g. Jetta GLI) not officially sold in India. */
+  notSoldInIndia?: boolean;
 }
 
 export const VW_GT_MODELS: VWPerformanceModelData[] = [
@@ -246,11 +248,12 @@ export const VW_GT_MODELS: VWPerformanceModelData[] = [
   {
     id: 'jetta-gli',
     name: 'Volkswagen Jetta GLI',
-    badge: 'The Sedan-Shaped GTI',
-    tagline: '228 PS EA888 sports-sedan tune, GLI-firmed suspension, and 510L of boot space for a genuine daily track-day weapon.',
-    category: 'Performance Sports Sedan / CBU Icon',
-    expectedPrice: '₹39.50 – ₹42.50 Lakh (CBU)',
+    badge: 'Not Sold in India — The Sedan-Shaped GTI',
+    tagline: '228 PS EA888 sports-sedan tune, GLI-firmed suspension, and 510L of boot space — a global enthusiast icon not officially sold in India.',
+    category: 'Performance Sports Sedan / Global Market Only',
+    expectedPrice: 'Not Sold in India',
     priceNumeric: 3950000,
+    notSoldInIndia: true,
     engine: '2.0L TSI EA888 Turbocharged Petrol (Jetta GLI Tune)',
     power: '228 PS (168 kW) @ 5,000–6,200 RPM',
     powerHp: 228,

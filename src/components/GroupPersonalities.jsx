@@ -3,6 +3,7 @@ import { Sparkles } from "lucide-react";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
+import { PorscheLogo } from "./PorscheLogo";
 
 const BRAND_CARDS = [
   {
@@ -35,30 +36,42 @@ const BRAND_CARDS = [
     glow: "hover:shadow-red-950/60",
     description: "Progress through technology — quattro performance and progressive luxury since 1909.",
   },
+  {
+    id: "porsche",
+    Logo: PorscheLogo,
+    name: "Porsche",
+    tagline: "There Is No Substitute",
+    accent: "text-amber-400",
+    border: "hover:border-amber-600/70",
+    glow: "hover:shadow-amber-950/60",
+    description: "Motorsport-derived engineering — rear-engine icons and PDK precision since 1931.",
+  },
 ];
 
-export const GroupPersonalities = ({ onSelectBrand }) => {
+export const GroupPersonalities = ({
+  onSelectBrand,
+  badgeLabel = "One Group, Many Personalities",
+  heading = "Different Personalities. Shared DNA.",
+  description = "Three brands, one Volkswagen Group platform strategy. Click a brand to switch the entire interface to its world.",
+}) => {
   return (
     <div className="space-y-10">
       <div className="text-center max-w-2xl mx-auto">
         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-700 text-zinc-300 text-[11px] font-bold uppercase tracking-wider">
-          <Sparkles className="w-3.5 h-3.5" /> One Group, Many Personalities
+          <Sparkles className="w-3.5 h-3.5" /> {badgeLabel}
         </span>
         <h2 className="text-3xl sm:text-4xl font-black text-white mt-4">
-          Different Personalities. Shared DNA.
+          {heading}
         </h2>
-        <p className="text-sm text-zinc-400 mt-2">
-          Three brands, one Volkswagen Group platform strategy. Click a brand to switch the entire
-          interface to its world.
-        </p>
+        <p className="text-sm text-zinc-400 mt-2">{description}</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
         {BRAND_CARDS.map((brand, i) => (
           <motion.button
             key={brand.id}
             onClick={() => onSelectBrand?.(brand.id)}
-            initial={{ opacity: 0, x: i === 0 ? -40 : i === 2 ? 40 : 0, y: i === 1 ? 30 : 0 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 0.5, delay: i * 0.12, type: "spring", stiffness: 90 }}
             whileHover={{ y: -6 }}

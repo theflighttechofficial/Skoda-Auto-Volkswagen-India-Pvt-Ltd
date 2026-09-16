@@ -1,10 +1,11 @@
 import { SKODA_MODELS } from "../data/skodaData";
 import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
+import { PORSCHE_MODELS } from "../data/porscheData";
 import { peakPowerHp, bootLitres, groundClearanceMm, hashString } from "./carInsights";
 import { getRaceRoster } from "./raceRoster";
 
-const CATALOG_BY_BRAND = { skoda: SKODA_MODELS, volkswagen: VW_MODELS, audi: AUDI_MODELS };
+const CATALOG_BY_BRAND = { skoda: SKODA_MODELS, volkswagen: VW_MODELS, audi: AUDI_MODELS, porsche: PORSCHE_MODELS };
 
 function peakTorqueNm(model) {
   const torques = (model.engines || [])

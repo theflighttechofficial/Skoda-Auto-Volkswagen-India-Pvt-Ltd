@@ -25,7 +25,6 @@ import { MadeInIndiaStory } from "./components/MadeInIndiaStory";
 import { EngineeringLab } from "./components/EngineeringLab";
 import { CarThroughDecades } from "./components/CarThroughDecades";
 import { PlatformDetective } from "./components/PlatformDetective";
-import { GroupPersonalities } from "./components/GroupPersonalities";
 import { LaunchScreen } from "./components/LaunchScreen";
 import { BrandLoadingScreen } from "./components/BrandLoadingScreen";
 import {
@@ -52,6 +51,83 @@ import { motion, AnimatePresence } from "motion/react";
 import { SkodaLogo } from "./components/SkodaLogo";
 import { VolkswagenLogo } from "./components/VolkswagenLogo";
 import { AudiLogo } from "./components/AudiLogo";
+import { PorscheLogo } from "./components/PorscheLogo";
+
+const APP_BRAND_META = {
+  skoda: {
+    Logo: SkodaLogo,
+    accentText: "text-emerald-400",
+    accentTextHover: "text-emerald-400 hover:text-emerald-300",
+    selectionBg: "selection:bg-emerald-500",
+    scrollTopBg: "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950/90 border-emerald-400/40",
+    footerName: "Škoda Auto India",
+    footerTagline: "SAVWIPL • European Safety, TSI Turbo-Petrol & TDI Diesel Engineering",
+    rsLabel: "The vRS Performance",
+    dealershipLabel: "Škoda Dealership Locator (260+)",
+    aboutLabel: "About Škoda & Czech History (1895)",
+    warrantyLabel: "4-Year / 100,000 km Standard Warranty",
+    roadsideLabel: "Škoda 24/7 Roadside Assistance: 1800 123 0955",
+    powertrainLabel: "TSI Petrol & TDI Diesel Powertrains",
+    lineupLabel: "Kylaq • Slavia • Kushaq • Octavia & Octavia vRS • Kodiaq & Kodiaq vRS • Superb",
+    defaultModelId: "octavia",
+    defaultGraphModelId: "slavia",
+  },
+  volkswagen: {
+    Logo: VolkswagenLogo,
+    accentText: "text-blue-400",
+    accentTextHover: "text-blue-400 hover:text-blue-300",
+    selectionBg: "selection:bg-blue-600",
+    scrollTopBg: "bg-blue-600 hover:bg-blue-500 shadow-blue-950/90 border-blue-400/40",
+    footerName: "Volkswagen Passenger Cars India",
+    footerTagline: "SAVWIPL • German Engineering, 4EVER Care, TSI Turbo-Petrol & GT Performance",
+    rsLabel: "GT & GTI Performance",
+    dealershipLabel: "VW Dealership Locator (190+)",
+    aboutLabel: "About Volkswagen & Wolfsburg History",
+    warrantyLabel: "4EVER Care: 4-Year Warranty / 100,000 km",
+    roadsideLabel: "VW 24/7 Roadside Assistance: 1800 102 0909",
+    powertrainLabel: "TSI Turbo-Petrol & Active Cylinder Technology",
+    lineupLabel: "Virtus & Virtus GT Plus • Taigun & GT Line • Tiguan 4MOTION • Tayron • Golf GTI",
+    defaultModelId: "virtus",
+    defaultGraphModelId: "virtus",
+  },
+  audi: {
+    Logo: AudiLogo,
+    accentText: "text-red-400",
+    accentTextHover: "text-red-400 hover:text-red-300",
+    selectionBg: "selection:bg-red-600",
+    scrollTopBg: "bg-red-600 hover:bg-red-500 shadow-red-950/90 border-red-400/40",
+    footerName: "Audi India",
+    footerTagline: "Progressive Luxury • quattro All-Wheel Drive, TFSI Turbo-Petrol & Audi Sport RS/S Performance",
+    rsLabel: "Audi Sport RS & S Performance",
+    dealershipLabel: "Audi Dealership Locator (40+)",
+    aboutLabel: "About Audi & Ingolstadt History",
+    warrantyLabel: "Audi Advantage: 4-Year Warranty / Unlimited km",
+    roadsideLabel: "Audi 24/7 Roadside Assistance: 1800 209 3232",
+    powertrainLabel: "TFSI Turbo-Petrol & quattro All-Wheel Drive",
+    lineupLabel: "A3 • A4 • A6 • A8 • Q3 • Q5 • Q7 • Q8 • RS5 • RS6 • RS Q8",
+    defaultModelId: "a4",
+    defaultGraphModelId: "a4",
+  },
+  porsche: {
+    Logo: PorscheLogo,
+    accentText: "text-amber-400",
+    accentTextHover: "text-amber-400 hover:text-amber-300",
+    selectionBg: "selection:bg-amber-500",
+    scrollTopBg: "bg-amber-600 hover:bg-amber-500 shadow-amber-950/90 border-amber-400/40",
+    footerName: "Porsche India",
+    footerTagline: "Direct Market Operations • PDK Dual-Clutch, PTM All-Wheel Drive & Motorsport-Derived Engineering",
+    rsLabel: "GT & Turbo Performance",
+    dealershipLabel: "Porsche Centre Locator (8+)",
+    aboutLabel: "About Porsche & Stuttgart History",
+    warrantyLabel: "Porsche Genuine Care: 2-Year Unlimited km Warranty",
+    roadsideLabel: "Porsche 24/7 Roadside Assistance: 1800 209 7911",
+    powertrainLabel: "Twin-Turbo Flat-6, Flat-4 & V6 Powertrains",
+    lineupLabel: "911 Carrera • 911 Carrera S • 718 Cayman • Macan • Macan S • Cayenne • Panamera",
+    defaultModelId: "911-carrera",
+    defaultGraphModelId: "911-carrera",
+  },
+};
+
 export default function App() {
   const [activeBrand, setActiveBrand] = useState("skoda");
   const [activeTab, setActiveTab] = useState("overview");
@@ -79,9 +155,9 @@ export default function App() {
     scrollToTop();
   }, [activeTab]);
   const handleBrandChange = (brand) => {
-    setActiveBrand(brand);
-    setSelectedModelId("all");
-    scrollToTop();
+    if (brand === activeBrand) return;
+    setPendingBrand(brand);
+    setIsLoadingBrand(true);
   };
   const handleEnterSite = (brand) => {
     setPendingBrand(brand);
@@ -89,14 +165,21 @@ export default function App() {
   };
   useEffect(() => {
     if (!isLoadingBrand || !pendingBrand) return;
+    const wasAlreadyEntered = hasEntered;
     const timer = setTimeout(() => {
       setActiveBrand(pendingBrand);
       setSelectedModelId("all");
-      setActiveTab("overview");
+      // A fresh entry from the launch screen always starts on the overview
+      // tab; switching brands mid-session keeps whatever tab the user was on.
+      if (!wasAlreadyEntered) {
+        setActiveTab("overview");
+      }
       setHasEntered(true);
       setIsLoadingBrand(false);
+      scrollToTop();
     }, 5000);
     return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoadingBrand, pendingBrand]);
   useEffect(() => {
     const handleScroll = () => {
@@ -131,10 +214,9 @@ export default function App() {
     }
     handleTabChange("advisor");
   };
-  const isVW = activeBrand === "volkswagen";
-  const isAudi = activeBrand === "audi";
-  const defaultModelId = isAudi ? "a4" : isVW ? "virtus" : "octavia";
-  const defaultGraphModelId = isAudi ? "a4" : isVW ? "virtus" : "slavia";
+  const appMeta = APP_BRAND_META[activeBrand] || APP_BRAND_META.skoda;
+  const defaultModelId = appMeta.defaultModelId;
+  const defaultGraphModelId = appMeta.defaultGraphModelId;
 
   if (!hasEntered) {
     return (
@@ -168,7 +250,7 @@ export default function App() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
-      className={`min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased ${isAudi ? "selection:bg-red-600" : isVW ? "selection:bg-blue-600" : "selection:bg-emerald-500"} selection:text-white relative`}
+      className={`min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased ${appMeta.selectionBg} selection:text-white relative`}
     >
       {/* Top Navigation */}
       <Header
@@ -181,7 +263,7 @@ export default function App() {
       />
 
       {/* Main Content Area with Fluid Animated Transitions */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-12">
+      <main className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-12">
         <AnimatePresence mode="wait">
           {activeTab === "overview" && (
             <motion.div
@@ -372,6 +454,7 @@ export default function App() {
               transition={{ duration: 0.3 }}
             >
               <VolkswagenGroupProud
+                brand={activeBrand}
                 onExploreSkodaHistory={() => handleTabChange("about")}
                 onExploreLineup={() => handleTabChange("models")}
               />
@@ -573,23 +656,6 @@ export default function App() {
             </motion.div>
           )}
 
-          {activeTab === "personalities" && (
-            <motion.div
-              key="tab-personalities"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-            >
-              <GroupPersonalities
-                onSelectBrand={(b) => {
-                  handleBrandChange(b);
-                  handleTabChange("overview");
-                }}
-              />
-            </motion.div>
-          )}
-
           {activeTab === "faq" && (
             <motion.div
               key={`tab-faq-${activeBrand}`}
@@ -606,35 +672,17 @@ export default function App() {
 
       {/* Footer Section */}
       <footer className="border-t border-zinc-800/80 bg-zinc-950 py-12 mt-16 text-xs text-zinc-400">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div
               className="flex items-center gap-3 cursor-pointer"
               onClick={registerLogoClick}
               title="Psst..."
             >
-              {isAudi ? (
-                <AudiLogo variant="full" size="md" animated={true} />
-              ) : isVW ? (
-                <VolkswagenLogo variant="full" size="md" animated={true} />
-              ) : (
-                <SkodaLogo variant="full" size="md" animated={true} />
-              )}
+              <appMeta.Logo variant="full" size="md" animated={true} />
               <div className="border-l border-zinc-800 pl-3">
-                <p className="font-bold text-white text-sm">
-                  {isAudi
-                    ? "Audi India"
-                    : isVW
-                      ? "Volkswagen Passenger Cars India"
-                      : "\u0160koda Auto India"}
-                </p>
-                <p className="text-[11px] text-zinc-400">
-                  {isAudi
-                    ? "Progressive Luxury \u2022 quattro All-Wheel Drive, TFSI Turbo-Petrol & Audi Sport RS/S Performance"
-                    : isVW
-                      ? "SAVWIPL \u2022 German Engineering, 4EVER Care, TSI Turbo-Petrol & GT Performance"
-                      : "SAVWIPL \u2022 European Safety, TSI Turbo-Petrol & TDI Diesel Engineering"}
-                </p>
+                <p className="font-bold text-white text-sm">{appMeta.footerName}</p>
+                <p className="text-[11px] text-zinc-400">{appMeta.footerTagline}</p>
               </div>
             </div>
 
@@ -643,42 +691,25 @@ export default function App() {
                 onClick={() => handleTabChange("rs")}
                 className="flex items-center gap-1.5 cursor-pointer text-red-400 hover:text-red-300 font-bold transition-colors"
               >
-                <Flame className="w-4 h-4 text-red-500" />{" "}
-                {isAudi
-                  ? "Audi Sport RS & S Performance"
-                  : isVW
-                    ? "GT & GTI Performance"
-                    : "The vRS Performance"}
+                <Flame className="w-4 h-4 text-red-500" /> {appMeta.rsLabel}
               </span>
               <span
                 onClick={() => handleTabChange("graphs")}
-                className={`flex items-center gap-1.5 cursor-pointer ${isAudi ? "text-red-400 hover:text-red-300" : isVW ? "text-blue-400 hover:text-blue-300" : "text-emerald-400 hover:text-emerald-300"} font-bold transition-colors`}
+                className={`flex items-center gap-1.5 cursor-pointer ${appMeta.accentTextHover} font-bold transition-colors`}
               >
                 <Activity className="w-4 h-4" /> Performance Graphs
               </span>
               <span
                 onClick={() => handleTabChange("dealerships")}
-                className={`flex items-center gap-1.5 cursor-pointer font-bold transition-colors ${isAudi ? "text-red-400 hover:text-red-300" : isVW ? "text-blue-400 hover:text-blue-300" : "text-emerald-400 hover:text-emerald-300"}`}
+                className={`flex items-center gap-1.5 cursor-pointer font-bold transition-colors ${appMeta.accentTextHover}`}
               >
-                <MapPin
-                  className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
-                />{" "}
-                {isAudi
-                  ? "Audi Dealership Locator (40+)"
-                  : isVW
-                    ? "VW Dealership Locator (190+)"
-                    : "\u0160koda Dealership Locator (260+)"}
+                <MapPin className={`w-4 h-4 ${appMeta.accentText}`} /> {appMeta.dealershipLabel}
               </span>
               <span
                 onClick={() => handleTabChange("about")}
-                className={`flex items-center gap-1.5 cursor-pointer ${isAudi ? "text-red-400 hover:text-red-300" : isVW ? "text-blue-400 hover:text-blue-300" : "text-emerald-400 hover:text-emerald-300"} font-bold transition-colors`}
+                className={`flex items-center gap-1.5 cursor-pointer ${appMeta.accentTextHover} font-bold transition-colors`}
               >
-                <HistoryIcon className="w-4 h-4" />{" "}
-                {isAudi
-                  ? "About Audi & Ingolstadt History"
-                  : isVW
-                    ? "About Volkswagen & Wolfsburg History"
-                    : "About \u0160koda & Czech History (1895)"}
+                <HistoryIcon className="w-4 h-4" /> {appMeta.aboutLabel}
               </span>
               <span
                 onClick={() => handleTabChange("vwgroup")}
@@ -687,32 +718,16 @@ export default function App() {
                 <Globe2 className="w-4 h-4 text-sky-400" /> Proud to be VW Group
               </span>
               <span className="flex items-center gap-1.5">
-                <ShieldCheck
-                  className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
-                />
-                {isAudi
-                  ? "Audi Advantage: 4-Year Warranty / Unlimited km"
-                  : isVW
-                    ? "4EVER Care: 4-Year Warranty / 100,000 km"
-                    : "4-Year / 100,000 km Standard Warranty"}
+                <ShieldCheck className={`w-4 h-4 ${appMeta.accentText}`} />
+                {appMeta.warrantyLabel}
               </span>
               <span className="flex items-center gap-1.5">
-                <HeartHandshake
-                  className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
-                />
-                {isAudi
-                  ? "Audi 24/7 Roadside Assistance: 1800 209 3232"
-                  : isVW
-                    ? "VW 24/7 Roadside Assistance: 1800 102 0909"
-                    : "\u0160koda 24/7 Roadside Assistance: 1800 123 0955"}
+                <HeartHandshake className={`w-4 h-4 ${appMeta.accentText}`} />
+                {appMeta.roadsideLabel}
               </span>
               <span className="flex items-center gap-1.5">
                 <Fuel className="w-4 h-4 text-amber-400" />
-                {isAudi
-                  ? "TFSI Turbo-Petrol & quattro All-Wheel Drive"
-                  : isVW
-                    ? "TSI Turbo-Petrol & Active Cylinder Technology"
-                    : "TSI Petrol & TDI Diesel Powertrains"}
+                {appMeta.powertrainLabel}
               </span>
             </div>
           </div>
@@ -758,13 +773,7 @@ export default function App() {
               India Pvt. Ltd. (CIN: U70102PN2007FTC133117). All rights reserved.
             </p>
             <div className="flex items-center gap-4">
-              <p className="tracking-wide hidden md:block">
-                {isAudi
-                  ? "A3 \u2022 A4 \u2022 A6 \u2022 A8 \u2022 Q3 \u2022 Q5 \u2022 Q7 \u2022 Q8 \u2022 RS5 \u2022 RS6 \u2022 RS Q8"
-                  : isVW
-                    ? "Virtus & Virtus GT Plus \u2022 Taigun & GT Line \u2022 Tiguan 4MOTION \u2022 Tayron \u2022 Golf GTI"
-                    : "Kylaq \u2022 Slavia \u2022 Kushaq \u2022 Octavia & Octavia vRS \u2022 Kodiaq & Kodiaq vRS \u2022 Superb"}
-              </p>
+              <p className="tracking-wide hidden md:block">{appMeta.lineupLabel}</p>
               <button
                 onClick={scrollToTop}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-300 hover:text-emerald-400 text-xs font-semibold transition-colors cursor-pointer"
@@ -783,6 +792,22 @@ export default function App() {
       <QuattroVizOverlay active={quattroViz} />
       <WolfsburgModeOverlay active={wolfsburgMode} />
 
+      {/* Mid-session brand switch: replay the loading screen over the current page */}
+      <AnimatePresence>
+        {isLoadingBrand && (
+          <motion.div
+            key="brand-switch-loading"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[400]"
+          >
+            <BrandLoadingScreen brand={pendingBrand} durationMs={5000} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Floating Back to Top Button */}
       <AnimatePresence>
         {showScrollTop && (
@@ -793,7 +818,7 @@ export default function App() {
             transition={{ duration: 0.2 }}
             onClick={scrollToTop}
             aria-label="Scroll to top of website"
-            className={`fixed bottom-6 right-6 z-50 p-3 sm:px-4 sm:py-3 rounded-2xl ${isAudi ? "bg-red-600 hover:bg-red-500 shadow-red-950/90 border-red-400/40" : isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-950/90 border-blue-400/40" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950/90 border-emerald-400/40"} text-white shadow-2xl border flex items-center gap-2 group cursor-pointer transition-all hover:scale-105 active:scale-95`}
+            className={`fixed bottom-6 right-6 z-50 p-3 sm:px-4 sm:py-3 rounded-2xl ${appMeta.scrollTopBg} text-white shadow-2xl border flex items-center gap-2 group cursor-pointer transition-all hover:scale-105 active:scale-95`}
           >
             <ArrowUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
             <span className="text-xs font-bold hidden sm:inline">

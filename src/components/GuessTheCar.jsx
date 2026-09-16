@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
   Gamepad2,
   Trophy,
@@ -10,6 +10,8 @@ import {
   ChevronRight,
   X,
   CheckCircle2,
+  Flag,
+  Eye,
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -20,9 +22,13 @@ import {
   DIFFICULTY_SETTINGS,
   loadGameStats,
   saveGameStats,
+  getAllCarNames,
 } from "../utils/guessTheCarGame";
+import { CarSilhouette } from "./CarSilhouette";
+import { getBodyShape } from "../utils/bodyShape";
 
 const todayStr = () => new Date().toISOString().slice(0, 10);
+const BRAND_ACCENT = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444" };
 
 export const GuessTheCar = () => {
   const [stats, setStats] = useState(loadGameStats);
@@ -33,9 +39,16 @@ export const GuessTheCar = () => {
   const [guess, setGuess] = useState("");
   const [status, setStatus] = useState("playing"); // playing | won | lost
   const [shake, setShake] = useState(false);
+  const [wrongGuesses, setWrongGuesses] = useState([]);
+  const allCarNames = useMemo(() => getAllCarNames(), []);
 
   const dailyAlreadyPlayed = stats.daily?.date === todayStr() && stats.daily?.played;
   const settings = DIFFICULTY_SETTINGS[mode === "daily" ? "medium" : difficulty];
+  // How much of the silhouette to reveal — starts heavily blurred/dim and
+  // sharpens with every clue burned, so there's a visual guess alongside
+  // the text clues rather than pure trivia.
+  const revealPct = Math.min(1, revealed / settings.maxClues);
+  const blurPx = Math.max(0, 14 - revealPct * 14);
 
   useEffect(() => {
     if (mode === "daily") {
@@ -48,6 +61,7 @@ export const GuessTheCar = () => {
         setStatus("playing");
         setRevealed(1);
       }
+      setWrongGuesses([]);
     } else {
       startNewPractice(difficulty);
     }
@@ -59,6 +73,7 @@ export const GuessTheCar = () => {
     setRevealed(1);
     setStatus("playing");
     setGuess("");
+    setWrongGuesses([]);
   };
 
   const persistStats = (next) => {
@@ -99,6 +114,7 @@ export const GuessTheCar = () => {
       handleWin();
       return;
     }
+    setWrongGuesses((prev) => [...prev, guess.trim()]);
     setShake(true);
     setTimeout(() => setShake(false), 400);
     if (revealed >= settings.maxClues) {
@@ -107,6 +123,11 @@ export const GuessTheCar = () => {
       setRevealed((r) => r + 1);
       setGuess("");
     }
+  };
+
+  const giveUp = () => {
+    if (status !== "playing") return;
+    handleLose();
   };
 
   const cluesShown = puzzle.clues.slice(0, revealed);
@@ -190,26 +211,68 @@ export const GuessTheCar = () => {
 
         {status === "playing" && (
           <>
-            <div className="space-y-3">
-              {cluesShown.map((clue, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/70 border border-zinc-800"
-                >
-                  <span className="text-[10px] font-black text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2 py-1 rounded-md shrink-0">
-                    CLUE #{i + 1}
+            <div className="grid grid-cols-1 sm:grid-cols-12 gap-5">
+              {/* Silhouette reveal — sharpens as clues burn */}
+              <div className="sm:col-span-4">
+                <div className="relative h-28 sm:h-36 rounded-2xl bg-zinc-900/70 border border-zinc-800 overflow-hidden flex items-center justify-center p-3">
+                  <motion.div
+                    animate={{ filter: `blur(${blurPx}px)`, opacity: 0.35 + revealPct * 0.65 }}
+                    transition={{ duration: 0.4 }}
+                    className="w-full h-full"
+                  >
+                    <CarSilhouette
+                      colorHex="#71717a"
+                      accentHex={BRAND_ACCENT[puzzle.brand]}
+                      shape={getBodyShape(puzzle.bodyType)}
+                    />
+                  </motion.div>
+                  <span className="absolute top-1.5 right-2 flex items-center gap-1 text-[9px] font-bold text-zinc-500 bg-zinc-950/80 px-1.5 py-0.5 rounded">
+                    <Eye className="w-2.5 h-2.5" /> {Math.round(revealPct * 100)}%
                   </span>
-                  <span className="text-xs text-zinc-500">{clue.label}:</span>
-                  <span className="text-sm font-bold text-white">{clue.value}</span>
-                </motion.div>
-              ))}
+                </div>
+              </div>
+
+              {/* Clues */}
+              <div className="sm:col-span-8 space-y-3">
+                {cluesShown.map((clue, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/70 border border-zinc-800"
+                  >
+                    <span className="text-[10px] font-black text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2 py-1 rounded-md shrink-0">
+                      CLUE #{i + 1}
+                    </span>
+                    <span className="text-xs text-zinc-500">{clue.label}:</span>
+                    <span className="text-sm font-bold text-white">{clue.value}</span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
 
+            {wrongGuesses.length > 0 && (
+              <div className="flex flex-wrap gap-1.5">
+                {wrongGuesses.map((g, i) => (
+                  <span
+                    key={i}
+                    className="flex items-center gap-1 text-[11px] px-2 py-1 rounded-md bg-red-950/40 border border-red-900/50 text-red-400 line-through decoration-red-500/70"
+                  >
+                    <X className="w-3 h-3 shrink-0" /> {g}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            <datalist id="guess-the-car-names">
+              {allCarNames.map((n) => (
+                <option key={n} value={n} />
+              ))}
+            </datalist>
             <div className="flex flex-col sm:flex-row gap-2">
               <input
                 type="text"
+                list="guess-the-car-names"
                 value={guess}
                 onChange={(e) => setGuess(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && submitGuess()}
@@ -221,6 +284,13 @@ export const GuessTheCar = () => {
                 className="px-6 py-3 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-sm font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5"
               >
                 Guess <ChevronRight className="w-4 h-4" />
+              </button>
+              <button
+                onClick={giveUp}
+                title="Reveal the answer without a win"
+                className="px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 hover:bg-zinc-800 text-zinc-400 hover:text-white text-xs font-semibold transition-all cursor-pointer flex items-center justify-center gap-1.5"
+              >
+                <Flag className="w-3.5 h-3.5" /> Give Up
               </button>
             </div>
             <p className="text-[11px] text-zinc-500">

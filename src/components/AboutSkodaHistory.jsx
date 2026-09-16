@@ -27,9 +27,14 @@ import {
   AUDI_HISTORY_ERAS,
   AUDI_HERITAGE_ELEMENTS,
 } from "../data/audiHistoryData";
+import {
+  PORSCHE_HISTORY_ERAS,
+  PORSCHE_HERITAGE_ELEMENTS,
+} from "../data/porscheHistoryData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
+import { PorscheLogo } from "./PorscheLogo";
 export const AboutSkodaHistory = ({
   brand = "skoda",
   onExploreVWGroup,
@@ -37,12 +42,15 @@ export const AboutSkodaHistory = ({
 }) => {
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
-  const historyEras = isAudi ? AUDI_HISTORY_ERAS : isVW ? VW_HISTORY_ERAS : SKODA_HISTORY_ERAS;
-  const heritageElements = isAudi
-    ? AUDI_HERITAGE_ELEMENTS
-    : isVW
-      ? GERMAN_HERITAGE_ELEMENTS
-      : CZECH_HERITAGE_ELEMENTS;
+  const isPorsche = brand === "porsche";
+  const historyEras = isPorsche ? PORSCHE_HISTORY_ERAS : isAudi ? AUDI_HISTORY_ERAS : isVW ? VW_HISTORY_ERAS : SKODA_HISTORY_ERAS;
+  const heritageElements = isPorsche
+    ? PORSCHE_HERITAGE_ELEMENTS
+    : isAudi
+      ? AUDI_HERITAGE_ELEMENTS
+      : isVW
+        ? GERMAN_HERITAGE_ELEMENTS
+        : CZECH_HERITAGE_ELEMENTS;
   const [selectedEraId, setSelectedEraId] = useState(historyEras[0].id);
   useEffect(() => {
     setSelectedEraId(historyEras[0].id);
@@ -53,39 +61,57 @@ export const AboutSkodaHistory = ({
     <div className="space-y-12 pb-16">
       {/* Hero Header */}
       <div
-        className={`relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-950 via-zinc-900 border border-zinc-800 p-6 sm:p-10 shadow-2xl ${isAudi ? "to-red-950/40" : isVW ? "to-blue-950/40" : "to-emerald-950/40"}`}
+        className={`relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-950 via-zinc-900 border border-zinc-800 p-6 sm:p-10 shadow-2xl ${isPorsche ? "to-amber-950/40" : isAudi ? "to-red-950/40" : isVW ? "to-blue-950/40" : "to-emerald-950/40"}`}
       >
         <div
-          className={`absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isAudi ? "bg-red-500/10" : isVW ? "bg-blue-500/10" : "bg-emerald-500/10"}`}
+          className={`absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isPorsche ? "bg-amber-500/10" : isAudi ? "bg-red-500/10" : isVW ? "bg-blue-500/10" : "bg-emerald-500/10"}`}
         />
         <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-zinc-700/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-4xl space-y-6">
           <div
-            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-semibold tracking-wide ${isAudi ? "bg-red-950/80 border-red-700/50 text-red-300" : isVW ? "bg-blue-950/80 border-blue-700/50 text-blue-300" : "bg-emerald-950/80 border-emerald-700/50 text-emerald-300"}`}
+            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-semibold tracking-wide ${isPorsche ? "bg-amber-950/80 border-amber-700/50 text-amber-300" : isAudi ? "bg-red-950/80 border-red-700/50 text-red-300" : isVW ? "bg-blue-950/80 border-blue-700/50 text-blue-300" : "bg-emerald-950/80 border-emerald-700/50 text-emerald-300"}`}
           >
             <Flag
-              className={`w-3.5 h-3.5 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+              className={`w-3.5 h-3.5 ${isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
             />
             <span>
-              {isAudi
-                ? "Ingolstadt, Bavaria, Germany \u2022 Est. 1899"
-                : isVW
-                  ? "Wolfsburg, Lower Saxony, Germany \u2022 Est. 1937"
-                  : "Mlad\xE1 Boleslav, Czech Republic \u2022 Est. December 1895"}
+              {isPorsche
+                ? "Stuttgart, Baden-W\u00fcrttemberg, Germany \u2022 Est. 1931"
+                : isAudi
+                  ? "Ingolstadt, Bavaria, Germany \u2022 Est. 1899"
+                  : isVW
+                    ? "Wolfsburg, Lower Saxony, Germany \u2022 Est. 1937"
+                    : "Mlad\xE1 Boleslav, Czech Republic \u2022 Est. December 1895"}
             </span>
           </div>
 
           <div className="space-y-3">
             <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-              {isAudi
-                ? "Audi: Over 125 Years of Progressive Luxury Engineering"
-                : isVW
-                  ? "Volkswagen: Over 85 Years of Pure German Automotive Heritage"
-                  : "The Czech Legend: Over 130 Years of Automotive Ingenuity"}
+              {isPorsche
+                ? "Porsche: Over 90 Years of Sports Car Obsession"
+                : isAudi
+                  ? "Audi: Over 125 Years of Progressive Luxury Engineering"
+                  : isVW
+                    ? "Volkswagen: Over 85 Years of Pure German Automotive Heritage"
+                    : "The Czech Legend: Over 130 Years of Automotive Ingenuity"}
             </h1>
             <p className="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-3xl">
-              {isAudi ? (
+              {isPorsche ? (
+                <>
+                  From Ferdinand Porsche's Stuttgart design office founded in{" "}
+                  <span className="text-amber-400 font-semibold">1931</span>,
+                  to the hand-built{" "}
+                  <span className="text-amber-400 font-semibold">356</span> of
+                  1948, the rear-engine{" "}
+                  <span className="text-amber-400 font-semibold">
+                    911
+                  </span>{" "}
+                  in continuous production since 1963, and joining the
+                  Volkswagen Group's ownership structure in 2012, discover
+                  Porsche's celebrated engineering odyssey.
+                </>
+              ) : isAudi ? (
                 <>
                   From August Horch's founding of{" "}
                   <span className="text-red-400 font-semibold">Audi</span> in
@@ -133,7 +159,7 @@ export const AboutSkodaHistory = ({
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
             <div className="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800/80">
               <div
-                className={`flex items-center gap-2 mb-1 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                className={`flex items-center gap-2 mb-1 ${isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
               >
                 <Clock className="w-4 h-4" />
                 <span className="text-xs font-bold uppercase tracking-wider">
@@ -141,14 +167,16 @@ export const AboutSkodaHistory = ({
                 </span>
               </div>
               <p className="text-2xl font-black text-white">
-                {isAudi ? "1899" : isVW ? "1937" : "1895"}
+                {isPorsche ? "1931" : isAudi ? "1899" : isVW ? "1937" : "1895"}
               </p>
               <p className="text-[11px] text-zinc-400">
-                {isAudi
-                  ? "125+ Years of Engineering"
-                  : isVW
-                    ? "85+ Years of Engineering"
-                    : "130+ Years of Innovation"}
+                {isPorsche
+                  ? "90+ Years of Sports Car Engineering"
+                  : isAudi
+                    ? "125+ Years of Engineering"
+                    : isVW
+                      ? "85+ Years of Engineering"
+                      : "130+ Years of Innovation"}
               </p>
             </div>
 
@@ -160,14 +188,16 @@ export const AboutSkodaHistory = ({
                 </span>
               </div>
               <p className="text-xl font-bold text-white truncate">
-                {isAudi ? "Ingolstadt, Germany" : isVW ? "Wolfsburg, Germany" : "Czech Republic"}
+                {isPorsche ? "Stuttgart, Germany" : isAudi ? "Ingolstadt, Germany" : isVW ? "Wolfsburg, Germany" : "Czech Republic"}
               </p>
               <p className="text-[11px] text-zinc-400">
-                {isAudi
-                  ? "Global Headquarters"
-                  : isVW
+                {isPorsche
+                  ? "Stuttgart-Zuffenhausen HQ"
+                  : isAudi
                     ? "Global Headquarters"
-                    : "Mlad\xE1 Boleslav, Central Bohemia"}
+                    : isVW
+                      ? "Global Headquarters"
+                      : "Mlad\xE1 Boleslav, Central Bohemia"}
               </p>
             </div>
 
@@ -179,20 +209,22 @@ export const AboutSkodaHistory = ({
                 </span>
               </div>
               <p className="text-2xl font-black text-white">
-                {isAudi ? "100+ Countries" : isVW ? "150+ Countries" : "100+ Countries"}
+                {isPorsche ? "70+ Countries" : isAudi ? "100+ Countries" : isVW ? "150+ Countries" : "100+ Countries"}
               </p>
               <p className="text-[11px] text-zinc-400">
-                {isAudi
-                  ? "Over 1.7 Million Cars Annually"
-                  : isVW
-                    ? "Over 4.8 Million Cars Annually"
-                    : "Over 870,000+ Cars Annually"}
+                {isPorsche
+                  ? "Over 320,000+ Cars Annually"
+                  : isAudi
+                    ? "Over 1.7 Million Cars Annually"
+                    : isVW
+                      ? "Over 4.8 Million Cars Annually"
+                      : "Over 870,000+ Cars Annually"}
               </p>
             </div>
 
             <div className="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800/80">
               <div
-                className={`flex items-center gap-2 mb-1 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                className={`flex items-center gap-2 mb-1 ${isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
               >
                 <ShieldCheck className="w-4 h-4" />
                 <span className="text-xs font-bold uppercase tracking-wider">
@@ -241,17 +273,19 @@ export const AboutSkodaHistory = ({
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
             <div
-              className={`flex items-center gap-2 text-xs font-bold tracking-wider uppercase mb-1 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+              className={`flex items-center gap-2 text-xs font-bold tracking-wider uppercase mb-1 ${isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
             >
               <HistoryIcon className="w-4 h-4" />
               <span>Chronicles of Craftsmanship</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              {isAudi
-                ? "Interactive History: The Audi Journey"
-                : isVW
-                  ? "Interactive History: The Volkswagen Journey"
-                  : "Interactive History: From Bohemia to Bharat"}
+              {isPorsche
+                ? "Interactive History: The Porsche Journey"
+                : isAudi
+                  ? "Interactive History: The Audi Journey"
+                  : isVW
+                    ? "Interactive History: The Volkswagen Journey"
+                    : "Interactive History: From Bohemia to Bharat"}
             </h2>
             <p className="text-zinc-400 text-sm mt-1">
               Select an era below to discover pivotal milestones, breakthrough
@@ -268,11 +302,11 @@ export const AboutSkodaHistory = ({
               <button
                 key={era.id}
                 onClick={() => setSelectedEraId(era.id)}
-                className={`flex-shrink-0 px-4 py-3 rounded-2xl border text-left transition-all cursor-pointer ${isSelected ? (isAudi ? "bg-red-950/70 border-red-500/80 text-white shadow-lg shadow-red-950/50 ring-1 ring-red-400/40" : isVW ? "bg-blue-950/70 border-blue-500/80 text-white shadow-lg shadow-blue-950/50 ring-1 ring-blue-400/40" : "bg-emerald-950/70 border-emerald-500/80 text-white shadow-lg shadow-emerald-950/50 ring-1 ring-emerald-400/40") : "bg-zinc-900/80 border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/80 hover:border-zinc-700"}`}
+                className={`flex-shrink-0 px-4 py-3 rounded-2xl border text-left transition-all cursor-pointer ${isSelected ? (isPorsche ? "bg-amber-950/70 border-amber-500/80 text-white shadow-lg shadow-amber-950/50 ring-1 ring-amber-400/40" : isAudi ? "bg-red-950/70 border-red-500/80 text-white shadow-lg shadow-red-950/50 ring-1 ring-red-400/40" : isVW ? "bg-blue-950/70 border-blue-500/80 text-white shadow-lg shadow-blue-950/50 ring-1 ring-blue-400/40" : "bg-emerald-950/70 border-emerald-500/80 text-white shadow-lg shadow-emerald-950/50 ring-1 ring-emerald-400/40") : "bg-zinc-900/80 border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/80 hover:border-zinc-700"}`}
               >
                 <div className="flex items-center gap-2 mb-0.5">
                   <span
-                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${isSelected ? (isAudi ? "bg-red-500 text-white font-black" : isVW ? "bg-blue-500 text-white font-black" : "bg-emerald-500 text-zinc-950 font-black") : "bg-zinc-800 text-zinc-400"}`}
+                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${isSelected ? (isPorsche ? "bg-amber-500 text-white font-black" : isAudi ? "bg-red-500 text-white font-black" : isVW ? "bg-blue-500 text-white font-black" : "bg-emerald-500 text-zinc-950 font-black") : "bg-zinc-800 text-zinc-400"}`}
                   >
                     {era.period}
                   </span>
@@ -301,7 +335,7 @@ export const AboutSkodaHistory = ({
                 <div className="space-y-2 max-w-3xl">
                   <div className="flex flex-wrap items-center gap-2">
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-black border ${isAudi ? "bg-red-500/20 border-red-500/40 text-red-300" : isVW ? "bg-blue-500/20 border-blue-500/40 text-blue-300" : "bg-emerald-500/20 border-emerald-500/40 text-emerald-300"}`}
+                      className={`px-3 py-1 rounded-full text-xs font-black border ${isPorsche ? "bg-amber-500/20 border-amber-500/40 text-amber-300" : isAudi ? "bg-red-500/20 border-red-500/40 text-red-300" : isVW ? "bg-blue-500/20 border-blue-500/40 text-blue-300" : "bg-emerald-500/20 border-emerald-500/40 text-emerald-300"}`}
                     >
                       {activeEra.period}
                     </span>
@@ -314,7 +348,7 @@ export const AboutSkodaHistory = ({
                     {activeEra.title}
                   </h3>
                   <p
-                    className={`font-medium text-sm italic ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`font-medium text-sm italic ${isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     {activeEra.tagline}
                   </p>
@@ -325,7 +359,19 @@ export const AboutSkodaHistory = ({
 
                 {/* Symbolic Era Visual Badge */}
                 <div className="flex-shrink-0 w-36 h-36 rounded-2xl bg-zinc-950 border border-zinc-800 p-4 flex flex-col items-center justify-center text-center shadow-inner">
-                  {isAudi ? (
+                  {isPorsche ? (
+                    <>
+                      <div className="w-12 h-12 flex items-center justify-center mb-2">
+                        <PorscheLogo variant="emblem" size="md" />
+                      </div>
+                      <span className="text-[11px] font-bold text-zinc-200">
+                        Porsche
+                      </span>
+                      <span className="text-[9px] text-zinc-500">
+                        {activeEra.period}
+                      </span>
+                    </>
+                  ) : isAudi ? (
                     <>
                       <div className="w-12 h-12 flex items-center justify-center mb-2">
                         <AudiLogo variant="emblem" size="md" />
@@ -387,7 +433,7 @@ export const AboutSkodaHistory = ({
                 {/* Specific Milestones */}
                 <div className="lg:col-span-2 space-y-3">
                   <h4
-                    className={`text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 ${isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     <Award className="w-3.5 h-3.5" />
                     Key Historic Milestones
@@ -399,7 +445,7 @@ export const AboutSkodaHistory = ({
                         className="p-4 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 flex items-start gap-3.5"
                       >
                         <div
-                          className={`px-2.5 py-1 rounded-lg bg-zinc-800 border border-zinc-700 text-xs font-black shrink-0 ${isAudi ? "text-red-300" : isVW ? "text-blue-300" : "text-emerald-300"}`}
+                          className={`px-2.5 py-1 rounded-lg bg-zinc-800 border border-zinc-700 text-xs font-black shrink-0 ${isPorsche ? "text-amber-300" : isAudi ? "text-red-300" : isVW ? "text-blue-300" : "text-emerald-300"}`}
                         >
                           {m.year}
                         </div>
@@ -430,7 +476,7 @@ export const AboutSkodaHistory = ({
                           className="flex items-start gap-2 text-xs text-zinc-300"
                         >
                           <CheckCircle2
-                            className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                            className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                           />
                           <span>{inv}</span>
                         </li>
@@ -465,30 +511,36 @@ export const AboutSkodaHistory = ({
       <div className="space-y-6">
         <div>
           <div
-            className={`flex items-center gap-2 text-xs font-bold tracking-wider uppercase mb-1 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+            className={`flex items-center gap-2 text-xs font-bold tracking-wider uppercase mb-1 ${isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
           >
             <Sparkles className="w-4 h-4" />
             <span>
-              {isAudi
-                ? "Progressive Luxury DNA"
-                : isVW
-                  ? "German Engineering DNA"
-                  : "Bohemian Soul"}
+              {isPorsche
+                ? "Stuttgart Sports Car Soul"
+                : isAudi
+                  ? "Progressive Luxury DNA"
+                  : isVW
+                    ? "German Engineering DNA"
+                    : "Bohemian Soul"}
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-            {isAudi
-              ? "The Pillars of Progressive Luxury in Every Modern Audi"
-              : isVW
-                ? "The Pillars of German Engineering in Every Modern Volkswagen"
-                : "The Pillars of Czech Heritage in Every Modern \u0160koda"}
+            {isPorsche
+              ? "The Pillars of Motorsport-Derived Engineering in Every Modern Porsche"
+              : isAudi
+                ? "The Pillars of Progressive Luxury in Every Modern Audi"
+                : isVW
+                  ? "The Pillars of German Engineering in Every Modern Volkswagen"
+                  : "The Pillars of Czech Heritage in Every Modern \u0160koda"}
           </h2>
           <p className="text-zinc-400 text-sm mt-1">
-            {isAudi
-              ? "How quattro rally heritage, hand-built Audi Sport engineering, and digital cockpit innovation shape the car you drive today."
-              : isVW
-                ? "How decades of Autobahn chassis tuning, TSI forced-induction mastery, and uncompromising build quality shape the car you drive today."
-                : "How centuries of Bohemian cut glass art, Prague Cubist sculpture, and pragmatic Czech \u0161ikovnost shape the car you drive today."}
+            {isPorsche
+              ? "How rear-engine 911 heritage, Le Mans-winning motorsport DNA, and decades of PDK/PASM engineering shape the car you drive today."
+              : isAudi
+                ? "How quattro rally heritage, hand-built Audi Sport engineering, and digital cockpit innovation shape the car you drive today."
+                : isVW
+                  ? "How decades of Autobahn chassis tuning, TSI forced-induction mastery, and uncompromising build quality shape the car you drive today."
+                  : "How centuries of Bohemian cut glass art, Prague Cubist sculpture, and pragmatic Czech \u0161ikovnost shape the car you drive today."}
           </p>
         </div>
 
@@ -502,13 +554,13 @@ export const AboutSkodaHistory = ({
                 <div className="space-y-1">
                   <h3 className="text-lg font-bold text-white">{el.title}</h3>
                   <p
-                    className={`text-xs font-medium ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`text-xs font-medium ${isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     {el.subtitle}
                   </p>
                 </div>
                 <div
-                  className={`w-10 h-10 rounded-xl bg-zinc-800/80 border border-zinc-700 flex items-center justify-center shrink-0 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`w-10 h-10 rounded-xl bg-zinc-800/80 border border-zinc-700 flex items-center justify-center shrink-0 ${isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   <Sparkles className="w-5 h-5 text-amber-400" />
                 </div>
@@ -529,78 +581,144 @@ export const AboutSkodaHistory = ({
         </div>
       </div>
 
-      {/* The Indian Connection & SAVWIPL Facilities */}
-      <div className="rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900 to-zinc-950 border border-zinc-800 p-6 sm:p-8 space-y-6">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="space-y-1 max-w-2xl">
-            <div
-              className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
-            >
-              <Factory className="w-4 h-4" />
-              <span>SAVWIPL Manufacturing Footprint</span>
+      {/* The Indian Connection & SAVWIPL Facilities (Porsche India runs a separate, direct-import model) */}
+      {isPorsche ? (
+        <div className="rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900 to-zinc-950 border border-zinc-800 p-6 sm:p-8 space-y-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="space-y-1 max-w-2xl">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400">
+                <Globe2 className="w-4 h-4" />
+                <span>Porsche India Direct Market Operations</span>
+              </div>
+              <h3 className="text-2xl font-black text-white">
+                Imported, Not Assembled: Porsche India's CBU Model
+              </h3>
+              <p className="text-zinc-400 text-xs sm:text-sm">
+                Unlike Škoda and Volkswagen, Porsche India operates entirely
+                separately from Škoda Auto Volkswagen India Pvt. Ltd.
+                (SAVWIPL). Every Porsche sold here — from the 718 Cayman to
+                the Panamera — arrives as a Completely Built Unit (CBU)
+                import, preserving global-spec build quality rather than
+                local assembly.
+              </p>
             </div>
-            <h3 className="text-2xl font-black text-white">
-              Built in Maharashtra: Chakan & Aurangabad Facilities
-            </h3>
-            <p className="text-zinc-400 text-xs sm:text-sm">
-              Škoda Auto Volkswagen India Pvt. Ltd. (SAVWIPL) operates two
-              world-class manufacturing plants in Maharashtra, producing
-              high-tensile steel vehicles for India and exporting to over 30
-              international markets.
-            </p>
+            <div className="flex items-center gap-2">
+              <div className="px-3 py-1.5 rounded-xl font-black text-xs flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 text-amber-300">
+                <ShieldCheck className="w-4 h-4" />
+                <span>100% 5-Star Certified</span>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <div
-              className={`px-3 py-1.5 rounded-xl font-black text-xs flex items-center gap-1.5 ${isAudi ? "bg-red-500/10 border border-red-500/30 text-red-300" : isVW ? "bg-blue-500/10 border border-blue-500/30 text-blue-300" : "bg-emerald-500/10 border border-emerald-500/30 text-emerald-300"}`}
-            >
-              <ShieldCheck className="w-4 h-4" />
-              <span>100% 5-Star Certified</span>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-5 rounded-2xl bg-zinc-950/80 border border-zinc-800/80 space-y-2">
+              <div className="flex items-center justify-between">
+                <h4 className="font-bold text-white text-sm">
+                  Porsche Centre Mumbai
+                </h4>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded border text-amber-400 bg-amber-950 border-amber-800">
+                  Flagship Retail & Experience
+                </span>
+              </div>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                Porsche India's flagship showroom and one of its primary
+                import-clearance and delivery hubs, offering the full CBU
+                lineup alongside a dedicated Porsche Classic and genuine
+                parts service for Indian owners.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-zinc-950/80 border border-zinc-800/80 space-y-2">
+              <div className="flex items-center justify-between">
+                <h4 className="font-bold text-white text-sm">
+                  Porsche Experience Centre, Gurugram
+                </h4>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded border text-amber-400 bg-amber-950 border-amber-800">
+                  Driving Academy
+                </span>
+              </div>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                A dedicated track-and-training facility bringing Porsche's
+                motorsport-derived car-control programs to Indian owners,
+                separate from the SAVWIPL manufacturing network used for
+                Škoda and Volkswagen models.
+              </p>
             </div>
           </div>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="p-5 rounded-2xl bg-zinc-950/80 border border-zinc-800/80 space-y-2">
-            <div className="flex items-center justify-between">
-              <h4 className="font-bold text-white text-sm">
-                Chakan Mega-Plant (Pune)
-              </h4>
-              <span
-                className={`text-[10px] font-bold px-2 py-0.5 rounded border ${isAudi ? "text-red-400 bg-red-950 border-red-800" : isVW ? "text-blue-400 bg-blue-950 border-blue-800" : "text-emerald-400 bg-emerald-950 border-emerald-800"}`}
+      ) : (
+        <div className="rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900 to-zinc-950 border border-zinc-800 p-6 sm:p-8 space-y-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="space-y-1 max-w-2xl">
+              <div
+                className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
               >
-                540 Acres
-              </span>
+                <Factory className="w-4 h-4" />
+                <span>SAVWIPL Manufacturing Footprint</span>
+              </div>
+              <h3 className="text-2xl font-black text-white">
+                Built in Maharashtra: Chakan & Aurangabad Facilities
+              </h3>
+              <p className="text-zinc-400 text-xs sm:text-sm">
+                Škoda Auto Volkswagen India Pvt. Ltd. (SAVWIPL) operates two
+                world-class manufacturing plants in Maharashtra, producing
+                high-tensile steel vehicles for India and exporting to over 30
+                international markets.
+              </p>
             </div>
-            <p className="text-xs text-zinc-400 leading-relaxed">
-              {isAudi
-                ? "Produces the group's Kylaq, Slavia, Kushaq, Virtus, and Taigun on the MQB-A0-IN platform, while Audi models are CKD-assembled separately at Aurangabad. Features"
-                : `Produces the MQB-A0-IN platform models (${isVW ? "Virtus, Taigun" : "Kylaq, Slavia, Kushaq"}). Features`}
-              press shop with high-precision tooling, body shop with 90%+
-              robotic laser welding, cathodic electro-dip paint shop, and an
-              engine testing facility. Home to an 18.5 MW rooftop solar
-              installation.
-            </p>
+            <div className="flex items-center gap-2">
+              <div
+                className={`px-3 py-1.5 rounded-xl font-black text-xs flex items-center gap-1.5 ${isAudi ? "bg-red-500/10 border border-red-500/30 text-red-300" : isVW ? "bg-blue-500/10 border border-blue-500/30 text-blue-300" : "bg-emerald-500/10 border border-emerald-500/30 text-emerald-300"}`}
+              >
+                <ShieldCheck className="w-4 h-4" />
+                <span>100% 5-Star Certified</span>
+              </div>
+            </div>
           </div>
 
-          <div className="p-5 rounded-2xl bg-zinc-950/80 border border-zinc-800/80 space-y-2">
-            <div className="flex items-center justify-between">
-              <h4 className="font-bold text-white text-sm">
-                Shendra Plant (Aurangabad)
-              </h4>
-              <span
-                className={`text-[10px] font-bold px-2 py-0.5 rounded border ${isAudi ? "text-red-400 bg-red-950 border-red-800" : isVW ? "text-blue-400 bg-blue-950 border-blue-800" : "text-emerald-400 bg-emerald-950 border-emerald-800"}`}
-              >
-                Executive & Luxury Assembly
-              </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-5 rounded-2xl bg-zinc-950/80 border border-zinc-800/80 space-y-2">
+              <div className="flex items-center justify-between">
+                <h4 className="font-bold text-white text-sm">
+                  Chakan Mega-Plant (Pune)
+                </h4>
+                <span
+                  className={`text-[10px] font-bold px-2 py-0.5 rounded border ${isAudi ? "text-red-400 bg-red-950 border-red-800" : isVW ? "text-blue-400 bg-blue-950 border-blue-800" : "text-emerald-400 bg-emerald-950 border-emerald-800"}`}
+                >
+                  540 Acres
+                </span>
+              </div>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                {isAudi
+                  ? "Produces the group's Kylaq, Slavia, Kushaq, Virtus, and Taigun on the MQB-A0-IN platform, while Audi models are CKD-assembled separately at Aurangabad. Features"
+                  : `Produces the MQB-A0-IN platform models (${isVW ? "Virtus, Taigun" : "Kylaq, Slavia, Kushaq"}). Features`}
+                press shop with high-precision tooling, body shop with 90%+
+                robotic laser welding, cathodic electro-dip paint shop, and an
+                engine testing facility. Home to an 18.5 MW rooftop solar
+                installation.
+              </p>
             </div>
-            <p className="text-xs text-zinc-400 leading-relaxed">
-              {isAudi
-                ? "The CKD assembly home of the Audi A4, A6, Q3, Q5, and Q7, alongside executive and luxury Škoda and Volkswagen models (Kodiaq 4x4, Superb, Octavia, Tiguan 4x4). Certified with ISO 14001 environmental standards and zero-liquid-discharge water management."
-                : `Assembles executive and luxury models (${isVW ? "Tiguan 4x4" : "Kodiaq 4x4, Superb, Octavia"}), alongside executive luxury Audi models (A4, A6, Q3, Q5, Q7). Certified with ISO 14001 environmental standards and zero-liquid-discharge water management.`}
-            </p>
+
+            <div className="p-5 rounded-2xl bg-zinc-950/80 border border-zinc-800/80 space-y-2">
+              <div className="flex items-center justify-between">
+                <h4 className="font-bold text-white text-sm">
+                  Shendra Plant (Aurangabad)
+                </h4>
+                <span
+                  className={`text-[10px] font-bold px-2 py-0.5 rounded border ${isAudi ? "text-red-400 bg-red-950 border-red-800" : isVW ? "text-blue-400 bg-blue-950 border-blue-800" : "text-emerald-400 bg-emerald-950 border-emerald-800"}`}
+                >
+                  Executive & Luxury Assembly
+                </span>
+              </div>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                {isAudi
+                  ? "The CKD assembly home of the Audi A4, A6, Q3, Q5, and Q7, alongside executive and luxury Škoda and Volkswagen models (Kodiaq 4x4, Superb, Octavia, Tiguan 4x4). Certified with ISO 14001 environmental standards and zero-liquid-discharge water management."
+                  : `Assembles executive and luxury models (${isVW ? "Tiguan 4x4" : "Kodiaq 4x4, Superb, Octavia"}), alongside executive luxury Audi models (A4, A6, Q3, Q5, Q7). Certified with ISO 14001 environmental standards and zero-liquid-discharge water management.`}
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Cross-Link Card to Volkswagen Group */}
       {onExploreVWGroup && (
@@ -614,7 +732,7 @@ export const AboutSkodaHistory = ({
               Proud to be a part of the Volkswagen Group
             </h3>
             <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-              Discover how {isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} synergizes with
+              Discover how {isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} synergizes with
               iconic sister marques like Audi, Porsche, Lamborghini, Bentley,
               Bugatti, SEAT, CUPRA, MAN, and Scania under the world’s leading
               automotive group.

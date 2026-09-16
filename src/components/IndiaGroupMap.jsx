@@ -6,11 +6,13 @@ import { STATE_MAP_COORDINATES } from "../data/indiaMapCoordinates";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
+import { PorscheLogo } from "./PorscheLogo";
 
 const BRANDS = [
   { id: "skoda", label: "Škoda", dot: "bg-emerald-500", text: "text-emerald-400", ring: "ring-emerald-500" },
   { id: "volkswagen", label: "Volkswagen", dot: "bg-blue-500", text: "text-blue-400", ring: "ring-blue-500" },
   { id: "audi", label: "Audi", dot: "bg-red-500", text: "text-red-400", ring: "ring-red-500" },
+  { id: "porsche", label: "Porsche", dot: "bg-amber-500", text: "text-amber-400", ring: "ring-amber-500" },
 ];
 
 function brandMatches(dealership, activeBrands) {
@@ -21,11 +23,12 @@ function brandMatches(dealership, activeBrands) {
 function BrandLogo({ brand, size = "sm" }) {
   if (brand === "audi") return <AudiLogo variant="emblem" size={size} />;
   if (brand === "volkswagen") return <VolkswagenLogo variant="emblem" size={size} />;
+  if (brand === "porsche") return <PorscheLogo variant="emblem" size={size} />;
   return <SkodaLogo variant="emblem" size={size} />;
 }
 
 export const IndiaGroupMap = ({ onSwitchBrand, onOpenDealershipLocator }) => {
-  const [activeBrands, setActiveBrands] = useState(["skoda", "volkswagen", "audi"]);
+  const [activeBrands, setActiveBrands] = useState(["skoda", "volkswagen", "audi", "porsche"]);
   const [selectedState, setSelectedState] = useState(null);
 
   const toggleBrand = (id) => {
@@ -60,7 +63,7 @@ export const IndiaGroupMap = ({ onSwitchBrand, onOpenDealershipLocator }) => {
           One Group, All Across India
         </h2>
         <p className="text-sm text-zinc-400 mt-2">
-          A stylized, click-to-explore map of Škoda, Volkswagen, and Audi presence across India.
+          A stylized, click-to-explore map of Škoda, Volkswagen, Audi, and Porsche presence across India.
           Toggle brands and click a state to see dealerships.
         </p>
       </div>
@@ -220,7 +223,7 @@ export const IndiaGroupMap = ({ onSwitchBrand, onOpenDealershipLocator }) => {
                 <MapPin className="w-8 h-8 text-zinc-700 mb-3" />
                 <p className="text-sm text-zinc-400 font-medium">Click a state on the map</p>
                 <p className="text-xs text-zinc-600 mt-1">
-                  See which Škoda, Volkswagen, and Audi outlets are near you
+                  See which Škoda, Volkswagen, Audi, and Porsche outlets are near you
                 </p>
               </motion.div>
             )}

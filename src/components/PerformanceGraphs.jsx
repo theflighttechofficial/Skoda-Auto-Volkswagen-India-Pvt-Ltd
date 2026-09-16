@@ -17,14 +17,21 @@ import {
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
+import { PorscheLogo } from "./PorscheLogo";
 import { SKODA_MODELS } from "../data/skodaData";
 import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
+import { PORSCHE_MODELS } from "../data/porscheData";
 // vRS/RS performance variants (e.g. Octavia vRS, Audi RS5) get their own
 // MODEL_PERFORMANCE_PROFILES entries but aren't part of the base model
 // catalogs above, so their ids have to be added in explicitly per brand.
 const SKODA_PERFORMANCE_ONLY_IDS = ["octavia-vrs", "kodiaq-vrs"];
 const AUDI_PERFORMANCE_ONLY_IDS = ["rs5", "rs-q8", "rs6"];
+const PORSCHE_PERFORMANCE_ONLY_IDS = [
+  "911-gt3",
+  "911-turbo-s",
+  "cayenne-turbo-gt",
+];
 export const PerformanceGraphs = ({
   brand = "skoda",
   initialEngineId = "1.5-tsi",
@@ -33,16 +40,21 @@ export const PerformanceGraphs = ({
 }) => {
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
-  const currentBrandModels = isAudi
-    ? AUDI_MODELS
-    : isVW
-      ? VW_MODELS
-      : SKODA_MODELS;
-  const currentPerformanceOnlyIds = isAudi
-    ? AUDI_PERFORMANCE_ONLY_IDS
-    : isVW
-      ? []
-      : SKODA_PERFORMANCE_ONLY_IDS;
+  const isPorsche = brand === "porsche";
+  const currentBrandModels = isPorsche
+    ? PORSCHE_MODELS
+    : isAudi
+      ? AUDI_MODELS
+      : isVW
+        ? VW_MODELS
+        : SKODA_MODELS;
+  const currentPerformanceOnlyIds = isPorsche
+    ? PORSCHE_PERFORMANCE_ONLY_IDS
+    : isAudi
+      ? AUDI_PERFORMANCE_ONLY_IDS
+      : isVW
+        ? []
+        : SKODA_PERFORMANCE_ONLY_IDS;
   // Only show performance profiles for cars that actually belong to the
   // active brand's current lineup (Škoda / Volkswagen / Audi), rather than
   // rendering every model from every brand in one flat, unfiltered list.
@@ -60,7 +72,13 @@ export const PerformanceGraphs = ({
   );
   const [selectedEngineId, setSelectedEngineId] = useState(initialEngineId);
   const [selectedModelId, setSelectedModelId] = useState(
-    isVW && initialModelId === "slavia" ? "virtus" : initialModelId,
+    initialModelId === "slavia"
+      ? isPorsche
+        ? "911-carrera"
+        : isVW
+          ? "virtus"
+          : initialModelId
+      : initialModelId,
   );
   const [activeGraphTab, setActiveGraphTab] = useState("dyno");
   const [isCompareMode, setIsCompareMode] = useState(false);
@@ -158,16 +176,18 @@ export const PerformanceGraphs = ({
     <div className="space-y-8">
       {/* Top Banner */}
       <div
-        className={`rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900/90 border border-zinc-800 p-6 sm:p-8 relative overflow-hidden shadow-2xl ${isAudi ? "to-red-950/40" : isVW ? "to-blue-950/40" : "to-emerald-950/40"}`}
+        className={`rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900/90 border border-zinc-800 p-6 sm:p-8 relative overflow-hidden shadow-2xl ${isPorsche ? "to-amber-950/40" : isAudi ? "to-red-950/40" : isVW ? "to-blue-950/40" : "to-emerald-950/40"}`}
       >
         <div
-          className={`absolute right-0 top-0 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isAudi ? "bg-red-600/10" : isVW ? "bg-blue-600/10" : "bg-emerald-600/10"}`}
+          className={`absolute right-0 top-0 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isPorsche ? "bg-amber-600/10" : isAudi ? "bg-red-600/10" : isVW ? "bg-blue-600/10" : "bg-emerald-600/10"}`}
         />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-3xl">
             <div className="flex items-center gap-2">
-              {isAudi ? (
+              {isPorsche ? (
+                <PorscheLogo variant="emblem" size="sm" />
+              ) : isAudi ? (
                 <AudiLogo variant="emblem" size="sm" />
               ) : isVW ? (
                 <VolkswagenLogo variant="emblem" size="sm" />
@@ -175,34 +195,42 @@ export const PerformanceGraphs = ({
                 <SkodaLogo variant="emblem" size="sm" />
               )}
               <span className="text-xs uppercase font-bold tracking-wider text-blue-400">
-                {isAudi
-                  ? "Audi Powertrain Lab"
-                  : isVW
-                    ? "Volkswagen Powertrain Lab"
-                    : "\u0160koda Powertrain Lab"}
+                {isPorsche
+                  ? "Porsche Powertrain Lab"
+                  : isAudi
+                    ? "Audi Powertrain Lab"
+                    : isVW
+                      ? "Volkswagen Powertrain Lab"
+                      : "\u0160koda Powertrain Lab"}
               </span>
               <span className="text-zinc-600">•</span>
               <span className="text-xs text-zinc-400">
-                {isAudi
-                  ? "Audi India (Volkswagen Group Premium Brand)"
-                  : "Škoda Auto Volkswagen India Pvt. Ltd."}
+                {isPorsche
+                  ? "Porsche India (Volkswagen Group Sports Car Brand)"
+                  : isAudi
+                    ? "Audi India (Volkswagen Group Premium Brand)"
+                    : "Škoda Auto Volkswagen India Pvt. Ltd."}
               </span>
             </div>
 
             <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
-              {isAudi
-                ? "Audi Telemetry & Dyno Graphs"
-                : isVW
-                  ? "Volkswagen Telemetry & Dyno Graphs"
-                  : "Performance Dyno Graphs & Telemetry"}
+              {isPorsche
+                ? "Porsche Telemetry & Dyno Graphs"
+                : isAudi
+                  ? "Audi Telemetry & Dyno Graphs"
+                  : isVW
+                    ? "Volkswagen Telemetry & Dyno Graphs"
+                    : "Performance Dyno Graphs & Telemetry"}
             </h2>
 
             <p className="text-sm text-zinc-300 leading-relaxed">
-              {isAudi
-                ? "Explore dynamic power and torque delivery curves, real-world 0\u2013100 km/h acceleration telemetry, quattro-equipped gearbox ratios, and thermal fuel efficiency curves for Audi TFSI engines."
-                : isVW
-                  ? "Explore dynamic power and torque delivery curves, real-world 0\u2013100 km/h acceleration telemetry, DSG gearbox ratios, and thermal fuel efficiency curves for Volkswagen cars."
-                  : "Explore dynamic power and torque delivery curves, real-world 0\u2013100 km/h acceleration telemetry, gearbox ratio calibrations, and thermal fuel efficiency curves for every \u0160koda model and engine variant."}
+              {isPorsche
+                ? "Explore dynamic power and torque delivery curves, real-world 0\u2013100 km/h acceleration telemetry, PDK gearbox ratios, and thermal fuel efficiency curves for Porsche flat-6, flat-4, and turbocharged V6/V8 engines."
+                : isAudi
+                  ? "Explore dynamic power and torque delivery curves, real-world 0\u2013100 km/h acceleration telemetry, quattro-equipped gearbox ratios, and thermal fuel efficiency curves for Audi TFSI engines."
+                  : isVW
+                    ? "Explore dynamic power and torque delivery curves, real-world 0\u2013100 km/h acceleration telemetry, DSG gearbox ratios, and thermal fuel efficiency curves for Volkswagen cars."
+                    : "Explore dynamic power and torque delivery curves, real-world 0\u2013100 km/h acceleration telemetry, gearbox ratio calibrations, and thermal fuel efficiency curves for every \u0160koda model and engine variant."}
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-1 text-xs text-zinc-300">

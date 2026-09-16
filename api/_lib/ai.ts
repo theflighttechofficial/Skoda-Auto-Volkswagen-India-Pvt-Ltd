@@ -20,6 +20,74 @@ function generateSmartSkodaResponse(question: string, modelContext?: string, eng
   const q = question.toLowerCase();
   const selectedModel = (modelContext && modelContext !== 'All') ? modelContext.toLowerCase() : '';
   const isAudiBrand = brandContext === 'audi';
+  const isPorscheBrand = brandContext === 'porsche';
+
+  // Porsche specific queries, when a Porsche model is selected, or when the active site brand is Porsche
+  if (isPorscheBrand || q.includes('porsche') || q.includes('pdk') || q.includes('911') || q.includes('cayman') || q.includes('macan') || q.includes('cayenne') || q.includes('panamera') || q.includes('gt3') || q.includes('turbo s') || selectedModel.includes('911') || selectedModel.includes('cayman') || selectedModel.includes('macan') || selectedModel.includes('cayenne') || selectedModel.includes('panamera')) {
+    if (q.includes('gt3') || q.includes('turbo s') || q.includes('turbo gt') || selectedModel.includes('gt3') || selectedModel.includes('turbo-s') || selectedModel.includes('turbo-gt')) {
+      return `### Porsche Motorsport-Derived Performance Flagships
+- **911 GT3:** 4.0L Naturally-Aspirated Flat-6 producing **510 PS** & **470 Nm** revving to a 9,000 RPM redline, derived from the 911 RSR race engine. Double-wishbone front suspension and rear-axle steering. 0-100 km/h in **3.4s**, top speed **318 km/h**.
+- **911 Turbo S:** 3.7L Twin-Turbo Flat-6 producing **650 PS** & **800 Nm** with Porsche Traction Management all-wheel drive and launch control. 0-100 km/h in a blistering **2.7s**, top speed **330 km/h**.
+- **Cayenne Turbo GT:** 4.0L Twin-Turbo V8 producing **640 PS** & **850 Nm**, once held the production-SUV Nürburgring Nordschleife lap record. 0-100 km/h in **3.3s**, top speed **300 km/h**.`;
+    }
+
+    if (q.includes('911') || selectedModel.includes('911-carrera')) {
+      return `### Porsche 911 Carrera (The Rear-Engine Icon, Reimagined Again)
+- **Powertrain:** 3.0L Twin-Turbo Flat-6 producing **385 PS** & **450 Nm** (Carrera S tune: **450 PS** & **530 Nm**).
+- **Transmission:** 8-Speed PDK Dual-Clutch, with a 7-speed manual still on offer on the base Carrera.
+- **Acceleration:** 0 to 100 km/h in **4.2s** (Carrera) or **3.5s** (Carrera S) | Top speed up to **308 km/h**.
+- **Heritage:** Rear-mounted, twin-turbocharged flat-6 layout unchanged in concept since 1963 — the longest continuously produced sports car nameplate in the world.
+- **Price Range:** ₹1.99 Crore to ₹2.35 Crore (Ex-showroom).`;
+    }
+
+    if (q.includes('cayman') || q.includes('boxster') || selectedModel.includes('718')) {
+      return `### Porsche 718 Cayman (The Purist's Mid-Engine Sports Coupe)
+- **Powertrain:** 2.0L Turbo-Petrol Flat-4 producing **300 PS** & **380 Nm**.
+- **Transmission:** 7-Speed PDK Dual-Clutch or 6-Speed Manual for purists.
+- **Chassis:** Mid-engine, rear-wheel-drive layout for near-perfect 45:55 weight balance.
+- **Acceleration:** 0 to 100 km/h in **4.9s** | Top speed **275 km/h**.
+- **Price Range:** ₹1.15 Crore Onwards.`;
+    }
+
+    if (q.includes('macan') || selectedModel === 'macan') {
+      return `### Porsche Macan (The Benchmark Compact Luxury SUV)
+- **Powertrain:** 2.0L Turbo-Petrol producing **265 PS** & **400 Nm**, with a 2.9L Twin-Turbo V6 (380 PS) Macan S available.
+- **Transmission:** 7-Speed PDK Dual-Clutch with Porsche Active Suspension Management (PASM) standard.
+- **Acceleration:** 0 to 100 km/h in **6.2s** | Top speed **232 km/h**.
+- **Price Range:** ₹87.40 Lakh Onwards.`;
+    }
+
+    if (q.includes('cayenne') || selectedModel === 'cayenne') {
+      return `### Porsche Cayenne (The Full-Size Luxury SUV with Sports Car DNA)
+- **Powertrain:** 3.0L Turbo-Petrol V6 producing **353 PS** & **500 Nm**.
+- **Transmission:** 8-Speed Tiptronic S Automatic with standard Porsche Traction Management all-wheel drive.
+- **Acceleration:** 0 to 100 km/h in **5.9s** | Top speed **245 km/h**.
+- **Price Range:** ₹1.31 Crore Onwards.`;
+    }
+
+    if (q.includes('panamera') || selectedModel === 'panamera') {
+      return `### Porsche Panamera (The Grand-Touring Liftback with Sports Sedan Reflexes)
+- **Powertrain:** 2.9L Twin-Turbo V6 producing **330 PS** & **450 Nm**.
+- **Transmission:** 8-Speed PDK Dual-Clutch with three-chamber adaptive air suspension standard.
+- **Acceleration:** 0 to 100 km/h in **5.6s** | Top speed **259 km/h**.
+- **Price Range:** ₹1.68 Crore Onwards.`;
+    }
+
+    if (q.includes('pdk')) {
+      return `### What is PDK?
+PDK (Porsche-Doppelkupplungsgetriebe, or Porsche Dual-Clutch Transmission) is Porsche's signature dual-clutch automatic gearbox. Two separate clutches pre-select the next gear before it's needed, allowing shifts in a few hundredths of a second with no interruption in power delivery — faster and smoother than a torque-converter automatic or manual, while still supporting manual paddle-shift control. It is standard or optional across the entire current Porsche lineup, from the 911 to the Cayenne.`;
+    }
+
+    return `### Porsche India Portfolio Overview
+Porsche represents the union of everyday usability and genuine motorsport engineering:
+- **Porsche 911 Carrera:** The rear-engine sports car icon, from ₹1.99 Crore.
+- **Porsche 718 Cayman:** Mid-engine purist's sports coupe, from ₹1.15 Crore.
+- **Porsche Macan:** Benchmark compact luxury SUV, from ₹87.40 Lakh.
+- **Porsche Cayenne:** Full-size luxury SUV with sports car DNA, from ₹1.31 Crore.
+- **Porsche Panamera:** Grand-touring liftback, from ₹1.68 Crore.
+- **Performance Flagships:** 911 GT3 (510 PS naturally-aspirated), 911 Turbo S (650 PS all-wheel drive), and Cayenne Turbo GT (640 PS, once a Nürburgring SUV lap record holder).
+- **PDK Dual-Clutch Transmission** and Porsche Active Suspension Management (PASM) feature across the range.`;
+  }
 
   // Volkswagen specific queries or when VW model is selected
   if (brandContext === 'volkswagen' || q.includes('golf') || q.includes('gti') || q.includes('gli') || q.includes('virtus') || q.includes('taigun') || q.includes('tiguan') || q.includes('tayron') || q.includes('polo') || q.includes('jetta') || selectedModel.includes('virtus') || selectedModel.includes('taigun') || selectedModel.includes('tiguan') || selectedModel.includes('tayron') || selectedModel.includes('golf') || selectedModel.includes('polo') || selectedModel.includes('jetta')) {
@@ -358,16 +426,63 @@ export interface AskSkodaAIParams {
  */
 export async function getSkodaAIAnswer(params: AskSkodaAIParams): Promise<string> {
   const { question, model, variant, engine } = params;
-  const userBrand = params.brand || (question.toLowerCase().includes('audi') || question.toLowerCase().includes('quattro') || question.toLowerCase().includes('tfsi') ? 'audi' : question.toLowerCase().includes('volkswagen') || question.toLowerCase().includes('virtus') || question.toLowerCase().includes('taigun') || question.toLowerCase().includes('tiguan') || question.toLowerCase().includes('golf') ? 'volkswagen' : 'skoda');
+  const userBrand = params.brand || (question.toLowerCase().includes('porsche') || question.toLowerCase().includes('pdk') || question.toLowerCase().includes('911') ? 'porsche' : question.toLowerCase().includes('audi') || question.toLowerCase().includes('quattro') || question.toLowerCase().includes('tfsi') ? 'audi' : question.toLowerCase().includes('volkswagen') || question.toLowerCase().includes('virtus') || question.toLowerCase().includes('taigun') || question.toLowerCase().includes('tiguan') || question.toLowerCase().includes('golf') ? 'volkswagen' : 'skoda');
   const isVW = userBrand === 'volkswagen';
   const isAudi = userBrand === 'audi';
+  const isPorsche = userBrand === 'porsche';
 
   const ai = getGeminiClient();
   if (!ai) {
     return generateSmartSkodaResponse(question, model, engine, userBrand);
   }
 
-  const systemPrompt = isAudi
+  const systemPrompt = isPorsche
+    ? `You are the official Porsche India AI Consultant. Your mission is to provide accurate, objective, helpful, and beautifully structured automotive guidance on the entire Porsche India lineup.
+
+KNOWLEDGE BASE & FACTS:
+1. Porsche 911 Carrera (The Rear-Engine Icon, Reimagined Again):
+   - Price: ₹1.99 Crore to ₹2.35 Crore (Ex-showroom).
+   - Engine: 3.0L Twin-Turbo Flat-6 (385 PS / 450 Nm), Carrera S tune (450 PS / 530 Nm). 8-Speed PDK or 7-Speed Manual.
+   - Highlights: Rear-mounted flat-6 layout unchanged in concept since 1963, Porsche Active Suspension Management (PASM) standard.
+
+2. Porsche 718 Cayman (The Purist's Mid-Engine Sports Coupe):
+   - Price: ₹1.15 Crore Onwards.
+   - Engine: 2.0L Turbo-Petrol Flat-4 (300 PS / 380 Nm). 7-Speed PDK or 6-Speed Manual.
+   - Highlights: Mid-engine, rear-wheel-drive layout for near-perfect 45:55 weight balance.
+
+3. Porsche Macan (The Benchmark Compact Luxury SUV):
+   - Price: ₹87.40 Lakh Onwards.
+   - Engine: 2.0L Turbo-Petrol (265 PS / 400 Nm), Macan S adds a 2.9L Twin-Turbo V6 (380 PS).
+   - Highlights: 7-Speed PDK, Porsche Active Suspension Management standard.
+
+4. Porsche Cayenne (The Full-Size Luxury SUV with Sports Car DNA):
+   - Price: ₹1.31 Crore Onwards.
+   - Engine: 3.0L Turbo-Petrol V6 (353 PS / 500 Nm). 8-Speed Tiptronic S Automatic.
+   - Highlights: Standard Porsche Traction Management all-wheel drive, air suspension available.
+
+5. Porsche Panamera (The Grand-Touring Liftback):
+   - Price: ₹1.68 Crore Onwards.
+   - Engine: 2.9L Twin-Turbo V6 (330 PS / 450 Nm). 8-Speed PDK.
+   - Highlights: Three-chamber adaptive air suspension standard, rear-wheel drive with 4/4S adding all-wheel drive.
+
+6. Porsche Motorsport-Derived Performance Flagships:
+   - Porsche 911 GT3: 4.0L Naturally-Aspirated Flat-6 (510 PS / 470 Nm) revving to 9,000 RPM, double-wishbone front suspension, rear-axle steering, 0-100 km/h in 3.4s, top speed 318 km/h.
+   - Porsche 911 Turbo S: 3.7L Twin-Turbo Flat-6 (650 PS / 800 Nm), Porsche Traction Management all-wheel drive, 0-100 km/h in 2.7s, top speed 330 km/h.
+   - Porsche Cayenne Turbo GT: 4.0L Twin-Turbo V8 (640 PS / 850 Nm), once held the production-SUV Nürburgring Nordschleife lap record, 0-100 km/h in 3.3s, top speed 300 km/h.
+
+7. PDK & Chassis Technology:
+   - PDK (Porsche-Doppelkupplungsgetriebe): Porsche's signature dual-clutch automatic, pre-selecting the next gear for near-instant, uninterrupted shifts.
+   - Porsche Active Suspension Management (PASM): adaptive electronic damping standard or available across the range.
+
+8. Ownership:
+   - Porsche India direct-operated dealer network with CBU import for most models.
+   - Porsche Approved warranty and maintenance packages available through authorized Porsche Centres.
+
+INSTRUCTIONS:
+- Answer with a tone that reflects a performance-focused, motorsport-heritage premium brand — precise, enthusiast-minded, and confident.
+- Keep answers well-structured and objective, with clear markdown formatting.
+- User Context: Model=${model || 'All'}, Variant=${variant || 'General'}, Engine=${engine || 'All'}.`
+    : isAudi
     ? `You are the official Audi India AI Consultant. Your mission is to provide accurate, objective, helpful, and beautifully structured automotive guidance on the entire Audi India lineup.
 
 KNOWLEDGE BASE & FACTS:

@@ -18,6 +18,7 @@ import { DEALERSHIPS, INDIAN_STATES } from "../data/dealershipData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
+import { PorscheLogo } from "./PorscheLogo";
 export const DealershipLocator = ({
   brand = "skoda",
   initialCity,
@@ -25,6 +26,7 @@ export const DealershipLocator = ({
 }) => {
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
+  const isPorsche = brand === "porsche";
   const [selectedState, setSelectedState] = useState("All States");
   const [selectedCity, setSelectedCity] = useState(initialCity || "All Cities");
   const [selectedType, setSelectedType] = useState("All");
@@ -33,7 +35,13 @@ export const DealershipLocator = ({
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [bookingDealer, setBookingDealer] = useState(null);
   const [bookingModel, setBookingModel] = useState(
-    isAudi ? "Audi Q5" : isVW ? "Virtus GT Plus" : "Octavia vRS",
+    isAudi
+      ? "Audi Q5"
+      : isVW
+        ? "Virtus GT Plus"
+        : isPorsche
+          ? "911 Carrera"
+          : "Octavia vRS",
   );
   const [bookingType, setBookingType] = useState("Test Drive");
   const [userName, setUserName] = useState("");
@@ -41,7 +49,15 @@ export const DealershipLocator = ({
   const [preferredDate, setPreferredDate] = useState("");
   const [bookingSubmitted, setBookingSubmitted] = useState(false);
   useEffect(() => {
-    setBookingModel(isAudi ? "Audi Q5" : isVW ? "Virtus GT Plus" : "Octavia vRS");
+    setBookingModel(
+      isAudi
+        ? "Audi Q5"
+        : isVW
+          ? "Virtus GT Plus"
+          : isPorsche
+            ? "911 Carrera"
+            : "Octavia vRS",
+    );
   }, [brand]);
   const brandDealerships = useMemo(() => {
     return DEALERSHIPS.filter((dealer) => {
@@ -105,10 +121,10 @@ export const DealershipLocator = ({
     <div className="space-y-8">
       {/* Header Banner */}
       <div
-        className={`rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900/90 border p-6 sm:p-8 relative overflow-hidden shadow-2xl ${isAudi ? "to-red-950/40 border-red-900/40" : isVW ? "to-blue-950/40 border-blue-900/40" : "to-emerald-950/40 border-zinc-800"}`}
+        className={`rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900/90 border p-6 sm:p-8 relative overflow-hidden shadow-2xl ${isAudi ? "to-red-950/40 border-red-900/40" : isVW ? "to-blue-950/40 border-blue-900/40" : isPorsche ? "to-amber-950/40 border-amber-900/40" : "to-emerald-950/40 border-zinc-800"}`}
       >
         <div
-          className={`absolute -right-16 -top-16 w-80 h-80 rounded-full blur-3xl pointer-events-none ${isAudi ? "bg-red-500/10" : isVW ? "bg-blue-500/10" : "bg-emerald-500/10"}`}
+          className={`absolute -right-16 -top-16 w-80 h-80 rounded-full blur-3xl pointer-events-none ${isAudi ? "bg-red-500/10" : isVW ? "bg-blue-500/10" : isPorsche ? "bg-amber-500/10" : "bg-emerald-500/10"}`}
         />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -118,15 +134,19 @@ export const DealershipLocator = ({
                 <AudiLogo variant="emblem" size="sm" />
               ) : isVW ? (
                 <VolkswagenLogo variant="emblem" size="sm" />
+              ) : isPorsche ? (
+                <PorscheLogo variant="emblem" size="sm" />
               ) : (
                 <SkodaLogo variant="emblem" size="sm" />
               )}
               <span
-                className={`text-xs uppercase font-bold tracking-wider ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                className={`text-xs uppercase font-bold tracking-wider ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
               >
                 {isAudi
                   ? "Audi India (Volkswagen Group Premium Brand)"
-                  : "Škoda Auto Volkswagen India Pvt. Ltd. (SAVWIPL)"}
+                  : isPorsche
+                    ? "Porsche India (Direct Market Operations)"
+                    : "Škoda Auto Volkswagen India Pvt. Ltd. (SAVWIPL)"}
               </span>
               <span className="text-zinc-600">•</span>
               <span className="text-xs text-zinc-400">
@@ -134,7 +154,9 @@ export const DealershipLocator = ({
                   ? "Official Audi India Network"
                   : isVW
                     ? "Official Volkswagen India Network"
-                    : "Official \u0160koda India Network"}
+                    : isPorsche
+                      ? "Official Porsche India Network"
+                      : "Official \u0160koda India Network"}
               </span>
             </div>
 
@@ -143,7 +165,9 @@ export const DealershipLocator = ({
                 ? "Audi Dealership & Service Locator"
                 : isVW
                   ? "Volkswagen Dealership & Service Locator"
-                  : "Dealership & Service Center Locator"}
+                  : isPorsche
+                    ? "Porsche Centre & Service Locator"
+                    : "Dealership & Service Center Locator"}
             </h2>
 
             <p className="text-sm text-zinc-300 leading-relaxed">
@@ -151,26 +175,30 @@ export const DealershipLocator = ({
                 ? "Find authorized Audi India showrooms and certified workshop centers across major Indian metros. Schedule test drives for the A4, A6, Q3, Q5, Q7, or Q8, and access Audi Advantage service packages."
                 : isVW
                   ? "Find authorized Volkswagen India 3S facilities, city stores, and certified workshop centers across 150+ Indian cities. Schedule home test drives for Virtus, Taigun, or Tiguan, and access 60-minute express service."
-                  : "Find authorized \u0160koda India 3S facilities, flagship experience showrooms, and certified workshop centers across 150+ Indian cities. Schedule home or showroom test drives, access 60-minute express servicing, and connect directly with certified brand specialists."}
+                  : isPorsche
+                    ? "Find authorized Porsche Centres and certified workshop facilities across major Indian metros. Schedule test drives for the 911, Cayenne, Macan, Panamera, or 718 Cayman, and access Porsche Approved service programs."
+                    : "Find authorized \u0160koda India 3S facilities, flagship experience showrooms, and certified workshop centers across 150+ Indian cities. Schedule home or showroom test drives, access 60-minute express servicing, and connect directly with certified brand specialists."}
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-zinc-300">
               <span className="flex items-center gap-1.5 font-medium">
                 <Building2
-                  className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
                 />
                 <strong>200+ Touchpoints</strong> Nationwide
               </span>
               <span className="flex items-center gap-1.5 font-medium">
                 <ShieldCheck
-                  className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
                 />
                 <strong>
                   {isAudi
                     ? "Audi Advantage: 4-Year / Unlimited km"
                     : isVW
                       ? "4EVER Care: 4-Year / 100,000 km"
-                      : "4-Year / 100,000 km"}
+                      : isPorsche
+                        ? "Porsche Warranty: 2-Year / Unlimited km"
+                        : "4-Year / 100,000 km"}
                 </strong>{" "}
                 Standard Warranty
               </span>
@@ -182,7 +210,9 @@ export const DealershipLocator = ({
                     ? "1800 209 3232"
                     : isVW
                       ? "1800 102 0909"
-                      : "1800 123 0955"}
+                      : isPorsche
+                        ? "1800 103 6911"
+                        : "1800 123 0955"}
                 </strong>
               </span>
             </div>
@@ -197,7 +227,7 @@ export const DealershipLocator = ({
             <div className="flex justify-between items-center gap-4 text-zinc-400">
               <span>Customer Satisfaction:</span>
               <span
-                className={`font-bold ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                className={`font-bold ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
               >
                 98.4% Peace of Mind
               </span>
@@ -208,7 +238,9 @@ export const DealershipLocator = ({
                   ? "Audi Advantage Packages:"
                   : isVW
                     ? "4EVER Care Packages:"
-                    : "SuperCare Packages:"}
+                    : isPorsche
+                      ? "Porsche Approved Packages:"
+                      : "SuperCare Packages:"}
               </span>
               <span className="text-amber-400 font-bold">
                 Up to 8 Years Covered
@@ -229,7 +261,7 @@ export const DealershipLocator = ({
               placeholder="Search by city, dealer, or PIN..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className={`w-full pl-10 pr-4 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs sm:text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : "focus:border-emerald-500"}`}
+              className={`w-full pl-10 pr-4 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs sm:text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
             />
             {searchQuery && (
               <button
@@ -249,7 +281,7 @@ export const DealershipLocator = ({
                 setSelectedState(e.target.value);
                 setSelectedCity("All Cities");
               }}
-              className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs sm:text-sm text-white focus:outline-none transition-colors cursor-pointer ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : "focus:border-emerald-500"}`}
+              className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs sm:text-sm text-white focus:outline-none transition-colors cursor-pointer ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
             >
               {INDIAN_STATES.map((st) => (
                 <option key={st} value={st} className="bg-zinc-950 text-white">
@@ -264,7 +296,7 @@ export const DealershipLocator = ({
             <select
               value={selectedCity}
               onChange={(e) => setSelectedCity(e.target.value)}
-              className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs sm:text-sm text-white focus:outline-none transition-colors cursor-pointer ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : "focus:border-emerald-500"}`}
+              className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs sm:text-sm text-white focus:outline-none transition-colors cursor-pointer ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
             >
               {availableCities.map((city) => (
                 <option
@@ -285,7 +317,7 @@ export const DealershipLocator = ({
                 <button
                   key={type}
                   onClick={() => setSelectedType(type)}
-                  className={`flex-1 py-1.5 px-2 rounded-lg text-center transition-all cursor-pointer ${selectedType === type ? (isAudi ? "bg-red-600 text-white shadow-md" : isVW ? "bg-blue-600 text-white shadow-md" : "bg-emerald-600 text-white shadow-md") : "text-zinc-400 hover:text-white"}`}
+                  className={`flex-1 py-1.5 px-2 rounded-lg text-center transition-all cursor-pointer ${selectedType === type ? (isAudi ? "bg-red-600 text-white shadow-md" : isVW ? "bg-blue-600 text-white shadow-md" : isPorsche ? "bg-amber-600 text-white shadow-md" : "bg-emerald-600 text-white shadow-md") : "text-zinc-400 hover:text-white"}`}
                 >
                   {type === "3S Facility" ? "3S" : type}
                 </button>
@@ -319,7 +351,7 @@ export const DealershipLocator = ({
                 setSelectedCity(city);
                 setSearchQuery("");
               }}
-              className={`px-3 py-1 rounded-lg border whitespace-nowrap transition-all cursor-pointer ${selectedCity === city ? (isAudi ? "bg-red-950/80 border-red-500 text-red-300 font-bold" : isVW ? "bg-blue-950/80 border-blue-500 text-blue-300 font-bold" : "bg-emerald-950/80 border-emerald-500 text-emerald-300 font-bold") : "bg-zinc-950 border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700"}`}
+              className={`px-3 py-1 rounded-lg border whitespace-nowrap transition-all cursor-pointer ${selectedCity === city ? (isAudi ? "bg-red-950/80 border-red-500 text-red-300 font-bold" : isVW ? "bg-blue-950/80 border-blue-500 text-blue-300 font-bold" : isPorsche ? "bg-amber-950/80 border-amber-500 text-amber-300 font-bold" : "bg-emerald-950/80 border-emerald-500 text-emerald-300 font-bold") : "bg-zinc-950 border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700"}`}
             >
               {city}
             </button>
@@ -335,7 +367,7 @@ export const DealershipLocator = ({
                 setSelectedType("All");
                 setSearchQuery("");
               }}
-              className={`text-xs underline font-semibold ml-2 whitespace-nowrap cursor-pointer ${isAudi ? "text-red-400 hover:text-red-300" : isVW ? "text-blue-400 hover:text-blue-300" : "text-emerald-400 hover:text-emerald-300"}`}
+              className={`text-xs underline font-semibold ml-2 whitespace-nowrap cursor-pointer ${isAudi ? "text-red-400 hover:text-red-300" : isVW ? "text-blue-400 hover:text-blue-300" : isPorsche ? "text-amber-400 hover:text-amber-300" : "text-emerald-400 hover:text-emerald-300"}`}
             >
               Reset Filters
             </button>
@@ -355,7 +387,7 @@ export const DealershipLocator = ({
             <span>
               {" "}
               in{" "}
-              <strong className={isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}>
+              <strong className={isAudi ? "text-red-400" : isVW ? "text-blue-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}>
                 {selectedCity}
               </strong>
             </span>
@@ -368,8 +400,9 @@ export const DealershipLocator = ({
           )}
         </div>
         <span className="text-[11px] text-zinc-500 hidden sm:inline">
-          SAVWIPL certified facilities adhere to strict European diagnostic
-          standards
+          {isPorsche
+            ? "Porsche India certified facilities adhere to strict European diagnostic standards"
+            : "SAVWIPL certified facilities adhere to strict European diagnostic standards"}
         </span>
       </div>
 
@@ -386,13 +419,13 @@ export const DealershipLocator = ({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.25 }}
-                className={`rounded-3xl border p-6 flex flex-col justify-between space-y-5 transition-all shadow-xl relative overflow-hidden ${dealer.id.includes("corporate") ? (isAudi ? "bg-gradient-to-b from-zinc-900 to-zinc-950 border-red-500/70 shadow-red-950/20" : isVW ? "bg-gradient-to-b from-zinc-900 to-zinc-950 border-blue-500/70 shadow-blue-950/20" : "bg-gradient-to-b from-zinc-900 to-zinc-950 border-emerald-500/70 shadow-emerald-950/20") : isSelected ? (isAudi ? "bg-zinc-900 border-red-500 ring-1 ring-red-500/50" : isVW ? "bg-zinc-900 border-blue-500 ring-1 ring-blue-500/50" : "bg-zinc-900 border-emerald-500 ring-1 ring-emerald-500/50") : "bg-zinc-900/80 border-zinc-800 hover:border-zinc-700 hover:bg-zinc-900"}`}
+                className={`rounded-3xl border p-6 flex flex-col justify-between space-y-5 transition-all shadow-xl relative overflow-hidden ${dealer.id.includes("corporate") ? (isAudi ? "bg-gradient-to-b from-zinc-900 to-zinc-950 border-red-500/70 shadow-red-950/20" : isVW ? "bg-gradient-to-b from-zinc-900 to-zinc-950 border-blue-500/70 shadow-blue-950/20" : isPorsche ? "bg-gradient-to-b from-zinc-900 to-zinc-950 border-amber-500/70 shadow-amber-950/20" : "bg-gradient-to-b from-zinc-900 to-zinc-950 border-emerald-500/70 shadow-emerald-950/20") : isSelected ? (isAudi ? "bg-zinc-900 border-red-500 ring-1 ring-red-500/50" : isVW ? "bg-zinc-900 border-blue-500 ring-1 ring-blue-500/50" : isPorsche ? "bg-zinc-900 border-amber-500 ring-1 ring-amber-500/50" : "bg-zinc-900 border-emerald-500 ring-1 ring-emerald-500/50") : "bg-zinc-900/80 border-zinc-800 hover:border-zinc-700 hover:bg-zinc-900"}`}
               >
                 {dealer.id.includes("corporate") && (
                   <div
-                    className={`absolute top-0 right-0 px-3 py-1 text-white font-black italic text-[10px] rounded-bl-xl uppercase tracking-wider ${isAudi ? "bg-red-600" : isVW ? "bg-blue-600" : "bg-emerald-600"}`}
+                    className={`absolute top-0 right-0 px-3 py-1 text-white font-black italic text-[10px] rounded-bl-xl uppercase tracking-wider ${isAudi ? "bg-red-600" : isVW ? "bg-blue-600" : isPorsche ? "bg-amber-600" : "bg-emerald-600"}`}
                   >
-                    SAVWIPL Corporate Center
+                    {isPorsche ? "Porsche India Corporate Centre" : "SAVWIPL Corporate Center"}
                   </div>
                 )}
 
@@ -400,13 +433,13 @@ export const DealershipLocator = ({
                   {/* Type Badge & Location */}
                   <div className="flex items-center justify-between gap-2">
                     <span
-                      className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider border ${dealer.type === "3S Facility" ? (isAudi ? "bg-red-950/80 text-red-300 border-red-800" : isVW ? "bg-blue-950/80 text-blue-300 border-blue-800" : "bg-emerald-950/80 text-emerald-300 border-emerald-800") : dealer.type === "Showroom" ? "bg-sky-950/80 text-sky-300 border-sky-800" : "bg-amber-950/80 text-amber-300 border-amber-800"}`}
+                      className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider border ${dealer.type === "3S Facility" ? (isAudi ? "bg-red-950/80 text-red-300 border-red-800" : isVW ? "bg-blue-950/80 text-blue-300 border-blue-800" : isPorsche ? "bg-amber-950/80 text-amber-300 border-amber-800" : "bg-emerald-950/80 text-emerald-300 border-emerald-800") : dealer.type === "Showroom" ? "bg-sky-950/80 text-sky-300 border-sky-800" : "bg-amber-950/80 text-amber-300 border-amber-800"}`}
                     >
                       {dealer.type} (Sales, Service & Spares)
                     </span>
                     <span className="text-xs text-zinc-400 font-mono font-medium flex items-center gap-1">
                       <MapPin
-                        className={`w-3 h-3 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                        className={`w-3 h-3 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
                       />
                       {dealer.city}, {dealer.state}
                     </span>
@@ -418,7 +451,7 @@ export const DealershipLocator = ({
                       {dealer.name}
                     </h3>
                     <p
-                      className={`text-xs font-medium mt-0.5 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                      className={`text-xs font-medium mt-0.5 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
                     >
                       {dealer.partnerGroup}
                     </p>
@@ -443,12 +476,12 @@ export const DealershipLocator = ({
                     >
                       <span className="text-[10px] text-zinc-400 font-sans uppercase flex items-center gap-1">
                         <Phone
-                          className={`w-3 h-3 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                          className={`w-3 h-3 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
                         />{" "}
                         Sales Desk
                       </span>
                       <span
-                        className={`text-xs font-bold text-white transition-colors mt-0.5 ${isAudi ? "group-hover:text-red-300" : isVW ? "group-hover:text-blue-300" : "group-hover:text-emerald-300"}`}
+                        className={`text-xs font-bold text-white transition-colors mt-0.5 ${isAudi ? "group-hover:text-red-300" : isVW ? "group-hover:text-blue-300" : isPorsche ? "group-hover:text-amber-300" : "group-hover:text-emerald-300"}`}
                       >
                         {dealer.salesPhone}
                       </span>
@@ -497,7 +530,7 @@ export const DealershipLocator = ({
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       onClick={() => handleOpenBooking(dealer, "Test Drive")}
-                      className={`py-2.5 px-3 rounded-xl text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer ${isAudi ? "bg-red-600 hover:bg-red-500 shadow-red-950/40" : isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-950/40" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950/40"}`}
+                      className={`py-2.5 px-3 rounded-xl text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer ${isAudi ? "bg-red-600 hover:bg-red-500 shadow-red-950/40" : isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-950/40" : isPorsche ? "bg-amber-600 hover:bg-amber-500 shadow-amber-950/40" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950/40"}`}
                     >
                       <Car className="w-3.5 h-3.5" />
                       Book Test Drive
@@ -544,7 +577,7 @@ export const DealershipLocator = ({
               setSelectedType("All");
               setSearchQuery("");
             }}
-            className={`px-4 py-2 rounded-xl text-white text-xs font-bold cursor-pointer ${isAudi ? "bg-red-600" : isVW ? "bg-blue-600" : "bg-emerald-600"}`}
+            className={`px-4 py-2 rounded-xl text-white text-xs font-bold cursor-pointer ${isAudi ? "bg-red-600" : isVW ? "bg-blue-600" : isPorsche ? "bg-amber-600" : "bg-emerald-600"}`}
           >
             Show All Dealerships
           </button>
@@ -571,7 +604,7 @@ export const DealershipLocator = ({
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <span
-                    className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded border ${isAudi ? "bg-red-950 text-red-400 border-red-800" : isVW ? "bg-blue-950 text-blue-400 border-blue-800" : "bg-emerald-950 text-emerald-400 border-emerald-800"}`}
+                    className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded border ${isAudi ? "bg-red-950 text-red-400 border-red-800" : isVW ? "bg-blue-950 text-blue-400 border-blue-800" : isPorsche ? "bg-amber-950 text-amber-400 border-amber-800" : "bg-emerald-950 text-emerald-400 border-emerald-800"}`}
                   >
                     Official Appointment Request
                   </span>
@@ -589,7 +622,7 @@ export const DealershipLocator = ({
               {bookingSubmitted ? (
                 <div className="py-6 space-y-4 text-center">
                   <div
-                    className={`w-14 h-14 rounded-full border flex items-center justify-center mx-auto ${isAudi ? "bg-red-950 border-red-500 text-red-400" : isVW ? "bg-blue-950 border-blue-500 text-blue-400" : "bg-emerald-950 border-emerald-500 text-emerald-400"}`}
+                    className={`w-14 h-14 rounded-full border flex items-center justify-center mx-auto ${isAudi ? "bg-red-950 border-red-500 text-red-400" : isVW ? "bg-blue-950 border-blue-500 text-blue-400" : isPorsche ? "bg-amber-950 border-amber-500 text-amber-400" : "bg-emerald-950 border-emerald-500 text-emerald-400"}`}
                   >
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
@@ -602,7 +635,7 @@ export const DealershipLocator = ({
                       <strong className="text-white">{userName}</strong>. The
                       dealership relationship manager at{" "}
                       <strong
-                        className={isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}
+                        className={isAudi ? "text-red-400" : isVW ? "text-blue-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}
                       >
                         {bookingDealer.name}
                       </strong>{" "}
@@ -615,14 +648,14 @@ export const DealershipLocator = ({
                     <div className="flex justify-between text-zinc-400">
                       <span>Booking Reference:</span>
                       <span className="text-white font-bold">
-                        {isAudi ? "AUDI" : isVW ? "VW" : "SKD"}-
+                        {isAudi ? "AUDI" : isVW ? "VW" : isPorsche ? "PSC" : "SKD"}-
                         {Math.floor(1e5 + Math.random() * 9e5)}
                       </span>
                     </div>
                     <div className="flex justify-between text-zinc-400">
                       <span>Selected Vehicle:</span>
                       <span
-                        className={`font-bold ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                        className={`font-bold ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
                       >
                         {bookingModel}
                       </span>
@@ -636,7 +669,7 @@ export const DealershipLocator = ({
                   </div>
                   <button
                     onClick={() => setIsBookingModalOpen(false)}
-                    className={`w-full py-3 rounded-xl text-white font-bold text-xs cursor-pointer ${isAudi ? "bg-red-600" : isVW ? "bg-blue-600" : "bg-emerald-600"}`}
+                    className={`w-full py-3 rounded-xl text-white font-bold text-xs cursor-pointer ${isAudi ? "bg-red-600" : isVW ? "bg-blue-600" : isPorsche ? "bg-amber-600" : "bg-emerald-600"}`}
                   >
                     Done
                   </button>
@@ -647,12 +680,12 @@ export const DealershipLocator = ({
                   {bookingType === "Test Drive" && (
                     <div className="space-y-1.5">
                       <label className="text-xs font-semibold text-zinc-300">
-                        Select {isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} Model
+                        Select {isAudi ? "Audi" : isVW ? "Volkswagen" : isPorsche ? "Porsche" : "\u0160koda"} Model
                       </label>
                       <select
                         value={bookingModel}
                         onChange={(e) => setBookingModel(e.target.value)}
-                        className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-white focus:outline-none ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : "focus:border-emerald-500"}`}
+                        className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-white focus:outline-none ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
                       >
                         {isVW ? (
                           <>
@@ -678,7 +711,7 @@ export const DealershipLocator = ({
                         ) : (
                           bookingDealer.modelsAvailableForTestDrive.map((m) => (
                             <option key={m} value={m}>
-                              {isAudi ? "Audi" : "Škoda"} {m}
+                              {isAudi ? "Audi" : isPorsche ? "Porsche" : "Škoda"} {m}
                             </option>
                           ))
                         )}
@@ -698,7 +731,7 @@ export const DealershipLocator = ({
                         placeholder="e.g. Rahul Sharma"
                         value={userName}
                         onChange={(e) => setUserName(e.target.value)}
-                        className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-white placeholder-zinc-500 focus:outline-none ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : "focus:border-emerald-500"}`}
+                        className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-white placeholder-zinc-500 focus:outline-none ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
                       />
                     </div>
 
@@ -712,7 +745,7 @@ export const DealershipLocator = ({
                         placeholder="10-digit mobile number"
                         value={userPhone}
                         onChange={(e) => setUserPhone(e.target.value)}
-                        className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-white placeholder-zinc-500 focus:outline-none font-mono ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : "focus:border-emerald-500"}`}
+                        className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-white placeholder-zinc-500 focus:outline-none font-mono ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
                       />
                     </div>
                   </div>
@@ -726,7 +759,7 @@ export const DealershipLocator = ({
                       type="date"
                       value={preferredDate}
                       onChange={(e) => setPreferredDate(e.target.value)}
-                      className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-white focus:outline-none ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : "focus:border-emerald-500"}`}
+                      className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-white focus:outline-none ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
                     />
                   </div>
 
@@ -750,7 +783,7 @@ export const DealershipLocator = ({
                     </button>
                     <button
                       type="submit"
-                      className={`flex-1 py-2.5 rounded-xl text-white text-xs font-bold transition-colors cursor-pointer ${isAudi ? "bg-red-600 hover:bg-red-500" : isVW ? "bg-blue-600 hover:bg-blue-500" : "bg-emerald-600 hover:bg-emerald-500"}`}
+                      className={`flex-1 py-2.5 rounded-xl text-white text-xs font-bold transition-colors cursor-pointer ${isAudi ? "bg-red-600 hover:bg-red-500" : isVW ? "bg-blue-600 hover:bg-blue-500" : isPorsche ? "bg-amber-600 hover:bg-amber-500" : "bg-emerald-600 hover:bg-emerald-500"}`}
                     >
                       Confirm Booking Request
                     </button>

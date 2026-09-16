@@ -38,6 +38,15 @@ export function getAllPuzzles() {
   return Object.entries(CATALOG_BY_BRAND).flatMap(([brand, models]) => models.map((m) => buildPuzzle(m, brand)));
 }
 
+// Every real car name in the catalog, for a guess-input autocomplete list —
+// helps with typos without giving away which one is the current answer.
+export function getAllCarNames() {
+  return Object.values(CATALOG_BY_BRAND)
+    .flat()
+    .map((m) => m.name)
+    .sort();
+}
+
 export function getPuzzlePool(difficulty) {
   const all = getAllPuzzles();
   const allModels = Object.entries(CATALOG_BY_BRAND).flatMap(([brand, models]) => models.map((m) => ({ m, brand })));

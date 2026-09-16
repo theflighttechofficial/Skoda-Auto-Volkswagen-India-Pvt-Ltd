@@ -14,25 +14,31 @@ import { motion, AnimatePresence } from "motion/react";
 import { SKODA_MODELS } from "../data/skodaData";
 import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
+import { PORSCHE_MODELS } from "../data/porscheData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
+import { PorscheLogo } from "./PorscheLogo";
 import { CarSilhouette } from "./CarSilhouette";
-import { getLayers } from "../utils/underTheSkin";
+import { ChassisMockup } from "./ChassisMockup";
+import { getLayers, derivePlatform, normalizePlatformName, deriveDrivetrain } from "../utils/underTheSkin";
+import { getBodyShape } from "../utils/bodyShape";
+import { getAccentClasses } from "../utils/brandTheme";
 
 const ICON_MAP = { Car, LayoutGrid, Fuel, Cog, Activity, ShieldCheck, Cpu };
-const BRAND_ACCENT_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444" };
-const BRAND_LABEL = { skoda: "Škoda", volkswagen: "Volkswagen", audi: "Audi" };
-const ALL_BRAND_MODELS = { skoda: SKODA_MODELS, volkswagen: VW_MODELS, audi: AUDI_MODELS };
+const BRAND_ACCENT_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b" };
+const BRAND_LABEL = { skoda: "Škoda", volkswagen: "Volkswagen", audi: "Audi", porsche: "Porsche" };
+const ALL_BRAND_MODELS = { skoda: SKODA_MODELS, volkswagen: VW_MODELS, audi: AUDI_MODELS, porsche: PORSCHE_MODELS };
+const BRAND_LOGO = { skoda: SkodaLogo, volkswagen: VolkswagenLogo, audi: AudiLogo, porsche: PorscheLogo };
 
 export const UnderTheSkin = ({ brand = "skoda", onSwitchBrand }) => {
-  const isVW = brand === "volkswagen";
-  const isAudi = brand === "audi";
-  const models = isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
+  const models = ALL_BRAND_MODELS[brand] || SKODA_MODELS;
   const accentHex = BRAND_ACCENT_HEX[brand];
-  const accentText = isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400";
-  const accentBg = isAudi ? "bg-red-600" : isVW ? "bg-blue-600" : "bg-emerald-600";
-  const accentBorder = isAudi ? "border-red-500/60" : isVW ? "border-blue-500/60" : "border-emerald-500/60";
+  const c = getAccentClasses(brand);
+  const accentText = c.text400;
+  const accentBg = c.solidButton.split(" ")[0];
+  const accentBorder = brand === "audi" ? "border-red-500/60" : brand === "volkswagen" ? "border-blue-500/60" : brand === "porsche" ? "border-amber-500/60" : "border-emerald-500/60";
+  const BrandLogo = BRAND_LOGO[brand] || SkodaLogo;
 
   const [selectedModelId, setSelectedModelId] = useState(models[0].id);
   const currentModel = models.find((m) => m.id === selectedModelId) || models[0];
@@ -65,7 +71,11 @@ export const UnderTheSkin = ({ brand = "skoda", onSwitchBrand }) => {
   const layers = useMemo(() => getLayers(currentModel, brand, ALL_BRAND_MODELS), [currentModel, brand]);
   const activeLayer = layers.find((l) => l.id === activeLayerId) || layers[0];
   const isSedan = !/suv|4x4/i.test(currentModel.bodyType || "");
+  const bodyShape = getBodyShape(currentModel.bodyType);
   const isExploded = activeLayerId !== "exterior";
+  const isChassisView = activeLayerId === "platform";
+  const platformLabel = normalizePlatformName(derivePlatform(currentModel, brand));
+  const isAwd = /quattro|4motion|4x4/i.test(deriveDrivetrain(currentModel));
 
   const handleModelChange = (id) => {
     setSelectedModelId(id);
@@ -78,7 +88,7 @@ export const UnderTheSkin = ({ brand = "skoda", onSwitchBrand }) => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-1">
-            {isAudi ? <AudiLogo variant="emblem" size="sm" /> : isVW ? <VolkswagenLogo variant="emblem" size="sm" /> : <SkodaLogo variant="emblem" size="sm" />}
+            <BrandLogo variant="emblem" size="sm" />
             <span className={accentText}>Interactive Engineering Museum</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Under the Skin</h2>
@@ -116,7 +126,7 @@ export const UnderTheSkin = ({ brand = "skoda", onSwitchBrand }) => {
                 <button
                   key={layer.id}
                   onClick={() => setActiveLayerId(layer.id)}
-                  className={`flex items-center gap-2.5 px-4 py-3 rounded-xl text-left text-sm font-semibold transition-all shrink-0 lg:w-full cursor-pointer border ${isActive ? `bg-zinc-900 ${accentBorder} ring-1 ${isAudi ? "ring-red-500/50" : isVW ? "ring-blue-500/50" : "ring-emerald-500/50"} text-white` : "bg-zinc-950/70 border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700"}`}
+                  className={`flex items-center gap-2.5 px-4 py-3 rounded-xl text-left text-sm font-semibold transition-all shrink-0 lg:w-full cursor-pointer border ${isActive ? `bg-zinc-900 ${accentBorder} ring-1 ${brand === "audi" ? "ring-red-500/50" : brand === "volkswagen" ? "ring-blue-500/50" : brand === "porsche" ? "ring-amber-500/50" : "ring-emerald-500/50"} text-white` : "bg-zinc-950/70 border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700"}`}
                 >
                   <Icon className={`w-4 h-4 shrink-0 ${isActive ? accentText : ""}`} />
                   <span className="whitespace-nowrap lg:whitespace-normal">{layer.title}</span>
@@ -136,12 +146,27 @@ export const UnderTheSkin = ({ brand = "skoda", onSwitchBrand }) => {
             />
             <div className="relative h-56 sm:h-72 w-full max-w-2xl mx-auto">
               <motion.div
-                animate={{ opacity: isExploded ? 0.18 : 1 }}
+                animate={{ opacity: isExploded && !isChassisView ? 0.18 : isChassisView ? 0 : 1 }}
                 transition={{ duration: 0.4 }}
                 className="absolute inset-0"
               >
-                <CarSilhouette colorHex={currentModel.colors?.[0]?.hex || "#a1a1aa"} isSedan={isSedan} accentHex={accentHex} />
+                <CarSilhouette colorHex={currentModel.colors?.[0]?.hex || "#a1a1aa"} shape={bodyShape} accentHex={accentHex} />
               </motion.div>
+
+              <AnimatePresence>
+                {isChassisView && (
+                  <motion.div
+                    key="chassis-mockup"
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.96 }}
+                    transition={{ duration: 0.35 }}
+                    className="absolute inset-0"
+                  >
+                    <ChassisMockup accentHex={accentHex} isAwd={isAwd} isSedan={isSedan} platformLabel={platformLabel} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               {/* Hotspot markers for every layer, dimmed unless active */}
               {layers.map((layer) =>
@@ -177,7 +202,11 @@ export const UnderTheSkin = ({ brand = "skoda", onSwitchBrand }) => {
               )}
             </div>
             <p className="relative text-center text-xs text-zinc-500 mt-2">
-              {isExploded ? `Viewing: ${activeLayer.title}` : "Click a layer or a marker to peel back the body"}
+              {isChassisView
+                ? `Viewing: ${activeLayer.title} — sample ${platformLabel} chassis mock-up`
+                : isExploded
+                  ? `Viewing: ${activeLayer.title}`
+                  : "Click a layer or a marker to peel back the body"}
             </p>
           </div>
 

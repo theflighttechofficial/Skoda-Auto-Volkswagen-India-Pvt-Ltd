@@ -7,6 +7,8 @@ export interface SkodaModel {
   tagline: string;
   image: string;
   enthusiastNote?: string;
+  /** True for models referenced on the site (e.g. global-market Jetta GLI) that are not officially sold in India — official CBU/CKD channels included. UI should visibly flag this instead of showing a purchasable Indian price. */
+  notSoldInIndia?: boolean;
   bodyType: 'Compact SUV' | 'Premium Sedan' | 'Midsize SUV' | 'Luxury 4x4 SUV' | 'Executive Sedan' | 'Compact Sedan' | 'Hatchback' | 'Estate';
   startingPrice: string;
   startingExShowroom: number;

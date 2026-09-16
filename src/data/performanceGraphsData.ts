@@ -1929,6 +1929,514 @@ export const ENGINE_GRAPH_PROFILES: Record<string, EngineGraphProfile> = {
       'Paired exclusively with a smooth 7-speed S tronic dual-clutch transmission',
       'Front-wheel drive configuration for agile, efficient compact-luxury motoring'
     ]
+  },
+
+  '3.0-twin-turbo-flat6-carrera': {
+    id: '3.0-twin-turbo-flat6-carrera',
+    name: '3.0L Twin-Turbo Flat-6',
+    badge: '3.0 Twin-Turbo Flat-6 (385 PS / 450 Nm)',
+    displacement: '2,981 cc',
+    cylinders: '6 Cylinders (Rear-Mounted Twin-Turbo Flat-6)',
+    fuelType: 'Petrol',
+    peakPowerStr: '385 PS @ 6,500 RPM',
+    peakTorqueStr: '450 Nm @ 1,950–5,000 RPM',
+    maxPowerHp: 385,
+    maxTorqueNm: 450,
+    powerRpmRange: '6,500 RPM',
+    torqueRpmRange: '1,950 – 5,000 RPM',
+    redlineRpm: 7500,
+    idleRpm: 750,
+    highwayCruiseRpm100Kmh: 1600,
+    highwayCruiseRpm120Kmh: 1950,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 55, torqueNm: 260, boostBar: 0.7 },
+      { rpm: 1950, powerHp: 118, torqueNm: 450, boostBar: 1.3 },
+      { rpm: 2500, powerHp: 155, torqueNm: 450, boostBar: 1.3 },
+      { rpm: 3000, powerHp: 192, torqueNm: 450, boostBar: 1.25 },
+      { rpm: 3500, powerHp: 228, torqueNm: 450, boostBar: 1.2 },
+      { rpm: 4500, powerHp: 300, torqueNm: 450, boostBar: 1.15 },
+      { rpm: 5500, powerHp: 355, torqueNm: 440, boostBar: 1.05 },
+      { rpm: 6500, powerHp: 385, torqueNm: 400, boostBar: 0.95 },
+      { rpm: 7500, powerHp: 360, torqueNm: 330, boostBar: 0.7 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.6, speedKmh: 40, gForce: 1.0, gear: 1 },
+      { timeSec: 1.2, speedKmh: 68, gForce: 0.86, gear: 2 },
+      { timeSec: 1.9, speedKmh: 92, gForce: 0.72, gear: 2 },
+      { timeSec: 2.7, speedKmh: 100, gForce: 0.62, gear: 3 },
+      { timeSec: 3.8, speedKmh: 130, gForce: 0.48, gear: 3 },
+      { timeSec: 5.3, speedKmh: 160, gForce: 0.36, gear: 4 },
+      { timeSec: 7.6, speedKmh: 200, gForce: 0.25, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '4.29', speedAt1000Rpm: 9.5, speedAt3000Rpm: 28.5, speedAt6000Rpm: 57.0, redlineSpeed: 67 },
+      { gear: '2nd', ratio: '2.71', speedAt1000Rpm: 15.0, speedAt3000Rpm: 45.0, speedAt6000Rpm: 90.0, redlineSpeed: 106 },
+      { gear: '3rd', ratio: '1.85', speedAt1000Rpm: 22.0, speedAt3000Rpm: 66.0, speedAt6000Rpm: 132.0, redlineSpeed: 155 },
+      { gear: '4th', ratio: '1.41', speedAt1000Rpm: 28.9, speedAt3000Rpm: 86.7, speedAt6000Rpm: 173.4, redlineSpeed: 204 },
+      { gear: '5th', ratio: '1.14', speedAt1000Rpm: 35.7, speedAt3000Rpm: 107.1, speedAt6000Rpm: 214.2, redlineSpeed: 252 },
+      { gear: '6th', ratio: '0.92', speedAt1000Rpm: 44.3, speedAt3000Rpm: 132.9, speedAt6000Rpm: 265.8, redlineSpeed: 280 },
+      { gear: '7th', ratio: '0.76', speedAt1000Rpm: 53.6, speedAt3000Rpm: 160.8, speedAt6000Rpm: 293.0, redlineSpeed: 293 },
+      { gear: '8th', ratio: '0.63', speedAt1000Rpm: 64.7, speedAt3000Rpm: 194.1, speedAt6000Rpm: 293.0, redlineSpeed: 293 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 6.0, engineRpm: 1300 },
+      { speedKmh: 40, fuelConsumptionKmpl: 7.4, engineRpm: 1200 },
+      { speedKmh: 60, fuelConsumptionKmpl: 9.0, engineRpm: 1150 },
+      { speedKmh: 80, fuelConsumptionKmpl: 10.2, engineRpm: 1250 },
+      { speedKmh: 100, fuelConsumptionKmpl: 9.6, engineRpm: 1600 },
+      { speedKmh: 120, fuelConsumptionKmpl: 8.4, engineRpm: 1950 },
+      { speedKmh: 140, fuelConsumptionKmpl: 7.1, engineRpm: 2300 }
+    ],
+    technicalFeatures: [
+      'Rear-mounted, twin-turbocharged flat-6 layout unchanged in concept since 1963',
+      'Powers the entry 911 Carrera, with a 7-speed manual still on offer alongside PDK',
+      'Porsche Active Suspension Management (PASM) with adaptive damping standard',
+      'Signature flat-6 exhaust note tuned by Porsche Motorsport'
+    ]
+  },
+
+  '2.0-turbo-flat4-718': {
+    id: '2.0-turbo-flat4-718',
+    name: '2.0L Turbo-Petrol Flat-4',
+    badge: '2.0 Turbo Flat-4 (300 PS / 380 Nm)',
+    displacement: '1,988 cc',
+    cylinders: '4 Cylinders (Mid-Mounted Turbo Flat-4)',
+    fuelType: 'Petrol',
+    peakPowerStr: '300 PS @ 6,500 RPM',
+    peakTorqueStr: '380 Nm @ 1,950–4,500 RPM',
+    maxPowerHp: 300,
+    maxTorqueNm: 380,
+    powerRpmRange: '6,500 RPM',
+    torqueRpmRange: '1,950 – 4,500 RPM',
+    redlineRpm: 7500,
+    idleRpm: 800,
+    highwayCruiseRpm100Kmh: 1700,
+    highwayCruiseRpm120Kmh: 2050,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 42, torqueNm: 220, boostBar: 0.7 },
+      { rpm: 1950, powerHp: 98, torqueNm: 380, boostBar: 1.3 },
+      { rpm: 2500, powerHp: 126, torqueNm: 380, boostBar: 1.3 },
+      { rpm: 3000, powerHp: 151, torqueNm: 380, boostBar: 1.25 },
+      { rpm: 4000, powerHp: 202, torqueNm: 380, boostBar: 1.2 },
+      { rpm: 4500, powerHp: 227, torqueNm: 380, boostBar: 1.15 },
+      { rpm: 5500, powerHp: 277, torqueNm: 360, boostBar: 1.0 },
+      { rpm: 6500, powerHp: 300, torqueNm: 320, boostBar: 0.85 },
+      { rpm: 7500, powerHp: 275, torqueNm: 262, boostBar: 0.6 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.7, speedKmh: 36, gForce: 0.9, gear: 1 },
+      { timeSec: 1.4, speedKmh: 60, gForce: 0.75, gear: 2 },
+      { timeSec: 2.2, speedKmh: 82, gForce: 0.6, gear: 2 },
+      { timeSec: 3.2, speedKmh: 100, gForce: 0.5, gear: 3 },
+      { timeSec: 4.6, speedKmh: 130, gForce: 0.38, gear: 4 },
+      { timeSec: 6.5, speedKmh: 160, gForce: 0.28, gear: 5 },
+      { timeSec: 9.5, speedKmh: 200, gForce: 0.19, gear: 6 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.91', speedAt1000Rpm: 8.8, speedAt3000Rpm: 26.4, speedAt6000Rpm: 52.8, redlineSpeed: 62 },
+      { gear: '2nd', ratio: '2.29', speedAt1000Rpm: 14.4, speedAt3000Rpm: 43.2, speedAt6000Rpm: 86.4, redlineSpeed: 100 },
+      { gear: '3rd', ratio: '1.58', speedAt1000Rpm: 20.7, speedAt3000Rpm: 62.1, speedAt6000Rpm: 124.2, redlineSpeed: 145 },
+      { gear: '4th', ratio: '1.19', speedAt1000Rpm: 27.6, speedAt3000Rpm: 82.8, speedAt6000Rpm: 165.6, redlineSpeed: 193 },
+      { gear: '5th', ratio: '0.97', speedAt1000Rpm: 33.7, speedAt3000Rpm: 101.1, speedAt6000Rpm: 202.2, redlineSpeed: 236 },
+      { gear: '6th', ratio: '0.79', speedAt1000Rpm: 41.4, speedAt3000Rpm: 124.2, speedAt6000Rpm: 248.4, redlineSpeed: 275 },
+      { gear: '7th', ratio: '0.65', speedAt1000Rpm: 50.3, speedAt3000Rpm: 150.9, speedAt6000Rpm: 275.0, redlineSpeed: 275 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 7.5, engineRpm: 1400 },
+      { speedKmh: 40, fuelConsumptionKmpl: 9.2, engineRpm: 1300 },
+      { speedKmh: 60, fuelConsumptionKmpl: 11.0, engineRpm: 1250 },
+      { speedKmh: 80, fuelConsumptionKmpl: 12.4, engineRpm: 1350 },
+      { speedKmh: 100, fuelConsumptionKmpl: 11.6, engineRpm: 1700 },
+      { speedKmh: 120, fuelConsumptionKmpl: 10.2, engineRpm: 2050 },
+      { speedKmh: 140, fuelConsumptionKmpl: 8.7, engineRpm: 2400 }
+    ],
+    technicalFeatures: [
+      'Mid-engine, rear-wheel-drive layout for near-perfect 45:55 weight balance',
+      'Powers the entry 718 Cayman and Boxster',
+      'Distinctive flat-4 turbo exhaust note unlike any rival inline engine',
+      'Available with a 6-speed manual for purists'
+    ]
+  },
+
+  '2.0-turbo-macan': {
+    id: '2.0-turbo-macan',
+    name: '2.0L Turbo-Petrol Flat/Inline-4',
+    badge: '2.0 Turbo (265 PS / 400 Nm)',
+    displacement: '1,984 cc',
+    cylinders: '4 Cylinders',
+    fuelType: 'Petrol',
+    peakPowerStr: '265 PS @ 5,000–6,500 RPM',
+    peakTorqueStr: '400 Nm @ 1,800–4,500 RPM',
+    maxPowerHp: 265,
+    maxTorqueNm: 400,
+    powerRpmRange: '5,000 – 6,500 RPM',
+    torqueRpmRange: '1,800 – 4,500 RPM',
+    redlineRpm: 7000,
+    idleRpm: 800,
+    highwayCruiseRpm100Kmh: 1650,
+    highwayCruiseRpm120Kmh: 2000,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 38, torqueNm: 230, boostBar: 0.7 },
+      { rpm: 1800, powerHp: 92, torqueNm: 400, boostBar: 1.3 },
+      { rpm: 2500, powerHp: 128, torqueNm: 400, boostBar: 1.3 },
+      { rpm: 3000, powerHp: 154, torqueNm: 400, boostBar: 1.25 },
+      { rpm: 4000, powerHp: 205, torqueNm: 400, boostBar: 1.2 },
+      { rpm: 4500, powerHp: 231, torqueNm: 400, boostBar: 1.15 },
+      { rpm: 5000, powerHp: 265, torqueNm: 396, boostBar: 1.1 },
+      { rpm: 6500, powerHp: 265, torqueNm: 305, boostBar: 0.9 },
+      { rpm: 7000, powerHp: 245, torqueNm: 265, boostBar: 0.7 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.9, speedKmh: 32, gForce: 0.78, gear: 1 },
+      { timeSec: 1.8, speedKmh: 54, gForce: 0.66, gear: 2 },
+      { timeSec: 2.9, speedKmh: 78, gForce: 0.54, gear: 2 },
+      { timeSec: 4.1, speedKmh: 100, gForce: 0.44, gear: 3 },
+      { timeSec: 6.0, speedKmh: 130, gForce: 0.32, gear: 4 },
+      { timeSec: 8.4, speedKmh: 160, gForce: 0.23, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '4.71', speedAt1000Rpm: 8.4, speedAt3000Rpm: 25.2, speedAt6000Rpm: 50.4, redlineSpeed: 59 },
+      { gear: '2nd', ratio: '3.14', speedAt1000Rpm: 12.6, speedAt3000Rpm: 37.8, speedAt6000Rpm: 75.6, redlineSpeed: 88 },
+      { gear: '3rd', ratio: '2.11', speedAt1000Rpm: 18.7, speedAt3000Rpm: 56.1, speedAt6000Rpm: 112.2, redlineSpeed: 131 },
+      { gear: '4th', ratio: '1.67', speedAt1000Rpm: 23.7, speedAt3000Rpm: 71.1, speedAt6000Rpm: 142.2, redlineSpeed: 166 },
+      { gear: '5th', ratio: '1.29', speedAt1000Rpm: 30.7, speedAt3000Rpm: 92.1, speedAt6000Rpm: 184.2, redlineSpeed: 215 },
+      { gear: '6th', ratio: '1.00', speedAt1000Rpm: 39.6, speedAt3000Rpm: 118.8, speedAt6000Rpm: 232.0, redlineSpeed: 232 },
+      { gear: '7th', ratio: '0.84', speedAt1000Rpm: 47.1, speedAt3000Rpm: 141.3, speedAt6000Rpm: 232.0, redlineSpeed: 232 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 6.8, engineRpm: 1350 },
+      { speedKmh: 40, fuelConsumptionKmpl: 8.4, engineRpm: 1250 },
+      { speedKmh: 60, fuelConsumptionKmpl: 10.0, engineRpm: 1200 },
+      { speedKmh: 80, fuelConsumptionKmpl: 11.2, engineRpm: 1300 },
+      { speedKmh: 100, fuelConsumptionKmpl: 10.5, engineRpm: 1650 },
+      { speedKmh: 120, fuelConsumptionKmpl: 9.2, engineRpm: 2000 },
+      { speedKmh: 140, fuelConsumptionKmpl: 7.8, engineRpm: 2350 }
+    ],
+    technicalFeatures: [
+      'Entry powertrain for the Macan compact luxury SUV',
+      'Shared turbocharged architecture across the Volkswagen Group premium range',
+      'Porsche Active Suspension Management (PASM) standard',
+      'Available exclusively in the Macan'
+    ]
+  },
+
+  '3.0-turbo-v6-cayenne': {
+    id: '3.0-turbo-v6-cayenne',
+    name: '3.0L Turbo-Petrol V6',
+    badge: '3.0 Turbo V6 (353 PS / 500 Nm)',
+    displacement: '2,995 cc',
+    cylinders: '6 Cylinders (Turbo V6)',
+    fuelType: 'Petrol',
+    peakPowerStr: '353 PS @ 5,300–6,400 RPM',
+    peakTorqueStr: '500 Nm @ 1,340–5,300 RPM',
+    maxPowerHp: 353,
+    maxTorqueNm: 500,
+    powerRpmRange: '5,300 – 6,400 RPM',
+    torqueRpmRange: '1,340 – 5,300 RPM',
+    redlineRpm: 6800,
+    idleRpm: 750,
+    highwayCruiseRpm100Kmh: 1500,
+    highwayCruiseRpm120Kmh: 1800,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 60, torqueNm: 340, boostBar: 0.9 },
+      { rpm: 1340, powerHp: 82, torqueNm: 500, boostBar: 1.5 },
+      { rpm: 2500, powerHp: 150, torqueNm: 500, boostBar: 1.5 },
+      { rpm: 3000, powerHp: 180, torqueNm: 500, boostBar: 1.45 },
+      { rpm: 4000, powerHp: 240, torqueNm: 500, boostBar: 1.4 },
+      { rpm: 5300, powerHp: 353, torqueNm: 480, boostBar: 1.25 },
+      { rpm: 6400, powerHp: 353, torqueNm: 397, boostBar: 1.05 },
+      { rpm: 6800, powerHp: 330, torqueNm: 360, boostBar: 0.9 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 1.0, speedKmh: 30, gForce: 0.68, gear: 1 },
+      { timeSec: 2.1, speedKmh: 52, gForce: 0.56, gear: 2 },
+      { timeSec: 3.4, speedKmh: 76, gForce: 0.46, gear: 2 },
+      { timeSec: 4.9, speedKmh: 100, gForce: 0.38, gear: 3 },
+      { timeSec: 7.2, speedKmh: 130, gForce: 0.27, gear: 4 },
+      { timeSec: 10.5, speedKmh: 160, gForce: 0.19, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '5.25', speedAt1000Rpm: 7.6, speedAt3000Rpm: 22.8, speedAt6000Rpm: 45.6, redlineSpeed: 51 },
+      { gear: '2nd', ratio: '3.29', speedAt1000Rpm: 12.1, speedAt3000Rpm: 36.3, speedAt6000Rpm: 72.6, redlineSpeed: 82 },
+      { gear: '3rd', ratio: '2.16', speedAt1000Rpm: 18.4, speedAt3000Rpm: 55.2, speedAt6000Rpm: 110.4, redlineSpeed: 124 },
+      { gear: '4th', ratio: '1.62', speedAt1000Rpm: 24.6, speedAt3000Rpm: 73.8, speedAt6000Rpm: 147.6, redlineSpeed: 166 },
+      { gear: '5th', ratio: '1.29', speedAt1000Rpm: 30.9, speedAt3000Rpm: 92.7, speedAt6000Rpm: 185.4, redlineSpeed: 209 },
+      { gear: '6th', ratio: '1.00', speedAt1000Rpm: 39.8, speedAt3000Rpm: 119.4, speedAt6000Rpm: 238.8, redlineSpeed: 245 },
+      { gear: '7th', ratio: '0.84', speedAt1000Rpm: 47.4, speedAt3000Rpm: 142.2, speedAt6000Rpm: 245.0, redlineSpeed: 245 },
+      { gear: '8th', ratio: '0.67', speedAt1000Rpm: 59.4, speedAt3000Rpm: 178.2, speedAt6000Rpm: 245.0, redlineSpeed: 245 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 5.6, engineRpm: 1150 },
+      { speedKmh: 40, fuelConsumptionKmpl: 6.9, engineRpm: 1050 },
+      { speedKmh: 60, fuelConsumptionKmpl: 8.3, engineRpm: 1000 },
+      { speedKmh: 80, fuelConsumptionKmpl: 9.3, engineRpm: 1100 },
+      { speedKmh: 100, fuelConsumptionKmpl: 8.7, engineRpm: 1500 },
+      { speedKmh: 120, fuelConsumptionKmpl: 7.6, engineRpm: 1800 },
+      { speedKmh: 140, fuelConsumptionKmpl: 6.4, engineRpm: 2100 }
+    ],
+    technicalFeatures: [
+      'The core Cayenne engine, sourced from the same block family as the Audi/Bentley 3.0 V6',
+      'Standard Porsche Traction Management (PTM) all-wheel drive',
+      'Air suspension available for a further ride-height range',
+      'Tuned for effortless triple-digit highway cruising'
+    ]
+  },
+
+  '2.9-twin-turbo-v6-panamera': {
+    id: '2.9-twin-turbo-v6-panamera',
+    name: '2.9L Twin-Turbo V6',
+    badge: '2.9 Twin-Turbo V6 (330 PS / 450 Nm)',
+    displacement: '2,894 cc',
+    cylinders: '6 Cylinders (Twin-Turbo V6)',
+    fuelType: 'Petrol',
+    peakPowerStr: '330 PS @ 5,250–6,000 RPM',
+    peakTorqueStr: '450 Nm @ 1,750–5,000 RPM',
+    maxPowerHp: 330,
+    maxTorqueNm: 450,
+    powerRpmRange: '5,250 – 6,000 RPM',
+    torqueRpmRange: '1,750 – 5,000 RPM',
+    redlineRpm: 6800,
+    idleRpm: 750,
+    highwayCruiseRpm100Kmh: 1500,
+    highwayCruiseRpm120Kmh: 1800,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 58, torqueNm: 300, boostBar: 0.9 },
+      { rpm: 1750, powerHp: 100, torqueNm: 450, boostBar: 1.4 },
+      { rpm: 2500, powerHp: 143, torqueNm: 450, boostBar: 1.4 },
+      { rpm: 3000, powerHp: 171, torqueNm: 450, boostBar: 1.35 },
+      { rpm: 4000, powerHp: 228, torqueNm: 450, boostBar: 1.3 },
+      { rpm: 5250, powerHp: 330, torqueNm: 432, boostBar: 1.15 },
+      { rpm: 6000, powerHp: 330, torqueNm: 378, boostBar: 1.0 },
+      { rpm: 6800, powerHp: 300, torqueNm: 330, boostBar: 0.85 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 1.0, speedKmh: 32, gForce: 0.72, gear: 1 },
+      { timeSec: 2.0, speedKmh: 55, gForce: 0.6, gear: 2 },
+      { timeSec: 3.2, speedKmh: 80, gForce: 0.49, gear: 2 },
+      { timeSec: 4.6, speedKmh: 100, gForce: 0.41, gear: 3 },
+      { timeSec: 6.7, speedKmh: 130, gForce: 0.3, gear: 4 },
+      { timeSec: 9.6, speedKmh: 160, gForce: 0.21, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '4.71', speedAt1000Rpm: 8.6, speedAt3000Rpm: 25.8, speedAt6000Rpm: 51.6, redlineSpeed: 58 },
+      { gear: '2nd', ratio: '3.14', speedAt1000Rpm: 12.9, speedAt3000Rpm: 38.7, speedAt6000Rpm: 77.4, redlineSpeed: 87 },
+      { gear: '3rd', ratio: '2.11', speedAt1000Rpm: 19.2, speedAt3000Rpm: 57.6, speedAt6000Rpm: 115.2, redlineSpeed: 130 },
+      { gear: '4th', ratio: '1.67', speedAt1000Rpm: 24.3, speedAt3000Rpm: 72.9, speedAt6000Rpm: 145.8, redlineSpeed: 165 },
+      { gear: '5th', ratio: '1.29', speedAt1000Rpm: 31.5, speedAt3000Rpm: 94.5, speedAt6000Rpm: 189.0, redlineSpeed: 213 },
+      { gear: '6th', ratio: '1.00', speedAt1000Rpm: 40.6, speedAt3000Rpm: 121.8, speedAt6000Rpm: 243.6, redlineSpeed: 259 },
+      { gear: '7th', ratio: '0.84', speedAt1000Rpm: 48.3, speedAt3000Rpm: 144.9, speedAt6000Rpm: 259.0, redlineSpeed: 259 },
+      { gear: '8th', ratio: '0.67', speedAt1000Rpm: 60.6, speedAt3000Rpm: 181.8, speedAt6000Rpm: 259.0, redlineSpeed: 259 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 6.6, engineRpm: 1150 },
+      { speedKmh: 40, fuelConsumptionKmpl: 8.1, engineRpm: 1050 },
+      { speedKmh: 60, fuelConsumptionKmpl: 9.8, engineRpm: 1000 },
+      { speedKmh: 80, fuelConsumptionKmpl: 11.0, engineRpm: 1100 },
+      { speedKmh: 100, fuelConsumptionKmpl: 10.3, engineRpm: 1500 },
+      { speedKmh: 120, fuelConsumptionKmpl: 9.0, engineRpm: 1800 },
+      { speedKmh: 140, fuelConsumptionKmpl: 7.6, engineRpm: 2100 }
+    ],
+    technicalFeatures: [
+      'Entry engine for the Panamera grand-touring liftback',
+      'Adaptive air suspension with three-chamber technology standard',
+      'Rear-wheel drive on the base Panamera, 4 and 4S add all-wheel drive',
+      'Same V6 family that powers the base Cayenne'
+    ]
+  },
+
+  '4.0-na-flat6-gt3': {
+    id: '4.0-na-flat6-gt3',
+    name: '4.0L Naturally-Aspirated Flat-6 (Motorsport-Derived)',
+    badge: '4.0 NA Flat-6 GT3 (510 PS / 470 Nm)',
+    displacement: '3,996 cc',
+    cylinders: '6 Cylinders (Naturally-Aspirated Flat-6)',
+    fuelType: 'Petrol',
+    peakPowerStr: '510 PS @ 8,400 RPM',
+    peakTorqueStr: '470 Nm @ 6,100 RPM',
+    maxPowerHp: 510,
+    maxTorqueNm: 470,
+    powerRpmRange: '8,400 RPM',
+    torqueRpmRange: '6,100 RPM',
+    redlineRpm: 9000,
+    idleRpm: 900,
+    highwayCruiseRpm100Kmh: 2100,
+    highwayCruiseRpm120Kmh: 2500,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 30, torqueNm: 210, boostBar: 0.0 },
+      { rpm: 2000, powerHp: 75, torqueNm: 340, boostBar: 0.0 },
+      { rpm: 3000, powerHp: 130, torqueNm: 400, boostBar: 0.0 },
+      { rpm: 4000, powerHp: 195, torqueNm: 440, boostBar: 0.0 },
+      { rpm: 5000, powerHp: 270, torqueNm: 460, boostBar: 0.0 },
+      { rpm: 6100, powerHp: 350, torqueNm: 470, boostBar: 0.0 },
+      { rpm: 7200, powerHp: 435, torqueNm: 465, boostBar: 0.0 },
+      { rpm: 8400, powerHp: 510, torqueNm: 430, boostBar: 0.0 },
+      { rpm: 9000, powerHp: 480, torqueNm: 385, boostBar: 0.0 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.5, speedKmh: 42, gForce: 1.1, gear: 1 },
+      { timeSec: 1.0, speedKmh: 72, gForce: 0.95, gear: 2 },
+      { timeSec: 1.6, speedKmh: 96, gForce: 0.8, gear: 2 },
+      { timeSec: 2.3, speedKmh: 100, gForce: 0.75, gear: 3 },
+      { timeSec: 3.4, speedKmh: 140, gForce: 0.6, gear: 3 },
+      { timeSec: 4.8, speedKmh: 180, gForce: 0.44, gear: 4 },
+      { timeSec: 7.0, speedKmh: 220, gForce: 0.3, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.75', speedAt1000Rpm: 10.5, speedAt3000Rpm: 31.5, speedAt6000Rpm: 63.0, redlineSpeed: 71 },
+      { gear: '2nd', ratio: '2.20', speedAt1000Rpm: 16.9, speedAt3000Rpm: 50.7, speedAt6000Rpm: 101.4, redlineSpeed: 114 },
+      { gear: '3rd', ratio: '1.52', speedAt1000Rpm: 24.5, speedAt3000Rpm: 73.5, speedAt6000Rpm: 147.0, redlineSpeed: 165 },
+      { gear: '4th', ratio: '1.19', speedAt1000Rpm: 31.3, speedAt3000Rpm: 93.9, speedAt6000Rpm: 187.8, redlineSpeed: 211 },
+      { gear: '5th', ratio: '0.97', speedAt1000Rpm: 38.4, speedAt3000Rpm: 115.2, speedAt6000Rpm: 230.4, redlineSpeed: 259 },
+      { gear: '6th', ratio: '0.80', speedAt1000Rpm: 46.6, speedAt3000Rpm: 139.8, speedAt6000Rpm: 279.6, redlineSpeed: 314 },
+      { gear: '7th', ratio: '0.67', speedAt1000Rpm: 55.7, speedAt3000Rpm: 167.1, speedAt6000Rpm: 318.0, redlineSpeed: 318 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 4.8, engineRpm: 1700 },
+      { speedKmh: 40, fuelConsumptionKmpl: 5.9, engineRpm: 1600 },
+      { speedKmh: 60, fuelConsumptionKmpl: 7.1, engineRpm: 1550 },
+      { speedKmh: 80, fuelConsumptionKmpl: 7.9, engineRpm: 1700 },
+      { speedKmh: 100, fuelConsumptionKmpl: 7.3, engineRpm: 2100 },
+      { speedKmh: 120, fuelConsumptionKmpl: 6.3, engineRpm: 2500 },
+      { speedKmh: 140, fuelConsumptionKmpl: 5.3, engineRpm: 2900 }
+    ],
+    technicalFeatures: [
+      'Derived from the 911 RSR race engine, revving to a screaming 9,000 RPM redline with zero turbo lag',
+      'Double-wishbone front suspension borrowed directly from the 911 RSR race car',
+      'Fully variable rear-axle limited-slip differential with rear-axle steering',
+      'Titanium sport exhaust with a motorsport-tuned flat-6 wail'
+    ]
+  },
+
+  '3.7-twin-turbo-flat6-turbo-s': {
+    id: '3.7-twin-turbo-flat6-turbo-s',
+    name: '3.7L Twin-Turbo Flat-6',
+    badge: '3.7 Twin-Turbo Flat-6 Turbo S (650 PS / 800 Nm)',
+    displacement: '3,745 cc',
+    cylinders: '6 Cylinders (Twin-Turbo Flat-6)',
+    fuelType: 'Petrol',
+    peakPowerStr: '650 PS @ 6,750 RPM',
+    peakTorqueStr: '800 Nm @ 2,300–4,000 RPM',
+    maxPowerHp: 650,
+    maxTorqueNm: 800,
+    powerRpmRange: '6,750 RPM',
+    torqueRpmRange: '2,300 – 4,000 RPM',
+    redlineRpm: 7200,
+    idleRpm: 800,
+    highwayCruiseRpm100Kmh: 1550,
+    highwayCruiseRpm120Kmh: 1850,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 90, torqueNm: 480, boostBar: 1.2 },
+      { rpm: 2300, powerHp: 210, torqueNm: 800, boostBar: 1.7 },
+      { rpm: 3000, powerHp: 275, torqueNm: 800, boostBar: 1.65 },
+      { rpm: 4000, powerHp: 366, torqueNm: 800, boostBar: 1.6 },
+      { rpm: 5000, powerHp: 458, torqueNm: 780, boostBar: 1.5 },
+      { rpm: 6000, powerHp: 578, torqueNm: 750, boostBar: 1.35 },
+      { rpm: 6750, powerHp: 650, torqueNm: 691, boostBar: 1.2 },
+      { rpm: 7200, powerHp: 610, torqueNm: 630, boostBar: 1.0 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.4, speedKmh: 45, gForce: 1.25, gear: 1 },
+      { timeSec: 0.9, speedKmh: 75, gForce: 1.1, gear: 2 },
+      { timeSec: 1.5, speedKmh: 100, gForce: 0.9, gear: 2 },
+      { timeSec: 2.0, speedKmh: 130, gForce: 0.75, gear: 3 },
+      { timeSec: 3.1, speedKmh: 160, gForce: 0.55, gear: 4 },
+      { timeSec: 4.5, speedKmh: 200, gForce: 0.4, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '4.06', speedAt1000Rpm: 11.0, speedAt3000Rpm: 33.0, speedAt6000Rpm: 66.0, redlineSpeed: 73 },
+      { gear: '2nd', ratio: '2.36', speedAt1000Rpm: 17.9, speedAt3000Rpm: 53.7, speedAt6000Rpm: 107.4, redlineSpeed: 118 },
+      { gear: '3rd', ratio: '1.63', speedAt1000Rpm: 25.9, speedAt3000Rpm: 77.7, speedAt6000Rpm: 155.4, redlineSpeed: 171 },
+      { gear: '4th', ratio: '1.27', speedAt1000Rpm: 33.3, speedAt3000Rpm: 99.9, speedAt6000Rpm: 199.8, redlineSpeed: 220 },
+      { gear: '5th', ratio: '1.02', speedAt1000Rpm: 41.4, speedAt3000Rpm: 124.2, speedAt6000Rpm: 248.4, redlineSpeed: 273 },
+      { gear: '6th', ratio: '0.84', speedAt1000Rpm: 50.3, speedAt3000Rpm: 150.9, speedAt6000Rpm: 301.8, redlineSpeed: 330 },
+      { gear: '7th', ratio: '0.69', speedAt1000Rpm: 61.2, speedAt3000Rpm: 183.6, speedAt6000Rpm: 330.0, redlineSpeed: 330 },
+      { gear: '8th', ratio: '0.57', speedAt1000Rpm: 74.0, speedAt3000Rpm: 222.0, speedAt6000Rpm: 330.0, redlineSpeed: 330 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 4.2, engineRpm: 1150 },
+      { speedKmh: 40, fuelConsumptionKmpl: 5.2, engineRpm: 1050 },
+      { speedKmh: 60, fuelConsumptionKmpl: 6.3, engineRpm: 1000 },
+      { speedKmh: 80, fuelConsumptionKmpl: 7.1, engineRpm: 1100 },
+      { speedKmh: 100, fuelConsumptionKmpl: 6.6, engineRpm: 1550 },
+      { speedKmh: 120, fuelConsumptionKmpl: 5.7, engineRpm: 1850 },
+      { speedKmh: 140, fuelConsumptionKmpl: 4.8, engineRpm: 2150 }
+    ],
+    technicalFeatures: [
+      'Variable-vane twin turbochargers for near-instant boost response',
+      'Porsche Traction Management all-wheel drive with launch control',
+      '420 mm front carbon-ceramic discs (PCCB) with 10-piston calipers',
+      'Adaptive three-chamber air suspension with PASM'
+    ]
+  },
+
+  '4.0-turbo-v8-cayenne-turbo-gt': {
+    id: '4.0-turbo-v8-cayenne-turbo-gt',
+    name: '4.0L Twin-Turbo V8',
+    badge: '4.0 Twin-Turbo V8 Turbo GT (640 PS / 850 Nm)',
+    displacement: '3,996 cc',
+    cylinders: '8 Cylinders (Twin-Turbo V8)',
+    fuelType: 'Petrol',
+    peakPowerStr: '640 PS @ 6,000 RPM',
+    peakTorqueStr: '850 Nm @ 2,300–4,500 RPM',
+    maxPowerHp: 640,
+    maxTorqueNm: 850,
+    powerRpmRange: '6,000 RPM',
+    torqueRpmRange: '2,300 – 4,500 RPM',
+    redlineRpm: 6800,
+    idleRpm: 750,
+    highwayCruiseRpm100Kmh: 1400,
+    highwayCruiseRpm120Kmh: 1700,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 100, torqueNm: 560, boostBar: 1.2 },
+      { rpm: 2300, powerHp: 240, torqueNm: 850, boostBar: 1.7 },
+      { rpm: 3000, powerHp: 313, torqueNm: 850, boostBar: 1.65 },
+      { rpm: 4000, powerHp: 417, torqueNm: 850, boostBar: 1.6 },
+      { rpm: 4500, powerHp: 469, torqueNm: 850, boostBar: 1.55 },
+      { rpm: 5200, powerHp: 542, torqueNm: 830, boostBar: 1.4 },
+      { rpm: 6000, powerHp: 640, torqueNm: 763, boostBar: 1.25 },
+      { rpm: 6800, powerHp: 595, torqueNm: 665, boostBar: 1.0 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.6, speedKmh: 44, gForce: 1.05, gear: 1 },
+      { timeSec: 1.2, speedKmh: 74, gForce: 0.9, gear: 2 },
+      { timeSec: 1.9, speedKmh: 100, gForce: 0.74, gear: 2 },
+      { timeSec: 2.6, speedKmh: 120, gForce: 0.62, gear: 3 },
+      { timeSec: 3.9, speedKmh: 160, gForce: 0.46, gear: 4 },
+      { timeSec: 6.0, speedKmh: 200, gForce: 0.32, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '5.25', speedAt1000Rpm: 8.0, speedAt3000Rpm: 24.0, speedAt6000Rpm: 48.0, redlineSpeed: 54 },
+      { gear: '2nd', ratio: '3.29', speedAt1000Rpm: 12.8, speedAt3000Rpm: 38.4, speedAt6000Rpm: 76.8, redlineSpeed: 87 },
+      { gear: '3rd', ratio: '2.16', speedAt1000Rpm: 19.4, speedAt3000Rpm: 58.2, speedAt6000Rpm: 116.4, redlineSpeed: 131 },
+      { gear: '4th', ratio: '1.62', speedAt1000Rpm: 25.9, speedAt3000Rpm: 77.7, speedAt6000Rpm: 155.4, redlineSpeed: 175 },
+      { gear: '5th', ratio: '1.29', speedAt1000Rpm: 32.5, speedAt3000Rpm: 97.5, speedAt6000Rpm: 195.0, redlineSpeed: 220 },
+      { gear: '6th', ratio: '1.00', speedAt1000Rpm: 41.9, speedAt3000Rpm: 125.7, speedAt6000Rpm: 251.4, redlineSpeed: 260 },
+      { gear: '7th', ratio: '0.84', speedAt1000Rpm: 49.9, speedAt3000Rpm: 149.7, speedAt6000Rpm: 300.0, redlineSpeed: 300 },
+      { gear: '8th', ratio: '0.67', speedAt1000Rpm: 62.5, speedAt3000Rpm: 187.5, speedAt6000Rpm: 300.0, redlineSpeed: 300 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 3.8, engineRpm: 1100 },
+      { speedKmh: 40, fuelConsumptionKmpl: 4.7, engineRpm: 1000 },
+      { speedKmh: 60, fuelConsumptionKmpl: 5.7, engineRpm: 950 },
+      { speedKmh: 80, fuelConsumptionKmpl: 6.4, engineRpm: 1050 },
+      { speedKmh: 100, fuelConsumptionKmpl: 5.9, engineRpm: 1400 },
+      { speedKmh: 120, fuelConsumptionKmpl: 5.1, engineRpm: 1700 },
+      { speedKmh: 140, fuelConsumptionKmpl: 4.3, engineRpm: 1980 }
+    ],
+    technicalFeatures: [
+      'A 640 PS twin-turbo V8 once held the production-SUV Nordschleife lap record',
+      'Three-chamber adaptive air suspension with active anti-roll stabilization (PDCC)',
+      '420 mm front carbon-ceramic discs (PCCB) with 10-piston calipers',
+      'Porsche Traction Management all-wheel drive with an electronically controlled rear diff lock'
+    ]
   }
 };
 
@@ -2750,6 +3258,174 @@ export const MODEL_PERFORMANCE_PROFILES: ModelPerformanceProfile[] = [
       'Muscular flared wheel arches housing 22-inch wheels while managing turbulent airflow',
       'Functional roof-edge spoiler on the estate tailgate generating rear-axle stability',
       'Massive front air intakes feeding the twin-turbo V8’s intercoolers and RS brake package'
+    ]
+  },
+  {
+    id: '911-carrera',
+    name: 'Porsche 911 Carrera',
+    tagline: 'The Rear-Engine Icon, Reimagined Again',
+    category: 'Iconic Sports Coupe',
+    primaryEngineId: '3.0-twin-turbo-flat6-carrera',
+    availableEngineIds: ['3.0-twin-turbo-flat6-carrera'],
+    weightKg: 1505,
+    dragCoefficient: '0.28 Cd',
+    braking100to0DistMeters: 32.1,
+    corneringGForce: 1.02,
+    powerToWeightRatio: '255.8 PS/tonne',
+    sprint0to100: '4.2 seconds',
+    topSpeed: '293 km/h',
+    suspensionType: 'Porsche Active Suspension Management (PASM) with Adaptive Damping',
+    aerodynamicHighlights: [
+      'Rear-mounted flat-6 layout unchanged in concept since 1963, aiding rear-end traction',
+      'Active rear spoiler deploying automatically above 90 km/h for added downforce',
+      'Smooth, flush underbody paneling for a class-leading 0.28 Cd drag coefficient'
+    ]
+  },
+  {
+    id: '718-cayman',
+    name: 'Porsche 718 Cayman',
+    tagline: 'The Purist’s Mid-Engine Sports Coupe',
+    category: 'Mid-Engine Sports Coupe',
+    primaryEngineId: '2.0-turbo-flat4-718',
+    availableEngineIds: ['2.0-turbo-flat4-718'],
+    weightKg: 1400,
+    dragCoefficient: '0.29 Cd',
+    braking100to0DistMeters: 33.4,
+    corneringGForce: 0.98,
+    powerToWeightRatio: '214.3 PS/tonne',
+    sprint0to100: '4.9 seconds',
+    topSpeed: '275 km/h',
+    suspensionType: 'MacPherson Strut Front & Rear with PASM Adaptive Damping',
+    aerodynamicHighlights: [
+      'Mid-engine layout delivering near-perfect 45:55 front-rear weight balance',
+      'Automatically extending rear spoiler for added high-speed stability',
+      'Low, wide stance with flush glazing minimizing turbulent airflow'
+    ]
+  },
+  {
+    id: 'macan',
+    name: 'Porsche Macan',
+    tagline: 'The Benchmark Compact Luxury SUV',
+    category: 'Compact Luxury SUV',
+    primaryEngineId: '2.0-turbo-macan',
+    availableEngineIds: ['2.0-turbo-macan'],
+    weightKg: 1820,
+    dragCoefficient: '0.33 Cd',
+    braking100to0DistMeters: 35.8,
+    corneringGForce: 0.88,
+    powerToWeightRatio: '145.6 PS/tonne',
+    sprint0to100: '6.2 seconds',
+    topSpeed: '232 km/h',
+    suspensionType: 'MacPherson Strut Front & Multi-Link Rear with PASM',
+    aerodynamicHighlights: [
+      'Sculpted roofline and integrated roof spoiler reducing rear-end lift',
+      'Active cooling flaps closing at speed to reduce frontal drag',
+      'Flush door handles and underbody paneling for a genuinely sporty 0.33 Cd'
+    ]
+  },
+  {
+    id: 'cayenne',
+    name: 'Porsche Cayenne',
+    tagline: 'The Full-Size Luxury SUV with Sports Car DNA',
+    category: 'Full-Size Luxury SUV',
+    primaryEngineId: '3.0-turbo-v6-cayenne',
+    availableEngineIds: ['3.0-turbo-v6-cayenne'],
+    weightKg: 1985,
+    dragCoefficient: '0.35 Cd',
+    braking100to0DistMeters: 36.9,
+    corneringGForce: 0.84,
+    powerToWeightRatio: '177.8 PS/tonne',
+    sprint0to100: '5.9 seconds',
+    topSpeed: '245 km/h',
+    suspensionType: 'Adaptive Air Suspension with Porsche Traction Management AWD',
+    aerodynamicHighlights: [
+      'Adaptive air suspension lowering the body at speed to cut frontal drag',
+      'Roof-edge spoiler and rear diffuser managing turbulent wake off the tailgate',
+      'Active cooling flaps behind the front grille closing when cooling demand is low'
+    ]
+  },
+  {
+    id: 'panamera',
+    name: 'Porsche Panamera',
+    tagline: 'The Grand-Touring Liftback with Sports Sedan Reflexes',
+    category: 'Grand-Touring Executive Liftback',
+    primaryEngineId: '2.9-twin-turbo-v6-panamera',
+    availableEngineIds: ['2.9-twin-turbo-v6-panamera'],
+    weightKg: 1895,
+    dragCoefficient: '0.30 Cd',
+    braking100to0DistMeters: 34.6,
+    corneringGForce: 0.90,
+    powerToWeightRatio: '174.1 PS/tonne',
+    sprint0to100: '5.6 seconds',
+    topSpeed: '259 km/h',
+    suspensionType: 'Three-Chamber Adaptive Air Suspension Standard',
+    aerodynamicHighlights: [
+      'Fastback liftback silhouette with a class-leading 0.30 Cd drag coefficient',
+      'Active rear spoiler extending and angling automatically above 90 km/h',
+      'Three-chamber air suspension lowering ride height for reduced drag at speed'
+    ]
+  },
+  {
+    id: '911-gt3',
+    name: 'Porsche 911 GT3',
+    tagline: 'The Track Purist’s Naturally-Aspirated 911',
+    category: 'Naturally-Aspirated Track Weapon',
+    primaryEngineId: '4.0-na-flat6-gt3',
+    availableEngineIds: ['4.0-na-flat6-gt3'],
+    weightKg: 1435,
+    dragCoefficient: '0.34 Cd with Functional Downforce',
+    braking100to0DistMeters: 30.9,
+    corneringGForce: 1.10,
+    powerToWeightRatio: '355.4 PS/tonne',
+    sprint0to100: '3.4 seconds',
+    topSpeed: '318 km/h',
+    suspensionType: 'Motorsport-Derived Double-Wishbone Front Axle with Rear-Axle Steering',
+    aerodynamicHighlights: [
+      'Fixed rear wing lifted directly from the 911 Cup racer generating genuine downforce',
+      'Underbody diffuser and front splitter tuned for balanced aero at 9,000 RPM speeds',
+      'Titanium sport exhaust and lightweight panels shed weight over the standard Carrera'
+    ]
+  },
+  {
+    id: '911-turbo-s',
+    name: 'Porsche 911 Turbo S',
+    tagline: 'The Everyday Hypercar Hunter',
+    category: 'All-Weather Twin-Turbo Flagship',
+    primaryEngineId: '3.7-twin-turbo-flat6-turbo-s',
+    availableEngineIds: ['3.7-twin-turbo-flat6-turbo-s'],
+    weightKg: 1640,
+    dragCoefficient: '0.31 Cd',
+    braking100to0DistMeters: 29.8,
+    corneringGForce: 1.05,
+    powerToWeightRatio: '396.3 PS/tonne',
+    sprint0to100: '2.7 seconds',
+    topSpeed: '330 km/h',
+    suspensionType: 'Adaptive Three-Chamber Air Suspension with PASM',
+    aerodynamicHighlights: [
+      'Widened rear haunches feeding larger intercoolers and improving high-speed stability',
+      'Active rear spoiler and front cooling flaps balancing drag against downforce',
+      'Porsche Traction Management all-wheel drive putting 800 Nm down with minimal wheelspin'
+    ]
+  },
+  {
+    id: 'cayenne-turbo-gt',
+    name: 'Porsche Cayenne Turbo GT',
+    tagline: 'The SUV That Beat Sports Cars Around the ’Ring',
+    category: 'High-Performance Luxury SUV',
+    primaryEngineId: '4.0-turbo-v8-cayenne-turbo-gt',
+    availableEngineIds: ['4.0-turbo-v8-cayenne-turbo-gt'],
+    weightKg: 2200,
+    dragCoefficient: '0.36 Cd',
+    braking100to0DistMeters: 33.2,
+    corneringGForce: 0.99,
+    powerToWeightRatio: '290.9 PS/tonne',
+    sprint0to100: '3.3 seconds',
+    topSpeed: '300 km/h',
+    suspensionType: 'Three-Chamber Adaptive Air Suspension with Active Anti-Roll (PDCC)',
+    aerodynamicHighlights: [
+      'Lowered ride height and a fixed rear roof spoiler for genuine high-speed downforce',
+      'Active anti-roll stabilization keeping the body flat through fast corners',
+      'Once held the production-SUV Nordschleife lap record at 7:38.9'
     ]
   }
 ];

@@ -68,6 +68,17 @@ const PLATFORM_OVERRIDES = {
   "volkswagen:beetle": LEGACY_PLATFORM,
   "volkswagen:virtus": "MQB-A0-IN",
   "volkswagen:taigun": "MQB-A0-IN",
+  // Porsche's own dedicated sports-car architecture (911, 718) is not
+  // shared with any other Group brand's models in this showcase, so it
+  // gets its own "MSB" bucket rather than falling into the generic MQB
+  // Evo fallback. The Macan/Cayenne/Panamera SUVs and grand tourer, by
+  // contrast, genuinely ride the Group's shared MLB Evo architecture
+  // (the Macan shares it with the Audi Q5).
+  "porsche:911-carrera": "MSB",
+  "porsche:718-cayman": "MSB",
+  "porsche:macan": "MLB Evo",
+  "porsche:cayenne": "MLB Evo",
+  "porsche:panamera": "MLB Evo",
 };
 
 export function derivePlatform(model, brand) {
@@ -78,7 +89,7 @@ export function derivePlatform(model, brand) {
 
 // --- Drivetrain derivation ----------------------------------------------
 
-function deriveDrivetrain(model) {
+export function deriveDrivetrain(model) {
   const combined = (model.keyHighlights || []).join(" | ");
   if (/quattro/i.test(combined)) return "quattro Permanent All-Wheel Drive";
   if (/4motion/i.test(combined)) return "4MOTION Intelligent All-Wheel Drive";
@@ -126,6 +137,7 @@ export const PLATFORM_DESCRIPTIONS = {
   "MQB-A0-IN": "India 2.0's dedicated compact platform, localized for Indian roads, thermal extremes and supply chains.",
   "MQB Evo": "The Group's global modular compact/mid-size platform, underpinning everything from hot hatches to executive liftbacks.",
   "MLB Evo": "Longitudinal-engine architecture for premium sedans and large SUVs, shared all the way up to Audi's flagship.",
+  "MSB": "Porsche's own dedicated sports-car architecture underpinning the rear-engine 911 and mid-engine 718 twins — not shared with any other Group brand's models in this showcase.",
   [LEGACY_PLATFORM]: "Earlier-generation PQ/MQB architecture underpinning discontinued Hall of Fame nameplates.",
 };
 
