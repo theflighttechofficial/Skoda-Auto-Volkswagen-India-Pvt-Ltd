@@ -1,6 +1,7 @@
 export interface RSModelData {
   id: string;
   name: string;
+  image?: string;
   badge: string;
   tagline: string;
   category: string;
@@ -49,6 +50,7 @@ export const RS_MODELS: RSModelData[] = [
   {
     id: 'octavia-vrs',
     name: 'Škoda Octavia vRS',
+    image: '/cars/skoda-octavia-vrs.jpg',
     badge: 'The Benchmark Hot Liftback',
     tagline: '265 PS of pure EA888 EVO4 fury, VAQ mechanical limited-slip diff, and 6.4s sprint time.',
     category: 'Hot Liftback / Performance Saloon',
@@ -135,6 +137,7 @@ export const RS_MODELS: RSModelData[] = [
   {
     id: 'kodiaq-vrs',
     name: 'Škoda Kodiaq vRS',
+    image: '/cars/skoda-kodiaq-rs.jpg',
     badge: 'The 7-Seater 4x4 Super-SUV',
     tagline: '265 PS TSI firepower, Intelligent 4x4 launch grip, and blistering 6.3s 0–100 km/h family speed.',
     category: 'Full-Size Performance 4x4 SUV (7-Seater)',
@@ -221,6 +224,7 @@ export const RS_MODELS: RSModelData[] = [
   {
     id: 'octavia-combi-vrs',
     name: 'Škoda Octavia Combi vRS',
+    image: '/cars/skoda-octavia-combi-vrs.jpg',
     badge: 'The Estate Enthusiast\'s Secret Weapon',
     tagline: '265 PS of EA888 EVO4 fury wrapped in a 640-litre Combi estate body — the vRS purists whisper about.',
     category: 'Performance Estate / Shooting Brake',

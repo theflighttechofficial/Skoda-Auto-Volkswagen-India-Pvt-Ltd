@@ -75,9 +75,17 @@ export const GroupPersonalities = ({
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 0.5, delay: i * 0.12, type: "spring", stiffness: 90 }}
             whileHover={{ y: -6 }}
-            className={`group text-left rounded-3xl bg-zinc-900/70 border border-zinc-800 p-7 transition-all cursor-pointer shadow-lg ${brand.border} ${brand.glow}`}
+            className={`group text-left rounded-3xl bg-zinc-900/70 border border-zinc-800 p-7 transition-all cursor-pointer shadow-lg overflow-hidden ${brand.border} ${brand.glow}`}
           >
-            <brand.Logo variant="full" size="lg" animated />
+            <div className="flex items-center gap-2.5 min-w-0">
+              <brand.Logo variant="emblem" size="lg" animated />
+              <span
+                className="font-black text-white text-lg sm:text-xl leading-tight break-words min-w-0 tracking-wide"
+                style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
+              >
+                {brand.name}
+              </span>
+            </div>
             <p className={`text-sm font-black italic mt-4 ${brand.accent}`}>{brand.tagline}</p>
             <p className="text-xs text-zinc-400 mt-2 leading-relaxed">{brand.description}</p>
             <span className={`inline-block mt-4 text-[11px] font-bold ${brand.accent} opacity-0 group-hover:opacity-100 transition-opacity`}>

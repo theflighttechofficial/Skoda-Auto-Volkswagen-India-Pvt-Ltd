@@ -9,6 +9,7 @@ export const AUDI_RS_MODELS: AudiPerformanceModelData[] = [
   {
     id: 'octavia-vrs' as any, // Audi RS5
     name: 'Audi RS5',
+    image: '/cars/audi-rs5.jpg',
     badge: 'Audi Sport’s Hand-Built V6 Track Weapon',
     tagline: '450 PS of hand-assembled 2.9 TFSI twin-turbo V6 fury, quattro sport differential, and a 3.9s sprint time.',
     category: 'High-Performance Sports Sedan',
@@ -94,6 +95,7 @@ export const AUDI_RS_MODELS: AudiPerformanceModelData[] = [
   {
     id: 'kodiaq-vrs' as any, // Audi RS Q8
     name: 'Audi RS Q8',
+    image: '/cars/audi-rsq8.jpg',
     badge: 'The Fastest, Most Powerful SUV Audi Has Ever Built',
     tagline: '600 PS of hand-built 4.0 TFSI V8 firepower, active roll stabilization, and a blistering 3.8s 0–100 km/h sprint.',
     category: 'High-Performance Luxury SUV',
@@ -179,6 +181,7 @@ export const AUDI_RS_MODELS: AudiPerformanceModelData[] = [
   {
     id: 'rs6' as any, // Audi RS6 Avant
     name: 'Audi RS6 Avant',
+    image: '/cars/audi-rs6-avant.jpg',
     badge: 'The 600 PS Load-Carrying Missile',
     tagline: '600 PS of twin-turbo V8 firepower packed into a practical estate body, with a cavernous 565-litre boot for the school run.',
     category: 'High-Performance Estate',

@@ -11,6 +11,7 @@ export const VW_GT_MODELS: VWPerformanceModelData[] = [
   {
     id: 'octavia-vrs' as any, // Golf GTI
     name: 'Volkswagen Golf GTI',
+    image: '/cars/vw-golf-gti-mk8.jpg',
     badge: 'The Original Hot Hatch Legend',
     tagline: '265 PS EA888 EVO4 engine, VAQ mechanical limited-slip differential, Clark tartan seats, and Nürburgring heritage.',
     category: 'Track-Ready Hot Hatch / CBU Icon',
@@ -90,6 +91,7 @@ export const VW_GT_MODELS: VWPerformanceModelData[] = [
   {
     id: 'kodiaq-vrs' as any, // Virtus GT Plus Sport
     name: 'Volkswagen Virtus GT Plus',
+    image: '/cars/vw-virtus-gt.png',
     badge: 'The Indian Sedan Speed King',
     tagline: '150 PS EA211 EVO engine, 7-Speed DSG, 0-100 in 8.6s, and laser-welded German precision.',
     category: 'Performance Sports Sedan',
@@ -169,6 +171,7 @@ export const VW_GT_MODELS: VWPerformanceModelData[] = [
   {
     id: 'polo-gti',
     name: 'Volkswagen Polo GTI',
+    image: '/cars/vw-polo-gti.jpg',
     badge: 'The Pocket-Rocket Hot Hatch',
     tagline: '207 PS EA888 turbo-four squeezed into Volkswagen\'s lightest, smallest, most flickable GTI body.',
     category: 'Compact Hot Hatch / CBU Icon',
@@ -248,6 +251,7 @@ export const VW_GT_MODELS: VWPerformanceModelData[] = [
   {
     id: 'jetta-gli',
     name: 'Volkswagen Jetta GLI',
+    image: '/cars/vw-jetta-gli.jpg',
     badge: 'Not Sold in India — The Sedan-Shaped GTI',
     tagline: '228 PS EA888 sports-sedan tune, GLI-firmed suspension, and 510L of boot space — a global enthusiast icon not officially sold in India.',
     category: 'Performance Sports Sedan / Global Market Only',

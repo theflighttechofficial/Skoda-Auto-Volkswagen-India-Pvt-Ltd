@@ -350,6 +350,15 @@ export const RSPerformance = ({
                   onClick={() => setSelectedModelId(car.id)}
                   className={`p-4 rounded-2xl border text-left transition-all relative overflow-hidden group ${isSelected ? "bg-zinc-900 border-red-500/80 shadow-lg shadow-red-950/40 ring-1 ring-red-500/50" : "bg-zinc-950/70 border-zinc-800 hover:border-zinc-700 hover:bg-zinc-900/60"}`}
                 >
+                  {car.image && (
+                    <div className="w-full h-24 rounded-xl overflow-hidden mb-3 border border-zinc-800/80">
+                      <img
+                        src={car.image}
+                        alt={car.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  )}
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-2">
                       <span className="text-base font-black italic tracking-tight text-white group-hover:text-red-400 transition-colors">
@@ -437,6 +446,21 @@ export const RSPerformance = ({
             )}
           </div>
         </div>
+
+        {/* Hero Photo */}
+        {activeModel.image && (
+          <div className="relative w-full h-56 sm:h-80 rounded-2xl overflow-hidden border border-zinc-800 shadow-xl">
+            <img
+              src={activeModel.image}
+              alt={activeModel.name}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/10 to-transparent" />
+            <span className="absolute bottom-3 left-4 text-xs font-bold text-white/90 bg-black/50 px-2.5 py-1 rounded-lg backdrop-blur-sm">
+              {activeModel.name}
+            </span>
+          </div>
+        )}
 
         {/* 6 Key Telemetry Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">

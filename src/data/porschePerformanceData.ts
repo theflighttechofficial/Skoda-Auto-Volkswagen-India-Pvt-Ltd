@@ -10,6 +10,7 @@ export const PORSCHE_GT_MODELS: PorschePerformanceModelData[] = [
   {
     id: '911-gt3',
     name: 'Porsche 911 GT3',
+    image: '/cars/porsche-911-gt3.jpg',
     badge: 'The Track Purist’s 911',
     tagline: '510 PS naturally-aspirated flat-6 revving to 9,000 RPM, double-wishbone front suspension, and a fixed rear wing lifted straight from the Cup racer.',
     category: 'Naturally-Aspirated Track Weapon / Homologation Special',
@@ -89,6 +90,7 @@ export const PORSCHE_GT_MODELS: PorschePerformanceModelData[] = [
   {
     id: '911-turbo-s',
     name: 'Porsche 911 Turbo S',
+    image: '/cars/porsche-911-turbo-s.jpg',
     badge: 'The Everyday Hypercar Hunter',
     tagline: '650 PS twin-turbo flat-6, all-wheel drive launch control, and a 2.7-second sprint to 100 km/h that embarrasses cars costing twice as much.',
     category: 'All-Weather Twin-Turbo Flagship',
@@ -168,6 +170,7 @@ export const PORSCHE_GT_MODELS: PorschePerformanceModelData[] = [
   {
     id: 'cayenne-turbo-gt',
     name: 'Porsche Cayenne Turbo GT',
+    image: '/cars/porsche-cayenne-turbo-gt.jpg',
     badge: 'The SUV That Beat Sports Cars Around the ’Ring',
     tagline: '640 PS twin-turbo V8 in a full-size SUV body that once set the production-SUV Nordschleife lap record.',
     category: 'High-Performance Luxury SUV',

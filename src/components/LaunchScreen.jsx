@@ -25,14 +25,38 @@ export const LaunchScreen = ({ onEnter }) => {
         </motion.p>
       </div>
 
+      {/* Big stylized German masthead */}
+      <div className="relative z-10 text-center px-4 pt-6 pb-2">
+        <motion.h1
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-white normal-case"
+          style={{ fontFamily: "'Dancing Script', cursive" }}
+        >
+          Groupe{" "}
+          <span className="bg-gradient-to-r from-blue-400 via-sky-300 to-blue-400 bg-clip-text text-transparent">
+            die Volkswagen
+          </span>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-xs sm:text-sm text-zinc-500 mt-2 italic tracking-wide"
+        >
+          Vier Marken. Eine Philosophie. — Four Brands, One Philosophy.
+        </motion.p>
+      </div>
+
       {/* Main launch content */}
       <div className="relative z-10 flex-1 flex items-center justify-center px-4 py-10">
         <div className="w-full max-w-5xl">
           <GroupPersonalities
             onSelectBrand={onEnter}
-            badgeLabel="The Volkswagen Group"
+            badgeLabel="One Group, Many Personalities"
             heading="Different Personalities. Shared DNA."
-            description="Škoda, Volkswagen, and Audi — three distinct personalities built on shared Volkswagen Group engineering. Click a brand to enter its world."
+            description="Škoda, Volkswagen, Audi, and Porsche — four distinct personalities built on shared Volkswagen Group engineering. Click a brand to enter its world."
           />
         </div>
       </div>
