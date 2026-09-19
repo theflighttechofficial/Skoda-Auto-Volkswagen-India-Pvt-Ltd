@@ -77,7 +77,7 @@ export const GroupPersonalities = ({
         <p className="text-sm text-zinc-400 mt-2">{description}</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 max-w-7xl mx-auto">
         {BRAND_CARDS.map((brand, i) => (
           <motion.button
             key={brand.id}
@@ -86,12 +86,12 @@ export const GroupPersonalities = ({
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 0.5, delay: i * 0.12, type: "spring", stiffness: 90 }}
             whileHover={{ y: -6 }}
-            className={`group text-left rounded-3xl bg-zinc-900/70 border border-zinc-800 p-7 transition-all cursor-pointer shadow-lg overflow-hidden ${brand.border} ${brand.glow}`}
+            className={`group text-left rounded-3xl bg-zinc-900/70 border border-zinc-800 p-6 transition-all cursor-pointer shadow-lg overflow-hidden ${brand.border} ${brand.glow}`}
           >
-            <div className="flex items-center gap-2.5 min-w-0">
-              <brand.Logo variant="emblem" size="lg" animated />
+            <div className="flex items-center gap-1.5 min-w-0">
+              <brand.Logo variant="emblem" size="sm" animated className="shrink-0" />
               <span
-                className="font-black text-white text-lg sm:text-xl leading-tight break-words min-w-0 tracking-wide"
+                className="font-black text-white text-sm sm:text-base leading-tight whitespace-nowrap min-w-0 tracking-wide -ml-0.5"
                 style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
               >
                 {brand.name}

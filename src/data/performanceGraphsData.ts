@@ -2437,6 +2437,259 @@ export const ENGINE_GRAPH_PROFILES: Record<string, EngineGraphProfile> = {
       '420 mm front carbon-ceramic discs (PCCB) with 10-piston calipers',
       'Porsche Traction Management all-wheel drive with an electronically controlled rear diff lock'
     ]
+  },
+
+  '5.2-v10-huracan': {
+    id: '5.2-v10-huracan',
+    name: '5.2L Naturally-Aspirated V10',
+    badge: '5.2 V10 (640 PS / 565 Nm)',
+    displacement: '5,204 cc',
+    cylinders: '10 Cylinders (Naturally-Aspirated V10)',
+    fuelType: 'Petrol',
+    peakPowerStr: '640 PS @ 8,000 RPM',
+    peakTorqueStr: '565 Nm @ 6,500 RPM',
+    maxPowerHp: 640,
+    maxTorqueNm: 565,
+    powerRpmRange: '8,000 RPM',
+    torqueRpmRange: '6,500 RPM',
+    redlineRpm: 8500,
+    idleRpm: 950,
+    highwayCruiseRpm100Kmh: 2050,
+    highwayCruiseRpm120Kmh: 2450,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 26, torqueNm: 195, boostBar: 0.0 },
+      { rpm: 2000, powerHp: 68, torqueNm: 320, boostBar: 0.0 },
+      { rpm: 3000, powerHp: 118, torqueNm: 385, boostBar: 0.0 },
+      { rpm: 4000, powerHp: 178, torqueNm: 430, boostBar: 0.0 },
+      { rpm: 5000, powerHp: 248, torqueNm: 475, boostBar: 0.0 },
+      { rpm: 6500, powerHp: 385, torqueNm: 565, boostBar: 0.0 },
+      { rpm: 7200, powerHp: 480, torqueNm: 555, boostBar: 0.0 },
+      { rpm: 8000, powerHp: 640, torqueNm: 510, boostBar: 0.0 },
+      { rpm: 8500, powerHp: 600, torqueNm: 460, boostBar: 0.0 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.5, speedKmh: 40, gForce: 1.05, gear: 1 },
+      { timeSec: 1.1, speedKmh: 70, gForce: 0.9, gear: 2 },
+      { timeSec: 1.7, speedKmh: 96, gForce: 0.78, gear: 2 },
+      { timeSec: 2.9, speedKmh: 100, gForce: 0.7, gear: 3 },
+      { timeSec: 4.2, speedKmh: 150, gForce: 0.52, gear: 4 },
+      { timeSec: 6.5, speedKmh: 200, gForce: 0.35, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.91', speedAt1000Rpm: 10.2, speedAt3000Rpm: 30.6, speedAt6000Rpm: 61.2, redlineSpeed: 69 },
+      { gear: '2nd', ratio: '2.44', speedAt1000Rpm: 16.4, speedAt3000Rpm: 49.2, speedAt6000Rpm: 98.4, redlineSpeed: 111 },
+      { gear: '3rd', ratio: '1.80', speedAt1000Rpm: 22.2, speedAt3000Rpm: 66.6, speedAt6000Rpm: 133.2, redlineSpeed: 150 },
+      { gear: '4th', ratio: '1.32', speedAt1000Rpm: 30.3, speedAt3000Rpm: 90.9, speedAt6000Rpm: 181.8, redlineSpeed: 205 },
+      { gear: '5th', ratio: '1.03', speedAt1000Rpm: 38.9, speedAt3000Rpm: 116.7, speedAt6000Rpm: 233.4, redlineSpeed: 263 },
+      { gear: '6th', ratio: '0.82', speedAt1000Rpm: 48.8, speedAt3000Rpm: 146.4, speedAt6000Rpm: 292.8, redlineSpeed: 325 },
+      { gear: '7th', ratio: '0.65', speedAt1000Rpm: 61.6, speedAt3000Rpm: 184.8, speedAt6000Rpm: 325.0, redlineSpeed: 325 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 4.4, engineRpm: 1750 },
+      { speedKmh: 40, fuelConsumptionKmpl: 5.5, engineRpm: 1650 },
+      { speedKmh: 60, fuelConsumptionKmpl: 6.6, engineRpm: 1600 },
+      { speedKmh: 80, fuelConsumptionKmpl: 7.3, engineRpm: 1750 },
+      { speedKmh: 100, fuelConsumptionKmpl: 6.8, engineRpm: 2050 },
+      { speedKmh: 120, fuelConsumptionKmpl: 5.9, engineRpm: 2450 },
+      { speedKmh: 140, fuelConsumptionKmpl: 5.0, engineRpm: 2850 }
+    ],
+    technicalFeatures: [
+      'One of the last naturally-aspirated V10 supercar engines still in production, revving to 8,500 RPM',
+      'Shares core architecture roots with the Audi R8’s V10',
+      '7-Speed LDF dual-clutch transmission derived from motorsport',
+      'Signature high-pitched V10 wail with zero turbo lag throttle response'
+    ]
+  },
+
+  '4.0-twin-turbo-v8-urus': {
+    id: '4.0-twin-turbo-v8-urus',
+    name: '4.0L Twin-Turbo V8',
+    badge: '4.0 Twin-Turbo V8 (657 PS / 850 Nm)',
+    displacement: '3,996 cc',
+    cylinders: '8 Cylinders (Twin-Turbo V8)',
+    fuelType: 'Petrol',
+    peakPowerStr: '657 PS @ 6,000 RPM',
+    peakTorqueStr: '850 Nm @ 2,300–4,500 RPM',
+    maxPowerHp: 657,
+    maxTorqueNm: 850,
+    powerRpmRange: '6,000 RPM',
+    torqueRpmRange: '2,300 – 4,500 RPM',
+    redlineRpm: 6800,
+    idleRpm: 750,
+    highwayCruiseRpm100Kmh: 1400,
+    highwayCruiseRpm120Kmh: 1700,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 102, torqueNm: 565, boostBar: 1.25 },
+      { rpm: 2300, powerHp: 246, torqueNm: 850, boostBar: 1.75 },
+      { rpm: 3000, powerHp: 322, torqueNm: 850, boostBar: 1.7 },
+      { rpm: 4000, powerHp: 429, torqueNm: 850, boostBar: 1.65 },
+      { rpm: 4500, powerHp: 483, torqueNm: 850, boostBar: 1.6 },
+      { rpm: 5200, powerHp: 557, torqueNm: 828, boostBar: 1.45 },
+      { rpm: 6000, powerHp: 657, torqueNm: 784, boostBar: 1.3 },
+      { rpm: 6800, powerHp: 610, torqueNm: 682, boostBar: 1.05 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.6, speedKmh: 45, gForce: 1.02, gear: 1 },
+      { timeSec: 1.3, speedKmh: 75, gForce: 0.88, gear: 2 },
+      { timeSec: 2.0, speedKmh: 100, gForce: 0.72, gear: 2 },
+      { timeSec: 2.8, speedKmh: 125, gForce: 0.6, gear: 3 },
+      { timeSec: 4.2, speedKmh: 165, gForce: 0.44, gear: 4 },
+      { timeSec: 6.4, speedKmh: 205, gForce: 0.3, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '5.25', speedAt1000Rpm: 7.9, speedAt3000Rpm: 23.7, speedAt6000Rpm: 47.4, redlineSpeed: 54 },
+      { gear: '2nd', ratio: '3.29', speedAt1000Rpm: 12.6, speedAt3000Rpm: 37.8, speedAt6000Rpm: 75.6, redlineSpeed: 86 },
+      { gear: '3rd', ratio: '2.16', speedAt1000Rpm: 19.2, speedAt3000Rpm: 57.6, speedAt6000Rpm: 115.2, redlineSpeed: 130 },
+      { gear: '4th', ratio: '1.62', speedAt1000Rpm: 25.6, speedAt3000Rpm: 76.8, speedAt6000Rpm: 153.6, redlineSpeed: 174 },
+      { gear: '5th', ratio: '1.29', speedAt1000Rpm: 32.1, speedAt3000Rpm: 96.3, speedAt6000Rpm: 192.6, redlineSpeed: 218 },
+      { gear: '6th', ratio: '1.00', speedAt1000Rpm: 41.4, speedAt3000Rpm: 124.2, speedAt6000Rpm: 248.4, redlineSpeed: 260 },
+      { gear: '7th', ratio: '0.84', speedAt1000Rpm: 49.3, speedAt3000Rpm: 147.9, speedAt6000Rpm: 295.8, redlineSpeed: 306 },
+      { gear: '8th', ratio: '0.67', speedAt1000Rpm: 61.8, speedAt3000Rpm: 185.4, speedAt6000Rpm: 306.0, redlineSpeed: 306 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 3.9, engineRpm: 1080 },
+      { speedKmh: 40, fuelConsumptionKmpl: 4.8, engineRpm: 980 },
+      { speedKmh: 60, fuelConsumptionKmpl: 5.8, engineRpm: 940 },
+      { speedKmh: 80, fuelConsumptionKmpl: 6.5, engineRpm: 1050 },
+      { speedKmh: 100, fuelConsumptionKmpl: 6.0, engineRpm: 1400 },
+      { speedKmh: 120, fuelConsumptionKmpl: 5.2, engineRpm: 1700 },
+      { speedKmh: 140, fuelConsumptionKmpl: 4.4, engineRpm: 1980 }
+    ],
+    technicalFeatures: [
+      'Shared twin-turbo V8 block family with the Porsche Cayenne Turbo and Audi RS Q8',
+      'Permanent all-wheel drive with a rear self-locking differential',
+      'Torque-vectoring rear differential for genuine SUV cornering agility',
+      'Powers the fastest production SUV lap-record holder of its era'
+    ]
+  },
+
+  '6.5-hybrid-v12-revuelto': {
+    id: '6.5-hybrid-v12-revuelto',
+    name: '6.5L Naturally-Aspirated V12 + Tri-Motor Hybrid',
+    badge: '6.5 V12 Hybrid (1,015 PS / 725 Nm)',
+    displacement: '6,498 cc',
+    cylinders: '12 Cylinders (Naturally-Aspirated V12 + 3 Electric Motors)',
+    fuelType: 'Petrol',
+    peakPowerStr: '1,015 PS Combined @ 9,250 RPM',
+    peakTorqueStr: '725 Nm (ICE) + Electric Motor Torque',
+    maxPowerHp: 1015,
+    maxTorqueNm: 725,
+    powerRpmRange: '9,250 RPM',
+    torqueRpmRange: 'Instant (Electric) / 6,750 RPM (ICE)',
+    redlineRpm: 9500,
+    idleRpm: 900,
+    highwayCruiseRpm100Kmh: 1900,
+    highwayCruiseRpm120Kmh: 2300,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 120, torqueNm: 480, boostBar: 0.0 },
+      { rpm: 2000, powerHp: 210, torqueNm: 580, boostBar: 0.0 },
+      { rpm: 3000, powerHp: 320, torqueNm: 650, boostBar: 0.0 },
+      { rpm: 4500, powerHp: 480, torqueNm: 700, boostBar: 0.0 },
+      { rpm: 6000, powerHp: 660, torqueNm: 725, boostBar: 0.0 },
+      { rpm: 7200, powerHp: 820, torqueNm: 710, boostBar: 0.0 },
+      { rpm: 8400, powerHp: 960, torqueNm: 660, boostBar: 0.0 },
+      { rpm: 9250, powerHp: 1015, torqueNm: 605, boostBar: 0.0 },
+      { rpm: 9500, powerHp: 985, torqueNm: 570, boostBar: 0.0 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.4, speedKmh: 48, gForce: 1.3, gear: 1 },
+      { timeSec: 0.9, speedKmh: 80, gForce: 1.12, gear: 2 },
+      { timeSec: 1.4, speedKmh: 105, gForce: 0.95, gear: 2 },
+      { timeSec: 2.5, speedKmh: 100, gForce: 0.85, gear: 3 },
+      { timeSec: 3.6, speedKmh: 165, gForce: 0.62, gear: 4 },
+      { timeSec: 5.4, speedKmh: 210, gForce: 0.42, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.82', speedAt1000Rpm: 11.2, speedAt3000Rpm: 33.6, speedAt6000Rpm: 67.2, redlineSpeed: 75 },
+      { gear: '2nd', ratio: '2.28', speedAt1000Rpm: 18.1, speedAt3000Rpm: 54.3, speedAt6000Rpm: 108.6, redlineSpeed: 122 },
+      { gear: '3rd', ratio: '1.58', speedAt1000Rpm: 25.4, speedAt3000Rpm: 76.2, speedAt6000Rpm: 152.4, redlineSpeed: 172 },
+      { gear: '4th', ratio: '1.21', speedAt1000Rpm: 32.9, speedAt3000Rpm: 98.7, speedAt6000Rpm: 197.4, redlineSpeed: 222 },
+      { gear: '5th', ratio: '0.96', speedAt1000Rpm: 40.6, speedAt3000Rpm: 121.8, speedAt6000Rpm: 243.6, redlineSpeed: 274 },
+      { gear: '6th', ratio: '0.79', speedAt1000Rpm: 47.9, speedAt3000Rpm: 143.7, speedAt6000Rpm: 287.4, redlineSpeed: 323 },
+      { gear: '7th', ratio: '0.65', speedAt1000Rpm: 57.4, speedAt3000Rpm: 172.2, speedAt6000Rpm: 344.4, redlineSpeed: 350 },
+      { gear: '8th', ratio: '0.54', speedAt1000Rpm: 68.1, speedAt3000Rpm: 204.3, speedAt6000Rpm: 350.0, redlineSpeed: 350 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 3.6, engineRpm: 1250 },
+      { speedKmh: 40, fuelConsumptionKmpl: 4.5, engineRpm: 1150 },
+      { speedKmh: 60, fuelConsumptionKmpl: 5.4, engineRpm: 1100 },
+      { speedKmh: 80, fuelConsumptionKmpl: 6.0, engineRpm: 1250 },
+      { speedKmh: 100, fuelConsumptionKmpl: 5.6, engineRpm: 1900 },
+      { speedKmh: 120, fuelConsumptionKmpl: 4.9, engineRpm: 2300 },
+      { speedKmh: 140, fuelConsumptionKmpl: 4.1, engineRpm: 2700 }
+    ],
+    technicalFeatures: [
+      'Lamborghini’s first series-production plug-in hybrid flagship, successor to the Aventador',
+      'Naturally-aspirated V12 paired with three electric motors for torque-vectoring all-wheel drive',
+      'Screams to a 9,500 RPM redline — the highest of any current production V12',
+      'Short-burst full-electric city driving mode available'
+    ]
+  },
+
+  '5.2-v10-huracan-sto': {
+    id: '5.2-v10-huracan-sto',
+    name: '5.2L Naturally-Aspirated V10 (STO-Tune)',
+    badge: '5.2 V10 STO (640 PS / 565 Nm)',
+    displacement: '5,204 cc',
+    cylinders: '10 Cylinders (Naturally-Aspirated V10, Motorsport-Derived)',
+    fuelType: 'Petrol',
+    peakPowerStr: '640 PS @ 8,000 RPM',
+    peakTorqueStr: '565 Nm @ 6,500 RPM',
+    maxPowerHp: 640,
+    maxTorqueNm: 565,
+    powerRpmRange: '8,000 RPM',
+    torqueRpmRange: '6,500 RPM',
+    redlineRpm: 8500,
+    idleRpm: 950,
+    highwayCruiseRpm100Kmh: 2050,
+    highwayCruiseRpm120Kmh: 2450,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 27, torqueNm: 198, boostBar: 0.0 },
+      { rpm: 2000, powerHp: 70, torqueNm: 325, boostBar: 0.0 },
+      { rpm: 3000, powerHp: 121, torqueNm: 390, boostBar: 0.0 },
+      { rpm: 4000, powerHp: 182, torqueNm: 435, boostBar: 0.0 },
+      { rpm: 5000, powerHp: 253, torqueNm: 480, boostBar: 0.0 },
+      { rpm: 6500, powerHp: 392, torqueNm: 565, boostBar: 0.0 },
+      { rpm: 7200, powerHp: 488, torqueNm: 558, boostBar: 0.0 },
+      { rpm: 8000, powerHp: 640, torqueNm: 515, boostBar: 0.0 },
+      { rpm: 8500, powerHp: 605, torqueNm: 465, boostBar: 0.0 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.5, speedKmh: 44, gForce: 1.12, gear: 1 },
+      { timeSec: 1.0, speedKmh: 74, gForce: 0.96, gear: 2 },
+      { timeSec: 1.6, speedKmh: 100, gForce: 0.82, gear: 2 },
+      { timeSec: 3.0, speedKmh: 100, gForce: 0.75, gear: 3 },
+      { timeSec: 4.0, speedKmh: 155, gForce: 0.55, gear: 4 },
+      { timeSec: 6.1, speedKmh: 200, gForce: 0.38, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.91', speedAt1000Rpm: 10.2, speedAt3000Rpm: 30.6, speedAt6000Rpm: 61.2, redlineSpeed: 69 },
+      { gear: '2nd', ratio: '2.44', speedAt1000Rpm: 16.4, speedAt3000Rpm: 49.2, speedAt6000Rpm: 98.4, redlineSpeed: 111 },
+      { gear: '3rd', ratio: '1.80', speedAt1000Rpm: 22.2, speedAt3000Rpm: 66.6, speedAt6000Rpm: 133.2, redlineSpeed: 150 },
+      { gear: '4th', ratio: '1.32', speedAt1000Rpm: 30.3, speedAt3000Rpm: 90.9, speedAt6000Rpm: 181.8, redlineSpeed: 205 },
+      { gear: '5th', ratio: '1.03', speedAt1000Rpm: 38.9, speedAt3000Rpm: 116.7, speedAt6000Rpm: 233.4, redlineSpeed: 263 },
+      { gear: '6th', ratio: '0.82', speedAt1000Rpm: 48.8, speedAt3000Rpm: 146.4, speedAt6000Rpm: 292.8, redlineSpeed: 310 },
+      { gear: '7th', ratio: '0.65', speedAt1000Rpm: 61.6, speedAt3000Rpm: 184.8, speedAt6000Rpm: 310.0, redlineSpeed: 310 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 4.1, engineRpm: 1800 },
+      { speedKmh: 40, fuelConsumptionKmpl: 5.1, engineRpm: 1700 },
+      { speedKmh: 60, fuelConsumptionKmpl: 6.2, engineRpm: 1650 },
+      { speedKmh: 80, fuelConsumptionKmpl: 6.9, engineRpm: 1800 },
+      { speedKmh: 100, fuelConsumptionKmpl: 6.4, engineRpm: 2050 },
+      { speedKmh: 120, fuelConsumptionKmpl: 5.5, engineRpm: 2450 },
+      { speedKmh: 140, fuelConsumptionKmpl: 4.7, engineRpm: 2850 }
+    ],
+    technicalFeatures: [
+      'Derived from the Huracán GT3 race engine, revving to a screaming 8,500 RPM redline',
+      'Single-piece front clamshell and rear-wheel-drive-only setup lifted from the Super Trofeo racer',
+      'Fixed motorsport rear wing tuned using Lamborghini’s GT3 racing program data',
+      'Titanium sport exhaust with a motorsport-tuned V10 wail'
+    ]
   }
 };
 
@@ -3426,6 +3679,90 @@ export const MODEL_PERFORMANCE_PROFILES: ModelPerformanceProfile[] = [
       'Lowered ride height and a fixed rear roof spoiler for genuine high-speed downforce',
       'Active anti-roll stabilization keeping the body flat through fast corners',
       'Once held the production-SUV Nordschleife lap record at 7:38.9'
+    ]
+  },
+  {
+    id: 'huracan',
+    name: 'Lamborghini Huracán',
+    tagline: 'The Screaming Naturally-Aspirated V10 Icon',
+    category: 'Naturally-Aspirated Supercar',
+    primaryEngineId: '5.2-v10-huracan',
+    availableEngineIds: ['5.2-v10-huracan'],
+    weightKg: 1422,
+    dragCoefficient: '0.33 Cd',
+    braking100to0DistMeters: 31.5,
+    corneringGForce: 1.05,
+    powerToWeightRatio: '450.1 PS/tonne',
+    sprint0to100: '2.9 seconds',
+    topSpeed: '325 km/h',
+    suspensionType: 'Double-Wishbone Suspension with Magnetorheological Adaptive Damping',
+    aerodynamicHighlights: [
+      'Sharp-edged wedge silhouette channels air around a mid-mounted naturally-aspirated V10',
+      'Rear diffuser and active rear spoiler generate genuine downforce above 130 km/h',
+      'Underbody aero cladding smooths airflow for high-speed stability at 300+ km/h'
+    ]
+  },
+  {
+    id: 'urus',
+    name: 'Lamborghini Urus',
+    tagline: 'The Super Sport Utility Vehicle',
+    category: 'High-Performance Luxury SUV',
+    primaryEngineId: '4.0-twin-turbo-v8-urus',
+    availableEngineIds: ['4.0-twin-turbo-v8-urus'],
+    weightKg: 2200,
+    dragCoefficient: '0.35 Cd',
+    braking100to0DistMeters: 33.5,
+    corneringGForce: 0.95,
+    powerToWeightRatio: '298.6 PS/tonne',
+    sprint0to100: '3.6 seconds',
+    topSpeed: '305 km/h',
+    suspensionType: 'Adaptive Air Suspension with Active Roll Stabilization',
+    aerodynamicHighlights: [
+      'Coupe-SUV roofline with a functional roof spoiler cutting rear-end lift at speed',
+      'Front air intakes feed the twin-turbo V8’s intercoolers while managing brake cooling',
+      'Rear diffuser and quad tailpipes shape high-speed rear airflow'
+    ]
+  },
+  {
+    id: 'revuelto',
+    name: 'Lamborghini Revuelto',
+    tagline: 'The 1,015 PS Hybrid V12 Flagship',
+    category: 'Hybrid V12 Halo Flagship',
+    primaryEngineId: '6.5-hybrid-v12-revuelto',
+    availableEngineIds: ['6.5-hybrid-v12-revuelto'],
+    weightKg: 1772,
+    dragCoefficient: '0.33 Cd',
+    braking100to0DistMeters: 29.5,
+    corneringGForce: 1.10,
+    powerToWeightRatio: '572.8 PS/tonne',
+    sprint0to100: '2.5 seconds',
+    topSpeed: '350 km/h',
+    suspensionType: 'Adaptive Magnetorheological Suspension with Active Rear Wing',
+    aerodynamicHighlights: [
+      'Active rear wing and underbody venturi tunnels generate genuine downforce at speed',
+      'Electric front axle motors free up aero-optimized front splitter geometry',
+      'Sharp aero-sculpted flanks feed the hybrid V12’s high-temperature cooling demands'
+    ]
+  },
+  {
+    id: 'huracan-sto-perf',
+    name: 'Lamborghini Huracán STO',
+    tagline: 'The Race Car Homologated for the Road',
+    category: 'Naturally-Aspirated Track Weapon / Homologation Special',
+    primaryEngineId: '5.2-v10-huracan-sto',
+    availableEngineIds: ['5.2-v10-huracan-sto'],
+    weightKg: 1339,
+    dragCoefficient: '0.36 Cd with Functional Downforce',
+    braking100to0DistMeters: 30.1,
+    corneringGForce: 1.15,
+    powerToWeightRatio: '478.0 PS/tonne',
+    sprint0to100: '3.0 seconds',
+    topSpeed: '310 km/h',
+    suspensionType: 'Motorsport-Derived Magnetorheological Suspension with Rear Anti-Roll Bar',
+    aerodynamicHighlights: [
+      'Single-piece front clamshell borrowed directly from the Super Trofeo one-make racer',
+      'Large, manually adjustable carbon-fibre rear wing tuned using GT3 racing program data',
+      'Rear-wheel-drive-only chassis balance for a purer, more communicative aero platform'
     ]
   }
 ];

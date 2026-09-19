@@ -10,7 +10,7 @@ export const LAMBORGHINI_GT_MODELS: LamborghiniPerformanceModelData[] = [
   {
     id: 'huracan-sto-perf',
     name: 'Lamborghini Huracán STO',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Lamborghini_Huracan_STO_IMG_4290.jpg',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/6/68/Lamborghini_Huracan_STO_1X7A0297.jpg',
     badge: 'The Race Car Homologated for the Road',
     tagline: '640 PS naturally-aspirated V10 revving to 8,500 RPM, a single-piece front clamshell, and a chassis lifted straight from the Super Trofeo racer.',
     category: 'Naturally-Aspirated Track Weapon / Homologation Special',
@@ -90,7 +90,7 @@ export const LAMBORGHINI_GT_MODELS: LamborghiniPerformanceModelData[] = [
   {
     id: 'revuelto-perf',
     name: 'Lamborghini Revuelto',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/0/09/Lamborghini_Revuelto_IMG_5828.jpg',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/0/0a/Lamborghini_Revuelto_DSC_6987.jpg',
     badge: 'The 1,015 PS Hybrid Flagship',
     tagline: 'A naturally-aspirated V12 fused with three electric motors for all-wheel drive and a 2.5-second sprint to 100 km/h.',
     category: 'Hybrid V12 Halo Flagship',
@@ -170,7 +170,7 @@ export const LAMBORGHINI_GT_MODELS: LamborghiniPerformanceModelData[] = [
   {
     id: 'urus-performante-perf',
     name: 'Lamborghini Urus Performante',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/2018_Lamborghini_Urus_1.jpg',
+    image: '/cars/lamborghini-urus.webp',
     badge: 'The Super SUV Off-Road Weapon',
     tagline: '657 PS twin-turbo V8 in a lightened SUV body that set the fastest SUV lap of Pikes Peak.',
     category: 'High-Performance Luxury SUV',

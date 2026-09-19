@@ -184,15 +184,13 @@ export default function App() {
   };
   useEffect(() => {
     if (!isLoadingBrand || !pendingBrand) return;
-    const wasAlreadyEntered = hasEntered;
     const timer = setTimeout(() => {
       setActiveBrand(pendingBrand);
       setSelectedModelId("all");
-      // A fresh entry from the launch screen always starts on the overview
-      // tab; switching brands mid-session keeps whatever tab the user was on.
-      if (!wasAlreadyEntered) {
-        setActiveTab("overview");
-      }
+      // Every brand switch — whether a fresh entry from the launch screen
+      // or switching brands mid-session — lands on that brand's homepage
+      // (overview tab) rather than keeping whatever tab was active.
+      setActiveTab("overview");
       setHasEntered(true);
       setIsLoadingBrand(false);
       scrollToTop();

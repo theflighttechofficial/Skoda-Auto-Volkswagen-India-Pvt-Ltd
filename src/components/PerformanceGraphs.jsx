@@ -34,6 +34,7 @@ const PORSCHE_PERFORMANCE_ONLY_IDS = [
   "911-turbo-s",
   "cayenne-turbo-gt",
 ];
+const LAMBORGHINI_PERFORMANCE_ONLY_IDS = ["huracan-sto-perf"];
 export const PerformanceGraphs = ({
   brand = "skoda",
   initialEngineId = "1.5-tsi",
@@ -54,7 +55,7 @@ export const PerformanceGraphs = ({
         ? VW_MODELS
         : SKODA_MODELS;
   const currentPerformanceOnlyIds = isLamborghini
-    ? []
+    ? LAMBORGHINI_PERFORMANCE_ONLY_IDS
     : isPorsche
     ? PORSCHE_PERFORMANCE_ONLY_IDS
     : isAudi
@@ -77,14 +78,30 @@ export const PerformanceGraphs = ({
     () => MODEL_PERFORMANCE_PROFILES.filter((m) => currentModelIds.has(m.id)),
     [currentModelIds],
   );
+  // Only offer engines that actually belong to a model in the active
+  // brand's lineup, rather than every engine from every brand mixed
+  // into one flat, unfiltered list.
+  const visibleEngines = useMemo(
+    () => {
+      const ids = new Set(
+        visibleModelProfiles.flatMap((m) => m.availableEngineIds),
+      );
+      return Object.values(ENGINE_GRAPH_PROFILES).filter((eng) =>
+        ids.has(eng.id),
+      );
+    },
+    [visibleModelProfiles],
+  );
   const [selectedEngineId, setSelectedEngineId] = useState(initialEngineId);
   const [selectedModelId, setSelectedModelId] = useState(
     initialModelId === "slavia"
-      ? isPorsche
-        ? "911-carrera"
-        : isVW
-          ? "virtus"
-          : initialModelId
+      ? isLamborghini
+        ? "huracan"
+        : isPorsche
+          ? "911-carrera"
+          : isVW
+            ? "virtus"
+            : initialModelId
       : initialModelId,
   );
   const [activeGraphTab, setActiveGraphTab] = useState("dyno");
@@ -100,9 +117,36 @@ export const PerformanceGraphs = ({
       if (fallback.primaryEngineId) {
         setSelectedEngineId(fallback.primaryEngineId);
       }
+    } else {
+      // The model itself is valid for this brand, but the previously
+      // selected engine (e.g. carried over from another brand's default)
+      // may not belong to it — re-sync to the model's primary engine.
+      const current = MODEL_PERFORMANCE_PROFILES.find(
+        (mod) => mod.id === selectedModelId,
+      );
+      if (
+        current &&
+        !current.availableEngineIds.includes(selectedEngineId)
+      ) {
+        setSelectedEngineId(current.primaryEngineId);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brand]);
+  // Keep the "compare" engine pinned to one that actually belongs to the
+  // active brand whenever the brand (and therefore visibleEngines) changes.
+  useEffect(() => {
+    if (
+      visibleEngines.length &&
+      !visibleEngines.some((eng) => eng.id === compareEngineId)
+    ) {
+      setCompareEngineId(
+        visibleEngines.find((eng) => eng.id !== selectedEngineId)?.id ||
+          visibleEngines[0].id,
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visibleEngines]);
   const activeEngine =
     ENGINE_GRAPH_PROFILES[selectedEngineId] || ENGINE_GRAPH_PROFILES["1.5-tsi"];
   const compareEngine =
@@ -360,7 +404,7 @@ export const PerformanceGraphs = ({
                   onChange={(e) => setCompareEngineId(e.target.value)}
                   className="px-2.5 py-1 rounded-lg bg-zinc-950 border border-zinc-700 text-xs text-white focus:outline-none focus:border-amber-500 font-mono"
                 >
-                  {Object.values(ENGINE_GRAPH_PROFILES).map((eng) => (
+                  {visibleEngines.map((eng) => (
                     <option key={eng.id} value={eng.id}>
                       {eng.badge}
                     </option>
@@ -371,7 +415,7 @@ export const PerformanceGraphs = ({
           </div>
 
           <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-            {Object.values(ENGINE_GRAPH_PROFILES).map((eng) => {
+            {visibleEngines.map((eng) => {
               const isSelected = selectedEngineId === eng.id;
               const isDiesel = eng.fuelType === "Diesel";
               const isVrs = eng.id.includes("vrs");

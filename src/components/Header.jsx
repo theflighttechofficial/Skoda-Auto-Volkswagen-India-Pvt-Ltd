@@ -35,6 +35,7 @@ import {
   FlaskConical,
   History as DecadesIcon,
   Search,
+  MoreHorizontal,
 } from "lucide-react";
 
 // Every model carries a bodyType string ("Compact SUV", "Premium Sedan", ...);
@@ -360,10 +361,20 @@ export const Header = ({
 }) => {
   const [isBrandDropdownOpen, setIsBrandDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
+  const moreMenuRef = useRef(null);
+  const [isMoreModelsOpen, setIsMoreModelsOpen] = useState(false);
+  const moreModelsRef = useRef(null);
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsBrandDropdownOpen(false);
+      }
+      if (moreMenuRef.current && !moreMenuRef.current.contains(event.target)) {
+        setIsMoreMenuOpen(false);
+      }
+      if (moreModelsRef.current && !moreModelsRef.current.contains(event.target)) {
+        setIsMoreModelsOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -410,6 +421,63 @@ export const Header = ({
   const meta = BRAND_META[activeBrand] || BRAND_META.skoda;
   const accentClasses = ACCENT_CLASSES[meta.accent];
   const currentModels = meta.models;
+
+  // Cap the model lineup strip to at most 5 direct model pills; the rest
+  // sit behind a "More" dropdown, same treatment as the section tabs.
+  const MAX_PRIMARY_MODELS = 5;
+  const primaryModels = currentModels.slice(0, MAX_PRIMARY_MODELS);
+  const overflowModels = currentModels.slice(MAX_PRIMARY_MODELS);
+  const activeOverflowModel = overflowModels.find((car) => car.id === selectedModelId);
+  const isModelOverflowActive = Boolean(activeOverflowModel);
+  const shortModelName = (car) =>
+    car.name
+      .replace("Škoda ", "")
+      .replace("Volkswagen ", "")
+      .replace("Audi ", "")
+      .replace("Porsche ", "")
+      .replace("Lamborghini ", "");
+  const modelBadges = (car) => (
+    <>
+      {car.id === "golf-gti" && (
+        <span className="ml-1 px-1 py-0.2 rounded bg-red-500/20 text-red-300 text-[9px] border border-red-500/30">
+          GTI
+        </span>
+      )}
+      {car.id === "virtus" && (
+        <span className="ml-1 px-1 py-0.2 rounded bg-blue-500/20 text-blue-300 text-[9px] border border-blue-500/30">
+          5-Star
+        </span>
+      )}
+      {car.id === "octavia" && (
+        <span className="ml-1 px-1 py-0.2 rounded bg-amber-500/20 text-amber-300 text-[9px] border border-amber-500/30">
+          Icon
+        </span>
+      )}
+      {car.id === "kylaq" && (
+        <span className="ml-1 px-1 py-0.2 rounded bg-emerald-500/20 text-emerald-300 text-[9px] border border-emerald-500/30">
+          New
+        </span>
+      )}
+      {car.id === "q8" && (
+        <span className="ml-1 px-1 py-0.2 rounded bg-red-500/20 text-red-300 text-[9px] border border-red-500/30">
+          Halo
+        </span>
+      )}
+      {car.id === "911-carrera" && (
+        <span className="ml-1 px-1 py-0.2 rounded bg-amber-500/20 text-amber-300 text-[9px] border border-amber-500/30">
+          Icon
+        </span>
+      )}
+      {car.notSoldInIndia && (
+        <span
+          title="Not officially sold in India"
+          className="ml-1 px-1 py-0.2 rounded bg-zinc-700/60 text-zinc-300 text-[9px] border border-zinc-600/60"
+        >
+          Not in India
+        </span>
+      )}
+    </>
+  );
   const BrandLogo = meta.Logo;
 
   const navItems = [
@@ -446,6 +514,14 @@ export const Header = ({
     { id: "advisor", label: meta.advisorLabel, icon: Sparkles },
     { id: "faq", label: "FAQ", icon: HelpCircle },
   ];
+
+  // Keep the top nav bar to at most 5 direct tabs; everything past that
+  // lives in the "More" dropdown so the bar doesn't sprawl across 25+ items.
+  const MAX_PRIMARY_TABS = 5;
+  const primaryNavItems = navItems.slice(0, MAX_PRIMARY_TABS);
+  const overflowNavItems = navItems.slice(MAX_PRIMARY_TABS);
+  const activeOverflowItem = overflowNavItems.find((item) => item.id === activeTab);
+  const isOverflowActive = Boolean(activeOverflowItem);
 
   return (
     <header className="sticky top-0 z-50 bg-zinc-950/95 backdrop-blur-md border-b border-zinc-800 text-zinc-100 shadow-lg shadow-black/40">
@@ -676,14 +752,8 @@ export const Header = ({
               >
                 All Models ({currentModels.length})
               </button>
-              {currentModels.map((car) => {
+              {primaryModels.map((car) => {
                 const isSelected = selectedModelId === car.id;
-                const shortName = car.name
-                  .replace("Škoda ", "")
-                  .replace("Volkswagen ", "")
-                  .replace("Audi ", "")
-                  .replace("Porsche ", "")
-                  .replace("Lamborghini ", "");
                 const BodyIcon = bodyTypeIcon(car.bodyType);
                 return (
                   <button
@@ -697,45 +767,8 @@ export const Header = ({
                     <BodyIcon
                       className={`w-3 h-3 shrink-0 ${isSelected ? "text-white/90" : "text-zinc-500"}`}
                     />
-                    {shortName}
-                    {car.id === "golf-gti" && (
-                      <span className="ml-1 px-1 py-0.2 rounded bg-red-500/20 text-red-300 text-[9px] border border-red-500/30">
-                        GTI
-                      </span>
-                    )}
-                    {car.id === "virtus" && (
-                      <span className="ml-1 px-1 py-0.2 rounded bg-blue-500/20 text-blue-300 text-[9px] border border-blue-500/30">
-                        5-Star
-                      </span>
-                    )}
-                    {car.id === "octavia" && (
-                      <span className="ml-1 px-1 py-0.2 rounded bg-amber-500/20 text-amber-300 text-[9px] border border-amber-500/30">
-                        Icon
-                      </span>
-                    )}
-                    {car.id === "kylaq" && (
-                      <span className="ml-1 px-1 py-0.2 rounded bg-emerald-500/20 text-emerald-300 text-[9px] border border-emerald-500/30">
-                        New
-                      </span>
-                    )}
-                    {car.id === "q8" && (
-                      <span className="ml-1 px-1 py-0.2 rounded bg-red-500/20 text-red-300 text-[9px] border border-red-500/30">
-                        Halo
-                      </span>
-                    )}
-                    {car.id === "911-carrera" && (
-                      <span className="ml-1 px-1 py-0.2 rounded bg-amber-500/20 text-amber-300 text-[9px] border border-amber-500/30">
-                        Icon
-                      </span>
-                    )}
-                    {car.notSoldInIndia && (
-                      <span
-                        title="Not officially sold in India"
-                        className="ml-1 px-1 py-0.2 rounded bg-zinc-700/60 text-zinc-300 text-[9px] border border-zinc-600/60"
-                      >
-                        Not in India
-                      </span>
-                    )}
+                    {shortModelName(car)}
+                    {modelBadges(car)}
                   </button>
                 );
               })}
@@ -746,6 +779,60 @@ export const Header = ({
               onClick={() => lineupScroll.scrollBy(160)}
               style={{ visibility: lineupScroll.canScrollRight ? "visible" : "hidden" }}
             />
+
+            {/* "More" models dropdown — kept outside the horizontally
+                scrolling lineup strip so it isn't clipped by overflow-x. */}
+            {overflowModels.length > 0 && (
+              <div className="relative shrink-0" ref={moreModelsRef}>
+                <button
+                  id="btn-model-more"
+                  ref={isModelOverflowActive ? activeModelRef : null}
+                  onClick={() => setIsMoreModelsOpen((v) => !v)}
+                  className={`relative flex items-center gap-1 px-2.5 py-1 rounded-md font-medium text-xs whitespace-nowrap transition-all ${isModelOverflowActive ? `${accentClasses.selectedBg} font-semibold` : "bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800 hover:border-zinc-700"}`}
+                >
+                  {isModelOverflowActive ? shortModelName(activeOverflowModel) : "More"}
+                  {isModelOverflowActive && modelBadges(activeOverflowModel)}
+                  <ChevronDown
+                    className={`w-3 h-3 shrink-0 transition-transform duration-200 ${isMoreModelsOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {isMoreModelsOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 6, scale: 0.96 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute left-0 top-full mt-2 w-56 max-h-[70vh] overflow-y-auto rounded-2xl bg-zinc-900 border border-zinc-700/90 shadow-2xl p-1.5 z-50"
+                    >
+                      {overflowModels.map((car) => {
+                        const isSelected = selectedModelId === car.id;
+                        const BodyIcon = bodyTypeIcon(car.bodyType);
+                        return (
+                          <button
+                            key={car.id}
+                            id={`btn-model-${car.id}`}
+                            onClick={() => {
+                              setSelectedModelId(car.id);
+                              setIsMoreModelsOpen(false);
+                            }}
+                            title={car.bodyType}
+                            className={`w-full flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium text-left transition-colors ${isSelected ? `text-white ${accentClasses.pillBg}` : "text-zinc-300 hover:bg-zinc-800/80 hover:text-white"}`}
+                          >
+                            <BodyIcon
+                              className={`w-3 h-3 shrink-0 ${isSelected ? "text-white/90" : "text-zinc-500"}`}
+                            />
+                            <span className="flex-1 min-w-0 truncate">{shortModelName(car)}</span>
+                            {modelBadges(car)}
+                          </button>
+                        );
+                      })}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
           </div>
 
           {/* Section Tabs with Animated Indicator */}
@@ -761,7 +848,7 @@ export const Header = ({
               layoutScroll
               className="relative flex items-center gap-1 p-1 rounded-2xl bg-zinc-900/60 border border-zinc-800/70 overflow-x-auto scrollbar-none scroll-fade-x cursor-grab active:cursor-grabbing select-none"
             >
-              {navItems.map((item) => {
+              {primaryNavItems.map((item) => {
                 const isActive = activeTab === item.id;
                 const Icon = item.icon;
                 return (
@@ -806,6 +893,73 @@ export const Header = ({
               onClick={() => navScroll.scrollBy(160)}
               style={{ visibility: navScroll.canScrollRight ? "visible" : "hidden" }}
             />
+
+            {/* "More" dropdown lives outside the horizontally-scrolling nav
+                strip — nesting an absolutely-positioned panel inside an
+                overflow-x-auto container clips it, which is why it never
+                appeared to open. */}
+            {overflowNavItems.length > 0 && (
+              <div className="relative shrink-0" ref={moreMenuRef}>
+                <motion.button
+                  id="nav-tab-more"
+                  ref={isOverflowActive ? activeTabRef : null}
+                  onClick={() => setIsMoreMenuOpen((v) => !v)}
+                  whileHover={{ y: -1 }}
+                  whileTap={{ scale: 0.97 }}
+                  className={`relative flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-medium whitespace-nowrap transition-colors z-10 ${isOverflowActive ? `text-white font-semibold border-transparent ${accentClasses.pillBg}` : "text-zinc-400 hover:text-zinc-100 border-zinc-800/70 bg-zinc-900/60"}`}
+                >
+                  {isOverflowActive && activeOverflowItem.icon ? (
+                    <activeOverflowItem.icon className="w-3.5 h-3.5 shrink-0 text-white" />
+                  ) : (
+                    <MoreHorizontal className="w-3.5 h-3.5 shrink-0 text-zinc-500" />
+                  )}
+                  {isOverflowActive ? activeOverflowItem.label : "More"}
+                  <ChevronDown
+                    className={`w-3 h-3 shrink-0 transition-transform duration-200 ${isMoreMenuOpen ? "rotate-180" : ""}`}
+                  />
+                </motion.button>
+
+                <AnimatePresence>
+                  {isMoreMenuOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 6, scale: 0.96 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute right-0 top-full mt-2 w-64 max-h-[70vh] overflow-y-auto rounded-2xl bg-zinc-900 border border-zinc-700/90 shadow-2xl p-1.5 z-50"
+                    >
+                      {overflowNavItems.map((item) => {
+                        const isActive = activeTab === item.id;
+                        const Icon = item.icon;
+                        return (
+                          <button
+                            key={item.id}
+                            id={`nav-tab-${item.id}`}
+                            onClick={() => {
+                              setActiveTab(item.id);
+                              setIsMoreMenuOpen(false);
+                            }}
+                            className={`w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium text-left transition-colors ${isActive ? `text-white ${accentClasses.pillBg}` : "text-zinc-300 hover:bg-zinc-800/80 hover:text-white"}`}
+                          >
+                            {Icon && (
+                              <Icon
+                                className={`w-3.5 h-3.5 shrink-0 ${isActive ? "text-white" : "text-zinc-500"}`}
+                              />
+                            )}
+                            <span className="flex-1 min-w-0 truncate">{item.label}</span>
+                            {item.isHot && (
+                              <span className="px-1 py-0.2 rounded bg-red-600 text-white text-[9px] font-black italic tracking-wider shadow-sm shadow-red-900/50 shrink-0">
+                                {meta.rsShortBadge}
+                              </span>
+                            )}
+                          </button>
+                        );
+                      })}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
           </div>
         </div>
       </div>

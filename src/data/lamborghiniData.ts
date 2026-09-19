@@ -87,7 +87,7 @@ export const ALL_LAMBORGHINI_ENGINES: EngineSpec[] = [
 export const LAMBORGHINI_MODELS: CarModel[] = [
   {
     id: 'huracan',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/9/9e/2016_Lamborghini_Huracan_LP610-4_Coupe.jpg',
+    image: '/cars/lamborghini-huracan.avif',
     enthusiastNote: 'The Huracán name comes from a legendary fighting bull of 19th-century Spain — continuing Lamborghini’s tradition of naming cars after famous bulls rather than horses or animals of speed.',
     name: 'Lamborghini Huracán',
     badge: 'The Screaming V10 Icon',
@@ -168,7 +168,7 @@ export const LAMBORGHINI_MODELS: CarModel[] = [
   },
   {
     id: 'urus',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/2018_Lamborghini_Urus_1.jpg',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/7/74/Lamborghini_Urus_S_1X7A6796.jpg',
     enthusiastNote: 'The Urus name revives a nameplate first used on a 1986 Lamborghini military concept — and, further back, refers to the aurochs, an extinct wild bull ancestor.',
     name: 'Lamborghini Urus',
     badge: 'The Super Sport Utility Vehicle',
@@ -248,7 +248,7 @@ export const LAMBORGHINI_MODELS: CarModel[] = [
   },
   {
     id: 'revuelto',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/0/09/Lamborghini_Revuelto_IMG_5828.jpg',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/0/0a/Lamborghini_Revuelto_DSC_6987.jpg',
     enthusiastNote: 'The Revuelto is named after a famous 19th-century fighting bull and marks the first entirely new V12 flagship platform since the Aventador — and Lamborghini’s first series-production hybrid.',
     name: 'Lamborghini Revuelto',
     badge: 'The Hybrid V12 Flagship',
