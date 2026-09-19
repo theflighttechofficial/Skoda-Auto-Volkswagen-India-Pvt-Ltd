@@ -5,10 +5,12 @@ import { SKODA_MODELS } from "../data/skodaData";
 import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
 import { PORSCHE_MODELS } from "../data/porscheData";
+import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
+import { LamborghiniLogo } from "./LamborghiniLogo";
 import { getAccentClasses } from "../utils/brandTheme";
 
 const BRAND_PAGE_COPY = {
@@ -39,6 +41,13 @@ const BRAND_PAGE_COPY = {
     heading: "Porsche Models & Trim Guide",
     subheading: "Compare features, pricing, and appointments across base, S, and flagship trims",
     flagshipLabel: "S / GTS",
+  },
+  lamborghini: {
+    Logo: LamborghiniLogo,
+    models: LAMBORGHINI_MODELS,
+    heading: "Lamborghini Models & Trim Guide",
+    subheading: "Compare features, pricing, and appointments across base and track-focused STO/Performante trims",
+    flagshipLabel: "STO / Performante",
   },
 };
 
@@ -94,7 +103,8 @@ export const VariantExplorer = ({ brand = "skoda", initialModelId }) => {
               .replace("Škoda ", "")
               .replace("Volkswagen ", "")
               .replace("Audi ", "")
-              .replace("Porsche ", "");
+              .replace("Porsche ", "")
+              .replace("Lamborghini ", "");
             return (
               <button
                 key={car.id}

@@ -4,6 +4,7 @@ import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
+import { LamborghiniLogo } from "./LamborghiniLogo";
 
 const BRAND_CARDS = [
   {
@@ -46,6 +47,16 @@ const BRAND_CARDS = [
     glow: "hover:shadow-amber-950/60",
     description: "Motorsport-derived engineering — rear-engine icons and PDK precision since 1931.",
   },
+  {
+    id: "lamborghini",
+    Logo: LamborghiniLogo,
+    name: "Lamborghini",
+    tagline: "Expect the Unexpected",
+    accent: "text-yellow-400",
+    border: "hover:border-yellow-600/70",
+    glow: "hover:shadow-yellow-950/60",
+    description: "Raging-bull theater — naturally-aspirated V10s and hybrid V12 flagships since 1963.",
+  },
 ];
 
 export const GroupPersonalities = ({
@@ -66,7 +77,7 @@ export const GroupPersonalities = ({
         <p className="text-sm text-zinc-400 mt-2">{description}</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 max-w-7xl mx-auto">
         {BRAND_CARDS.map((brand, i) => (
           <motion.button
             key={brand.id}

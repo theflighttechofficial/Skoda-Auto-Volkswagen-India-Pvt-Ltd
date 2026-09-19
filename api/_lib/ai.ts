@@ -21,6 +21,56 @@ function generateSmartSkodaResponse(question: string, modelContext?: string, eng
   const selectedModel = (modelContext && modelContext !== 'All') ? modelContext.toLowerCase() : '';
   const isAudiBrand = brandContext === 'audi';
   const isPorscheBrand = brandContext === 'porsche';
+  const isLamborghiniBrand = brandContext === 'lamborghini';
+
+  // Lamborghini specific queries, when a Lamborghini model is selected, or when the active site brand is Lamborghini
+  if (isLamborghiniBrand || q.includes('lamborghini') || q.includes('huracan') || q.includes('huracán') || q.includes('urus') || q.includes('revuelto') || q.includes('ldvi') || selectedModel.includes('huracan') || selectedModel.includes('urus') || selectedModel.includes('revuelto')) {
+    if (q.includes('sto') || q.includes('performante') || selectedModel.includes('sto') || selectedModel.includes('performante')) {
+      return `### Lamborghini Track-Focused Specials
+- **Huracán STO:** 5.2L Naturally-Aspirated V10 producing **640 PS** & **565 Nm** revving to an 8,500 RPM redline, homologated from the Super Trofeo racer. Rear-wheel drive only. 0-100 km/h in **3.0s**, top speed **310 km/h**.
+- **Urus Performante:** 4.0L Twin-Turbo V8 producing **657 PS** & **850 Nm**, 47 kg lighter than the Urus S. 0-100 km/h in **3.3s**, top speed **306 km/h**, holds the fastest SUV timed run at Pikes Peak.`;
+    }
+
+    if (q.includes('huracan') || q.includes('huracán') || selectedModel.includes('huracan')) {
+      return `### Lamborghini Huracán (The Screaming V10 Icon)
+- **Powertrain:** 5.2L Naturally-Aspirated V10 producing **640 PS** & **565 Nm**.
+- **Transmission:** 7-Speed LDF Dual-Clutch.
+- **Acceleration:** 0 to 100 km/h in **2.9s** | Top speed **325 km/h**.
+- **Heritage:** One of the last naturally-aspirated V10 supercars still in production.
+- **Price Range:** ₹3.80 Crore to ₹4.20 Crore (Ex-showroom).`;
+    }
+
+    if (q.includes('urus') || selectedModel.includes('urus')) {
+      return `### Lamborghini Urus (The Super Sport Utility Vehicle)
+- **Powertrain:** 4.0L Twin-Turbo V8 producing **657 PS** & **850 Nm**.
+- **Transmission:** 8-Speed Automatic with permanent all-wheel drive.
+- **Acceleration:** 0 to 100 km/h in **3.6s** | Top speed **305 km/h**.
+- **Heritage:** Lamborghini's best-selling model worldwide, sharing platform architecture with the Porsche Cayenne and Audi Q8.
+- **Price Range:** ₹4.20 Crore Onwards.`;
+    }
+
+    if (q.includes('revuelto') || selectedModel.includes('revuelto')) {
+      return `### Lamborghini Revuelto (The Hybrid V12 Flagship)
+- **Powertrain:** 6.5L Naturally-Aspirated V12 + Tri-Motor Hybrid producing **1,015 PS** combined.
+- **Transmission:** 8-Speed Dual-Clutch (Longitudinal) with torque-vectoring electric front axle.
+- **Acceleration:** 0 to 100 km/h in **2.5s** | Top speed **350 km/h**.
+- **Heritage:** Lamborghini's first series-production plug-in hybrid, replacing the Aventador as flagship.
+- **Price Range:** ₹8.90 Crore Onwards.`;
+    }
+
+    if (q.includes('ldvi')) {
+      return `### What is LDVI?
+LDVI (Lamborghini Dinamica Veicolo Integrata) is Lamborghini's predictive central control unit. It reads driver inputs — steering, throttle, brake — alongside road conditions to pre-configure suspension, torque vectoring and all-wheel-drive systems before the driver even reacts, standard across the current Huracán, Urus and Revuelto lineup.`;
+    }
+
+    return `### Lamborghini India Portfolio Overview
+Lamborghini represents raging-bull theater backed by Volkswagen Group engineering discipline:
+- **Lamborghini Huracán:** Screaming naturally-aspirated V10 sports car, from ₹3.80 Crore.
+- **Lamborghini Urus:** Super Sport Utility Vehicle, from ₹4.20 Crore.
+- **Lamborghini Revuelto:** Hybrid V12 flagship, from ₹8.90 Crore.
+- **Track-Focused Specials:** Huracán STO (640 PS rear-wheel-drive-only) and Urus Performante (657 PS, Pikes Peak record).
+- **LDVI predictive chassis control** and torque-vectoring all-wheel drive feature across the range.`;
+  }
 
   // Porsche specific queries, when a Porsche model is selected, or when the active site brand is Porsche
   if (isPorscheBrand || q.includes('porsche') || q.includes('pdk') || q.includes('911') || q.includes('cayman') || q.includes('macan') || q.includes('cayenne') || q.includes('panamera') || q.includes('gt3') || q.includes('turbo s') || selectedModel.includes('911') || selectedModel.includes('cayman') || selectedModel.includes('macan') || selectedModel.includes('cayenne') || selectedModel.includes('panamera')) {
@@ -426,17 +476,53 @@ export interface AskSkodaAIParams {
  */
 export async function getSkodaAIAnswer(params: AskSkodaAIParams): Promise<string> {
   const { question, model, variant, engine } = params;
-  const userBrand = params.brand || (question.toLowerCase().includes('porsche') || question.toLowerCase().includes('pdk') || question.toLowerCase().includes('911') ? 'porsche' : question.toLowerCase().includes('audi') || question.toLowerCase().includes('quattro') || question.toLowerCase().includes('tfsi') ? 'audi' : question.toLowerCase().includes('volkswagen') || question.toLowerCase().includes('virtus') || question.toLowerCase().includes('taigun') || question.toLowerCase().includes('tiguan') || question.toLowerCase().includes('golf') ? 'volkswagen' : 'skoda');
+  const userBrand = params.brand || (question.toLowerCase().includes('lamborghini') || question.toLowerCase().includes('huracan') || question.toLowerCase().includes('urus') || question.toLowerCase().includes('revuelto') ? 'lamborghini' : question.toLowerCase().includes('porsche') || question.toLowerCase().includes('pdk') || question.toLowerCase().includes('911') ? 'porsche' : question.toLowerCase().includes('audi') || question.toLowerCase().includes('quattro') || question.toLowerCase().includes('tfsi') ? 'audi' : question.toLowerCase().includes('volkswagen') || question.toLowerCase().includes('virtus') || question.toLowerCase().includes('taigun') || question.toLowerCase().includes('tiguan') || question.toLowerCase().includes('golf') ? 'volkswagen' : 'skoda');
   const isVW = userBrand === 'volkswagen';
   const isAudi = userBrand === 'audi';
   const isPorsche = userBrand === 'porsche';
+  const isLamborghini = userBrand === 'lamborghini';
 
   const ai = getGeminiClient();
   if (!ai) {
     return generateSmartSkodaResponse(question, model, engine, userBrand);
   }
 
-  const systemPrompt = isPorsche
+  const systemPrompt = isLamborghini
+    ? `You are the official Lamborghini India AI Consultant. Your mission is to provide accurate, objective, helpful, and beautifully structured automotive guidance on the entire Lamborghini India lineup.
+
+KNOWLEDGE BASE & FACTS:
+1. Lamborghini Huracán (The Screaming V10 Icon):
+   - Price: ₹3.80 Crore to ₹4.20 Crore (Ex-showroom).
+   - Engine: 5.2L Naturally-Aspirated V10 (640 PS / 565 Nm). 7-Speed LDF Dual-Clutch.
+   - Highlights: One of the last naturally-aspirated V10 supercars still in production, LDVI chassis brain.
+
+2. Lamborghini Urus (The Super Sport Utility Vehicle):
+   - Price: ₹4.20 Crore Onwards.
+   - Engine: 4.0L Twin-Turbo V8 (657 PS / 850 Nm). 8-Speed Automatic, permanent all-wheel drive.
+   - Highlights: Lamborghini's best-selling model worldwide, shares platform architecture with the Porsche Cayenne and Audi Q8.
+
+3. Lamborghini Revuelto (The Hybrid V12 Flagship):
+   - Price: ₹8.90 Crore Onwards.
+   - Engine: 6.5L Naturally-Aspirated V12 + Tri-Motor Hybrid (1,015 PS combined). 8-Speed Dual-Clutch (Longitudinal).
+   - Highlights: Lamborghini's first series-production plug-in hybrid, replacing the Aventador as flagship, Città full-electric city mode.
+
+4. Track-Focused Specials:
+   - Lamborghini Huracán STO: 5.2L Naturally-Aspirated V10 (640 PS / 565 Nm), rear-wheel drive only, homologated from the Super Trofeo racer, 0-100 km/h in 3.0s, top speed 310 km/h.
+   - Lamborghini Urus Performante: 4.0L Twin-Turbo V8 (657 PS / 850 Nm), 47 kg lighter than the Urus S, 0-100 km/h in 3.3s, top speed 306 km/h, fastest SUV timed run at Pikes Peak.
+
+5. LDVI & Chassis Technology:
+   - LDVI (Lamborghini Dinamica Veicolo Integrata): a predictive central control unit that reads driver inputs and road conditions to pre-configure suspension, torque vectoring and all-wheel-drive systems before the driver reacts.
+   - Torque-vectoring all-wheel drive standard on the Urus and Revuelto, optional on the Huracán.
+
+6. Ownership:
+   - Lamborghini India direct-operated showroom network with CBU import for all models.
+   - Lamborghini Unlimited Mileage 3-Year Warranty and genuine service packages available through authorized showrooms.
+
+INSTRUCTIONS:
+- Answer with a tone that reflects a theatrical, raging-bull performance brand — precise, enthusiast-minded, and confident.
+- Keep answers well-structured and objective, with clear markdown formatting.
+- User Context: Model=${model || 'All'}, Variant=${variant || 'General'}, Engine=${engine || 'All'}.`
+    : isPorsche
     ? `You are the official Porsche India AI Consultant. Your mission is to provide accurate, objective, helpful, and beautifully structured automotive guidance on the entire Porsche India lineup.
 
 KNOWLEDGE BASE & FACTS:

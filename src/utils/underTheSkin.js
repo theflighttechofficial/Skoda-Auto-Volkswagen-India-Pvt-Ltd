@@ -79,6 +79,13 @@ const PLATFORM_OVERRIDES = {
   "porsche:macan": "MLB Evo",
   "porsche:cayenne": "MLB Evo",
   "porsche:panamera": "MLB Evo",
+  // Lamborghini's V10/V12 sports cars ride their own dedicated aluminum/
+  // carbon-fibre architecture, not shared with any other Group brand's
+  // models in this showcase. The Urus, however, genuinely rides the same
+  // shared MLB Evo architecture as the Porsche Cayenne and Audi Q8.
+  "lamborghini:huracan": "MSB",
+  "lamborghini:revuelto": "MSB",
+  "lamborghini:urus": "MLB Evo",
 };
 
 export function derivePlatform(model, brand) {
@@ -137,7 +144,7 @@ export const PLATFORM_DESCRIPTIONS = {
   "MQB-A0-IN": "India 2.0's dedicated compact platform, localized for Indian roads, thermal extremes and supply chains.",
   "MQB Evo": "The Group's global modular compact/mid-size platform, underpinning everything from hot hatches to executive liftbacks.",
   "MLB Evo": "Longitudinal-engine architecture for premium sedans and large SUVs, shared all the way up to Audi's flagship.",
-  "MSB": "Porsche's own dedicated sports-car architecture underpinning the rear-engine 911 and mid-engine 718 twins — not shared with any other Group brand's models in this showcase.",
+  "MSB": "Dedicated sports-car architecture underpinning Porsche's rear-engine 911 and mid-engine 718 twins, and Lamborghini's own V10/V12 chassis — not cross-shared between the two marques in this showcase.",
   [LEGACY_PLATFORM]: "Earlier-generation PQ/MQB architecture underpinning discontinued Hall of Fame nameplates.",
 };
 

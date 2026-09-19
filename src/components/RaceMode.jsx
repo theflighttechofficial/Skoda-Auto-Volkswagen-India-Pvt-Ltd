@@ -17,15 +17,15 @@ import { CarSilhouette } from "./CarSilhouette";
 import { getRaceRoster } from "../utils/raceRoster";
 import { buildVelocityModel, speedAt, distanceAt, computeRaceStats, QUARTER_MILE_METRES } from "../utils/racePhysics";
 
-const BRAND_ACCENT = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b" };
-const BRAND_LABEL = { skoda: "Škoda", volkswagen: "Volkswagen", audi: "Audi", porsche: "Porsche" };
+const BRAND_ACCENT = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b", lamborghini: "#eab308" };
+const BRAND_LABEL = { skoda: "Škoda", volkswagen: "Volkswagen", audi: "Audi", porsche: "Porsche", lamborghini: "Lamborghini" };
 const MAX_RACERS = 4;
 const MIN_RACERS = 2;
 
 export const RaceMode = ({ brand = "skoda" }) => {
   const roster = useMemo(() => getRaceRoster(), []);
-  const accentText = brand === "audi" ? "text-red-400" : brand === "volkswagen" ? "text-blue-400" : brand === "porsche" ? "text-amber-400" : "text-emerald-400";
-  const accentBg = brand === "audi" ? "bg-red-600 hover:bg-red-500" : brand === "volkswagen" ? "bg-blue-600 hover:bg-blue-500" : brand === "porsche" ? "bg-amber-600 hover:bg-amber-500" : "bg-emerald-600 hover:bg-emerald-500";
+  const accentText = brand === "audi" ? "text-red-400" : brand === "volkswagen" ? "text-blue-400" : brand === "porsche" ? "text-amber-400" : brand === "lamborghini" ? "text-yellow-400" : "text-emerald-400";
+  const accentBg = brand === "audi" ? "bg-red-600 hover:bg-red-500" : brand === "volkswagen" ? "bg-blue-600 hover:bg-blue-500" : brand === "porsche" ? "bg-amber-600 hover:bg-amber-500" : brand === "lamborghini" ? "bg-yellow-600 hover:bg-yellow-500" : "bg-emerald-600 hover:bg-emerald-500";
 
   const [selectedIds, setSelectedIds] = useState(() => roster.slice(0, 3).map((r) => r.id));
   const [phase, setPhase] = useState("select"); // select | racing | finished
@@ -292,7 +292,7 @@ function RosterSelect({ roster, selectedIds, toggleRacer, accentBg, accentText, 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {roster.map((r) => {
           const isSelected = selectedIds.includes(r.id);
-          const brandColor = r.brand === "audi" ? "text-red-400" : r.brand === "volkswagen" ? "text-blue-400" : r.brand === "porsche" ? "text-amber-400" : "text-emerald-400";
+          const brandColor = r.brand === "audi" ? "text-red-400" : r.brand === "volkswagen" ? "text-blue-400" : r.brand === "porsche" ? "text-amber-400" : r.brand === "lamborghini" ? "text-yellow-400" : "text-emerald-400";
           return (
             <button
               key={r.id}

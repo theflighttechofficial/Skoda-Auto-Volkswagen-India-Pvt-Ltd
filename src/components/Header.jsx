@@ -50,10 +50,12 @@ import { SKODA_MODELS } from "../data/skodaData";
 import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
 import { PORSCHE_MODELS } from "../data/porscheData";
+import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
+import { LamborghiniLogo } from "./LamborghiniLogo";
 
 // Central per-brand metadata — every brand-specific string/class the header
 // needs lives here, keyed by brand id, so adding a brand (e.g. Porsche) is
@@ -155,6 +157,30 @@ const BRAND_META = {
     advisorLabel: "AI Porsche Advisor",
     lineupLabel: "Porsche Lineup:",
   },
+  lamborghini: {
+    Logo: LamborghiniLogo,
+    accent: "yellow",
+    models: LAMBORGHINI_MODELS,
+    label: "Lamborghini India",
+    corporateLine: "Lamborghini India (Volkswagen Group Super Sports Car Marque)",
+    foundedLine: "Sant'Agata Bolognese, Italy (Est. 1963)",
+    plantLine: "Lamborghini India Direct-Operated Showroom Network",
+    switcherDesc: "Lamborghini India (Direct Market Operations)",
+    techTagline: "LDVI Chassis Control, Naturally-Aspirated V10/V12 & Hybrid Powertrains",
+    dropdownTitle: "Lamborghini India",
+    dropdownTagline: "Expect the Unexpected • Est. 1963",
+    dropdownModels: "Huracán, Urus, Revuelto",
+    rsLabel: "GT & STO Performance",
+    rsHeaderLabel: "Huracán STO Performance (640 PS)",
+    rsShortBadge: "STO",
+    engineTabLabel: "V10, V8 & Hybrid V12 Engines",
+    safetyLine: "5-Star Euro NCAP Safety",
+    techLine: "LDVI Chassis Brain & Torque-Vectoring AWD",
+    careLine: "Lamborghini Unlimited Mileage Warranty",
+    aboutLabel: "About Lamborghini",
+    advisorLabel: "AI Lamborghini Advisor",
+    lineupLabel: "Lamborghini Lineup:",
+  },
 };
 
 const ACCENT_CLASSES = {
@@ -214,9 +240,23 @@ const ACCENT_CLASSES = {
     switcherActive: "bg-amber-950/90 text-amber-300 border border-amber-700",
     switcherHover: "hover:text-amber-300",
   },
+  yellow: {
+    dot: "bg-yellow-400",
+    text: "text-yellow-400",
+    pillBg: "bg-gradient-to-r from-yellow-600 to-yellow-500 shadow-yellow-950/60",
+    buttonBg: "bg-yellow-600 hover:bg-yellow-500 shadow-yellow-900/40",
+    selectedBg: "bg-yellow-600 text-white shadow-md shadow-yellow-950",
+    dropdownBg: "bg-yellow-950/40 hover:bg-yellow-950/70 border-yellow-800/80 hover:border-yellow-700",
+    divider: "from-transparent via-yellow-500/70 to-transparent",
+    scrollEdge: "bg-yellow-950/90 border-yellow-800 text-yellow-300 hover:bg-yellow-900",
+    activeOptionBg: "bg-yellow-950/60 border-yellow-700/70 text-white",
+    activeOptionBadge: "text-yellow-400 bg-yellow-950/80 border-yellow-800",
+    switcherActive: "bg-yellow-950/90 text-yellow-300 border border-yellow-700",
+    switcherHover: "hover:text-yellow-300",
+  },
 };
 
-const BRAND_ORDER = ["skoda", "volkswagen", "audi", "porsche"];
+const BRAND_ORDER = ["skoda", "volkswagen", "audi", "porsche", "lamborghini"];
 
 // Makes a horizontally-scrollable strip behave properly everywhere:
 // vertical mouse-wheel scrolls it sideways, it can be dragged with the
@@ -474,7 +514,7 @@ export const Header = ({
                 id="btn-brand-switcher-dropdown"
                 onClick={() => setIsBrandDropdownOpen(!isBrandDropdownOpen)}
                 className={`flex items-center gap-2.5 px-3 py-1.5 rounded-xl border transition-all cursor-pointer shadow-md group ${accentClasses.dropdownBg}`}
-                title="Click to switch between Škoda, Volkswagen, Audi, and Porsche India"
+                title="Click to switch between Škoda, Volkswagen, Audi, Porsche, and Lamborghini India"
               >
                 <BrandLogo variant="full" size="md" animated={true} />
                 <div className="flex items-center gap-1 pl-1.5 border-l border-zinc-700/60 text-zinc-400 group-hover:text-zinc-200">
@@ -642,7 +682,8 @@ export const Header = ({
                   .replace("Škoda ", "")
                   .replace("Volkswagen ", "")
                   .replace("Audi ", "")
-                  .replace("Porsche ", "");
+                  .replace("Porsche ", "")
+                  .replace("Lamborghini ", "");
                 const BodyIcon = bodyTypeIcon(car.bodyType);
                 return (
                   <button

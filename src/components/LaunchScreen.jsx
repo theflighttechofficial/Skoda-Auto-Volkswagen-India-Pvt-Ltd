@@ -45,7 +45,7 @@ export const LaunchScreen = ({ onEnter }) => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-xs sm:text-sm text-zinc-500 mt-2 italic tracking-wide"
         >
-          Vier Marken. Eine Philosophie. — Four Brands, One Philosophy.
+          Fünf Marken. Eine Philosophie. — Five Brands, One Philosophy.
         </motion.p>
       </div>
 
@@ -56,7 +56,7 @@ export const LaunchScreen = ({ onEnter }) => {
             onSelectBrand={onEnter}
             badgeLabel="One Group, Many Personalities"
             heading="Different Personalities. Shared DNA."
-            description="Škoda, Volkswagen, Audi, and Porsche — four distinct personalities built on shared Volkswagen Group engineering. Click a brand to enter its world."
+            description="Škoda, Volkswagen, Audi, Porsche, and Lamborghini — five distinct personalities built on shared Volkswagen Group engineering. Click a brand to enter its world."
           />
         </div>
       </div>

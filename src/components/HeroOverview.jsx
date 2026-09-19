@@ -25,10 +25,12 @@ import { SKODA_MODELS, SIMPLY_CLEVER_FEATURES } from "../data/skodaData";
 import { VW_MODELS, VW_GERMAN_ENGINEERING_FEATURES } from "../data/vwData";
 import { AUDI_MODELS, AUDI_PROGRESSIVE_LUXURY_FEATURES } from "../data/audiData";
 import { PORSCHE_MODELS, PORSCHE_ENGINEERING_FEATURES } from "../data/porscheData";
+import { LAMBORGHINI_MODELS, LAMBORGHINI_ENGINEERING_FEATURES } from "../data/lamborghiniData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
+import { LamborghiniLogo } from "./LamborghiniLogo";
 import { getAccentClasses } from "../utils/brandTheme";
 import {
   getRatings,
@@ -203,6 +205,45 @@ const BRAND_COPY = {
     innovationsBadge: "Motorsport-Derived Innovations",
     innovationsHeading: "Porsche Engineering Innovations",
     innovationsSubtitle: "PDK precision, Porsche Traction Management, and motorsport-derived chassis technology tailored for India",
+  },
+  lamborghini: {
+    Logo: LamborghiniLogo,
+    models: LAMBORGHINI_MODELS,
+    features: LAMBORGHINI_ENGINEERING_FEATURES,
+    iconicModelId: "huracan",
+    displayName: "Lamborghini India",
+    tagline: "Expect the Unexpected",
+    badgeLine: "Official Lamborghini India Portfolio",
+    headingPre: "Raging-Bull Engineering, ",
+    headingAccent: "LDVI & AWD",
+    headingPost: " Precision",
+    description: (
+      <>
+        Explore the Lamborghini India lineup. From the screaming V10{" "}
+        <strong className="text-white">Huracán</strong> and Super SUV{" "}
+        <strong className="text-white">Urus</strong>, to the hybrid V12
+        flagship <strong className="text-white">Revuelto</strong> — every car
+        built on naturally-aspirated or hybrid theater and torque-vectoring
+        precision.
+      </>
+    ),
+    rsHeaderLabel: "Huracán STO Performance (640 PS)",
+    aiAdvisorLabel: "Ask AI Lamborghini Advisor",
+    historyLabel: "Sant'Agata Heritage",
+    standardLabel: "The Lamborghini Standard",
+    powertrainLine: "Naturally-Aspirated V10 & Hybrid V12",
+    bodyEngineeringLine: "Carbon-Fibre Monocoque Construction",
+    lineupHeading: "The Complete Lamborghini Lineup in India",
+    rsShortBadge: "STO",
+    rsBrandLine: "Lamborghini India • GT & STO Performance",
+    rsHeadingPre: "Lamborghini GT & STO Wing: ",
+    rsHeadingAccent: "Huracán STO & Urus Performante (640+ PS)",
+    rsDescription:
+      "Experience naturally-aspirated V10 and twin-turbo V8 engines, LDVI predictive chassis control, torque-vectoring all-wheel drive, and comparison against Ferrari, Porsche, and McLaren rivals.",
+    rsButtonLabel: "Explore Lamborghini GT & STO Performance",
+    innovationsBadge: "Raging-Bull Innovations",
+    innovationsHeading: "Lamborghini Engineering Innovations",
+    innovationsSubtitle: "LDVI precision, torque-vectoring all-wheel drive, and motorsport-derived chassis technology tailored for India",
   },
 };
 

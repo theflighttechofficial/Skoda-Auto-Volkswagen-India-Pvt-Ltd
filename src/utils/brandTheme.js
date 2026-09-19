@@ -9,6 +9,7 @@ export const BRAND_ACCENT = {
   volkswagen: "blue",
   audi: "red",
   porsche: "amber",
+  lamborghini: "yellow",
 };
 
 export const ACCENT_CLASSES = {
@@ -115,6 +116,32 @@ export const ACCENT_CLASSES = {
     ratingBar: "bg-amber-500",
     modelPillSelected: "bg-amber-600 text-white shadow-md shadow-amber-950",
     variantTabSelected: "bg-zinc-900 border-amber-500 shadow-lg shadow-amber-950/40 ring-1 ring-amber-500/50",
+  },
+  yellow: {
+    text400: "text-yellow-400",
+    text300: "text-yellow-300",
+    dot: "bg-yellow-400",
+    welcomeBannerBg: "bg-gradient-to-br from-yellow-950/60 via-zinc-950 to-black border-yellow-900/50 shadow-yellow-950/40",
+    glow600_20: "bg-yellow-600/20",
+    badgePill: "bg-yellow-950/70 border-yellow-800 text-yellow-300",
+    avatarRing: "border-yellow-700/50",
+    gradientText: "bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent",
+    divider: "bg-yellow-700/60",
+    heroBorder: "border-yellow-900/40",
+    glow600_15: "bg-yellow-600/15",
+    heroBadgePill: "bg-yellow-950/80 border-yellow-800/60 text-yellow-300",
+    ctaButton: "bg-gradient-to-r from-yellow-600 to-yellow-500 hover:from-yellow-500 hover:to-yellow-400 shadow-yellow-950/60",
+    secondaryButton: "border-yellow-700/60 text-yellow-300",
+    solidButton: "bg-yellow-600 hover:bg-yellow-500 shadow-yellow-950",
+    smallBadge: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
+    cardBadge: "bg-yellow-950/80 border-yellow-700/50 text-yellow-300",
+    cardHover: "border-zinc-800 hover:border-yellow-600/60 hover:shadow-yellow-950/30",
+    cardTitleHover: "group-hover:text-yellow-300",
+    noteText: "text-yellow-300/80",
+    noteTextSolid: "text-yellow-300/90",
+    ratingBar: "bg-yellow-500",
+    modelPillSelected: "bg-yellow-600 text-white shadow-md shadow-yellow-950",
+    variantTabSelected: "bg-zinc-900 border-yellow-500 shadow-lg shadow-yellow-950/40 ring-1 ring-yellow-500/50",
   },
 };
 

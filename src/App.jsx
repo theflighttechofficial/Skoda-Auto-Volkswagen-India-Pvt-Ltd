@@ -52,6 +52,7 @@ import { SkodaLogo } from "./components/SkodaLogo";
 import { VolkswagenLogo } from "./components/VolkswagenLogo";
 import { AudiLogo } from "./components/AudiLogo";
 import { PorscheLogo } from "./components/PorscheLogo";
+import { LamborghiniLogo } from "./components/LamborghiniLogo";
 
 const APP_BRAND_META = {
   skoda: {
@@ -125,6 +126,24 @@ const APP_BRAND_META = {
     lineupLabel: "911 Carrera • 911 Carrera S • 718 Cayman • Macan • Macan S • Cayenne • Panamera",
     defaultModelId: "911-carrera",
     defaultGraphModelId: "911-carrera",
+  },
+  lamborghini: {
+    Logo: LamborghiniLogo,
+    accentText: "text-yellow-400",
+    accentTextHover: "text-yellow-400 hover:text-yellow-300",
+    selectionBg: "selection:bg-yellow-500",
+    scrollTopBg: "bg-yellow-600 hover:bg-yellow-500 shadow-yellow-950/90 border-yellow-400/40",
+    footerName: "Lamborghini India",
+    footerTagline: "Direct Market Operations • LDVI Chassis Control, Naturally-Aspirated V10/V12 & Hybrid Engineering",
+    rsLabel: "GT & STO Performance",
+    dealershipLabel: "Lamborghini Showroom Locator (6+)",
+    aboutLabel: "About Lamborghini & Sant'Agata History",
+    warrantyLabel: "Lamborghini Unlimited Mileage: 3-Year Warranty",
+    roadsideLabel: "Lamborghini 24/7 Roadside Assistance: 1800 209 8811",
+    powertrainLabel: "Naturally-Aspirated V10, Twin-Turbo V8 & Hybrid V12 Powertrains",
+    lineupLabel: "Huracán EVO • Huracán STO • Urus S • Urus Performante • Revuelto",
+    defaultModelId: "huracan",
+    defaultGraphModelId: "huracan-sto-perf",
   },
 };
 

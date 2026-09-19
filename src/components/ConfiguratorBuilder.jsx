@@ -21,10 +21,12 @@ import { SKODA_MODELS } from "../data/skodaData";
 import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
 import { PORSCHE_MODELS } from "../data/porscheData";
+import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
+import { LamborghiniLogo } from "./LamborghiniLogo";
 import { CarSilhouette } from "./CarSilhouette";
 import { getBodyShape } from "../utils/bodyShape";
 import {
@@ -38,7 +40,7 @@ import {
 import { generateBuildImage } from "../utils/generateBuildImage";
 
 const STORAGE_KEY = "vwgroup_saved_builds";
-const BRAND_ACCENT_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b" };
+const BRAND_ACCENT_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b", lamborghini: "#eab308" };
 
 function loadSavedBuilds() {
   try {
@@ -72,12 +74,13 @@ export const ConfiguratorBuilder = ({ brand = "skoda", onSwitchBrand, onOpenAdvi
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
   const isPorsche = brand === "porsche";
-  const models = isPorsche ? PORSCHE_MODELS : isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
+  const isLamborghini = brand === "lamborghini";
+  const models = isLamborghini ? LAMBORGHINI_MODELS : isPorsche ? PORSCHE_MODELS : isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
   const accentHex = BRAND_ACCENT_HEX[brand];
-  const accentText = isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400";
-  const accentBg = isPorsche ? "bg-amber-600 hover:bg-amber-500" : isAudi ? "bg-red-600 hover:bg-red-500" : isVW ? "bg-blue-600 hover:bg-blue-500" : "bg-emerald-600 hover:bg-emerald-500";
-  const accentBorder = isPorsche ? "border-amber-500/60" : isAudi ? "border-red-500/60" : isVW ? "border-blue-500/60" : "border-emerald-500/60";
-  const accentRing = isPorsche ? "ring-amber-500/60" : isAudi ? "ring-red-500/60" : isVW ? "ring-blue-500/60" : "ring-emerald-500/60";
+  const accentText = isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400";
+  const accentBg = isLamborghini ? "bg-yellow-600 hover:bg-yellow-500" : isPorsche ? "bg-amber-600 hover:bg-amber-500" : isAudi ? "bg-red-600 hover:bg-red-500" : isVW ? "bg-blue-600 hover:bg-blue-500" : "bg-emerald-600 hover:bg-emerald-500";
+  const accentBorder = isLamborghini ? "border-yellow-500/60" : isPorsche ? "border-amber-500/60" : isAudi ? "border-red-500/60" : isVW ? "border-blue-500/60" : "border-emerald-500/60";
+  const accentRing = isLamborghini ? "ring-yellow-500/60" : isPorsche ? "ring-amber-500/60" : isAudi ? "ring-red-500/60" : isVW ? "ring-blue-500/60" : "ring-emerald-500/60";
 
   const [selectedModelId, setSelectedModelId] = useState(models[0].id);
   const currentModel = models.find((m) => m.id === selectedModelId) || models[0];
@@ -264,11 +267,11 @@ export const ConfiguratorBuilder = ({ brand = "skoda", onSwitchBrand, onOpenAdvi
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-1">
-            {isPorsche ? <PorscheLogo variant="emblem" size="sm" /> : isAudi ? <AudiLogo variant="emblem" size="sm" /> : isVW ? <VolkswagenLogo variant="emblem" size="sm" /> : <SkodaLogo variant="emblem" size="sm" />}
+            {isLamborghini ? <LamborghiniLogo variant="emblem" size="sm" /> : isPorsche ? <PorscheLogo variant="emblem" size="sm" /> : isAudi ? <AudiLogo variant="emblem" size="sm" /> : isVW ? <VolkswagenLogo variant="emblem" size="sm" /> : <SkodaLogo variant="emblem" size="sm" />}
             <span className={accentText}>Interactive Configurator</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-            Build Your {isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda"}
+            Build Your {isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda"}
           </h2>
           <p className="text-sm text-zinc-400">
             Pick a model, trim, engine, colour, wheels and interior — then save, share, or export your build.
@@ -279,7 +282,7 @@ export const ConfiguratorBuilder = ({ brand = "skoda", onSwitchBrand, onOpenAdvi
       {sharedBanner && (
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-amber-950/40 border border-amber-700/50 text-sm text-amber-200">
           <span>
-            This shared build is for <strong>{sharedBanner.brand === "porsche" ? "Porsche" : sharedBanner.brand === "audi" ? "Audi" : sharedBanner.brand === "volkswagen" ? "Volkswagen" : "Škoda"}</strong> — switch brands to load it.
+            This shared build is for <strong>{sharedBanner.brand === "lamborghini" ? "Lamborghini" : sharedBanner.brand === "porsche" ? "Porsche" : sharedBanner.brand === "audi" ? "Audi" : sharedBanner.brand === "volkswagen" ? "Volkswagen" : "Škoda"}</strong> — switch brands to load it.
           </span>
           {onSwitchBrand && (
             <button
@@ -309,7 +312,7 @@ export const ConfiguratorBuilder = ({ brand = "skoda", onSwitchBrand, onOpenAdvi
                     onClick={() => setSelectedModelId(m.id)}
                     className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer border ${selectedModelId === m.id ? `${accentBg} text-white border-transparent shadow-md` : "bg-zinc-900 text-zinc-400 border-zinc-800 hover:text-white hover:border-zinc-700"}`}
                   >
-                    {m.name.replace("Škoda ", "").replace("Volkswagen ", "").replace("Audi ", "").replace("Porsche ", "")}
+                    {m.name.replace("Škoda ", "").replace("Volkswagen ", "").replace("Audi ", "").replace("Porsche ", "").replace("Lamborghini ", "")}
                   </button>
                 ))}
             </div>

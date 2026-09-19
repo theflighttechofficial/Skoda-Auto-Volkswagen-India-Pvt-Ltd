@@ -2,6 +2,7 @@ import { RS_MODELS } from "../data/rsPerformanceData";
 import { VW_GT_MODELS } from "../data/vwPerformanceData";
 import { AUDI_RS_MODELS } from "../data/audiPerformanceData";
 import { PORSCHE_GT_MODELS } from "../data/porschePerformanceData";
+import { LAMBORGHINI_GT_MODELS } from "../data/lamborghiniPerformanceData";
 import { getBodyShape } from "./bodyShape";
 
 function slugify(str) {
@@ -55,5 +56,6 @@ export function getRaceRoster() {
     ...VW_GT_MODELS.map((m) => normalize(m, "volkswagen")),
     ...AUDI_RS_MODELS.map((m) => normalize(m, "audi")),
     ...PORSCHE_GT_MODELS.map((m) => normalize(m, "porsche")),
+    ...LAMBORGHINI_GT_MODELS.map((m) => normalize(m, "lamborghini")),
   ];
 }

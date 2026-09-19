@@ -31,9 +31,12 @@ export const VolkswagenGroupProud = ({
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
   const isPorsche = brand === "porsche";
-  const activeBrandName = isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda";
-  const activeBrandFoundedYear = isPorsche ? 1931 : isAudi ? 1909 : isVW ? 1937 : 1895;
-  const membershipBlurb = isPorsche
+  const isLamborghini = brand === "lamborghini";
+  const activeBrandName = isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda";
+  const activeBrandFoundedYear = isLamborghini ? 1963 : isPorsche ? 1931 : isAudi ? 1909 : isVW ? 1937 : 1895;
+  const membershipBlurb = isLamborghini
+    ? "Automobili Lamborghini has been part of the Volkswagen Group since 1998, placed under Audi's stewardship, gaining platform-sharing resources and quality-control processes without diluting its raging-bull character."
+    : isPorsche
     ? "Porsche AG and Volkswagen AG have been bound together through a complex cross-holding structure since 2012 — Porsche SE holds a majority stake in Volkswagen AG, which in turn owns Porsche AG outright."
     : isAudi
       ? "Since Volkswagen acquired Auto Union in 1964, Audi has stood as the Group’s progressive-technology pillar."
@@ -216,7 +219,7 @@ export const VolkswagenGroupProud = ({
                       <h3 className="text-xl font-black text-white group-hover:text-blue-300 transition-colors">
                         {brand.name}
                       </h3>
-                      {brand.id === (isPorsche ? "porsche" : isAudi ? "audi" : isVW ? "volkswagen" : "skoda") && (
+                      {brand.id === (isLamborghini ? "lamborghini" : isPorsche ? "porsche" : isAudi ? "audi" : isVW ? "volkswagen" : "skoda") && (
                         <span className="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30">
                           Host
                         </span>
@@ -397,7 +400,9 @@ export const VolkswagenGroupProud = ({
             130 Years of Automotive Heritage
           </span>
           <h3 className="text-xl sm:text-2xl font-black text-white">
-            {isPorsche
+            {isLamborghini
+              ? "Explore Lamborghini’s Heritage: From Sant'Agata Bolognese (1963) to India"
+              : isPorsche
               ? "Explore Porsche’s Heritage: From Stuttgart (1931) to India"
               : isAudi
                 ? "Explore Audi’s Heritage: From Zwickau (1909) to India 2.0"
@@ -406,7 +411,9 @@ export const VolkswagenGroupProud = ({
                   : "Explore Škoda’s Heritage: From Laurin & Klement (1895) to India 2.0"}
           </h3>
           <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-            {isPorsche
+            {isLamborghini
+              ? "Delve into the historic journey from Ferruccio Lamborghini's tractor-to-supercar origin, the Miura and Countach defining the modern supercar template, and how the Volkswagen Group acquisition in 1998 brought German engineering discipline to Sant'Agata."
+              : isPorsche
               ? "Delve into the historic journey from Ferdinand Porsche’s Stuttgart design office, the rear-engine 911’s continuous production since 1963, and how Porsche's cross-holding with Volkswagen AG binds the two companies together."
               : isAudi
                 ? "Delve into the historic journey from August Horch’s founding of Audi, the four-rings merger of 1932, and how Audi became the Group’s progressive-technology pillar."

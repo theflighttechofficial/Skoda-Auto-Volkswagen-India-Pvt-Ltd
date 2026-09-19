@@ -3,6 +3,7 @@ import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
+import { LamborghiniLogo } from "./LamborghiniLogo";
 
 const BRAND_META = {
   skoda: {
@@ -40,6 +41,15 @@ const BRAND_META = {
     ring: "border-amber-500/40",
     glow: "bg-amber-600/20",
     bar: "from-amber-600 to-amber-400",
+  },
+  lamborghini: {
+    Logo: LamborghiniLogo,
+    name: "Lamborghini",
+    tagline: "Expect the Unexpected",
+    accent: "text-yellow-400",
+    ring: "border-yellow-500/40",
+    glow: "bg-yellow-600/20",
+    bar: "from-yellow-600 to-yellow-400",
   },
 };
 
