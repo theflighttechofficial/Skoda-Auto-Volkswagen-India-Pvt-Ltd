@@ -160,7 +160,9 @@ export const DealershipLocator = ({
               >
                 {isAudi
                   ? "Audi India (Volkswagen Group Premium Brand)"
-                  : isLamborghini
+                  : isBentley
+                    ? "Bentley India (Direct Market Operations)"
+                    : isLamborghini
                     ? "Lamborghini India (Direct Market Operations)"
                     : isPorsche
                     ? "Porsche India (Direct Market Operations)"
@@ -172,7 +174,9 @@ export const DealershipLocator = ({
                   ? "Official Audi India Network"
                   : isVW
                     ? "Official Volkswagen India Network"
-                    : isLamborghini
+                    : isBentley
+                      ? "Official Bentley India Network"
+                      : isLamborghini
                       ? "Official Lamborghini India Network"
                       : isPorsche
                       ? "Official Porsche India Network"
@@ -185,7 +189,9 @@ export const DealershipLocator = ({
                 ? "Audi Dealership & Service Locator"
                 : isVW
                   ? "Volkswagen Dealership & Service Locator"
-                  : isLamborghini
+                  : isBentley
+                    ? "Bentley Showroom & Service Locator"
+                    : isLamborghini
                     ? "Lamborghini Showroom & Service Locator"
                     : isPorsche
                     ? "Porsche Centre & Service Locator"
@@ -197,7 +203,9 @@ export const DealershipLocator = ({
                 ? "Find authorized Audi India showrooms and certified workshop centers across major Indian metros. Schedule test drives for the A4, A6, Q3, Q5, Q7, or Q8, and access Audi Advantage service packages."
                 : isVW
                   ? "Find authorized Volkswagen India 3S facilities, city stores, and certified workshop centers across 150+ Indian cities. Schedule home test drives for Virtus, Taigun, or Tiguan, and access 60-minute express service."
-                  : isLamborghini
+                  : isBentley
+                    ? "Find authorized Bentley showrooms and Mulliner commissioning suites across major Indian metros. Schedule test drives for the Continental GT, Bentayga, or Flying Spur, and access Bentley genuine service programs."
+                    : isLamborghini
                     ? "Find authorized Lamborghini showrooms and certified workshop facilities across major Indian metros. Schedule test drives for the Hurac\u00e1n, Urus, or Revuelto, and access Lamborghini genuine service programs."
                     : isPorsche
                     ? "Find authorized Porsche Centres and certified workshop facilities across major Indian metros. Schedule test drives for the 911, Cayenne, Macan, Panamera, or 718 Cayman, and access Porsche Approved service programs."
@@ -220,7 +228,9 @@ export const DealershipLocator = ({
                     ? "Audi Advantage: 4-Year / Unlimited km"
                     : isVW
                       ? "4EVER Care: 4-Year / 100,000 km"
-                      : isLamborghini
+                      : isBentley
+                        ? "Bentley Warranty: 3-Year Unlimited Mileage"
+                        : isLamborghini
                         ? "Lamborghini Warranty: 3-Year Unlimited Mileage"
                         : isPorsche
                         ? "Porsche Warranty: 2-Year / Unlimited km"
@@ -236,7 +246,9 @@ export const DealershipLocator = ({
                     ? "1800 209 3232"
                     : isVW
                       ? "1800 102 0909"
-                      : isLamborghini
+                      : isBentley
+                        ? "1800 209 7722"
+                        : isLamborghini
                         ? "1800 209 8811"
                         : isPorsche
                         ? "1800 103 6911"
@@ -266,7 +278,9 @@ export const DealershipLocator = ({
                   ? "Audi Advantage Packages:"
                   : isVW
                     ? "4EVER Care Packages:"
-                    : isLamborghini
+                    : isBentley
+                      ? "Bentley Genuine Packages:"
+                      : isLamborghini
                       ? "Lamborghini Genuine Packages:"
                       : isPorsche
                       ? "Porsche Approved Packages:"
@@ -430,7 +444,9 @@ export const DealershipLocator = ({
           )}
         </div>
         <span className="text-[11px] text-zinc-500 hidden sm:inline">
-          {isLamborghini
+          {isBentley
+            ? "Bentley India certified facilities adhere to strict European diagnostic standards"
+            : isLamborghini
             ? "Lamborghini India certified facilities adhere to strict European diagnostic standards"
             : isPorsche
             ? "Porsche India certified facilities adhere to strict European diagnostic standards"

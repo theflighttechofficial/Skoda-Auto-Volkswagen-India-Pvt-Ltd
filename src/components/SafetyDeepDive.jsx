@@ -5,6 +5,7 @@ import { VW_SAFETY_SUITE, VW_MODELS } from "../data/vwData";
 import { AUDI_SAFETY_SUITE, AUDI_MODELS } from "../data/audiData";
 import { PORSCHE_SAFETY_SUITE, PORSCHE_MODELS } from "../data/porscheData";
 import { LAMBORGHINI_SAFETY_SUITE, LAMBORGHINI_MODELS } from "../data/lamborghiniData";
+import { BENTLEY_SAFETY_SUITE, BENTLEY_MODELS } from "../data/bentleyData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";

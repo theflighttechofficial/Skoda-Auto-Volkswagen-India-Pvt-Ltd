@@ -13,6 +13,7 @@ import { ALL_VW_ENGINES } from "../data/vwData";
 import { ALL_AUDI_ENGINES } from "../data/audiData";
 import { ALL_PORSCHE_ENGINES } from "../data/porscheData";
 import { ALL_LAMBORGHINI_ENGINES } from "../data/lamborghiniData";
+import { ALL_BENTLEY_ENGINES } from "../data/bentleyData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";

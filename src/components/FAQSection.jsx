@@ -5,6 +5,7 @@ import { ALL_VW_FAQS } from "../data/vwData";
 import { ALL_AUDI_FAQS } from "../data/audiData";
 import { ALL_PORSCHE_FAQS } from "../data/porscheData";
 import { ALL_LAMBORGHINI_FAQS } from "../data/lamborghiniData";
+import { ALL_BENTLEY_FAQS } from "../data/bentleyData";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
@@ -16,7 +17,9 @@ export const FAQSection = ({ brand = "skoda" }) => {
   const isPorsche = brand === "porsche";
   const isLamborghini = brand === "lamborghini";
   const isBentley = brand === "bentley";
-  const faqs = isLamborghini
+  const faqs = isBentley
+    ? ALL_BENTLEY_FAQS
+    : isLamborghini
     ? ALL_LAMBORGHINI_FAQS
     : isPorsche
     ? ALL_PORSCHE_FAQS

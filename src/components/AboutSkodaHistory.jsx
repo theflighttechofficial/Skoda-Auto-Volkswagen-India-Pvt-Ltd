@@ -224,7 +224,9 @@ export const AboutSkodaHistory = ({
                 {isBentley ? "1919" : isLamborghini ? "1963" : isPorsche ? "1931" : isAudi ? "1899" : isVW ? "1937" : "1895"}
               </p>
               <p className="text-[11px] text-zinc-400">
-                {isLamborghini
+                {isBentley
+                  ? "100+ Years of Hand-Crafted Grand Touring"
+                  : isLamborghini
                   ? "60+ Years of Raging-Bull Heritage"
                   : isPorsche
                   ? "90+ Years of Sports Car Engineering"
@@ -247,7 +249,9 @@ export const AboutSkodaHistory = ({
                 {isBentley ? "Crewe, England" : isLamborghini ? "Sant'Agata Bolognese, Italy" : isPorsche ? "Stuttgart, Germany" : isAudi ? "Ingolstadt, Germany" : isVW ? "Wolfsburg, Germany" : "Czech Republic"}
               </p>
               <p className="text-[11px] text-zinc-400">
-                {isLamborghini
+                {isBentley
+                  ? "Crewe, Cheshire HQ"
+                  : isLamborghini
                   ? "Sant'Agata Bolognese HQ"
                   : isPorsche
                   ? "Stuttgart-Zuffenhausen HQ"
@@ -270,7 +274,9 @@ export const AboutSkodaHistory = ({
                 {isBentley ? "60+ Countries" : isLamborghini ? "60+ Countries" : isPorsche ? "70+ Countries" : isAudi ? "100+ Countries" : isVW ? "150+ Countries" : "100+ Countries"}
               </p>
               <p className="text-[11px] text-zinc-400">
-                {isLamborghini
+                {isBentley
+                  ? "Over 20,000+ Cars Annually"
+                  : isLamborghini
                   ? "Over 9,000+ Cars Annually"
                   : isPorsche
                   ? "Over 320,000+ Cars Annually"
@@ -339,7 +345,9 @@ export const AboutSkodaHistory = ({
               <span>Chronicles of Craftsmanship</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              {isLamborghini
+              {isBentley
+                ? "Interactive History: The Bentley Journey"
+                : isLamborghini
                 ? "Interactive History: The Lamborghini Journey"
                 : isPorsche
                 ? "Interactive History: The Porsche Journey"
@@ -421,7 +429,19 @@ export const AboutSkodaHistory = ({
 
                 {/* Symbolic Era Visual Badge */}
                 <div className="flex-shrink-0 w-36 h-36 rounded-2xl bg-zinc-950 border border-zinc-800 p-4 flex flex-col items-center justify-center text-center shadow-inner">
-                  {isLamborghini ? (
+                  {isBentley ? (
+                    <>
+                      <div className="w-12 h-12 flex items-center justify-center mb-2">
+                        <BentleyLogo variant="emblem" size="md" />
+                      </div>
+                      <span className="text-[11px] font-bold text-zinc-200">
+                        Bentley
+                      </span>
+                      <span className="text-[9px] text-zinc-500">
+                        {activeEra.period}
+                      </span>
+                    </>
+                  ) : isLamborghini ? (
                     <>
                       <div className="w-12 h-12 flex items-center justify-center mb-2">
                         <LamborghiniLogo variant="emblem" size="md" />
@@ -589,7 +609,9 @@ export const AboutSkodaHistory = ({
           >
             <Sparkles className="w-4 h-4" />
             <span>
-              {isLamborghini
+              {isBentley
+                ? "Crewe Grand-Touring Soul"
+                : isLamborghini
                 ? "Sant'Agata Raging-Bull Soul"
                 : isPorsche
                 ? "Stuttgart Sports Car Soul"
@@ -601,7 +623,9 @@ export const AboutSkodaHistory = ({
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-            {isLamborghini
+            {isBentley
+              ? "The Pillars of Hand-Crafted Grand Touring in Every Modern Bentley"
+              : isLamborghini
               ? "The Pillars of Raging-Bull Engineering in Every Modern Lamborghini"
               : isPorsche
               ? "The Pillars of Motorsport-Derived Engineering in Every Modern Porsche"
@@ -612,7 +636,9 @@ export const AboutSkodaHistory = ({
                   : "The Pillars of Czech Heritage in Every Modern \u0160koda"}
           </h2>
           <p className="text-zinc-400 text-sm mt-1">
-            {isLamborghini
+            {isBentley
+              ? "How R-Type Continental heritage, Mulliner coachbuilding craftsmanship, and decades of twin-turbo W12/V8 engineering shape the car you drive today."
+              : isLamborghini
               ? "How mid-engine Miura heritage, raging-bull naming tradition, and decades of LDVI/torque-vectoring engineering shape the car you drive today."
               : isPorsche
               ? "How rear-engine 911 heritage, Le Mans-winning motorsport DNA, and decades of PDK/PASM engineering shape the car you drive today."
@@ -661,8 +687,72 @@ export const AboutSkodaHistory = ({
         </div>
       </div>
 
-      {/* The Indian Connection & SAVWIPL Facilities (Porsche/Lamborghini India run a separate, direct-import model) */}
-      {isLamborghini ? (
+      {/* The Indian Connection & SAVWIPL Facilities (Porsche/Lamborghini/Bentley India run a separate, direct-import model) */}
+      {isBentley ? (
+        <div className="rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900 to-zinc-950 border border-zinc-800 p-6 sm:p-8 space-y-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="space-y-1 max-w-2xl">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-green-400">
+                <Globe2 className="w-4 h-4" />
+                <span>Bentley India Direct Market Operations</span>
+              </div>
+              <h3 className="text-2xl font-black text-white">
+                Imported, Not Assembled: Bentley India's CBU Model
+              </h3>
+              <p className="text-zinc-400 text-xs sm:text-sm">
+                Unlike Škoda and Volkswagen, Bentley India operates entirely
+                separately from Škoda Auto Volkswagen India Pvt. Ltd.
+                (SAVWIPL). Every Bentley sold here — from the Bentayga to
+                the Flying Spur — arrives as a Completely Built Unit (CBU)
+                import, preserving global-spec, hand-crafted build quality
+                rather than local assembly.
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="px-3 py-1.5 rounded-xl font-black text-xs flex items-center gap-1.5 bg-green-500/10 border border-green-500/30 text-green-300">
+                <ShieldCheck className="w-4 h-4" />
+                <span>100% 5-Star Certified</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-5 rounded-2xl bg-zinc-950/80 border border-zinc-800/80 space-y-2">
+              <div className="flex items-center justify-between">
+                <h4 className="font-bold text-white text-sm">
+                  Bentley Mumbai
+                </h4>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded border text-green-400 bg-green-950 border-green-800">
+                  Flagship Retail & Experience
+                </span>
+              </div>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                Bentley's flagship showroom and one of its primary
+                import-clearance and delivery hubs, offering the full CBU
+                lineup alongside a Mulliner personal-commissioning studio
+                and genuine parts service for Indian owners.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-zinc-950/80 border border-zinc-800/80 space-y-2">
+              <div className="flex items-center justify-between">
+                <h4 className="font-bold text-white text-sm">
+                  Bentley Delhi-Gurugram
+                </h4>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded border text-green-400 bg-green-950 border-green-800">
+                  Bespoke Commissioning Suite
+                </span>
+              </div>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                A dedicated Mulliner commissioning suite bringing Bentley's
+                personalization craftsmanship to Indian owners, separate
+                from the SAVWIPL manufacturing network used for Škoda and
+                Volkswagen models.
+              </p>
+            </div>
+          </div>
+        </div>
+      ) : isLamborghini ? (
         <div className="rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900 to-zinc-950 border border-zinc-800 p-6 sm:p-8 space-y-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="space-y-1 max-w-2xl">

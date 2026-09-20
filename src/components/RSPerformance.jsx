@@ -295,7 +295,12 @@ export const RSPerformance = ({
           <div className="space-y-4 max-w-3xl">
             {/* Motorsport Badge */}
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-red-950/80 border border-red-800 text-red-300 text-xs font-black tracking-widest uppercase">
-              {isLamborghini ? (
+              {isBentley ? (
+                <span className="flex items-center gap-1 font-black italic">
+                  <span className="text-green-400">GT</span>
+                  <span className="text-red-500">/Speed</span>
+                </span>
+              ) : isLamborghini ? (
                 <span className="flex items-center gap-1 font-black italic">
                   <span className="text-yellow-400">GT</span>
                   <span className="text-red-500">/STO</span>
@@ -323,7 +328,9 @@ export const RSPerformance = ({
               )}
               <span className="text-zinc-400">|</span>
               <span className="text-zinc-200">
-                {isLamborghini
+                {isBentley
+                  ? "Bentley India Performance"
+                  : isLamborghini
                   ? "Lamborghini India Performance"
                   : isPorsche
                   ? "Porsche India Performance"
@@ -337,7 +344,9 @@ export const RSPerformance = ({
 
             <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase italic">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-400 to-amber-400">
-                {isLamborghini
+                {isBentley
+                  ? "The GT Speed Performance"
+                  : isLamborghini
                   ? "The GT & STO Performance"
                   : isPorsche
                   ? "The GT & Turbo Performance"
@@ -350,7 +359,17 @@ export const RSPerformance = ({
             </h1>
 
             <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-              {isLamborghini ? (
+              {isBentley ? (
+                <>
+                  Hand-built in Crewe and honed for Grand Touring at speed.
+                  Discover the twin-turbo{" "}
+                  <strong className="text-white">Continental GT Speed</strong>{" "}
+                  (659 PS W12, Electronic All-Wheel Steering) and the
+                  performance flagship SUV{" "}
+                  <strong className="text-white">Bentayga Speed</strong> (635
+                  PS twin-turbo V8, active anti-roll stabilization).
+                </>
+              ) : isLamborghini ? (
                 <>
                   Hand-built in Sant'Agata Bolognese and honed on the
                   N\u00fcrburgring Nordschleife. Discover the naturally-aspirated{" "}
@@ -710,7 +729,9 @@ export const RSPerformance = ({
                 className={`px-3 py-1.5 rounded-lg font-bold uppercase transition-all ${driveMode === m ? (m === "vrs" ? "bg-red-600 text-white shadow-md shadow-red-900/50" : "bg-zinc-800 text-white") : "text-zinc-400 hover:text-white"}`}
               >
                 {m === "vrs"
-                  ? isLamborghini
+                  ? isBentley
+                    ? "\u26A1 Sport Mode"
+                    : isLamborghini
                     ? "\u26A1 Corsa Mode"
                     : isPorsche
                     ? "\u26A1 GT Mode"
@@ -1009,7 +1030,9 @@ export const RSPerformance = ({
               Driver Centric Ergonomics
             </span>
             <h3 className="text-xl font-black text-white tracking-tight">
-              {isLamborghini
+              {isBentley
+                ? "Exclusive Mulliner Cockpit Architecture"
+                : isLamborghini
                 ? "Exclusive GT Cockpit Architecture"
                 : isPorsche
                 ? "Exclusive GT Cockpit Architecture"
@@ -1786,7 +1809,9 @@ export const RSPerformance = ({
               Motorsport Pedigree
             </span>
             <h3 className="text-xl font-black text-white tracking-tight">
-              {isLamborghini
+              {isBentley
+                ? "The Legend of Bentley GT & Speed"
+                : isLamborghini
                 ? "The Legend of Lamborghini GT & STO"
                 : isPorsche
                 ? "The Legend of Porsche GT & Turbo"
@@ -1824,7 +1849,9 @@ export const RSPerformance = ({
       <div className="rounded-3xl bg-gradient-to-r from-red-950/60 via-zinc-900 to-zinc-950 border border-red-800/40 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
         <div className="space-y-1 text-center sm:text-left">
           <h4 className="text-xl font-black text-white italic">
-            {isLamborghini
+            {isBentley
+              ? "Ready to Experience True Bentley GT Performance?"
+              : isLamborghini
               ? "Ready to Experience True Lamborghini GT Performance?"
               : isPorsche
               ? "Ready to Experience True Porsche GT Performance?"
@@ -1835,7 +1862,9 @@ export const RSPerformance = ({
                   : "Ready to Experience True Rally Sport Exhilaration?"}
           </h4>
           <p className="text-xs text-zinc-300">
-            {isLamborghini
+            {isBentley
+              ? "Consult our AI specialist on Continental GT Speed and Bentayga Speed bookings, or compute customized on-road figures."
+              : isLamborghini
               ? "Consult our AI specialist on Huracán STO, Revuelto, and Urus Performante bookings, or compute customized on-road figures."
               : isPorsche
               ? "Consult our AI specialist on 911 GT3, Turbo S, and Cayenne Turbo GT bookings, or compute customized on-road figures."
@@ -1864,7 +1893,9 @@ export const RSPerformance = ({
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
                 onOpenAdvisor(
-                  isLamborghini
+                  isBentley
+                    ? "I want to learn more about the Bentley Continental GT Speed and Bentayga Speed in India."
+                    : isLamborghini
                     ? "I want to learn more about the Lamborghini Huracán STO, Revuelto, and Urus Performante in India."
                     : isPorsche
                     ? "I want to learn more about the Porsche 911 GT3, 911 Turbo S, and Cayenne Turbo GT in India."

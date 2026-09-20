@@ -5,6 +5,7 @@ import { VW_MODELS, ALL_VW_ENGINES } from "../data/vwData";
 import { AUDI_MODELS, ALL_AUDI_ENGINES } from "../data/audiData";
 import { PORSCHE_MODELS, ALL_PORSCHE_ENGINES } from "../data/porscheData";
 import { LAMBORGHINI_MODELS, ALL_LAMBORGHINI_ENGINES } from "../data/lamborghiniData";
+import { BENTLEY_MODELS, ALL_BENTLEY_ENGINES } from "../data/bentleyData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
