@@ -9,11 +9,13 @@ import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
+import { BentleyLogo } from "./BentleyLogo";
 export const FAQSection = ({ brand = "skoda" }) => {
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
   const isPorsche = brand === "porsche";
   const isLamborghini = brand === "lamborghini";
+  const isBentley = brand === "bentley";
   const faqs = isLamborghini
     ? ALL_LAMBORGHINI_FAQS
     : isPorsche
@@ -58,9 +60,11 @@ export const FAQSection = ({ brand = "skoda" }) => {
       {/* Title */}
       <div className="text-center space-y-2">
         <div
-          className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-semibold ${isLamborghini ? "bg-yellow-950/80 border-yellow-800 text-yellow-400" : isPorsche ? "bg-amber-950/80 border-amber-800 text-amber-400" : isAudi ? "bg-red-950/80 border-red-800 text-red-400" : isVW ? "bg-blue-950/80 border-blue-800 text-blue-400" : "bg-emerald-950/80 border-emerald-800 text-emerald-400"}`}
+          className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-semibold ${isBentley ? "bg-green-950/80 border-green-800 text-green-400" : isLamborghini ? "bg-yellow-950/80 border-yellow-800 text-yellow-400" : isPorsche ? "bg-amber-950/80 border-amber-800 text-amber-400" : isAudi ? "bg-red-950/80 border-red-800 text-red-400" : isVW ? "bg-blue-950/80 border-blue-800 text-blue-400" : "bg-emerald-950/80 border-emerald-800 text-emerald-400"}`}
         >
-          {isLamborghini ? (
+          {isBentley ? (
+            <BentleyLogo variant="emblem" size="sm" />
+          ) : isLamborghini ? (
             <LamborghiniLogo variant="emblem" size="sm" />
           ) : isPorsche ? (
             <PorscheLogo variant="emblem" size="sm" />
@@ -98,7 +102,7 @@ export const FAQSection = ({ brand = "skoda" }) => {
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${activeCategory === cat ? (isLamborghini ? "bg-yellow-600 text-white shadow-sm" : isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white"}`}
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${activeCategory === cat ? (isBentley ? "bg-green-600 text-white shadow-sm" : isLamborghini ? "bg-yellow-600 text-white shadow-sm" : isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white"}`}
           >
             {cat}
           </button>
@@ -120,7 +124,7 @@ export const FAQSection = ({ brand = "skoda" }) => {
               >
                 <div className="flex items-center gap-3">
                   <span
-                    className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-zinc-800 border border-zinc-700 ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-zinc-800 border border-zinc-700 ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     {faq.category}
                   </span>
@@ -129,7 +133,7 @@ export const FAQSection = ({ brand = "skoda" }) => {
                   </span>
                 </div>
                 <ChevronDown
-                  className={`w-4 h-4 text-zinc-400 transition-transform duration-200 flex-shrink-0 ${isOpen ? (isLamborghini ? "rotate-180 text-yellow-400" : isPorsche ? "rotate-180 text-amber-400" : isAudi ? "rotate-180 text-red-400" : isVW ? "rotate-180 text-blue-400" : "rotate-180 text-emerald-400") : ""}`}
+                  className={`w-4 h-4 text-zinc-400 transition-transform duration-200 flex-shrink-0 ${isOpen ? (isBentley ? "rotate-180 text-green-400" : isLamborghini ? "rotate-180 text-yellow-400" : isPorsche ? "rotate-180 text-amber-400" : isAudi ? "rotate-180 text-red-400" : isVW ? "rotate-180 text-blue-400" : "rotate-180 text-emerald-400") : ""}`}
                 />
               </button>
 

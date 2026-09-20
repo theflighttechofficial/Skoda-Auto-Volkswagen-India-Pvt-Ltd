@@ -16,11 +16,13 @@ import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
 import { PORSCHE_MODELS } from "../data/porscheData";
 import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
+import { BENTLEY_MODELS } from "../data/bentleyData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
+import { BentleyLogo } from "./BentleyLogo";
 import { CarSilhouette } from "./CarSilhouette";
 import { ChassisMockup } from "./ChassisMockup";
 import { getLayers, derivePlatform, normalizePlatformName, deriveDrivetrain } from "../utils/underTheSkin";
@@ -28,10 +30,10 @@ import { getBodyShape } from "../utils/bodyShape";
 import { getAccentClasses } from "../utils/brandTheme";
 
 const ICON_MAP = { Car, LayoutGrid, Fuel, Cog, Activity, ShieldCheck, Cpu };
-const BRAND_ACCENT_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b", lamborghini: "#eab308" };
-const BRAND_LABEL = { skoda: "Škoda", volkswagen: "Volkswagen", audi: "Audi", porsche: "Porsche", lamborghini: "Lamborghini" };
-const ALL_BRAND_MODELS = { skoda: SKODA_MODELS, volkswagen: VW_MODELS, audi: AUDI_MODELS, porsche: PORSCHE_MODELS, lamborghini: LAMBORGHINI_MODELS };
-const BRAND_LOGO = { skoda: SkodaLogo, volkswagen: VolkswagenLogo, audi: AudiLogo, porsche: PorscheLogo, lamborghini: LamborghiniLogo };
+const BRAND_ACCENT_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b", lamborghini: "#eab308", bentley: "#16a34a" };
+const BRAND_LABEL = { skoda: "Škoda", volkswagen: "Volkswagen", audi: "Audi", porsche: "Porsche", lamborghini: "Lamborghini", bentley: "Bentley" };
+const ALL_BRAND_MODELS = { skoda: SKODA_MODELS, volkswagen: VW_MODELS, audi: AUDI_MODELS, porsche: PORSCHE_MODELS, lamborghini: LAMBORGHINI_MODELS, bentley: BENTLEY_MODELS };
+const BRAND_LOGO = { skoda: SkodaLogo, volkswagen: VolkswagenLogo, audi: AudiLogo, porsche: PorscheLogo, lamborghini: LamborghiniLogo, bentley: BentleyLogo };
 
 export const UnderTheSkin = ({ brand = "skoda", onSwitchBrand }) => {
   const models = ALL_BRAND_MODELS[brand] || SKODA_MODELS;
@@ -39,7 +41,7 @@ export const UnderTheSkin = ({ brand = "skoda", onSwitchBrand }) => {
   const c = getAccentClasses(brand);
   const accentText = c.text400;
   const accentBg = c.solidButton.split(" ")[0];
-  const accentBorder = brand === "audi" ? "border-red-500/60" : brand === "volkswagen" ? "border-blue-500/60" : brand === "porsche" ? "border-amber-500/60" : brand === "lamborghini" ? "border-yellow-500/60" : "border-emerald-500/60";
+  const accentBorder = brand === "audi" ? "border-red-500/60" : brand === "volkswagen" ? "border-blue-500/60" : brand === "porsche" ? "border-amber-500/60" : brand === "lamborghini" ? "border-yellow-500/60" : brand === "bentley" ? "border-green-500/60" : "border-emerald-500/60";
   const BrandLogo = BRAND_LOGO[brand] || SkodaLogo;
 
   const [selectedModelId, setSelectedModelId] = useState(models[0].id);

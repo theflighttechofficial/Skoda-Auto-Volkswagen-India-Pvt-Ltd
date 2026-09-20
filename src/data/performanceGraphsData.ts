@@ -2690,6 +2690,249 @@ export const ENGINE_GRAPH_PROFILES: Record<string, EngineGraphProfile> = {
       'Fixed motorsport rear wing tuned using Lamborghini’s GT3 racing program data',
       'Titanium sport exhaust with a motorsport-tuned V10 wail'
     ]
+  },
+
+  '6.0-w12-twin-turbo-continental': {
+    id: '6.0-w12-twin-turbo-continental',
+    name: '6.0L Twin-Turbo W12',
+    badge: '6.0 W12 (659 PS / 900 Nm)',
+    displacement: '5,950 cc',
+    cylinders: '12 Cylinders (Twin-Turbo W12)',
+    fuelType: 'Petrol',
+    peakPowerStr: '659 PS @ 6,000 RPM',
+    peakTorqueStr: '900 Nm @ 1,350–4,500 RPM',
+    maxPowerHp: 659,
+    maxTorqueNm: 900,
+    powerRpmRange: '6,000 RPM',
+    torqueRpmRange: '1,350–4,500 RPM',
+    redlineRpm: 6000,
+    idleRpm: 720,
+    highwayCruiseRpm100Kmh: 1400,
+    highwayCruiseRpm120Kmh: 1700,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 50, torqueNm: 400, boostBar: 0.55 },
+      { rpm: 1500, powerHp: 125, torqueNm: 770, boostBar: 0.95 },
+      { rpm: 2000, powerHp: 205, torqueNm: 900, boostBar: 1.15 },
+      { rpm: 3000, powerHp: 335, torqueNm: 900, boostBar: 1.15 },
+      { rpm: 4000, powerHp: 450, torqueNm: 870, boostBar: 1.1 },
+      { rpm: 5000, powerHp: 570, torqueNm: 815, boostBar: 1.05 },
+      { rpm: 6000, powerHp: 659, torqueNm: 740, boostBar: 0.95 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.9, speedKmh: 50, gForce: 0.82, gear: 1 },
+      { timeSec: 1.9, speedKmh: 90, gForce: 0.70, gear: 2 },
+      { timeSec: 3.9, speedKmh: 100, gForce: 0.58, gear: 3 },
+      { timeSec: 5.9, speedKmh: 160, gForce: 0.43, gear: 4 },
+      { timeSec: 9.4, speedKmh: 200, gForce: 0.30, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.43', speedAt1000Rpm: 12.4, speedAt3000Rpm: 37.2, speedAt6000Rpm: 74.4, redlineSpeed: 76 },
+      { gear: '2nd', ratio: '2.18', speedAt1000Rpm: 19.5, speedAt3000Rpm: 58.5, speedAt6000Rpm: 117.0, redlineSpeed: 120 },
+      { gear: '3rd', ratio: '1.56', speedAt1000Rpm: 27.3, speedAt3000Rpm: 81.9, speedAt6000Rpm: 163.8, redlineSpeed: 168 },
+      { gear: '4th', ratio: '1.18', speedAt1000Rpm: 36.0, speedAt3000Rpm: 108.0, speedAt6000Rpm: 216.0, redlineSpeed: 221 },
+      { gear: '5th', ratio: '0.94', speedAt1000Rpm: 45.3, speedAt3000Rpm: 135.9, speedAt6000Rpm: 271.8, redlineSpeed: 278 },
+      { gear: '6th', ratio: '0.79', speedAt1000Rpm: 53.9, speedAt3000Rpm: 161.7, speedAt6000Rpm: 323.4, redlineSpeed: 330 },
+      { gear: '7th', ratio: '0.65', speedAt1000Rpm: 65.5, speedAt3000Rpm: 196.5, speedAt6000Rpm: 335.0, redlineSpeed: 335 },
+      { gear: '8th', ratio: '0.55', speedAt1000Rpm: 77.4, speedAt3000Rpm: 232.2, speedAt6000Rpm: 335.0, redlineSpeed: 335 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 3.3, engineRpm: 1000 },
+      { speedKmh: 40, fuelConsumptionKmpl: 4.1, engineRpm: 940 },
+      { speedKmh: 60, fuelConsumptionKmpl: 4.9, engineRpm: 910 },
+      { speedKmh: 80, fuelConsumptionKmpl: 5.5, engineRpm: 1000 },
+      { speedKmh: 100, fuelConsumptionKmpl: 5.1, engineRpm: 1400 },
+      { speedKmh: 120, fuelConsumptionKmpl: 4.4, engineRpm: 1700 },
+      { speedKmh: 140, fuelConsumptionKmpl: 3.7, engineRpm: 2050 }
+    ],
+    technicalFeatures: [
+      'One of the last twin-turbo W12 engines still in series production',
+      'Silky, near-silent low-RPM refinement with effortless triple-digit surge',
+      'Shared W12 architecture roots with past Volkswagen Group flagship saloons',
+      'Available in the Continental GT and Flying Spur'
+    ]
+  },
+
+  '4.0-twin-turbo-v8-bentayga': {
+    id: '4.0-twin-turbo-v8-bentayga',
+    name: '4.0L Twin-Turbo V8',
+    badge: '4.0 Twin-Turbo V8 (550 PS / 770 Nm)',
+    displacement: '3,996 cc',
+    cylinders: '8 Cylinders (Twin-Turbo V8)',
+    fuelType: 'Petrol',
+    peakPowerStr: '550 PS @ 6,000 RPM',
+    peakTorqueStr: '770 Nm @ 2,000–4,500 RPM',
+    maxPowerHp: 550,
+    maxTorqueNm: 770,
+    powerRpmRange: '6,000 RPM',
+    torqueRpmRange: '2,000–4,500 RPM',
+    redlineRpm: 6500,
+    idleRpm: 780,
+    highwayCruiseRpm100Kmh: 1500,
+    highwayCruiseRpm120Kmh: 1800,
+    dynoCurve: [
+      { rpm: 1500, powerHp: 85, torqueNm: 540, boostBar: 0.85 },
+      { rpm: 2000, powerHp: 150, torqueNm: 770, boostBar: 1.05 },
+      { rpm: 3000, powerHp: 265, torqueNm: 770, boostBar: 1.05 },
+      { rpm: 4000, powerHp: 365, torqueNm: 740, boostBar: 1.0 },
+      { rpm: 5000, powerHp: 455, torqueNm: 690, boostBar: 0.95 },
+      { rpm: 6000, powerHp: 550, torqueNm: 630, boostBar: 0.9 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 1.0, speedKmh: 50, gForce: 0.75, gear: 1 },
+      { timeSec: 2.2, speedKmh: 90, gForce: 0.62, gear: 2 },
+      { timeSec: 4.5, speedKmh: 100, gForce: 0.50, gear: 3 },
+      { timeSec: 6.8, speedKmh: 160, gForce: 0.36, gear: 4 },
+      { timeSec: 10.8, speedKmh: 200, gForce: 0.25, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '4.71', speedAt1000Rpm: 9.4, speedAt3000Rpm: 28.2, speedAt6000Rpm: 56.4, redlineSpeed: 61 },
+      { gear: '2nd', ratio: '3.14', speedAt1000Rpm: 14.1, speedAt3000Rpm: 42.3, speedAt6000Rpm: 84.6, redlineSpeed: 92 },
+      { gear: '3rd', ratio: '2.11', speedAt1000Rpm: 21.0, speedAt3000Rpm: 63.0, speedAt6000Rpm: 126.0, redlineSpeed: 137 },
+      { gear: '4th', ratio: '1.67', speedAt1000Rpm: 26.5, speedAt3000Rpm: 79.5, speedAt6000Rpm: 159.0, redlineSpeed: 173 },
+      { gear: '5th', ratio: '1.29', speedAt1000Rpm: 34.3, speedAt3000Rpm: 102.9, speedAt6000Rpm: 205.8, redlineSpeed: 224 },
+      { gear: '6th', ratio: '1.00', speedAt1000Rpm: 44.3, speedAt3000Rpm: 132.9, speedAt6000Rpm: 265.8, redlineSpeed: 290 },
+      { gear: '7th', ratio: '0.84', speedAt1000Rpm: 52.7, speedAt3000Rpm: 158.1, speedAt6000Rpm: 290.0, redlineSpeed: 290 },
+      { gear: '8th', ratio: '0.67', speedAt1000Rpm: 66.1, speedAt3000Rpm: 198.3, speedAt6000Rpm: 290.0, redlineSpeed: 290 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 3.9, engineRpm: 1080 },
+      { speedKmh: 40, fuelConsumptionKmpl: 4.7, engineRpm: 990 },
+      { speedKmh: 60, fuelConsumptionKmpl: 5.6, engineRpm: 960 },
+      { speedKmh: 80, fuelConsumptionKmpl: 6.2, engineRpm: 1080 },
+      { speedKmh: 100, fuelConsumptionKmpl: 5.8, engineRpm: 1500 },
+      { speedKmh: 120, fuelConsumptionKmpl: 5.0, engineRpm: 1800 },
+      { speedKmh: 140, fuelConsumptionKmpl: 4.2, engineRpm: 2150 }
+    ],
+    technicalFeatures: [
+      'Shared twin-turbo V8 block family with the Porsche Cayenne Turbo and Audi RS Q8',
+      'Permanent all-wheel drive with active all-wheel steering on higher trims',
+      'Adaptive air suspension with Bentley Dynamic Ride active anti-roll control',
+      'Tuned for effortless long-distance cruising and genuine off-road capability'
+    ]
+  },
+
+  '6.0-w12-twin-turbo-speed': {
+    id: '6.0-w12-twin-turbo-speed',
+    name: '6.0L Twin-Turbo W12 (Speed-Tune)',
+    badge: '6.0 W12 Speed (659 PS / 900 Nm)',
+    displacement: '5,950 cc',
+    cylinders: '12 Cylinders (Twin-Turbo W12)',
+    fuelType: 'Petrol',
+    peakPowerStr: '659 PS @ 6,000 RPM',
+    peakTorqueStr: '900 Nm @ 1,350–4,500 RPM',
+    maxPowerHp: 659,
+    maxTorqueNm: 900,
+    powerRpmRange: '6,000 RPM',
+    torqueRpmRange: '1,350–4,500 RPM',
+    redlineRpm: 6100,
+    idleRpm: 750,
+    highwayCruiseRpm100Kmh: 1450,
+    highwayCruiseRpm120Kmh: 1750,
+    dynoCurve: [
+      { rpm: 1000, powerHp: 55, torqueNm: 420, boostBar: 0.6 },
+      { rpm: 1500, powerHp: 130, torqueNm: 780, boostBar: 1.0 },
+      { rpm: 2000, powerHp: 210, torqueNm: 900, boostBar: 1.2 },
+      { rpm: 3000, powerHp: 340, torqueNm: 900, boostBar: 1.2 },
+      { rpm: 4000, powerHp: 460, torqueNm: 880, boostBar: 1.15 },
+      { rpm: 5000, powerHp: 580, torqueNm: 830, boostBar: 1.1 },
+      { rpm: 6000, powerHp: 659, torqueNm: 750, boostBar: 1.0 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.8, speedKmh: 50, gForce: 0.85, gear: 1 },
+      { timeSec: 1.8, speedKmh: 90, gForce: 0.72, gear: 2 },
+      { timeSec: 3.7, speedKmh: 100, gForce: 0.60, gear: 3 },
+      { timeSec: 5.6, speedKmh: 160, gForce: 0.45, gear: 4 },
+      { timeSec: 8.9, speedKmh: 200, gForce: 0.32, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.43', speedAt1000Rpm: 12.6, speedAt3000Rpm: 37.8, speedAt6000Rpm: 75.6, redlineSpeed: 77 },
+      { gear: '2nd', ratio: '2.18', speedAt1000Rpm: 19.8, speedAt3000Rpm: 59.4, speedAt6000Rpm: 118.8, redlineSpeed: 121 },
+      { gear: '3rd', ratio: '1.56', speedAt1000Rpm: 27.7, speedAt3000Rpm: 83.1, speedAt6000Rpm: 166.2, redlineSpeed: 169 },
+      { gear: '4th', ratio: '1.18', speedAt1000Rpm: 36.6, speedAt3000Rpm: 109.8, speedAt6000Rpm: 219.6, redlineSpeed: 223 },
+      { gear: '5th', ratio: '0.94', speedAt1000Rpm: 46.0, speedAt3000Rpm: 138.0, speedAt6000Rpm: 276.0, redlineSpeed: 280 },
+      { gear: '6th', ratio: '0.79', speedAt1000Rpm: 54.7, speedAt3000Rpm: 164.1, speedAt6000Rpm: 328.2, redlineSpeed: 333 },
+      { gear: '7th', ratio: '0.65', speedAt1000Rpm: 66.5, speedAt3000Rpm: 199.5, speedAt6000Rpm: 335.0, redlineSpeed: 335 },
+      { gear: '8th', ratio: '0.55', speedAt1000Rpm: 78.6, speedAt3000Rpm: 235.8, speedAt6000Rpm: 335.0, redlineSpeed: 335 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 3.2, engineRpm: 1050 },
+      { speedKmh: 40, fuelConsumptionKmpl: 4.0, engineRpm: 980 },
+      { speedKmh: 60, fuelConsumptionKmpl: 4.8, engineRpm: 950 },
+      { speedKmh: 80, fuelConsumptionKmpl: 5.4, engineRpm: 1050 },
+      { speedKmh: 100, fuelConsumptionKmpl: 5.0, engineRpm: 1450 },
+      { speedKmh: 120, fuelConsumptionKmpl: 4.3, engineRpm: 1750 },
+      { speedKmh: 140, fuelConsumptionKmpl: 3.6, engineRpm: 2100 }
+    ],
+    technicalFeatures: [
+      'Hand-built twin-turbo W12, unique to Bentley among current Volkswagen Group products',
+      'Near-silent low-RPM refinement with locomotive-like torque from just 1,350 RPM',
+      'Speed-tune throttle mapping and a valved sports exhaust with a deeper W12 note',
+      'Paired with Bentley Dynamic Ride 48-volt active anti-roll control'
+    ]
+  },
+
+  '4.0-twin-turbo-v8-speed': {
+    id: '4.0-twin-turbo-v8-speed',
+    name: '4.0L Twin-Turbo V8 (Speed-Tune)',
+    badge: '4.0 Twin-Turbo V8 Speed (550 PS / 770 Nm)',
+    displacement: '3,996 cc',
+    cylinders: '8 Cylinders (Twin-Turbo V8)',
+    fuelType: 'Petrol',
+    peakPowerStr: '550 PS @ 6,000 RPM',
+    peakTorqueStr: '770 Nm @ 2,000–4,500 RPM',
+    maxPowerHp: 550,
+    maxTorqueNm: 770,
+    powerRpmRange: '6,000 RPM',
+    torqueRpmRange: '2,000–4,500 RPM',
+    redlineRpm: 6800,
+    idleRpm: 800,
+    highwayCruiseRpm100Kmh: 1550,
+    highwayCruiseRpm120Kmh: 1850,
+    dynoCurve: [
+      { rpm: 1500, powerHp: 90, torqueNm: 560, boostBar: 0.9 },
+      { rpm: 2000, powerHp: 160, torqueNm: 770, boostBar: 1.1 },
+      { rpm: 3000, powerHp: 280, torqueNm: 770, boostBar: 1.1 },
+      { rpm: 4000, powerHp: 380, torqueNm: 750, boostBar: 1.05 },
+      { rpm: 5000, powerHp: 470, torqueNm: 700, boostBar: 1.0 },
+      { rpm: 6000, powerHp: 550, torqueNm: 640, boostBar: 0.95 },
+      { rpm: 6800, powerHp: 520, torqueNm: 570, boostBar: 0.9 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.9, speedKmh: 50, gForce: 0.80, gear: 1 },
+      { timeSec: 2.0, speedKmh: 90, gForce: 0.68, gear: 2 },
+      { timeSec: 4.4, speedKmh: 100, gForce: 0.55, gear: 3 },
+      { timeSec: 6.5, speedKmh: 160, gForce: 0.40, gear: 4 },
+      { timeSec: 10.2, speedKmh: 200, gForce: 0.28, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '4.71', speedAt1000Rpm: 9.5, speedAt3000Rpm: 28.5, speedAt6000Rpm: 57.0, redlineSpeed: 65 },
+      { gear: '2nd', ratio: '3.14', speedAt1000Rpm: 14.3, speedAt3000Rpm: 42.9, speedAt6000Rpm: 85.8, redlineSpeed: 97 },
+      { gear: '3rd', ratio: '2.11', speedAt1000Rpm: 21.3, speedAt3000Rpm: 63.9, speedAt6000Rpm: 127.8, redlineSpeed: 145 },
+      { gear: '4th', ratio: '1.67', speedAt1000Rpm: 26.9, speedAt3000Rpm: 80.7, speedAt6000Rpm: 161.4, redlineSpeed: 183 },
+      { gear: '5th', ratio: '1.29', speedAt1000Rpm: 34.8, speedAt3000Rpm: 104.4, speedAt6000Rpm: 208.8, redlineSpeed: 237 },
+      { gear: '6th', ratio: '1.00', speedAt1000Rpm: 44.9, speedAt3000Rpm: 134.7, speedAt6000Rpm: 269.4, redlineSpeed: 306 },
+      { gear: '7th', ratio: '0.84', speedAt1000Rpm: 53.5, speedAt3000Rpm: 160.5, speedAt6000Rpm: 306.0, redlineSpeed: 306 },
+      { gear: '8th', ratio: '0.67', speedAt1000Rpm: 67.0, speedAt3000Rpm: 201.0, speedAt6000Rpm: 306.0, redlineSpeed: 306 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 3.6, engineRpm: 1100 },
+      { speedKmh: 40, fuelConsumptionKmpl: 4.4, engineRpm: 1000 },
+      { speedKmh: 60, fuelConsumptionKmpl: 5.3, engineRpm: 980 },
+      { speedKmh: 80, fuelConsumptionKmpl: 5.9, engineRpm: 1100 },
+      { speedKmh: 100, fuelConsumptionKmpl: 5.5, engineRpm: 1550 },
+      { speedKmh: 120, fuelConsumptionKmpl: 4.7, engineRpm: 1850 },
+      { speedKmh: 140, fuelConsumptionKmpl: 4.0, engineRpm: 2200 }
+    ],
+    technicalFeatures: [
+      'Speed-tune calibration of the Bentayga’s twin-turbo V8 sharpens throttle response',
+      'Active all-wheel steering paired with Bentley Dynamic Ride active anti-roll control',
+      'Sports exhaust with quad tailpipes and a deeper V8 note',
+      'Retains genuine light off-roading capability via a dedicated Off-Road drive mode'
+    ]
   }
 };
 
@@ -3763,6 +4006,111 @@ export const MODEL_PERFORMANCE_PROFILES: ModelPerformanceProfile[] = [
       'Single-piece front clamshell borrowed directly from the Super Trofeo one-make racer',
       'Large, manually adjustable carbon-fibre rear wing tuned using GT3 racing program data',
       'Rear-wheel-drive-only chassis balance for a purer, more communicative aero platform'
+    ]
+  },
+  {
+    id: 'continental-gt',
+    name: 'Bentley Continental GT',
+    tagline: 'The Definitive Grand Tourer',
+    category: 'Twin-Turbo W12 Grand Tourer',
+    primaryEngineId: '6.0-w12-twin-turbo-continental',
+    availableEngineIds: ['6.0-w12-twin-turbo-continental', '6.0-w12-twin-turbo-speed'],
+    weightKg: 2244,
+    dragCoefficient: '0.35 Cd',
+    braking100to0DistMeters: 32.5,
+    corneringGForce: 1.00,
+    powerToWeightRatio: '293.7 PS/tonne',
+    sprint0to100: '3.7 seconds',
+    topSpeed: '335 km/h',
+    suspensionType: 'Adaptive Air Suspension with Bentley Dynamic Ride',
+    aerodynamicHighlights: [
+      'Long, low bonnet and fastback silhouette balance drag with genuine four-seat usability',
+      'Matrix LED headlights integrate active cooling ducts for the twin-turbo W12',
+      'Quad exhaust tailpipes and a subtle rear lip spoiler manage high-speed rear airflow'
+    ]
+  },
+  {
+    id: 'bentayga',
+    name: 'Bentley Bentayga',
+    tagline: 'The Ultimate Luxury SUV',
+    category: 'High-Performance Luxury SUV',
+    primaryEngineId: '4.0-twin-turbo-v8-bentayga',
+    availableEngineIds: ['4.0-twin-turbo-v8-bentayga', '4.0-twin-turbo-v8-speed'],
+    weightKg: 2440,
+    dragCoefficient: '0.36 Cd',
+    braking100to0DistMeters: 34.0,
+    corneringGForce: 0.90,
+    powerToWeightRatio: '225.4 PS/tonne',
+    sprint0to100: '4.5 seconds',
+    topSpeed: '290 km/h',
+    suspensionType: 'Adaptive Air Suspension with Electronic Anti-Roll Control',
+    aerodynamicHighlights: [
+      'Upright SUV stance balanced by a sculpted roofline and active rear spoiler',
+      'Front air intakes feed the twin-turbo V8’s intercoolers while managing brake cooling',
+      'Quad exhaust tailpipes and a rear diffuser shape high-speed rear airflow'
+    ]
+  },
+  {
+    id: 'flying-spur',
+    name: 'Bentley Flying Spur',
+    tagline: 'The Grand Luxury Saloon',
+    category: 'Twin-Turbo W12 Luxury Saloon',
+    primaryEngineId: '6.0-w12-twin-turbo-continental',
+    availableEngineIds: ['6.0-w12-twin-turbo-continental'],
+    weightKg: 2437,
+    dragCoefficient: '0.34 Cd',
+    braking100to0DistMeters: 33.0,
+    corneringGForce: 0.95,
+    powerToWeightRatio: '270.4 PS/tonne',
+    sprint0to100: '4.1 seconds',
+    topSpeed: '333 km/h',
+    suspensionType: 'Adaptive Air Suspension with Bentley Dynamic Ride',
+    aerodynamicHighlights: [
+      'Four-door saloon silhouette tuned for effortless high-speed cruising stability',
+      'Active all-wheel steering complements a low-drag greenhouse for reduced lift at speed',
+      'Chrome waistline finisher and rear lip spoiler manage high-speed rear airflow'
+    ]
+  },
+  {
+    id: 'continental-gt-speed-perf',
+    name: 'Bentley Continental GT Speed',
+    tagline: 'The Most Dynamically Capable Bentley Ever',
+    category: 'Twin-Turbo W12 Grand Tourer',
+    primaryEngineId: '6.0-w12-twin-turbo-speed',
+    availableEngineIds: ['6.0-w12-twin-turbo-speed'],
+    weightKg: 2244,
+    dragCoefficient: '0.35 Cd',
+    braking100to0DistMeters: 32.0,
+    corneringGForce: 1.05,
+    powerToWeightRatio: '293.7 PS/tonne',
+    sprint0to100: '3.7 seconds',
+    topSpeed: '335 km/h',
+    suspensionType: 'Bentley Dynamic Ride 48-Volt Active Anti-Roll Control',
+    aerodynamicHighlights: [
+      'Speed-specific front splitter and dark-tint matrix LED headlights',
+      'Active all-wheel steering sharpens turn-in despite the car’s considerable weight',
+      'Valved sports exhaust tuned for a deeper W12 note at high load'
+    ]
+  },
+  {
+    id: 'bentayga-speed-perf',
+    name: 'Bentley Bentayga Speed',
+    tagline: 'The World’s Fastest Luxury SUV (At Launch)',
+    category: 'High-Performance Luxury SUV',
+    primaryEngineId: '4.0-twin-turbo-v8-speed',
+    availableEngineIds: ['4.0-twin-turbo-v8-speed'],
+    weightKg: 2395,
+    dragCoefficient: '0.35 Cd',
+    braking100to0DistMeters: 33.5,
+    corneringGForce: 0.98,
+    powerToWeightRatio: '229.6 PS/tonne',
+    sprint0to100: '4.4 seconds',
+    topSpeed: '306 km/h',
+    suspensionType: 'Adaptive Air Suspension with Bentley Dynamic Ride',
+    aerodynamicHighlights: [
+      'Carbon-fibre-effect front splitter and 22-inch forged wheels reduce unsprung mass',
+      'Active all-wheel steering for both tight city turns and high-speed stability',
+      'Sports exhaust with quad tailpipes tuned for a sharper V8 note'
     ]
   }
 ];

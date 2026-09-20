@@ -22,6 +22,56 @@ function generateSmartSkodaResponse(question: string, modelContext?: string, eng
   const isAudiBrand = brandContext === 'audi';
   const isPorscheBrand = brandContext === 'porsche';
   const isLamborghiniBrand = brandContext === 'lamborghini';
+  const isBentleyBrand = brandContext === 'bentley';
+
+  // Bentley specific queries, when a Bentley model is selected, or when the active site brand is Bentley
+  if (isBentleyBrand || q.includes('bentley') || q.includes('continental gt') || q.includes('bentayga') || q.includes('flying spur') || q.includes('dynamic ride') || selectedModel.includes('continental') || selectedModel.includes('bentayga') || selectedModel.includes('flying-spur') || selectedModel.includes('flying spur')) {
+    if (q.includes('speed') || selectedModel.includes('speed')) {
+      return `### Bentley Speed-Tune Performance Trims
+- **Continental GT Speed:** 6.0L Twin-Turbo W12 producing **659 PS** & **900 Nm**, active all-wheel steering and torque vectoring by braking. 0-100 km/h in **3.7s**, top speed **335 km/h**.
+- **Bentayga Speed:** 4.0L Twin-Turbo V8 (Speed-tune) producing **550 PS** & **770 Nm**, sharper throttle mapping and active all-wheel steering. 0-100 km/h in **4.4s**, top speed **306 km/h**.`;
+    }
+
+    if (q.includes('continental') || selectedModel.includes('continental')) {
+      return `### Bentley Continental GT (The Definitive Grand Tourer)
+- **Powertrain:** 6.0L Twin-Turbo W12 producing **659 PS** & **900 Nm** (Continental GT V8 offers a 4.0L Twin-Turbo V8 with 550 PS).
+- **Transmission:** 8-Speed Dual-Clutch with all-wheel drive.
+- **Acceleration:** 0 to 100 km/h in **3.7s** | Top speed **335 km/h**.
+- **Heritage:** One of the last twin-turbo W12 engines still in series production, hand-trimmed at Crewe.
+- **Price Range:** ₹4.50 Crore to ₹5.20 Crore (Ex-showroom).`;
+    }
+
+    if (q.includes('bentayga') || selectedModel.includes('bentayga')) {
+      return `### Bentley Bentayga (The Ultimate Luxury SUV)
+- **Powertrain:** 4.0L Twin-Turbo V8 producing **550 PS** & **770 Nm**.
+- **Transmission:** 8-Speed Automatic with permanent all-wheel drive.
+- **Acceleration:** 0 to 100 km/h in **4.5s** | Top speed **290 km/h**.
+- **Heritage:** Bentley's best-selling model worldwide, sharing platform architecture with the Porsche Cayenne and Audi Q7/Q8.
+- **Price Range:** ₹4.20 Crore Onwards (EWB long-wheelbase variant up to ₹5.80 Crore).`;
+    }
+
+    if (q.includes('flying spur') || q.includes('flying-spur') || selectedModel.includes('flying')) {
+      return `### Bentley Flying Spur (The Grand Luxury Saloon)
+- **Powertrain:** 6.0L Twin-Turbo W12 producing **659 PS** & **900 Nm** (V8 variant available with 550 PS).
+- **Transmission:** 8-Speed Dual-Clutch with active all-wheel steering.
+- **Acceleration:** 0 to 100 km/h in **3.8s (W12)** | Top speed **333 km/h**.
+- **Heritage:** Four-door saloon sharing the Continental GT's engineering, hand-crafted at Crewe.
+- **Price Range:** ₹4.50 Crore Onwards.`;
+    }
+
+    if (q.includes('dynamic ride')) {
+      return `### What is Bentley Dynamic Ride?
+Bentley Dynamic Ride is a 48-volt active anti-roll control system. Electric actuators on each anti-roll bar react within milliseconds to counteract body roll, keeping the cabin flat through corners while retaining a supple ride over broken roads — standard across the current Continental GT, Bentayga and Flying Spur lineup.`;
+    }
+
+    return `### Bentley India Portfolio Overview
+Bentley represents hand-crafted grand touring backed by Volkswagen Group engineering discipline:
+- **Bentley Continental GT:** Twin-turbo W12/V8 grand tourer, from ₹4.50 Crore.
+- **Bentley Bentayga:** Luxury SUV (including extended-wheelbase EWB), from ₹4.20 Crore.
+- **Bentley Flying Spur:** Grand luxury saloon, from ₹4.50 Crore.
+- **Speed Trims:** Continental GT Speed (659 PS) and Bentayga Speed (550 PS, Speed-tuned).
+- **Bentley Dynamic Ride** active anti-roll control and active all-wheel steering feature across the range.`;
+  }
 
   // Lamborghini specific queries, when a Lamborghini model is selected, or when the active site brand is Lamborghini
   if (isLamborghiniBrand || q.includes('lamborghini') || q.includes('huracan') || q.includes('huracán') || q.includes('urus') || q.includes('revuelto') || q.includes('ldvi') || selectedModel.includes('huracan') || selectedModel.includes('urus') || selectedModel.includes('revuelto')) {
@@ -476,18 +526,54 @@ export interface AskSkodaAIParams {
  */
 export async function getSkodaAIAnswer(params: AskSkodaAIParams): Promise<string> {
   const { question, model, variant, engine } = params;
-  const userBrand = params.brand || (question.toLowerCase().includes('lamborghini') || question.toLowerCase().includes('huracan') || question.toLowerCase().includes('urus') || question.toLowerCase().includes('revuelto') ? 'lamborghini' : question.toLowerCase().includes('porsche') || question.toLowerCase().includes('pdk') || question.toLowerCase().includes('911') ? 'porsche' : question.toLowerCase().includes('audi') || question.toLowerCase().includes('quattro') || question.toLowerCase().includes('tfsi') ? 'audi' : question.toLowerCase().includes('volkswagen') || question.toLowerCase().includes('virtus') || question.toLowerCase().includes('taigun') || question.toLowerCase().includes('tiguan') || question.toLowerCase().includes('golf') ? 'volkswagen' : 'skoda');
+  const userBrand = params.brand || (question.toLowerCase().includes('bentley') || question.toLowerCase().includes('continental gt') || question.toLowerCase().includes('bentayga') || question.toLowerCase().includes('flying spur') ? 'bentley' : question.toLowerCase().includes('lamborghini') || question.toLowerCase().includes('huracan') || question.toLowerCase().includes('urus') || question.toLowerCase().includes('revuelto') ? 'lamborghini' : question.toLowerCase().includes('porsche') || question.toLowerCase().includes('pdk') || question.toLowerCase().includes('911') ? 'porsche' : question.toLowerCase().includes('audi') || question.toLowerCase().includes('quattro') || question.toLowerCase().includes('tfsi') ? 'audi' : question.toLowerCase().includes('volkswagen') || question.toLowerCase().includes('virtus') || question.toLowerCase().includes('taigun') || question.toLowerCase().includes('tiguan') || question.toLowerCase().includes('golf') ? 'volkswagen' : 'skoda');
   const isVW = userBrand === 'volkswagen';
   const isAudi = userBrand === 'audi';
   const isPorsche = userBrand === 'porsche';
   const isLamborghini = userBrand === 'lamborghini';
+  const isBentley = userBrand === 'bentley';
 
   const ai = getGeminiClient();
   if (!ai) {
     return generateSmartSkodaResponse(question, model, engine, userBrand);
   }
 
-  const systemPrompt = isLamborghini
+  const systemPrompt = isBentley
+    ? `You are the official Bentley India AI Consultant. Your mission is to provide accurate, objective, helpful, and beautifully structured automotive guidance on the entire Bentley India lineup.
+
+KNOWLEDGE BASE & FACTS:
+1. Bentley Continental GT (The Definitive Grand Tourer):
+   - Price: ₹4.50 Crore to ₹5.20 Crore (Ex-showroom).
+   - Engine: 6.0L Twin-Turbo W12 (659 PS / 900 Nm) or 4.0L Twin-Turbo V8 (550 PS / 770 Nm). 8-Speed Dual-Clutch.
+   - Highlights: One of the last twin-turbo W12 engines still in series production, Bentley Rotating Display dashboard.
+
+2. Bentley Bentayga (The Ultimate Luxury SUV):
+   - Price: ₹4.20 Crore Onwards (EWB long-wheelbase up to ₹5.80 Crore).
+   - Engine: 4.0L Twin-Turbo V8 (550 PS / 770 Nm). 8-Speed Automatic, permanent all-wheel drive.
+   - Highlights: Bentley's best-selling model worldwide, shares platform architecture with the Porsche Cayenne and Audi Q7/Q8.
+
+3. Bentley Flying Spur (The Grand Luxury Saloon):
+   - Price: ₹4.50 Crore to ₹5.50 Crore (Ex-showroom).
+   - Engine: 6.0L Twin-Turbo W12 (659 PS / 900 Nm) or 4.0L Twin-Turbo V8 (550 PS / 770 Nm). 8-Speed Dual-Clutch.
+   - Highlights: Four-door saloon sharing Continental GT engineering, active all-wheel steering standard.
+
+4. Speed-Tuned Performance Trims:
+   - Bentley Continental GT Speed: 6.0L Twin-Turbo W12 (659 PS / 900 Nm), active all-wheel steering, torque vectoring by braking, 0-100 km/h in 3.7s, top speed 335 km/h.
+   - Bentley Bentayga Speed: 4.0L Twin-Turbo V8 Speed-tune (550 PS / 770 Nm), 0-100 km/h in 4.4s, top speed 306 km/h.
+
+5. Bentley Dynamic Ride & Chassis Technology:
+   - Bentley Dynamic Ride: a 48-volt active anti-roll control system with electric actuators on each anti-roll bar, reacting within milliseconds to keep the cabin flat through corners.
+   - Active all-wheel steering standard across the current range.
+
+6. Ownership:
+   - Bentley India direct-operated showroom network with CBU import for all models.
+   - Bentley Extended Care 3-Year Unlimited Mileage Warranty and Mulliner personalisation programme available through authorized showrooms.
+
+INSTRUCTIONS:
+- Answer with a tone that reflects hand-crafted British luxury and grand-touring heritage — precise, refined, and confident.
+- Keep answers well-structured and objective, with clear markdown formatting.
+- User Context: Model=${model || 'All'}, Variant=${variant || 'General'}, Engine=${engine || 'All'}.`
+    : isLamborghini
     ? `You are the official Lamborghini India AI Consultant. Your mission is to provide accurate, objective, helpful, and beautifully structured automotive guidance on the entire Lamborghini India lineup.
 
 KNOWLEDGE BASE & FACTS:

@@ -10,6 +10,7 @@ export const BRAND_ACCENT = {
   audi: "red",
   porsche: "amber",
   lamborghini: "yellow",
+  bentley: "green",
 };
 
 export const ACCENT_CLASSES = {
@@ -142,6 +143,32 @@ export const ACCENT_CLASSES = {
     ratingBar: "bg-yellow-500",
     modelPillSelected: "bg-yellow-600 text-white shadow-md shadow-yellow-950",
     variantTabSelected: "bg-zinc-900 border-yellow-500 shadow-lg shadow-yellow-950/40 ring-1 ring-yellow-500/50",
+  },
+  green: {
+    text400: "text-green-400",
+    text300: "text-green-300",
+    dot: "bg-green-400",
+    welcomeBannerBg: "bg-gradient-to-br from-green-950/60 via-zinc-950 to-black border-green-900/50 shadow-green-950/40",
+    glow600_20: "bg-green-600/20",
+    badgePill: "bg-green-950/70 border-green-800 text-green-300",
+    avatarRing: "border-green-700/50",
+    gradientText: "bg-gradient-to-r from-green-400 to-green-200 bg-clip-text text-transparent",
+    divider: "bg-green-700/60",
+    heroBorder: "border-green-900/40",
+    glow600_15: "bg-green-600/15",
+    heroBadgePill: "bg-green-950/80 border-green-800/60 text-green-400",
+    ctaButton: "bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 shadow-green-950/60",
+    secondaryButton: "border-green-700/60 text-green-400",
+    solidButton: "bg-green-600 hover:bg-green-500 shadow-green-950",
+    smallBadge: "bg-green-500/20 text-green-300 border-green-500/30",
+    cardBadge: "bg-green-950/80 border-green-700/50 text-green-300",
+    cardHover: "border-zinc-800 hover:border-green-600/60 hover:shadow-green-950/30",
+    cardTitleHover: "group-hover:text-green-300",
+    noteText: "text-green-300/80",
+    noteTextSolid: "text-green-300/90",
+    ratingBar: "bg-green-500",
+    modelPillSelected: "bg-green-600 text-white shadow-md shadow-green-950",
+    variantTabSelected: "bg-zinc-900 border-green-500 shadow-lg shadow-green-950/40 ring-1 ring-green-500/50",
   },
 };
 

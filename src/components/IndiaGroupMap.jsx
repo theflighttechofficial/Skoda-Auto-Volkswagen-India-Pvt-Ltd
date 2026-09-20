@@ -8,6 +8,7 @@ import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
+import { BentleyLogo } from "./BentleyLogo";
 
 const BRANDS = [
   { id: "skoda", label: "Škoda", dot: "bg-emerald-500", text: "text-emerald-400", ring: "ring-emerald-500" },
@@ -15,6 +16,7 @@ const BRANDS = [
   { id: "audi", label: "Audi", dot: "bg-red-500", text: "text-red-400", ring: "ring-red-500" },
   { id: "porsche", label: "Porsche", dot: "bg-amber-500", text: "text-amber-400", ring: "ring-amber-500" },
   { id: "lamborghini", label: "Lamborghini", dot: "bg-yellow-500", text: "text-yellow-400", ring: "ring-yellow-500" },
+  { id: "bentley", label: "Bentley", dot: "bg-green-500", text: "text-green-400", ring: "ring-green-500" },
 ];
 
 function brandMatches(dealership, activeBrands) {
@@ -27,11 +29,12 @@ function BrandLogo({ brand, size = "sm" }) {
   if (brand === "volkswagen") return <VolkswagenLogo variant="emblem" size={size} />;
   if (brand === "porsche") return <PorscheLogo variant="emblem" size={size} />;
   if (brand === "lamborghini") return <LamborghiniLogo variant="emblem" size={size} />;
+  if (brand === "bentley") return <BentleyLogo variant="emblem" size={size} />;
   return <SkodaLogo variant="emblem" size={size} />;
 }
 
 export const IndiaGroupMap = ({ onSwitchBrand, onOpenDealershipLocator }) => {
-  const [activeBrands, setActiveBrands] = useState(["skoda", "volkswagen", "audi", "porsche", "lamborghini"]);
+  const [activeBrands, setActiveBrands] = useState(["skoda", "volkswagen", "audi", "porsche", "lamborghini", "bentley"]);
   const [selectedState, setSelectedState] = useState(null);
 
   const toggleBrand = (id) => {
@@ -66,7 +69,7 @@ export const IndiaGroupMap = ({ onSwitchBrand, onOpenDealershipLocator }) => {
           One Group, All Across India
         </h2>
         <p className="text-sm text-zinc-400 mt-2">
-          A stylized, click-to-explore map of Škoda, Volkswagen, Audi, Porsche, and Lamborghini presence across India.
+          A stylized, click-to-explore map of Škoda, Volkswagen, Audi, Porsche, Lamborghini, and Bentley presence across India.
           Toggle brands and click a state to see dealerships.
         </p>
       </div>
@@ -226,7 +229,7 @@ export const IndiaGroupMap = ({ onSwitchBrand, onOpenDealershipLocator }) => {
                 <MapPin className="w-8 h-8 text-zinc-700 mb-3" />
                 <p className="text-sm text-zinc-400 font-medium">Click a state on the map</p>
                 <p className="text-xs text-zinc-600 mt-1">
-                  See which Škoda, Volkswagen, Audi, Porsche, and Lamborghini outlets are near you
+                  See which Škoda, Volkswagen, Audi, Porsche, Lamborghini, and Bentley outlets are near you
                 </p>
               </motion.div>
             )}

@@ -10,22 +10,26 @@ import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
+import { BentleyLogo } from "./BentleyLogo";
 export const SafetyDeepDive = ({ brand = "skoda" }) => {
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
   const isPorsche = brand === "porsche";
   const isLamborghini = brand === "lamborghini";
-  const models = isLamborghini ? LAMBORGHINI_MODELS : isPorsche ? PORSCHE_MODELS : isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
-  const safetySuite = isLamborghini ? LAMBORGHINI_SAFETY_SUITE : isPorsche ? PORSCHE_SAFETY_SUITE : isAudi ? AUDI_SAFETY_SUITE : isVW ? VW_SAFETY_SUITE : SKODA_SAFETY_SUITE;
+  const isBentley = brand === "bentley";
+  const models = isBentley ? BENTLEY_MODELS : isLamborghini ? LAMBORGHINI_MODELS : isPorsche ? PORSCHE_MODELS : isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
+  const safetySuite = isBentley ? BENTLEY_SAFETY_SUITE : isLamborghini ? LAMBORGHINI_SAFETY_SUITE : isPorsche ? PORSCHE_SAFETY_SUITE : isAudi ? AUDI_SAFETY_SUITE : isVW ? VW_SAFETY_SUITE : SKODA_SAFETY_SUITE;
   return (
     <div className="space-y-8">
       {/* Title with Logo */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div
-            className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-1 ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+            className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-1 ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
           >
-            {isLamborghini ? (
+            {isBentley ? (
+              <BentleyLogo variant="emblem" size="sm" />
+            ) : isLamborghini ? (
               <LamborghiniLogo variant="emblem" size="sm" />
             ) : isPorsche ? (
               <PorscheLogo variant="emblem" size="sm" />
@@ -63,10 +67,10 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
         </div>
 
         <div
-          className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-bold self-start ${isLamborghini ? "bg-yellow-950/80 border-yellow-800 text-yellow-300" : isPorsche ? "bg-amber-950/80 border-amber-800 text-amber-300" : isAudi ? "bg-red-950/80 border-red-800 text-red-300" : isVW ? "bg-blue-950/80 border-blue-800 text-blue-300" : "bg-emerald-950/80 border-emerald-800 text-emerald-300"}`}
+          className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-bold self-start ${isBentley ? "bg-green-950/80 border-green-800 text-green-300" : isLamborghini ? "bg-yellow-950/80 border-yellow-800 text-yellow-300" : isPorsche ? "bg-amber-950/80 border-amber-800 text-amber-300" : isAudi ? "bg-red-950/80 border-red-800 text-red-300" : isVW ? "bg-blue-950/80 border-blue-800 text-blue-300" : "bg-emerald-950/80 border-emerald-800 text-emerald-300"}`}
         >
           <ShieldCheck
-            className={`w-4 h-4 ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+            className={`w-4 h-4 ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
           />
           <span>Global NCAP & Euro NCAP Certified</span>
         </div>
@@ -77,12 +81,12 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className={`relative overflow-hidden rounded-3xl bg-gradient-to-r via-zinc-900 to-zinc-950 border p-6 sm:p-8 shadow-xl ${isLamborghini ? "from-yellow-950/70 border-yellow-800/40" : isPorsche ? "from-amber-950/70 border-amber-800/40" : isAudi ? "from-red-950/70 border-red-800/40" : isVW ? "from-blue-950/70 border-blue-800/40" : "from-emerald-950/70 border-emerald-800/40"}`}
+        className={`relative overflow-hidden rounded-3xl bg-gradient-to-r via-zinc-900 to-zinc-950 border p-6 sm:p-8 shadow-xl ${isBentley ? "from-green-950/70 border-green-800/40" : isLamborghini ? "from-yellow-950/70 border-yellow-800/40" : isPorsche ? "from-amber-950/70 border-amber-800/40" : isAudi ? "from-red-950/70 border-red-800/40" : isVW ? "from-blue-950/70 border-blue-800/40" : "from-emerald-950/70 border-emerald-800/40"}`}
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
           <div className="lg:col-span-8 space-y-3">
             <div
-              className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold border ${isLamborghini ? "bg-yellow-500/20 text-yellow-300 border-yellow-500/30" : isPorsche ? "bg-amber-500/20 text-amber-300 border-amber-500/30" : isAudi ? "bg-red-500/20 text-red-300 border-red-500/30" : isVW ? "bg-blue-500/20 text-blue-300 border-blue-500/30" : "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"}`}
+              className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold border ${isBentley ? "bg-green-500/20 text-green-300 border-green-500/30" : isLamborghini ? "bg-yellow-500/20 text-yellow-300 border-yellow-500/30" : isPorsche ? "bg-amber-500/20 text-amber-300 border-amber-500/30" : isAudi ? "bg-red-500/20 text-red-300 border-red-500/30" : isVW ? "bg-blue-500/20 text-blue-300 border-blue-500/30" : "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"}`}
             >
               <ShieldCheck className="w-4 h-4" />
               <span>Full 5-Star Adult & Child Crash Rating</span>
@@ -101,7 +105,7 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
             <p className="text-zinc-300 text-sm leading-relaxed max-w-2xl">
               Under Global NCAP’s stringent revised protocols—testing front
               offset, side mobile barrier, side pole impact, and ESC
-              functionality—{isLamborghini ? "Lamborghini\u2019s" : isPorsche ? "Porsche\u2019s" : isAudi ? "Audi\u2019s" : isVW ? "Volkswagen\u2019s" : "\u0160koda\u2019s"}{" "}
+              functionality—{isBentley ? "Bentley\u2019s" : isLamborghini ? "Lamborghini\u2019s" : isPorsche ? "Porsche\u2019s" : isAudi ? "Audi\u2019s" : isVW ? "Volkswagen\u2019s" : "\u0160koda\u2019s"}{" "}
               laser-welded, hot-formed steel platform set the gold standard in
               Indian automotive safety.
             </p>
@@ -114,13 +118,13 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
                   Adult Occupant Protection
                 </span>
                 <span
-                  className={`text-xl font-bold ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`text-xl font-bold ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   5-Star (29.71 / 34)
                 </span>
               </div>
               <ShieldCheck
-                className={`w-7 h-7 ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                className={`w-7 h-7 ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
               />
             </div>
             <div className="p-4 rounded-2xl bg-zinc-950/90 border border-zinc-800 flex items-center justify-between shadow-sm">
@@ -129,13 +133,13 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
                   Child Occupant Protection
                 </span>
                 <span
-                  className={`text-xl font-bold ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`text-xl font-bold ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   5-Star (42.00 / 49)
                 </span>
               </div>
               <ShieldCheck
-                className={`w-7 h-7 ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                className={`w-7 h-7 ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
               />
             </div>
           </div>
@@ -152,12 +156,12 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
             viewport={{ once: true }}
             transition={{ delay: idx * 0.08, duration: 0.35 }}
             whileHover={{ y: -3 }}
-            className={`p-6 rounded-3xl bg-zinc-900/80 border border-zinc-800 space-y-3 transition-all shadow-md ${isLamborghini ? "hover:border-yellow-600/50" : isPorsche ? "hover:border-amber-600/50" : isAudi ? "hover:border-red-600/50" : isVW ? "hover:border-blue-600/50" : "hover:border-emerald-600/50"}`}
+            className={`p-6 rounded-3xl bg-zinc-900/80 border border-zinc-800 space-y-3 transition-all shadow-md ${isBentley ? "hover:border-green-600/50" : isLamborghini ? "hover:border-yellow-600/50" : isPorsche ? "hover:border-amber-600/50" : isAudi ? "hover:border-red-600/50" : isVW ? "hover:border-blue-600/50" : "hover:border-emerald-600/50"}`}
           >
             <div className="flex items-start justify-between flex-wrap gap-2">
               <div>
                 <span
-                  className={`text-xs font-semibold ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`text-xs font-semibold ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   {item.subtitle}
                 </span>
@@ -166,7 +170,7 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
                 </h4>
               </div>
               <span
-                className={`px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap border ${isLamborghini ? "bg-yellow-950 border-yellow-800 text-yellow-300" : isPorsche ? "bg-amber-950 border-amber-800 text-amber-300" : isAudi ? "bg-red-950 border-red-800 text-red-300" : isVW ? "bg-blue-950 border-blue-800 text-blue-300" : "bg-emerald-950 border-emerald-800 text-emerald-300"}`}
+                className={`px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap border ${isBentley ? "bg-green-950 border-green-800 text-green-300" : isLamborghini ? "bg-yellow-950 border-yellow-800 text-yellow-300" : isPorsche ? "bg-amber-950 border-amber-800 text-amber-300" : isAudi ? "bg-red-950 border-red-800 text-red-300" : isVW ? "bg-blue-950 border-blue-800 text-blue-300" : "bg-emerald-950 border-emerald-800 text-emerald-300"}`}
               >
                 {item.metric}
               </span>
@@ -190,13 +194,15 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
           <div>
             <h4 className="text-base font-bold text-white">
               Standard Safety Equipment Across the{" "}
-              {isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} Portfolio
+              {isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} Portfolio
             </h4>
             <p className="text-xs text-zinc-400 mt-0.5">
               Every vehicle is built with hot-formed high-strength steel cages
             </p>
           </div>
-          {isLamborghini ? (
+          {isBentley ? (
+            <BentleyLogo variant="emblem" size="sm" />
+          ) : isLamborghini ? (
             <LamborghiniLogo variant="emblem" size="sm" />
           ) : isPorsche ? (
             <PorscheLogo variant="emblem" size="sm" />
@@ -223,7 +229,7 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
             <tbody className="divide-y divide-zinc-800/60">
               {models.map((car) => {
                 let airbagText = "6 Airbags Standard";
-                let chassisText = isLamborghini ? "Lamborghini Own Aluminum/Carbon Chassis" : isPorsche ? "Porsche MLB/MSB High-Tensile" : isAudi ? "MLB Evo High-Tensile" : "MQB-A0-IN High-Tensile";
+                let chassisText = isBentley ? "Bentley Own High-Strength Steel/Aluminum Chassis" : isLamborghini ? "Lamborghini Own Aluminum/Carbon Chassis" : isPorsche ? "Porsche MLB/MSB High-Tensile" : isAudi ? "MLB Evo High-Tensile" : "MQB-A0-IN High-Tensile";
                 if (car.id === "q7" || car.id === "q8") {
                   airbagText = "8 Airbags Standard";
                   chassisText = "MLB Evo (quattro AWD)";
@@ -257,7 +263,7 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
                       )}
                     </td>
                     <td
-                      className={`py-3 px-4 font-semibold ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                      className={`py-3 px-4 font-semibold ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                     >
                       {car.rating}
                     </td>

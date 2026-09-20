@@ -169,6 +169,32 @@ export const ENGINE_SOUND_PROFILES: EngineSoundProfile[] = [
     usedIn: ['Lamborghini Revuelto'],
     character: 'Lamborghini’s highest-revving production V12 ever — a rich, multi-layered howl building to a 9,500 RPM scream, the highest redline of any current production V12.',
   },
+  {
+    id: '6.0-w12-twin-turbo',
+    label: '6.0 W12 Twin-Turbo',
+    displacement: '5950cc',
+    cylinders: 'W12 Twin-Turbo Petrol',
+    fuelType: 'Petrol',
+    idleRpm: 720,
+    redlineRpm: 6000,
+    baseFrequency: 34,
+    timbre: 'deep-v8',
+    usedIn: ['Bentley Continental GT', 'Bentley Flying Spur'],
+    character: 'A near-silent, cathedral-quiet idle that belies the twelve cylinders beneath — building to a silky, locomotive-like surge with no drama, ever.',
+  },
+  {
+    id: '4.0-twin-turbo-v8-bentley',
+    label: '4.0 Twin-Turbo V8',
+    displacement: '3996cc',
+    cylinders: 'V8 Twin-Turbo Petrol',
+    fuelType: 'Petrol',
+    idleRpm: 780,
+    redlineRpm: 6500,
+    baseFrequency: 40,
+    timbre: 'deep-v8',
+    usedIn: ['Bentley Bentayga', 'Bentley Bentayga Speed'],
+    character: 'A refined, bassy V8 burble at idle, sharpening into a confident sports-exhaust note on the Speed variant’s retuned calibration.',
+  },
 ];
 
 export interface SoundEventProfile {
