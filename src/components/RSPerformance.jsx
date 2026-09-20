@@ -38,6 +38,7 @@ import {
 } from "../data/audiPerformanceData";
 import { PORSCHE_GT_MODELS } from "../data/porschePerformanceData";
 import { LAMBORGHINI_GT_MODELS } from "../data/lamborghiniPerformanceData";
+import { BENTLEY_GT_MODELS } from "../data/bentleyPerformanceData";
 
 const LAMBORGHINI_HERITAGE = [
   {
@@ -64,6 +65,34 @@ const LAMBORGHINI_HERITAGE = [
     year: "2023",
     title: "The Revuelto Ushers in the Hybrid Era",
     desc: "Lamborghini's first series-production plug-in hybrid fuses a naturally-aspirated V12 with three electric motors for 1,015 PS combined, replacing the Aventador as flagship.",
+  },
+];
+
+const BENTLEY_HERITAGE = [
+  {
+    year: "1919",
+    title: "W.O. Bentley Founds His Company",
+    desc: "Walter Owen Bentley establishes Bentley Motors Limited in Cricklewood, London, determined to build cars that were both genuinely fast and utterly dependable.",
+  },
+  {
+    year: "1930",
+    title: "Fifth Le Mans Victory",
+    desc: "The Bentley Speed Six secures the marque's fifth Le Mans 24 Hours win of the decade, the high-water mark of the legendary “Bentley Boys” era.",
+  },
+  {
+    year: "1952",
+    title: "The R-Type Continental Sets the Blueprint",
+    desc: "Styled by H.J. Mulliner, the R-Type Continental becomes the fastest four-seat production car in the world, establishing the Continental grand-touring formula.",
+  },
+  {
+    year: "1998",
+    title: "Volkswagen Group Acquisition",
+    desc: "The Volkswagen Group acquires Bentley and the Crewe factory, funding a bespoke twin-turbo W12 engine that transforms the brand's volumes and image.",
+  },
+  {
+    year: "2015",
+    title: "The Bentayga Launches",
+    desc: "Bentley's first-ever SUV shares platform engineering with the Porsche Cayenne and Audi Q7/Q8, quickly becoming the brand's best-selling model worldwide.",
   },
 ];
 
@@ -104,7 +133,10 @@ export const RSPerformance = ({
   const isAudi = brand === "audi";
   const isPorsche = brand === "porsche";
   const isLamborghini = brand === "lamborghini";
-  const performanceModels = isLamborghini
+  const isBentley = brand === "bentley";
+  const performanceModels = isBentley
+    ? BENTLEY_GT_MODELS
+    : isLamborghini
     ? LAMBORGHINI_GT_MODELS
     : isPorsche
     ? PORSCHE_GT_MODELS
@@ -113,7 +145,9 @@ export const RSPerformance = ({
       : isVW
         ? VW_GT_MODELS
         : RS_MODELS;
-  const performanceHeritage = isLamborghini
+  const performanceHeritage = isBentley
+    ? BENTLEY_HERITAGE
+    : isLamborghini
     ? LAMBORGHINI_HERITAGE
     : isPorsche
     ? PORSCHE_HERITAGE
@@ -122,7 +156,9 @@ export const RSPerformance = ({
       : isVW
         ? GTI_HERITAGE
         : RS_HERITAGE;
-  const rivalComparisons = isLamborghini
+  const rivalComparisons = isBentley
+    ? []
+    : isLamborghini
     ? []
     : isPorsche
     ? []
@@ -372,21 +408,21 @@ export const RSPerformance = ({
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-900/90 border border-zinc-800">
                 <Trophy className="w-4 h-4 text-amber-400" />
                 <span className="font-semibold text-white">
-                  {isLamborghini ? "60+ Years" : isPorsche ? "75+ Years" : isAudi ? "40+ Years" : isVW ? "Nearly 50 Years" : "50+ Years"}
+                  {isBentley ? "100+ Years" : isLamborghini ? "60+ Years" : isPorsche ? "75+ Years" : isAudi ? "40+ Years" : isVW ? "Nearly 50 Years" : "50+ Years"}
                 </span>{" "}
-                {isLamborghini ? "of Raging-Bull Heritage" : isPorsche ? "of GT Heritage" : isAudi ? "of quattro Legacy" : isVW ? "of GTI Legacy" : "of RS Heritage"}
+                {isBentley ? "of Grand-Touring Heritage" : isLamborghini ? "of Raging-Bull Heritage" : isPorsche ? "of GT Heritage" : isAudi ? "of quattro Legacy" : isVW ? "of GTI Legacy" : "of RS Heritage"}
               </div>
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-900/90 border border-zinc-800">
                 <Flame className="w-4 h-4 text-red-500" />
                 <span className="font-semibold text-white">
-                  {isLamborghini ? "1,015 PS" : isPorsche ? "650 PS" : isAudi ? "600 PS" : "265 PS"}
+                  {isBentley ? "659 PS" : isLamborghini ? "1,015 PS" : isPorsche ? "650 PS" : isAudi ? "600 PS" : "265 PS"}
                 </span>{" "}
-                {isLamborghini ? "Hybrid V12 Firepower" : isPorsche ? "Twin-Turbo Flat-Six Firepower" : isAudi ? "4.0 TFSI V8 Firepower" : "EA888 EVO4 Firepower"}
+                {isBentley ? "Twin-Turbo W12 Firepower" : isLamborghini ? "Hybrid V12 Firepower" : isPorsche ? "Twin-Turbo Flat-Six Firepower" : isAudi ? "4.0 TFSI V8 Firepower" : "EA888 EVO4 Firepower"}
               </div>
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-900/90 border border-zinc-800">
                 <Activity className="w-4 h-4 text-emerald-400" />
                 <span className="font-semibold text-white">
-                  {isLamborghini ? "LDVI Chassis" : isPorsche ? "PASM Sport" : isAudi ? "RS Adaptive Air" : "DCC Pro"}
+                  {isBentley ? "Dynamic Ride" : isLamborghini ? "LDVI Chassis" : isPorsche ? "PASM Sport" : isAudi ? "RS Adaptive Air" : "DCC Pro"}
                 </span>{" "}
                 Adaptive Chassis
               </div>
@@ -462,7 +498,7 @@ export const RSPerformance = ({
           <div>
             <div className="flex items-center gap-2.5 mb-1.5">
               <span className="px-2 py-0.5 rounded bg-red-500 text-white text-[10px] font-black italic tracking-wider">
-                {isLamborghini ? "GT EXCLUSIVE" : isPorsche ? "GT EXCLUSIVE" : isAudi ? "RS EXCLUSIVE" : isVW ? "GTI EXCLUSIVE" : "vRS EXCLUSIVE"}
+                {isBentley ? "GT EXCLUSIVE" : isLamborghini ? "GT EXCLUSIVE" : isPorsche ? "GT EXCLUSIVE" : isAudi ? "RS EXCLUSIVE" : isVW ? "GTI EXCLUSIVE" : "vRS EXCLUSIVE"}
               </span>
               <span className="text-xs text-zinc-400 uppercase tracking-widest font-semibold">
                 {activeModel.category}
@@ -834,7 +870,7 @@ export const RSPerformance = ({
               </h4>
 
               <p className="text-xs text-zinc-400 leading-relaxed">
-                {isLamborghini ? "Lamborghini's" : isPorsche ? "Porsche's" : isAudi ? "Audi's" : isVW ? "Volkswagen's" : "Škoda's"} electronic Launch Control
+                {isBentley ? "Bentley's" : isLamborghini ? "Lamborghini's" : isPorsche ? "Porsche's" : isAudi ? "Audi's" : isVW ? "Volkswagen's" : "Škoda's"} electronic Launch Control
                 synchronizes the wet multi-plate DSG clutches with the EA888
                 turbocharger wastegate to prevent wheel spin and achieve
                 instant forward velocity.
@@ -1002,8 +1038,8 @@ export const RSPerformance = ({
         </div>
       </div>
 
-      {/* vRS Performance vs. Market Rivals Section (rival benchmark data not yet curated for Porsche/Lamborghini) */}
-      {!isPorsche && !isLamborghini && (
+      {/* vRS Performance vs. Market Rivals Section (rival benchmark data not yet curated for Porsche/Lamborghini/Bentley) */}
+      {!isPorsche && !isLamborghini && !isBentley && (
       <div
         id="rs-rivals-arena"
         className="rounded-3xl bg-zinc-900/90 border border-red-900/50 p-6 sm:p-8 space-y-8 shadow-2xl relative overflow-hidden"
@@ -1615,7 +1651,7 @@ export const RSPerformance = ({
             </h3>
             <p className="text-xs text-zinc-400">
               Two distinct expressions of{" "}
-              {isLamborghini ? "Lamborghini's" : isPorsche ? "Porsche's" : isAudi ? "Audi Sport's" : isVW ? "Volkswagen's" : "Škoda's"}{" "}
+              {isBentley ? "Bentley's" : isLamborghini ? "Lamborghini's" : isPorsche ? "Porsche's" : isAudi ? "Audi Sport's" : isVW ? "Volkswagen's" : "Škoda's"}{" "}
               performance philosophy
             </p>
           </div>
@@ -1816,7 +1852,7 @@ export const RSPerformance = ({
             <button
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
-                onOpenCalculator(isLamborghini ? "huracan" : isPorsche ? "911-carrera" : isAudi ? "a4" : isVW ? "virtus" : "octavia");
+                onOpenCalculator(isBentley ? "continental-gt" : isLamborghini ? "huracan" : isPorsche ? "911-carrera" : isAudi ? "a4" : isVW ? "virtus" : "octavia");
               }}
               className="px-4 py-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-bold border border-zinc-700 transition-colors cursor-pointer"
             >
@@ -1842,7 +1878,7 @@ export const RSPerformance = ({
               className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-black transition-colors flex items-center gap-2 shadow-lg shadow-red-900/40 cursor-pointer"
             >
               <Sparkles className="w-4 h-4" />
-              {isLamborghini ? "Ask AI GT Specialist" : isPorsche ? "Ask AI GT Specialist" : isVW ? "Ask AI GT Specialist" : "Ask AI RS Specialist"}
+              {isBentley ? "Ask AI GT Specialist" : isLamborghini ? "Ask AI GT Specialist" : isPorsche ? "Ask AI GT Specialist" : isVW ? "Ask AI GT Specialist" : "Ask AI RS Specialist"}
             </button>
           )}
         </div>

@@ -53,6 +53,7 @@ import { VolkswagenLogo } from "./components/VolkswagenLogo";
 import { AudiLogo } from "./components/AudiLogo";
 import { PorscheLogo } from "./components/PorscheLogo";
 import { LamborghiniLogo } from "./components/LamborghiniLogo";
+import { BentleyLogo } from "./components/BentleyLogo";
 
 const APP_BRAND_META = {
   skoda: {
@@ -144,6 +145,24 @@ const APP_BRAND_META = {
     lineupLabel: "Huracán EVO • Huracán STO • Urus S • Urus Performante • Revuelto",
     defaultModelId: "huracan",
     defaultGraphModelId: "huracan-sto-perf",
+  },
+  bentley: {
+    Logo: BentleyLogo,
+    accentText: "text-green-400",
+    accentTextHover: "text-green-400 hover:text-green-300",
+    selectionBg: "selection:bg-green-500",
+    scrollTopBg: "bg-green-600 hover:bg-green-500 shadow-green-950/90 border-green-400/40",
+    footerName: "Bentley India",
+    footerTagline: "Direct Market Operations • Bentley Dynamic Ride, Twin-Turbo W12/V8 & Hand-Crafted Crewe Engineering",
+    rsLabel: "GT & Speed Performance",
+    dealershipLabel: "Bentley Showroom Locator (5+)",
+    aboutLabel: "About Bentley & Crewe History",
+    warrantyLabel: "Bentley Extended Care: 3-Year Unlimited Mileage Warranty",
+    roadsideLabel: "Bentley 24/7 Roadside Assistance: 1800 209 8822",
+    powertrainLabel: "Twin-Turbo W12 & Twin-Turbo V8 Powertrains",
+    lineupLabel: "Continental GT V8 • Continental GT Speed • Bentayga V8 • Bentayga EWB • Flying Spur W12",
+    defaultModelId: "continental-gt",
+    defaultGraphModelId: "continental-gt-speed-perf",
   },
 };
 
@@ -777,7 +796,7 @@ export default function App() {
                 className="cursor-pointer hover:text-sky-300 transition-colors"
                 onClick={() => handleTabChange("vwgroup")}
               >
-                Škoda • Volkswagen • Audi • Porsche • Lamborghini. Pioneering
+                Škoda • Volkswagen • Audi • Porsche • Lamborghini • Bentley. Pioneering
                 100% 5-Star Bharat NCAP and Global NCAP certified crash
                 structures.
               </p>

@@ -26,11 +26,13 @@ import { VW_MODELS, VW_GERMAN_ENGINEERING_FEATURES } from "../data/vwData";
 import { AUDI_MODELS, AUDI_PROGRESSIVE_LUXURY_FEATURES } from "../data/audiData";
 import { PORSCHE_MODELS, PORSCHE_ENGINEERING_FEATURES } from "../data/porscheData";
 import { LAMBORGHINI_MODELS, LAMBORGHINI_ENGINEERING_FEATURES } from "../data/lamborghiniData";
+import { BENTLEY_MODELS, BENTLEY_ENGINEERING_FEATURES } from "../data/bentleyData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
+import { BentleyLogo } from "./BentleyLogo";
 import { getAccentClasses } from "../utils/brandTheme";
 import {
   getRatings,
@@ -244,6 +246,45 @@ const BRAND_COPY = {
     innovationsBadge: "Raging-Bull Innovations",
     innovationsHeading: "Lamborghini Engineering Innovations",
     innovationsSubtitle: "LDVI precision, torque-vectoring all-wheel drive, and motorsport-derived chassis technology tailored for India",
+  },
+  bentley: {
+    Logo: BentleyLogo,
+    models: BENTLEY_MODELS,
+    features: BENTLEY_ENGINEERING_FEATURES,
+    iconicModelId: "continental-gt",
+    displayName: "Bentley India",
+    tagline: "Extraordinary Journeys",
+    badgeLine: "Official Bentley India Portfolio",
+    headingPre: "Hand-Crafted Engineering, ",
+    headingAccent: "W12 & Dynamic Ride",
+    headingPost: " Precision",
+    description: (
+      <>
+        Explore the Bentley India lineup. From the grand-touring{" "}
+        <strong className="text-white">Continental GT</strong> and luxury SUV{" "}
+        <strong className="text-white">Bentayga</strong>, to the flagship
+        saloon <strong className="text-white">Flying Spur</strong> — every car
+        hand-crafted at Crewe on twin-turbo W12/V8 power and active chassis
+        precision.
+      </>
+    ),
+    rsHeaderLabel: "Continental GT Speed Performance (659 PS)",
+    aiAdvisorLabel: "Ask AI Bentley Advisor",
+    historyLabel: "Crewe Heritage",
+    standardLabel: "The Bentley Standard",
+    powertrainLine: "Twin-Turbo W12 & Twin-Turbo V8",
+    bodyEngineeringLine: "High-Strength Steel & Aluminum Body Construction",
+    lineupHeading: "The Complete Bentley Lineup in India",
+    rsShortBadge: "SPEED",
+    rsBrandLine: "Bentley India • GT & Speed Performance",
+    rsHeadingPre: "Bentley GT & Speed Wing: ",
+    rsHeadingAccent: "Continental GT Speed & Bentayga Speed (550+ PS)",
+    rsDescription:
+      "Experience twin-turbo W12 and V8 engines, Bentley Dynamic Ride active anti-roll control, active all-wheel steering, and comparison against Rolls-Royce, Aston Martin, and Mercedes-Maybach rivals.",
+    rsButtonLabel: "Explore Bentley GT & Speed Performance",
+    innovationsBadge: "Hand-Crafted Innovations",
+    innovationsHeading: "Bentley Engineering Innovations",
+    innovationsSubtitle: "Bentley Dynamic Ride, active all-wheel steering, and hand-crafted chassis technology tailored for India",
   },
 };
 

@@ -52,11 +52,13 @@ import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
 import { PORSCHE_MODELS } from "../data/porscheData";
 import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
+import { BENTLEY_MODELS } from "../data/bentleyData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
+import { BentleyLogo } from "./BentleyLogo";
 
 // Central per-brand metadata — every brand-specific string/class the header
 // needs lives here, keyed by brand id, so adding a brand (e.g. Porsche) is
@@ -182,6 +184,30 @@ const BRAND_META = {
     advisorLabel: "AI Lamborghini Advisor",
     lineupLabel: "Lamborghini Lineup:",
   },
+  bentley: {
+    Logo: BentleyLogo,
+    accent: "green",
+    models: BENTLEY_MODELS,
+    label: "Bentley India",
+    corporateLine: "Bentley India (Volkswagen Group Luxury Marque)",
+    foundedLine: "Crewe, England (Est. 1919)",
+    plantLine: "Bentley India Direct-Operated Showroom Network",
+    switcherDesc: "Bentley India (Direct Market Operations)",
+    techTagline: "Bentley Dynamic Ride, Twin-Turbo W12/V8 & Hand-Crafted Crewe Engineering",
+    dropdownTitle: "Bentley India",
+    dropdownTagline: "Extraordinary Journeys • Est. 1919",
+    dropdownModels: "Continental GT, Bentayga, Flying Spur",
+    rsLabel: "GT & Speed Performance",
+    rsHeaderLabel: "Continental GT Speed Performance (659 PS)",
+    rsShortBadge: "SPEED",
+    engineTabLabel: "Twin-Turbo W12 & V8 Engines",
+    safetyLine: "5-Star Euro NCAP Safety",
+    techLine: "Bentley Dynamic Ride & Active All-Wheel Steering",
+    careLine: "Bentley Extended Care Warranty",
+    aboutLabel: "About Bentley",
+    advisorLabel: "AI Bentley Advisor",
+    lineupLabel: "Bentley Lineup:",
+  },
 };
 
 const ACCENT_CLASSES = {
@@ -255,9 +281,23 @@ const ACCENT_CLASSES = {
     switcherActive: "bg-yellow-950/90 text-yellow-300 border border-yellow-700",
     switcherHover: "hover:text-yellow-300",
   },
+  green: {
+    dot: "bg-green-400",
+    text: "text-green-400",
+    pillBg: "bg-gradient-to-r from-green-600 to-green-500 shadow-green-950/60",
+    buttonBg: "bg-green-600 hover:bg-green-500 shadow-green-900/40",
+    selectedBg: "bg-green-600 text-white shadow-md shadow-green-950",
+    dropdownBg: "bg-green-950/40 hover:bg-green-950/70 border-green-800/80 hover:border-green-700",
+    divider: "from-transparent via-green-500/70 to-transparent",
+    scrollEdge: "bg-green-950/90 border-green-800 text-green-300 hover:bg-green-900",
+    activeOptionBg: "bg-green-950/60 border-green-700/70 text-white",
+    activeOptionBadge: "text-green-400 bg-green-950/80 border-green-800",
+    switcherActive: "bg-green-950/90 text-green-300 border border-green-700",
+    switcherHover: "hover:text-green-300",
+  },
 };
 
-const BRAND_ORDER = ["skoda", "volkswagen", "audi", "porsche", "lamborghini"];
+const BRAND_ORDER = ["skoda", "volkswagen", "audi", "porsche", "lamborghini", "bentley"];
 
 // Makes a horizontally-scrollable strip behave properly everywhere:
 // vertical mouse-wheel scrolls it sideways, it can be dragged with the
@@ -435,7 +475,8 @@ export const Header = ({
       .replace("Volkswagen ", "")
       .replace("Audi ", "")
       .replace("Porsche ", "")
-      .replace("Lamborghini ", "");
+      .replace("Lamborghini ", "")
+      .replace("Bentley ", "");
   const modelBadges = (car) => (
     <>
       {car.id === "golf-gti" && (
@@ -590,7 +631,7 @@ export const Header = ({
                 id="btn-brand-switcher-dropdown"
                 onClick={() => setIsBrandDropdownOpen(!isBrandDropdownOpen)}
                 className={`flex items-center gap-2.5 px-3 py-1.5 rounded-xl border transition-all cursor-pointer shadow-md group ${accentClasses.dropdownBg}`}
-                title="Click to switch between Škoda, Volkswagen, Audi, Porsche, and Lamborghini India"
+                title="Click to switch between Škoda, Volkswagen, Audi, Porsche, Lamborghini, and Bentley India"
               >
                 <BrandLogo variant="full" size="md" animated={true} />
                 <div className="flex items-center gap-1 pl-1.5 border-l border-zinc-700/60 text-zinc-400 group-hover:text-zinc-200">

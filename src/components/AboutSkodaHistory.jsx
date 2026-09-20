@@ -35,11 +35,16 @@ import {
   LAMBORGHINI_HISTORY_ERAS,
   LAMBORGHINI_HERITAGE_ELEMENTS,
 } from "../data/lamborghiniHistoryData";
+import {
+  BENTLEY_HISTORY_ERAS,
+  BENTLEY_HERITAGE_ELEMENTS,
+} from "../data/bentleyHistoryData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
+import { BentleyLogo } from "./BentleyLogo";
 export const AboutSkodaHistory = ({
   brand = "skoda",
   onExploreVWGroup,
@@ -49,8 +54,11 @@ export const AboutSkodaHistory = ({
   const isAudi = brand === "audi";
   const isPorsche = brand === "porsche";
   const isLamborghini = brand === "lamborghini";
-  const historyEras = isLamborghini ? LAMBORGHINI_HISTORY_ERAS : isPorsche ? PORSCHE_HISTORY_ERAS : isAudi ? AUDI_HISTORY_ERAS : isVW ? VW_HISTORY_ERAS : SKODA_HISTORY_ERAS;
-  const heritageElements = isLamborghini
+  const isBentley = brand === "bentley";
+  const historyEras = isBentley ? BENTLEY_HISTORY_ERAS : isLamborghini ? LAMBORGHINI_HISTORY_ERAS : isPorsche ? PORSCHE_HISTORY_ERAS : isAudi ? AUDI_HISTORY_ERAS : isVW ? VW_HISTORY_ERAS : SKODA_HISTORY_ERAS;
+  const heritageElements = isBentley
+    ? BENTLEY_HERITAGE_ELEMENTS
+    : isLamborghini
     ? LAMBORGHINI_HERITAGE_ELEMENTS
     : isPorsche
     ? PORSCHE_HERITAGE_ELEMENTS
@@ -69,22 +77,24 @@ export const AboutSkodaHistory = ({
     <div className="space-y-12 pb-16">
       {/* Hero Header */}
       <div
-        className={`relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-950 via-zinc-900 border border-zinc-800 p-6 sm:p-10 shadow-2xl ${isLamborghini ? "to-yellow-950/40" : isPorsche ? "to-amber-950/40" : isAudi ? "to-red-950/40" : isVW ? "to-blue-950/40" : "to-emerald-950/40"}`}
+        className={`relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-950 via-zinc-900 border border-zinc-800 p-6 sm:p-10 shadow-2xl ${isBentley ? "to-green-950/40" : isLamborghini ? "to-yellow-950/40" : isPorsche ? "to-amber-950/40" : isAudi ? "to-red-950/40" : isVW ? "to-blue-950/40" : "to-emerald-950/40"}`}
       >
         <div
-          className={`absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isLamborghini ? "bg-yellow-500/10" : isPorsche ? "bg-amber-500/10" : isAudi ? "bg-red-500/10" : isVW ? "bg-blue-500/10" : "bg-emerald-500/10"}`}
+          className={`absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isBentley ? "bg-green-500/10" : isLamborghini ? "bg-yellow-500/10" : isPorsche ? "bg-amber-500/10" : isAudi ? "bg-red-500/10" : isVW ? "bg-blue-500/10" : "bg-emerald-500/10"}`}
         />
         <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-zinc-700/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-4xl space-y-6">
           <div
-            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-semibold tracking-wide ${isLamborghini ? "bg-yellow-950/80 border-yellow-700/50 text-yellow-300" : isPorsche ? "bg-amber-950/80 border-amber-700/50 text-amber-300" : isAudi ? "bg-red-950/80 border-red-700/50 text-red-300" : isVW ? "bg-blue-950/80 border-blue-700/50 text-blue-300" : "bg-emerald-950/80 border-emerald-700/50 text-emerald-300"}`}
+            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-semibold tracking-wide ${isBentley ? "bg-green-950/80 border-green-700/50 text-green-300" : isLamborghini ? "bg-yellow-950/80 border-yellow-700/50 text-yellow-300" : isPorsche ? "bg-amber-950/80 border-amber-700/50 text-amber-300" : isAudi ? "bg-red-950/80 border-red-700/50 text-red-300" : isVW ? "bg-blue-950/80 border-blue-700/50 text-blue-300" : "bg-emerald-950/80 border-emerald-700/50 text-emerald-300"}`}
           >
             <Flag
-              className={`w-3.5 h-3.5 ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+              className={`w-3.5 h-3.5 ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
             />
             <span>
-              {isLamborghini
+              {isBentley
+                ? "Crewe, Cheshire, England \u2022 Est. 1919"
+                : isLamborghini
                 ? "Sant'Agata Bolognese, Emilia-Romagna, Italy \u2022 Est. 1963"
                 : isPorsche
                 ? "Stuttgart, Baden-W\u00fcrttemberg, Germany \u2022 Est. 1931"
@@ -98,7 +108,9 @@ export const AboutSkodaHistory = ({
 
           <div className="space-y-3">
             <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-              {isLamborghini
+              {isBentley
+                ? "Bentley: Over 100 Years of Hand-Crafted Grand Touring"
+                : isLamborghini
                 ? "Lamborghini: Over 60 Years of Raging-Bull Theater"
                 : isPorsche
                 ? "Porsche: Over 90 Years of Sports Car Obsession"
@@ -109,7 +121,23 @@ export const AboutSkodaHistory = ({
                     : "The Czech Legend: Over 130 Years of Automotive Ingenuity"}
             </h1>
             <p className="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-3xl">
-              {isLamborghini ? (
+              {isBentley ? (
+                <>
+                  From W.O. Bentley's endurance-racing founding in{" "}
+                  <span className="text-green-400 font-semibold">1919</span>,
+                  to the fastest-in-the-world{" "}
+                  <span className="text-green-400 font-semibold">
+                    R-Type Continental
+                  </span>{" "}
+                  of 1952, the modern twin-turbo{" "}
+                  <span className="text-green-400 font-semibold">
+                    Continental GT
+                  </span>{" "}
+                  and Bentayga SUV today, and joining the Volkswagen Group's
+                  ownership structure in 1998, discover Bentley's celebrated
+                  engineering odyssey.
+                </>
+              ) : isLamborghini ? (
                 <>
                   From Ferruccio Lamborghini's tractor-to-supercar founding in{" "}
                   <span className="text-yellow-400 font-semibold">1963</span>,
@@ -185,7 +213,7 @@ export const AboutSkodaHistory = ({
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
             <div className="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800/80">
               <div
-                className={`flex items-center gap-2 mb-1 ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                className={`flex items-center gap-2 mb-1 ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
               >
                 <Clock className="w-4 h-4" />
                 <span className="text-xs font-bold uppercase tracking-wider">
@@ -193,7 +221,7 @@ export const AboutSkodaHistory = ({
                 </span>
               </div>
               <p className="text-2xl font-black text-white">
-                {isLamborghini ? "1963" : isPorsche ? "1931" : isAudi ? "1899" : isVW ? "1937" : "1895"}
+                {isBentley ? "1919" : isLamborghini ? "1963" : isPorsche ? "1931" : isAudi ? "1899" : isVW ? "1937" : "1895"}
               </p>
               <p className="text-[11px] text-zinc-400">
                 {isLamborghini
@@ -216,7 +244,7 @@ export const AboutSkodaHistory = ({
                 </span>
               </div>
               <p className="text-xl font-bold text-white truncate">
-                {isLamborghini ? "Sant'Agata Bolognese, Italy" : isPorsche ? "Stuttgart, Germany" : isAudi ? "Ingolstadt, Germany" : isVW ? "Wolfsburg, Germany" : "Czech Republic"}
+                {isBentley ? "Crewe, England" : isLamborghini ? "Sant'Agata Bolognese, Italy" : isPorsche ? "Stuttgart, Germany" : isAudi ? "Ingolstadt, Germany" : isVW ? "Wolfsburg, Germany" : "Czech Republic"}
               </p>
               <p className="text-[11px] text-zinc-400">
                 {isLamborghini
@@ -239,7 +267,7 @@ export const AboutSkodaHistory = ({
                 </span>
               </div>
               <p className="text-2xl font-black text-white">
-                {isLamborghini ? "60+ Countries" : isPorsche ? "70+ Countries" : isAudi ? "100+ Countries" : isVW ? "150+ Countries" : "100+ Countries"}
+                {isBentley ? "60+ Countries" : isLamborghini ? "60+ Countries" : isPorsche ? "70+ Countries" : isAudi ? "100+ Countries" : isVW ? "150+ Countries" : "100+ Countries"}
               </p>
               <p className="text-[11px] text-zinc-400">
                 {isLamborghini
@@ -256,7 +284,7 @@ export const AboutSkodaHistory = ({
 
             <div className="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800/80">
               <div
-                className={`flex items-center gap-2 mb-1 ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                className={`flex items-center gap-2 mb-1 ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
               >
                 <ShieldCheck className="w-4 h-4" />
                 <span className="text-xs font-bold uppercase tracking-wider">
@@ -305,7 +333,7 @@ export const AboutSkodaHistory = ({
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
             <div
-              className={`flex items-center gap-2 text-xs font-bold tracking-wider uppercase mb-1 ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+              className={`flex items-center gap-2 text-xs font-bold tracking-wider uppercase mb-1 ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
             >
               <HistoryIcon className="w-4 h-4" />
               <span>Chronicles of Craftsmanship</span>
@@ -336,11 +364,11 @@ export const AboutSkodaHistory = ({
               <button
                 key={era.id}
                 onClick={() => setSelectedEraId(era.id)}
-                className={`flex-shrink-0 px-4 py-3 rounded-2xl border text-left transition-all cursor-pointer ${isSelected ? (isLamborghini ? "bg-yellow-950/70 border-yellow-500/80 text-white shadow-lg shadow-yellow-950/50 ring-1 ring-yellow-400/40" : isPorsche ? "bg-amber-950/70 border-amber-500/80 text-white shadow-lg shadow-amber-950/50 ring-1 ring-amber-400/40" : isAudi ? "bg-red-950/70 border-red-500/80 text-white shadow-lg shadow-red-950/50 ring-1 ring-red-400/40" : isVW ? "bg-blue-950/70 border-blue-500/80 text-white shadow-lg shadow-blue-950/50 ring-1 ring-blue-400/40" : "bg-emerald-950/70 border-emerald-500/80 text-white shadow-lg shadow-emerald-950/50 ring-1 ring-emerald-400/40") : "bg-zinc-900/80 border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/80 hover:border-zinc-700"}`}
+                className={`flex-shrink-0 px-4 py-3 rounded-2xl border text-left transition-all cursor-pointer ${isSelected ? (isBentley ? "bg-green-950/70 border-green-500/80 text-white shadow-lg shadow-green-950/50 ring-1 ring-green-400/40" : isLamborghini ? "bg-yellow-950/70 border-yellow-500/80 text-white shadow-lg shadow-yellow-950/50 ring-1 ring-yellow-400/40" : isPorsche ? "bg-amber-950/70 border-amber-500/80 text-white shadow-lg shadow-amber-950/50 ring-1 ring-amber-400/40" : isAudi ? "bg-red-950/70 border-red-500/80 text-white shadow-lg shadow-red-950/50 ring-1 ring-red-400/40" : isVW ? "bg-blue-950/70 border-blue-500/80 text-white shadow-lg shadow-blue-950/50 ring-1 ring-blue-400/40" : "bg-emerald-950/70 border-emerald-500/80 text-white shadow-lg shadow-emerald-950/50 ring-1 ring-emerald-400/40") : "bg-zinc-900/80 border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/80 hover:border-zinc-700"}`}
               >
                 <div className="flex items-center gap-2 mb-0.5">
                   <span
-                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${isSelected ? (isLamborghini ? "bg-yellow-500 text-white font-black" : isPorsche ? "bg-amber-500 text-white font-black" : isAudi ? "bg-red-500 text-white font-black" : isVW ? "bg-blue-500 text-white font-black" : "bg-emerald-500 text-zinc-950 font-black") : "bg-zinc-800 text-zinc-400"}`}
+                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${isSelected ? (isBentley ? "bg-green-500 text-white font-black" : isLamborghini ? "bg-yellow-500 text-white font-black" : isPorsche ? "bg-amber-500 text-white font-black" : isAudi ? "bg-red-500 text-white font-black" : isVW ? "bg-blue-500 text-white font-black" : "bg-emerald-500 text-zinc-950 font-black") : "bg-zinc-800 text-zinc-400"}`}
                   >
                     {era.period}
                   </span>
@@ -369,7 +397,7 @@ export const AboutSkodaHistory = ({
                 <div className="space-y-2 max-w-3xl">
                   <div className="flex flex-wrap items-center gap-2">
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-black border ${isLamborghini ? "bg-yellow-500/20 border-yellow-500/40 text-yellow-300" : isPorsche ? "bg-amber-500/20 border-amber-500/40 text-amber-300" : isAudi ? "bg-red-500/20 border-red-500/40 text-red-300" : isVW ? "bg-blue-500/20 border-blue-500/40 text-blue-300" : "bg-emerald-500/20 border-emerald-500/40 text-emerald-300"}`}
+                      className={`px-3 py-1 rounded-full text-xs font-black border ${isBentley ? "bg-green-500/20 border-green-500/40 text-green-300" : isLamborghini ? "bg-yellow-500/20 border-yellow-500/40 text-yellow-300" : isPorsche ? "bg-amber-500/20 border-amber-500/40 text-amber-300" : isAudi ? "bg-red-500/20 border-red-500/40 text-red-300" : isVW ? "bg-blue-500/20 border-blue-500/40 text-blue-300" : "bg-emerald-500/20 border-emerald-500/40 text-emerald-300"}`}
                     >
                       {activeEra.period}
                     </span>
@@ -382,7 +410,7 @@ export const AboutSkodaHistory = ({
                     {activeEra.title}
                   </h3>
                   <p
-                    className={`font-medium text-sm italic ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`font-medium text-sm italic ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     {activeEra.tagline}
                   </p>
@@ -479,7 +507,7 @@ export const AboutSkodaHistory = ({
                 {/* Specific Milestones */}
                 <div className="lg:col-span-2 space-y-3">
                   <h4
-                    className={`text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     <Award className="w-3.5 h-3.5" />
                     Key Historic Milestones
@@ -491,7 +519,7 @@ export const AboutSkodaHistory = ({
                         className="p-4 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 flex items-start gap-3.5"
                       >
                         <div
-                          className={`px-2.5 py-1 rounded-lg bg-zinc-800 border border-zinc-700 text-xs font-black shrink-0 ${isLamborghini ? "text-yellow-300" : isPorsche ? "text-amber-300" : isAudi ? "text-red-300" : isVW ? "text-blue-300" : "text-emerald-300"}`}
+                          className={`px-2.5 py-1 rounded-lg bg-zinc-800 border border-zinc-700 text-xs font-black shrink-0 ${isBentley ? "text-green-300" : isLamborghini ? "text-yellow-300" : isPorsche ? "text-amber-300" : isAudi ? "text-red-300" : isVW ? "text-blue-300" : "text-emerald-300"}`}
                         >
                           {m.year}
                         </div>
@@ -522,7 +550,7 @@ export const AboutSkodaHistory = ({
                           className="flex items-start gap-2 text-xs text-zinc-300"
                         >
                           <CheckCircle2
-                            className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                            className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                           />
                           <span>{inv}</span>
                         </li>
@@ -557,7 +585,7 @@ export const AboutSkodaHistory = ({
       <div className="space-y-6">
         <div>
           <div
-            className={`flex items-center gap-2 text-xs font-bold tracking-wider uppercase mb-1 ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+            className={`flex items-center gap-2 text-xs font-bold tracking-wider uppercase mb-1 ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
           >
             <Sparkles className="w-4 h-4" />
             <span>
@@ -606,13 +634,13 @@ export const AboutSkodaHistory = ({
                 <div className="space-y-1">
                   <h3 className="text-lg font-bold text-white">{el.title}</h3>
                   <p
-                    className={`text-xs font-medium ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`text-xs font-medium ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     {el.subtitle}
                   </p>
                 </div>
                 <div
-                  className={`w-10 h-10 rounded-xl bg-zinc-800/80 border border-zinc-700 flex items-center justify-center shrink-0 ${isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`w-10 h-10 rounded-xl bg-zinc-800/80 border border-zinc-700 flex items-center justify-center shrink-0 ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   <Sparkles className="w-5 h-5 text-amber-400" />
                 </div>
@@ -848,7 +876,7 @@ export const AboutSkodaHistory = ({
               Proud to be a part of the Volkswagen Group
             </h3>
             <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-              Discover how {isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} synergizes with
+              Discover how {isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} synergizes with
               iconic sister marques like Audi, Porsche, Lamborghini, Bentley,
               Bugatti, SEAT, CUPRA, MAN, and Scania under the world’s leading
               automotive group.

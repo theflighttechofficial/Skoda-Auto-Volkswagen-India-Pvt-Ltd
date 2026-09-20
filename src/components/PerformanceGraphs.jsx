@@ -19,11 +19,13 @@ import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
+import { BentleyLogo } from "./BentleyLogo";
 import { SKODA_MODELS } from "../data/skodaData";
 import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
 import { PORSCHE_MODELS } from "../data/porscheData";
 import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
+import { BENTLEY_MODELS } from "../data/bentleyData";
 // vRS/RS performance variants (e.g. Octavia vRS, Audi RS5) get their own
 // MODEL_PERFORMANCE_PROFILES entries but aren't part of the base model
 // catalogs above, so their ids have to be added in explicitly per brand.
@@ -35,6 +37,7 @@ const PORSCHE_PERFORMANCE_ONLY_IDS = [
   "cayenne-turbo-gt",
 ];
 const LAMBORGHINI_PERFORMANCE_ONLY_IDS = ["huracan-sto-perf"];
+const BENTLEY_PERFORMANCE_ONLY_IDS = ["continental-gt-speed-perf", "bentayga-speed-perf"];
 export const PerformanceGraphs = ({
   brand = "skoda",
   initialEngineId = "1.5-tsi",
@@ -45,7 +48,10 @@ export const PerformanceGraphs = ({
   const isAudi = brand === "audi";
   const isPorsche = brand === "porsche";
   const isLamborghini = brand === "lamborghini";
-  const currentBrandModels = isLamborghini
+  const isBentley = brand === "bentley";
+  const currentBrandModels = isBentley
+    ? BENTLEY_MODELS
+    : isLamborghini
     ? LAMBORGHINI_MODELS
     : isPorsche
     ? PORSCHE_MODELS
@@ -54,7 +60,9 @@ export const PerformanceGraphs = ({
       : isVW
         ? VW_MODELS
         : SKODA_MODELS;
-  const currentPerformanceOnlyIds = isLamborghini
+  const currentPerformanceOnlyIds = isBentley
+    ? BENTLEY_PERFORMANCE_ONLY_IDS
+    : isLamborghini
     ? LAMBORGHINI_PERFORMANCE_ONLY_IDS
     : isPorsche
     ? PORSCHE_PERFORMANCE_ONLY_IDS
@@ -95,7 +103,9 @@ export const PerformanceGraphs = ({
   const [selectedEngineId, setSelectedEngineId] = useState(initialEngineId);
   const [selectedModelId, setSelectedModelId] = useState(
     initialModelId === "slavia"
-      ? isLamborghini
+      ? isBentley
+        ? "continental-gt"
+        : isLamborghini
         ? "huracan"
         : isPorsche
           ? "911-carrera"
@@ -227,16 +237,18 @@ export const PerformanceGraphs = ({
     <div className="space-y-8">
       {/* Top Banner */}
       <div
-        className={`rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900/90 border border-zinc-800 p-6 sm:p-8 relative overflow-hidden shadow-2xl ${isLamborghini ? "to-yellow-950/40" : isPorsche ? "to-amber-950/40" : isAudi ? "to-red-950/40" : isVW ? "to-blue-950/40" : "to-emerald-950/40"}`}
+        className={`rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900/90 border border-zinc-800 p-6 sm:p-8 relative overflow-hidden shadow-2xl ${isBentley ? "to-green-950/40" : isLamborghini ? "to-yellow-950/40" : isPorsche ? "to-amber-950/40" : isAudi ? "to-red-950/40" : isVW ? "to-blue-950/40" : "to-emerald-950/40"}`}
       >
         <div
-          className={`absolute right-0 top-0 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isLamborghini ? "bg-yellow-600/10" : isPorsche ? "bg-amber-600/10" : isAudi ? "bg-red-600/10" : isVW ? "bg-blue-600/10" : "bg-emerald-600/10"}`}
+          className={`absolute right-0 top-0 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isBentley ? "bg-green-600/10" : isLamborghini ? "bg-yellow-600/10" : isPorsche ? "bg-amber-600/10" : isAudi ? "bg-red-600/10" : isVW ? "bg-blue-600/10" : "bg-emerald-600/10"}`}
         />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-3xl">
             <div className="flex items-center gap-2">
-              {isLamborghini ? (
+              {isBentley ? (
+                <BentleyLogo variant="emblem" size="sm" />
+              ) : isLamborghini ? (
                 <LamborghiniLogo variant="emblem" size="sm" />
               ) : isPorsche ? (
                 <PorscheLogo variant="emblem" size="sm" />

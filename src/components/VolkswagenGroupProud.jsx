@@ -32,7 +32,8 @@ export const VolkswagenGroupProud = ({
   const isAudi = brand === "audi";
   const isPorsche = brand === "porsche";
   const isLamborghini = brand === "lamborghini";
-  const activeBrandName = isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda";
+  const isBentley = brand === "bentley";
+  const activeBrandName = isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda";
   const activeBrandFoundedYear = isLamborghini ? 1963 : isPorsche ? 1931 : isAudi ? 1909 : isVW ? 1937 : 1895;
   const membershipBlurb = isLamborghini
     ? "Automobili Lamborghini has been part of the Volkswagen Group since 1998, placed under Audi's stewardship, gaining platform-sharing resources and quality-control processes without diluting its raging-bull character."
@@ -219,7 +220,7 @@ export const VolkswagenGroupProud = ({
                       <h3 className="text-xl font-black text-white group-hover:text-blue-300 transition-colors">
                         {brand.name}
                       </h3>
-                      {brand.id === (isLamborghini ? "lamborghini" : isPorsche ? "porsche" : isAudi ? "audi" : isVW ? "volkswagen" : "skoda") && (
+                      {brand.id === (isBentley ? "lamborghini" : isLamborghini ? "lamborghini" : isPorsche ? "porsche" : isAudi ? "audi" : isVW ? "volkswagen" : "skoda") && (
                         <span className="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30">
                           Host
                         </span>

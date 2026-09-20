@@ -4,6 +4,7 @@ import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
+import { BentleyLogo } from "./BentleyLogo";
 
 const BRAND_META = {
   skoda: {
@@ -50,6 +51,15 @@ const BRAND_META = {
     ring: "border-yellow-500/40",
     glow: "bg-yellow-600/20",
     bar: "from-yellow-600 to-yellow-400",
+  },
+  bentley: {
+    Logo: BentleyLogo,
+    name: "Bentley",
+    tagline: "Extraordinary Journeys",
+    accent: "text-green-400",
+    ring: "border-green-500/40",
+    glow: "bg-green-600/20",
+    bar: "from-green-600 to-green-400",
   },
 };
 

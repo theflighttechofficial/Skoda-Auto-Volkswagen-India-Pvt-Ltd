@@ -86,6 +86,13 @@ const PLATFORM_OVERRIDES = {
   "lamborghini:huracan": "MSB",
   "lamborghini:revuelto": "MSB",
   "lamborghini:urus": "MLB Evo",
+  // Bentley's Continental GT and Flying Spur genuinely share the MSB
+  // sports-luxury architecture with the Porsche Panamera, while the
+  // Bentayga rides the same shared MLB Evo platform as the Porsche
+  // Cayenne, Audi Q7/Q8 and Lamborghini Urus.
+  "bentley:continental-gt": "MSB",
+  "bentley:flying-spur": "MSB",
+  "bentley:bentayga": "MLB Evo",
 };
 
 export function derivePlatform(model, brand) {
@@ -144,7 +151,7 @@ export const PLATFORM_DESCRIPTIONS = {
   "MQB-A0-IN": "India 2.0's dedicated compact platform, localized for Indian roads, thermal extremes and supply chains.",
   "MQB Evo": "The Group's global modular compact/mid-size platform, underpinning everything from hot hatches to executive liftbacks.",
   "MLB Evo": "Longitudinal-engine architecture for premium sedans and large SUVs, shared all the way up to Audi's flagship.",
-  "MSB": "Dedicated sports-car architecture underpinning Porsche's rear-engine 911 and mid-engine 718 twins, and Lamborghini's own V10/V12 chassis — not cross-shared between the two marques in this showcase.",
+  "MSB": "Dedicated sports-car architecture underpinning Porsche's rear-engine 911 and mid-engine 718 twins, and Lamborghini's own V10/V12 chassis. The Bentley Continental GT and Flying Spur also ride a variant of this architecture, shared with the Porsche Panamera.",
   [LEGACY_PLATFORM]: "Earlier-generation PQ/MQB architecture underpinning discontinued Hall of Fame nameplates.",
 };
 
