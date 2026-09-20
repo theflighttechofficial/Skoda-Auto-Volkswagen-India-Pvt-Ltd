@@ -557,11 +557,11 @@ export const HeroOverview = ({
             className="space-y-6"
           >
             {currentModel.image && (
-              <div className="relative w-full h-56 sm:h-72 lg:h-80 rounded-3xl overflow-hidden border border-zinc-800 shadow-xl">
+              <div className="relative w-full h-56 sm:h-72 lg:h-96 rounded-3xl overflow-hidden border border-zinc-800 shadow-xl bg-zinc-950">
                 <img
                   src={currentModel.image}
                   alt={currentModel.name}
-                  className="w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/10 to-transparent" />
               </div>

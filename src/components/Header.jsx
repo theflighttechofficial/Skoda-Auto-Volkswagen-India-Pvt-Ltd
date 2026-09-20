@@ -549,30 +549,7 @@ export const Header = ({
           <div className="flex items-center gap-3 text-[10px] flex-wrap">
             <span
               onClick={() => setActiveTab("vwgroup")}
-              className="text-blue-400 font-bold hover:underline cursor-pointer flex items-center gap-1"
-            >
-              Active Brands:
-            </span>
-            {BRAND_ORDER.map((brandId, i) => {
-              const m = BRAND_META[brandId];
-              const isActive = activeBrand === brandId;
-              const c = ACCENT_CLASSES[m.accent];
-              return (
-                <span key={brandId} className="flex items-center gap-3">
-                  {i > 0 && <span className="text-zinc-600">|</span>}
-                  <button
-                    onClick={() => handleSelectBrand(brandId)}
-                    className={`font-bold transition-all px-2 py-0.5 rounded cursor-pointer ${isActive ? c.switcherActive : `text-zinc-400 ${c.switcherHover}`}`}
-                  >
-                    {m.label}
-                  </button>
-                </span>
-              );
-            })}
-            <span className="text-zinc-600">|</span>
-            <span
-              onClick={() => setActiveTab("vwgroup")}
-              className="text-zinc-400 cursor-pointer hover:text-white"
+              className="text-zinc-400 cursor-pointer hover:text-white hover:underline transition-colors"
             >
               Group Synergy
             </span>

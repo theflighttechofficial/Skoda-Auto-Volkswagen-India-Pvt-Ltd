@@ -128,7 +128,7 @@ export const UnderTheSkin = ({ brand = "skoda", onSwitchBrand }) => {
                 <button
                   key={layer.id}
                   onClick={() => setActiveLayerId(layer.id)}
-                  className={`flex items-center gap-2.5 px-4 py-3 rounded-xl text-left text-sm font-semibold transition-all shrink-0 lg:w-full cursor-pointer border ${isActive ? `bg-zinc-900 ${accentBorder} ring-1 ${brand === "audi" ? "ring-red-500/50" : brand === "volkswagen" ? "ring-blue-500/50" : brand === "porsche" ? "ring-amber-500/50" : "ring-emerald-500/50"} text-white` : "bg-zinc-950/70 border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700"}`}
+                  className={`flex items-center gap-2.5 px-4 py-3 rounded-xl text-left text-sm font-semibold transition-all shrink-0 lg:w-full cursor-pointer border ${isActive ? `bg-zinc-900 ${accentBorder} ring-1 ${brand === "audi" ? "ring-red-500/50" : brand === "volkswagen" ? "ring-blue-500/50" : brand === "porsche" ? "ring-amber-500/50" : brand === "lamborghini" ? "ring-yellow-500/50" : "ring-emerald-500/50"} text-white` : "bg-zinc-950/70 border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700"}`}
                 >
                   <Icon className={`w-4 h-4 shrink-0 ${isActive ? accentText : ""}`} />
                   <span className="whitespace-nowrap lg:whitespace-normal">{layer.title}</span>

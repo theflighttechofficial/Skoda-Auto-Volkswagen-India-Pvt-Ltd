@@ -503,11 +503,11 @@ export const RSPerformance = ({
 
         {/* Hero Photo */}
         {activeModel.image && (
-          <div className="relative w-full h-56 sm:h-80 rounded-2xl overflow-hidden border border-zinc-800 shadow-xl">
+          <div className="relative w-full h-56 sm:h-72 lg:h-96 rounded-2xl overflow-hidden border border-zinc-800 shadow-xl bg-zinc-950">
             <img
               src={activeModel.image}
               alt={activeModel.name}
-              className="w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover object-center"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/10 to-transparent" />
             <span className="absolute bottom-3 left-4 text-xs font-bold text-white/90 bg-black/50 px-2.5 py-1 rounded-lg backdrop-blur-sm">

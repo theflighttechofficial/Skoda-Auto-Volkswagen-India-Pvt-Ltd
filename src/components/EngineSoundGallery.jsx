@@ -336,9 +336,9 @@ export const EngineSoundGallery = () => {
           Engine Sound Gallery
         </h2>
         <p className="text-sm text-zinc-400 mt-2">
-          Every engine in the Škoda, Volkswagen, and Audi India lineup has a distinct acoustic
-          signature. Press play to hear a synthesized approximation of each engine's character
-          across cold start, idle, rev, launch, and downshift.
+          Every engine across the Škoda, Volkswagen, Audi, Porsche, and Lamborghini India lineup
+          has a distinct acoustic signature. Press play to hear a synthesized approximation of
+          each engine's character across cold start, idle, rev, launch, and downshift.
         </p>
         <p className="text-[11px] text-zinc-600 mt-2 italic">
           All sound here is generated live in your browser via the Web Audio API — no copyrighted
