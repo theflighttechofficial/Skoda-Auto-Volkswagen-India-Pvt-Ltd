@@ -45,7 +45,7 @@ export const LaunchScreen = ({ onEnter }) => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-xs sm:text-sm text-zinc-500 mt-2 italic tracking-wide"
         >
-          Fünf Marken. Eine Philosophie. — Five Brands, One Philosophy.
+          Sieben Marken. Eine Philosophie. — Seven Brands, One Philosophy.
         </motion.p>
       </div>
 

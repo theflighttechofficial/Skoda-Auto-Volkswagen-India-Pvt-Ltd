@@ -3,7 +3,7 @@ export interface Dealership {
   name: string;
   partnerGroup: string;
   type: '3S Facility' | 'Showroom' | 'Service Center';
-  brand?: 'skoda' | 'volkswagen' | 'audi' | 'porsche' | 'lamborghini' | 'bentley' | 'both';
+  brand?: 'skoda' | 'volkswagen' | 'audi' | 'porsche' | 'lamborghini' | 'bentley' | 'scania' | 'both';
   state: string;
   city: string;
   zone: 'North' | 'South' | 'West' | 'East';
@@ -2703,5 +2703,93 @@ export const DEALERSHIPS: Dealership[] = [
     amenities: ['Genuine Parts & Service Centre', 'Approved Pre-Owned'],
     modelsAvailableForTestDrive: ['Bentayga V8', 'Bentayga Speed'],
     googleMapsUrl: 'https://maps.google.com/?q=Bentley+Hyderabad'
+  },
+  {
+    id: 'scania-narsapura',
+    name: 'Scania Narsapura Plant & Experience Centre',
+    partnerGroup: 'Scania Commercial Vehicles India',
+    type: '3S Facility',
+    brand: 'scania',
+    state: 'Karnataka',
+    city: 'Bengaluru',
+    zone: 'South',
+    pinCode: '562123',
+    address: 'Narsapura Industrial Area, Kolar District',
+    landmark: 'Near Narsapura Industrial Township',
+    phone: '+91 80 6741 9111',
+    salesPhone: '+91 98450 91111',
+    servicePhone: '+91 80 6741 9152',
+    email: 'narsapura@scania-india.co.in',
+    timing: 'Mon–Sat: 09:00 AM – 06:30 PM',
+    coordinates: { lat: 13.1390, lng: 78.1720 },
+    amenities: ['Manufacturing Plant Tours', 'Genuine Parts & Service Centre', 'Driver Training Academy'],
+    modelsAvailableForTestDrive: ['R 500 Day Cab (6x2)', 'R 500 Highline Sleeper (6x4)', 'S 730 Highline (6x4)'],
+    googleMapsUrl: 'https://maps.google.com/?q=Scania+Narsapura+Plant'
+  },
+  {
+    id: 'scania-mumbai',
+    name: 'Scania Mumbai',
+    partnerGroup: 'Scania Commercial Vehicles India',
+    type: '3S Facility',
+    brand: 'scania',
+    state: 'Maharashtra',
+    city: 'Mumbai',
+    zone: 'West',
+    pinCode: '421302',
+    address: 'Kalyan-Bhiwandi Road, Thane',
+    landmark: 'Near Kalyan Industrial Estate',
+    phone: '+91 22 6740 9111',
+    salesPhone: '+91 98200 91111',
+    servicePhone: '+91 22 6740 9152',
+    email: 'mumbai@scania-india.co.in',
+    timing: 'Mon–Sat: 09:00 AM – 06:30 PM',
+    coordinates: { lat: 19.2403, lng: 73.1305 },
+    amenities: ['Genuine Parts & Service Centre', '24/7 Breakdown Assistance', 'Fleet Management Consultation'],
+    modelsAvailableForTestDrive: ['R 500 Highline Sleeper (6x4)', 'Citywide AC Premium (12m)'],
+    googleMapsUrl: 'https://maps.google.com/?q=Scania+Mumbai'
+  },
+  {
+    id: 'scania-delhi',
+    name: 'Scania Delhi-NCR',
+    partnerGroup: 'Scania Commercial Vehicles India',
+    type: '3S Facility',
+    brand: 'scania',
+    state: 'Delhi NCR',
+    city: 'Gurugram',
+    zone: 'North',
+    pinCode: '122004',
+    address: 'National Highway 8, Manesar Industrial Area, Gurugram',
+    landmark: 'Near Manesar IMT',
+    phone: '+91 124 673 9111',
+    salesPhone: '+91 98100 91111',
+    servicePhone: '+91 124 673 9152',
+    email: 'delhi@scania-india.co.in',
+    timing: 'Mon–Sat: 09:00 AM – 06:30 PM',
+    coordinates: { lat: 28.3540, lng: 76.9350 },
+    amenities: ['Genuine Parts & Service Centre', 'Driver Training Academy', '24/7 Breakdown Assistance'],
+    modelsAvailableForTestDrive: ['R 500 Highline Sleeper (6x4)', 'S 730 Heavy Haulage (8x4)', 'Metrolink Semi-Sleeper (2+2)'],
+    googleMapsUrl: 'https://maps.google.com/?q=Scania+Gurugram'
+  },
+  {
+    id: 'scania-chennai',
+    name: 'Scania Chennai',
+    partnerGroup: 'Scania Commercial Vehicles India',
+    type: '3S Facility',
+    brand: 'scania',
+    state: 'Tamil Nadu',
+    city: 'Chennai',
+    zone: 'South',
+    pinCode: '600058',
+    address: 'GST Road, Chengalpattu Industrial Belt, Chennai',
+    landmark: 'Near Chengalpattu Industrial Estate',
+    phone: '+91 44 6742 9111',
+    salesPhone: '+91 98410 91111',
+    servicePhone: '+91 44 6742 9152',
+    email: 'chennai@scania-india.co.in',
+    timing: 'Mon–Sat: 09:00 AM – 06:30 PM',
+    coordinates: { lat: 12.6819, lng: 79.9864 },
+    amenities: ['Genuine Parts & Service Centre', 'Fleet Management Consultation', '24/7 Breakdown Assistance'],
+    modelsAvailableForTestDrive: ['R 500 Day Cab (6x2)', 'Citywide Standard (12m)'],
+    googleMapsUrl: 'https://maps.google.com/?q=Scania+Chennai'
   }
 ];
