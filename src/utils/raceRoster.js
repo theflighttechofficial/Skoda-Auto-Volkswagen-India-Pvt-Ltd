@@ -5,6 +5,7 @@ import { PORSCHE_GT_MODELS } from "../data/porschePerformanceData";
 import { LAMBORGHINI_GT_MODELS } from "../data/lamborghiniPerformanceData";
 import { BENTLEY_GT_MODELS } from "../data/bentleyPerformanceData";
 import { SEAT_GT_MODELS } from "../data/seatPerformanceData";
+import { SCANIA_GT_MODELS } from "../data/scaniaPerformanceData";
 import { getBodyShape } from "./bodyShape";
 
 function slugify(str) {
@@ -62,5 +63,6 @@ export function getRaceRoster() {
     ...LAMBORGHINI_GT_MODELS.map((m) => normalize(m, "lamborghini")),
     ...BENTLEY_GT_MODELS.map((m) => normalize(m, "bentley")),
     ...SEAT_GT_MODELS.map((m) => normalize(m, "seat")),
+    ...SCANIA_GT_MODELS.map((m) => normalize(m, "scania")),
   ];
 }

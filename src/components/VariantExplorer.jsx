@@ -8,6 +8,7 @@ import { PORSCHE_MODELS } from "../data/porscheData";
 import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
 import { BENTLEY_MODELS } from "../data/bentleyData";
 import { SEAT_MODELS } from "../data/seatData";
+import { SCANIA_MODELS } from "../data/scaniaData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
@@ -15,6 +16,7 @@ import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
 import { SeatLogo } from "./SeatLogo";
+import { ScaniaLogo } from "./ScaniaLogo";
 import { getAccentClasses } from "../utils/brandTheme";
 
 const BRAND_PAGE_COPY = {
@@ -66,6 +68,13 @@ const BRAND_PAGE_COPY = {
     heading: "SEAT Models & Trim Guide (Not Sold in India)",
     subheading: "Global reference trims and pricing for enthusiast comparison only — SEAT has no official Indian distribution",
     flagshipLabel: "FR / Cupra",
+  },
+  scania: {
+    Logo: ScaniaLogo,
+    models: SCANIA_MODELS,
+    heading: "Scania Models & Cab/Axle Configuration Guide",
+    subheading: "Compare cab configurations, axle layouts, and pricing across day-cab, sleeper, and heavy-haulage specifications",
+    flagshipLabel: "Highline / Heavy Haulage",
   },
 };
 

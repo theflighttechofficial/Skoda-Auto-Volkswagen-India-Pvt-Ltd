@@ -3107,6 +3107,111 @@ export const ENGINE_GRAPH_PROFILES: Record<string, EngineGraphProfile> = {
       'Optional 4Drive all-wheel drive on the Leon Cupra 4Drive',
       'Not sold in India — European performance-hatch reference specification only'
     ]
+  },
+
+  '13-litre-scania-super-500': {
+    id: '13-litre-scania-super-500',
+    name: '13L Scania Super Inline-6',
+    badge: 'DC13 Super (500 hp / 2,550 Nm)',
+    displacement: '12,742 cc',
+    cylinders: '6 Cylinders (Turbo-Diesel, Inline)',
+    fuelType: 'Diesel',
+    peakPowerStr: '500 hp @ 1,500–1,900 RPM',
+    peakTorqueStr: '2,550 Nm @ 1,000–1,300 RPM',
+    maxPowerHp: 500,
+    maxTorqueNm: 2550,
+    powerRpmRange: '1,500–1,900 RPM',
+    torqueRpmRange: '1,000–1,300 RPM',
+    redlineRpm: 2100,
+    idleRpm: 600,
+    highwayCruiseRpm100Kmh: 1250,
+    highwayCruiseRpm120Kmh: 1450,
+    dynoCurve: [
+      { rpm: 700, powerHp: 140, torqueNm: 1900, boostBar: 1.4 },
+      { rpm: 1000, powerHp: 260, torqueNm: 2550, boostBar: 1.9 },
+      { rpm: 1300, powerHp: 340, torqueNm: 2550, boostBar: 1.9 },
+      { rpm: 1600, powerHp: 460, torqueNm: 2450, boostBar: 1.8 },
+      { rpm: 1900, powerHp: 500, torqueNm: 2350, boostBar: 1.7 },
+      { rpm: 2100, powerHp: 470, torqueNm: 2050, boostBar: 1.5 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 8.0, speedKmh: 30, gForce: 0.1, gear: 2 },
+      { timeSec: 18.0, speedKmh: 60, gForce: 0.08, gear: 5 },
+      { timeSec: 28.0, speedKmh: 80, gForce: 0.06, gear: 8 },
+      { timeSec: 38.0, speedKmh: 100, gForce: 0.04, gear: 10 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '13.80', speedAt1000Rpm: 1.2, speedAt3000Rpm: 3.6, speedAt6000Rpm: 7.2, redlineSpeed: 5 },
+      { gear: '4th', ratio: '5.14', speedAt1000Rpm: 3.2, speedAt3000Rpm: 9.6, speedAt6000Rpm: 19.2, redlineSpeed: 14 },
+      { gear: '8th', ratio: '1.86', speedAt1000Rpm: 8.9, speedAt3000Rpm: 26.7, speedAt6000Rpm: 53.4, redlineSpeed: 38 },
+      { gear: '12th', ratio: '0.79', speedAt1000Rpm: 21.0, speedAt3000Rpm: 63.0, speedAt6000Rpm: 90.0, redlineSpeed: 90 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 3.0, engineRpm: 900 },
+      { speedKmh: 40, fuelConsumptionKmpl: 3.6, engineRpm: 1000 },
+      { speedKmh: 60, fuelConsumptionKmpl: 4.0, engineRpm: 1100 },
+      { speedKmh: 80, fuelConsumptionKmpl: 4.3, engineRpm: 1200 },
+      { speedKmh: 90, fuelConsumptionKmpl: 3.9, engineRpm: 1250 }
+    ],
+    technicalFeatures: [
+      'Scania Super combustion system delivers up to 8% better fuel economy than the outgoing generation',
+      'Scania Opticruise 12-speed automated gearbox standard, eliminating clutch fatigue on long-haul routes',
+      'Manufactured at the Narsapura plant near Bengaluru since 2013',
+      'Governed to a 90 km/h top speed in line with Indian commercial-vehicle regulations'
+    ]
+  },
+
+  '16-litre-v8-770': {
+    id: '16-litre-v8-770',
+    name: '16L Twin-Turbo V8',
+    badge: 'DC16 V8 (770 hp / 3,700 Nm)',
+    displacement: '16,353 cc',
+    cylinders: '8 Cylinders (Twin-Turbo Diesel, V8)',
+    fuelType: 'Diesel',
+    peakPowerStr: '770 hp @ 1,800 RPM',
+    peakTorqueStr: '3,700 Nm @ 1,000–1,400 RPM',
+    maxPowerHp: 770,
+    maxTorqueNm: 3700,
+    powerRpmRange: '1,800 RPM',
+    torqueRpmRange: '1,000–1,400 RPM',
+    redlineRpm: 2100,
+    idleRpm: 600,
+    highwayCruiseRpm100Kmh: 1200,
+    highwayCruiseRpm120Kmh: 1400,
+    dynoCurve: [
+      { rpm: 700, powerHp: 200, torqueNm: 2700, boostBar: 1.7 },
+      { rpm: 1000, powerHp: 380, torqueNm: 3700, boostBar: 2.2 },
+      { rpm: 1400, powerHp: 560, torqueNm: 3700, boostBar: 2.2 },
+      { rpm: 1800, powerHp: 770, torqueNm: 3550, boostBar: 2.0 },
+      { rpm: 2100, powerHp: 720, torqueNm: 3100, boostBar: 1.8 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 6.0, speedKmh: 30, gForce: 0.13, gear: 2 },
+      { timeSec: 14.0, speedKmh: 60, gForce: 0.1, gear: 5 },
+      { timeSec: 21.0, speedKmh: 80, gForce: 0.07, gear: 8 },
+      { timeSec: 28.0, speedKmh: 100, gForce: 0.05, gear: 10 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '13.80', speedAt1000Rpm: 1.2, speedAt3000Rpm: 3.6, speedAt6000Rpm: 7.2, redlineSpeed: 5 },
+      { gear: '4th', ratio: '5.14', speedAt1000Rpm: 3.2, speedAt3000Rpm: 9.6, speedAt6000Rpm: 19.2, redlineSpeed: 14 },
+      { gear: '8th', ratio: '1.86', speedAt1000Rpm: 8.9, speedAt3000Rpm: 26.7, speedAt6000Rpm: 53.4, redlineSpeed: 38 },
+      { gear: '12th', ratio: '0.79', speedAt1000Rpm: 21.0, speedAt3000Rpm: 63.0, speedAt6000Rpm: 90.0, redlineSpeed: 90 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 2.2, engineRpm: 850 },
+      { speedKmh: 40, fuelConsumptionKmpl: 2.7, engineRpm: 950 },
+      { speedKmh: 60, fuelConsumptionKmpl: 3.0, engineRpm: 1050 },
+      { speedKmh: 80, fuelConsumptionKmpl: 3.3, engineRpm: 1150 },
+      { speedKmh: 90, fuelConsumptionKmpl: 3.0, engineRpm: 1200 }
+    ],
+    technicalFeatures: [
+      'Scania’s most powerful production engine, hand-assembled with V8 heritage dating to 1969',
+      'Reserved for the flagship S 730 and heavy-haulage tractors above 100-tonne GCW',
+      'Twin-turbo sequential charging for a flat torque curve from idle to peak revs',
+      'Governed to a 90 km/h top speed in line with Indian commercial-vehicle regulations'
+    ]
   }
 };
 
@@ -4405,6 +4510,86 @@ export const MODEL_PERFORMANCE_PROFILES: ModelPerformanceProfile[] = [
     aerodynamicHighlights: [
       'The final SEAT-badged Cupra flagship before Cupra span off in 2021',
       'Not sold in India — European performance-hatch reference specification only'
+    ]
+  },
+  {
+    id: 'scania-r-500',
+    name: 'Scania R 500',
+    tagline: 'The Long-Haul Workhorse',
+    category: 'Tractor-Trailer',
+    primaryEngineId: '13-litre-scania-super-500',
+    availableEngineIds: ['13-litre-scania-super-500'],
+    weightKg: 7500,
+    dragCoefficient: '0.55 Cd',
+    braking100to0DistMeters: 68.0,
+    corneringGForce: 0.35,
+    powerToWeightRatio: '66.7 PS/tonne',
+    sprint0to100: '38.0 seconds (laden tractor-trailer)',
+    topSpeed: '90 km/h (electronically limited)',
+    suspensionType: 'Air Suspension with Load-Sensing Valve',
+    aerodynamicHighlights: [
+      'Aerodynamic roof deflector reduces drag on multi-day highway hauls',
+      'Manufactured at the Narsapura plant near Bengaluru since 2013'
+    ]
+  },
+  {
+    id: 'scania-s-730',
+    name: 'Scania S 730',
+    tagline: 'The Flagship Long-Haul Flagship',
+    category: 'Tractor-Trailer',
+    primaryEngineId: '16-litre-v8-770',
+    availableEngineIds: ['16-litre-v8-770'],
+    weightKg: 9000,
+    dragCoefficient: '0.58 Cd',
+    braking100to0DistMeters: 72.0,
+    corneringGForce: 0.32,
+    powerToWeightRatio: '85.6 PS/tonne',
+    sprint0to100: '28.0 seconds (unladen tractor)',
+    topSpeed: '90 km/h (electronically limited)',
+    suspensionType: 'Reinforced Multi-Leaf & Air Suspension (Heavy-Haulage Tune)',
+    aerodynamicHighlights: [
+      'Flat-floor S-series cab lets a driver stand fully upright',
+      'Rated for GCW up to 80 tonnes for heavy-haulage and multi-trailer combinations'
+    ]
+  },
+  {
+    id: 'scania-citywide',
+    name: 'Scania Citywide',
+    tagline: 'The Low-Floor City Transit Bus',
+    category: 'City Bus',
+    primaryEngineId: '13-litre-scania-super-500',
+    availableEngineIds: ['13-litre-scania-super-500'],
+    weightKg: 12500,
+    dragCoefficient: '0.60 Cd',
+    braking100to0DistMeters: 70.0,
+    corneringGForce: 0.30,
+    powerToWeightRatio: '25.6 PS/tonne (de-rated 320 hp bus tune)',
+    sprint0to100: 'Not applicable — urban stop-start duty cycle',
+    topSpeed: '80 km/h (electronically limited)',
+    suspensionType: 'Kneeling Air Suspension',
+    aerodynamicHighlights: [
+      'Low-entry floor design for near step-free boarding at urban bus stops',
+      'Deployed by BMTC and MSRTC on high-frequency city routes'
+    ]
+  },
+  {
+    id: 'scania-metrolink',
+    name: 'Scania Metrolink',
+    tagline: 'The Intercity Coach Bus',
+    category: 'Coach Bus',
+    primaryEngineId: '13-litre-scania-super-500',
+    availableEngineIds: ['13-litre-scania-super-500'],
+    weightKg: 14000,
+    dragCoefficient: '0.52 Cd',
+    braking100to0DistMeters: 71.0,
+    corneringGForce: 0.32,
+    powerToWeightRatio: '25.7 PS/tonne (360 hp coach tune)',
+    sprint0to100: 'Not applicable — intercity coach duty cycle',
+    topSpeed: '100 km/h (electronically limited)',
+    suspensionType: 'Air Suspension with Retarder Braking',
+    aerodynamicHighlights: [
+      'High-floor luggage-bay layout for genuine long-distance routes',
+      'Chassis of choice behind MSRTC’s premium "Shivneri" and "Ashwamedh" services'
     ]
   }
 ];

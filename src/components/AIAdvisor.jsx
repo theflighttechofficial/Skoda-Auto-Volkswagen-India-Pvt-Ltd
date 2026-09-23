@@ -7,11 +7,14 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
   const isLamborghini = brand === "lamborghini";
   const isBentley = brand === "bentley";
   const isSeat = brand === "seat";
+  const isScania = brand === "scania";
   const [question, setQuestion] = useState(initialPrompt || "");
   const [loading, setLoading] = useState(false);
   const [selectedModel, setSelectedModel] = useState("All");
   const [selectedEngine, setSelectedEngine] = useState("All");
-  const initialGreeting = isSeat
+  const initialGreeting = isScania
+    ? "Hello! I am your official **Scania India AI Consultant**. Ask me anything about our commercial-vehicle portfolio—the long-haul workhorse **Scania R 500** (500 hp Scania Super 13-litre), flagship heavy-haulage **Scania S 730** (770 hp twin-turbo V8), low-floor city transit **Scania Citywide**, or intercity coach **Scania Metrolink**. You can also ask about Opticruise AMT, GCW ratings, the Narsapura plant, or fleet total-cost-of-ownership calculations."
+    : isSeat
     ? "Hello! I am your **SEAT AI Consultant**. Important: SEAT is **not officially sold in India** — there is no CBU import programme, dealer network or factory warranty here. I can tell you about the global-market **Ibiza**, **Arona**, **Leon**, **Leon Cupra**, **Ateca**, and **Tarraco** — including MQB platform sharing, FR sport tuning, and SEAT's Cupra performance heritage — as global reference specs for enthusiast comparison only, not as purchasable Indian configurations."
     : isBentley
     ? "Hello! I am your official **Bentley India AI Consultant**. Ask me anything about our complete portfolio—the twin-turbo **Continental GT**, ultimate luxury SUV **Bentayga**, grand luxury saloon **Flying Spur**, or our performance flagships: the **Continental GT Speed** (659 PS W12) and **Bentayga Speed** (635 PS V8). You can also ask about Bentley Dynamic Ride, Mulliner personal commissioning, twin-turbo W12/V8 engineering, or on-road calculations."
@@ -30,7 +33,17 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
       text: initialGreeting,
     },
   ]);
-  const quickPrompts = isSeat
+  const quickPrompts = isScania
+    ? [
+        "What is the GCW rating difference between the R 500 and S 730?",
+        "How does Scania's Opticruise AMT gearbox work?",
+        "What is the real-world mileage of a laden Scania R 500 tractor-trailer?",
+        "Which Indian state transport undertakings use Scania Citywide or Metrolink buses?",
+        "Tell me about the Scania Super combustion system and its fuel-saving claims.",
+        "Where is the Scania Narsapura plant and what does it manufacture?",
+        "How is Scania different from Škoda, Audi, and Porsche within the Volkswagen Group?",
+      ]
+    : isSeat
     ? [
         "Why isn't SEAT sold in India?",
         "What was the SEAT Leon Cupra, and how does it relate to Cupra the brand?",
@@ -102,7 +115,9 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
           "Should I pick Kylaq or Kushaq for daily city commuting & highway trips?",
           "1.0L TSI vs 1.5L TSI EVO with ACT: Which should I buy for Slavia/Kushaq?",
         ];
-  const modelOptions = isSeat
+  const modelOptions = isScania
+    ? ["All", "Scania R 500", "Scania S 730", "Scania Citywide", "Scania Metrolink"]
+    : isSeat
     ? ["All", "Ibiza", "Arona", "Leon", "Leon Cupra", "Ateca", "Tarraco"]
     : isBentley
     ? [
@@ -160,7 +175,9 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
           "Kodiaq",
           "Superb",
         ];
-  const engineOptions = isSeat
+  const engineOptions = isScania
+    ? ["All", "13L Scania Super Inline-6 (500 hp)", "16L Twin-Turbo V8 (770 hp)"]
+    : isSeat
     ? ["All", "1.0 TSI", "1.5 TSI EVO", "2.0 TSI Cupra (300 PS)"]
     : isBentley
     ? [
@@ -243,7 +260,9 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
           ...prev,
           {
             role: "assistant",
-            text: isSeat
+            text: isScania
+              ? "I encountered an issue retrieving the response. All Scania trucks and buses in India offer Opticruise AMT gearboxes, AIS-113/AIS-052 certified structures, and Narsapura-built Scania Super or twin-turbo V8 powertrains."
+              : isSeat
               ? "I encountered an issue retrieving the response. Remember: SEAT is not officially sold in India. The Ibiza, Arona, Leon, Ateca and Tarraco shown here are global reference specs for enthusiast comparison only."
               : isBentley
               ? "I encountered an issue retrieving the response. All Bentley cars in India offer Bentley Dynamic Ride, Mulliner personalization options, and twin-turbo W12 or V8 engineering."
@@ -264,7 +283,9 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
         ...prev,
         {
           role: "assistant",
-          text: isSeat
+          text: isScania
+            ? "Unable to reach the server. Scania India offers the R 500 (from \u20b942.5L), S 730 (from \u20b958.0L), Citywide (from \u20b965.0L), and Metrolink (from \u20b972.0L). All feature Opticruise AMT and Narsapura-built powertrains."
+            : isSeat
             ? "Unable to reach the server. Reminder: SEAT (Ibiza, Arona, Leon, Ateca, Tarraco) is not officially sold in India \u2014 no CBU import, dealer network or warranty exists here. All figures shown are global reference specs only."
             : isBentley
             ? "Unable to reach the server. Bentley India offers the Continental GT (from \u20B94.50Cr), Bentayga (from \u20B94.20Cr), and Flying Spur (from \u20B94.50Cr). All feature Bentley Dynamic Ride and Mulliner personalization options."
@@ -289,7 +310,7 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
       handleAsk();
     }
   };
-  const primaryColor = isSeat ? "orange" : isBentley ? "green" : isLamborghini ? "yellow" : isPorsche ? "amber" : isAudi ? "red" : isVW ? "blue" : "emerald";
+  const primaryColor = isScania ? "rose" : isSeat ? "orange" : isBentley ? "green" : isLamborghini ? "yellow" : isPorsche ? "amber" : isAudi ? "red" : isVW ? "blue" : "emerald";
   return (
     <div className="space-y-6 max-w-5xl mx-auto">
       {/* Title */}
@@ -297,7 +318,7 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
         <div>
           <h2 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
             <Bot
-              className={`w-6 h-6 ${isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+              className={`w-6 h-6 ${isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
             />
             {isBentley
               ? "Bentley India AI Automotive Advisor"
@@ -319,7 +340,7 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
 
         <div className="flex items-center gap-2 text-xs text-zinc-400">
           <span
-            className={`w-2 h-2 rounded-full ${isSeat ? "bg-orange-400" : isBentley ? "bg-green-400" : isLamborghini ? "bg-yellow-400" : isPorsche ? "bg-amber-400" : isAudi ? "bg-red-400" : isVW ? "bg-blue-400" : "bg-emerald-400"} animate-pulse`}
+            className={`w-2 h-2 rounded-full ${isScania ? "bg-rose-400" : isSeat ? "bg-orange-400" : isBentley ? "bg-green-400" : isLamborghini ? "bg-yellow-400" : isPorsche ? "bg-amber-400" : isAudi ? "bg-red-400" : isVW ? "bg-blue-400" : "bg-emerald-400"} animate-pulse`}
           />
           <span>Active Intelligence</span>
         </div>
@@ -333,7 +354,7 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
             <button
               key={m}
               onClick={() => setSelectedModel(m)}
-              className={`px-2.5 py-1 rounded-md transition-all font-medium ${selectedModel === m ? (m.includes("vRS") || m.includes("GTI") || m.includes("GT") || m.includes("RS") ? "bg-red-600 text-white shadow-sm font-bold" : isSeat ? "bg-orange-600 text-white shadow-sm" : isBentley ? "bg-green-600 text-white shadow-sm" : isLamborghini ? "bg-yellow-600 text-white shadow-sm" : isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "bg-zinc-950 text-zinc-400 hover:text-white border border-zinc-800"}`}
+              className={`px-2.5 py-1 rounded-md transition-all font-medium ${selectedModel === m ? (m.includes("vRS") || m.includes("GTI") || m.includes("GT") || m.includes("RS") ? "bg-red-600 text-white shadow-sm font-bold" : isScania ? "bg-rose-600 text-white shadow-sm" : isSeat ? "bg-orange-600 text-white shadow-sm" : isBentley ? "bg-green-600 text-white shadow-sm" : isLamborghini ? "bg-yellow-600 text-white shadow-sm" : isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "bg-zinc-950 text-zinc-400 hover:text-white border border-zinc-800"}`}
             >
               {m}
             </button>
@@ -346,7 +367,7 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
             <button
               key={e}
               onClick={() => setSelectedEngine(e)}
-              className={`px-2.5 py-1 rounded-md transition-all font-medium ${selectedEngine === e ? (e.includes("vRS") || e.includes("GTI") || e.includes("RS") ? "bg-red-600 text-white shadow-sm font-bold" : isSeat ? "bg-orange-600 text-white shadow-sm" : isBentley ? "bg-green-600 text-white shadow-sm" : isLamborghini ? "bg-yellow-600 text-white shadow-sm" : isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "bg-zinc-950 text-zinc-400 hover:text-white border border-zinc-800"}`}
+              className={`px-2.5 py-1 rounded-md transition-all font-medium ${selectedEngine === e ? (e.includes("vRS") || e.includes("GTI") || e.includes("RS") ? "bg-red-600 text-white shadow-sm font-bold" : isScania ? "bg-rose-600 text-white shadow-sm" : isSeat ? "bg-orange-600 text-white shadow-sm" : isBentley ? "bg-green-600 text-white shadow-sm" : isLamborghini ? "bg-yellow-600 text-white shadow-sm" : isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "bg-zinc-950 text-zinc-400 hover:text-white border border-zinc-800"}`}
             >
               {e}
             </button>
@@ -364,7 +385,7 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
             <button
               key={idx}
               onClick={() => handleAsk(prompt)}
-              className={`text-xs px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 ${isSeat ? "hover:border-orange-700/50" : isBentley ? "hover:border-green-700/50" : isLamborghini ? "hover:border-yellow-700/50" : isPorsche ? "hover:border-amber-700/50" : isAudi ? "hover:border-red-700/50" : isVW ? "hover:border-blue-700/50" : "hover:border-emerald-700/50"} text-zinc-300 hover:text-white transition-all text-left cursor-pointer`}
+              className={`text-xs px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 ${isScania ? "hover:border-rose-700/50" : isSeat ? "hover:border-orange-700/50" : isBentley ? "hover:border-green-700/50" : isLamborghini ? "hover:border-yellow-700/50" : isPorsche ? "hover:border-amber-700/50" : isAudi ? "hover:border-red-700/50" : isVW ? "hover:border-blue-700/50" : "hover:border-emerald-700/50"} text-zinc-300 hover:text-white transition-all text-left cursor-pointer`}
             >
               {prompt}
             </button>
@@ -381,14 +402,14 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
           >
             {msg.role === "assistant" && (
               <div
-                className={`w-8 h-8 rounded-lg ${isSeat ? "bg-orange-950 border border-orange-700/60 text-orange-400" : isBentley ? "bg-green-950 border border-green-700/60 text-green-400" : isLamborghini ? "bg-yellow-950 border border-yellow-700/60 text-yellow-400" : isPorsche ? "bg-amber-950 border border-amber-700/60 text-amber-400" : isAudi ? "bg-red-950 border border-red-700/60 text-red-400" : isVW ? "bg-blue-950 border border-blue-700/60 text-blue-400" : "bg-emerald-950 border border-emerald-700/60 text-emerald-400"} flex items-center justify-center flex-shrink-0`}
+                className={`w-8 h-8 rounded-lg ${isScania ? "bg-rose-950 border border-rose-700/60 text-rose-400" : isSeat ? "bg-orange-950 border border-orange-700/60 text-orange-400" : isBentley ? "bg-green-950 border border-green-700/60 text-green-400" : isLamborghini ? "bg-yellow-950 border border-yellow-700/60 text-yellow-400" : isPorsche ? "bg-amber-950 border border-amber-700/60 text-amber-400" : isAudi ? "bg-red-950 border border-red-700/60 text-red-400" : isVW ? "bg-blue-950 border border-blue-700/60 text-blue-400" : "bg-emerald-950 border border-emerald-700/60 text-emerald-400"} flex items-center justify-center flex-shrink-0`}
               >
                 <Bot className="w-4 h-4" />
               </div>
             )}
 
             <div
-              className={`max-w-[85%] rounded-2xl px-4 py-3 text-xs sm:text-sm leading-relaxed ${msg.role === "user" ? (isSeat ? "bg-orange-600 text-white" : isBentley ? "bg-green-600 text-white" : isLamborghini ? "bg-yellow-600 text-white" : isPorsche ? "bg-amber-600 text-white" : isAudi ? "bg-red-600 text-white" : isVW ? "bg-blue-600 text-white" : "bg-emerald-600 text-white") : "bg-zinc-950 border border-zinc-800 text-zinc-200 shadow-md"}`}
+              className={`max-w-[85%] rounded-2xl px-4 py-3 text-xs sm:text-sm leading-relaxed ${msg.role === "user" ? (isScania ? "bg-rose-600 text-white" : isSeat ? "bg-orange-600 text-white" : isBentley ? "bg-green-600 text-white" : isLamborghini ? "bg-yellow-600 text-white" : isPorsche ? "bg-amber-600 text-white" : isAudi ? "bg-red-600 text-white" : isVW ? "bg-blue-600 text-white" : "bg-emerald-600 text-white") : "bg-zinc-950 border border-zinc-800 text-zinc-200 shadow-md"}`}
             >
               <div className="whitespace-pre-line space-y-1.5">
                 {msg.text.split("\n").map((line, lIdx) => {
@@ -396,7 +417,7 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
                     return (
                       <p
                         key={lIdx}
-                        className={`font-bold ${isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"} text-base mt-2 mb-1`}
+                        className={`font-bold ${isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"} text-base mt-2 mb-1`}
                       >
                         {line.replace("### ", "")}
                       </p>
@@ -429,7 +450,7 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
         {loading && (
           <div className="flex items-center gap-3 text-zinc-400 text-xs">
             <div
-              className={`w-8 h-8 rounded-lg ${isSeat ? "bg-orange-950 border border-orange-700/60 text-orange-400" : isBentley ? "bg-green-950 border border-green-700/60 text-green-400" : isLamborghini ? "bg-yellow-950 border border-yellow-700/60 text-yellow-400" : isPorsche ? "bg-amber-950 border border-amber-700/60 text-amber-400" : isAudi ? "bg-red-950 border border-red-700/60 text-red-400" : isVW ? "bg-blue-950 border border-blue-700/60 text-blue-400" : "bg-emerald-950 border border-emerald-700/60 text-emerald-400"} flex items-center justify-center flex-shrink-0`}
+              className={`w-8 h-8 rounded-lg ${isScania ? "bg-rose-950 border border-rose-700/60 text-rose-400" : isSeat ? "bg-orange-950 border border-orange-700/60 text-orange-400" : isBentley ? "bg-green-950 border border-green-700/60 text-green-400" : isLamborghini ? "bg-yellow-950 border border-yellow-700/60 text-yellow-400" : isPorsche ? "bg-amber-950 border border-amber-700/60 text-amber-400" : isAudi ? "bg-red-950 border border-red-700/60 text-red-400" : isVW ? "bg-blue-950 border border-blue-700/60 text-blue-400" : "bg-emerald-950 border border-emerald-700/60 text-emerald-400"} flex items-center justify-center flex-shrink-0`}
             >
               <RefreshCw className="w-4 h-4 animate-spin" />
             </div>
@@ -457,13 +478,13 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder={`Ask about ${selectedModel === "All" ? (isSeat ? "any SEAT model" : isBentley ? "any Bentley model" : isLamborghini ? "any Lamborghini model" : isPorsche ? "any Porsche model" : isAudi ? "any Audi model" : isVW ? "any Volkswagen model" : "any \u0160koda model") : selectedModel}, mileage, comparisons, or safety...`}
+          placeholder={`Ask about ${selectedModel === "All" ? (isScania ? "any Scania truck or bus" : isSeat ? "any SEAT model" : isBentley ? "any Bentley model" : isLamborghini ? "any Lamborghini model" : isPorsche ? "any Porsche model" : isAudi ? "any Audi model" : isVW ? "any Volkswagen model" : "any \u0160koda model") : selectedModel}, mileage, comparisons, or safety...`}
           className="flex-1 bg-transparent px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none"
         />
         <button
           onClick={() => handleAsk()}
           disabled={!question.trim() || loading}
-          className={`px-4 py-2 rounded-lg ${isSeat ? "bg-orange-600 hover:bg-orange-500 shadow-orange-900/40" : isBentley ? "bg-green-600 hover:bg-green-500 shadow-green-900/40" : isLamborghini ? "bg-yellow-600 hover:bg-yellow-500 shadow-yellow-900/40" : isPorsche ? "bg-amber-600 hover:bg-amber-500 shadow-amber-900/40" : isAudi ? "bg-red-600 hover:bg-red-500 shadow-red-900/40" : isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-900/40" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-900/40"} disabled:opacity-40 text-white font-semibold text-xs flex items-center gap-1.5 transition-all shadow-md cursor-pointer`}
+          className={`px-4 py-2 rounded-lg ${isScania ? "bg-rose-600 hover:bg-rose-500 shadow-rose-900/40" : isSeat ? "bg-orange-600 hover:bg-orange-500 shadow-orange-900/40" : isBentley ? "bg-green-600 hover:bg-green-500 shadow-green-900/40" : isLamborghini ? "bg-yellow-600 hover:bg-yellow-500 shadow-yellow-900/40" : isPorsche ? "bg-amber-600 hover:bg-amber-500 shadow-amber-900/40" : isAudi ? "bg-red-600 hover:bg-red-500 shadow-red-900/40" : isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-900/40" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-900/40"} disabled:opacity-40 text-white font-semibold text-xs flex items-center gap-1.5 transition-all shadow-md cursor-pointer`}
         >
           <span>Ask</span>
           <Send className="w-3.5 h-3.5" />

@@ -5,10 +5,11 @@ import { PORSCHE_MODELS } from "../data/porscheData";
 import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
 import { BENTLEY_MODELS } from "../data/bentleyData";
 import { SEAT_MODELS } from "../data/seatData";
+import { SCANIA_MODELS } from "../data/scaniaData";
 import { peakPowerHp, bootLitres, groundClearanceMm, hashString } from "./carInsights";
 import { getRaceRoster } from "./raceRoster";
 
-const CATALOG_BY_BRAND = { skoda: SKODA_MODELS, volkswagen: VW_MODELS, audi: AUDI_MODELS, porsche: PORSCHE_MODELS, lamborghini: LAMBORGHINI_MODELS, bentley: BENTLEY_MODELS, seat: SEAT_MODELS };
+const CATALOG_BY_BRAND = { skoda: SKODA_MODELS, volkswagen: VW_MODELS, audi: AUDI_MODELS, porsche: PORSCHE_MODELS, lamborghini: LAMBORGHINI_MODELS, bentley: BENTLEY_MODELS, seat: SEAT_MODELS, scania: SCANIA_MODELS };
 
 function peakTorqueNm(model) {
   const torques = (model.engines || [])

@@ -12,6 +12,7 @@ export const BRAND_ACCENT = {
   lamborghini: "yellow",
   bentley: "green",
   seat: "orange",
+  scania: "rose",
 };
 
 export const ACCENT_CLASSES = {
@@ -196,6 +197,32 @@ export const ACCENT_CLASSES = {
     ratingBar: "bg-orange-500",
     modelPillSelected: "bg-orange-600 text-white shadow-md shadow-orange-950",
     variantTabSelected: "bg-zinc-900 border-orange-500 shadow-lg shadow-orange-950/40 ring-1 ring-orange-500/50",
+  },
+  rose: {
+    text400: "text-rose-400",
+    text300: "text-rose-300",
+    dot: "bg-rose-400",
+    welcomeBannerBg: "bg-gradient-to-br from-rose-950/60 via-zinc-950 to-black border-rose-900/50 shadow-rose-950/40",
+    glow600_20: "bg-rose-600/20",
+    badgePill: "bg-rose-950/70 border-rose-800 text-rose-300",
+    avatarRing: "border-rose-700/50",
+    gradientText: "bg-gradient-to-r from-rose-400 to-rose-200 bg-clip-text text-transparent",
+    divider: "bg-rose-700/60",
+    heroBorder: "border-rose-900/40",
+    glow600_15: "bg-rose-600/15",
+    heroBadgePill: "bg-rose-950/80 border-rose-800/60 text-rose-400",
+    ctaButton: "bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-400 shadow-rose-950/60",
+    secondaryButton: "border-rose-700/60 text-rose-400",
+    solidButton: "bg-rose-600 hover:bg-rose-500 shadow-rose-950",
+    smallBadge: "bg-rose-500/20 text-rose-300 border-rose-500/30",
+    cardBadge: "bg-rose-950/80 border-rose-700/50 text-rose-300",
+    cardHover: "border-zinc-800 hover:border-rose-600/60 hover:shadow-rose-950/30",
+    cardTitleHover: "group-hover:text-rose-300",
+    noteText: "text-rose-300/80",
+    noteTextSolid: "text-rose-300/90",
+    ratingBar: "bg-rose-500",
+    modelPillSelected: "bg-rose-600 text-white shadow-md shadow-rose-950",
+    variantTabSelected: "bg-zinc-900 border-rose-500 shadow-lg shadow-rose-950/40 ring-1 ring-rose-500/50",
   },
 };
 

@@ -54,6 +54,7 @@ import { PORSCHE_MODELS } from "../data/porscheData";
 import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
 import { BENTLEY_MODELS } from "../data/bentleyData";
 import { SEAT_MODELS } from "../data/seatData";
+import { SCANIA_MODELS } from "../data/scaniaData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
@@ -61,6 +62,7 @@ import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
 import { SeatLogo } from "./SeatLogo";
+import { ScaniaLogo } from "./ScaniaLogo";
 
 // Central per-brand metadata — every brand-specific string/class the header
 // needs lives here, keyed by brand id, so adding a brand (e.g. Porsche) is
@@ -234,6 +236,30 @@ const BRAND_META = {
     advisorLabel: "AI SEAT Advisor",
     lineupLabel: "SEAT Lineup (Not Sold in India):",
   },
+  scania: {
+    Logo: ScaniaLogo,
+    accent: "rose",
+    models: SCANIA_MODELS,
+    label: "Scania India",
+    corporateLine: "Scania Commercial Vehicles India Pvt. Ltd. (TRATON / Volkswagen Group)",
+    foundedLine: "Södertälje, Sweden (Est. 1891)",
+    plantLine: "Narsapura (Bengaluru) Manufacturing Plant",
+    switcherDesc: "Scania India (Trucks & Buses)",
+    techTagline: "Scania Super Combustion System, Opticruise AMT & Modular Truck/Bus Architecture",
+    dropdownTitle: "Scania India",
+    dropdownTagline: "Driven By Dreams • Swedish Heritage 1891",
+    dropdownModels: "R 500, S 730, Citywide, Metrolink",
+    rsLabel: "Flagship Powertrain & Heavy-Duty Performance",
+    rsHeaderLabel: "Scania S 730 V8 Performance (770 hp)",
+    rsShortBadge: "V8",
+    engineTabLabel: "13L & 16L Diesel Engines",
+    safetyLine: "AIS-113 & AIS-052 Certified Structures",
+    techLine: "Scania Opticruise AMT & Retarder Braking",
+    careLine: "Scania India Dealer Warranty & Fleet Support",
+    aboutLabel: "About Scania",
+    advisorLabel: "AI Scania Advisor",
+    lineupLabel: "Scania Lineup:",
+  },
 };
 
 const ACCENT_CLASSES = {
@@ -335,9 +361,23 @@ const ACCENT_CLASSES = {
     switcherActive: "bg-orange-950/90 text-orange-300 border border-orange-700",
     switcherHover: "hover:text-orange-300",
   },
+  rose: {
+    dot: "bg-rose-400",
+    text: "text-rose-400",
+    pillBg: "bg-gradient-to-r from-rose-600 to-rose-500 shadow-rose-950/60",
+    buttonBg: "bg-rose-600 hover:bg-rose-500 shadow-rose-900/40",
+    selectedBg: "bg-rose-600 text-white shadow-md shadow-rose-950",
+    dropdownBg: "bg-rose-950/40 hover:bg-rose-950/70 border-rose-800/80 hover:border-rose-700",
+    divider: "from-transparent via-rose-500/70 to-transparent",
+    scrollEdge: "bg-rose-950/90 border-rose-800 text-rose-300 hover:bg-rose-900",
+    activeOptionBg: "bg-rose-950/60 border-rose-700/70 text-white",
+    activeOptionBadge: "text-rose-400 bg-rose-950/80 border-rose-800",
+    switcherActive: "bg-rose-950/90 text-rose-300 border border-rose-700",
+    switcherHover: "hover:text-rose-300",
+  },
 };
 
-const BRAND_ORDER = ["skoda", "volkswagen", "audi", "porsche", "lamborghini", "bentley", "seat"];
+const BRAND_ORDER = ["skoda", "volkswagen", "audi", "porsche", "lamborghini", "bentley", "seat", "scania"];
 
 // Makes a horizontally-scrollable strip behave properly everywhere:
 // vertical mouse-wheel scrolls it sideways, it can be dragged with the
@@ -517,7 +557,8 @@ export const Header = ({
       .replace("Porsche ", "")
       .replace("Lamborghini ", "")
       .replace("Bentley ", "")
-      .replace("SEAT ", "");
+      .replace("SEAT ", "")
+      .replace("Scania ", "");
   const modelBadges = (car) => (
     <>
       {car.id === "golf-gti" && (
@@ -649,7 +690,7 @@ export const Header = ({
                 id="btn-brand-switcher-dropdown"
                 onClick={() => setIsBrandDropdownOpen(!isBrandDropdownOpen)}
                 className={`flex items-center gap-2.5 px-3 py-1.5 rounded-xl border transition-all cursor-pointer shadow-md group ${accentClasses.dropdownBg}`}
-                title="Click to switch between Škoda, Volkswagen, Audi, Porsche, Lamborghini, Bentley India, and SEAT (not sold in India)"
+                title="Click to switch between Škoda, Volkswagen, Audi, Porsche, Lamborghini, Bentley India, SEAT (not sold in India), and Scania India"
               >
                 <BrandLogo variant="full" size="md" animated={true} />
                 <div className="flex items-center gap-1 pl-1.5 border-l border-zinc-700/60 text-zinc-400 group-hover:text-zinc-200">

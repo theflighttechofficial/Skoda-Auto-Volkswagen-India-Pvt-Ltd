@@ -24,6 +24,30 @@ function generateSmartSkodaResponse(question: string, modelContext?: string, eng
   const isLamborghiniBrand = brandContext === 'lamborghini';
   const isBentleyBrand = brandContext === 'bentley';
   const isSeatBrand = brandContext === 'seat';
+  const isScaniaBrand = brandContext === 'scania';
+
+  // Scania specific queries, when a Scania model is selected, or when the active site brand is Scania.
+  if (isScaniaBrand || q.includes('scania') || q.includes('opticruise') || q.includes('narsapura') || q.includes('citywide') || q.includes('metrolink') || selectedModel.includes('scania') || selectedModel.includes('citywide') || selectedModel.includes('metrolink')) {
+    if (q.includes('s 730') || q.includes('s730') || selectedModel.includes('s 730')) {
+      return `### Scania S 730 (The Flagship Heavy-Haulage Tractor)
+- **Powertrain:** 16-litre twin-turbo V8 producing **770 hp** & **3,700 Nm**, Scania's most powerful production engine, paired with the Scania Opticruise 12-speed automated gearbox.
+- **Cab:** Flat-floor S-series cab lets a driver stand fully upright — a first for Scania's cab-over range.
+- **Rating:** GCW up to 80 tonnes for heavy-haulage and multi-trailer combinations, priced from ₹58.0 Lakh (tractor unit).`;
+    }
+
+    if (q.includes('why') && q.includes('india')) {
+      return `### Is Scania Actually Sold in India?
+Yes — unlike SEAT, Bentley or Lamborghini, Scania genuinely manufactures for the Indian market: the Narsapura plant near Bengaluru has assembled R- and S-series tractors since 2013, and Scania Commercial Vehicles India Pvt. Ltd. runs its own direct-owned and franchised dealer/workshop network, independent of the Škoda Auto Volkswagen India passenger-car structure.`;
+    }
+
+    return `### Scania Portfolio Overview (Trucks & Buses, Genuinely Sold in India)
+Scania is the Volkswagen Group's dedicated commercial-vehicle marque (via TRATON SE), manufacturing trucks and buses locally at Narsapura near Bengaluru since 2013:
+- **Scania R 500:** Long-haul tractor-trailer, 13L Scania Super Inline-6 (500 hp / 2,550 Nm), from ₹42.5 Lakh.
+- **Scania S 730:** Flagship heavy-haulage tractor, 16L twin-turbo V8 (770 hp / 3,700 Nm), from ₹58.0 Lakh.
+- **Scania Citywide:** Low-floor city transit bus used by BMTC and MSRTC, from ₹65.0 Lakh.
+- **Scania Metrolink:** Intercity coach behind MSRTC's "Shivneri" and "Ashwamedh" services, from ₹72.0 Lakh.
+- **India Status:** Fully manufactured and sold in India with a direct dealer/workshop network — genuinely different from SEAT's absence or Bentley/Lamborghini's direct-import model.`;
+  }
 
   // SEAT specific queries, when a SEAT model is selected, or when the active site brand is SEAT.
   // IMPORTANT: SEAT is NOT officially sold in India — every response must make that explicit rather
@@ -551,20 +575,52 @@ export interface AskSkodaAIParams {
  */
 export async function getSkodaAIAnswer(params: AskSkodaAIParams): Promise<string> {
   const { question, model, variant, engine } = params;
-  const userBrand = params.brand || (question.toLowerCase().includes('seat') || question.toLowerCase().includes('ibiza') || question.toLowerCase().includes('arona') || question.toLowerCase().includes('ateca') || question.toLowerCase().includes('tarraco') || question.toLowerCase().includes('cupra') ? 'seat' : question.toLowerCase().includes('bentley') || question.toLowerCase().includes('continental gt') || question.toLowerCase().includes('bentayga') || question.toLowerCase().includes('flying spur') ? 'bentley' : question.toLowerCase().includes('lamborghini') || question.toLowerCase().includes('huracan') || question.toLowerCase().includes('urus') || question.toLowerCase().includes('revuelto') ? 'lamborghini' : question.toLowerCase().includes('porsche') || question.toLowerCase().includes('pdk') || question.toLowerCase().includes('911') ? 'porsche' : question.toLowerCase().includes('audi') || question.toLowerCase().includes('quattro') || question.toLowerCase().includes('tfsi') ? 'audi' : question.toLowerCase().includes('volkswagen') || question.toLowerCase().includes('virtus') || question.toLowerCase().includes('taigun') || question.toLowerCase().includes('tiguan') || question.toLowerCase().includes('golf') ? 'volkswagen' : 'skoda');
+  const userBrand = params.brand || (question.toLowerCase().includes('scania') || question.toLowerCase().includes('opticruise') || question.toLowerCase().includes('narsapura') || question.toLowerCase().includes('citywide') || question.toLowerCase().includes('metrolink') ? 'scania' : question.toLowerCase().includes('seat') || question.toLowerCase().includes('ibiza') || question.toLowerCase().includes('arona') || question.toLowerCase().includes('ateca') || question.toLowerCase().includes('tarraco') || question.toLowerCase().includes('cupra') ? 'seat' : question.toLowerCase().includes('bentley') || question.toLowerCase().includes('continental gt') || question.toLowerCase().includes('bentayga') || question.toLowerCase().includes('flying spur') ? 'bentley' : question.toLowerCase().includes('lamborghini') || question.toLowerCase().includes('huracan') || question.toLowerCase().includes('urus') || question.toLowerCase().includes('revuelto') ? 'lamborghini' : question.toLowerCase().includes('porsche') || question.toLowerCase().includes('pdk') || question.toLowerCase().includes('911') ? 'porsche' : question.toLowerCase().includes('audi') || question.toLowerCase().includes('quattro') || question.toLowerCase().includes('tfsi') ? 'audi' : question.toLowerCase().includes('volkswagen') || question.toLowerCase().includes('virtus') || question.toLowerCase().includes('taigun') || question.toLowerCase().includes('tiguan') || question.toLowerCase().includes('golf') ? 'volkswagen' : 'skoda');
   const isVW = userBrand === 'volkswagen';
   const isAudi = userBrand === 'audi';
   const isPorsche = userBrand === 'porsche';
   const isLamborghini = userBrand === 'lamborghini';
   const isBentley = userBrand === 'bentley';
   const isSeat = userBrand === 'seat';
+  const isScania = userBrand === 'scania';
 
   const ai = getGeminiClient();
   if (!ai) {
     return generateSmartSkodaResponse(question, model, engine, userBrand);
   }
 
-  const systemPrompt = isSeat
+  const systemPrompt = isScania
+    ? `You are the official Scania India AI Consultant. Your mission is to provide accurate, objective, and beautifully structured commercial-vehicle guidance on the Scania truck and bus lineup genuinely sold and manufactured in India.
+
+CONTEXT: Scania Commercial Vehicles India Pvt. Ltd. is a fully owned subsidiary of TRATON SE (itself majority-owned by the Volkswagen Group), manufacturing trucks and buses at its Narsapura plant near Bengaluru since 2013. Unlike SEAT (absent from India) or Bentley/Lamborghini (direct-import), Scania runs its own direct-owned and franchised dealer/workshop network in India, independent of the Škoda Auto Volkswagen India passenger-car structure.
+
+KNOWLEDGE BASE & FACTS (India-market specs and pricing):
+1. Scania R 500 (Long-Haul Tractor-Trailer):
+   - Engine: 13L Scania Super Inline-6 (500 hp / 2,550 Nm). Scania Opticruise 12-speed AMT.
+   - Price: ₹42.5 – ₹48.0 Lakh (tractor unit). GCW up to 49 tonnes.
+
+2. Scania S 730 (Flagship Heavy-Haulage Tractor):
+   - Engine: 16L Twin-Turbo V8 (770 hp / 3,700 Nm), Scania's most powerful production engine.
+   - Price: ₹58.0 – ₹68.0 Lakh (tractor unit). GCW up to 80 tonnes. Flat-floor standing-height S-series cab.
+
+3. Scania Citywide (Low-Floor City Transit Bus):
+   - Engine: 13L Scania Super Inline-6 (320 hp bus tune). Used by BMTC and MSRTC.
+   - Price: ₹65.0 – ₹78.0 Lakh (chassis + body).
+
+4. Scania Metrolink (Intercity Coach Bus):
+   - Engine: 13L Scania Super Inline-6 (360 hp coach tune). Chassis behind MSRTC's "Shivneri" and "Ashwamedh" premium services.
+   - Price: ₹72.0 – ₹92.0 Lakh (chassis + body).
+
+5. Manufacturing & Servicing:
+   - Narsapura plant near Bengaluru, Scania's first fully-owned manufacturing facility outside Europe (opened 2013).
+   - Scania Opticruise AMT, Scania Retarder auxiliary braking, and Global Scania Driver Support standard across the range.
+   - AIS-113 (cab) and AIS-052 (bus body) certified structures.
+
+FORMATTING RULES:
+- Use Markdown headers (###), bold key figures, and bullet points for specs.
+- Always be clear this is a genuine India-market commercial-vehicle lineup, not a global-reference-only brand.
+- Answer with a tone reflecting durable, fleet-efficiency-focused Swedish engineering heritage.`
+    : isSeat
     ? `You are the official SEAT AI Consultant. Your mission is to provide accurate, objective, and beautifully structured automotive guidance on the SEAT lineup — while being completely upfront that SEAT is NOT officially sold in India.
 
 CRITICAL CONTEXT: SEAT has no official distribution, CBU import programme, CKD assembly, dealer network or warranty support in India. Every response must make this explicit. All specs and prices below are global/European reference figures for enthusiast comparison only — never present them as a purchasable Indian configuration or invent an India price/warranty story.

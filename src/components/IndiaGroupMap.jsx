@@ -10,6 +10,7 @@ import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
 import { SeatLogo } from "./SeatLogo";
+import { ScaniaLogo } from "./ScaniaLogo";
 
 const BRANDS = [
   { id: "skoda", label: "Škoda", dot: "bg-emerald-500", text: "text-emerald-400", ring: "ring-emerald-500" },
@@ -19,6 +20,7 @@ const BRANDS = [
   { id: "lamborghini", label: "Lamborghini", dot: "bg-yellow-500", text: "text-yellow-400", ring: "ring-yellow-500" },
   { id: "bentley", label: "Bentley", dot: "bg-green-500", text: "text-green-400", ring: "ring-green-500" },
   { id: "seat", label: "SEAT (0 — Not Sold in India)", dot: "bg-orange-500", text: "text-orange-400", ring: "ring-orange-500" },
+  { id: "scania", label: "Scania (Trucks & Buses)", dot: "bg-rose-500", text: "text-rose-400", ring: "ring-rose-500" },
 ];
 
 function brandMatches(dealership, activeBrands) {
@@ -33,6 +35,7 @@ function BrandLogo({ brand, size = "sm" }) {
   if (brand === "lamborghini") return <LamborghiniLogo variant="emblem" size={size} />;
   if (brand === "bentley") return <BentleyLogo variant="emblem" size={size} />;
   if (brand === "seat") return <SeatLogo variant="emblem" size={size} />;
+  if (brand === "scania") return <ScaniaLogo variant="emblem" size={size} />;
   return <SkodaLogo variant="emblem" size={size} />;
 }
 
@@ -72,9 +75,10 @@ export const IndiaGroupMap = ({ onSwitchBrand, onOpenDealershipLocator }) => {
           One Group, All Across India
         </h2>
         <p className="text-sm text-zinc-400 mt-2">
-          A stylized, click-to-explore map of Škoda, Volkswagen, Audi, Porsche, Lamborghini, and Bentley presence across India.
+          A stylized, click-to-explore map of Škoda, Volkswagen, Audi, Porsche, Lamborghini, Bentley, and Scania presence across India.
           Toggle brands and click a state to see dealerships. (SEAT is included in the brand toggle for completeness, but has
-          zero outlets — it is not officially sold or serviced in India.)
+          zero outlets — it is not officially sold or serviced in India. Scania's truck and bus dealer/workshop network is
+          separate from the passenger-car network.)
         </p>
       </div>
 

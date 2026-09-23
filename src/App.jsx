@@ -55,6 +55,7 @@ import { PorscheLogo } from "./components/PorscheLogo";
 import { LamborghiniLogo } from "./components/LamborghiniLogo";
 import { BentleyLogo } from "./components/BentleyLogo";
 import { SeatLogo } from "./components/SeatLogo";
+import { ScaniaLogo } from "./components/ScaniaLogo";
 
 const APP_BRAND_META = {
   skoda: {
@@ -182,6 +183,24 @@ const APP_BRAND_META = {
     lineupLabel: "Ibiza • Arona • Leon • Leon Cupra • Ateca • Tarraco (Global Reference Only)",
     defaultModelId: "leon",
     defaultGraphModelId: "leon-cupra-perf",
+  },
+  scania: {
+    Logo: ScaniaLogo,
+    accentText: "text-rose-400",
+    accentTextHover: "text-rose-400 hover:text-rose-300",
+    selectionBg: "selection:bg-rose-500",
+    scrollTopBg: "bg-rose-600 hover:bg-rose-500 shadow-rose-950/90 border-rose-400/40",
+    footerName: "Scania India",
+    footerTagline: "Narsapura Manufacturing • Scania Super Combustion System, Opticruise AMT & Modular Truck/Bus Architecture",
+    rsLabel: "Flagship Powertrain & Heavy-Duty Performance",
+    dealershipLabel: "Scania Dealer & Workshop Locator (5+)",
+    aboutLabel: "About Scania & Södertälje History",
+    warrantyLabel: "Scania India Dealer Warranty & Fleet Service Contracts",
+    roadsideLabel: "Scania Assistance 24/7 Breakdown Support: 1800 209 9944",
+    powertrainLabel: "13L Scania Super Inline-6 & 16L Twin-Turbo V8 Diesel Powertrains",
+    lineupLabel: "R 500 • S 730 • Citywide • Metrolink",
+    defaultModelId: "scania-r-500",
+    defaultGraphModelId: "scania-r-500",
   },
 };
 
@@ -815,7 +834,7 @@ export default function App() {
                 className="cursor-pointer hover:text-sky-300 transition-colors"
                 onClick={() => handleTabChange("vwgroup")}
               >
-                Škoda • Volkswagen • Audi • Porsche • Lamborghini • Bentley • SEAT. Pioneering
+                Škoda • Volkswagen • Audi • Porsche • Lamborghini • Bentley • SEAT • Scania. Pioneering
                 100% 5-Star Bharat NCAP and Global NCAP certified crash
                 structures.
               </p>

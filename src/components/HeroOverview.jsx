@@ -28,6 +28,7 @@ import { PORSCHE_MODELS, PORSCHE_ENGINEERING_FEATURES } from "../data/porscheDat
 import { LAMBORGHINI_MODELS, LAMBORGHINI_ENGINEERING_FEATURES } from "../data/lamborghiniData";
 import { BENTLEY_MODELS, BENTLEY_ENGINEERING_FEATURES } from "../data/bentleyData";
 import { SEAT_MODELS, SEAT_ENGINEERING_FEATURES } from "../data/seatData";
+import { SCANIA_MODELS, SCANIA_ENGINEERING_FEATURES } from "../data/scaniaData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
@@ -35,6 +36,7 @@ import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
 import { SeatLogo } from "./SeatLogo";
+import { ScaniaLogo } from "./ScaniaLogo";
 import { getAccentClasses } from "../utils/brandTheme";
 import {
   getRatings,
@@ -328,6 +330,46 @@ const BRAND_COPY = {
     innovationsBadge: "Martorell Engineering (Global Reference)",
     innovationsHeading: "SEAT Engineering Innovations",
     innovationsSubtitle: "FR sports suspension, MQB platform sharing, and Cupra performance heritage — global reference only, not available in India",
+  },
+  scania: {
+    Logo: ScaniaLogo,
+    models: SCANIA_MODELS,
+    features: SCANIA_ENGINEERING_FEATURES,
+    iconicModelId: "scania-s-730",
+    displayName: "Scania India",
+    tagline: "Driven By Dreams",
+    badgeLine: "Official Scania Commercial Vehicles India Portfolio",
+    headingPre: "Swedish Heavy-Duty Engineering, ",
+    headingAccent: "Opticruise & Scania Super",
+    headingPost: " Powertrains",
+    description: (
+      <>
+        Explore the Scania India commercial-vehicle lineup. From the versatile{" "}
+        <strong className="text-white">Scania R 500</strong> long-haul tractor
+        and flagship <strong className="text-white">Scania S 730</strong>{" "}
+        V8 heavy-haulage tractor, to the low-floor{" "}
+        <strong className="text-white">Scania Citywide</strong> city transit
+        bus and intercity <strong className="text-white">Scania Metrolink</strong>{" "}
+        coach — every truck and bus built at the Narsapura plant near Bengaluru.
+      </>
+    ),
+    rsHeaderLabel: "Flagship Powertrain & Heavy-Duty Performance (770 hp)",
+    aiAdvisorLabel: "Ask AI Scania Advisor",
+    historyLabel: "Södertälje Heritage",
+    standardLabel: "The Scania Standard",
+    powertrainLine: "Scania Super 13L & Twin-Turbo 16L V8",
+    bodyEngineeringLine: "AIS-113 / AIS-052 Certified Cab & Body Structures",
+    lineupHeading: "The Complete Scania Lineup in India",
+    rsShortBadge: "V8",
+    rsBrandLine: "Scania India • Flagship Powertrain & Heavy-Duty Performance",
+    rsHeadingPre: "Scania Flagship Powertrain Wing: ",
+    rsHeadingAccent: "S 730 V8 & R 500 Super Inline-6 (500–770 hp)",
+    rsDescription:
+      "Experience the hand-assembled twin-turbo 16-litre V8, the Scania Super 13-litre inline-six, Opticruise automated gearboxes, and real-world haulage performance across India's national highways.",
+    rsButtonLabel: "Explore Flagship Powertrain & Heavy-Duty Performance",
+    innovationsBadge: "Narsapura Engineering Innovations",
+    innovationsHeading: "Scania Engineering Innovations",
+    innovationsSubtitle: "Scania Super combustion, Opticruise AMT, and modular cab architecture tailored for Indian long-haul and transit duty",
   },
 };
 

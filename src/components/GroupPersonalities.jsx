@@ -7,6 +7,7 @@ import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
 import { SeatLogo } from "./SeatLogo";
+import { ScaniaLogo } from "./ScaniaLogo";
 
 const BRAND_CARDS = [
   {
@@ -78,6 +79,16 @@ const BRAND_CARDS = [
     border: "hover:border-orange-600/70",
     glow: "hover:shadow-orange-950/60",
     description: "Spanish value-sport styling and the birthplace of Cupra — the one Group brand absent from India since 1950.",
+  },
+  {
+    id: "scania",
+    Logo: ScaniaLogo,
+    name: "Scania",
+    tagline: "Driven By Dreams",
+    accent: "text-rose-400",
+    border: "hover:border-rose-600/70",
+    glow: "hover:shadow-rose-950/60",
+    description: "Swedish heavy-duty trucks and buses — Narsapura-built haulage and transit power since 1891.",
   },
 ];
 

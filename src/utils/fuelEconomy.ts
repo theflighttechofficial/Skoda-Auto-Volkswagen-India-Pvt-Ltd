@@ -11,7 +11,7 @@ function parseRange(range: string): { min: number; max: number; avg: number } {
 // Engine spec catalogs key mileage data by displacement + fuel-type keyword, so
 // this pulls out that signature to find the best matching EngineSpec.
 function engineSignature(text: string): { displacement: string | null; keyword: string | null } {
-  const dispMatch = text.match(/(\d\.\d)\s*L?/);
+  const dispMatch = text.match(/(\d\.\d)\s*L?/) || text.match(/\b(\d+)L\b/i);
   const keywordMatch = text.match(/TSI|TDI|TFSI|MPI/i);
   return {
     displacement: dispMatch ? dispMatch[1] : null,

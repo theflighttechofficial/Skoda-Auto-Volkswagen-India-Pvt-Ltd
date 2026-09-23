@@ -195,6 +195,32 @@ export const ENGINE_SOUND_PROFILES: EngineSoundProfile[] = [
     usedIn: ['Bentley Bentayga', 'Bentley Bentayga Speed'],
     character: 'A refined, bassy V8 burble at idle, sharpening into a confident sports-exhaust note on the Speed variant’s retuned calibration.',
   },
+  {
+    id: '13l-scania-super',
+    label: '13L Scania Super Inline-6',
+    displacement: '12742cc',
+    cylinders: '6-Cylinder Turbo-Diesel',
+    fuelType: 'Diesel',
+    idleRpm: 600,
+    redlineRpm: 2100,
+    baseFrequency: 28,
+    timbre: 'gruff',
+    usedIn: ['Scania R 500', 'Scania Citywide', 'Scania Metrolink'],
+    character: 'A low, unhurried diesel thrum at idle that barely rises past 2,000 RPM under full load — a workhorse note built for millions of kilometres, not revs.',
+  },
+  {
+    id: '16l-v8-scania',
+    label: '16L Twin-Turbo V8',
+    displacement: '16353cc',
+    cylinders: 'V8 Twin-Turbo Diesel',
+    fuelType: 'Diesel',
+    idleRpm: 600,
+    redlineRpm: 2100,
+    baseFrequency: 32,
+    timbre: 'deep-v8',
+    usedIn: ['Scania S 730'],
+    character: 'A deep, resonant V8 diesel note with a heritage dating to 1969 — a badge of prestige among long-haul drivers, felt as much as heard.',
+  },
 ];
 
 export interface SoundEventProfile {

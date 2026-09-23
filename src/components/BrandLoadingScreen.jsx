@@ -6,6 +6,7 @@ import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
 import { SeatLogo } from "./SeatLogo";
+import { ScaniaLogo } from "./ScaniaLogo";
 
 const BRAND_META = {
   skoda: {
@@ -70,6 +71,15 @@ const BRAND_META = {
     ring: "border-orange-500/40",
     glow: "bg-orange-600/20",
     bar: "from-orange-600 to-orange-400",
+  },
+  scania: {
+    Logo: ScaniaLogo,
+    name: "Scania",
+    tagline: "Driven By Dreams",
+    accent: "text-rose-400",
+    ring: "border-rose-500/40",
+    glow: "bg-rose-600/20",
+    bar: "from-rose-600 to-rose-400",
   },
 };
 
