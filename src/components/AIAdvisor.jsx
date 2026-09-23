@@ -10,7 +10,9 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
   const [loading, setLoading] = useState(false);
   const [selectedModel, setSelectedModel] = useState("All");
   const [selectedEngine, setSelectedEngine] = useState("All");
-  const initialGreeting = isLamborghini
+  const initialGreeting = isBentley
+    ? "Hello! I am your official **Bentley India AI Consultant**. Ask me anything about our complete portfolio—the twin-turbo **Continental GT**, ultimate luxury SUV **Bentayga**, grand luxury saloon **Flying Spur**, or our performance flagships: the **Continental GT Speed** (659 PS W12) and **Bentayga Speed** (635 PS V8). You can also ask about Bentley Dynamic Ride, Mulliner personal commissioning, twin-turbo W12/V8 engineering, or on-road calculations."
+    : isLamborghini
     ? "Hello! I am your official **Lamborghini India AI Consultant**. Ask me anything about our complete portfolio\u2014the screaming V10 **Hurac\u00e1n**, Super SUV **Urus**, hybrid V12 flagship **Revuelto**, or our track-focused specials: the **Hurac\u00e1n STO** (640 PS) and **Urus Performante** (657 PS). You can also ask about LDVI chassis control, torque-vectoring all-wheel drive, naturally-aspirated V10/V12 engineering, or on-road calculations."
     : isPorsche
     ? "Hello! I am your official **Porsche India AI Consultant**. Ask me anything about our complete portfolio\u2014the iconic **911 Carrera**, mid-engine **718 Cayman**, benchmark **Macan** compact SUV, full-size **Cayenne**, grand-touring **Panamera**, or our motorsport-derived flagships: the naturally-aspirated **911 GT3** (510 PS), all-wheel-drive **911 Turbo S** (650 PS), and record-setting **Cayenne Turbo GT** (640 PS). You can also ask about PDK dual-clutch gearboxes, Porsche Active Suspension Management, flat-6 engineering, or on-road calculations."
@@ -25,7 +27,17 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
       text: initialGreeting,
     },
   ]);
-  const quickPrompts = isLamborghini
+  const quickPrompts = isBentley
+    ? [
+        "What's the difference between the Continental GT V8 and Continental GT Speed?",
+        "Is the Bentayga practical for a family, or is it just a fast luxury SUV?",
+        "What is Bentley Dynamic Ride and how does it control body roll?",
+        "How does the Flying Spur compare to the Continental GT for daily use?",
+        "Continental GT vs Flying Spur: which should I pick as a chauffeur-driven car?",
+        "Tell me about the Mulliner personal commissioning program.",
+        "What is the twin-turbo W12 engine like compared to the V8?",
+      ]
+    : isLamborghini
     ? [
         "What's the difference between the Huracán EVO and Huracán STO?",
         "Is the Urus practical for a family, or is it just a fast SUV?",
@@ -77,7 +89,18 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
           "Should I pick Kylaq or Kushaq for daily city commuting & highway trips?",
           "1.0L TSI vs 1.5L TSI EVO with ACT: Which should I buy for Slavia/Kushaq?",
         ];
-  const modelOptions = isLamborghini
+  const modelOptions = isBentley
+    ? [
+        "All",
+        "Continental GT Speed",
+        "Bentayga Speed",
+        "Continental GT V8",
+        "Bentayga V8",
+        "Bentayga EWB",
+        "Flying Spur V8",
+        "Flying Spur W12",
+      ]
+    : isLamborghini
     ? [
         "All",
         "Huracán STO",
@@ -122,7 +145,14 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
           "Kodiaq",
           "Superb",
         ];
-  const engineOptions = isLamborghini
+  const engineOptions = isBentley
+    ? [
+        "All",
+        "6.0 W12 Twin-Turbo (659 PS)",
+        "4.0 Twin-Turbo V8 Speed (550 PS)",
+        "4.0 Twin-Turbo V8 (550 PS)",
+      ]
+    : isLamborghini
     ? [
         "All",
         "5.2 V10 Huracán (640 PS)",
@@ -196,7 +226,9 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
           ...prev,
           {
             role: "assistant",
-            text: isLamborghini
+            text: isBentley
+              ? "I encountered an issue retrieving the response. All Bentley cars in India offer Bentley Dynamic Ride, Mulliner personalization options, and twin-turbo W12 or V8 engineering."
+              : isLamborghini
               ? "I encountered an issue retrieving the response. All Lamborghini cars in India offer LDVI chassis control, torque-vectoring all-wheel drive on most models, and naturally-aspirated or hybrid engineering."
               : isPorsche
               ? "I encountered an issue retrieving the response. All Porsche cars in India offer PDK dual-clutch or manual transmissions, Porsche Active Suspension Management, and a heritage of motorsport-derived engineering."
@@ -213,7 +245,9 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
         ...prev,
         {
           role: "assistant",
-          text: isLamborghini
+          text: isBentley
+            ? "Unable to reach the server. Bentley India offers the Continental GT (from \u20B94.50Cr), Bentayga (from \u20B94.20Cr), and Flying Spur (from \u20B94.50Cr). All feature Bentley Dynamic Ride and Mulliner personalization options."
+            : isLamborghini
             ? "Unable to reach the server. Lamborghini India offers the Hurac\u00E1n (from \u20B93.80Cr), Urus (from \u20B94.20Cr), and Revuelto (from \u20B98.90Cr). All feature LDVI chassis control and torque-vectoring all-wheel drive on most models."
             : isPorsche
             ? "Unable to reach the server. Porsche India offers the Macan (from \u20B987.40L), 718 Cayman (from \u20B91.15Cr), Panamera (from \u20B91.68Cr), 911 Carrera (from \u20B91.99Cr), and Cayenne (from \u20B91.31Cr). All feature PDK dual-clutch transmissions and Porsche Active Suspension Management."
@@ -244,7 +278,9 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
             <Bot
               className={`w-6 h-6 ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
             />
-            {isLamborghini
+            {isBentley
+              ? "Bentley India AI Automotive Advisor"
+              : isLamborghini
               ? "Lamborghini India AI Automotive Advisor"
               : isPorsche
               ? "Porsche India AI Automotive Advisor"
@@ -377,7 +413,9 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
               <RefreshCw className="w-4 h-4 animate-spin" />
             </div>
             <span>
-              {isLamborghini
+              {isBentley
+                ? "Consulting Bentley hand-crafted technical specifications & pricing matrix..."
+                : isLamborghini
                 ? "Consulting Lamborghini naturally-aspirated & hybrid technical specifications & pricing matrix..."
                 : isPorsche
                 ? "Consulting Porsche motorsport-derived technical specifications & pricing matrix..."

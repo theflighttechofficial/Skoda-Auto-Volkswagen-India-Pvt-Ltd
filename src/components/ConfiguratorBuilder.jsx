@@ -28,6 +28,7 @@ import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
+import { BentleyLogo } from "./BentleyLogo";
 import { CarSilhouette } from "./CarSilhouette";
 import { getBodyShape } from "../utils/bodyShape";
 import {
@@ -269,7 +270,7 @@ export const ConfiguratorBuilder = ({ brand = "skoda", onSwitchBrand, onOpenAdvi
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-1">
-            {isLamborghini ? <LamborghiniLogo variant="emblem" size="sm" /> : isPorsche ? <PorscheLogo variant="emblem" size="sm" /> : isAudi ? <AudiLogo variant="emblem" size="sm" /> : isVW ? <VolkswagenLogo variant="emblem" size="sm" /> : <SkodaLogo variant="emblem" size="sm" />}
+            {isBentley ? <BentleyLogo variant="emblem" size="sm" /> : isLamborghini ? <LamborghiniLogo variant="emblem" size="sm" /> : isPorsche ? <PorscheLogo variant="emblem" size="sm" /> : isAudi ? <AudiLogo variant="emblem" size="sm" /> : isVW ? <VolkswagenLogo variant="emblem" size="sm" /> : <SkodaLogo variant="emblem" size="sm" />}
             <span className={accentText}>Interactive Configurator</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">

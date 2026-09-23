@@ -126,8 +126,9 @@ export const RaceMode = ({ brand = "skoda" }) => {
         </div>
         <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Race the Group</h2>
         <p className="text-sm text-zinc-400 max-w-2xl">
-          Pick 2–4 performance icons from across Škoda vRS, Volkswagen GTI/GLI, and Audi Sport RS — then race
-          them head-to-head over a simulated quarter mile using their real 0–100 km/h and top speed figures.
+          Pick 2–4 performance icons from across Škoda vRS, Volkswagen GTI/GLI, Audi Sport RS, Porsche GT/Turbo,
+          Lamborghini GT/STO, and Bentley GT/Speed — then race them head-to-head over a simulated quarter mile
+          using their real 0–100 km/h and top speed figures.
         </p>
       </div>
 

@@ -79,7 +79,9 @@ export const FAQSection = ({ brand = "skoda" }) => {
             <HelpCircle className="w-3.5 h-3.5" />
           )}
           <span>
-            {isLamborghini
+            {isBentley
+              ? "Bentley Ownership & Engineering Guide"
+              : isLamborghini
               ? "Lamborghini Ownership & Engineering Guide"
               : isPorsche
               ? "Porsche Ownership & Engineering Guide"

@@ -62,7 +62,7 @@ const BRAND_CARDS = [
     id: "bentley",
     Logo: BentleyLogo,
     name: "Bentley",
-    tagline: "Extraordinary Journeys",
+    tagline: "Relentlessly Extraordinary",
     accent: "text-green-400",
     border: "hover:border-green-600/70",
     glow: "hover:shadow-green-950/60",

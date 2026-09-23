@@ -4,6 +4,7 @@ import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
 import { PORSCHE_MODELS } from "../data/porscheData";
 import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
+import { BENTLEY_MODELS } from "../data/bentleyData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
@@ -16,7 +17,9 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
   const isPorsche = brand === "porsche";
   const isLamborghini = brand === "lamborghini";
   const isBentley = brand === "bentley";
-  const models = isLamborghini
+  const models = isBentley
+    ? BENTLEY_MODELS
+    : isLamborghini
     ? LAMBORGHINI_MODELS
     : isPorsche
     ? PORSCHE_MODELS
@@ -98,7 +101,9 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
             </span>
           </div>
           <h2 className="text-2xl font-bold text-white tracking-tight mt-1">
-            {isLamborghini
+            {isBentley
+              ? "Bentley On-Road Price & EMI Calculator"
+              : isLamborghini
               ? "Lamborghini On-Road Price & EMI Calculator"
               : isPorsche
               ? "Porsche On-Road Price & EMI Calculator"

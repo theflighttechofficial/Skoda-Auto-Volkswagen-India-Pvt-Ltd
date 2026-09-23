@@ -69,7 +69,9 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
             </span>
           </div>
           <h2 className="text-2xl font-bold text-white tracking-tight mt-1">
-            {isLamborghini
+            {isBentley
+              ? "Official Bentley Color Explorer"
+              : isLamborghini
               ? "Official Lamborghini Color Explorer"
               : isPorsche
               ? "Official Porsche Color Explorer"

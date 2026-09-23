@@ -44,7 +44,9 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
             <span>Zero Compromise Safety Philosophy</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-            {isLamborghini
+            {isBentley
+              ? "Bentley 5-Star Safety Architecture"
+              : isLamborghini
               ? "Lamborghini 5-Star Safety Architecture"
               : isPorsche
               ? "Porsche 5-Star Safety Architecture"
@@ -55,7 +57,9 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
                   : "\u0160koda 5-Star Safety Architecture"}
           </h2>
           <p className="text-sm text-zinc-400">
-            {isLamborghini
+            {isBentley
+              ? "Every current Bentley model sold in India carries a 5-Star Euro NCAP rating, backed by Bentley Dynamic Ride and a reinforced aluminum-intensive safety cell"
+              : isLamborghini
               ? "Every current Lamborghini model sold in India carries a 5-Star Euro NCAP rating, backed by Lamborghini Dinamica Veicolo Integrata chassis control and a carbon-fibre monocoque safety cell"
               : isPorsche
               ? "Every current Porsche model sold in India carries a 5-Star Euro NCAP rating, backed by Porsche Active Suspension Management and a reinforced high-strength-steel safety cell"
@@ -93,7 +97,9 @@ export const SafetyDeepDive = ({ brand = "skoda" }) => {
               <span>Full 5-Star Adult & Child Crash Rating</span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-black text-white">
-              {isLamborghini
+              {isBentley
+                ? "Reinforced Bentley Aluminum-Intensive Safety Cell"
+                : isLamborghini
                 ? "Reinforced Lamborghini Carbon-Fibre Safety Cell"
                 : isPorsche
                 ? "Reinforced Porsche Safety Cell (POSIP)"

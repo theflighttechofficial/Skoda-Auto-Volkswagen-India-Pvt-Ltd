@@ -55,7 +55,7 @@ const BRAND_META = {
   bentley: {
     Logo: BentleyLogo,
     name: "Bentley",
-    tagline: "Extraordinary Journeys",
+    tagline: "Relentlessly Extraordinary",
     accent: "text-green-400",
     ring: "border-green-500/40",
     glow: "bg-green-600/20",

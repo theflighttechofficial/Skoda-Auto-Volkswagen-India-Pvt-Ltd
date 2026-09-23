@@ -260,7 +260,9 @@ export const PerformanceGraphs = ({
                 <SkodaLogo variant="emblem" size="sm" />
               )}
               <span className="text-xs uppercase font-bold tracking-wider text-blue-400">
-                {isLamborghini
+                {isBentley
+                  ? "Bentley Powertrain Lab"
+                  : isLamborghini
                   ? "Lamborghini Powertrain Lab"
                   : isPorsche
                   ? "Porsche Powertrain Lab"
@@ -272,7 +274,9 @@ export const PerformanceGraphs = ({
               </span>
               <span className="text-zinc-600">•</span>
               <span className="text-xs text-zinc-400">
-                {isLamborghini
+                {isBentley
+                  ? "Bentley India (Volkswagen Group Luxury Marque)"
+                  : isLamborghini
                   ? "Lamborghini India (Volkswagen Group Super Sports Car Brand)"
                   : isPorsche
                   ? "Porsche India (Volkswagen Group Sports Car Brand)"
@@ -283,7 +287,9 @@ export const PerformanceGraphs = ({
             </div>
 
             <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
-              {isLamborghini
+              {isBentley
+                ? "Bentley Telemetry & Dyno Graphs"
+                : isLamborghini
                 ? "Lamborghini Telemetry & Dyno Graphs"
                 : isPorsche
                 ? "Porsche Telemetry & Dyno Graphs"
@@ -295,7 +301,9 @@ export const PerformanceGraphs = ({
             </h2>
 
             <p className="text-sm text-zinc-300 leading-relaxed">
-              {isLamborghini
+              {isBentley
+                ? "Explore dynamic power and torque delivery curves, real-world 0\u2013100 km/h acceleration telemetry, 8-speed automatic gearbox ratios, and thermal fuel efficiency curves for Bentley's twin-turbo W12 and V8 engines."
+                : isLamborghini
                 ? "Explore dynamic power and torque delivery curves, real-world 0\u2013100 km/h acceleration telemetry, LDF gearbox ratios, and thermal fuel efficiency curves for Lamborghini naturally-aspirated V10, twin-turbo V8, and hybrid V12 engines."
                 : isPorsche
                 ? "Explore dynamic power and torque delivery curves, real-world 0\u2013100 km/h acceleration telemetry, PDK gearbox ratios, and thermal fuel efficiency curves for Porsche flat-6, flat-4, and turbocharged V6/V8 engines."

@@ -110,7 +110,9 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-            {isLamborghini
+            {isBentley
+              ? "Bentley Twin-Turbo W12 & V8 Powertrain Suite"
+              : isLamborghini
               ? "Lamborghini V10, V8 & Hybrid V12 Powertrain Suite"
               : isPorsche
               ? "Porsche Flat-6, Flat-4 & V6 Powertrain Suite"
@@ -121,7 +123,9 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                   : "\u0160koda TSI & TDI Turbocharged Suite"}
           </h2>
           <p className="text-sm text-zinc-400 mt-0.5">
-            {isLamborghini
+            {isBentley
+              ? "From the twin-turbo W12 Continental GT to the twin-turbo V8 Bentayga and Flying Spur, every engine paired with Bentley Dynamic Ride precision"
+              : isLamborghini
               ? "From the naturally-aspirated V10 Huracán to the twin-turbo V8 Urus and hybrid V12 Revuelto, every engine paired with LDVI precision"
               : isPorsche
               ? "From the mid-engine 718 Cayman flat-4 to the twin-turbo flat-6 911 and V6 SUV/GT powertrains, every engine paired with PDK precision"
@@ -496,7 +500,9 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                 <span>
                   Estimated on mixed real-world driving cycles (~
                   {currentAvgMileage} km/l). On open highways,{" "}
-                  {isLamborghini
+                  {isBentley
+                    ? "Bentley twin-turbo W12 and V8 engines"
+                    : isLamborghini
                     ? "Lamborghini naturally-aspirated and hybrid engines"
                     : isPorsche
                     ? "Porsche flat-6 and turbocharged V6 engines"
