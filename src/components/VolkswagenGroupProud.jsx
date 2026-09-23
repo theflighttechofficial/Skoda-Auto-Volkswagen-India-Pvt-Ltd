@@ -33,9 +33,12 @@ export const VolkswagenGroupProud = ({
   const isPorsche = brand === "porsche";
   const isLamborghini = brand === "lamborghini";
   const isBentley = brand === "bentley";
-  const activeBrandName = isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda";
-  const activeBrandFoundedYear = isLamborghini ? 1963 : isPorsche ? 1931 : isAudi ? 1909 : isVW ? 1937 : 1895;
-  const membershipBlurb = isLamborghini
+  const isSeat = brand === "seat";
+  const activeBrandName = isSeat ? "SEAT" : isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda";
+  const activeBrandFoundedYear = isSeat ? 1950 : isLamborghini ? 1963 : isPorsche ? 1931 : isAudi ? 1909 : isVW ? 1937 : 1895;
+  const membershipBlurb = isSeat
+    ? "SEAT has been fully owned by the Volkswagen Group since 1990, gaining access to Group platform engineering for the first time — though unlike every other current Group passenger-car brand, SEAT has no official distribution or dealer network in India."
+    : isLamborghini
     ? "Automobili Lamborghini has been part of the Volkswagen Group since 1998, placed under Audi's stewardship, gaining platform-sharing resources and quality-control processes without diluting its raging-bull character."
     : isPorsche
     ? "Porsche AG and Volkswagen AG have been bound together through a complex cross-holding structure since 2012 — Porsche SE holds a majority stake in Volkswagen AG, which in turn owns Porsche AG outright."
@@ -220,7 +223,7 @@ export const VolkswagenGroupProud = ({
                       <h3 className="text-xl font-black text-white group-hover:text-blue-300 transition-colors">
                         {brand.name}
                       </h3>
-                      {brand.id === (isBentley ? "lamborghini" : isLamborghini ? "lamborghini" : isPorsche ? "porsche" : isAudi ? "audi" : isVW ? "volkswagen" : "skoda") && (
+                      {brand.id === (isSeat ? "seat" : isBentley ? "lamborghini" : isLamborghini ? "lamborghini" : isPorsche ? "porsche" : isAudi ? "audi" : isVW ? "volkswagen" : "skoda") && (
                         <span className="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30">
                           Host
                         </span>

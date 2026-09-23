@@ -20,12 +20,14 @@ import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
+import { SeatLogo } from "./SeatLogo";
 import { SKODA_MODELS } from "../data/skodaData";
 import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
 import { PORSCHE_MODELS } from "../data/porscheData";
 import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
 import { BENTLEY_MODELS } from "../data/bentleyData";
+import { SEAT_MODELS } from "../data/seatData";
 // vRS/RS performance variants (e.g. Octavia vRS, Audi RS5) get their own
 // MODEL_PERFORMANCE_PROFILES entries but aren't part of the base model
 // catalogs above, so their ids have to be added in explicitly per brand.
@@ -38,6 +40,7 @@ const PORSCHE_PERFORMANCE_ONLY_IDS = [
 ];
 const LAMBORGHINI_PERFORMANCE_ONLY_IDS = ["huracan-sto-perf"];
 const BENTLEY_PERFORMANCE_ONLY_IDS = ["continental-gt-speed-perf", "bentayga-speed-perf"];
+const SEAT_PERFORMANCE_ONLY_IDS = ["leon-cupra-perf"];
 export const PerformanceGraphs = ({
   brand = "skoda",
   initialEngineId = "1.5-tsi",
@@ -49,7 +52,10 @@ export const PerformanceGraphs = ({
   const isPorsche = brand === "porsche";
   const isLamborghini = brand === "lamborghini";
   const isBentley = brand === "bentley";
-  const currentBrandModels = isBentley
+  const isSeat = brand === "seat";
+  const currentBrandModels = isSeat
+    ? SEAT_MODELS
+    : isBentley
     ? BENTLEY_MODELS
     : isLamborghini
     ? LAMBORGHINI_MODELS
@@ -60,7 +66,9 @@ export const PerformanceGraphs = ({
       : isVW
         ? VW_MODELS
         : SKODA_MODELS;
-  const currentPerformanceOnlyIds = isBentley
+  const currentPerformanceOnlyIds = isSeat
+    ? SEAT_PERFORMANCE_ONLY_IDS
+    : isBentley
     ? BENTLEY_PERFORMANCE_ONLY_IDS
     : isLamborghini
     ? LAMBORGHINI_PERFORMANCE_ONLY_IDS
@@ -103,7 +111,9 @@ export const PerformanceGraphs = ({
   const [selectedEngineId, setSelectedEngineId] = useState(initialEngineId);
   const [selectedModelId, setSelectedModelId] = useState(
     initialModelId === "slavia"
-      ? isBentley
+      ? isSeat
+        ? "ibiza"
+        : isBentley
         ? "continental-gt"
         : isLamborghini
         ? "huracan"
@@ -237,16 +247,18 @@ export const PerformanceGraphs = ({
     <div className="space-y-8">
       {/* Top Banner */}
       <div
-        className={`rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900/90 border border-zinc-800 p-6 sm:p-8 relative overflow-hidden shadow-2xl ${isBentley ? "to-green-950/40" : isLamborghini ? "to-yellow-950/40" : isPorsche ? "to-amber-950/40" : isAudi ? "to-red-950/40" : isVW ? "to-blue-950/40" : "to-emerald-950/40"}`}
+        className={`rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900/90 border border-zinc-800 p-6 sm:p-8 relative overflow-hidden shadow-2xl ${isSeat ? "to-orange-950/40" : isBentley ? "to-green-950/40" : isLamborghini ? "to-yellow-950/40" : isPorsche ? "to-amber-950/40" : isAudi ? "to-red-950/40" : isVW ? "to-blue-950/40" : "to-emerald-950/40"}`}
       >
         <div
-          className={`absolute right-0 top-0 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isBentley ? "bg-green-600/10" : isLamborghini ? "bg-yellow-600/10" : isPorsche ? "bg-amber-600/10" : isAudi ? "bg-red-600/10" : isVW ? "bg-blue-600/10" : "bg-emerald-600/10"}`}
+          className={`absolute right-0 top-0 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isSeat ? "bg-orange-600/10" : isBentley ? "bg-green-600/10" : isLamborghini ? "bg-yellow-600/10" : isPorsche ? "bg-amber-600/10" : isAudi ? "bg-red-600/10" : isVW ? "bg-blue-600/10" : "bg-emerald-600/10"}`}
         />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-3xl">
             <div className="flex items-center gap-2">
-              {isBentley ? (
+              {isSeat ? (
+                <SeatLogo variant="emblem" size="sm" />
+              ) : isBentley ? (
                 <BentleyLogo variant="emblem" size="sm" />
               ) : isLamborghini ? (
                 <LamborghiniLogo variant="emblem" size="sm" />
@@ -260,7 +272,9 @@ export const PerformanceGraphs = ({
                 <SkodaLogo variant="emblem" size="sm" />
               )}
               <span className="text-xs uppercase font-bold tracking-wider text-blue-400">
-                {isLamborghini
+                {isSeat
+                  ? "SEAT Powertrain Lab"
+                  : isLamborghini
                   ? "Lamborghini Powertrain Lab"
                   : isPorsche
                   ? "Porsche Powertrain Lab"
@@ -272,7 +286,9 @@ export const PerformanceGraphs = ({
               </span>
               <span className="text-zinc-600">•</span>
               <span className="text-xs text-zinc-400">
-                {isLamborghini
+                {isSeat
+                  ? "SEAT (Volkswagen Group Brand, Not Sold in India)"
+                  : isLamborghini
                   ? "Lamborghini India (Volkswagen Group Super Sports Car Brand)"
                   : isPorsche
                   ? "Porsche India (Volkswagen Group Sports Car Brand)"
@@ -283,7 +299,9 @@ export const PerformanceGraphs = ({
             </div>
 
             <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
-              {isLamborghini
+              {isSeat
+                ? "SEAT Telemetry & Dyno Graphs (Not Sold in India)"
+                : isLamborghini
                 ? "Lamborghini Telemetry & Dyno Graphs"
                 : isPorsche
                 ? "Porsche Telemetry & Dyno Graphs"
@@ -295,7 +313,9 @@ export const PerformanceGraphs = ({
             </h2>
 
             <p className="text-sm text-zinc-300 leading-relaxed">
-              {isLamborghini
+              {isSeat
+                ? "Explore dynamic power and torque delivery curves, real-world 0\u2013100 km/h acceleration telemetry, DSG gearbox ratios, and thermal fuel efficiency curves for SEAT's European TSI engine lineup. SEAT is not officially sold or serviced in India \u2014 all figures are global reference specifications for enthusiast comparison only."
+                : isLamborghini
                 ? "Explore dynamic power and torque delivery curves, real-world 0\u2013100 km/h acceleration telemetry, LDF gearbox ratios, and thermal fuel efficiency curves for Lamborghini naturally-aspirated V10, twin-turbo V8, and hybrid V12 engines."
                 : isPorsche
                 ? "Explore dynamic power and torque delivery curves, real-world 0\u2013100 km/h acceleration telemetry, PDK gearbox ratios, and thermal fuel efficiency curves for Porsche flat-6, flat-4, and turbocharged V6/V8 engines."

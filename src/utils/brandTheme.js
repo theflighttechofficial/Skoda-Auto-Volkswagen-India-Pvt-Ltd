@@ -11,6 +11,7 @@ export const BRAND_ACCENT = {
   porsche: "amber",
   lamborghini: "yellow",
   bentley: "green",
+  seat: "orange",
 };
 
 export const ACCENT_CLASSES = {
@@ -169,6 +170,32 @@ export const ACCENT_CLASSES = {
     ratingBar: "bg-green-500",
     modelPillSelected: "bg-green-600 text-white shadow-md shadow-green-950",
     variantTabSelected: "bg-zinc-900 border-green-500 shadow-lg shadow-green-950/40 ring-1 ring-green-500/50",
+  },
+  orange: {
+    text400: "text-orange-400",
+    text300: "text-orange-300",
+    dot: "bg-orange-400",
+    welcomeBannerBg: "bg-gradient-to-br from-orange-950/60 via-zinc-950 to-black border-orange-900/50 shadow-orange-950/40",
+    glow600_20: "bg-orange-600/20",
+    badgePill: "bg-orange-950/70 border-orange-800 text-orange-300",
+    avatarRing: "border-orange-700/50",
+    gradientText: "bg-gradient-to-r from-orange-400 to-orange-200 bg-clip-text text-transparent",
+    divider: "bg-orange-700/60",
+    heroBorder: "border-orange-900/40",
+    glow600_15: "bg-orange-600/15",
+    heroBadgePill: "bg-orange-950/80 border-orange-800/60 text-orange-400",
+    ctaButton: "bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 shadow-orange-950/60",
+    secondaryButton: "border-orange-700/60 text-orange-400",
+    solidButton: "bg-orange-600 hover:bg-orange-500 shadow-orange-950",
+    smallBadge: "bg-orange-500/20 text-orange-300 border-orange-500/30",
+    cardBadge: "bg-orange-950/80 border-orange-700/50 text-orange-300",
+    cardHover: "border-zinc-800 hover:border-orange-600/60 hover:shadow-orange-950/30",
+    cardTitleHover: "group-hover:text-orange-300",
+    noteText: "text-orange-300/80",
+    noteTextSolid: "text-orange-300/90",
+    ratingBar: "bg-orange-500",
+    modelPillSelected: "bg-orange-600 text-white shadow-md shadow-orange-950",
+    variantTabSelected: "bg-zinc-900 border-orange-500 shadow-lg shadow-orange-950/40 ring-1 ring-orange-500/50",
   },
 };
 

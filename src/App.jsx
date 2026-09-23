@@ -54,6 +54,7 @@ import { AudiLogo } from "./components/AudiLogo";
 import { PorscheLogo } from "./components/PorscheLogo";
 import { LamborghiniLogo } from "./components/LamborghiniLogo";
 import { BentleyLogo } from "./components/BentleyLogo";
+import { SeatLogo } from "./components/SeatLogo";
 
 const APP_BRAND_META = {
   skoda: {
@@ -163,6 +164,24 @@ const APP_BRAND_META = {
     lineupLabel: "Continental GT V8 • Continental GT Speed • Bentayga V8 • Bentayga EWB • Flying Spur W12",
     defaultModelId: "continental-gt",
     defaultGraphModelId: "continental-gt-speed-perf",
+  },
+  seat: {
+    Logo: SeatLogo,
+    accentText: "text-orange-400",
+    accentTextHover: "text-orange-400 hover:text-orange-300",
+    selectionBg: "selection:bg-orange-500",
+    scrollTopBg: "bg-orange-600 hover:bg-orange-500 shadow-orange-950/90 border-orange-400/40",
+    footerName: "SEAT — Not Sold in India",
+    footerTagline: "Not Currently Sold in India • Global Reference Specs Shown for Enthusiast Comparison Only",
+    rsLabel: "Cupra Performance Heritage",
+    dealershipLabel: "Not Sold in India",
+    aboutLabel: "About SEAT & Martorell History",
+    warrantyLabel: "No Official Warranty in India (Not Sold Here)",
+    roadsideLabel: "No Roadside Assistance Network in India",
+    powertrainLabel: "TSI Turbo-Petrol & TDI Diesel Powertrains (Global Spec)",
+    lineupLabel: "Ibiza • Arona • Leon • Leon Cupra • Ateca • Tarraco (Global Reference Only)",
+    defaultModelId: "leon",
+    defaultGraphModelId: "leon-cupra-perf",
   },
 };
 
@@ -796,7 +815,7 @@ export default function App() {
                 className="cursor-pointer hover:text-sky-300 transition-colors"
                 onClick={() => handleTabChange("vwgroup")}
               >
-                Škoda • Volkswagen • Audi • Porsche • Lamborghini • Bentley. Pioneering
+                Škoda • Volkswagen • Audi • Porsche • Lamborghini • Bentley • SEAT. Pioneering
                 100% 5-Star Bharat NCAP and Global NCAP certified crash
                 structures.
               </p>

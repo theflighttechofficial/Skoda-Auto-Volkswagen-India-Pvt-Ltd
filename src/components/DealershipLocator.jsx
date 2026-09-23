@@ -31,6 +31,7 @@ export const DealershipLocator = ({
   const isPorsche = brand === "porsche";
   const isLamborghini = brand === "lamborghini";
   const isBentley = brand === "bentley";
+  const isSeat = brand === "seat";
   const [selectedState, setSelectedState] = useState("All States");
   const [selectedCity, setSelectedCity] = useState(initialCity || "All Cities");
   const [selectedType, setSelectedType] = useState("All");
@@ -129,14 +130,43 @@ export const DealershipLocator = ({
     if (!userName || !userPhone) return;
     setBookingSubmitted(true);
   };
+  if (isSeat) {
+    return (
+      <div className="space-y-8">
+        <div className="rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900/90 to-orange-950/40 border border-orange-900/40 p-6 sm:p-8 relative overflow-hidden shadow-2xl">
+          <div className="absolute -right-16 -top-16 w-80 h-80 rounded-full blur-3xl pointer-events-none bg-orange-500/10" />
+          <div className="relative flex items-center gap-3">
+            <MapPin className="w-6 h-6 text-orange-400" />
+            <div>
+              <p className="text-xs uppercase font-bold tracking-wider text-orange-400">Dealership & Service Locator</p>
+              <h2 className="text-xl sm:text-2xl font-black text-white">SEAT India Network</h2>
+            </div>
+          </div>
+        </div>
+        <div className="rounded-3xl border border-zinc-800 bg-zinc-900/60 p-10 sm:p-16 text-center space-y-4">
+          <div className="w-14 h-14 rounded-full border border-orange-500/60 bg-orange-950/60 flex items-center justify-center mx-auto">
+            <Building2 className="w-7 h-7 text-orange-400" />
+          </div>
+          <h3 className="text-lg sm:text-xl font-bold text-white">SEAT Is Not Currently Sold or Serviced in India</h3>
+          <p className="text-sm text-zinc-400 max-w-xl mx-auto">
+            Unlike every other brand in this showcase, SEAT has no official distribution, CBU import programme, CKD assembly line,
+            dealer network or authorised service centres anywhere in India. There is no dealership locator to show because zero
+            official SEAT outlets exist in the country — the models featured here are shown purely as global reference specifications
+            for enthusiast comparison against SEAT's Volkswagen Group siblings that are actually sold in India.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-8">
       {/* Header Banner */}
       <div
-        className={`rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900/90 border p-6 sm:p-8 relative overflow-hidden shadow-2xl ${isAudi ? "to-red-950/40 border-red-900/40" : isVW ? "to-blue-950/40 border-blue-900/40" : isBentley ? "to-green-950/40 border-green-900/40" : isLamborghini ? "to-yellow-950/40 border-yellow-900/40" : isPorsche ? "to-amber-950/40 border-amber-900/40" : "to-emerald-950/40 border-zinc-800"}`}
+        className={`rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900/90 border p-6 sm:p-8 relative overflow-hidden shadow-2xl ${isAudi ? "to-red-950/40 border-red-900/40" : isVW ? "to-blue-950/40 border-blue-900/40" : isSeat ? "to-orange-950/40 border-orange-900/40" : isBentley ? "to-green-950/40 border-green-900/40" : isLamborghini ? "to-yellow-950/40 border-yellow-900/40" : isPorsche ? "to-amber-950/40 border-amber-900/40" : "to-emerald-950/40 border-zinc-800"}`}
       >
         <div
-          className={`absolute -right-16 -top-16 w-80 h-80 rounded-full blur-3xl pointer-events-none ${isAudi ? "bg-red-500/10" : isVW ? "bg-blue-500/10" : isBentley ? "bg-green-500/10" : isLamborghini ? "bg-yellow-500/10" : isPorsche ? "bg-amber-500/10" : "bg-emerald-500/10"}`}
+          className={`absolute -right-16 -top-16 w-80 h-80 rounded-full blur-3xl pointer-events-none ${isAudi ? "bg-red-500/10" : isVW ? "bg-blue-500/10" : isSeat ? "bg-orange-500/10" : isBentley ? "bg-green-500/10" : isLamborghini ? "bg-yellow-500/10" : isPorsche ? "bg-amber-500/10" : "bg-emerald-500/10"}`}
         />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -156,7 +186,7 @@ export const DealershipLocator = ({
                 <SkodaLogo variant="emblem" size="sm" />
               )}
               <span
-                className={`text-xs uppercase font-bold tracking-wider ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
+                className={`text-xs uppercase font-bold tracking-wider ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
               >
                 {isAudi
                   ? "Audi India (Volkswagen Group Premium Brand)"
@@ -215,13 +245,13 @@ export const DealershipLocator = ({
             <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-zinc-300">
               <span className="flex items-center gap-1.5 font-medium">
                 <Building2
-                  className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
+                  className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
                 />
                 <strong>200+ Touchpoints</strong> Nationwide
               </span>
               <span className="flex items-center gap-1.5 font-medium">
                 <ShieldCheck
-                  className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
+                  className={`w-4 h-4 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
                 />
                 <strong>
                   {isAudi
@@ -267,7 +297,7 @@ export const DealershipLocator = ({
             <div className="flex justify-between items-center gap-4 text-zinc-400">
               <span>Customer Satisfaction:</span>
               <span
-                className={`font-bold ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
+                className={`font-bold ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
               >
                 98.4% Peace of Mind
               </span>
@@ -305,7 +335,7 @@ export const DealershipLocator = ({
               placeholder="Search by city, dealer, or PIN..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className={`w-full pl-10 pr-4 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs sm:text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isBentley ? "focus:border-green-500" : isLamborghini ? "focus:border-yellow-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
+              className={`w-full pl-10 pr-4 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs sm:text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isSeat ? "focus:border-orange-500" : isBentley ? "focus:border-green-500" : isLamborghini ? "focus:border-yellow-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
             />
             {searchQuery && (
               <button
@@ -325,7 +355,7 @@ export const DealershipLocator = ({
                 setSelectedState(e.target.value);
                 setSelectedCity("All Cities");
               }}
-              className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs sm:text-sm text-white focus:outline-none transition-colors cursor-pointer ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isBentley ? "focus:border-green-500" : isLamborghini ? "focus:border-yellow-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
+              className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs sm:text-sm text-white focus:outline-none transition-colors cursor-pointer ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isSeat ? "focus:border-orange-500" : isBentley ? "focus:border-green-500" : isLamborghini ? "focus:border-yellow-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
             >
               {INDIAN_STATES.map((st) => (
                 <option key={st} value={st} className="bg-zinc-950 text-white">
@@ -340,7 +370,7 @@ export const DealershipLocator = ({
             <select
               value={selectedCity}
               onChange={(e) => setSelectedCity(e.target.value)}
-              className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs sm:text-sm text-white focus:outline-none transition-colors cursor-pointer ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isBentley ? "focus:border-green-500" : isLamborghini ? "focus:border-yellow-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
+              className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs sm:text-sm text-white focus:outline-none transition-colors cursor-pointer ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isSeat ? "focus:border-orange-500" : isBentley ? "focus:border-green-500" : isLamborghini ? "focus:border-yellow-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
             >
               {availableCities.map((city) => (
                 <option
@@ -361,7 +391,7 @@ export const DealershipLocator = ({
                 <button
                   key={type}
                   onClick={() => setSelectedType(type)}
-                  className={`flex-1 py-1.5 px-2 rounded-lg text-center transition-all cursor-pointer ${selectedType === type ? (isAudi ? "bg-red-600 text-white shadow-md" : isVW ? "bg-blue-600 text-white shadow-md" : isBentley ? "bg-green-600 text-white shadow-md" : isLamborghini ? "bg-yellow-600 text-white shadow-md" : isPorsche ? "bg-amber-600 text-white shadow-md" : "bg-emerald-600 text-white shadow-md") : "text-zinc-400 hover:text-white"}`}
+                  className={`flex-1 py-1.5 px-2 rounded-lg text-center transition-all cursor-pointer ${selectedType === type ? (isAudi ? "bg-red-600 text-white shadow-md" : isVW ? "bg-blue-600 text-white shadow-md" : isSeat ? "bg-orange-600 text-white shadow-md" : isBentley ? "bg-green-600 text-white shadow-md" : isLamborghini ? "bg-yellow-600 text-white shadow-md" : isPorsche ? "bg-amber-600 text-white shadow-md" : "bg-emerald-600 text-white shadow-md") : "text-zinc-400 hover:text-white"}`}
                 >
                   {type === "3S Facility" ? "3S" : type}
                 </button>
@@ -395,7 +425,7 @@ export const DealershipLocator = ({
                 setSelectedCity(city);
                 setSearchQuery("");
               }}
-              className={`px-3 py-1 rounded-lg border whitespace-nowrap transition-all cursor-pointer ${selectedCity === city ? (isAudi ? "bg-red-950/80 border-red-500 text-red-300 font-bold" : isVW ? "bg-blue-950/80 border-blue-500 text-blue-300 font-bold" : isBentley ? "bg-green-950/80 border-green-500 text-green-300 font-bold" : isLamborghini ? "bg-yellow-950/80 border-yellow-500 text-yellow-300 font-bold" : isPorsche ? "bg-amber-950/80 border-amber-500 text-amber-300 font-bold" : "bg-emerald-950/80 border-emerald-500 text-emerald-300 font-bold") : "bg-zinc-950 border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700"}`}
+              className={`px-3 py-1 rounded-lg border whitespace-nowrap transition-all cursor-pointer ${selectedCity === city ? (isAudi ? "bg-red-950/80 border-red-500 text-red-300 font-bold" : isVW ? "bg-blue-950/80 border-blue-500 text-blue-300 font-bold" : isSeat ? "bg-orange-950/80 border-orange-500 text-orange-300 font-bold" : isBentley ? "bg-green-950/80 border-green-500 text-green-300 font-bold" : isLamborghini ? "bg-yellow-950/80 border-yellow-500 text-yellow-300 font-bold" : isPorsche ? "bg-amber-950/80 border-amber-500 text-amber-300 font-bold" : "bg-emerald-950/80 border-emerald-500 text-emerald-300 font-bold") : "bg-zinc-950 border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700"}`}
             >
               {city}
             </button>
@@ -411,7 +441,7 @@ export const DealershipLocator = ({
                 setSelectedType("All");
                 setSearchQuery("");
               }}
-              className={`text-xs underline font-semibold ml-2 whitespace-nowrap cursor-pointer ${isAudi ? "text-red-400 hover:text-red-300" : isVW ? "text-blue-400 hover:text-blue-300" : isBentley ? "text-green-400 hover:text-green-300" : isLamborghini ? "text-yellow-400 hover:text-yellow-300" : isPorsche ? "text-amber-400 hover:text-amber-300" : "text-emerald-400 hover:text-emerald-300"}`}
+              className={`text-xs underline font-semibold ml-2 whitespace-nowrap cursor-pointer ${isAudi ? "text-red-400 hover:text-red-300" : isVW ? "text-blue-400 hover:text-blue-300" : isSeat ? "text-orange-400 hover:text-orange-300" : isBentley ? "text-green-400 hover:text-green-300" : isLamborghini ? "text-yellow-400 hover:text-yellow-300" : isPorsche ? "text-amber-400 hover:text-amber-300" : "text-emerald-400 hover:text-emerald-300"}`}
             >
               Reset Filters
             </button>
@@ -431,7 +461,7 @@ export const DealershipLocator = ({
             <span>
               {" "}
               in{" "}
-              <strong className={isAudi ? "text-red-400" : isVW ? "text-blue-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}>
+              <strong className={isAudi ? "text-red-400" : isVW ? "text-blue-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}>
                 {selectedCity}
               </strong>
             </span>
@@ -467,13 +497,13 @@ export const DealershipLocator = ({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.25 }}
-                className={`rounded-3xl border p-6 flex flex-col justify-between space-y-5 transition-all shadow-xl relative overflow-hidden ${dealer.id.includes("corporate") ? (isAudi ? "bg-gradient-to-b from-zinc-900 to-zinc-950 border-red-500/70 shadow-red-950/20" : isVW ? "bg-gradient-to-b from-zinc-900 to-zinc-950 border-blue-500/70 shadow-blue-950/20" : isBentley ? "bg-gradient-to-b from-zinc-900 to-zinc-950 border-green-500/70 shadow-green-950/20" : isLamborghini ? "bg-gradient-to-b from-zinc-900 to-zinc-950 border-yellow-500/70 shadow-yellow-950/20" : isPorsche ? "bg-gradient-to-b from-zinc-900 to-zinc-950 border-amber-500/70 shadow-amber-950/20" : "bg-gradient-to-b from-zinc-900 to-zinc-950 border-emerald-500/70 shadow-emerald-950/20") : isSelected ? (isAudi ? "bg-zinc-900 border-red-500 ring-1 ring-red-500/50" : isVW ? "bg-zinc-900 border-blue-500 ring-1 ring-blue-500/50" : isBentley ? "bg-zinc-900 border-green-500 ring-1 ring-green-500/50" : isLamborghini ? "bg-zinc-900 border-yellow-500 ring-1 ring-yellow-500/50" : isPorsche ? "bg-zinc-900 border-amber-500 ring-1 ring-amber-500/50" : "bg-zinc-900 border-emerald-500 ring-1 ring-emerald-500/50") : "bg-zinc-900/80 border-zinc-800 hover:border-zinc-700 hover:bg-zinc-900"}`}
+                className={`rounded-3xl border p-6 flex flex-col justify-between space-y-5 transition-all shadow-xl relative overflow-hidden ${dealer.id.includes("corporate") ? (isAudi ? "bg-gradient-to-b from-zinc-900 to-zinc-950 border-red-500/70 shadow-red-950/20" : isVW ? "bg-gradient-to-b from-zinc-900 to-zinc-950 border-blue-500/70 shadow-blue-950/20" : isSeat ? "bg-gradient-to-b from-zinc-900 to-zinc-950 border-orange-500/70 shadow-orange-950/20" : isBentley ? "bg-gradient-to-b from-zinc-900 to-zinc-950 border-green-500/70 shadow-green-950/20" : isLamborghini ? "bg-gradient-to-b from-zinc-900 to-zinc-950 border-yellow-500/70 shadow-yellow-950/20" : isPorsche ? "bg-gradient-to-b from-zinc-900 to-zinc-950 border-amber-500/70 shadow-amber-950/20" : "bg-gradient-to-b from-zinc-900 to-zinc-950 border-emerald-500/70 shadow-emerald-950/20") : isSelected ? (isAudi ? "bg-zinc-900 border-red-500 ring-1 ring-red-500/50" : isVW ? "bg-zinc-900 border-blue-500 ring-1 ring-blue-500/50" : isSeat ? "bg-zinc-900 border-orange-500 ring-1 ring-orange-500/50" : isBentley ? "bg-zinc-900 border-green-500 ring-1 ring-green-500/50" : isLamborghini ? "bg-zinc-900 border-yellow-500 ring-1 ring-yellow-500/50" : isPorsche ? "bg-zinc-900 border-amber-500 ring-1 ring-amber-500/50" : "bg-zinc-900 border-emerald-500 ring-1 ring-emerald-500/50") : "bg-zinc-900/80 border-zinc-800 hover:border-zinc-700 hover:bg-zinc-900"}`}
               >
                 {dealer.id.includes("corporate") && (
                   <div
-                    className={`absolute top-0 right-0 px-3 py-1 text-white font-black italic text-[10px] rounded-bl-xl uppercase tracking-wider ${isAudi ? "bg-red-600" : isVW ? "bg-blue-600" : isBentley ? "bg-green-600" : isLamborghini ? "bg-yellow-600" : isPorsche ? "bg-amber-600" : "bg-emerald-600"}`}
+                    className={`absolute top-0 right-0 px-3 py-1 text-white font-black italic text-[10px] rounded-bl-xl uppercase tracking-wider ${isAudi ? "bg-red-600" : isVW ? "bg-blue-600" : isSeat ? "bg-orange-600" : isBentley ? "bg-green-600" : isLamborghini ? "bg-yellow-600" : isPorsche ? "bg-amber-600" : "bg-emerald-600"}`}
                   >
-                    {isBentley ? "Bentley India Corporate Centre" : isLamborghini ? "Lamborghini India Corporate Centre" : isPorsche ? "Porsche India Corporate Centre" : "SAVWIPL Corporate Center"}
+                    {isSeat ? "SEAT India Corporate Centre" : isBentley ? "Bentley India Corporate Centre" : isLamborghini ? "Lamborghini India Corporate Centre" : isPorsche ? "Porsche India Corporate Centre" : "SAVWIPL Corporate Center"}
                   </div>
                 )}
 
@@ -481,13 +511,13 @@ export const DealershipLocator = ({
                   {/* Type Badge & Location */}
                   <div className="flex items-center justify-between gap-2">
                     <span
-                      className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider border ${dealer.type === "3S Facility" ? (isAudi ? "bg-red-950/80 text-red-300 border-red-800" : isVW ? "bg-blue-950/80 text-blue-300 border-blue-800" : isBentley ? "bg-green-950/80 text-green-300 border-green-800" : isLamborghini ? "bg-yellow-950/80 text-yellow-300 border-yellow-800" : isPorsche ? "bg-amber-950/80 text-amber-300 border-amber-800" : "bg-emerald-950/80 text-emerald-300 border-emerald-800") : dealer.type === "Showroom" ? "bg-sky-950/80 text-sky-300 border-sky-800" : "bg-amber-950/80 text-amber-300 border-amber-800"}`}
+                      className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider border ${dealer.type === "3S Facility" ? (isAudi ? "bg-red-950/80 text-red-300 border-red-800" : isVW ? "bg-blue-950/80 text-blue-300 border-blue-800" : isSeat ? "bg-orange-950/80 text-orange-300 border-orange-800" : isBentley ? "bg-green-950/80 text-green-300 border-green-800" : isLamborghini ? "bg-yellow-950/80 text-yellow-300 border-yellow-800" : isPorsche ? "bg-amber-950/80 text-amber-300 border-amber-800" : "bg-emerald-950/80 text-emerald-300 border-emerald-800") : dealer.type === "Showroom" ? "bg-sky-950/80 text-sky-300 border-sky-800" : "bg-amber-950/80 text-amber-300 border-amber-800"}`}
                     >
                       {dealer.type} (Sales, Service & Spares)
                     </span>
                     <span className="text-xs text-zinc-400 font-mono font-medium flex items-center gap-1">
                       <MapPin
-                        className={`w-3 h-3 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
+                        className={`w-3 h-3 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
                       />
                       {dealer.city}, {dealer.state}
                     </span>
@@ -499,7 +529,7 @@ export const DealershipLocator = ({
                       {dealer.name}
                     </h3>
                     <p
-                      className={`text-xs font-medium mt-0.5 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
+                      className={`text-xs font-medium mt-0.5 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
                     >
                       {dealer.partnerGroup}
                     </p>
@@ -524,12 +554,12 @@ export const DealershipLocator = ({
                     >
                       <span className="text-[10px] text-zinc-400 font-sans uppercase flex items-center gap-1">
                         <Phone
-                          className={`w-3 h-3 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
+                          className={`w-3 h-3 ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
                         />{" "}
                         Sales Desk
                       </span>
                       <span
-                        className={`text-xs font-bold text-white transition-colors mt-0.5 ${isAudi ? "group-hover:text-red-300" : isVW ? "group-hover:text-blue-300" : isBentley ? "group-hover:text-green-300" : isLamborghini ? "group-hover:text-yellow-300" : isPorsche ? "group-hover:text-amber-300" : "group-hover:text-emerald-300"}`}
+                        className={`text-xs font-bold text-white transition-colors mt-0.5 ${isAudi ? "group-hover:text-red-300" : isVW ? "group-hover:text-blue-300" : isSeat ? "group-hover:text-orange-300" : isBentley ? "group-hover:text-green-300" : isLamborghini ? "group-hover:text-yellow-300" : isPorsche ? "group-hover:text-amber-300" : "group-hover:text-emerald-300"}`}
                       >
                         {dealer.salesPhone}
                       </span>
@@ -578,7 +608,7 @@ export const DealershipLocator = ({
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       onClick={() => handleOpenBooking(dealer, "Test Drive")}
-                      className={`py-2.5 px-3 rounded-xl text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer ${isAudi ? "bg-red-600 hover:bg-red-500 shadow-red-950/40" : isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-950/40" : isBentley ? "bg-green-600 hover:bg-green-500 shadow-green-950/40" : isLamborghini ? "bg-yellow-600 hover:bg-yellow-500 shadow-yellow-950/40" : isPorsche ? "bg-amber-600 hover:bg-amber-500 shadow-amber-950/40" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950/40"}`}
+                      className={`py-2.5 px-3 rounded-xl text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer ${isAudi ? "bg-red-600 hover:bg-red-500 shadow-red-950/40" : isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-950/40" : isSeat ? "bg-orange-600 hover:bg-orange-500 shadow-orange-950/40" : isBentley ? "bg-green-600 hover:bg-green-500 shadow-green-950/40" : isLamborghini ? "bg-yellow-600 hover:bg-yellow-500 shadow-yellow-950/40" : isPorsche ? "bg-amber-600 hover:bg-amber-500 shadow-amber-950/40" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950/40"}`}
                     >
                       <Car className="w-3.5 h-3.5" />
                       Book Test Drive
@@ -625,7 +655,7 @@ export const DealershipLocator = ({
               setSelectedType("All");
               setSearchQuery("");
             }}
-            className={`px-4 py-2 rounded-xl text-white text-xs font-bold cursor-pointer ${isAudi ? "bg-red-600" : isVW ? "bg-blue-600" : isBentley ? "bg-green-600" : isLamborghini ? "bg-yellow-600" : isPorsche ? "bg-amber-600" : "bg-emerald-600"}`}
+            className={`px-4 py-2 rounded-xl text-white text-xs font-bold cursor-pointer ${isAudi ? "bg-red-600" : isVW ? "bg-blue-600" : isSeat ? "bg-orange-600" : isBentley ? "bg-green-600" : isLamborghini ? "bg-yellow-600" : isPorsche ? "bg-amber-600" : "bg-emerald-600"}`}
           >
             Show All Dealerships
           </button>
@@ -652,7 +682,7 @@ export const DealershipLocator = ({
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <span
-                    className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded border ${isAudi ? "bg-red-950 text-red-400 border-red-800" : isVW ? "bg-blue-950 text-blue-400 border-blue-800" : isBentley ? "bg-green-950 text-green-400 border-green-800" : isLamborghini ? "bg-yellow-950 text-yellow-400 border-yellow-800" : isPorsche ? "bg-amber-950 text-amber-400 border-amber-800" : "bg-emerald-950 text-emerald-400 border-emerald-800"}`}
+                    className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded border ${isAudi ? "bg-red-950 text-red-400 border-red-800" : isVW ? "bg-blue-950 text-blue-400 border-blue-800" : isSeat ? "bg-orange-950 text-orange-400 border-orange-800" : isBentley ? "bg-green-950 text-green-400 border-green-800" : isLamborghini ? "bg-yellow-950 text-yellow-400 border-yellow-800" : isPorsche ? "bg-amber-950 text-amber-400 border-amber-800" : "bg-emerald-950 text-emerald-400 border-emerald-800"}`}
                   >
                     Official Appointment Request
                   </span>
@@ -670,7 +700,7 @@ export const DealershipLocator = ({
               {bookingSubmitted ? (
                 <div className="py-6 space-y-4 text-center">
                   <div
-                    className={`w-14 h-14 rounded-full border flex items-center justify-center mx-auto ${isAudi ? "bg-red-950 border-red-500 text-red-400" : isVW ? "bg-blue-950 border-blue-500 text-blue-400" : isBentley ? "bg-green-950 border-green-500 text-green-400" : isLamborghini ? "bg-yellow-950 border-yellow-500 text-yellow-400" : isPorsche ? "bg-amber-950 border-amber-500 text-amber-400" : "bg-emerald-950 border-emerald-500 text-emerald-400"}`}
+                    className={`w-14 h-14 rounded-full border flex items-center justify-center mx-auto ${isAudi ? "bg-red-950 border-red-500 text-red-400" : isVW ? "bg-blue-950 border-blue-500 text-blue-400" : isSeat ? "bg-orange-950 border-orange-500 text-orange-400" : isBentley ? "bg-green-950 border-green-500 text-green-400" : isLamborghini ? "bg-yellow-950 border-yellow-500 text-yellow-400" : isPorsche ? "bg-amber-950 border-amber-500 text-amber-400" : "bg-emerald-950 border-emerald-500 text-emerald-400"}`}
                   >
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
@@ -683,7 +713,7 @@ export const DealershipLocator = ({
                       <strong className="text-white">{userName}</strong>. The
                       dealership relationship manager at{" "}
                       <strong
-                        className={isAudi ? "text-red-400" : isVW ? "text-blue-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}
+                        className={isAudi ? "text-red-400" : isVW ? "text-blue-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}
                       >
                         {bookingDealer.name}
                       </strong>{" "}
@@ -696,14 +726,14 @@ export const DealershipLocator = ({
                     <div className="flex justify-between text-zinc-400">
                       <span>Booking Reference:</span>
                       <span className="text-white font-bold">
-                        {isAudi ? "AUDI" : isVW ? "VW" : isBentley ? "BEN" : isLamborghini ? "LAM" : isPorsche ? "PSC" : "SKD"}-
+                        {isAudi ? "AUDI" : isVW ? "VW" : isSeat ? "SEA" : isBentley ? "BEN" : isLamborghini ? "LAM" : isPorsche ? "PSC" : "SKD"}-
                         {Math.floor(1e5 + Math.random() * 9e5)}
                       </span>
                     </div>
                     <div className="flex justify-between text-zinc-400">
                       <span>Selected Vehicle:</span>
                       <span
-                        className={`font-bold ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
+                        className={`font-bold ${isAudi ? "text-red-400" : isVW ? "text-blue-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : "text-emerald-400"}`}
                       >
                         {bookingModel}
                       </span>
@@ -717,7 +747,7 @@ export const DealershipLocator = ({
                   </div>
                   <button
                     onClick={() => setIsBookingModalOpen(false)}
-                    className={`w-full py-3 rounded-xl text-white font-bold text-xs cursor-pointer ${isAudi ? "bg-red-600" : isVW ? "bg-blue-600" : isBentley ? "bg-green-600" : isLamborghini ? "bg-yellow-600" : isPorsche ? "bg-amber-600" : "bg-emerald-600"}`}
+                    className={`w-full py-3 rounded-xl text-white font-bold text-xs cursor-pointer ${isAudi ? "bg-red-600" : isVW ? "bg-blue-600" : isSeat ? "bg-orange-600" : isBentley ? "bg-green-600" : isLamborghini ? "bg-yellow-600" : isPorsche ? "bg-amber-600" : "bg-emerald-600"}`}
                   >
                     Done
                   </button>
@@ -728,12 +758,12 @@ export const DealershipLocator = ({
                   {bookingType === "Test Drive" && (
                     <div className="space-y-1.5">
                       <label className="text-xs font-semibold text-zinc-300">
-                        Select {isAudi ? "Audi" : isVW ? "Volkswagen" : isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : "\u0160koda"} Model
+                        Select {isAudi ? "Audi" : isVW ? "Volkswagen" : isSeat ? "SEAT" : isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : "\u0160koda"} Model
                       </label>
                       <select
                         value={bookingModel}
                         onChange={(e) => setBookingModel(e.target.value)}
-                        className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-white focus:outline-none ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isBentley ? "focus:border-green-500" : isLamborghini ? "focus:border-yellow-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
+                        className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-white focus:outline-none ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isSeat ? "focus:border-orange-500" : isBentley ? "focus:border-green-500" : isLamborghini ? "focus:border-yellow-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
                       >
                         {isVW ? (
                           <>
@@ -759,7 +789,7 @@ export const DealershipLocator = ({
                         ) : (
                           bookingDealer.modelsAvailableForTestDrive.map((m) => (
                             <option key={m} value={m}>
-                              {isAudi ? "Audi" : isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : "Škoda"} {m}
+                              {isAudi ? "Audi" : isSeat ? "SEAT" : isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : "Škoda"} {m}
                             </option>
                           ))
                         )}
@@ -779,7 +809,7 @@ export const DealershipLocator = ({
                         placeholder="e.g. Rahul Sharma"
                         value={userName}
                         onChange={(e) => setUserName(e.target.value)}
-                        className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-white placeholder-zinc-500 focus:outline-none ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isBentley ? "focus:border-green-500" : isLamborghini ? "focus:border-yellow-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
+                        className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-white placeholder-zinc-500 focus:outline-none ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isSeat ? "focus:border-orange-500" : isBentley ? "focus:border-green-500" : isLamborghini ? "focus:border-yellow-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
                       />
                     </div>
 
@@ -793,7 +823,7 @@ export const DealershipLocator = ({
                         placeholder="10-digit mobile number"
                         value={userPhone}
                         onChange={(e) => setUserPhone(e.target.value)}
-                        className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-white placeholder-zinc-500 focus:outline-none font-mono ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isBentley ? "focus:border-green-500" : isLamborghini ? "focus:border-yellow-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
+                        className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-white placeholder-zinc-500 focus:outline-none font-mono ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isSeat ? "focus:border-orange-500" : isBentley ? "focus:border-green-500" : isLamborghini ? "focus:border-yellow-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
                       />
                     </div>
                   </div>
@@ -807,7 +837,7 @@ export const DealershipLocator = ({
                       type="date"
                       value={preferredDate}
                       onChange={(e) => setPreferredDate(e.target.value)}
-                      className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-white focus:outline-none ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isBentley ? "focus:border-green-500" : isLamborghini ? "focus:border-yellow-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
+                      className={`w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-white focus:outline-none ${isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : isSeat ? "focus:border-orange-500" : isBentley ? "focus:border-green-500" : isLamborghini ? "focus:border-yellow-500" : isPorsche ? "focus:border-amber-500" : "focus:border-emerald-500"}`}
                     />
                   </div>
 
@@ -831,7 +861,7 @@ export const DealershipLocator = ({
                     </button>
                     <button
                       type="submit"
-                      className={`flex-1 py-2.5 rounded-xl text-white text-xs font-bold transition-colors cursor-pointer ${isAudi ? "bg-red-600 hover:bg-red-500" : isVW ? "bg-blue-600 hover:bg-blue-500" : isBentley ? "bg-green-600 hover:bg-green-500" : isLamborghini ? "bg-yellow-600 hover:bg-yellow-500" : isPorsche ? "bg-amber-600 hover:bg-amber-500" : "bg-emerald-600 hover:bg-emerald-500"}`}
+                      className={`flex-1 py-2.5 rounded-xl text-white text-xs font-bold transition-colors cursor-pointer ${isAudi ? "bg-red-600 hover:bg-red-500" : isVW ? "bg-blue-600 hover:bg-blue-500" : isSeat ? "bg-orange-600 hover:bg-orange-500" : isBentley ? "bg-green-600 hover:bg-green-500" : isLamborghini ? "bg-yellow-600 hover:bg-yellow-500" : isPorsche ? "bg-amber-600 hover:bg-amber-500" : "bg-emerald-600 hover:bg-emerald-500"}`}
                     >
                       Confirm Booking Request
                     </button>

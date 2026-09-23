@@ -4,19 +4,27 @@ import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
 import { PORSCHE_MODELS } from "../data/porscheData";
 import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
+import { BENTLEY_MODELS } from "../data/bentleyData";
+import { SEAT_MODELS } from "../data/seatData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
+import { SeatLogo } from "./SeatLogo";
 export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
   const isPorsche = brand === "porsche";
   const isLamborghini = brand === "lamborghini";
   const isBentley = brand === "bentley";
-  const models = isLamborghini
+  const isSeat = brand === "seat";
+  const models = isSeat
+    ? SEAT_MODELS
+    : isBentley
+    ? BENTLEY_MODELS
+    : isLamborghini
     ? LAMBORGHINI_MODELS
     : isPorsche
     ? PORSCHE_MODELS
@@ -80,7 +88,9 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-1">
-            {isBentley ? (
+            {isSeat ? (
+              <SeatLogo variant="emblem" size="sm" />
+            ) : isBentley ? (
               <BentleyLogo variant="emblem" size="sm" />
             ) : isLamborghini ? (
               <LamborghiniLogo variant="emblem" size="sm" />
@@ -93,7 +103,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
             ) : (
               <SkodaLogo variant="emblem" size="sm" />
             )}
-            <span className={isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}>
+            <span className={isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}>
               Financial Planning
             </span>
           </div>
@@ -110,7 +120,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
           </h2>
           <p className="text-sm text-zinc-400">
             Customize loan tenure, state taxes, down payment, and insurance for
-            any {isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} variant
+            any {isSeat ? "SEAT" : isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} variant
           </p>
         </div>
 
@@ -127,7 +137,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
               <button
                 key={car.id}
                 onClick={() => handleModelChange(car.id)}
-                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all cursor-pointer ${selectedModelId === car.id ? (isBentley ? "bg-green-600 text-white shadow-sm" : isLamborghini ? "bg-yellow-600 text-white shadow-sm" : isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "text-zinc-400 hover:text-white hover:bg-zinc-800"}`}
+                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all cursor-pointer ${selectedModelId === car.id ? (isSeat ? "bg-orange-600 text-white shadow-sm" : isBentley ? "bg-green-600 text-white shadow-sm" : isLamborghini ? "bg-yellow-600 text-white shadow-sm" : isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "text-zinc-400 hover:text-white hover:bg-zinc-800"}`}
               >
                 {shortName}
                 {car.notSoldInIndia && (
@@ -160,7 +170,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
             <div className="flex items-start justify-between border-b border-zinc-800 pb-4">
               <div>
                 <span
-                  className={`text-xs font-semibold ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`text-xs font-semibold ${isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   {currentModel.name}
                 </span>
@@ -180,7 +190,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                 <select
                   value={selectedVariantId}
                   onChange={(e) => setSelectedVariantId(e.target.value)}
-                  className={`w-full text-xs p-2 rounded-lg bg-zinc-950 border border-zinc-700 text-white focus:outline-none ${isBentley ? "focus:border-green-500" : isLamborghini ? "focus:border-yellow-500" : isPorsche ? "focus:border-amber-500" : isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : "focus:border-emerald-500"}`}
+                  className={`w-full text-xs p-2 rounded-lg bg-zinc-950 border border-zinc-700 text-white focus:outline-none ${isSeat ? "focus:border-orange-500" : isBentley ? "focus:border-green-500" : isLamborghini ? "focus:border-yellow-500" : isPorsche ? "focus:border-amber-500" : isAudi ? "focus:border-red-500" : isVW ? "focus:border-blue-500" : "focus:border-emerald-500"}`}
                 >
                   {currentModel.variants.map((v) => (
                     <option key={v.id} value={v.id}>
@@ -220,7 +230,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                     <button
                       key={st.state}
                       onClick={() => setRtoRate(st.rate)}
-                      className={`text-[10px] px-2 py-1 rounded border transition-colors cursor-pointer ${rtoRate === st.rate ? (isBentley ? "bg-green-600 text-white border-green-500" : isLamborghini ? "bg-yellow-600 text-white border-yellow-500" : isPorsche ? "bg-amber-600 text-white border-amber-500" : isAudi ? "bg-red-600 text-white border-red-500" : isVW ? "bg-blue-600 text-white border-blue-500" : "bg-emerald-600 text-white border-emerald-500") : "bg-zinc-950 text-zinc-400 border-zinc-800 hover:text-white"}`}
+                      className={`text-[10px] px-2 py-1 rounded border transition-colors cursor-pointer ${rtoRate === st.rate ? (isSeat ? "bg-orange-600 text-white border-orange-500" : isBentley ? "bg-green-600 text-white border-green-500" : isLamborghini ? "bg-yellow-600 text-white border-yellow-500" : isPorsche ? "bg-amber-600 text-white border-amber-500" : isAudi ? "bg-red-600 text-white border-red-500" : isVW ? "bg-blue-600 text-white border-blue-500" : "bg-emerald-600 text-white border-emerald-500") : "bg-zinc-950 text-zinc-400 border-zinc-800 hover:text-white"}`}
                     >
                       {st.state}
                     </button>
@@ -251,7 +261,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                   Estimated On-Road Price
                 </span>
                 <span
-                  className={`text-xl font-black ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`text-xl font-black ${isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   ₹{totalOnRoad.toLocaleString()}
                 </span>
@@ -285,7 +295,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                 step="5"
                 value={downPaymentPercent}
                 onChange={(e) => setDownPaymentPercent(Number(e.target.value))}
-                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isBentley ? "accent-green-500" : isLamborghini ? "accent-yellow-500" : isPorsche ? "accent-amber-500" : isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
+                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isSeat ? "accent-orange-500" : isBentley ? "accent-green-500" : isLamborghini ? "accent-yellow-500" : isPorsche ? "accent-amber-500" : isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
               />
             </div>
 
@@ -307,7 +317,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                 step="1"
                 value={tenureYears}
                 onChange={(e) => setTenureYears(Number(e.target.value))}
-                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isBentley ? "accent-green-500" : isLamborghini ? "accent-yellow-500" : isPorsche ? "accent-amber-500" : isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
+                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isSeat ? "accent-orange-500" : isBentley ? "accent-green-500" : isLamborghini ? "accent-yellow-500" : isPorsche ? "accent-amber-500" : isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
               />
             </div>
 
@@ -326,7 +336,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                 step="0.25"
                 value={interestRate}
                 onChange={(e) => setInterestRate(Number(e.target.value))}
-                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isBentley ? "accent-green-500" : isLamborghini ? "accent-yellow-500" : isPorsche ? "accent-amber-500" : isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
+                className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isSeat ? "accent-orange-500" : isBentley ? "accent-green-500" : isLamborghini ? "accent-yellow-500" : isPorsche ? "accent-amber-500" : isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
               />
             </div>
 
@@ -338,7 +348,7 @@ export const CostCalculator = ({ brand = "skoda", initialModelId }) => {
                     Estimated Monthly EMI
                   </span>
                   <span
-                    className={`text-3xl font-black ${isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`text-3xl font-black ${isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     ₹{emi.toLocaleString()}
                   </span>

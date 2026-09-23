@@ -4,6 +4,7 @@ import { AUDI_RS_MODELS } from "../data/audiPerformanceData";
 import { PORSCHE_GT_MODELS } from "../data/porschePerformanceData";
 import { LAMBORGHINI_GT_MODELS } from "../data/lamborghiniPerformanceData";
 import { BENTLEY_GT_MODELS } from "../data/bentleyPerformanceData";
+import { SEAT_GT_MODELS } from "../data/seatPerformanceData";
 import { getBodyShape } from "./bodyShape";
 
 function slugify(str) {
@@ -40,6 +41,7 @@ function normalize(model, brand) {
     shape: getBodyShape(model.category),
     priceNumeric: model.priceNumeric,
     expectedPrice: model.expectedPrice,
+    notSoldInIndia: model.notSoldInIndia,
   };
 }
 
@@ -59,5 +61,6 @@ export function getRaceRoster() {
     ...PORSCHE_GT_MODELS.map((m) => normalize(m, "porsche")),
     ...LAMBORGHINI_GT_MODELS.map((m) => normalize(m, "lamborghini")),
     ...BENTLEY_GT_MODELS.map((m) => normalize(m, "bentley")),
+    ...SEAT_GT_MODELS.map((m) => normalize(m, "seat")),
   ];
 }

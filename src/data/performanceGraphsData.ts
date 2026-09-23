@@ -2933,6 +2933,180 @@ export const ENGINE_GRAPH_PROFILES: Record<string, EngineGraphProfile> = {
       'Sports exhaust with quad tailpipes and a deeper V8 note',
       'Retains genuine light off-roading capability via a dedicated Off-Road drive mode'
     ]
+  },
+
+  '1.0-tsi-seat': {
+    id: '1.0-tsi-seat',
+    name: '1.0L TSI Turbo-Petrol (SEAT — Not Sold in India)',
+    badge: '1.0 TSI (110 PS / 200 Nm)',
+    displacement: '999 cc',
+    cylinders: '3 Cylinders (Turbo Petrol)',
+    fuelType: 'Petrol',
+    peakPowerStr: '110 PS @ 5,000–5,500 RPM',
+    peakTorqueStr: '200 Nm @ 2,000–3,500 RPM',
+    maxPowerHp: 110,
+    maxTorqueNm: 200,
+    powerRpmRange: '5,000–5,500 RPM',
+    torqueRpmRange: '2,000–3,500 RPM',
+    redlineRpm: 6500,
+    idleRpm: 850,
+    highwayCruiseRpm100Kmh: 2100,
+    highwayCruiseRpm120Kmh: 2500,
+    dynoCurve: [
+      { rpm: 1500, powerHp: 35, torqueNm: 150, boostBar: 0.55 },
+      { rpm: 2000, powerHp: 55, torqueNm: 200, boostBar: 0.85 },
+      { rpm: 3000, powerHp: 78, torqueNm: 200, boostBar: 0.85 },
+      { rpm: 4000, powerHp: 95, torqueNm: 195, boostBar: 0.8 },
+      { rpm: 5000, powerHp: 110, torqueNm: 185, boostBar: 0.75 },
+      { rpm: 6000, powerHp: 105, torqueNm: 160, boostBar: 0.65 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 2.0, speedKmh: 50, gForce: 0.32, gear: 1 },
+      { timeSec: 4.5, speedKmh: 90, gForce: 0.28, gear: 2 },
+      { timeSec: 9.5, speedKmh: 100, gForce: 0.22, gear: 3 },
+      { timeSec: 16.0, speedKmh: 160, gForce: 0.14, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.78', speedAt1000Rpm: 6.5, speedAt3000Rpm: 19.5, speedAt6000Rpm: 39.0, redlineSpeed: 42 },
+      { gear: '2nd', ratio: '2.12', speedAt1000Rpm: 11.6, speedAt3000Rpm: 34.8, speedAt6000Rpm: 69.6, redlineSpeed: 75 },
+      { gear: '3rd', ratio: '1.36', speedAt1000Rpm: 18.1, speedAt3000Rpm: 54.3, speedAt6000Rpm: 108.6, redlineSpeed: 117 },
+      { gear: '4th', ratio: '0.97', speedAt1000Rpm: 25.4, speedAt3000Rpm: 76.2, speedAt6000Rpm: 152.4, redlineSpeed: 164 },
+      { gear: '5th', ratio: '0.76', speedAt1000Rpm: 32.4, speedAt3000Rpm: 97.2, speedAt6000Rpm: 188.0, redlineSpeed: 188 },
+      { gear: '6th', ratio: '0.63', speedAt1000Rpm: 39.1, speedAt3000Rpm: 117.3, speedAt6000Rpm: 188.0, redlineSpeed: 188 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 15.5, engineRpm: 1300 },
+      { speedKmh: 40, fuelConsumptionKmpl: 18.0, engineRpm: 1250 },
+      { speedKmh: 60, fuelConsumptionKmpl: 20.0, engineRpm: 1400 },
+      { speedKmh: 80, fuelConsumptionKmpl: 21.5, engineRpm: 1650 },
+      { speedKmh: 100, fuelConsumptionKmpl: 18.5, engineRpm: 2100 },
+      { speedKmh: 120, fuelConsumptionKmpl: 15.0, engineRpm: 2500 },
+      { speedKmh: 140, fuelConsumptionKmpl: 12.0, engineRpm: 2900 }
+    ],
+    technicalFeatures: [
+      'Shared Volkswagen Group EA211 1.0 TSI turbo-triple architecture',
+      'Powers the Ibiza and Arona across the European lineup',
+      'Not sold in India — European/global reference specification only',
+      '6-speed manual or 7-speed DSG dual-clutch automatic'
+    ]
+  },
+
+  '1.5-tsi-seat': {
+    id: '1.5-tsi-seat',
+    name: '1.5L TSI EVO Turbo-Petrol (SEAT — Not Sold in India)',
+    badge: '1.5 TSI EVO (150 PS / 250 Nm)',
+    displacement: '1,498 cc',
+    cylinders: '4 Cylinders (Turbo Petrol, ACT)',
+    fuelType: 'Petrol',
+    peakPowerStr: '150 PS @ 5,000–6,000 RPM',
+    peakTorqueStr: '250 Nm @ 1,500–3,500 RPM',
+    maxPowerHp: 150,
+    maxTorqueNm: 250,
+    powerRpmRange: '5,000–6,000 RPM',
+    torqueRpmRange: '1,500–3,500 RPM',
+    redlineRpm: 6500,
+    idleRpm: 800,
+    highwayCruiseRpm100Kmh: 1750,
+    highwayCruiseRpm120Kmh: 2100,
+    dynoCurve: [
+      { rpm: 1500, powerHp: 48, torqueNm: 220, boostBar: 0.75 },
+      { rpm: 2000, powerHp: 68, torqueNm: 250, boostBar: 1.0 },
+      { rpm: 3000, powerHp: 100, torqueNm: 250, boostBar: 1.0 },
+      { rpm: 4000, powerHp: 125, torqueNm: 240, boostBar: 0.95 },
+      { rpm: 5000, powerHp: 150, torqueNm: 225, boostBar: 0.9 },
+      { rpm: 6000, powerHp: 148, torqueNm: 200, boostBar: 0.8 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 1.4, speedKmh: 50, gForce: 0.48, gear: 1 },
+      { timeSec: 3.2, speedKmh: 90, gForce: 0.42, gear: 2 },
+      { timeSec: 6.5, speedKmh: 100, gForce: 0.35, gear: 3 },
+      { timeSec: 12.0, speedKmh: 160, gForce: 0.24, gear: 5 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.61', speedAt1000Rpm: 7.2, speedAt3000Rpm: 21.6, speedAt6000Rpm: 43.2, redlineSpeed: 47 },
+      { gear: '2nd', ratio: '2.04', speedAt1000Rpm: 12.7, speedAt3000Rpm: 38.1, speedAt6000Rpm: 76.2, redlineSpeed: 82 },
+      { gear: '3rd', ratio: '1.32', speedAt1000Rpm: 19.6, speedAt3000Rpm: 58.8, speedAt6000Rpm: 117.6, redlineSpeed: 127 },
+      { gear: '4th', ratio: '0.98', speedAt1000Rpm: 26.4, speedAt3000Rpm: 79.2, speedAt6000Rpm: 158.4, redlineSpeed: 171 },
+      { gear: '5th', ratio: '0.78', speedAt1000Rpm: 33.2, speedAt3000Rpm: 99.6, speedAt6000Rpm: 199.2, redlineSpeed: 215 },
+      { gear: '6th', ratio: '0.64', speedAt1000Rpm: 40.5, speedAt3000Rpm: 121.5, speedAt6000Rpm: 216.0, redlineSpeed: 216 },
+      { gear: '7th', ratio: '0.53', speedAt1000Rpm: 48.9, speedAt3000Rpm: 146.7, speedAt6000Rpm: 216.0, redlineSpeed: 216 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 14.0, engineRpm: 1150 },
+      { speedKmh: 40, fuelConsumptionKmpl: 16.5, engineRpm: 1100 },
+      { speedKmh: 60, fuelConsumptionKmpl: 18.5, engineRpm: 1250 },
+      { speedKmh: 80, fuelConsumptionKmpl: 19.5, engineRpm: 1500 },
+      { speedKmh: 100, fuelConsumptionKmpl: 17.0, engineRpm: 1750 },
+      { speedKmh: 120, fuelConsumptionKmpl: 14.0, engineRpm: 2100 },
+      { speedKmh: 140, fuelConsumptionKmpl: 11.5, engineRpm: 2450 }
+    ],
+    technicalFeatures: [
+      'Active Cylinder Technology (ACT) shuts down two cylinders under light load',
+      'Powers the Leon, Ateca and Tarraco mid-range trims in Europe',
+      'Shared EA211 evo architecture with Škoda and Volkswagen siblings',
+      'Not sold in India — European/global reference specification only'
+    ]
+  },
+
+  '2.0-tsi-cupra-seat': {
+    id: '2.0-tsi-cupra-seat',
+    name: '2.0L TSI Turbo-Petrol, Cupra Tune (SEAT — Not Sold in India)',
+    badge: '2.0 TSI Cupra (300 PS / 400 Nm)',
+    displacement: '1,984 cc',
+    cylinders: '4 Cylinders (Turbo Petrol, EA888)',
+    fuelType: 'Petrol',
+    peakPowerStr: '300 PS @ 5,450–6,500 RPM',
+    peakTorqueStr: '400 Nm @ 2,000–5,450 RPM',
+    maxPowerHp: 300,
+    maxTorqueNm: 400,
+    powerRpmRange: '5,450–6,500 RPM',
+    torqueRpmRange: '2,000–5,450 RPM',
+    redlineRpm: 6800,
+    idleRpm: 800,
+    highwayCruiseRpm100Kmh: 1650,
+    highwayCruiseRpm120Kmh: 2000,
+    dynoCurve: [
+      { rpm: 1500, powerHp: 70, torqueNm: 300, boostBar: 1.1 },
+      { rpm: 2000, powerHp: 108, torqueNm: 400, boostBar: 1.4 },
+      { rpm: 3000, powerHp: 165, torqueNm: 400, boostBar: 1.4 },
+      { rpm: 4000, powerHp: 220, torqueNm: 395, boostBar: 1.35 },
+      { rpm: 5000, powerHp: 280, torqueNm: 385, boostBar: 1.3 },
+      { rpm: 6000, powerHp: 300, torqueNm: 355, boostBar: 1.2 },
+      { rpm: 6800, powerHp: 290, torqueNm: 310, boostBar: 1.1 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 0.9, speedKmh: 50, gForce: 0.82, gear: 1 },
+      { timeSec: 1.9, speedKmh: 90, gForce: 0.70, gear: 2 },
+      { timeSec: 5.7, speedKmh: 100, gForce: 0.55, gear: 3 },
+      { timeSec: 9.0, speedKmh: 160, gForce: 0.38, gear: 4 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '3.27', speedAt1000Rpm: 8.6, speedAt3000Rpm: 25.8, speedAt6000Rpm: 51.6, redlineSpeed: 58 },
+      { gear: '2nd', ratio: '1.94', speedAt1000Rpm: 14.5, speedAt3000Rpm: 43.5, speedAt6000Rpm: 87.0, redlineSpeed: 98 },
+      { gear: '3rd', ratio: '1.31', speedAt1000Rpm: 21.5, speedAt3000Rpm: 64.5, speedAt6000Rpm: 129.0, redlineSpeed: 146 },
+      { gear: '4th', ratio: '0.98', speedAt1000Rpm: 28.7, speedAt3000Rpm: 86.1, speedAt6000Rpm: 172.2, redlineSpeed: 195 },
+      { gear: '5th', ratio: '0.78', speedAt1000Rpm: 36.1, speedAt3000Rpm: 108.3, speedAt6000Rpm: 216.6, redlineSpeed: 245 },
+      { gear: '6th', ratio: '0.64', speedAt1000Rpm: 44.0, speedAt3000Rpm: 132.0, speedAt6000Rpm: 250.0, redlineSpeed: 250 },
+      { gear: '7th', ratio: '0.53', speedAt1000Rpm: 53.1, speedAt3000Rpm: 159.3, speedAt6000Rpm: 250.0, redlineSpeed: 250 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 9.5, engineRpm: 1250 },
+      { speedKmh: 40, fuelConsumptionKmpl: 11.0, engineRpm: 1150 },
+      { speedKmh: 60, fuelConsumptionKmpl: 12.5, engineRpm: 1300 },
+      { speedKmh: 80, fuelConsumptionKmpl: 13.5, engineRpm: 1500 },
+      { speedKmh: 100, fuelConsumptionKmpl: 12.0, engineRpm: 1650 },
+      { speedKmh: 120, fuelConsumptionKmpl: 10.0, engineRpm: 2000 },
+      { speedKmh: 140, fuelConsumptionKmpl: 8.2, engineRpm: 2350 }
+    ],
+    technicalFeatures: [
+      'The last SEAT-badged Cupra performance engine before Cupra span off in 2021',
+      'Shared EA888 architecture with the Volkswagen Golf R and Audi S3',
+      'Optional 4Drive all-wheel drive on the Leon Cupra 4Drive',
+      'Not sold in India — European performance-hatch reference specification only'
+    ]
   }
 };
 
@@ -4111,6 +4285,126 @@ export const MODEL_PERFORMANCE_PROFILES: ModelPerformanceProfile[] = [
       'Carbon-fibre-effect front splitter and 22-inch forged wheels reduce unsprung mass',
       'Active all-wheel steering for both tight city turns and high-speed stability',
       'Sports exhaust with quad tailpipes tuned for a sharper V8 note'
+    ]
+  },
+  {
+    id: 'ibiza',
+    name: 'SEAT Ibiza (Not Sold in India)',
+    tagline: 'The European Supermini Benchmark',
+    category: 'Turbo-Petrol Supermini',
+    primaryEngineId: '1.0-tsi-seat',
+    availableEngineIds: ['1.0-tsi-seat'],
+    weightKg: 1170,
+    dragCoefficient: '0.31 Cd',
+    braking100to0DistMeters: 37.5,
+    corneringGForce: 0.85,
+    powerToWeightRatio: '94.0 PS/tonne',
+    sprint0to100: '9.5 seconds',
+    topSpeed: '188 km/h',
+    suspensionType: 'MacPherson Strut Front / Torsion Beam Rear',
+    aerodynamicHighlights: [
+      'Compact supermini silhouette on the MQB-A0 platform, shared with the Škoda Kylaq',
+      'Not sold in India — European/global reference specification only'
+    ]
+  },
+  {
+    id: 'arona',
+    name: 'SEAT Arona (Not Sold in India)',
+    tagline: "SEAT's Compact Crossover Debut",
+    category: 'Turbo-Petrol Compact SUV',
+    primaryEngineId: '1.0-tsi-seat',
+    availableEngineIds: ['1.0-tsi-seat'],
+    weightKg: 1230,
+    dragCoefficient: '0.34 Cd',
+    braking100to0DistMeters: 38.5,
+    corneringGForce: 0.80,
+    powerToWeightRatio: '89.4 PS/tonne',
+    sprint0to100: '9.9 seconds',
+    topSpeed: '181 km/h',
+    suspensionType: 'MacPherson Strut Front / Torsion Beam Rear',
+    aerodynamicHighlights: [
+      'Raised-ride-height Ibiza-based crossover with 175mm ground clearance',
+      'Not sold in India — European/global reference specification only'
+    ]
+  },
+  {
+    id: 'leon',
+    name: 'SEAT Leon (Not Sold in India)',
+    tagline: "The Driver's Choice Compact Hatch",
+    category: 'Turbo-Petrol Compact Hatch',
+    primaryEngineId: '1.5-tsi-seat',
+    availableEngineIds: ['1.5-tsi-seat', '2.0-tsi-cupra-seat'],
+    weightKg: 1320,
+    dragCoefficient: '0.29 Cd',
+    braking100to0DistMeters: 35.0,
+    corneringGForce: 0.92,
+    powerToWeightRatio: '113.6 PS/tonne',
+    sprint0to100: '8.4 seconds',
+    topSpeed: '212 km/h',
+    suspensionType: 'MacPherson Strut Front / Multi-Link Rear',
+    aerodynamicHighlights: [
+      'MQB-Evo platform shared with the Volkswagen Golf Mk8, sharper FR-tuned steering',
+      'Not sold in India — European/global reference specification only'
+    ]
+  },
+  {
+    id: 'ateca',
+    name: 'SEAT Ateca (Not Sold in India)',
+    tagline: "SEAT's Original SUV Pioneer",
+    category: 'Turbo-Petrol Midsize SUV',
+    primaryEngineId: '1.5-tsi-seat',
+    availableEngineIds: ['1.5-tsi-seat'],
+    weightKg: 1445,
+    dragCoefficient: '0.33 Cd',
+    braking100to0DistMeters: 38.0,
+    corneringGForce: 0.82,
+    powerToWeightRatio: '103.8 PS/tonne',
+    sprint0to100: '9.2 seconds',
+    topSpeed: '204 km/h',
+    suspensionType: 'MacPherson Strut Front / Multi-Link Rear, Optional 4Drive AWD',
+    aerodynamicHighlights: [
+      'Shares MQB platform architecture with the Škoda Karoq and Volkswagen Tiguan',
+      'Not sold in India — European/global reference specification only'
+    ]
+  },
+  {
+    id: 'tarraco',
+    name: 'SEAT Tarraco (Not Sold in India)',
+    tagline: "SEAT's Flagship Seven-Seat SUV",
+    category: 'Turbo-Petrol Seven-Seat SUV',
+    primaryEngineId: '1.5-tsi-seat',
+    availableEngineIds: ['1.5-tsi-seat'],
+    weightKg: 1595,
+    dragCoefficient: '0.33 Cd',
+    braking100to0DistMeters: 39.5,
+    corneringGForce: 0.78,
+    powerToWeightRatio: '94.0 PS/tonne',
+    sprint0to100: '10.0 seconds',
+    topSpeed: '199 km/h',
+    suspensionType: 'MacPherson Strut Front / Multi-Link Rear, Optional 4Drive AWD',
+    aerodynamicHighlights: [
+      'Long-wheelbase MQB platform shared with the Volkswagen Tiguan Allspace',
+      'Not sold in India — European/global reference specification only'
+    ]
+  },
+  {
+    id: 'leon-cupra-perf',
+    name: 'SEAT Leon Cupra (Not Sold in India)',
+    tagline: 'The Last SEAT-Badged Hot Hatch',
+    category: 'Turbo-Petrol Hot Hatch',
+    primaryEngineId: '2.0-tsi-cupra-seat',
+    availableEngineIds: ['2.0-tsi-cupra-seat'],
+    weightKg: 1470,
+    dragCoefficient: '0.30 Cd',
+    braking100to0DistMeters: 34.2,
+    corneringGForce: 0.97,
+    powerToWeightRatio: '204.1 PS/tonne',
+    sprint0to100: '5.7 seconds',
+    topSpeed: '250 km/h',
+    suspensionType: 'Adaptive DCC Dampers, Optional 4Drive AWD',
+    aerodynamicHighlights: [
+      'The final SEAT-badged Cupra flagship before Cupra span off in 2021',
+      'Not sold in India — European performance-hatch reference specification only'
     ]
   }
 ];

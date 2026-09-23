@@ -56,7 +56,7 @@ export const LaunchScreen = ({ onEnter }) => {
             onSelectBrand={onEnter}
             badgeLabel="One Group, Many Personalities"
             heading="Different Personalities. Shared DNA."
-            description="Škoda, Volkswagen, Audi, Porsche, Lamborghini, and Bentley — six distinct personalities built on shared Volkswagen Group engineering. Click a brand to enter its world."
+            description="Škoda, Volkswagen, Audi, Porsche, Lamborghini, Bentley, and SEAT — seven distinct personalities built on shared Volkswagen Group engineering (SEAT is not officially sold in India). Click a brand to enter its world."
           />
         </div>
       </div>

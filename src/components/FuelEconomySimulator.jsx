@@ -6,14 +6,17 @@ import { AUDI_MODELS, ALL_AUDI_ENGINES } from "../data/audiData";
 import { PORSCHE_MODELS, ALL_PORSCHE_ENGINES } from "../data/porscheData";
 import { LAMBORGHINI_MODELS, ALL_LAMBORGHINI_ENGINES } from "../data/lamborghiniData";
 import { BENTLEY_MODELS, ALL_BENTLEY_ENGINES } from "../data/bentleyData";
+import { SEAT_MODELS, ALL_SEAT_ENGINES } from "../data/seatData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
+import { BentleyLogo } from "./BentleyLogo";
+import { SeatLogo } from "./SeatLogo";
 import { matchEngineSpecs, estimateFuelEconomy } from "../utils/fuelEconomy";
 
-const BRAND_LOGO = { skoda: SkodaLogo, volkswagen: VolkswagenLogo, audi: AudiLogo, porsche: PorscheLogo, lamborghini: LamborghiniLogo };
+const BRAND_LOGO = { skoda: SkodaLogo, volkswagen: VolkswagenLogo, audi: AudiLogo, porsche: PorscheLogo, lamborghini: LamborghiniLogo, bentley: BentleyLogo, seat: SeatLogo };
 
 function SliderRow({ icon: Icon, label, leftLabel, rightLabel, value, onChange, accentClass }) {
   return (
@@ -48,12 +51,13 @@ export const FuelEconomySimulator = ({ brand = "skoda", initialModelId, onOpenCa
   const isPorsche = brand === "porsche";
   const isLamborghini = brand === "lamborghini";
   const isBentley = brand === "bentley";
-  const models = isBentley ? BENTLEY_MODELS : isLamborghini ? LAMBORGHINI_MODELS : isPorsche ? PORSCHE_MODELS : isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
-  const allEngineSpecs = isBentley ? ALL_BENTLEY_ENGINES : isLamborghini ? ALL_LAMBORGHINI_ENGINES : isPorsche ? ALL_PORSCHE_ENGINES : isAudi ? ALL_AUDI_ENGINES : isVW ? ALL_VW_ENGINES : ALL_SKODA_ENGINES;
-  const accent = isBentley ? "green" : isLamborghini ? "yellow" : isPorsche ? "amber" : isAudi ? "red" : isVW ? "blue" : "emerald";
-  const accentText = accent === "yellow" ? "text-yellow-400" : accent === "amber" ? "text-amber-400" : accent === "red" ? "text-red-400" : accent === "blue" ? "text-blue-400" : "text-emerald-400";
-  const accentBg = accent === "yellow" ? "bg-yellow-600" : accent === "amber" ? "bg-amber-600" : accent === "red" ? "bg-red-600" : accent === "blue" ? "bg-blue-600" : "bg-emerald-600";
-  const accentAccent = accent === "yellow" ? "accent-yellow-500" : accent === "amber" ? "accent-amber-500" : accent === "red" ? "accent-red-500" : accent === "blue" ? "accent-blue-500" : "accent-emerald-500";
+  const isSeat = brand === "seat";
+  const models = isSeat ? SEAT_MODELS : isBentley ? BENTLEY_MODELS : isLamborghini ? LAMBORGHINI_MODELS : isPorsche ? PORSCHE_MODELS : isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
+  const allEngineSpecs = isSeat ? ALL_SEAT_ENGINES : isBentley ? ALL_BENTLEY_ENGINES : isLamborghini ? ALL_LAMBORGHINI_ENGINES : isPorsche ? ALL_PORSCHE_ENGINES : isAudi ? ALL_AUDI_ENGINES : isVW ? ALL_VW_ENGINES : ALL_SKODA_ENGINES;
+  const accent = isSeat ? "orange" : isBentley ? "green" : isLamborghini ? "yellow" : isPorsche ? "amber" : isAudi ? "red" : isVW ? "blue" : "emerald";
+  const accentText = accent === "orange" ? "text-orange-400" : accent === "green" ? "text-green-400" : accent === "yellow" ? "text-yellow-400" : accent === "amber" ? "text-amber-400" : accent === "red" ? "text-red-400" : accent === "blue" ? "text-blue-400" : "text-emerald-400";
+  const accentBg = accent === "orange" ? "bg-orange-600" : accent === "green" ? "bg-green-600" : accent === "yellow" ? "bg-yellow-600" : accent === "amber" ? "bg-amber-600" : accent === "red" ? "bg-red-600" : accent === "blue" ? "bg-blue-600" : "bg-emerald-600";
+  const accentAccent = accent === "orange" ? "accent-orange-500" : accent === "green" ? "accent-green-500" : accent === "yellow" ? "accent-yellow-500" : accent === "amber" ? "accent-amber-500" : accent === "red" ? "accent-red-500" : accent === "blue" ? "accent-blue-500" : "accent-emerald-500";
   const BrandLogo = BRAND_LOGO[brand] || SkodaLogo;
 
   const defaultModel = models.find((m) => m.id === initialModelId) || models[0];

@@ -18,8 +18,8 @@ import { CarSilhouette } from "./CarSilhouette";
 import { getGarageablePool, computeGarageStats, loadGarage, saveGarage } from "../utils/garageStats";
 import { getBodyShape } from "../utils/bodyShape";
 
-const BRAND_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b", lamborghini: "#eab308", bentley: "#16a34a" };
-const BRAND_LABEL = { skoda: "Škoda", volkswagen: "Volkswagen", audi: "Audi", porsche: "Porsche", lamborghini: "Lamborghini", bentley: "Bentley" };
+const BRAND_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b", lamborghini: "#eab308", bentley: "#16a34a", seat: "#f97316" };
+const BRAND_LABEL = { skoda: "Škoda", volkswagen: "Volkswagen", audi: "Audi", porsche: "Porsche", lamborghini: "Lamborghini", bentley: "Bentley", seat: "SEAT" };
 
 function formatINR(amount) {
   if (!amount) return "₹0";
@@ -64,8 +64,9 @@ export const EnthusiastGarage = () => {
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Enthusiast Garage</h2>
           <p className="text-sm text-zinc-400 max-w-2xl">
-            Build a dream garage from every Škoda, Volkswagen, Audi, Porsche, Lamborghini and Bentley model — including the
-            vRS/GTI/RS/GT performance icons — and see what it adds up to.
+            Build a dream garage from every Škoda, Volkswagen, Audi, Porsche, Lamborghini, Bentley and SEAT model — including the
+            vRS/GTI/RS/GT performance icons — and see what it adds up to. (SEAT is not officially sold in India — its models
+            are shown for enthusiast comparison using global reference specs.)
           </p>
         </div>
         <button
@@ -207,7 +208,7 @@ export const EnthusiastGarage = () => {
                   />
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {["all", "skoda", "volkswagen", "audi", "porsche", "lamborghini", "bentley"].map((b) => (
+                  {["all", "skoda", "volkswagen", "audi", "porsche", "lamborghini", "bentley", "seat"].map((b) => (
                     <button
                       key={b}
                       onClick={() => setBrandFilter(b)}
