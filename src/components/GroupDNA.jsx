@@ -7,18 +7,20 @@ import { AUDI_MODELS } from "../data/audiData";
 import { PORSCHE_MODELS } from "../data/porscheData";
 import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
 import { BENTLEY_MODELS } from "../data/bentleyData";
+import { SEAT_MODELS } from "../data/seatData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
+import { SeatLogo } from "./SeatLogo";
 import { getGroupPlatformTree } from "../utils/underTheSkin";
 
-const ALL_BRAND_MODELS = { skoda: SKODA_MODELS, volkswagen: VW_MODELS, audi: AUDI_MODELS, porsche: PORSCHE_MODELS, lamborghini: LAMBORGHINI_MODELS, bentley: BENTLEY_MODELS };
-const BRAND_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b", lamborghini: "#eab308", bentley: "#16a34a" };
-const BRAND_LABEL = { skoda: "Škoda", volkswagen: "Volkswagen", audi: "Audi", porsche: "Porsche", lamborghini: "Lamborghini", bentley: "Bentley" };
-const BRANDS = ["skoda", "volkswagen", "audi", "porsche", "lamborghini", "bentley"];
+const ALL_BRAND_MODELS = { skoda: SKODA_MODELS, volkswagen: VW_MODELS, audi: AUDI_MODELS, porsche: PORSCHE_MODELS, lamborghini: LAMBORGHINI_MODELS, bentley: BENTLEY_MODELS, seat: SEAT_MODELS };
+const BRAND_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b", lamborghini: "#eab308", bentley: "#16a34a", seat: "#f97316" };
+const BRAND_LABEL = { skoda: "Škoda", volkswagen: "Volkswagen", audi: "Audi", porsche: "Porsche", lamborghini: "Lamborghini", bentley: "Bentley", seat: "SEAT" };
+const BRANDS = ["skoda", "volkswagen", "audi", "porsche", "lamborghini", "bentley", "seat"];
 
 export const GroupDNA = () => {
   const tree = useMemo(() => getGroupPlatformTree(ALL_BRAND_MODELS), []);
@@ -138,8 +140,8 @@ export const GroupDNA = () => {
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">DNA of the Group</h2>
           <p className="text-sm text-zinc-400 max-w-2xl">
-            Every Škoda, Volkswagen, Audi, Porsche, Lamborghini and Bentley model traced back to the platform it actually shares. Click a
-            brand or a platform to see the family light up.
+            Every Škoda, Volkswagen, Audi, Porsche, Lamborghini, Bentley and SEAT model traced back to the platform it actually shares. Click a
+            brand or a platform to see the family light up. (SEAT is not officially sold in India.)
           </p>
         </div>
         {selection && (
@@ -194,7 +196,7 @@ export const GroupDNA = () => {
                 className={`flex items-center gap-2 px-5 py-3 rounded-2xl border transition-all cursor-pointer ${isBrandActive(b) ? "bg-zinc-900 shadow-xl scale-105" : "bg-zinc-900/70 hover:bg-zinc-900"}`}
                 style={{ borderColor: isBrandActive(b) ? BRAND_HEX[b] : "#27272a" }}
               >
-                {b === "audi" ? <AudiLogo variant="emblem" size="sm" /> : b === "volkswagen" ? <VolkswagenLogo variant="emblem" size="sm" /> : b === "porsche" ? <PorscheLogo variant="emblem" size="sm" /> : b === "lamborghini" ? <LamborghiniLogo variant="emblem" size="sm" /> : b === "bentley" ? <BentleyLogo variant="emblem" size="sm" /> : <SkodaLogo variant="emblem" size="sm" />}
+                {b === "audi" ? <AudiLogo variant="emblem" size="sm" /> : b === "volkswagen" ? <VolkswagenLogo variant="emblem" size="sm" /> : b === "porsche" ? <PorscheLogo variant="emblem" size="sm" /> : b === "lamborghini" ? <LamborghiniLogo variant="emblem" size="sm" /> : b === "bentley" ? <BentleyLogo variant="emblem" size="sm" /> : b === "seat" ? <SeatLogo variant="emblem" size="sm" /> : <SkodaLogo variant="emblem" size="sm" />}
                 <span className="text-sm font-bold text-white">{BRAND_LABEL[b]}</span>
               </button>
             ))}
@@ -240,7 +242,7 @@ export const GroupDNA = () => {
                       }}
                     >
                       <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: BRAND_HEX[m.brand] }} />
-                      <span className="truncate">{m.name.replace("Škoda ", "").replace("Volkswagen ", "").replace("Audi ", "").replace("Porsche ", "").replace("Lamborghini ", "").replace("Bentley ", "")}</span>
+                      <span className="truncate">{m.name.replace("Škoda ", "").replace("Volkswagen ", "").replace("Audi ", "").replace("Porsche ", "").replace("Lamborghini ", "").replace("Bentley ", "").replace("SEAT ", "")}</span>
                     </div>
                   ))}
                 </motion.div>
@@ -291,7 +293,7 @@ export const GroupDNA = () => {
                 }}
               >
                 <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: BRAND_HEX[m.brand] }} />
-                <span className="truncate">{m.name.replace("Škoda ", "").replace("Volkswagen ", "").replace("Audi ", "").replace("Porsche ", "").replace("Lamborghini ", "").replace("Bentley ", "")}</span>
+                <span className="truncate">{m.name.replace("Škoda ", "").replace("Volkswagen ", "").replace("Audi ", "").replace("Porsche ", "").replace("Lamborghini ", "").replace("Bentley ", "").replace("SEAT ", "")}</span>
               </div>
             );
           })}

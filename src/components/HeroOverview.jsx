@@ -27,12 +27,14 @@ import { AUDI_MODELS, AUDI_PROGRESSIVE_LUXURY_FEATURES } from "../data/audiData"
 import { PORSCHE_MODELS, PORSCHE_ENGINEERING_FEATURES } from "../data/porscheData";
 import { LAMBORGHINI_MODELS, LAMBORGHINI_ENGINEERING_FEATURES } from "../data/lamborghiniData";
 import { BENTLEY_MODELS, BENTLEY_ENGINEERING_FEATURES } from "../data/bentleyData";
+import { SEAT_MODELS, SEAT_ENGINEERING_FEATURES } from "../data/seatData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
+import { SeatLogo } from "./SeatLogo";
 import { getAccentClasses } from "../utils/brandTheme";
 import {
   getRatings,
@@ -285,6 +287,47 @@ const BRAND_COPY = {
     innovationsBadge: "Hand-Crafted Innovations",
     innovationsHeading: "Bentley Engineering Innovations",
     innovationsSubtitle: "Bentley Dynamic Ride, active all-wheel steering, and hand-crafted chassis technology tailored for India",
+  },
+  seat: {
+    Logo: SeatLogo,
+    models: SEAT_MODELS,
+    features: SEAT_ENGINEERING_FEATURES,
+    iconicModelId: "leon",
+    displayName: "SEAT — Not Sold in India",
+    tagline: "Auto Emoción (Global Only)",
+    badgeLine: "Global Reference Portfolio — Not Officially Sold in India",
+    headingPre: "Spanish Sport Engineering, ",
+    headingAccent: "MQB Platform Sharing",
+    headingPost: " — Not Sold in India",
+    description: (
+      <>
+        Explore the SEAT global lineup. From the supermini{" "}
+        <strong className="text-white">Ibiza</strong> and crossover{" "}
+        <strong className="text-white">Arona</strong>, to the driver-focused{" "}
+        <strong className="text-white">Leon</strong> and family SUVs{" "}
+        <strong className="text-white">Ateca</strong> and{" "}
+        <strong className="text-white">Tarraco</strong> — every model shown
+        here purely as a global reference spec. SEAT has no official
+        distribution, dealer network or warranty support in India.
+      </>
+    ),
+    rsHeaderLabel: "Leon Cupra Performance (300 PS)",
+    aiAdvisorLabel: "Ask AI SEAT Advisor",
+    historyLabel: "Martorell Heritage",
+    standardLabel: "The SEAT Standard (Global Reference)",
+    powertrainLine: "TSI Turbo-Petrol (Global Spec)",
+    bodyEngineeringLine: "Volkswagen Group MQB / MQB-Evo Platform Sharing",
+    lineupHeading: "The Complete SEAT Lineup (Not Sold in India)",
+    rsShortBadge: "CUPRA",
+    rsBrandLine: "SEAT • Cupra Performance Heritage (Not Sold in India)",
+    rsHeadingPre: "SEAT Cupra Performance Wing: ",
+    rsHeadingAccent: "Leon Cupra (300 PS)",
+    rsDescription:
+      "Experience the 2.0 TSI Leon Cupra, SEAT's in-house hot-hatch flagship before Cupra span off as its own standalone brand in 2021 — shown as a global reference model, never sold in India.",
+    rsButtonLabel: "Explore SEAT Cupra Performance Heritage",
+    innovationsBadge: "Martorell Engineering (Global Reference)",
+    innovationsHeading: "SEAT Engineering Innovations",
+    innovationsSubtitle: "FR sports suspension, MQB platform sharing, and Cupra performance heritage — global reference only, not available in India",
   },
 };
 

@@ -6,6 +6,7 @@ import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
+import { SeatLogo } from "./SeatLogo";
 
 const BRAND_CARDS = [
   {
@@ -67,6 +68,16 @@ const BRAND_CARDS = [
     border: "hover:border-green-600/70",
     glow: "hover:shadow-green-950/60",
     description: "Hand-crafted grand touring — twin-turbo W12 power and Crewe craftsmanship since 1919.",
+  },
+  {
+    id: "seat",
+    Logo: SeatLogo,
+    name: "SEAT",
+    tagline: "Not Sold in India",
+    accent: "text-orange-400",
+    border: "hover:border-orange-600/70",
+    glow: "hover:shadow-orange-950/60",
+    description: "Spanish value-sport styling and the birthplace of Cupra — the one Group brand absent from India since 1950.",
   },
 ];
 

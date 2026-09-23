@@ -48,5 +48,5 @@ export interface CarColor {
 export interface FAQItem {
   question: string;
   answer: string;
-  category: 'Safety' | 'Performance' | 'Maintenance' | 'Comparison';
+  category: 'Safety' | 'Performance' | 'Maintenance' | 'Comparison' | 'Availability';
 }

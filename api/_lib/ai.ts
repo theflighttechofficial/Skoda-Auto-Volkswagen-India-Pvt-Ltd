@@ -23,6 +23,31 @@ function generateSmartSkodaResponse(question: string, modelContext?: string, eng
   const isPorscheBrand = brandContext === 'porsche';
   const isLamborghiniBrand = brandContext === 'lamborghini';
   const isBentleyBrand = brandContext === 'bentley';
+  const isSeatBrand = brandContext === 'seat';
+
+  // SEAT specific queries, when a SEAT model is selected, or when the active site brand is SEAT.
+  // IMPORTANT: SEAT is NOT officially sold in India — every response must make that explicit rather
+  // than presenting any figure as a purchasable Indian price.
+  if (isSeatBrand || q.includes('seat') || q.includes('ibiza') || q.includes('arona') || q.includes('ateca') || q.includes('tarraco') || q.includes('cupra') || selectedModel.includes('ibiza') || selectedModel.includes('arona') || selectedModel.includes('leon') || selectedModel.includes('ateca') || selectedModel.includes('tarraco')) {
+    if (q.includes('cupra') || q.includes('leon') || selectedModel.includes('leon')) {
+      return `### SEAT Leon & Leon Cupra (Not Sold in India)
+- **SEAT Leon:** MQB-Evo platform hatchback, 1.5L TSI EVO producing **150 PS** & **250 Nm**, shared architecture with the Volkswagen Golf Mk8.
+- **SEAT Leon Cupra:** The final SEAT-badged hot hatch, 2.0L TSI producing **300 PS** & **400 Nm**, shared EA888 architecture with the Golf R and Audi S3, before Cupra span off as its own standalone brand in 2021.
+- **Availability:** SEAT has no official CBU import programme, dealer network or warranty support in India. All figures shown are European/global reference specs for enthusiast comparison only — not a purchasable Indian configuration.`;
+    }
+
+    if (q.includes('why') && (q.includes('india') || q.includes('not sold'))) {
+      return `### Why Isn't SEAT Sold in India?
+SEAT has never established an official distribution, CBU import programme, CKD assembly line or dealer network in India. The Volkswagen Group has historically concentrated its Indian mainstream-volume strategy under the Škoda and Volkswagen brands rather than add a third overlapping nameplate, leaving SEAT absent from the Indian market entirely — a deliberate Group brand-portfolio decision, not a temporary gap.`;
+    }
+
+    return `### SEAT Portfolio Overview (Not Sold in India)
+SEAT is the Spanish, value-sport-positioned Volkswagen Group brand — but unlike every other brand in this showcase, it has **no official presence in India**:
+- **SEAT Ibiza & Arona:** MQB-A0 platform supermini and crossover, 1.0L TSI (110 PS / 200 Nm).
+- **SEAT Leon:** MQB-Evo compact hatch, 1.5L TSI EVO (150 PS / 250 Nm), plus the 300 PS Leon Cupra performance flagship.
+- **SEAT Ateca & Tarraco:** Midsize and seven-seat SUVs sharing platforms with the Škoda Karoq/Kodiaq and Volkswagen Tiguan.
+- **India Status:** No CBU import, no CKD assembly, no dealer network, no factory warranty or roadside assistance. Every price and spec shown is a global reference figure for enthusiast comparison, never a purchasable Indian price.`;
+  }
 
   // Bentley specific queries, when a Bentley model is selected, or when the active site brand is Bentley
   if (isBentleyBrand || q.includes('bentley') || q.includes('continental gt') || q.includes('bentayga') || q.includes('flying spur') || q.includes('dynamic ride') || selectedModel.includes('continental') || selectedModel.includes('bentayga') || selectedModel.includes('flying-spur') || selectedModel.includes('flying spur')) {
@@ -526,19 +551,54 @@ export interface AskSkodaAIParams {
  */
 export async function getSkodaAIAnswer(params: AskSkodaAIParams): Promise<string> {
   const { question, model, variant, engine } = params;
-  const userBrand = params.brand || (question.toLowerCase().includes('bentley') || question.toLowerCase().includes('continental gt') || question.toLowerCase().includes('bentayga') || question.toLowerCase().includes('flying spur') ? 'bentley' : question.toLowerCase().includes('lamborghini') || question.toLowerCase().includes('huracan') || question.toLowerCase().includes('urus') || question.toLowerCase().includes('revuelto') ? 'lamborghini' : question.toLowerCase().includes('porsche') || question.toLowerCase().includes('pdk') || question.toLowerCase().includes('911') ? 'porsche' : question.toLowerCase().includes('audi') || question.toLowerCase().includes('quattro') || question.toLowerCase().includes('tfsi') ? 'audi' : question.toLowerCase().includes('volkswagen') || question.toLowerCase().includes('virtus') || question.toLowerCase().includes('taigun') || question.toLowerCase().includes('tiguan') || question.toLowerCase().includes('golf') ? 'volkswagen' : 'skoda');
+  const userBrand = params.brand || (question.toLowerCase().includes('seat') || question.toLowerCase().includes('ibiza') || question.toLowerCase().includes('arona') || question.toLowerCase().includes('ateca') || question.toLowerCase().includes('tarraco') || question.toLowerCase().includes('cupra') ? 'seat' : question.toLowerCase().includes('bentley') || question.toLowerCase().includes('continental gt') || question.toLowerCase().includes('bentayga') || question.toLowerCase().includes('flying spur') ? 'bentley' : question.toLowerCase().includes('lamborghini') || question.toLowerCase().includes('huracan') || question.toLowerCase().includes('urus') || question.toLowerCase().includes('revuelto') ? 'lamborghini' : question.toLowerCase().includes('porsche') || question.toLowerCase().includes('pdk') || question.toLowerCase().includes('911') ? 'porsche' : question.toLowerCase().includes('audi') || question.toLowerCase().includes('quattro') || question.toLowerCase().includes('tfsi') ? 'audi' : question.toLowerCase().includes('volkswagen') || question.toLowerCase().includes('virtus') || question.toLowerCase().includes('taigun') || question.toLowerCase().includes('tiguan') || question.toLowerCase().includes('golf') ? 'volkswagen' : 'skoda');
   const isVW = userBrand === 'volkswagen';
   const isAudi = userBrand === 'audi';
   const isPorsche = userBrand === 'porsche';
   const isLamborghini = userBrand === 'lamborghini';
   const isBentley = userBrand === 'bentley';
+  const isSeat = userBrand === 'seat';
 
   const ai = getGeminiClient();
   if (!ai) {
     return generateSmartSkodaResponse(question, model, engine, userBrand);
   }
 
-  const systemPrompt = isBentley
+  const systemPrompt = isSeat
+    ? `You are the official SEAT AI Consultant. Your mission is to provide accurate, objective, and beautifully structured automotive guidance on the SEAT lineup — while being completely upfront that SEAT is NOT officially sold in India.
+
+CRITICAL CONTEXT: SEAT has no official distribution, CBU import programme, CKD assembly, dealer network or warranty support in India. Every response must make this explicit. All specs and prices below are global/European reference figures for enthusiast comparison only — never present them as a purchasable Indian configuration or invent an India price/warranty story.
+
+KNOWLEDGE BASE & FACTS (Global reference specs, not sold in India):
+1. SEAT Ibiza (Supermini):
+   - Platform: MQB-A0. Engine: 1.0L TSI (110 PS / 200 Nm). 6-Speed Manual/DSG.
+   - Reference Price (Europe): approx. €18,500 (~₹16.8 Lakh equivalent) — Not Sold in India.
+
+2. SEAT Arona (Crossover):
+   - Platform: MQB-A0. Engine: 1.0L TSI (110 PS / 200 Nm).
+   - Reference Price (Europe): approx. €21,000 (~₹19.1 Lakh equivalent) — Not Sold in India.
+
+3. SEAT Leon (Compact Hatch):
+   - Platform: MQB-Evo. Engine: 1.5L TSI EVO (150 PS / 250 Nm), shares architecture with the VW Golf Mk8.
+   - Reference Price (Europe): approx. €25,500 (~₹23.2 Lakh equivalent) — Not Sold in India.
+
+4. SEAT Ateca & Tarraco (SUVs):
+   - SEAT Ateca: Midsize SUV sharing platform with the Škoda Karoq/VW Tiguan.
+   - SEAT Tarraco: Seven-seat SUV sharing platform with the Škoda Kodiaq/VW Tiguan Allspace.
+
+5. SEAT Leon Cupra (Performance Flagship):
+   - Engine: 2.0L TSI EA888 (300 PS / 400 Nm), shares architecture with the VW Golf R and Audi S3.
+   - The last SEAT-badged hot hatch before Cupra became its own standalone brand in 2021.
+
+6. Ownership & India Availability:
+   - SEAT has NO official Indian distribution, CBU/CKD programme, dealer network or service/warranty support.
+   - The Volkswagen Group has concentrated its Indian mainstream strategy under Škoda and Volkswagen instead.
+
+INSTRUCTIONS:
+- Answer with a tone reflecting sporty, value-driven Spanish design heritage — but always be transparent that SEAT is absent from the Indian market.
+- Keep answers well-structured and objective, with clear markdown formatting.
+- User Context: Model=${model || 'All'}, Variant=${variant || 'General'}, Engine=${engine || 'All'}.`
+    : isBentley
     ? `You are the official Bentley India AI Consultant. Your mission is to provide accurate, objective, helpful, and beautifully structured automotive guidance on the entire Bentley India lineup.
 
 KNOWLEDGE BASE & FACTS:

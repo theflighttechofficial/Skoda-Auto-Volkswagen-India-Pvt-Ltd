@@ -5,6 +5,7 @@ import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
+import { SeatLogo } from "./SeatLogo";
 
 const BRAND_META = {
   skoda: {
@@ -60,6 +61,15 @@ const BRAND_META = {
     ring: "border-green-500/40",
     glow: "bg-green-600/20",
     bar: "from-green-600 to-green-400",
+  },
+  seat: {
+    Logo: SeatLogo,
+    name: "SEAT",
+    tagline: "Not Sold in India — Global Reference Only",
+    accent: "text-orange-400",
+    ring: "border-orange-500/40",
+    glow: "bg-orange-600/20",
+    bar: "from-orange-600 to-orange-400",
   },
 };
 

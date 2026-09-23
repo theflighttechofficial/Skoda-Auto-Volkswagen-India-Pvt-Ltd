@@ -53,12 +53,14 @@ import { AUDI_MODELS } from "../data/audiData";
 import { PORSCHE_MODELS } from "../data/porscheData";
 import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
 import { BENTLEY_MODELS } from "../data/bentleyData";
+import { SEAT_MODELS } from "../data/seatData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
+import { SeatLogo } from "./SeatLogo";
 
 // Central per-brand metadata — every brand-specific string/class the header
 // needs lives here, keyed by brand id, so adding a brand (e.g. Porsche) is
@@ -208,6 +210,30 @@ const BRAND_META = {
     advisorLabel: "AI Bentley Advisor",
     lineupLabel: "Bentley Lineup:",
   },
+  seat: {
+    Logo: SeatLogo,
+    accent: "orange",
+    models: SEAT_MODELS,
+    label: "SEAT (Not Sold in India)",
+    corporateLine: "SEAT S.A. (Volkswagen Group Spanish Marque)",
+    foundedLine: "Martorell, Spain (Est. 1950)",
+    plantLine: "Not Currently Sold in India — No Distribution Network",
+    switcherDesc: "SEAT (Not Sold in India — Global Reference Only)",
+    techTagline: "MQB Platform Sharing, FR Sport Tuning & Cupra Performance Heritage",
+    dropdownTitle: "SEAT (Not Sold in India)",
+    dropdownTagline: "Spanish Design, Group Engineering • Est. 1950",
+    dropdownModels: "Ibiza, Arona, Leon, Ateca, Tarraco",
+    rsLabel: "Cupra Performance Heritage",
+    rsHeaderLabel: "Leon Cupra Performance (300 PS)",
+    rsShortBadge: "CUPRA",
+    engineTabLabel: "TSI Turbo-Petrol Engines",
+    safetyLine: "5-Star Euro NCAP Safety (Europe Only)",
+    techLine: "MQB Platform Sharing & FR Sport Tuning",
+    careLine: "No Official Warranty in India (Not Sold Here)",
+    aboutLabel: "About SEAT",
+    advisorLabel: "AI SEAT Advisor",
+    lineupLabel: "SEAT Lineup (Not Sold in India):",
+  },
 };
 
 const ACCENT_CLASSES = {
@@ -295,9 +321,23 @@ const ACCENT_CLASSES = {
     switcherActive: "bg-green-950/90 text-green-300 border border-green-700",
     switcherHover: "hover:text-green-300",
   },
+  orange: {
+    dot: "bg-orange-400",
+    text: "text-orange-400",
+    pillBg: "bg-gradient-to-r from-orange-600 to-orange-500 shadow-orange-950/60",
+    buttonBg: "bg-orange-600 hover:bg-orange-500 shadow-orange-900/40",
+    selectedBg: "bg-orange-600 text-white shadow-md shadow-orange-950",
+    dropdownBg: "bg-orange-950/40 hover:bg-orange-950/70 border-orange-800/80 hover:border-orange-700",
+    divider: "from-transparent via-orange-500/70 to-transparent",
+    scrollEdge: "bg-orange-950/90 border-orange-800 text-orange-300 hover:bg-orange-900",
+    activeOptionBg: "bg-orange-950/60 border-orange-700/70 text-white",
+    activeOptionBadge: "text-orange-400 bg-orange-950/80 border-orange-800",
+    switcherActive: "bg-orange-950/90 text-orange-300 border border-orange-700",
+    switcherHover: "hover:text-orange-300",
+  },
 };
 
-const BRAND_ORDER = ["skoda", "volkswagen", "audi", "porsche", "lamborghini", "bentley"];
+const BRAND_ORDER = ["skoda", "volkswagen", "audi", "porsche", "lamborghini", "bentley", "seat"];
 
 // Makes a horizontally-scrollable strip behave properly everywhere:
 // vertical mouse-wheel scrolls it sideways, it can be dragged with the
@@ -476,7 +516,8 @@ export const Header = ({
       .replace("Audi ", "")
       .replace("Porsche ", "")
       .replace("Lamborghini ", "")
-      .replace("Bentley ", "");
+      .replace("Bentley ", "")
+      .replace("SEAT ", "");
   const modelBadges = (car) => (
     <>
       {car.id === "golf-gti" && (
@@ -608,7 +649,7 @@ export const Header = ({
                 id="btn-brand-switcher-dropdown"
                 onClick={() => setIsBrandDropdownOpen(!isBrandDropdownOpen)}
                 className={`flex items-center gap-2.5 px-3 py-1.5 rounded-xl border transition-all cursor-pointer shadow-md group ${accentClasses.dropdownBg}`}
-                title="Click to switch between Škoda, Volkswagen, Audi, Porsche, Lamborghini, and Bentley India"
+                title="Click to switch between Škoda, Volkswagen, Audi, Porsche, Lamborghini, Bentley India, and SEAT (not sold in India)"
               >
                 <BrandLogo variant="full" size="md" animated={true} />
                 <div className="flex items-center gap-1 pl-1.5 border-l border-zinc-700/60 text-zinc-400 group-hover:text-zinc-200">

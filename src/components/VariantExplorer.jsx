@@ -7,12 +7,14 @@ import { AUDI_MODELS } from "../data/audiData";
 import { PORSCHE_MODELS } from "../data/porscheData";
 import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
 import { BENTLEY_MODELS } from "../data/bentleyData";
+import { SEAT_MODELS } from "../data/seatData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
+import { SeatLogo } from "./SeatLogo";
 import { getAccentClasses } from "../utils/brandTheme";
 
 const BRAND_PAGE_COPY = {
@@ -57,6 +59,13 @@ const BRAND_PAGE_COPY = {
     heading: "Bentley Models & Trim Guide",
     subheading: "Compare features, pricing, and appointments across V8/W12 and Speed/EWB flagship trims",
     flagshipLabel: "Speed / EWB",
+  },
+  seat: {
+    Logo: SeatLogo,
+    models: SEAT_MODELS,
+    heading: "SEAT Models & Trim Guide (Not Sold in India)",
+    subheading: "Global reference trims and pricing for enthusiast comparison only — SEAT has no official Indian distribution",
+    flagshipLabel: "FR / Cupra",
   },
 };
 

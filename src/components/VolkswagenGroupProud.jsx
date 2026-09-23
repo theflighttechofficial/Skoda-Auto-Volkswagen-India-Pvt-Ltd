@@ -33,9 +33,12 @@ export const VolkswagenGroupProud = ({
   const isPorsche = brand === "porsche";
   const isLamborghini = brand === "lamborghini";
   const isBentley = brand === "bentley";
-  const activeBrandName = isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda";
-  const activeBrandFoundedYear = isBentley ? 1919 : isLamborghini ? 1963 : isPorsche ? 1931 : isAudi ? 1909 : isVW ? 1937 : 1895;
-  const membershipBlurb = isBentley
+  const isSeat = brand === "seat";
+  const activeBrandName = isSeat ? "SEAT" : isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda";
+  const activeBrandFoundedYear = isSeat ? 1950 : isBentley ? 1919 : isLamborghini ? 1963 : isPorsche ? 1931 : isAudi ? 1909 : isVW ? 1937 : 1895;
+  const membershipBlurb = isSeat
+    ? "SEAT has been fully owned by the Volkswagen Group since 1990, gaining access to Group platform engineering for the first time — though unlike every other current Group passenger-car brand, SEAT has no official distribution or dealer network in India."
+    : isBentley
     ? "Bentley Motors has been part of the Volkswagen Group since 1998, retaining its Crewe headquarters and Mulliner coachbuilding heritage while gaining Group-wide platform-sharing and engineering resources."
     : isLamborghini
     ? "Automobili Lamborghini has been part of the Volkswagen Group since 1998, placed under Audi's stewardship, gaining platform-sharing resources and quality-control processes without diluting its raging-bull character."
@@ -222,7 +225,7 @@ export const VolkswagenGroupProud = ({
                       <h3 className="text-xl font-black text-white group-hover:text-blue-300 transition-colors">
                         {brand.name}
                       </h3>
-                      {brand.id === (isBentley ? "bentley" : isLamborghini ? "lamborghini" : isPorsche ? "porsche" : isAudi ? "audi" : isVW ? "volkswagen" : "skoda") && (
+                      {brand.id === (isSeat ? "seat" : isBentley ? "bentley" : isLamborghini ? "lamborghini" : isPorsche ? "porsche" : isAudi ? "audi" : isVW ? "volkswagen" : "skoda") && (
                         <span className="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30">
                           Host
                         </span>
@@ -403,7 +406,9 @@ export const VolkswagenGroupProud = ({
             130 Years of Automotive Heritage
           </span>
           <h3 className="text-xl sm:text-2xl font-black text-white">
-            {isBentley
+            {isSeat
+              ? "Explore SEAT’s Heritage: From Barcelona (1950) — Not Sold in India"
+              : isBentley
               ? "Explore Bentley’s Heritage: From Crewe (1919) to India"
               : isLamborghini
               ? "Explore Lamborghini’s Heritage: From Sant'Agata Bolognese (1963) to India"
@@ -416,7 +421,9 @@ export const VolkswagenGroupProud = ({
                   : "Explore Škoda’s Heritage: From Laurin & Klement (1895) to India 2.0"}
           </h3>
           <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-            {isBentley
+            {isSeat
+              ? "Delve into the historic journey from SEAT's 1950 founding as Spain's state-backed carmaker, its 1990 acquisition by Volkswagen Group, and why — unlike every other brand featured here — SEAT has never launched an official sales or service network in India."
+              : isBentley
               ? "Delve into the historic journey from W.O. Bentley's endurance-racing founding, the R-Type Continental's fastest-in-the-world 1952 debut, and how the Volkswagen Group acquisition in 1998 brought Group-wide engineering resources to Crewe."
               : isLamborghini
               ? "Delve into the historic journey from Ferruccio Lamborghini's tractor-to-supercar origin, the Miura and Countach defining the modern supercar template, and how the Volkswagen Group acquisition in 1998 brought German engineering discipline to Sant'Agata."
