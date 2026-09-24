@@ -147,7 +147,13 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                   : "\u0160koda TSI & TDI Turbocharged Suite"}
           </h2>
           <p className="text-sm text-zinc-400 mt-0.5">
-            {isBentley
+            {isMan
+              ? "From the 12.4L D26 common-rail inline-6 in the TGS and TGX to the flagship 15.2L D38 V8, every MAN powertrain paired with TipMatic automated gearboxes"
+              : isScania
+              ? "From the 13L Scania Super inline-6 to the flagship twin-turbo 16L V8, every Scania powertrain paired with Opticruise AMT precision"
+              : isSeat
+              ? "From the everyday 1.0 TSI to the 2.0 TSI Cupra performance tune, every SEAT engine shares core TSI architecture with its Volkswagen Group siblings"
+              : isBentley
               ? "From the twin-turbo W12 Continental GT to the twin-turbo V8 Bentayga and Flying Spur, every engine paired with Bentley Dynamic Ride precision"
               : isLamborghini
               ? "From the naturally-aspirated V10 Huracán to the twin-turbo V8 Urus and hybrid V12 Revuelto, every engine paired with LDVI precision"

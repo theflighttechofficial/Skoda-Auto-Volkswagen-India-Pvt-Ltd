@@ -375,7 +375,7 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
             <button
               key={m}
               onClick={() => setSelectedModel(m)}
-              className={`px-2.5 py-1 rounded-md transition-all font-medium ${selectedModel === m ? (m.includes("vRS") || m.includes("GTI") || m.includes("GT") || m.includes("RS") ? "bg-red-600 text-white shadow-sm font-bold" : isScania ? "bg-rose-600 text-white shadow-sm" : isSeat ? "bg-orange-600 text-white shadow-sm" : isBentley ? "bg-green-600 text-white shadow-sm" : isLamborghini ? "bg-yellow-600 text-white shadow-sm" : isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "bg-zinc-950 text-zinc-400 hover:text-white border border-zinc-800"}`}
+              className={`px-2.5 py-1 rounded-md transition-all font-medium ${selectedModel === m ? (m.includes("vRS") || m.includes("GTI") || m.includes("GT") || m.includes("RS") ? "bg-red-600 text-white shadow-sm font-bold" : isMan ? "bg-sky-600 text-white shadow-sm" : isScania ? "bg-rose-600 text-white shadow-sm" : isSeat ? "bg-orange-600 text-white shadow-sm" : isBentley ? "bg-green-600 text-white shadow-sm" : isLamborghini ? "bg-yellow-600 text-white shadow-sm" : isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "bg-zinc-950 text-zinc-400 hover:text-white border border-zinc-800"}`}
             >
               {m}
             </button>
@@ -388,7 +388,7 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
             <button
               key={e}
               onClick={() => setSelectedEngine(e)}
-              className={`px-2.5 py-1 rounded-md transition-all font-medium ${selectedEngine === e ? (e.includes("vRS") || e.includes("GTI") || e.includes("RS") ? "bg-red-600 text-white shadow-sm font-bold" : isScania ? "bg-rose-600 text-white shadow-sm" : isSeat ? "bg-orange-600 text-white shadow-sm" : isBentley ? "bg-green-600 text-white shadow-sm" : isLamborghini ? "bg-yellow-600 text-white shadow-sm" : isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "bg-zinc-950 text-zinc-400 hover:text-white border border-zinc-800"}`}
+              className={`px-2.5 py-1 rounded-md transition-all font-medium ${selectedEngine === e ? (e.includes("vRS") || e.includes("GTI") || e.includes("RS") ? "bg-red-600 text-white shadow-sm font-bold" : isMan ? "bg-sky-600 text-white shadow-sm" : isScania ? "bg-rose-600 text-white shadow-sm" : isSeat ? "bg-orange-600 text-white shadow-sm" : isBentley ? "bg-green-600 text-white shadow-sm" : isLamborghini ? "bg-yellow-600 text-white shadow-sm" : isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "bg-zinc-950 text-zinc-400 hover:text-white border border-zinc-800"}`}
             >
               {e}
             </button>
@@ -423,7 +423,7 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
           >
             {msg.role === "assistant" && (
               <div
-                className={`w-8 h-8 rounded-lg ${isScania ? "bg-rose-950 border border-rose-700/60 text-rose-400" : isSeat ? "bg-orange-950 border border-orange-700/60 text-orange-400" : isBentley ? "bg-green-950 border border-green-700/60 text-green-400" : isLamborghini ? "bg-yellow-950 border border-yellow-700/60 text-yellow-400" : isPorsche ? "bg-amber-950 border border-amber-700/60 text-amber-400" : isAudi ? "bg-red-950 border border-red-700/60 text-red-400" : isVW ? "bg-blue-950 border border-blue-700/60 text-blue-400" : "bg-emerald-950 border border-emerald-700/60 text-emerald-400"} flex items-center justify-center flex-shrink-0`}
+                className={`w-8 h-8 rounded-lg ${isMan ? "bg-sky-950 border border-sky-700/60 text-sky-400" : isScania ? "bg-rose-950 border border-rose-700/60 text-rose-400" : isSeat ? "bg-orange-950 border border-orange-700/60 text-orange-400" : isBentley ? "bg-green-950 border border-green-700/60 text-green-400" : isLamborghini ? "bg-yellow-950 border border-yellow-700/60 text-yellow-400" : isPorsche ? "bg-amber-950 border border-amber-700/60 text-amber-400" : isAudi ? "bg-red-950 border border-red-700/60 text-red-400" : isVW ? "bg-blue-950 border border-blue-700/60 text-blue-400" : "bg-emerald-950 border border-emerald-700/60 text-emerald-400"} flex items-center justify-center flex-shrink-0`}
               >
                 <Bot className="w-4 h-4" />
               </div>
@@ -471,7 +471,7 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
         {loading && (
           <div className="flex items-center gap-3 text-zinc-400 text-xs">
             <div
-              className={`w-8 h-8 rounded-lg ${isScania ? "bg-rose-950 border border-rose-700/60 text-rose-400" : isSeat ? "bg-orange-950 border border-orange-700/60 text-orange-400" : isBentley ? "bg-green-950 border border-green-700/60 text-green-400" : isLamborghini ? "bg-yellow-950 border border-yellow-700/60 text-yellow-400" : isPorsche ? "bg-amber-950 border border-amber-700/60 text-amber-400" : isAudi ? "bg-red-950 border border-red-700/60 text-red-400" : isVW ? "bg-blue-950 border border-blue-700/60 text-blue-400" : "bg-emerald-950 border border-emerald-700/60 text-emerald-400"} flex items-center justify-center flex-shrink-0`}
+              className={`w-8 h-8 rounded-lg ${isMan ? "bg-sky-950 border border-sky-700/60 text-sky-400" : isScania ? "bg-rose-950 border border-rose-700/60 text-rose-400" : isSeat ? "bg-orange-950 border border-orange-700/60 text-orange-400" : isBentley ? "bg-green-950 border border-green-700/60 text-green-400" : isLamborghini ? "bg-yellow-950 border border-yellow-700/60 text-yellow-400" : isPorsche ? "bg-amber-950 border border-amber-700/60 text-amber-400" : isAudi ? "bg-red-950 border border-red-700/60 text-red-400" : isVW ? "bg-blue-950 border border-blue-700/60 text-blue-400" : "bg-emerald-950 border border-emerald-700/60 text-emerald-400"} flex items-center justify-center flex-shrink-0`}
             >
               <RefreshCw className="w-4 h-4 animate-spin" />
             </div>
@@ -505,7 +505,7 @@ export const AIAdvisor = ({ brand = "skoda", initialPrompt }) => {
         <button
           onClick={() => handleAsk()}
           disabled={!question.trim() || loading}
-          className={`px-4 py-2 rounded-lg ${isScania ? "bg-rose-600 hover:bg-rose-500 shadow-rose-900/40" : isSeat ? "bg-orange-600 hover:bg-orange-500 shadow-orange-900/40" : isBentley ? "bg-green-600 hover:bg-green-500 shadow-green-900/40" : isLamborghini ? "bg-yellow-600 hover:bg-yellow-500 shadow-yellow-900/40" : isPorsche ? "bg-amber-600 hover:bg-amber-500 shadow-amber-900/40" : isAudi ? "bg-red-600 hover:bg-red-500 shadow-red-900/40" : isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-900/40" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-900/40"} disabled:opacity-40 text-white font-semibold text-xs flex items-center gap-1.5 transition-all shadow-md cursor-pointer`}
+          className={`px-4 py-2 rounded-lg ${isMan ? "bg-sky-600 hover:bg-sky-500 shadow-sky-900/40" : isScania ? "bg-rose-600 hover:bg-rose-500 shadow-rose-900/40" : isSeat ? "bg-orange-600 hover:bg-orange-500 shadow-orange-900/40" : isBentley ? "bg-green-600 hover:bg-green-500 shadow-green-900/40" : isLamborghini ? "bg-yellow-600 hover:bg-yellow-500 shadow-yellow-900/40" : isPorsche ? "bg-amber-600 hover:bg-amber-500 shadow-amber-900/40" : isAudi ? "bg-red-600 hover:bg-red-500 shadow-red-900/40" : isVW ? "bg-blue-600 hover:bg-blue-500 shadow-blue-900/40" : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-900/40"} disabled:opacity-40 text-white font-semibold text-xs flex items-center gap-1.5 transition-all shadow-md cursor-pointer`}
         >
           <span>Ask</span>
           <Send className="w-3.5 h-3.5" />
