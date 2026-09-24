@@ -3,7 +3,7 @@ export interface Dealership {
   name: string;
   partnerGroup: string;
   type: '3S Facility' | 'Showroom' | 'Service Center';
-  brand?: 'skoda' | 'volkswagen' | 'audi' | 'porsche' | 'lamborghini' | 'bentley' | 'scania' | 'both';
+  brand?: 'skoda' | 'volkswagen' | 'audi' | 'porsche' | 'lamborghini' | 'bentley' | 'scania' | 'man' | 'both';
   state: string;
   city: string;
   zone: 'North' | 'South' | 'West' | 'East';
@@ -2791,5 +2791,71 @@ export const DEALERSHIPS: Dealership[] = [
     amenities: ['Genuine Parts & Service Centre', 'Fleet Management Consultation', '24/7 Breakdown Assistance'],
     modelsAvailableForTestDrive: ['R 500 Day Cab (6x2)', 'Citywide Standard (12m)'],
     googleMapsUrl: 'https://maps.google.com/?q=Scania+Chennai'
+  },
+  {
+    id: 'man-pithampur',
+    name: 'MAN Trucks India Pithampur Plant & Service Centre',
+    partnerGroup: 'MAN Trucks India Pvt. Ltd.',
+    type: '3S Facility',
+    brand: 'man',
+    state: 'Madhya Pradesh',
+    city: 'Indore',
+    zone: 'West',
+    pinCode: '454775',
+    address: 'Plot No. 300, Sector 3, Pithampur Industrial Area, Dhar District',
+    landmark: 'Near Pithampur Auto Cluster',
+    phone: '+91 731 662 9111',
+    salesPhone: '+91 98270 91111',
+    servicePhone: '+91 731 662 9152',
+    email: 'pithampur@man-india.co.in',
+    timing: 'Mon–Sat: 09:00 AM – 06:30 PM',
+    coordinates: { lat: 22.6064, lng: 75.6836 },
+    amenities: ['Manufacturing Plant Tours', 'Genuine Parts & Service Centre', 'Driver Training Academy'],
+    modelsAvailableForTestDrive: ['TGS Distribution Sleeper (6x2)', 'TGX GX Highline (6x4)'],
+    googleMapsUrl: 'https://maps.google.com/?q=MAN+Trucks+India+Pithampur+Plant'
+  },
+  {
+    id: 'man-mumbai',
+    name: 'MAN Mumbai',
+    partnerGroup: 'MAN Trucks India Pvt. Ltd.',
+    type: '3S Facility',
+    brand: 'man',
+    state: 'Maharashtra',
+    city: 'Mumbai',
+    zone: 'West',
+    pinCode: '421302',
+    address: 'Kalyan-Bhiwandi Road, Thane',
+    landmark: 'Near Kalyan Industrial Estate',
+    phone: '+91 22 6748 9111',
+    salesPhone: '+91 98200 92111',
+    servicePhone: '+91 22 6748 9152',
+    email: 'mumbai@man-india.co.in',
+    timing: 'Mon–Sat: 09:00 AM – 06:30 PM',
+    coordinates: { lat: 19.2410, lng: 73.1298 },
+    amenities: ['Genuine Parts & Service Centre', '24/7 Breakdown Assistance'],
+    modelsAvailableForTestDrive: ['TGS Day Cab Tipper (6x4)', 'TGX GX Highline (6x4)'],
+    googleMapsUrl: 'https://maps.google.com/?q=MAN+Mumbai'
+  },
+  {
+    id: 'man-delhi',
+    name: 'MAN Delhi-NCR',
+    partnerGroup: 'MAN Trucks India Pvt. Ltd.',
+    type: 'Service Center',
+    brand: 'man',
+    state: 'Delhi NCR',
+    city: 'Gurugram',
+    zone: 'North',
+    pinCode: '122004',
+    address: 'National Highway 8, Manesar Industrial Area, Gurugram',
+    landmark: 'Near Manesar IMT',
+    phone: '+91 124 678 9111',
+    salesPhone: '+91 98100 92111',
+    servicePhone: '+91 124 678 9152',
+    email: 'delhi@man-india.co.in',
+    timing: 'Mon–Sat: 09:00 AM – 06:30 PM',
+    coordinates: { lat: 28.3532, lng: 76.9341 },
+    amenities: ['Genuine Parts & Service Centre', '24/7 Breakdown Assistance'],
+    modelsAvailableForTestDrive: ['TGX GX Highline (6x4)'],
+    googleMapsUrl: 'https://maps.google.com/?q=MAN+Gurugram'
   }
 ];

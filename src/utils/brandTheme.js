@@ -13,6 +13,7 @@ export const BRAND_ACCENT = {
   bentley: "green",
   seat: "orange",
   scania: "rose",
+  man: "sky",
 };
 
 export const ACCENT_CLASSES = {
@@ -223,6 +224,32 @@ export const ACCENT_CLASSES = {
     ratingBar: "bg-rose-500",
     modelPillSelected: "bg-rose-600 text-white shadow-md shadow-rose-950",
     variantTabSelected: "bg-zinc-900 border-rose-500 shadow-lg shadow-rose-950/40 ring-1 ring-rose-500/50",
+  },
+  sky: {
+    text400: "text-sky-400",
+    text300: "text-sky-300",
+    dot: "bg-sky-400",
+    welcomeBannerBg: "bg-gradient-to-br from-sky-950/60 via-zinc-950 to-black border-sky-900/50 shadow-sky-950/40",
+    glow600_20: "bg-sky-600/20",
+    badgePill: "bg-sky-950/70 border-sky-800 text-sky-300",
+    avatarRing: "border-sky-700/50",
+    gradientText: "bg-gradient-to-r from-sky-400 to-sky-200 bg-clip-text text-transparent",
+    divider: "bg-sky-700/60",
+    heroBorder: "border-sky-900/40",
+    glow600_15: "bg-sky-600/15",
+    heroBadgePill: "bg-sky-950/80 border-sky-800/60 text-sky-400",
+    ctaButton: "bg-gradient-to-r from-sky-600 to-sky-500 hover:from-sky-500 hover:to-sky-400 shadow-sky-950/60",
+    secondaryButton: "border-sky-700/60 text-sky-400",
+    solidButton: "bg-sky-600 hover:bg-sky-500 shadow-sky-950",
+    smallBadge: "bg-sky-500/20 text-sky-300 border-sky-500/30",
+    cardBadge: "bg-sky-950/80 border-sky-700/50 text-sky-300",
+    cardHover: "border-zinc-800 hover:border-sky-600/60 hover:shadow-sky-950/30",
+    cardTitleHover: "group-hover:text-sky-300",
+    noteText: "text-sky-300/80",
+    noteTextSolid: "text-sky-300/90",
+    ratingBar: "bg-sky-500",
+    modelPillSelected: "bg-sky-600 text-white shadow-md shadow-sky-950",
+    variantTabSelected: "bg-zinc-900 border-sky-500 shadow-lg shadow-sky-950/40 ring-1 ring-sky-500/50",
   },
 };
 

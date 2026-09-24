@@ -16,6 +16,7 @@ import { ALL_LAMBORGHINI_ENGINES } from "../data/lamborghiniData";
 import { ALL_BENTLEY_ENGINES } from "../data/bentleyData";
 import { ALL_SEAT_ENGINES } from "../data/seatData";
 import { ALL_SCANIA_ENGINES } from "../data/scaniaData";
+import { ALL_MAN_ENGINES } from "../data/manData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
@@ -24,6 +25,7 @@ import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
 import { SeatLogo } from "./SeatLogo";
 import { ScaniaLogo } from "./ScaniaLogo";
+import { ManLogo } from "./ManLogo";
 export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
@@ -32,7 +34,8 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
   const isBentley = brand === "bentley";
   const isSeat = brand === "seat";
   const isScania = brand === "scania";
-  const engines = isScania ? ALL_SCANIA_ENGINES : isSeat ? ALL_SEAT_ENGINES : isBentley ? ALL_BENTLEY_ENGINES : isLamborghini ? ALL_LAMBORGHINI_ENGINES : isPorsche ? ALL_PORSCHE_ENGINES : isAudi ? ALL_AUDI_ENGINES : isVW ? ALL_VW_ENGINES : ALL_SKODA_ENGINES;
+  const isMan = brand === "man";
+  const engines = isMan ? ALL_MAN_ENGINES : isScania ? ALL_SCANIA_ENGINES : isSeat ? ALL_SEAT_ENGINES : isBentley ? ALL_BENTLEY_ENGINES : isLamborghini ? ALL_LAMBORGHINI_ENGINES : isPorsche ? ALL_PORSCHE_ENGINES : isAudi ? ALL_AUDI_ENGINES : isVW ? ALL_VW_ENGINES : ALL_SKODA_ENGINES;
   const [selectedEngineId, setSelectedEngineId] = useState(engines[0].id);
   const [fuelFilter, setFuelFilter] = useState("All");
   const [monthlyKm, setMonthlyKm] = useState(1200);
@@ -74,16 +77,19 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
     "4.0-tfsi-v8-rs": 7.2,
     "13-litre-scania-super-500": 3.5,
     "16-litre-v8-770": 2.6,
+    "12.4-litre-d26-man-tgs": 3.4,
+    "12.4-litre-d26-man-tgx": 3.2,
+    "15.2-litre-d38-v8-man": 2.4,
   };
   const filteredEngines =
     fuelFilter === "All"
       ? engines
       : engines.filter((e) => e.fuelType === fuelFilter);
-  const currentAvgMileage = mileageBenchmarks[selectedEngine.id] || (isScania ? 3.5 : 14);
+  const currentAvgMileage = mileageBenchmarks[selectedEngine.id] || (isMan ? 3.3 : isScania ? 3.5 : 14);
   const monthlyCost = Math.round((monthlyKm / currentAvgMileage) * fuelPrice);
   const litersConsumed = Math.round(monthlyKm / currentAvgMileage);
-  const maxPower = isScania ? 770 : 270;
-  const maxTorque = isScania ? 3700 : 420;
+  const maxPower = isMan ? 640 : isScania ? 770 : 270;
+  const maxTorque = isMan ? 3000 : isScania ? 3700 : 420;
   const powerPercent = Math.min(
     100,
     Math.round((selectedEngine.powerHp / maxPower) * 100),
@@ -98,7 +104,9 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            {isScania ? (
+            {isMan ? (
+              <ManLogo variant="emblem" size="sm" />
+            ) : isScania ? (
               <ScaniaLogo variant="emblem" size="sm" />
             ) : isSeat ? (
               <SeatLogo variant="emblem" size="sm" />
@@ -116,13 +124,15 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
               <SkodaLogo variant="emblem" size="sm" />
             )}
             <span
-              className={`text-xs uppercase font-bold tracking-wider ${isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+              className={`text-xs uppercase font-bold tracking-wider ${isMan ? "text-sky-400" : isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
             >
               German Powertrain Engineering
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-            {isScania
+            {isMan
+              ? "MAN D26 Common-Rail & D38 V8 Heavy-Duty Powertrain Suite"
+              : isScania
               ? "Scania Super 13L & Twin-Turbo 16L V8 Powertrain Suite"
               : isBentley
               ? "Bentley Twin-Turbo W12 & V8 Powertrain Suite"
@@ -175,7 +185,7 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                 }
                 setFuelFilter(type);
               }}
-              className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${fuelFilter === type ? (type === "Diesel" ? "bg-amber-600 text-white shadow-md" : isScania ? "bg-rose-600 text-white shadow-md" : isSeat ? "bg-orange-600 text-white shadow-md" : isBentley ? "bg-green-600 text-white shadow-md" : isLamborghini ? "bg-yellow-600 text-white shadow-md" : isPorsche ? "bg-amber-600 text-white shadow-md" : isAudi ? "bg-red-600 text-white shadow-md" : isVW ? "bg-blue-600 text-white shadow-md" : "bg-emerald-600 text-white shadow-md") : "text-zinc-400 hover:text-white"}`}
+              className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${fuelFilter === type ? (type === "Diesel" ? "bg-amber-600 text-white shadow-md" : isMan ? "bg-sky-600 text-white shadow-md" : isScania ? "bg-rose-600 text-white shadow-md" : isSeat ? "bg-orange-600 text-white shadow-md" : isBentley ? "bg-green-600 text-white shadow-md" : isLamborghini ? "bg-yellow-600 text-white shadow-md" : isPorsche ? "bg-amber-600 text-white shadow-md" : isAudi ? "bg-red-600 text-white shadow-md" : isVW ? "bg-blue-600 text-white shadow-md" : "bg-emerald-600 text-white shadow-md") : "text-zinc-400 hover:text-white"}`}
             >
               {type === "All"
                 ? "All Powertrains"
@@ -196,7 +206,7 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
               whileTap={{ scale: 0.97 }}
               id={`engine-btn-${eng.id}`}
               onClick={() => handleSelectEngine(eng.id)}
-              className={`relative px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border cursor-pointer ${isSelected ? (isDiesel ? "bg-amber-600 text-white border-amber-500 shadow-lg shadow-amber-950/40" : isScania ? "bg-rose-600 text-white border-rose-500 shadow-lg shadow-rose-950/40" : isSeat ? "bg-orange-600 text-white border-orange-500 shadow-lg shadow-orange-950/40" : isBentley ? "bg-green-600 text-white border-green-500 shadow-lg shadow-green-950/40" : isLamborghini ? "bg-yellow-600 text-white border-yellow-500 shadow-lg shadow-yellow-950/40" : isPorsche ? "bg-amber-600 text-white border-amber-500 shadow-lg shadow-amber-950/40" : isAudi ? "bg-red-600 text-white border-red-500 shadow-lg shadow-red-950/40" : isVW ? "bg-blue-600 text-white border-blue-500 shadow-lg shadow-blue-950/40" : "bg-emerald-600 text-white border-emerald-500 shadow-lg shadow-emerald-950/40") : "bg-zinc-900/90 text-zinc-400 hover:text-white border-zinc-800 hover:border-zinc-700"}`}
+              className={`relative px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border cursor-pointer ${isSelected ? (isDiesel ? "bg-amber-600 text-white border-amber-500 shadow-lg shadow-amber-950/40" : isMan ? "bg-sky-600 text-white border-sky-500 shadow-lg shadow-sky-950/40" : isScania ? "bg-rose-600 text-white border-rose-500 shadow-lg shadow-rose-950/40" : isSeat ? "bg-orange-600 text-white border-orange-500 shadow-lg shadow-orange-950/40" : isBentley ? "bg-green-600 text-white border-green-500 shadow-lg shadow-green-950/40" : isLamborghini ? "bg-yellow-600 text-white border-yellow-500 shadow-lg shadow-yellow-950/40" : isPorsche ? "bg-amber-600 text-white border-amber-500 shadow-lg shadow-amber-950/40" : isAudi ? "bg-red-600 text-white border-red-500 shadow-lg shadow-red-950/40" : isVW ? "bg-blue-600 text-white border-blue-500 shadow-lg shadow-blue-950/40" : "bg-emerald-600 text-white border-emerald-500 shadow-lg shadow-emerald-950/40") : "bg-zinc-900/90 text-zinc-400 hover:text-white border-zinc-800 hover:border-zinc-700"}`}
             >
               <div className="flex items-center gap-1.5">
                 <span>{eng.badge}</span>
@@ -233,7 +243,7 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                 <div>
                   <div className="flex items-center gap-2">
                     <span
-                      className={`text-xs uppercase font-bold tracking-wider ${selectedEngine.fuelType === "Diesel" ? "text-amber-400" : isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                      className={`text-xs uppercase font-bold tracking-wider ${selectedEngine.fuelType === "Diesel" ? "text-amber-400" : isMan ? "text-sky-400" : isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                     >
                       {selectedEngine.fuelType} Turbocharged Powertrain
                     </span>
@@ -248,7 +258,7 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                 </div>
 
                 <span
-                  className={`px-3 py-1 rounded-full text-xs font-semibold border ${selectedEngine.fuelType === "Diesel" ? "bg-amber-950/80 text-amber-300 border-amber-700/60" : isScania ? "bg-rose-950/80 text-rose-300 border-rose-700/60" : isSeat ? "bg-orange-950/80 text-orange-300 border-orange-700/60" : isBentley ? "bg-green-950/80 text-green-300 border-green-700/60" : isLamborghini ? "bg-yellow-950/80 text-yellow-300 border-yellow-700/60" : isPorsche ? "bg-amber-950/80 text-amber-300 border-amber-700/60" : isAudi ? "bg-red-950/80 text-red-300 border-red-700/60" : isVW ? "bg-blue-950/80 text-blue-300 border-blue-700/60" : "bg-emerald-950/80 text-emerald-300 border-emerald-700/60"}`}
+                  className={`px-3 py-1 rounded-full text-xs font-semibold border ${selectedEngine.fuelType === "Diesel" ? "bg-amber-950/80 text-amber-300 border-amber-700/60" : isMan ? "bg-sky-950/80 text-sky-300 border-sky-700/60" : isScania ? "bg-rose-950/80 text-rose-300 border-rose-700/60" : isSeat ? "bg-orange-950/80 text-orange-300 border-orange-700/60" : isBentley ? "bg-green-950/80 text-green-300 border-green-700/60" : isLamborghini ? "bg-yellow-950/80 text-yellow-300 border-yellow-700/60" : isPorsche ? "bg-amber-950/80 text-amber-300 border-amber-700/60" : isAudi ? "bg-red-950/80 text-red-300 border-red-700/60" : isVW ? "bg-blue-950/80 text-blue-300 border-blue-700/60" : "bg-emerald-950/80 text-emerald-300 border-emerald-700/60"}`}
                 >
                   {selectedEngine.cylinders} Cylinders (
                   {selectedEngine.displacement})
@@ -266,7 +276,7 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                   <div className="flex justify-between text-xs">
                     <span className="text-zinc-400 font-medium flex items-center gap-1.5">
                       <Zap
-                        className={`w-3.5 h-3.5 ${isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                        className={`w-3.5 h-3.5 ${isMan ? "text-sky-400" : isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                       />
                       Peak Output Power
                     </span>
@@ -279,7 +289,7 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                       initial={{ width: 0 }}
                       animate={{ width: `${powerPercent}%` }}
                       transition={{ duration: 0.8, ease: "easeOut" }}
-                      className={`h-full rounded-full ${isScania ? "bg-gradient-to-r from-rose-600 to-rose-400" : isSeat ? "bg-gradient-to-r from-orange-600 to-orange-400" : isBentley ? "bg-gradient-to-r from-green-600 to-green-400" : isLamborghini ? "bg-gradient-to-r from-yellow-600 to-yellow-400" : isPorsche ? "bg-gradient-to-r from-amber-600 to-amber-400" : isAudi ? "bg-gradient-to-r from-red-600 to-red-400" : isVW ? "bg-gradient-to-r from-blue-600 to-blue-400" : "bg-gradient-to-r from-emerald-600 to-emerald-400"}`}
+                      className={`h-full rounded-full ${isMan ? "bg-gradient-to-r from-sky-600 to-sky-400" : isScania ? "bg-gradient-to-r from-rose-600 to-rose-400" : isSeat ? "bg-gradient-to-r from-orange-600 to-orange-400" : isBentley ? "bg-gradient-to-r from-green-600 to-green-400" : isLamborghini ? "bg-gradient-to-r from-yellow-600 to-yellow-400" : isPorsche ? "bg-gradient-to-r from-amber-600 to-amber-400" : isAudi ? "bg-gradient-to-r from-red-600 to-red-400" : isVW ? "bg-gradient-to-r from-blue-600 to-blue-400" : "bg-gradient-to-r from-emerald-600 to-emerald-400"}`}
                     />
                   </div>
                 </div>
@@ -317,7 +327,7 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                     Peak Horsepower
                   </span>
                   <span
-                    className={`text-lg font-bold ${isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`text-lg font-bold ${isMan ? "text-sky-400" : isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     {selectedEngine.powerHp} PS
                   </span>
@@ -377,7 +387,7 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                   {selectedEngine.keyHighlights.map((point, idx) => (
                     <li key={idx} className="flex items-start gap-2">
                       <CheckCircle
-                        className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                        className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${isMan ? "text-sky-400" : isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                       />
                       <span>{point}</span>
                     </li>
@@ -390,7 +400,7 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                     className="w-full mt-3 py-2.5 px-4 rounded-xl bg-gradient-to-r from-zinc-800 to-zinc-900 hover:from-zinc-700 hover:to-zinc-800 border border-zinc-700 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md"
                   >
                     <Activity
-                      className={`w-4 h-4 ${isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                      className={`w-4 h-4 ${isMan ? "text-sky-400" : isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                     />
                     <span>
                       View Dyno Curve & RPM Telemetry for {selectedEngine.name}
@@ -407,7 +417,7 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
             <div className="bg-zinc-900/80 rounded-2xl border border-zinc-800 p-6 space-y-5 shadow-xl">
               <div>
                 <span
-                  className={`text-xs uppercase font-bold tracking-wider ${selectedEngine.fuelType === "Diesel" ? "text-amber-400" : isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                  className={`text-xs uppercase font-bold tracking-wider ${selectedEngine.fuelType === "Diesel" ? "text-amber-400" : isMan ? "text-sky-400" : isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                 >
                   {selectedEngine.fuelType} Efficiency & Running Costs
                 </span>
@@ -434,7 +444,7 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                     Highway Cruising
                   </span>
                   <span
-                    className={`text-sm font-bold ${selectedEngine.fuelType === "Diesel" ? "text-amber-400" : isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`text-sm font-bold ${selectedEngine.fuelType === "Diesel" ? "text-amber-400" : isMan ? "text-sky-400" : isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     {selectedEngine.realWorldHighway}
                   </span>
@@ -458,7 +468,7 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                   step="100"
                   value={monthlyKm}
                   onChange={(e) => setMonthlyKm(Number(e.target.value))}
-                  className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isScania ? "accent-rose-500" : isSeat ? "accent-orange-500" : isBentley ? "accent-green-500" : isLamborghini ? "accent-yellow-500" : isPorsche ? "accent-amber-500" : isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
+                  className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isMan ? "accent-sky-500" : isScania ? "accent-rose-500" : isSeat ? "accent-orange-500" : isBentley ? "accent-green-500" : isLamborghini ? "accent-yellow-500" : isPorsche ? "accent-amber-500" : isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
                 />
               </div>
 
@@ -478,7 +488,7 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                   step="1"
                   value={fuelPrice}
                   onChange={(e) => setFuelPrice(Number(e.target.value))}
-                  className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isScania ? "accent-rose-500" : isSeat ? "accent-orange-500" : isBentley ? "accent-green-500" : isLamborghini ? "accent-yellow-500" : isPorsche ? "accent-amber-500" : isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
+                  className={`w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer ${isMan ? "accent-sky-500" : isScania ? "accent-rose-500" : isSeat ? "accent-orange-500" : isBentley ? "accent-green-500" : isLamborghini ? "accent-yellow-500" : isPorsche ? "accent-amber-500" : isAudi ? "accent-red-500" : isVW ? "accent-blue-500" : "accent-emerald-500"}`}
                 />
               </div>
 
@@ -487,11 +497,11 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                 key={`${selectedEngine.id}-${monthlyCost}`}
                 initial={{ scale: 0.98, opacity: 0.8 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className={`p-4 rounded-2xl border space-y-2.5 ${selectedEngine.fuelType === "Diesel" ? "bg-amber-950/30 border-amber-800/60" : isScania ? "bg-rose-950/30 border-rose-800/60" : isSeat ? "bg-orange-950/30 border-orange-800/60" : isBentley ? "bg-green-950/30 border-green-800/60" : isLamborghini ? "bg-yellow-950/30 border-yellow-800/60" : isPorsche ? "bg-amber-950/30 border-amber-800/60" : isAudi ? "bg-red-950/40 border-red-800/60" : isVW ? "bg-blue-950/40 border-blue-800/60" : "bg-emerald-950/40 border-emerald-800/60"}`}
+                className={`p-4 rounded-2xl border space-y-2.5 ${selectedEngine.fuelType === "Diesel" ? "bg-amber-950/30 border-amber-800/60" : isMan ? "bg-sky-950/30 border-sky-800/60" : isScania ? "bg-rose-950/30 border-rose-800/60" : isSeat ? "bg-orange-950/30 border-orange-800/60" : isBentley ? "bg-green-950/30 border-green-800/60" : isLamborghini ? "bg-yellow-950/30 border-yellow-800/60" : isPorsche ? "bg-amber-950/30 border-amber-800/60" : isAudi ? "bg-red-950/40 border-red-800/60" : isVW ? "bg-blue-950/40 border-blue-800/60" : "bg-emerald-950/40 border-emerald-800/60"}`}
               >
                 <div className="flex items-center justify-between">
                   <span
-                    className={`text-xs font-medium ${selectedEngine.fuelType === "Diesel" ? "text-amber-300" : isScania ? "text-rose-300" : isSeat ? "text-orange-300" : isBentley ? "text-green-300" : isLamborghini ? "text-yellow-300" : isPorsche ? "text-amber-300" : isAudi ? "text-red-300" : isVW ? "text-blue-300" : "text-emerald-300"}`}
+                    className={`text-xs font-medium ${selectedEngine.fuelType === "Diesel" ? "text-amber-300" : isMan ? "text-sky-300" : isScania ? "text-rose-300" : isSeat ? "text-orange-300" : isBentley ? "text-green-300" : isLamborghini ? "text-yellow-300" : isPorsche ? "text-amber-300" : isAudi ? "text-red-300" : isVW ? "text-blue-300" : "text-emerald-300"}`}
                   >
                     Estimated Monthly Fuel Expense
                   </span>
@@ -500,7 +510,7 @@ export const EnginePerformance = ({ brand = "skoda", onViewDynoGraphs }) => {
                   </span>
                 </div>
                 <div
-                  className={`flex items-center justify-between text-[11px] pt-2 border-t ${selectedEngine.fuelType === "Diesel" ? "border-amber-900/50 text-amber-300/80" : isScania ? "border-rose-900/50 text-rose-400/80" : isSeat ? "border-orange-900/50 text-orange-400/80" : isBentley ? "border-green-900/50 text-green-400/80" : isLamborghini ? "border-yellow-900/50 text-yellow-400/80" : isPorsche ? "border-amber-900/50 text-amber-400/80" : isAudi ? "border-red-900/50 text-red-400/80" : isVW ? "border-blue-900/50 text-blue-400/80" : "border-emerald-900/50 text-emerald-400/80"}`}
+                  className={`flex items-center justify-between text-[11px] pt-2 border-t ${selectedEngine.fuelType === "Diesel" ? "border-amber-900/50 text-amber-300/80" : isMan ? "border-sky-900/50 text-sky-400/80" : isScania ? "border-rose-900/50 text-rose-400/80" : isSeat ? "border-orange-900/50 text-orange-400/80" : isBentley ? "border-green-900/50 text-green-400/80" : isLamborghini ? "border-yellow-900/50 text-yellow-400/80" : isPorsche ? "border-amber-900/50 text-amber-400/80" : isAudi ? "border-red-900/50 text-red-400/80" : isVW ? "border-blue-900/50 text-blue-400/80" : "border-emerald-900/50 text-emerald-400/80"}`}
                 >
                   <span>Fuel Consumed: ~{litersConsumed} L / month</span>
                   <span>

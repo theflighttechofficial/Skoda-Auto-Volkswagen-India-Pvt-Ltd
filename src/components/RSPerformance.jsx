@@ -41,6 +41,7 @@ import { LAMBORGHINI_GT_MODELS } from "../data/lamborghiniPerformanceData";
 import { BENTLEY_GT_MODELS } from "../data/bentleyPerformanceData";
 import { SEAT_GT_MODELS } from "../data/seatPerformanceData";
 import { SCANIA_GT_MODELS } from "../data/scaniaPerformanceData";
+import { MAN_GT_MODELS } from "../data/manPerformanceData";
 
 const LAMBORGHINI_HERITAGE = [
   {
@@ -154,6 +155,34 @@ const SCANIA_HERITAGE = [
   },
 ];
 
+const MAN_HERITAGE = [
+  {
+    year: "1758",
+    title: "St. Antony Ironworks Founded in Oberhausen",
+    desc: "MAN's earliest predecessor begins as an ironworks, laying the industrial foundation for what would grow into one of Germany's great heavy-engineering houses.",
+  },
+  {
+    year: "1897",
+    title: "Rudolf Diesel Perfects the Diesel Engine at MAN",
+    desc: "Working at MAN's Augsburg works, Rudolf Diesel completes the first practical diesel engine, a breakthrough that would come to define heavy-truck powertrains worldwide.",
+  },
+  {
+    year: "1951",
+    title: "MAN Enters Truck & Bus Manufacturing at Scale",
+    desc: "Post-war MAN consolidates its commercial-vehicle operations, building the heavy trucks and buses that would become its core business for the rest of the 20th century.",
+  },
+  {
+    year: "2011",
+    title: "Volkswagen Group Ownership & TRATON Integration",
+    desc: "Volkswagen Group takes a controlling stake in MAN, later consolidating it under TRATON SE alongside Scania — the Group's second dedicated heavy-truck and bus marque.",
+  },
+  {
+    year: "2011",
+    title: "Pithampur Plant Opens in India",
+    desc: "MAN's India operations begin with the MAN Force Trucks joint venture with Force Motors at Pithampur, Madhya Pradesh, building trucks and buses for the Indian market.",
+  },
+];
+
 const SEAT_HERITAGE = [
   {
     year: "1950",
@@ -194,7 +223,10 @@ export const RSPerformance = ({
   const isBentley = brand === "bentley";
   const isSeat = brand === "seat";
   const isScania = brand === "scania";
-  const performanceModels = isScania
+  const isMan = brand === "man";
+  const performanceModels = isMan
+    ? MAN_GT_MODELS
+    : isScania
     ? SCANIA_GT_MODELS
     : isSeat
     ? SEAT_GT_MODELS
@@ -209,7 +241,9 @@ export const RSPerformance = ({
       : isVW
         ? VW_GT_MODELS
         : RS_MODELS;
-  const performanceHeritage = isScania
+  const performanceHeritage = isMan
+    ? MAN_HERITAGE
+    : isScania
     ? SCANIA_HERITAGE
     : isSeat
     ? SEAT_HERITAGE
@@ -224,7 +258,9 @@ export const RSPerformance = ({
       : isVW
         ? GTI_HERITAGE
         : RS_HERITAGE;
-  const rivalComparisons = isScania
+  const rivalComparisons = isMan
+    ? []
+    : isScania
     ? []
     : isSeat
     ? []
@@ -367,7 +403,12 @@ export const RSPerformance = ({
           <div className="space-y-4 max-w-3xl">
             {/* Motorsport Badge */}
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-red-950/80 border border-red-800 text-red-300 text-xs font-black tracking-widest uppercase">
-              {isScania ? (
+              {isMan ? (
+                <span className="flex items-center gap-1 font-black italic">
+                  <span className="text-sky-400">D38</span>
+                  <span className="text-red-500">/V8</span>
+                </span>
+              ) : isScania ? (
                 <span className="flex items-center gap-1 font-black italic">
                   <span className="text-rose-400">V8</span>
                   <span className="text-red-500">/Super</span>
@@ -410,7 +451,9 @@ export const RSPerformance = ({
               )}
               <span className="text-zinc-400">|</span>
               <span className="text-zinc-200">
-                {isScania
+                {isMan
+                  ? "MAN India Performance"
+                  : isScania
                   ? "Scania India Performance"
                   : isSeat
                   ? "SEAT Performance (Not Sold in India)"
@@ -430,7 +473,9 @@ export const RSPerformance = ({
 
             <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase italic">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-400 to-amber-400">
-                {isScania
+                {isMan
+                  ? "Flagship Powertrain & Heavy-Duty Performance"
+                  : isScania
                   ? "Flagship Powertrain & Heavy-Duty Performance"
                   : isSeat
                   ? "The Cupra Performance (Not Sold in India)"
@@ -449,7 +494,16 @@ export const RSPerformance = ({
             </h1>
 
             <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-              {isScania ? (
+              {isMan ? (
+                <>
+                  Built at the Pithampur plant in Madhya Pradesh and honed over decades of
+                  heavy-duty engineering. Discover the flagship{" "}
+                  <strong className="text-white">MAN TGX</strong> (up to 640 hp D38 V8,
+                  long-haul tractor-trailer cab) and the versatile workhorse{" "}
+                  <strong className="text-white">MAN TGS</strong> (common-rail D26 inline-six,
+                  TipMatic 12-speed AMT).
+                </>
+              ) : isScania ? (
                 <>
                   Built at the Narsapura plant near Bengaluru and honed over five decades of
                   V8 heritage. Discover the flagship{" "}
@@ -536,21 +590,21 @@ export const RSPerformance = ({
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-900/90 border border-zinc-800">
                 <Trophy className="w-4 h-4 text-amber-400" />
                 <span className="font-semibold text-white">
-                  {isScania ? "130+ Years" : isSeat ? "25+ Years" : isBentley ? "100+ Years" : isLamborghini ? "60+ Years" : isPorsche ? "75+ Years" : isAudi ? "40+ Years" : isVW ? "Nearly 50 Years" : "50+ Years"}
+                  {isMan ? "260+ Years" : isScania ? "130+ Years" : isSeat ? "25+ Years" : isBentley ? "100+ Years" : isLamborghini ? "60+ Years" : isPorsche ? "75+ Years" : isAudi ? "40+ Years" : isVW ? "Nearly 50 Years" : "50+ Years"}
                 </span>{" "}
-                {isScania ? "of Scania Truck & Bus Heritage" : isSeat ? "of Cupra Heritage (Not Sold in India)" : isBentley ? "of Grand-Touring Heritage" : isLamborghini ? "of Raging-Bull Heritage" : isPorsche ? "of GT Heritage" : isAudi ? "of quattro Legacy" : isVW ? "of GTI Legacy" : "of RS Heritage"}
+                {isMan ? "of MAN Truck & Bus Heritage" : isScania ? "of Scania Truck & Bus Heritage" : isSeat ? "of Cupra Heritage (Not Sold in India)" : isBentley ? "of Grand-Touring Heritage" : isLamborghini ? "of Raging-Bull Heritage" : isPorsche ? "of GT Heritage" : isAudi ? "of quattro Legacy" : isVW ? "of GTI Legacy" : "of RS Heritage"}
               </div>
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-900/90 border border-zinc-800">
                 <Flame className="w-4 h-4 text-red-500" />
                 <span className="font-semibold text-white">
-                  {isScania ? "770 hp" : isSeat ? "300 PS" : isBentley ? "659 PS" : isLamborghini ? "1,015 PS" : isPorsche ? "650 PS" : isAudi ? "600 PS" : "265 PS"}
+                  {isMan ? "640 hp" : isScania ? "770 hp" : isSeat ? "300 PS" : isBentley ? "659 PS" : isLamborghini ? "1,015 PS" : isPorsche ? "650 PS" : isAudi ? "600 PS" : "265 PS"}
                 </span>{" "}
-                {isScania ? "Twin-Turbo V8 Firepower" : isSeat ? "EA888 Cupra Firepower" : isBentley ? "Twin-Turbo W12 Firepower" : isLamborghini ? "Hybrid V12 Firepower" : isPorsche ? "Twin-Turbo Flat-Six Firepower" : isAudi ? "4.0 TFSI V8 Firepower" : "EA888 EVO4 Firepower"}
+                {isMan ? "D38 V8 Firepower" : isScania ? "Twin-Turbo V8 Firepower" : isSeat ? "EA888 Cupra Firepower" : isBentley ? "Twin-Turbo W12 Firepower" : isLamborghini ? "Hybrid V12 Firepower" : isPorsche ? "Twin-Turbo Flat-Six Firepower" : isAudi ? "4.0 TFSI V8 Firepower" : "EA888 EVO4 Firepower"}
               </div>
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-900/90 border border-zinc-800">
                 <Activity className="w-4 h-4 text-emerald-400" />
                 <span className="font-semibold text-white">
-                  {isScania ? "Opticruise AMT" : isSeat ? "DCC Cupra" : isBentley ? "Dynamic Ride" : isLamborghini ? "LDVI Chassis" : isPorsche ? "PASM Sport" : isAudi ? "RS Adaptive Air" : "DCC Pro"}
+                  {isMan ? "TipMatic AMT" : isScania ? "Opticruise AMT" : isSeat ? "DCC Cupra" : isBentley ? "Dynamic Ride" : isLamborghini ? "LDVI Chassis" : isPorsche ? "PASM Sport" : isAudi ? "RS Adaptive Air" : "DCC Pro"}
                 </span>{" "}
                 Adaptive Chassis
               </div>
@@ -626,7 +680,7 @@ export const RSPerformance = ({
           <div>
             <div className="flex items-center gap-2.5 mb-1.5">
               <span className="px-2 py-0.5 rounded bg-red-500 text-white text-[10px] font-black italic tracking-wider">
-                {isScania ? "FLAGSHIP POWERTRAIN" : isSeat ? "CUPRA — NOT SOLD IN INDIA" : isBentley ? "GT EXCLUSIVE" : isLamborghini ? "GT EXCLUSIVE" : isPorsche ? "GT EXCLUSIVE" : isAudi ? "RS EXCLUSIVE" : isVW ? "GTI EXCLUSIVE" : "vRS EXCLUSIVE"}
+                {isMan ? "FLAGSHIP POWERTRAIN" : isScania ? "FLAGSHIP POWERTRAIN" : isSeat ? "CUPRA — NOT SOLD IN INDIA" : isBentley ? "GT EXCLUSIVE" : isLamborghini ? "GT EXCLUSIVE" : isPorsche ? "GT EXCLUSIVE" : isAudi ? "RS EXCLUSIVE" : isVW ? "GTI EXCLUSIVE" : "vRS EXCLUSIVE"}
               </span>
               <span className="text-xs text-zinc-400 uppercase tracking-widest font-semibold">
                 {activeModel.category}
@@ -838,7 +892,9 @@ export const RSPerformance = ({
                 className={`px-3 py-1.5 rounded-lg font-bold uppercase transition-all ${driveMode === m ? (m === "vrs" ? "bg-red-600 text-white shadow-md shadow-red-900/50" : "bg-zinc-800 text-white") : "text-zinc-400 hover:text-white"}`}
               >
                 {m === "vrs"
-                  ? isScania
+                  ? isMan
+                    ? "\u26A1 Power Mode"
+                    : isScania
                     ? "\u26A1 Power Mode"
                     : isSeat
                     ? "\u26A1 Cupra Mode"
@@ -1004,7 +1060,7 @@ export const RSPerformance = ({
               </h4>
 
               <p className="text-xs text-zinc-400 leading-relaxed">
-                {isScania ? "Scania's" : isSeat ? "SEAT's" : isBentley ? "Bentley's" : isLamborghini ? "Lamborghini's" : isPorsche ? "Porsche's" : isAudi ? "Audi's" : isVW ? "Volkswagen's" : "Škoda's"} electronic Launch Control
+                {isMan ? "MAN's" : isScania ? "Scania's" : isSeat ? "SEAT's" : isBentley ? "Bentley's" : isLamborghini ? "Lamborghini's" : isPorsche ? "Porsche's" : isAudi ? "Audi's" : isVW ? "Volkswagen's" : "Škoda's"} electronic Launch Control
                 synchronizes the wet multi-plate DSG clutches with the EA888
                 turbocharger wastegate to prevent wheel spin and achieve
                 instant forward velocity.
@@ -1143,7 +1199,9 @@ export const RSPerformance = ({
               Driver Centric Ergonomics
             </span>
             <h3 className="text-xl font-black text-white tracking-tight">
-              {isScania
+              {isMan
+                ? "Exclusive Flat-Floor Cab Architecture"
+                : isScania
                 ? "Exclusive Flat-Floor Cab Architecture"
                 : isSeat
                 ? "Exclusive Cupra Cockpit Architecture"
@@ -1178,8 +1236,8 @@ export const RSPerformance = ({
         </div>
       </div>
 
-      {/* vRS Performance vs. Market Rivals Section (rival benchmark data not yet curated for Porsche/Lamborghini/Bentley/SEAT/Scania) */}
-      {!isPorsche && !isLamborghini && !isBentley && !isSeat && !isScania && (
+      {/* vRS Performance vs. Market Rivals Section (rival benchmark data not yet curated for Porsche/Lamborghini/Bentley/SEAT/Scania/MAN) */}
+      {!isPorsche && !isLamborghini && !isBentley && !isSeat && !isScania && !isMan && (
       <div
         id="rs-rivals-arena"
         className="rounded-3xl bg-zinc-900/90 border border-red-900/50 p-6 sm:p-8 space-y-8 shadow-2xl relative overflow-hidden"
@@ -1791,7 +1849,7 @@ export const RSPerformance = ({
             </h3>
             <p className="text-xs text-zinc-400">
               Two distinct expressions of{" "}
-              {isScania ? "Scania's" : isSeat ? "SEAT's" : isBentley ? "Bentley's" : isLamborghini ? "Lamborghini's" : isPorsche ? "Porsche's" : isAudi ? "Audi Sport's" : isVW ? "Volkswagen's" : "Škoda's"}{" "}
+              {isMan ? "MAN's" : isScania ? "Scania's" : isSeat ? "SEAT's" : isBentley ? "Bentley's" : isLamborghini ? "Lamborghini's" : isPorsche ? "Porsche's" : isAudi ? "Audi Sport's" : isVW ? "Volkswagen's" : "Škoda's"}{" "}
               performance philosophy{isSeat ? " (Not Sold in India)" : ""}
             </p>
           </div>
@@ -1926,7 +1984,9 @@ export const RSPerformance = ({
               Motorsport Pedigree
             </span>
             <h3 className="text-xl font-black text-white tracking-tight">
-              {isScania
+              {isMan
+                ? "The Legend of MAN Truck & Bus Engineering"
+                : isScania
                 ? "The Legend of Scania Truck & Bus Engineering"
                 : isSeat
                 ? "The Legend of SEAT Cupra (Not Sold in India)"
@@ -1970,7 +2030,9 @@ export const RSPerformance = ({
       <div className="rounded-3xl bg-gradient-to-r from-red-950/60 via-zinc-900 to-zinc-950 border border-red-800/40 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
         <div className="space-y-1 text-center sm:text-left">
           <h4 className="text-xl font-black text-white italic">
-            {isScania
+            {isMan
+              ? "Ready to Spec a MAN Truck or Bus for Your Fleet?"
+              : isScania
               ? "Ready to Spec a Scania Truck or Bus for Your Fleet?"
               : isSeat
               ? "Curious About SEAT Cupra Performance? (Not Sold in India)"
@@ -1987,7 +2049,9 @@ export const RSPerformance = ({
                   : "Ready to Experience True Rally Sport Exhilaration?"}
           </h4>
           <p className="text-xs text-zinc-300">
-            {isScania
+            {isMan
+              ? "Consult our AI specialist on MAN TGX and TGS configurations, GCW ratings, or compute customized on-road figures for your fleet."
+              : isScania
               ? "Consult our AI specialist on Scania R 500 and S 730 configurations, GCW ratings, or compute customized on-road figures for your fleet."
               : isSeat
               ? "Ask our AI specialist about the Leon Cupra and Ibiza Cupra's global specs and heritage — SEAT has no official dealer network, import programme or on-road pricing in India."
@@ -2010,7 +2074,7 @@ export const RSPerformance = ({
             <button
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
-                onOpenCalculator(isScania ? "scania-r-500" : isBentley ? "continental-gt" : isLamborghini ? "huracan" : isPorsche ? "911-carrera" : isAudi ? "a4" : isVW ? "virtus" : "octavia");
+                onOpenCalculator(isMan ? "man-tgx" : isScania ? "scania-r-500" : isBentley ? "continental-gt" : isLamborghini ? "huracan" : isPorsche ? "911-carrera" : isAudi ? "a4" : isVW ? "virtus" : "octavia");
               }}
               className="px-4 py-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-bold border border-zinc-700 transition-colors cursor-pointer"
             >
@@ -2022,7 +2086,9 @@ export const RSPerformance = ({
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
                 onOpenAdvisor(
-                  isScania
+                  isMan
+                    ? "I want to learn more about the MAN TGX and TGS trucks, GCW ratings, and fleet servicing in India."
+                    : isScania
                     ? "I want to learn more about the Scania R 500 and S 730 trucks, GCW ratings, and fleet servicing in India."
                     : isSeat
                     ? "I want to learn more about the SEAT Leon Cupra and Ibiza Cupra — and why SEAT isn't sold in India."
@@ -2042,7 +2108,7 @@ export const RSPerformance = ({
               className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-black transition-colors flex items-center gap-2 shadow-lg shadow-red-900/40 cursor-pointer"
             >
               <Sparkles className="w-4 h-4" />
-              {isScania ? "Ask AI Scania Specialist" : isSeat ? "Ask AI Cupra Specialist" : isBentley ? "Ask AI GT Specialist" : isLamborghini ? "Ask AI GT Specialist" : isPorsche ? "Ask AI GT Specialist" : isVW ? "Ask AI GT Specialist" : "Ask AI RS Specialist"}
+              {isMan ? "Ask AI MAN Specialist" : isScania ? "Ask AI Scania Specialist" : isSeat ? "Ask AI Cupra Specialist" : isBentley ? "Ask AI GT Specialist" : isLamborghini ? "Ask AI GT Specialist" : isPorsche ? "Ask AI GT Specialist" : isVW ? "Ask AI GT Specialist" : "Ask AI RS Specialist"}
             </button>
           )}
         </div>

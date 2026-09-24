@@ -8,6 +8,7 @@ import { ALL_LAMBORGHINI_FAQS } from "../data/lamborghiniData";
 import { ALL_BENTLEY_FAQS } from "../data/bentleyData";
 import { ALL_SEAT_FAQS } from "../data/seatData";
 import { ALL_SCANIA_FAQS } from "../data/scaniaData";
+import { ALL_MAN_FAQS } from "../data/manData";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
 import { PorscheLogo } from "./PorscheLogo";
@@ -15,6 +16,7 @@ import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
 import { SeatLogo } from "./SeatLogo";
 import { ScaniaLogo } from "./ScaniaLogo";
+import { ManLogo } from "./ManLogo";
 export const FAQSection = ({ brand = "skoda" }) => {
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
@@ -23,7 +25,10 @@ export const FAQSection = ({ brand = "skoda" }) => {
   const isBentley = brand === "bentley";
   const isSeat = brand === "seat";
   const isScania = brand === "scania";
-  const faqs = isScania
+  const isMan = brand === "man";
+  const faqs = isMan
+    ? ALL_MAN_FAQS
+    : isScania
     ? ALL_SCANIA_FAQS
     : isSeat
     ? ALL_SEAT_FAQS
@@ -73,9 +78,11 @@ export const FAQSection = ({ brand = "skoda" }) => {
       {/* Title */}
       <div className="text-center space-y-2">
         <div
-          className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-semibold ${isScania ? "bg-rose-950/80 border-rose-800 text-rose-400" : isSeat ? "bg-orange-950/80 border-orange-800 text-orange-400" : isBentley ? "bg-green-950/80 border-green-800 text-green-400" : isLamborghini ? "bg-yellow-950/80 border-yellow-800 text-yellow-400" : isPorsche ? "bg-amber-950/80 border-amber-800 text-amber-400" : isAudi ? "bg-red-950/80 border-red-800 text-red-400" : isVW ? "bg-blue-950/80 border-blue-800 text-blue-400" : "bg-emerald-950/80 border-emerald-800 text-emerald-400"}`}
+          className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-semibold ${isMan ? "bg-sky-950/80 border-sky-800 text-sky-400" : isScania ? "bg-rose-950/80 border-rose-800 text-rose-400" : isSeat ? "bg-orange-950/80 border-orange-800 text-orange-400" : isBentley ? "bg-green-950/80 border-green-800 text-green-400" : isLamborghini ? "bg-yellow-950/80 border-yellow-800 text-yellow-400" : isPorsche ? "bg-amber-950/80 border-amber-800 text-amber-400" : isAudi ? "bg-red-950/80 border-red-800 text-red-400" : isVW ? "bg-blue-950/80 border-blue-800 text-blue-400" : "bg-emerald-950/80 border-emerald-800 text-emerald-400"}`}
         >
-          {isScania ? (
+          {isMan ? (
+            <ManLogo variant="emblem" size="sm" />
+          ) : isScania ? (
             <ScaniaLogo variant="emblem" size="sm" />
           ) : isSeat ? (
             <SeatLogo variant="emblem" size="sm" />
@@ -93,7 +100,9 @@ export const FAQSection = ({ brand = "skoda" }) => {
             <HelpCircle className="w-3.5 h-3.5" />
           )}
           <span>
-            {isScania
+            {isMan
+              ? "MAN Truck & Bus Ownership & Engineering Guide"
+              : isScania
               ? "Scania Ownership & Engineering Guide"
               : isBentley
               ? "Bentley Ownership & Engineering Guide"
@@ -123,7 +132,7 @@ export const FAQSection = ({ brand = "skoda" }) => {
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${activeCategory === cat ? (isScania ? "bg-rose-600 text-white shadow-sm" : isSeat ? "bg-orange-600 text-white shadow-sm" : isBentley ? "bg-green-600 text-white shadow-sm" : isLamborghini ? "bg-yellow-600 text-white shadow-sm" : isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white"}`}
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${activeCategory === cat ? (isMan ? "bg-sky-600 text-white shadow-sm" : isScania ? "bg-rose-600 text-white shadow-sm" : isSeat ? "bg-orange-600 text-white shadow-sm" : isBentley ? "bg-green-600 text-white shadow-sm" : isLamborghini ? "bg-yellow-600 text-white shadow-sm" : isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white"}`}
           >
             {cat}
           </button>
@@ -145,7 +154,7 @@ export const FAQSection = ({ brand = "skoda" }) => {
               >
                 <div className="flex items-center gap-3">
                   <span
-                    className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-zinc-800 border border-zinc-700 ${isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
+                    className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-zinc-800 border border-zinc-700 ${isMan ? "text-sky-400" : isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}`}
                   >
                     {faq.category}
                   </span>
@@ -154,7 +163,7 @@ export const FAQSection = ({ brand = "skoda" }) => {
                   </span>
                 </div>
                 <ChevronDown
-                  className={`w-4 h-4 text-zinc-400 transition-transform duration-200 flex-shrink-0 ${isOpen ? (isScania ? "rotate-180 text-rose-400" : isSeat ? "rotate-180 text-orange-400" : isBentley ? "rotate-180 text-green-400" : isLamborghini ? "rotate-180 text-yellow-400" : isPorsche ? "rotate-180 text-amber-400" : isAudi ? "rotate-180 text-red-400" : isVW ? "rotate-180 text-blue-400" : "rotate-180 text-emerald-400") : ""}`}
+                  className={`w-4 h-4 text-zinc-400 transition-transform duration-200 flex-shrink-0 ${isOpen ? (isMan ? "rotate-180 text-sky-400" : isScania ? "rotate-180 text-rose-400" : isSeat ? "rotate-180 text-orange-400" : isBentley ? "rotate-180 text-green-400" : isLamborghini ? "rotate-180 text-yellow-400" : isPorsche ? "rotate-180 text-amber-400" : isAudi ? "rotate-180 text-red-400" : isVW ? "rotate-180 text-blue-400" : "rotate-180 text-emerald-400") : ""}`}
                 />
               </button>
 

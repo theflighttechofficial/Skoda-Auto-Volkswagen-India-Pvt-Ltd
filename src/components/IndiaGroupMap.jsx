@@ -11,6 +11,7 @@ import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
 import { SeatLogo } from "./SeatLogo";
 import { ScaniaLogo } from "./ScaniaLogo";
+import { ManLogo } from "./ManLogo";
 
 const BRANDS = [
   { id: "skoda", label: "Škoda", dot: "bg-emerald-500", text: "text-emerald-400", ring: "ring-emerald-500" },
@@ -21,6 +22,7 @@ const BRANDS = [
   { id: "bentley", label: "Bentley", dot: "bg-green-500", text: "text-green-400", ring: "ring-green-500" },
   { id: "seat", label: "SEAT (0 — Not Sold in India)", dot: "bg-orange-500", text: "text-orange-400", ring: "ring-orange-500" },
   { id: "scania", label: "Scania (Trucks & Buses)", dot: "bg-rose-500", text: "text-rose-400", ring: "ring-rose-500" },
+  { id: "man", label: "MAN (Trucks & Buses)", dot: "bg-sky-500", text: "text-sky-400", ring: "ring-sky-500" },
 ];
 
 function brandMatches(dealership, activeBrands) {
@@ -36,6 +38,7 @@ function BrandLogo({ brand, size = "sm" }) {
   if (brand === "bentley") return <BentleyLogo variant="emblem" size={size} />;
   if (brand === "seat") return <SeatLogo variant="emblem" size={size} />;
   if (brand === "scania") return <ScaniaLogo variant="emblem" size={size} />;
+  if (brand === "man") return <ManLogo variant="emblem" size={size} />;
   return <SkodaLogo variant="emblem" size={size} />;
 }
 
@@ -75,10 +78,11 @@ export const IndiaGroupMap = ({ onSwitchBrand, onOpenDealershipLocator }) => {
           One Group, All Across India
         </h2>
         <p className="text-sm text-zinc-400 mt-2">
-          A stylized, click-to-explore map of Škoda, Volkswagen, Audi, Porsche, Lamborghini, Bentley, and Scania presence across India.
+          A stylized, click-to-explore map of Škoda, Volkswagen, Audi, Porsche, Lamborghini, Bentley, Scania, and MAN presence across India.
           Toggle brands and click a state to see dealerships. (SEAT is included in the brand toggle for completeness, but has
-          zero outlets — it is not officially sold or serviced in India. Scania's truck and bus dealer/workshop network is
-          separate from the passenger-car network.)
+          zero outlets — it is not officially sold or serviced in India. Scania's and MAN's truck and bus dealer/workshop networks are
+          separate from the passenger-car network — MAN's India footprint centers on its Pithampur, Madhya Pradesh plant, commissioned
+          in 2011 as the original MAN Force Trucks joint venture with Force Motors.)
         </p>
       </div>
 

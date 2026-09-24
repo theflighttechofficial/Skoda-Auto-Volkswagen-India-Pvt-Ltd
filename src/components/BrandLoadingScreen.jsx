@@ -7,6 +7,7 @@ import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
 import { SeatLogo } from "./SeatLogo";
 import { ScaniaLogo } from "./ScaniaLogo";
+import { ManLogo } from "./ManLogo";
 
 const BRAND_META = {
   skoda: {
@@ -80,6 +81,15 @@ const BRAND_META = {
     ring: "border-rose-500/40",
     glow: "bg-rose-600/20",
     bar: "from-rose-600 to-rose-400",
+  },
+  man: {
+    Logo: ManLogo,
+    name: "MAN",
+    tagline: "Born to Perform",
+    accent: "text-sky-400",
+    ring: "border-sky-500/40",
+    glow: "bg-sky-600/20",
+    bar: "from-sky-600 to-sky-400",
   },
 };
 

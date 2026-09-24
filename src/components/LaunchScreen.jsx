@@ -45,7 +45,7 @@ export const LaunchScreen = ({ onEnter }) => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-xs sm:text-sm text-zinc-500 mt-2 italic tracking-wide"
         >
-          Acht Marken. Eine Philosophie. — Eight Brands, One Philosophy.
+          Neun Marken. Eine Philosophie. — Nine Brands, One Philosophy.
         </motion.p>
       </div>
 
@@ -56,7 +56,7 @@ export const LaunchScreen = ({ onEnter }) => {
             onSelectBrand={onEnter}
             badgeLabel="One Group, Many Personalities"
             heading="Different Personalities. Shared DNA."
-            description="Škoda, Volkswagen, Audi, Porsche, Lamborghini, Bentley, SEAT, and Scania — eight distinct personalities built on shared Volkswagen Group engineering (SEAT is not officially sold in India). Click a brand to enter its world."
+            description="Škoda, Volkswagen, Audi, Porsche, Lamborghini, Bentley, SEAT, Scania, and MAN — nine distinct personalities built on shared Volkswagen Group engineering (SEAT is not officially sold in India). Click a brand to enter its world."
           />
         </div>
       </div>

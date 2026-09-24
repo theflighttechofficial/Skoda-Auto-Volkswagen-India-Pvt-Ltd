@@ -9,6 +9,7 @@ import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
 import { BENTLEY_MODELS } from "../data/bentleyData";
 import { SEAT_MODELS } from "../data/seatData";
 import { SCANIA_MODELS } from "../data/scaniaData";
+import { MAN_MODELS } from "../data/manData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
@@ -17,6 +18,7 @@ import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
 import { SeatLogo } from "./SeatLogo";
 import { ScaniaLogo } from "./ScaniaLogo";
+import { ManLogo } from "./ManLogo";
 import { getAccentClasses } from "../utils/brandTheme";
 
 const BRAND_PAGE_COPY = {
@@ -76,6 +78,13 @@ const BRAND_PAGE_COPY = {
     subheading: "Compare cab configurations, axle layouts, and pricing across day-cab, sleeper, and heavy-haulage specifications",
     flagshipLabel: "Highline / Heavy Haulage",
   },
+  man: {
+    Logo: ManLogo,
+    models: MAN_MODELS,
+    heading: "MAN Models & Cab/Axle Configuration Guide",
+    subheading: "Compare cab configurations, axle layouts, and pricing across day-cab, sleeper, and tractor-trailer specifications",
+    flagshipLabel: "TGX Sleeper / Tractor-Trailer",
+  },
 };
 
 export const VariantExplorer = ({ brand = "skoda", initialModelId }) => {
@@ -132,7 +141,8 @@ export const VariantExplorer = ({ brand = "skoda", initialModelId }) => {
               .replace("Audi ", "")
               .replace("Porsche ", "")
               .replace("Lamborghini ", "")
-      .replace("Bentley ", "");
+      .replace("Bentley ", "")
+      .replace("MAN ", "");
             return (
               <button
                 key={car.id}

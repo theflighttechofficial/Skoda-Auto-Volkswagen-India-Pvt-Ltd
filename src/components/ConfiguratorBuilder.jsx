@@ -25,6 +25,7 @@ import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
 import { BENTLEY_MODELS } from "../data/bentleyData";
 import { SEAT_MODELS } from "../data/seatData";
 import { SCANIA_MODELS } from "../data/scaniaData";
+import { MAN_MODELS } from "../data/manData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
@@ -32,6 +33,7 @@ import { PorscheLogo } from "./PorscheLogo";
 import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
 import { ScaniaLogo } from "./ScaniaLogo";
+import { ManLogo } from "./ManLogo";
 import { CarSilhouette } from "./CarSilhouette";
 import { getBodyShape } from "../utils/bodyShape";
 import {
@@ -45,7 +47,7 @@ import {
 import { generateBuildImage } from "../utils/generateBuildImage";
 
 const STORAGE_KEY = "vwgroup_saved_builds";
-const BRAND_ACCENT_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b", lamborghini: "#eab308", bentley: "#16a34a", seat: "#f97316" };
+const BRAND_ACCENT_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b", lamborghini: "#eab308", bentley: "#16a34a", seat: "#f97316", scania: "#e11d48", man: "#0ea5e9" };
 
 function loadSavedBuilds() {
   try {
@@ -83,12 +85,13 @@ export const ConfiguratorBuilder = ({ brand = "skoda", onSwitchBrand, onOpenAdvi
   const isBentley = brand === "bentley";
   const isSeat = brand === "seat";
   const isScania = brand === "scania";
-  const models = isScania ? SCANIA_MODELS : isSeat ? SEAT_MODELS : isBentley ? BENTLEY_MODELS : isLamborghini ? LAMBORGHINI_MODELS : isPorsche ? PORSCHE_MODELS : isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
+  const isMan = brand === "man";
+  const models = isMan ? MAN_MODELS : isScania ? SCANIA_MODELS : isSeat ? SEAT_MODELS : isBentley ? BENTLEY_MODELS : isLamborghini ? LAMBORGHINI_MODELS : isPorsche ? PORSCHE_MODELS : isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
   const accentHex = BRAND_ACCENT_HEX[brand];
-  const accentText = isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400";
-  const accentBg = isScania ? "bg-rose-600 hover:bg-rose-500" : isSeat ? "bg-orange-600 hover:bg-orange-500" : isBentley ? "bg-green-600 hover:bg-green-500" : isLamborghini ? "bg-yellow-600 hover:bg-yellow-500" : isPorsche ? "bg-amber-600 hover:bg-amber-500" : isAudi ? "bg-red-600 hover:bg-red-500" : isVW ? "bg-blue-600 hover:bg-blue-500" : "bg-emerald-600 hover:bg-emerald-500";
-  const accentBorder = isScania ? "border-rose-500/60" : isSeat ? "border-orange-500/60" : isBentley ? "border-green-500/60" : isLamborghini ? "border-yellow-500/60" : isPorsche ? "border-amber-500/60" : isAudi ? "border-red-500/60" : isVW ? "border-blue-500/60" : "border-emerald-500/60";
-  const accentRing = isScania ? "ring-rose-500/60" : isSeat ? "ring-orange-500/60" : isBentley ? "ring-green-500/60" : isLamborghini ? "ring-yellow-500/60" : isPorsche ? "ring-amber-500/60" : isAudi ? "ring-red-500/60" : isVW ? "ring-blue-500/60" : "ring-emerald-500/60";
+  const accentText = isMan ? "text-sky-400" : isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400";
+  const accentBg = isMan ? "bg-sky-600 hover:bg-sky-500" : isScania ? "bg-rose-600 hover:bg-rose-500" : isSeat ? "bg-orange-600 hover:bg-orange-500" : isBentley ? "bg-green-600 hover:bg-green-500" : isLamborghini ? "bg-yellow-600 hover:bg-yellow-500" : isPorsche ? "bg-amber-600 hover:bg-amber-500" : isAudi ? "bg-red-600 hover:bg-red-500" : isVW ? "bg-blue-600 hover:bg-blue-500" : "bg-emerald-600 hover:bg-emerald-500";
+  const accentBorder = isMan ? "border-sky-500/60" : isScania ? "border-rose-500/60" : isSeat ? "border-orange-500/60" : isBentley ? "border-green-500/60" : isLamborghini ? "border-yellow-500/60" : isPorsche ? "border-amber-500/60" : isAudi ? "border-red-500/60" : isVW ? "border-blue-500/60" : "border-emerald-500/60";
+  const accentRing = isMan ? "ring-sky-500/60" : isScania ? "ring-rose-500/60" : isSeat ? "ring-orange-500/60" : isBentley ? "ring-green-500/60" : isLamborghini ? "ring-yellow-500/60" : isPorsche ? "ring-amber-500/60" : isAudi ? "ring-red-500/60" : isVW ? "ring-blue-500/60" : "ring-emerald-500/60";
 
   const [selectedModelId, setSelectedModelId] = useState(models[0].id);
   const currentModel = models.find((m) => m.id === selectedModelId) || models[0];
@@ -275,14 +278,16 @@ export const ConfiguratorBuilder = ({ brand = "skoda", onSwitchBrand, onOpenAdvi
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-1">
-            {isScania ? <ScaniaLogo variant="emblem" size="sm" /> : isBentley ? <BentleyLogo variant="emblem" size="sm" /> : isLamborghini ? <LamborghiniLogo variant="emblem" size="sm" /> : isPorsche ? <PorscheLogo variant="emblem" size="sm" /> : isAudi ? <AudiLogo variant="emblem" size="sm" /> : isVW ? <VolkswagenLogo variant="emblem" size="sm" /> : <SkodaLogo variant="emblem" size="sm" />}
+            {isMan ? <ManLogo variant="emblem" size="sm" /> : isScania ? <ScaniaLogo variant="emblem" size="sm" /> : isBentley ? <BentleyLogo variant="emblem" size="sm" /> : isLamborghini ? <LamborghiniLogo variant="emblem" size="sm" /> : isPorsche ? <PorscheLogo variant="emblem" size="sm" /> : isAudi ? <AudiLogo variant="emblem" size="sm" /> : isVW ? <VolkswagenLogo variant="emblem" size="sm" /> : <SkodaLogo variant="emblem" size="sm" />}
             <span className={accentText}>Interactive Configurator</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-            Build Your {isScania ? "Scania" : isSeat ? "SEAT" : isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda"}
+            Build Your {isMan ? "MAN" : isScania ? "Scania" : isSeat ? "SEAT" : isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda"}
           </h2>
           <p className="text-sm text-zinc-400">
-            {isScania
+            {isMan
+              ? "Pick a model, cab/axle configuration, powertrain, livery and wheels — then save, share, or export your fleet spec."
+              : isScania
               ? "Pick a model, cab/axle configuration, powertrain, livery and wheels — then save, share, or export your fleet spec."
               : isSeat
               ? "SEAT is not officially sold in India — explore global reference specs, trims, colours and wheels for enthusiast comparison only. Builds cannot be configured for Indian purchase."
@@ -332,7 +337,7 @@ export const ConfiguratorBuilder = ({ brand = "skoda", onSwitchBrand, onOpenAdvi
                         onClick={() => setSelectedModelId(m.id)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer border ${selectedModelId === m.id ? `${accentBg} text-white border-transparent shadow-md` : "bg-zinc-900 text-zinc-400 border-zinc-800 hover:text-white hover:border-zinc-700"}`}
                       >
-                        {m.name.replace("Škoda ", "").replace("Volkswagen ", "").replace("Audi ", "").replace("Porsche ", "").replace("Lamborghini ", "")}
+                        {m.name.replace("Škoda ", "").replace("Volkswagen ", "").replace("Audi ", "").replace("Porsche ", "").replace("Lamborghini ", "").replace("MAN ", "")}
                       </button>
                     ))}
                 </div>

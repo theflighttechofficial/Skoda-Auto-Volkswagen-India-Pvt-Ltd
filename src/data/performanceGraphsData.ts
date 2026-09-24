@@ -3212,6 +3212,111 @@ export const ENGINE_GRAPH_PROFILES: Record<string, EngineGraphProfile> = {
       'Twin-turbo sequential charging for a flat torque curve from idle to peak revs',
       'Governed to a 90 km/h top speed in line with Indian commercial-vehicle regulations'
     ]
+  },
+
+  '12-9-litre-man-d26': {
+    id: '12-9-litre-man-d26',
+    name: '12.9L MAN D26 Common-Rail Inline-6',
+    badge: 'D26 (400 hp / 2,100 Nm)',
+    displacement: '12,884 cc',
+    cylinders: '6 Cylinders (Turbo-Diesel, Inline)',
+    fuelType: 'Diesel',
+    peakPowerStr: '400 hp @ 1,600–1,900 RPM',
+    peakTorqueStr: '2,100 Nm @ 930–1,400 RPM',
+    maxPowerHp: 400,
+    maxTorqueNm: 2100,
+    powerRpmRange: '1,600–1,900 RPM',
+    torqueRpmRange: '930–1,400 RPM',
+    redlineRpm: 2100,
+    idleRpm: 600,
+    highwayCruiseRpm100Kmh: 1300,
+    highwayCruiseRpm120Kmh: 1500,
+    dynoCurve: [
+      { rpm: 700, powerHp: 110, torqueNm: 1500, boostBar: 1.2 },
+      { rpm: 930, powerHp: 210, torqueNm: 2100, boostBar: 1.6 },
+      { rpm: 1200, powerHp: 280, torqueNm: 2100, boostBar: 1.6 },
+      { rpm: 1600, powerHp: 380, torqueNm: 2050, boostBar: 1.5 },
+      { rpm: 1900, powerHp: 400, torqueNm: 1900, boostBar: 1.4 },
+      { rpm: 2100, powerHp: 375, torqueNm: 1650, boostBar: 1.2 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 9.0, speedKmh: 30, gForce: 0.08, gear: 2 },
+      { timeSec: 20.0, speedKmh: 60, gForce: 0.06, gear: 5 },
+      { timeSec: 32.0, speedKmh: 80, gForce: 0.05, gear: 8 },
+      { timeSec: 40.0, speedKmh: 90, gForce: 0.03, gear: 10 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '13.80', speedAt1000Rpm: 1.1, speedAt3000Rpm: 3.3, speedAt6000Rpm: 6.6, redlineSpeed: 5 },
+      { gear: '4th', ratio: '5.14', speedAt1000Rpm: 3.0, speedAt3000Rpm: 9.0, speedAt6000Rpm: 18.0, redlineSpeed: 13 },
+      { gear: '8th', ratio: '1.86', speedAt1000Rpm: 8.3, speedAt3000Rpm: 24.9, speedAt6000Rpm: 49.8, redlineSpeed: 35 },
+      { gear: '12th', ratio: '0.79', speedAt1000Rpm: 19.5, speedAt3000Rpm: 58.5, speedAt6000Rpm: 90.0, redlineSpeed: 90 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 3.4, engineRpm: 950 },
+      { speedKmh: 40, fuelConsumptionKmpl: 3.9, engineRpm: 1050 },
+      { speedKmh: 60, fuelConsumptionKmpl: 4.2, engineRpm: 1150 },
+      { speedKmh: 80, fuelConsumptionKmpl: 4.0, engineRpm: 1250 },
+      { speedKmh: 90, fuelConsumptionKmpl: 3.8, engineRpm: 1300 }
+    ],
+    technicalFeatures: [
+      'Common-rail direct injection with two-stage turbocharging for a flat torque band from idle',
+      'MAN TipMatic 12-speed automated gearbox standard, easing driver fatigue on multi-drop routes',
+      'Manufactured for the Indian market at MAN Trucks India’s Pithampur plant since 2011',
+      'Governed to a 90 km/h top speed in line with Indian commercial-vehicle regulations'
+    ]
+  },
+
+  '15-2-litre-man-d38-v8': {
+    id: '15-2-litre-man-d38-v8',
+    name: '15.2L MAN D38 Common-Rail V8',
+    badge: 'D38 (640 hp / 3,000 Nm)',
+    displacement: '15,246 cc',
+    cylinders: '8 Cylinders (Twin-Turbo Diesel, V8)',
+    fuelType: 'Diesel',
+    peakPowerStr: '640 hp @ 1,800 RPM',
+    peakTorqueStr: '3,000 Nm @ 1,000–1,600 RPM',
+    maxPowerHp: 640,
+    maxTorqueNm: 3000,
+    powerRpmRange: '1,800 RPM',
+    torqueRpmRange: '1,000–1,600 RPM',
+    redlineRpm: 2100,
+    idleRpm: 600,
+    highwayCruiseRpm100Kmh: 1250,
+    highwayCruiseRpm120Kmh: 1450,
+    dynoCurve: [
+      { rpm: 700, powerHp: 170, torqueNm: 2200, boostBar: 1.6 },
+      { rpm: 1000, powerHp: 320, torqueNm: 3000, boostBar: 2.1 },
+      { rpm: 1400, powerHp: 480, torqueNm: 3000, boostBar: 2.1 },
+      { rpm: 1800, powerHp: 640, torqueNm: 2900, boostBar: 1.9 },
+      { rpm: 2100, powerHp: 600, torqueNm: 2550, boostBar: 1.7 }
+    ],
+    accelerationCurve: [
+      { timeSec: 0.0, speedKmh: 0, gForce: 0.0, gear: 1 },
+      { timeSec: 6.5, speedKmh: 30, gForce: 0.12, gear: 2 },
+      { timeSec: 15.0, speedKmh: 60, gForce: 0.09, gear: 5 },
+      { timeSec: 22.0, speedKmh: 80, gForce: 0.07, gear: 8 },
+      { timeSec: 26.5, speedKmh: 90, gForce: 0.05, gear: 10 }
+    ],
+    gearRatios: [
+      { gear: '1st', ratio: '13.80', speedAt1000Rpm: 1.2, speedAt3000Rpm: 3.6, speedAt6000Rpm: 7.2, redlineSpeed: 5 },
+      { gear: '4th', ratio: '5.14', speedAt1000Rpm: 3.2, speedAt3000Rpm: 9.6, speedAt6000Rpm: 19.2, redlineSpeed: 14 },
+      { gear: '8th', ratio: '1.86', speedAt1000Rpm: 8.9, speedAt3000Rpm: 26.7, speedAt6000Rpm: 53.4, redlineSpeed: 38 },
+      { gear: '12th', ratio: '0.79', speedAt1000Rpm: 21.0, speedAt3000Rpm: 63.0, speedAt6000Rpm: 90.0, redlineSpeed: 90 }
+    ],
+    efficiencyCurve: [
+      { speedKmh: 20, fuelConsumptionKmpl: 2.4, engineRpm: 870 },
+      { speedKmh: 40, fuelConsumptionKmpl: 2.9, engineRpm: 970 },
+      { speedKmh: 60, fuelConsumptionKmpl: 3.2, engineRpm: 1070 },
+      { speedKmh: 80, fuelConsumptionKmpl: 3.4, engineRpm: 1170 },
+      { speedKmh: 90, fuelConsumptionKmpl: 3.1, engineRpm: 1250 }
+    ],
+    technicalFeatures: [
+      'MAN’s halo production engine — a common-rail V8 spanning 480 to 640 hp across the D38 family',
+      'Two-stage turbocharging for a flat torque curve across the entire usable rev range',
+      'Reserved for the flagship MAN TGX D38 long-haul and heavy-haulage tractors',
+      'Governed to a 90 km/h top speed in line with Indian commercial-vehicle regulations'
+    ]
   }
 };
 
@@ -4590,6 +4695,86 @@ export const MODEL_PERFORMANCE_PROFILES: ModelPerformanceProfile[] = [
     aerodynamicHighlights: [
       'High-floor luggage-bay layout for genuine long-distance routes',
       'Chassis of choice behind MSRTC’s premium "Shivneri" and "Ashwamedh" services'
+    ]
+  },
+  {
+    id: 'man-tgs',
+    name: 'MAN TGS',
+    tagline: 'The Construction & Distribution Workhorse',
+    category: 'Heavy Truck',
+    primaryEngineId: '12-9-litre-man-d26',
+    availableEngineIds: ['12-9-litre-man-d26'],
+    weightKg: 8000,
+    dragCoefficient: '0.62 Cd',
+    braking100to0DistMeters: 70.0,
+    corneringGForce: 0.30,
+    powerToWeightRatio: '50.0 PS/tonne',
+    sprint0to100: '40.0 seconds (laden tractor-trailer)',
+    topSpeed: '90 km/h (electronically limited)',
+    suspensionType: 'Reinforced Multi-Leaf & Air Suspension',
+    aerodynamicHighlights: [
+      'Reinforced ladder-frame chassis rated for tipper, mixer and flatbed body-building',
+      'Manufactured for the Indian market at MAN Trucks India’s Pithampur plant since 2011'
+    ]
+  },
+  {
+    id: 'man-tgx',
+    name: 'MAN TGX',
+    tagline: 'The Long-Haul Flagship',
+    category: 'Tractor-Trailer',
+    primaryEngineId: '15-2-litre-man-d38-v8',
+    availableEngineIds: ['15-2-litre-man-d38-v8'],
+    weightKg: 8000,
+    dragCoefficient: '0.56 Cd',
+    braking100to0DistMeters: 69.0,
+    corneringGForce: 0.32,
+    powerToWeightRatio: '80.0 PS/tonne',
+    sprint0to100: '26.5 seconds (unladen tractor)',
+    topSpeed: '90 km/h (electronically limited)',
+    suspensionType: 'Air Suspension with Load-Levelling Valve',
+    aerodynamicHighlights: [
+      'Flat-floor GX cab with a lowered, widened dashboard for best-in-class forward visibility',
+      'Rated for GCW up to 60 tonnes for heavy-haulage and multi-trailer combinations'
+    ]
+  },
+  {
+    id: 'man-lions-city',
+    name: 'MAN Lion’s City',
+    tagline: 'The Low-Floor City Transit Bus',
+    category: 'City Bus',
+    primaryEngineId: '12-9-litre-man-d26',
+    availableEngineIds: ['12-9-litre-man-d26'],
+    weightKg: 12500,
+    dragCoefficient: '0.60 Cd',
+    braking100to0DistMeters: 70.0,
+    corneringGForce: 0.30,
+    powerToWeightRatio: '24.8 PS/tonne (de-rated 310 hp bus tune)',
+    sprint0to100: 'Not applicable — urban stop-start duty cycle',
+    topSpeed: '80 km/h (electronically limited)',
+    suspensionType: 'Kneeling Air Suspension',
+    aerodynamicHighlights: [
+      'Low-entry floor design for near step-free boarding at urban bus stops',
+      'Pitched to Indian state transport undertakings as MAN Trucks India rebuilds its bus retail presence'
+    ]
+  },
+  {
+    id: 'man-lions-coach',
+    name: 'MAN Lion’s Coach',
+    tagline: 'The Intercity & Tourist Coach',
+    category: 'Coach Bus',
+    primaryEngineId: '12-9-litre-man-d26',
+    availableEngineIds: ['12-9-litre-man-d26'],
+    weightKg: 14000,
+    dragCoefficient: '0.53 Cd',
+    braking100to0DistMeters: 71.0,
+    corneringGForce: 0.31,
+    powerToWeightRatio: '25.0 PS/tonne (350 hp coach tune)',
+    sprint0to100: 'Not applicable — intercity coach duty cycle',
+    topSpeed: '100 km/h (electronically limited)',
+    suspensionType: 'Air Suspension with Retarder Braking',
+    aerodynamicHighlights: [
+      'High-floor luggage-bay layout for genuine long-distance intercity and tourist routes',
+      'A niche, smaller-volume offering in India compared to MAN’s TGS/TGX truck range'
     ]
   }
 ];

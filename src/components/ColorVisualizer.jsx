@@ -8,6 +8,7 @@ import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
 import { BENTLEY_MODELS } from "../data/bentleyData";
 import { SEAT_MODELS } from "../data/seatData";
 import { SCANIA_MODELS } from "../data/scaniaData";
+import { MAN_MODELS } from "../data/manData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
@@ -16,6 +17,7 @@ import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
 import { SeatLogo } from "./SeatLogo";
 import { ScaniaLogo } from "./ScaniaLogo";
+import { ManLogo } from "./ManLogo";
 export const ColorVisualizer = ({ brand = "skoda" }) => {
   const isVW = brand === "volkswagen";
   const isAudi = brand === "audi";
@@ -24,7 +26,8 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
   const isBentley = brand === "bentley";
   const isSeat = brand === "seat";
   const isScania = brand === "scania";
-  const models = isScania ? SCANIA_MODELS : isSeat ? SEAT_MODELS : isBentley ? BENTLEY_MODELS : isLamborghini ? LAMBORGHINI_MODELS : isPorsche ? PORSCHE_MODELS : isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
+  const isMan = brand === "man";
+  const models = isMan ? MAN_MODELS : isScania ? SCANIA_MODELS : isSeat ? SEAT_MODELS : isBentley ? BENTLEY_MODELS : isLamborghini ? LAMBORGHINI_MODELS : isPorsche ? PORSCHE_MODELS : isAudi ? AUDI_MODELS : isVW ? VW_MODELS : SKODA_MODELS;
   const [selectedModelId, setSelectedModelId] = useState(models[0].id);
   useEffect(() => {
     setSelectedModelId(models[0].id);
@@ -57,7 +60,9 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-1">
-            {isScania ? (
+            {isMan ? (
+              <ManLogo variant="emblem" size="sm" />
+            ) : isScania ? (
               <ScaniaLogo variant="emblem" size="sm" />
             ) : isSeat ? (
               <SeatLogo variant="emblem" size="sm" />
@@ -74,12 +79,14 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
             ) : (
               <SkodaLogo variant="emblem" size="sm" />
             )}
-            <span className={isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}>
+            <span className={isMan ? "text-sky-400" : isScania ? "text-rose-400" : isSeat ? "text-orange-400" : isBentley ? "text-green-400" : isLamborghini ? "text-yellow-400" : isPorsche ? "text-amber-400" : isAudi ? "text-red-400" : isVW ? "text-blue-400" : "text-emerald-400"}>
               Interactive Studio
             </span>
           </div>
           <h2 className="text-2xl font-bold text-white tracking-tight mt-1">
-            {isScania
+            {isMan
+              ? "Official MAN Truck & Bus Livery Explorer"
+              : isScania
               ? "Official Scania Livery Explorer"
               : isBentley
               ? "Official Bentley Color Explorer"
@@ -95,7 +102,7 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
           </h2>
           <p className="text-sm text-zinc-400">
             Preview factory paint choices and dual-tone finishes across all{" "}
-            {isScania ? "Scania" : isSeat ? "SEAT" : isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} models
+            {isMan ? "MAN" : isScania ? "Scania" : isSeat ? "SEAT" : isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "\u0160koda"} models
           </p>
         </div>
 
@@ -108,12 +115,13 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
               .replace("Audi ", "")
               .replace("Porsche ", "")
               .replace("Lamborghini ", "")
-              .replace("Scania ", "");
+              .replace("Scania ", "")
+              .replace("MAN ", "");
             return (
               <button
                 key={car.id}
                 onClick={() => handleModelChange(car.id)}
-                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all cursor-pointer ${selectedModelId === car.id ? (isScania ? "bg-rose-600 text-white shadow-sm" : isSeat ? "bg-orange-600 text-white shadow-sm" : isBentley ? "bg-green-600 text-white shadow-sm" : isLamborghini ? "bg-yellow-600 text-white shadow-sm" : isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "text-zinc-400 hover:text-white hover:bg-zinc-800"}`}
+                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all cursor-pointer ${selectedModelId === car.id ? (isMan ? "bg-sky-600 text-white shadow-sm" : isScania ? "bg-rose-600 text-white shadow-sm" : isSeat ? "bg-orange-600 text-white shadow-sm" : isBentley ? "bg-green-600 text-white shadow-sm" : isLamborghini ? "bg-yellow-600 text-white shadow-sm" : isPorsche ? "bg-amber-600 text-white shadow-sm" : isAudi ? "bg-red-600 text-white shadow-sm" : isVW ? "bg-blue-600 text-white shadow-sm" : "bg-emerald-600 text-white shadow-sm") : "text-zinc-400 hover:text-white hover:bg-zinc-800"}`}
               >
                 {shortName}
               </button>
@@ -310,7 +318,7 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
                 {/* Headlights & Tail lights */}
                 <polygon
                   points="120,230 145,225 140,240 120,240"
-                  fill={isScania ? "#e11d48" : isSeat ? "#22c55e" : isBentley ? "#22c55e" : isLamborghini ? "#fbbf24" : isPorsche ? "#fbbf24" : isAudi ? "#f87171" : isVW ? "#60a5fa" : "#34d399"}
+                  fill={isMan ? "#0ea5e9" : isScania ? "#e11d48" : isSeat ? "#22c55e" : isBentley ? "#22c55e" : isLamborghini ? "#fbbf24" : isPorsche ? "#fbbf24" : isAudi ? "#f87171" : isVW ? "#60a5fa" : "#34d399"}
                   opacity="0.9"
                 />
                 <polygon
@@ -406,7 +414,7 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
                 {/* Headlights & Tail lights */}
                 <polygon
                   points="120,215 145,212 140,230 118,225"
-                  fill={isScania ? "#e11d48" : isSeat ? "#22c55e" : isBentley ? "#22c55e" : isLamborghini ? "#fbbf24" : isPorsche ? "#fbbf24" : isAudi ? "#f87171" : isVW ? "#60a5fa" : "#34d399"}
+                  fill={isMan ? "#0ea5e9" : isScania ? "#e11d48" : isSeat ? "#22c55e" : isBentley ? "#22c55e" : isLamborghini ? "#fbbf24" : isPorsche ? "#fbbf24" : isAudi ? "#f87171" : isVW ? "#60a5fa" : "#34d399"}
                   opacity="0.9"
                 />
                 <polygon
@@ -441,7 +449,7 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
                 cx="252"
                 cy="235"
                 r="5"
-                fill={isScania ? "#e11d48" : isSeat ? "#16a34a" : isBentley ? "#16a34a" : isLamborghini ? "#f59e0b" : isPorsche ? "#f59e0b" : isAudi ? "#ef4444" : isVW ? "#3b82f6" : "#10b981"}
+                fill={isMan ? "#0284c7" : isScania ? "#e11d48" : isSeat ? "#16a34a" : isBentley ? "#16a34a" : isLamborghini ? "#f59e0b" : isPorsche ? "#f59e0b" : isAudi ? "#ef4444" : isVW ? "#3b82f6" : "#10b981"}
               />
             </g>
 
@@ -469,7 +477,7 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
                 cx="587"
                 cy="235"
                 r="5"
-                fill={isScania ? "#e11d48" : isSeat ? "#16a34a" : isBentley ? "#16a34a" : isLamborghini ? "#f59e0b" : isPorsche ? "#f59e0b" : isAudi ? "#ef4444" : isVW ? "#3b82f6" : "#10b981"}
+                fill={isMan ? "#0284c7" : isScania ? "#e11d48" : isSeat ? "#16a34a" : isBentley ? "#16a34a" : isLamborghini ? "#f59e0b" : isPorsche ? "#f59e0b" : isAudi ? "#ef4444" : isVW ? "#3b82f6" : "#10b981"}
               />
             </g>
           </svg>
@@ -495,7 +503,7 @@ export const ColorVisualizer = ({ brand = "skoda" }) => {
                     key={c.id}
                     id={`color-swatch-${c.id}`}
                     onClick={() => setSelectedColorId(c.id)}
-                    className={`group relative p-1 rounded-full transition-all duration-200 cursor-pointer ${isSelected ? (isScania ? "ring-2 ring-rose-400 scale-110" : isSeat ? "ring-2 ring-orange-400 scale-110" : isBentley ? "ring-2 ring-green-400 scale-110" : isLamborghini ? "ring-2 ring-yellow-400 scale-110" : isPorsche ? "ring-2 ring-amber-400 scale-110" : isAudi ? "ring-2 ring-red-400 scale-110" : isVW ? "ring-2 ring-blue-400 scale-110" : "ring-2 ring-emerald-400 scale-110") : "hover:scale-105 opacity-80 hover:opacity-100"}`}
+                    className={`group relative p-1 rounded-full transition-all duration-200 cursor-pointer ${isSelected ? (isMan ? "ring-2 ring-sky-400 scale-110" : isScania ? "ring-2 ring-rose-400 scale-110" : isSeat ? "ring-2 ring-orange-400 scale-110" : isBentley ? "ring-2 ring-green-400 scale-110" : isLamborghini ? "ring-2 ring-yellow-400 scale-110" : isPorsche ? "ring-2 ring-amber-400 scale-110" : isAudi ? "ring-2 ring-red-400 scale-110" : isVW ? "ring-2 ring-blue-400 scale-110" : "ring-2 ring-emerald-400 scale-110") : "hover:scale-105 opacity-80 hover:opacity-100"}`}
                     title={c.name}
                   >
                     <span

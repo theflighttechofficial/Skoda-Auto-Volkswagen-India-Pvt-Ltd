@@ -22,6 +22,7 @@ import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
 import { SeatLogo } from "./SeatLogo";
 import { ScaniaLogo } from "./ScaniaLogo";
+import { ManLogo } from "./ManLogo";
 import { SKODA_MODELS } from "../data/skodaData";
 import { VW_MODELS } from "../data/vwData";
 import { AUDI_MODELS } from "../data/audiData";
@@ -30,6 +31,7 @@ import { LAMBORGHINI_MODELS } from "../data/lamborghiniData";
 import { BENTLEY_MODELS } from "../data/bentleyData";
 import { SEAT_MODELS } from "../data/seatData";
 import { SCANIA_MODELS } from "../data/scaniaData";
+import { MAN_MODELS } from "../data/manData";
 // vRS/RS performance variants (e.g. Octavia vRS, Audi RS5) get their own
 // MODEL_PERFORMANCE_PROFILES entries but aren't part of the base model
 // catalogs above, so their ids have to be added in explicitly per brand.
@@ -56,7 +58,10 @@ export const PerformanceGraphs = ({
   const isBentley = brand === "bentley";
   const isSeat = brand === "seat";
   const isScania = brand === "scania";
-  const currentBrandModels = isScania
+  const isMan = brand === "man";
+  const currentBrandModels = isMan
+    ? MAN_MODELS
+    : isScania
     ? SCANIA_MODELS
     : isSeat
     ? SEAT_MODELS
@@ -71,7 +76,9 @@ export const PerformanceGraphs = ({
       : isVW
         ? VW_MODELS
         : SKODA_MODELS;
-  const currentPerformanceOnlyIds = isScania
+  const currentPerformanceOnlyIds = isMan
+    ? []
+    : isScania
     ? []
     : isSeat
     ? SEAT_PERFORMANCE_ONLY_IDS
@@ -118,7 +125,9 @@ export const PerformanceGraphs = ({
   const [selectedEngineId, setSelectedEngineId] = useState(initialEngineId);
   const [selectedModelId, setSelectedModelId] = useState(
     initialModelId === "slavia"
-      ? isScania
+      ? isMan
+        ? "man-tgx"
+        : isScania
         ? "scania-r-500"
         : isSeat
         ? "ibiza"
@@ -256,16 +265,18 @@ export const PerformanceGraphs = ({
     <div className="space-y-8">
       {/* Top Banner */}
       <div
-        className={`rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900/90 border border-zinc-800 p-6 sm:p-8 relative overflow-hidden shadow-2xl ${isScania ? "to-rose-950/40" : isSeat ? "to-orange-950/40" : isBentley ? "to-green-950/40" : isLamborghini ? "to-yellow-950/40" : isPorsche ? "to-amber-950/40" : isAudi ? "to-red-950/40" : isVW ? "to-blue-950/40" : "to-emerald-950/40"}`}
+        className={`rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900/90 border border-zinc-800 p-6 sm:p-8 relative overflow-hidden shadow-2xl ${isMan ? "to-sky-950/40" : isScania ? "to-rose-950/40" : isSeat ? "to-orange-950/40" : isBentley ? "to-green-950/40" : isLamborghini ? "to-yellow-950/40" : isPorsche ? "to-amber-950/40" : isAudi ? "to-red-950/40" : isVW ? "to-blue-950/40" : "to-emerald-950/40"}`}
       >
         <div
-          className={`absolute right-0 top-0 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isScania ? "bg-rose-600/10" : isSeat ? "bg-orange-600/10" : isBentley ? "bg-green-600/10" : isLamborghini ? "bg-yellow-600/10" : isPorsche ? "bg-amber-600/10" : isAudi ? "bg-red-600/10" : isVW ? "bg-blue-600/10" : "bg-emerald-600/10"}`}
+          className={`absolute right-0 top-0 w-96 h-96 rounded-full blur-3xl pointer-events-none ${isMan ? "bg-sky-600/10" : isScania ? "bg-rose-600/10" : isSeat ? "bg-orange-600/10" : isBentley ? "bg-green-600/10" : isLamborghini ? "bg-yellow-600/10" : isPorsche ? "bg-amber-600/10" : isAudi ? "bg-red-600/10" : isVW ? "bg-blue-600/10" : "bg-emerald-600/10"}`}
         />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-3xl">
             <div className="flex items-center gap-2">
-              {isScania ? (
+              {isMan ? (
+                <ManLogo variant="emblem" size="sm" />
+              ) : isScania ? (
                 <ScaniaLogo variant="emblem" size="sm" />
               ) : isSeat ? (
                 <SeatLogo variant="emblem" size="sm" />
@@ -283,7 +294,9 @@ export const PerformanceGraphs = ({
                 <SkodaLogo variant="emblem" size="sm" />
               )}
               <span className="text-xs uppercase font-bold tracking-wider text-blue-400">
-                {isScania
+                {isMan
+                  ? "MAN Powertrain Lab"
+                  : isScania
                   ? "Scania Powertrain Lab"
                   : isSeat
                   ? "SEAT Powertrain Lab"
@@ -301,7 +314,9 @@ export const PerformanceGraphs = ({
               </span>
               <span className="text-zinc-600">•</span>
               <span className="text-xs text-zinc-400">
-                {isScania
+                {isMan
+                  ? "MAN Truck & Bus (TRATON / Volkswagen Group)"
+                  : isScania
                   ? "Scania Commercial Vehicles India Pvt. Ltd. (TRATON / Volkswagen Group)"
                   : isSeat
                   ? "SEAT (Volkswagen Group Brand, Not Sold in India)"
@@ -318,7 +333,9 @@ export const PerformanceGraphs = ({
             </div>
 
             <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
-              {isScania
+              {isMan
+                ? "MAN Telemetry & Dyno Graphs"
+                : isScania
                 ? "Scania Telemetry & Dyno Graphs"
                 : isSeat
                 ? "SEAT Telemetry & Dyno Graphs (Not Sold in India)"
@@ -336,7 +353,9 @@ export const PerformanceGraphs = ({
             </h2>
 
             <p className="text-sm text-zinc-300 leading-relaxed">
-              {isScania
+              {isMan
+                ? "Explore dynamic power and torque delivery curves, real-world 0\u2013100 km/h acceleration telemetry, MAN TipMatic 12-speed gearbox ratios, and fuel efficiency curves for MAN's D26 common-rail inline-six and flagship D38 V8 heavy-duty engines."
+                : isScania
                 ? "Explore dynamic power and torque delivery curves, real-world 0\u2013100 km/h acceleration telemetry, Scania Opticruise 12-speed gearbox ratios, and fuel efficiency curves for Scania's 13-litre Super inline-six and twin-turbo 16-litre V8 engines."
                 : isSeat
                 ? "Explore dynamic power and torque delivery curves, real-world 0\u2013100 km/h acceleration telemetry, DSG gearbox ratios, and thermal fuel efficiency curves for SEAT's European TSI engine lineup. SEAT is not officially sold or serviced in India \u2014 all figures are global reference specifications for enthusiast comparison only."

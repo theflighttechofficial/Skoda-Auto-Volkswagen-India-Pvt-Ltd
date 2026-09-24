@@ -56,6 +56,7 @@ import { LamborghiniLogo } from "./components/LamborghiniLogo";
 import { BentleyLogo } from "./components/BentleyLogo";
 import { SeatLogo } from "./components/SeatLogo";
 import { ScaniaLogo } from "./components/ScaniaLogo";
+import { ManLogo } from "./components/ManLogo";
 
 const APP_BRAND_META = {
   skoda: {
@@ -201,6 +202,24 @@ const APP_BRAND_META = {
     lineupLabel: "R 500 • S 730 • Citywide • Metrolink",
     defaultModelId: "scania-r-500",
     defaultGraphModelId: "scania-r-500",
+  },
+  man: {
+    Logo: ManLogo,
+    accentText: "text-sky-400",
+    accentTextHover: "text-sky-400 hover:text-sky-300",
+    selectionBg: "selection:bg-sky-500",
+    scrollTopBg: "bg-sky-600 hover:bg-sky-500 shadow-sky-950/90 border-sky-400/40",
+    footerName: "MAN Trucks India",
+    footerTagline: "Pithampur Manufacturing • MAN D26/D38 Common-Rail Diesel Engines, TipMatic AMT & TRATON Modular Architecture",
+    rsLabel: "Flagship Powertrain & Heavy-Haulage Performance",
+    dealershipLabel: "MAN Dealer & Workshop Locator (4+)",
+    aboutLabel: "About MAN & Augsburg History",
+    warrantyLabel: "MAN Trucks India Dealer Warranty & Fleet Service Contracts",
+    roadsideLabel: "MAN Assistance 24/7 Breakdown Support: 1800 209 6262",
+    powertrainLabel: "12.9L MAN D26 Inline-6 & 15.2L D38 Common-Rail V8 Diesel Powertrains",
+    lineupLabel: "TGS • TGX • Lion's City • Lion's Coach",
+    defaultModelId: "man-tgx",
+    defaultGraphModelId: "man-tgx",
   },
 };
 
@@ -834,7 +853,7 @@ export default function App() {
                 className="cursor-pointer hover:text-sky-300 transition-colors"
                 onClick={() => handleTabChange("vwgroup")}
               >
-                Škoda • Volkswagen • Audi • Porsche • Lamborghini • Bentley • SEAT • Scania. Pioneering
+                Škoda • Volkswagen • Audi • Porsche • Lamborghini • Bentley • SEAT • Scania • MAN. Pioneering
                 100% 5-Star Bharat NCAP and Global NCAP certified crash
                 structures.
               </p>

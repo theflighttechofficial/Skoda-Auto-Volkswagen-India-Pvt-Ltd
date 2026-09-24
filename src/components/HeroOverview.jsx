@@ -29,6 +29,7 @@ import { LAMBORGHINI_MODELS, LAMBORGHINI_ENGINEERING_FEATURES } from "../data/la
 import { BENTLEY_MODELS, BENTLEY_ENGINEERING_FEATURES } from "../data/bentleyData";
 import { SEAT_MODELS, SEAT_ENGINEERING_FEATURES } from "../data/seatData";
 import { SCANIA_MODELS, SCANIA_ENGINEERING_FEATURES } from "../data/scaniaData";
+import { MAN_MODELS, MAN_ENGINEERING_FEATURES } from "../data/manData";
 import { SkodaLogo } from "./SkodaLogo";
 import { VolkswagenLogo } from "./VolkswagenLogo";
 import { AudiLogo } from "./AudiLogo";
@@ -37,6 +38,7 @@ import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
 import { SeatLogo } from "./SeatLogo";
 import { ScaniaLogo } from "./ScaniaLogo";
+import { ManLogo } from "./ManLogo";
 import { getAccentClasses } from "../utils/brandTheme";
 import {
   getRatings,
@@ -370,6 +372,47 @@ const BRAND_COPY = {
     innovationsBadge: "Narsapura Engineering Innovations",
     innovationsHeading: "Scania Engineering Innovations",
     innovationsSubtitle: "Scania Super combustion, Opticruise AMT, and modular cab architecture tailored for Indian long-haul and transit duty",
+  },
+  man: {
+    Logo: ManLogo,
+    models: MAN_MODELS,
+    features: MAN_ENGINEERING_FEATURES,
+    iconicModelId: "man-tgx",
+    displayName: "MAN Trucks India",
+    tagline: "Born to Perform",
+    badgeLine: "Official MAN Trucks India Commercial-Vehicle Portfolio",
+    headingPre: "German Heavy-Duty Engineering, ",
+    headingAccent: "TipMatic & Common-Rail V8",
+    headingPost: " Powertrains",
+    description: (
+      <>
+        Explore the MAN Trucks India commercial-vehicle lineup. From the
+        construction- and distribution-ready{" "}
+        <strong className="text-white">MAN TGS</strong> workhorse and flagship{" "}
+        <strong className="text-white">MAN TGX</strong> long-haul tractor, to
+        the low-floor{" "}
+        <strong className="text-white">MAN Lion's City</strong> city transit
+        bus and intercity <strong className="text-white">MAN Lion's Coach</strong>{" "}
+        — every truck and bus built at the Pithampur plant near Indore.
+      </>
+    ),
+    rsHeaderLabel: "Flagship Powertrain & Heavy-Haulage Performance (640 hp)",
+    aiAdvisorLabel: "Ask AI MAN Advisor",
+    historyLabel: "Augsburg Heritage",
+    standardLabel: "The MAN Standard",
+    powertrainLine: "MAN D26 12.9L Inline-6 & D38 15.2L V8",
+    bodyEngineeringLine: "AIS-113 / AIS-052 Certified Cab & Body Structures",
+    lineupHeading: "The Complete MAN Lineup in India",
+    rsShortBadge: "V8",
+    rsBrandLine: "MAN Trucks India • Flagship Powertrain & Heavy-Haulage Performance",
+    rsHeadingPre: "MAN Flagship Powertrain Wing: ",
+    rsHeadingAccent: "TGX D38 V8 & TGS D26 Inline-6 (400–640 hp)",
+    rsDescription:
+      "Experience the common-rail D38 V8, the D26 12.9-litre inline-six, MAN TipMatic automated gearboxes, and real-world haulage performance across India's national highways.",
+    rsButtonLabel: "Explore Flagship Powertrain & Heavy-Haulage Performance",
+    innovationsBadge: "Pithampur Engineering Innovations",
+    innovationsHeading: "MAN Engineering Innovations",
+    innovationsSubtitle: "MAN D26/D38 common-rail engines, TipMatic AMT, and flat-floor GX cab architecture tailored for Indian long-haul and distribution duty",
   },
 };
 

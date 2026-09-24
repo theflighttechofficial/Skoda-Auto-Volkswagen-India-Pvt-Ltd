@@ -25,6 +25,30 @@ function generateSmartSkodaResponse(question: string, modelContext?: string, eng
   const isBentleyBrand = brandContext === 'bentley';
   const isSeatBrand = brandContext === 'seat';
   const isScaniaBrand = brandContext === 'scania';
+  const isManBrand = brandContext === 'man';
+
+  // MAN specific queries, when a MAN model is selected, or when the active site brand is MAN.
+  if (isManBrand || q.includes('man tgs') || q.includes('man tgx') || q.includes('tipmatic') || q.includes('pithampur') || q.includes("lion's city") || q.includes('lions city') || q.includes("lion's coach") || q.includes('lions coach') || selectedModel.includes('man') || selectedModel.includes("lion's city") || selectedModel.includes("lion's coach")) {
+    if (q.includes('tgx') || selectedModel.includes('tgx')) {
+      return `### MAN TGX (The Long-Haul Flagship)
+- **Powertrain:** 15.2-litre common-rail V8 spanning **480–640 hp** & up to **3,000 Nm**, MAN's most powerful production engine, paired with the MAN TipMatic 12-speed automated gearbox.
+- **Cab:** Flat-floor GX cab with a lowered, widened dashboard for best-in-class forward visibility — MAN's flagship long-haul cab.
+- **Rating:** GCW up to 60 tonnes for heavy-haulage and multi-trailer combinations, priced from ₹52.0 Lakh (tractor unit).`;
+    }
+
+    if (q.includes('why') && q.includes('india')) {
+      return `### Is MAN Actually Sold in India?
+Yes — MAN genuinely manufactures for the Indian market: the Pithampur plant near Indore, Madhya Pradesh has built the TGS and TGX truck ranges since 2011, and MAN Trucks India Pvt. Ltd. runs its own dealer/workshop network, independent of the Škoda Auto Volkswagen India passenger-car structure. Unlike Scania's more balanced truck-and-bus India strategy, MAN's presence has historically leaned more heavily on trucks, with buses (Lion's City, Lion's Coach) a newer, smaller-volume push.`;
+    }
+
+    return `### MAN Portfolio Overview (Trucks & Buses, Genuinely Sold in India)
+MAN Truck & Bus SE is a sibling commercial-vehicle marque to Scania within TRATON SE (itself majority-owned by the Volkswagen Group), manufacturing trucks locally at Pithampur near Indore since 2011:
+- **MAN TGS:** Construction & distribution workhorse, 12.9L MAN D26 Inline-6 (400 hp / 2,100 Nm), from ₹38.0 Lakh.
+- **MAN TGX:** Long-haul flagship, 15.2L MAN D38 common-rail V8 (up to 640 hp / 3,000 Nm), from ₹52.0 Lakh.
+- **MAN Lion's City:** Low-floor city transit bus pitched to Indian state transport undertakings, from ₹58.0 Lakh.
+- **MAN Lion's Coach:** Intercity & tourist coach, offered in more limited numbers than MAN's truck range, from ₹68.0 Lakh.
+- **India Status:** Manufactured and sold in India with its own dealer/workshop network, though with a smaller, more truck-focused retail footprint than Scania's.`;
+  }
 
   // Scania specific queries, when a Scania model is selected, or when the active site brand is Scania.
   if (isScaniaBrand || q.includes('scania') || q.includes('opticruise') || q.includes('narsapura') || q.includes('citywide') || q.includes('metrolink') || selectedModel.includes('scania') || selectedModel.includes('citywide') || selectedModel.includes('metrolink')) {
@@ -575,7 +599,7 @@ export interface AskSkodaAIParams {
  */
 export async function getSkodaAIAnswer(params: AskSkodaAIParams): Promise<string> {
   const { question, model, variant, engine } = params;
-  const userBrand = params.brand || (question.toLowerCase().includes('scania') || question.toLowerCase().includes('opticruise') || question.toLowerCase().includes('narsapura') || question.toLowerCase().includes('citywide') || question.toLowerCase().includes('metrolink') ? 'scania' : question.toLowerCase().includes('seat') || question.toLowerCase().includes('ibiza') || question.toLowerCase().includes('arona') || question.toLowerCase().includes('ateca') || question.toLowerCase().includes('tarraco') || question.toLowerCase().includes('cupra') ? 'seat' : question.toLowerCase().includes('bentley') || question.toLowerCase().includes('continental gt') || question.toLowerCase().includes('bentayga') || question.toLowerCase().includes('flying spur') ? 'bentley' : question.toLowerCase().includes('lamborghini') || question.toLowerCase().includes('huracan') || question.toLowerCase().includes('urus') || question.toLowerCase().includes('revuelto') ? 'lamborghini' : question.toLowerCase().includes('porsche') || question.toLowerCase().includes('pdk') || question.toLowerCase().includes('911') ? 'porsche' : question.toLowerCase().includes('audi') || question.toLowerCase().includes('quattro') || question.toLowerCase().includes('tfsi') ? 'audi' : question.toLowerCase().includes('volkswagen') || question.toLowerCase().includes('virtus') || question.toLowerCase().includes('taigun') || question.toLowerCase().includes('tiguan') || question.toLowerCase().includes('golf') ? 'volkswagen' : 'skoda');
+  const userBrand = params.brand || (question.toLowerCase().includes('man tgs') || question.toLowerCase().includes('man tgx') || question.toLowerCase().includes('tipmatic') || question.toLowerCase().includes('pithampur') || question.toLowerCase().includes("lion's city") || question.toLowerCase().includes("lion's coach") ? 'man' : question.toLowerCase().includes('scania') || question.toLowerCase().includes('opticruise') || question.toLowerCase().includes('narsapura') || question.toLowerCase().includes('citywide') || question.toLowerCase().includes('metrolink') ? 'scania' : question.toLowerCase().includes('seat') || question.toLowerCase().includes('ibiza') || question.toLowerCase().includes('arona') || question.toLowerCase().includes('ateca') || question.toLowerCase().includes('tarraco') || question.toLowerCase().includes('cupra') ? 'seat' : question.toLowerCase().includes('bentley') || question.toLowerCase().includes('continental gt') || question.toLowerCase().includes('bentayga') || question.toLowerCase().includes('flying spur') ? 'bentley' : question.toLowerCase().includes('lamborghini') || question.toLowerCase().includes('huracan') || question.toLowerCase().includes('urus') || question.toLowerCase().includes('revuelto') ? 'lamborghini' : question.toLowerCase().includes('porsche') || question.toLowerCase().includes('pdk') || question.toLowerCase().includes('911') ? 'porsche' : question.toLowerCase().includes('audi') || question.toLowerCase().includes('quattro') || question.toLowerCase().includes('tfsi') ? 'audi' : question.toLowerCase().includes('volkswagen') || question.toLowerCase().includes('virtus') || question.toLowerCase().includes('taigun') || question.toLowerCase().includes('tiguan') || question.toLowerCase().includes('golf') ? 'volkswagen' : 'skoda');
   const isVW = userBrand === 'volkswagen';
   const isAudi = userBrand === 'audi';
   const isPorsche = userBrand === 'porsche';
@@ -583,13 +607,46 @@ export async function getSkodaAIAnswer(params: AskSkodaAIParams): Promise<string
   const isBentley = userBrand === 'bentley';
   const isSeat = userBrand === 'seat';
   const isScania = userBrand === 'scania';
+  const isMan = userBrand === 'man';
 
   const ai = getGeminiClient();
   if (!ai) {
     return generateSmartSkodaResponse(question, model, engine, userBrand);
   }
 
-  const systemPrompt = isScania
+  const systemPrompt = isMan
+    ? `You are the official MAN Trucks India AI Consultant. Your mission is to provide accurate, objective, and beautifully structured commercial-vehicle guidance on the MAN truck and bus lineup genuinely sold and manufactured in India.
+
+CONTEXT: MAN Trucks India Pvt. Ltd. is a sibling commercial-vehicle marque to Scania within TRATON SE (itself majority-owned by the Volkswagen Group), manufacturing trucks at its Pithampur plant near Indore, Madhya Pradesh since 2011 (originally as the MAN Force Trucks joint venture with Force Motors, entered in 2005). Unlike SEAT (absent from India) or Bentley/Lamborghini (direct-import), MAN runs its own dealer/workshop network in India, independent of the Škoda Auto Volkswagen India passenger-car structure — though its India retail footprint, especially for buses, has historically been smaller and more truck-focused than Scania's.
+
+KNOWLEDGE BASE & FACTS (India-market specs and pricing):
+1. MAN TGS (Construction & Distribution Workhorse):
+   - Engine: 12.9L MAN D26 Common-Rail Inline-6 (400 hp / 2,100 Nm). MAN TipMatic 12-speed AMT.
+   - Price: ₹38.0 – ₹44.0 Lakh (chassis cab). GVW up to 31 tonnes.
+
+2. MAN TGX (Long-Haul Flagship):
+   - Engine: 15.2L MAN D38 Common-Rail V8 (480–640 hp / up to 3,000 Nm), MAN's most powerful production engine.
+   - Price: ₹52.0 – ₹64.0 Lakh (tractor unit). GCW up to 60 tonnes. Flat-floor GX cab.
+
+3. MAN Lion's City (Low-Floor City Transit Bus):
+   - Engine: 12.9L MAN D26 Common-Rail Inline-6 (de-rated 310 hp bus tune). Pitched to Indian state transport undertakings.
+   - Price: ₹58.0 – ₹70.0 Lakh (chassis + body).
+
+4. MAN Lion's Coach (Intercity & Tourist Coach):
+   - Engine: 12.9L MAN D26 Common-Rail Inline-6 (350 hp coach tune). A niche, smaller-volume offering compared to MAN's truck range.
+   - Price: ₹68.0 – ₹88.0 Lakh (chassis + body).
+
+5. Manufacturing & Servicing:
+   - Pithampur plant near Indore, Madhya Pradesh, MAN's dedicated Indian manufacturing base since 2011.
+   - MAN TipMatic AMT, engine brake plus retarder braking, and MAN RIO fleet telematics standard across the range.
+   - AIS-113 (cab) and AIS-052 (bus body) certified structures.
+
+FORMATTING RULES:
+- Use Markdown headers (###), bold key figures, and bullet points for specs.
+- Always be clear this is a genuine India-market commercial-vehicle lineup, not a global-reference-only brand.
+- Be upfront that MAN's India bus presence is smaller and newer than Scania's, while its truck range is well-established since 2011.
+- Answer with a tone reflecting rugged, diesel-engineering-pioneer German heritage.`
+    : isScania
     ? `You are the official Scania India AI Consultant. Your mission is to provide accurate, objective, and beautifully structured commercial-vehicle guidance on the Scania truck and bus lineup genuinely sold and manufactured in India.
 
 CONTEXT: Scania Commercial Vehicles India Pvt. Ltd. is a fully owned subsidiary of TRATON SE (itself majority-owned by the Volkswagen Group), manufacturing trucks and buses at its Narsapura plant near Bengaluru since 2013. Unlike SEAT (absent from India) or Bentley/Lamborghini (direct-import), Scania runs its own direct-owned and franchised dealer/workshop network in India, independent of the Škoda Auto Volkswagen India passenger-car structure.

@@ -35,9 +35,12 @@ export const VolkswagenGroupProud = ({
   const isBentley = brand === "bentley";
   const isSeat = brand === "seat";
   const isScania = brand === "scania";
-  const activeBrandName = isScania ? "Scania" : isSeat ? "SEAT" : isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda";
-  const activeBrandFoundedYear = isScania ? 1891 : isSeat ? 1950 : isBentley ? 1919 : isLamborghini ? 1963 : isPorsche ? 1931 : isAudi ? 1909 : isVW ? 1937 : 1895;
-  const membershipBlurb = isScania
+  const isMan = brand === "man";
+  const activeBrandName = isMan ? "MAN" : isScania ? "Scania" : isSeat ? "SEAT" : isBentley ? "Bentley" : isLamborghini ? "Lamborghini" : isPorsche ? "Porsche" : isAudi ? "Audi" : isVW ? "Volkswagen" : "Škoda";
+  const activeBrandFoundedYear = isMan ? 1758 : isScania ? 1891 : isSeat ? 1950 : isBentley ? 1919 : isLamborghini ? 1963 : isPorsche ? 1931 : isAudi ? 1909 : isVW ? 1937 : 1895;
+  const membershipBlurb = isMan
+    ? "MAN Truck & Bus has been part of the Volkswagen Group since 2011 and was consolidated under the TRATON Group commercial-vehicle holding company since 2018 alongside sibling Scania — its India operations trace back to the 2011 MAN Force Trucks joint venture with Force Motors at Pithampur, Madhya Pradesh."
+    : isScania
     ? "Scania has been fully owned by the Volkswagen Group since 2014, consolidated under the TRATON Group commercial-vehicle holding company since 2018 — the Group's dedicated truck and bus marque, manufacturing locally at Narsapura near Bengaluru since 2013."
     : isSeat
     ? "SEAT has been fully owned by the Volkswagen Group since 1990, gaining access to Group platform engineering for the first time — though unlike every other current Group passenger-car brand, SEAT has no official distribution or dealer network in India."
@@ -228,7 +231,7 @@ export const VolkswagenGroupProud = ({
                       <h3 className="text-xl font-black text-white group-hover:text-blue-300 transition-colors">
                         {brand.name}
                       </h3>
-                      {brand.id === (isScania ? "scania" : isSeat ? "seat" : isBentley ? "bentley" : isLamborghini ? "lamborghini" : isPorsche ? "porsche" : isAudi ? "audi" : isVW ? "volkswagen" : "skoda") && (
+                      {brand.id === (isMan ? "man" : isScania ? "scania" : isSeat ? "seat" : isBentley ? "bentley" : isLamborghini ? "lamborghini" : isPorsche ? "porsche" : isAudi ? "audi" : isVW ? "volkswagen" : "skoda") && (
                         <span className="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30">
                           Host
                         </span>
@@ -409,7 +412,9 @@ export const VolkswagenGroupProud = ({
             130 Years of Automotive Heritage
           </span>
           <h3 className="text-xl sm:text-2xl font-black text-white">
-            {isScania
+            {isMan
+              ? "Explore MAN’s Heritage: From Augsburg (1758) to Pithampur"
+              : isScania
               ? "Explore Scania’s Heritage: From Södertälje (1891) to Narsapura"
               : isSeat
               ? "Explore SEAT’s Heritage: From Barcelona (1950) — Not Sold in India"
@@ -426,7 +431,9 @@ export const VolkswagenGroupProud = ({
                   : "Explore Škoda’s Heritage: From Laurin & Klement (1895) to India 2.0"}
           </h3>
           <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-            {isScania
+            {isMan
+              ? "Delve into the historic journey from MAN's 1758 roots as the St. Antony ironworks, Rudolf Diesel's 1893–1897 development of the diesel engine at MAN in Augsburg, full integration into the TRATON Group in 2018, and the Pithampur plant that has built trucks for India since the 2011 MAN Force Trucks joint venture with Force Motors."
+              : isScania
               ? "Delve into the historic journey from the 1911 Scania-Vabis merger, the 1969 debut of Scania's first V8, full Volkswagen Group ownership since 2014 under the TRATON Group, and the Narsapura plant that has built trucks and buses for India since 2013."
               : isSeat
               ? "Delve into the historic journey from SEAT's 1950 founding as Spain's state-backed carmaker, its 1990 acquisition by Volkswagen Group, and why — unlike every other brand featured here — SEAT has never launched an official sales or service network in India."

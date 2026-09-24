@@ -8,6 +8,7 @@ import { LamborghiniLogo } from "./LamborghiniLogo";
 import { BentleyLogo } from "./BentleyLogo";
 import { SeatLogo } from "./SeatLogo";
 import { ScaniaLogo } from "./ScaniaLogo";
+import { ManLogo } from "./ManLogo";
 
 const BRAND_CARDS = [
   {
@@ -89,6 +90,16 @@ const BRAND_CARDS = [
     border: "hover:border-rose-600/70",
     glow: "hover:shadow-rose-950/60",
     description: "Swedish heavy-duty trucks and buses — Narsapura-built haulage and transit power since 1891.",
+  },
+  {
+    id: "man",
+    Logo: ManLogo,
+    name: "MAN",
+    tagline: "Man Cares",
+    accent: "text-sky-400",
+    border: "hover:border-sky-600/70",
+    glow: "hover:shadow-sky-950/60",
+    description: "German heavy trucks and city buses — Rudolf Diesel's Augsburg workshop turned TRATON haulage engineering, since 1758.",
   },
 ];
 

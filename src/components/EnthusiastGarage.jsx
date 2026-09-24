@@ -18,8 +18,8 @@ import { CarSilhouette } from "./CarSilhouette";
 import { getGarageablePool, computeGarageStats, loadGarage, saveGarage } from "../utils/garageStats";
 import { getBodyShape } from "../utils/bodyShape";
 
-const BRAND_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b", lamborghini: "#eab308", bentley: "#16a34a", seat: "#f97316", scania: "#e11d48" };
-const BRAND_LABEL = { skoda: "Škoda", volkswagen: "Volkswagen", audi: "Audi", porsche: "Porsche", lamborghini: "Lamborghini", bentley: "Bentley", seat: "SEAT", scania: "Scania" };
+const BRAND_HEX = { skoda: "#10b981", volkswagen: "#3b82f6", audi: "#ef4444", porsche: "#f59e0b", lamborghini: "#eab308", bentley: "#16a34a", seat: "#f97316", scania: "#e11d48", man: "#0ea5e9" };
+const BRAND_LABEL = { skoda: "Škoda", volkswagen: "Volkswagen", audi: "Audi", porsche: "Porsche", lamborghini: "Lamborghini", bentley: "Bentley", seat: "SEAT", scania: "Scania", man: "MAN" };
 
 function formatINR(amount) {
   if (!amount) return "₹0";
@@ -64,8 +64,8 @@ export const EnthusiastGarage = () => {
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Enthusiast Garage</h2>
           <p className="text-sm text-zinc-400 max-w-2xl">
-            Build a dream garage from every Škoda, Volkswagen, Audi, Porsche, Lamborghini, Bentley, SEAT and Scania model — including the
-            vRS/GTI/RS/GT performance icons and Scania's flagship trucks and buses — and see what it adds up to. (SEAT is not
+            Build a dream garage from every Škoda, Volkswagen, Audi, Porsche, Lamborghini, Bentley, SEAT, Scania and MAN model — including the
+            vRS/GTI/RS/GT performance icons and Scania's and MAN's flagship trucks and buses — and see what it adds up to. (SEAT is not
             officially sold in India — its models are shown for enthusiast comparison using global reference specs.)
           </p>
         </div>
@@ -208,7 +208,7 @@ export const EnthusiastGarage = () => {
                   />
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {["all", "skoda", "volkswagen", "audi", "porsche", "lamborghini", "bentley", "seat", "scania"].map((b) => (
+                  {["all", "skoda", "volkswagen", "audi", "porsche", "lamborghini", "bentley", "seat", "scania", "man"].map((b) => (
                     <button
                       key={b}
                       onClick={() => setBrandFilter(b)}

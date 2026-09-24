@@ -221,6 +221,32 @@ export const ENGINE_SOUND_PROFILES: EngineSoundProfile[] = [
     usedIn: ['Scania S 730'],
     character: 'A deep, resonant V8 diesel note with a heritage dating to 1969 — a badge of prestige among long-haul drivers, felt as much as heard.',
   },
+  {
+    id: '12-9l-man-d26',
+    label: '12.9L MAN D26 Inline-6',
+    displacement: '12884cc',
+    cylinders: '6-Cylinder Turbo-Diesel',
+    fuelType: 'Diesel',
+    idleRpm: 600,
+    redlineRpm: 2100,
+    baseFrequency: 27,
+    timbre: 'gruff',
+    usedIn: ['MAN TGS', 'MAN Lion’s City', 'MAN Lion’s Coach'],
+    character: 'A steady, unhurried common-rail thrum built for stop-start construction and distribution duty — flat torque from idle rather than any drama up top.',
+  },
+  {
+    id: '15-2l-man-d38-v8',
+    label: '15.2L MAN D38 V8',
+    displacement: '15246cc',
+    cylinders: 'V8 Twin-Turbo Diesel',
+    fuelType: 'Diesel',
+    idleRpm: 600,
+    redlineRpm: 2100,
+    baseFrequency: 31,
+    timbre: 'deep-v8',
+    usedIn: ['MAN TGX'],
+    character: 'MAN’s halo common-rail V8 — a deep, resonant idle carried over from decades of V8 heritage, delivered through dual vertical exhaust stacks on the flagship TGX.',
+  },
 ];
 
 export interface SoundEventProfile {
