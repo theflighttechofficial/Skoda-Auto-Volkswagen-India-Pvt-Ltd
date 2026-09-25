@@ -1,4 +1,4 @@
-# Škoda • Volkswagen • Audi India Showcase 🚗⚡
+# Škoda • Volkswagen Group India Showcase 🚗⚡
 
 [![React](https://img.shields.io/badge/React-19.0-61DAFB?style=flat-square&logo=react)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-6.2-646CFF?style=flat-square&logo=vite)](https://vitejs.dev/)
@@ -7,9 +7,9 @@
 [![Google Gemini API](https://img.shields.io/badge/Gemini_AI-@google/genai_2.4-8E75B2?style=flat-square&logo=googlegemini)](https://ai.google.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 
-An interactive, enterprise-grade buyer's guide, technical showcase, and performance hub covering the complete **Škoda Auto Volkswagen India Pvt. Ltd. (SAVWIPL)** portfolio — spanning **Škoda India**, **Volkswagen India**, and **Audi India**.
+An interactive, enterprise-grade buyer's guide, technical showcase, and performance hub covering the **Volkswagen Group** portfolio in India and beyond — spanning **Škoda**, **Volkswagen**, **Audi**, **SEAT**, **Porsche**, **Lamborghini**, **Bentley**, **MAN**, and **Scania**.
 
-Explore **30+ iconic models** across three German and Czech marques. Switch brands on the fly to experience tailored themes, dynamic powertrain analytics, interactive variant matrixes, 360° color visualizers, virtual 3D configurators, engine sound galleries, 5-star crash safety deep dives, cost-of-ownership calculators, an AI-powered vehicle advisor, interactive mini-games, and an offline-enabled pan-India dealership locator.
+Switch brands on the fly to experience tailored themes, dynamic powertrain analytics, interactive variant matrixes, 360° color visualizers, virtual 3D configurators, engine sound galleries, 5-star crash safety deep dives, cost-of-ownership calculators, an AI-powered vehicle advisor, interactive mini-games, and an offline-enabled pan-India dealership locator.
 
 ---
 
@@ -17,9 +17,10 @@ Explore **30+ iconic models** across three German and Czech marques. Switch bran
 
 ```
 +----------------------------------------------------------------------------------------------------+
-|                         Škoda • Volkswagen • Audi India Showcase (SPA)                             |
+|                    Škoda • Volkswagen Group India Showcase — 9 Marques, One SPA                     |
 +----------------------------------------------------------------------------------------------------+
-|  [ Dynamic Brand Switcher ] -> Instant theme switch (Škoda Emerald | VW Performance | Audi Dark)     |
+|  [ Dynamic Brand Switcher ] -> Instant theme switch per marque (Škoda, VW, Audi, SEAT, Porsche,      |
+|                                 Lamborghini, Bentley, MAN, Scania)                                   |
 +----------------------------------------------------------------------------------------------------+
 |  Core Exploration Modules:                                                                         |
 |  ├── 🚗 Vehicle Lineup & Spec Matrix    ├── 🎨 360° Color & Shade Visualizer                       |
@@ -44,25 +45,31 @@ Explore **30+ iconic models** across three German and Czech marques. Switch bran
 ## 🌟 Comprehensive Feature Set
 
 ### 1. 🏷️ Dynamic Multi-Marque Pivot
-* **Seamless Switching**: Pivot instantly between **Škoda**, **Volkswagen**, and **Audi** with dynamic theme transitions (Emerald Green, German Performance Blue/Red, and Audi Platinum Dark aesthetics).
-* **Brand Customization**: Adaptive logos, hero showcases, marque-specific imagery, terminology, and tailored telemetry data.
+* **Seamless Switching**: Pivot instantly between **Škoda**, **Volkswagen**, **Audi**, **SEAT**, **Porsche**, **Lamborghini**, **Bentley**, **MAN**, and **Scania**, each with a dynamic theme, vector logo, and tailored telemetry data.
+* **Brand Customization**: Adaptive logos, hero showcases, marque-specific imagery, terminology, and unit conventions (passenger cars vs. commercial trucks & buses for MAN/Scania).
 
-### 2. 🚗 Complete Vehicle Lineup Catalog (30+ Models)
-* **Škoda India**: Slavia, Kushaq, Kylaq, Kodiaq, Octavia (vRS), Superb, Karoq, Fabia, Rapid, Yeti, Laura.
-* **Volkswagen India**: Virtus, Taigun, Tiguan, Golf GTI, Polo GT TSI, Vento, Passat, Jetta, Ameo, T-Roc, Touareg, Beetle, Phaeton.
-* **Audi India**: A3, A4, A6, A8 L, Q3, Q3 Sportback, Q5, Q7, Q8, RS5 Sportback, RS Q8.
+### 2. 🚗 Complete Vehicle Lineup Catalog
+* **Škoda**: Slavia, Kushaq, Kylaq, Kodiaq, Octavia (vRS), Superb, Karoq, Fabia, Rapid, Yeti, Laura.
+* **Volkswagen**: Virtus, Taigun, Tiguan, Golf GTI, Polo GT TSI, Vento, Passat, Jetta, Ameo, T-Roc, Touareg, Beetle, Phaeton.
+* **Audi**: A3, A4, A6, A8 L, Q3, Q3 Sportback, Q5, Q7, Q8, RS5 Sportback, RS Q8.
+* **SEAT**: Ibiza, Arona, Leon, Ateca, Tarraco.
+* **Porsche**: 911 Carrera, 718 Cayman, Macan, Cayenne, Panamera.
+* **Lamborghini**: Huracán, Urus, Revuelto.
+* **Bentley**: Continental GT, Bentayga, Flying Spur.
+* **MAN**: TGS, TGX, Lion's City, Lion's Coach.
+* **Scania**: R 500, S 730, Citywide, Metrolink.
 
 ### 3. ⚙️ Interactive Customizer & 360° Color Visualizer
 * **Build Your Car**: Choose trim levels, select factory engine options, paint colors, alloy wheel designs, interior upholstery, and optional accessories.
-* **Paint Shade Inspection**: Inspect signature manufacturer shades (Tornado Red, Lava Blue, Carbon Steel Gray, Mythos Black, Navarra Blue, Daytona Gray, etc.) under realistic preview lighting.
+* **Paint Shade Inspection**: Inspect signature manufacturer shades (Tornado Red, Lava Blue, Carbon Steel Gray, Mythos Black, Navarra Blue, Daytona Gray, Guards Red, etc.) under realistic preview lighting.
 
 ### 4. ⚡ Powertrain Analytics & Engine Sound Gallery
-* **Engine Tech Deep-Dive**: Technical breakdowns for 1.0L TSI, 1.5L TSI EVO with ACT (Active Cylinder Technology), 2.0L TSI, 2.0L TDI CR, 40/45/55 TFSI, 3.0L V6 TFSI, and 4.0L Twin-Turbo V8 TFSI Audi Sport units.
-* **Transmission Matrix**: Analysis of 6-speed Manual, 6-speed Torque Converter Automatic, 7-speed DSG (DQ200 dry / DQ381 wet / DQ500), and 8-speed Tiptronic with quattro.
+* **Engine Tech Deep-Dive**: Technical breakdowns spanning 1.0L–2.0L TSI/TDI four-cylinders through 3.0L V6 TFSI/TDI, twin-turbo Flat-6 and V8 units, W12s, and heavy-duty diesel truck/bus powertrains.
+* **Transmission Matrix**: Analysis of manuals, torque-converter automatics, DSG (dry & wet clutch), PDK, Tiptronic quattro, and commercial-vehicle automated manual gearboxes.
 * **Engine Sound Simulator**: Listen to high-rev engine sounds, exhaust notes, and turbo spooling audio samples for enthusiast models.
 
 ### 5. 🏎️ RS / vRS / GT Performance Wing & Virtual Race Mode
-* **Performance Hub**: Dedicated sanctuary for high-performance marques: **Octavia vRS**, **Kodiaq vRS**, **Golf GTI**, **Virtus GT Plus**, **Audi RS5 Sportback**, and **Audi RS Q8**.
+* **Performance Hub**: Dedicated sanctuary for high-performance metal: **Octavia vRS**, **Kodiaq vRS**, **Golf GTI**, **Virtus GT Plus**, **Audi RS5 Sportback**, **Audi RS Q8**, plus the Porsche, Lamborghini, and Bentley performance rosters.
 * **Race Mode Simulator**: Launch control visualization, lap timer interactive widget, dynamic chassis control (DCC) mode switcher, and gear telemetry breakdown.
 
 ### 6. 📈 Dynamic RPM, Torque & Speed Graphs
@@ -74,23 +81,23 @@ Explore **30+ iconic models** across three German and Czech marques. Switch bran
 
 ### 8. 💰 Cost of Ownership, EMI & Fuel Economy Simulators
 * **Financial EMI Calculator**: Calculate monthly payment EMI schedules based on down payment, tenure, and current interest rates.
-* **Maintenance Planner**: Estimate service costs for 4-year/60,000 km and 5-year/75,000 km packages (Škoda SuperCare, VW Service Value Packs, Audi Comprehensive Care).
+* **Maintenance Planner**: Estimate service costs across brand-specific care packages (Škoda SuperCare, VW Service Value Packs, Audi Comprehensive Care, and equivalents).
 * **Fuel Economy Simulator**: Calculate real-world mileage and monthly fuel expenses under city, highway, and combined driving conditions.
 
 ### 9. 🤖 Gemini AI Vehicle Advisor (`@google/genai`)
-* Powered by Google's `@google/genai` SDK with comprehensive knowledge of SAVWIPL models, specifications, pricing, maintenance advice, and market comparisons.
+* Powered by Google's `@google/genai` SDK with comprehensive knowledge of Volkswagen Group models, specifications, pricing, maintenance advice, and market comparisons.
 * **Offline Fallback Engine**: If no `GEMINI_API_KEY` is provided, an intelligent offline engine generates instant context-aware replies without breaking the user experience.
 
 ### 10. 📍 Pan-India Dealership Network & Interactive Map
 * Searchable directory of authorized showrooms and service centers across major Indian metro hubs (Mumbai, Delhi NCR, Bengaluru, Hyderabad, Chennai, Kolkata, Pune, Ahmedabad, etc.) with clickable map pins and contact info.
 
 ### 11. 🎮 Interactive Mini-Games & Discovery Tools
-* **Guess The Car**: Audi visual trivia game testing automotive knowledge on silhouettes, exhaust notes, and interior details.
-* **Platform Detective**: Interactive tool mapping shared VW Group components (MQB platform sharing, EA211 TSI engines, DSG gearboxes).
+* **Guess The Car**: Visual trivia game testing automotive knowledge on silhouettes, exhaust notes, and interior details.
+* **Platform Detective**: Interactive tool mapping shared Volkswagen Group components (MQB platform sharing, EA211 TSI engines, DSG gearboxes).
 
 ### 12. 📜 Heritage & Localisation Story
-* Timeline tracing Laurin & Klement (1895), Volkswagen (1937), and Audi Horch/Auto Union (1909).
-* Story of SAVWIPL's "India 2.0" investment program, Chakan (Pune) and Shendra (Chhatrapati Sambhaji Nagar) manufacturing plants, and 95%+ localization achievements.
+* Timeline tracing Laurin & Klement (1895), Volkswagen (1937), Audi/Auto Union (1909), and the heritage of SEAT, Porsche, Lamborghini, Bentley, MAN, and Scania.
+* Story of the Group's "India 2.0" investment program, Chakan (Pune) and Shendra (Chhatrapati Sambhaji Nagar) manufacturing plants, and 95%+ localization achievements.
 
 ---
 
@@ -171,7 +178,7 @@ This repository is configured out-of-the-box for Vercel deployment:
    * `/api/ask-skoda-ai` (Primary AI endpoint)
    * `/api/ask-brand-ai`, `/api/ask-vw-ai`, `/api/ask-slavia-ai` (Route aliases)
    * `/api/health` (Health check route)
-3. [`vercel.json`](file:///c:/Users/DELL/Downloads/skoda-slavia-guide-showcase-1/vercel.json) handles API routing and single-page application rewrites automatically.
+3. `vercel.json` handles API routing and single-page application rewrites automatically.
 
 **Steps:**
 1. Push your repository to GitHub / GitLab.
@@ -204,95 +211,102 @@ This repository is configured out-of-the-box for Vercel deployment:
 
 ```
 .
-├── api/                                # Vercel Serverless Function Endpoints
+├── api/                                 # Vercel Serverless Function Endpoints
 │   ├── _lib/
-│   │   └── ai.ts                       # Shared Gemini AI client & offline response fallback logic
-│   ├── ask-brand-ai.ts                 # Alias endpoint for AI queries
-│   ├── ask-skoda-ai.ts                 # Main Gemini AI request handler
-│   ├── ask-slavia-ai.ts                # Legacy alias endpoint
-│   ├── ask-vw-ai.ts                    # Legacy alias endpoint
-│   └── health.ts                       # Health check endpoint
-├── public/                             # Public static assets & car photography
-│   └── cars/                           # High-res car imagery for catalogs and banners
-├── src/                                # React Frontend Source Code
-│   ├── assets/                         # SVG icons and static graphic assets
-│   ├── components/                     # Modular React Components
-│   │   ├── AIAdvisor.jsx               # Gemini AI chatbot interface widget
-│   │   ├── AboutSkodaHistory.jsx       # Historical timelines & brand heritage section
-│   │   ├── AudiLogo.jsx                # Vector SVG Audi 4-Rings logo component
-│   │   ├── BrandLoadingScreen.jsx      # Brand-themed splash & loading transition
-│   │   ├── CarSilhouette.jsx           # Vector car outline viewer & guessing helper
-│   │   ├── CarThroughDecades.jsx       # Interactive historical vehicle timeline
-│   │   ├── ColorVisualizer.jsx         # Dynamic 360° exterior paint shade visualizer
-│   │   ├── ConfiguratorBuilder.jsx     # Virtual car builder & trim customized configuration
-│   │   ├── CostCalculator.jsx          # EMI & scheduled maintenance cost calculator
-│   │   ├── DealershipLocator.jsx       # Searchable dealer network & workshop directory
-│   │   ├── EasterEggOverlays.jsx       # Interactive brand easter eggs & hidden modes
-│   │   ├── EnginePerformance.jsx       # Powertrain breakdown (TSI / TDI / TFSI / DSG)
-│   │   ├── EngineSoundGallery.jsx      # Interactive engine sound player & audio notes
-│   │   ├── EngineeringLab.jsx          # Interactive platform engineering laboratory
-│   │   ├── EnthusiastGarage.jsx        # Enthusiast specs & performance garage
-│   │   ├── FAQSection.jsx              # Comprehensive buyer FAQs & brand guide
-│   │   ├── FuelEconomySimulator.jsx    # Real-world mileage & fuel cost calculator
-│   │   ├── GroupDNA.jsx                # VW Group technology & shared DNA presentation
-│   │   ├── GroupPersonalities.jsx      # Brand personality comparative matrix
-│   │   ├── GuessTheCar.jsx             # Interactive automotive trivia mini-game
-│   │   ├── Header.jsx                  # Header navigation bar & dynamic brand switcher
-│   │   ├── HeroOverview.jsx            # Main hero showcase, spotlight models & vehicle catalog
-│   │   ├── IndiaGroupMap.jsx           # Interactive Pan-India facility & dealer map
-│   │   ├── LaunchScreen.jsx            # Initial splash welcome screen
-│   │   ├── MadeInIndiaStory.jsx        # SAVWIPL India 2.0 localization showcase
-│   │   ├── PerformanceGraphs.jsx       # Torque/RPM telemetry & acceleration charts
-│   │   ├── PlatformDetective.jsx       # Platform sharing explorer (MQB-A0-IN / MQB EVO)
-│   │   ├── RSPerformance.jsx           # RS / vRS / GT performance wing & telemetry
-│   │   ├── RaceMode.jsx                # Virtual race mode & launch control simulator
-│   │   ├── ReliabilityExplorer.jsx     # Quality assurance & vehicle durability guide
-│   │   ├── SafetyDeepDive.jsx          # NCAP 5-star crash safety structural breakdown
-│   │   ├── SkodaLogo.jsx               # Vector SVG Škoda Winged Arrow logo component
-│   │   ├── UnderTheSkin.jsx            # Chassis, suspension & structural overlay viewer
-│   │   ├── VariantExplorer.jsx         # Trim level comparison matrix & feature breakdown
-│   │   ├── VolkswagenGroupProud.jsx    # Group synergy & shared platform technology
-│   │   └── VolkswagenLogo.jsx          # Vector SVG Volkswagen logo component
-│   ├── data/                           # Comprehensive Typed Datasets
-│   │   ├── audiData.ts                 # Audi India lineup specs, trim levels & colors
-│   │   ├── audiHistoryData.ts          # Audi historical milestone dataset (1909-Present)
-│   │   ├── audiPerformanceData.ts      # Audi Sport S/RS performance metrics
-│   │   ├── dealershipData.ts           # City-wise dealership & workshop network dataset
-│   │   ├── decadesData.ts              # Vehicle evolution timeline by decade
-│   │   ├── engineSoundData.ts          # Engine audio samples & telemetry data
-│   │   ├── historyData.ts              # Škoda historical milestone dataset (1895-Present)
-│   │   ├── indiaMapCoordinates.ts      # Geographic coordinates for Indian metro dealerships
-│   │   ├── madeInIndiaData.ts          # India 2.0 localization stats & plant info
-│   │   ├── performanceGraphsData.ts    # Telemetry data points for RPM, power & speed
-│   │   ├── reliabilityData.ts          # Maintenance schedules & durability metrics
-│   │   ├── rsPerformanceData.ts        # Škoda vRS performance data
-│   │   ├── skodaData.ts                # Škoda India lineup specs, trim levels & colors
-│   │   ├── vwData.ts                   # VW India lineup specs, trim levels & colors
-│   │   ├── vwGroupData.ts              # MQB/MLB platform & VW Group tech dataset
-│   │   ├── vwHistoryData.ts            # Volkswagen history timeline (1937-Present)
-│   │   └── vwPerformanceData.ts        # VW GT/GTI performance specs
-│   ├── App.jsx                         # Main application layout, state & navigation hub
-│   ├── index.css                       # Global CSS & Tailwind v4 style rules
-│   ├── main.jsx                        # React root entry point
-│   ├── types.ts                        # End-to-end TypeScript interfaces
-│   └── utils/                          # Helper functions & state utilities
-├── .env.example                        # Blueprint for environment variables
-├── .gitignore                          # Git file exclusion rules
-├── index.html                          # Single-page HTML entry point with metadata
-├── package.json                        # NPM manifest dependencies and scripts
-├── README.md                           # Project documentation (this file)
-├── server.ts                           # Node.js Express server
-├── tsconfig.json                       # TypeScript compiler config
-├── vercel.json                         # Vercel deployment configuration
-└── vite.config.ts                      # Vite build options & proxy configuration
+│   │   └── ai.ts                        # Shared Gemini AI client & offline response fallback logic
+│   ├── ask-brand-ai.ts                  # Alias endpoint for AI queries
+│   ├── ask-skoda-ai.ts                  # Main Gemini AI request handler
+│   ├── ask-slavia-ai.ts                 # Legacy alias endpoint
+│   ├── ask-vw-ai.ts                     # Legacy alias endpoint
+│   └── health.ts                        # Health check endpoint
+├── img/                                 # Reference / archival car photography (not imported by the app)
+├── public/                              # Public static assets served as-is
+│   ├── cars/                            # High-res car imagery used by the live catalog & banners
+│   └── favicon.png                      # Site favicon
+├── src/                                 # React Frontend Source Code
+│   ├── assets/                          # Brand logo/crest artwork imported by *Logo.jsx components
+│   ├── components/                      # Modular React Components
+│   │   ├── AIAdvisor.jsx                # Gemini AI chatbot interface widget
+│   │   ├── AboutSkodaHistory.jsx        # Historical timelines & brand heritage section
+│   │   ├── AudiLogo.jsx                 # Audi 4-Rings logo component
+│   │   ├── BentleyLogo.jsx              # Bentley wings crest logo component
+│   │   ├── BrandLoadingScreen.jsx       # Brand-themed splash & loading transition
+│   │   ├── CarSilhouette.jsx            # Vector car outline viewer & guessing helper
+│   │   ├── CarThroughDecades.jsx        # Interactive historical vehicle timeline
+│   │   ├── ChassisMockup.jsx            # Chassis/platform visual mockup
+│   │   ├── ColorVisualizer.jsx          # Dynamic 360° exterior paint shade visualizer
+│   │   ├── ConfiguratorBuilder.jsx      # Virtual car builder & trim customized configuration
+│   │   ├── CostCalculator.jsx           # EMI & scheduled maintenance cost calculator
+│   │   ├── DealershipLocator.jsx        # Searchable dealer network & workshop directory
+│   │   ├── EasterEggOverlays.jsx        # Interactive brand easter eggs & hidden modes
+│   │   ├── EnginePerformance.jsx        # Powertrain breakdown (TSI / TDI / TFSI / DSG)
+│   │   ├── EngineSoundGallery.jsx       # Interactive engine sound player & audio notes
+│   │   ├── EngineeringLab.jsx           # Interactive platform engineering laboratory
+│   │   ├── EnthusiastGarage.jsx         # Enthusiast specs & performance garage
+│   │   ├── FAQSection.jsx               # Comprehensive buyer FAQs & brand guide
+│   │   ├── FuelEconomySimulator.jsx     # Real-world mileage & fuel cost calculator
+│   │   ├── GroupDNA.jsx                 # Volkswagen Group technology & shared DNA presentation
+│   │   ├── GroupPersonalities.jsx       # Brand personality comparative matrix
+│   │   ├── GuessTheCar.jsx              # Interactive automotive trivia mini-game
+│   │   ├── Header.jsx                   # Header navigation bar & dynamic brand switcher
+│   │   ├── HeroOverview.jsx             # Main hero showcase, spotlight models & vehicle catalog
+│   │   ├── IndiaGroupMap.jsx            # Interactive Pan-India facility & dealer map
+│   │   ├── LamborghiniLogo.jsx          # Lamborghini shield logo component
+│   │   ├── LaunchScreen.jsx             # Initial splash welcome screen
+│   │   ├── MadeInIndiaStory.jsx         # India 2.0 localization showcase
+│   │   ├── ManLogo.jsx                  # MAN lion crest logo component
+│   │   ├── PerformanceGraphs.jsx        # Torque/RPM telemetry & acceleration charts
+│   │   ├── PlatformDetective.jsx        # Platform sharing explorer (MQB-A0-IN / MQB EVO)
+│   │   ├── PorscheLogo.jsx              # Porsche crest logo component
+│   │   ├── RSPerformance.jsx            # RS / vRS / GT performance wing & telemetry
+│   │   ├── RaceMode.jsx                 # Virtual race mode & launch control simulator
+│   │   ├── ReliabilityExplorer.jsx      # Quality assurance & vehicle durability guide
+│   │   ├── SafetyDeepDive.jsx           # NCAP 5-star crash safety structural breakdown
+│   │   ├── ScaniaLogo.jsx               # Scania griffin logo component
+│   │   ├── SeatLogo.jsx                 # SEAT wordmark logo component
+│   │   ├── SkodaLogo.jsx                # Škoda Winged Arrow logo component
+│   │   ├── UnderTheSkin.jsx             # Chassis, suspension & structural overlay viewer
+│   │   ├── VariantExplorer.jsx          # Trim level comparison matrix & feature breakdown
+│   │   ├── VolkswagenGroupProud.jsx     # Group synergy & shared platform technology
+│   │   └── VolkswagenLogo.jsx           # Volkswagen logo component
+│   ├── data/                            # Comprehensive typed datasets, one pair per brand
+│   │   ├── skodaData.ts / vwData.ts / audiData.ts / seatData.ts / porscheData.ts /
+│   │   │   lamborghiniData.ts / bentleyData.ts / manData.ts / scaniaData.ts
+│   │   │                                # Lineup specs, trim levels & colors
+│   │   ├── *HistoryData.ts              # Per-brand historical milestone datasets
+│   │   ├── *PerformanceData.ts          # Per-brand RS/S/GT/Sport performance metrics
+│   │   ├── dealershipData.ts            # City-wise dealership & workshop network dataset
+│   │   ├── decadesData.ts               # Vehicle evolution timeline by decade
+│   │   ├── engineSoundData.ts           # Engine audio samples & telemetry data
+│   │   ├── indiaMapCoordinates.ts       # Geographic coordinates for Indian metro dealerships
+│   │   ├── madeInIndiaData.ts           # India 2.0 localization stats & plant info
+│   │   ├── performanceGraphsData.ts     # Telemetry data points for RPM, power & speed
+│   │   ├── reliabilityData.ts           # Maintenance schedules & durability metrics
+│   │   └── vwGroupData.ts               # MQB/MLB platform & Group tech dataset
+│   ├── App.jsx                          # Main application layout, state & navigation hub
+│   ├── index.css                        # Global CSS & Tailwind v4 style rules
+│   ├── main.jsx                         # React root entry point
+│   ├── types.ts                         # End-to-end TypeScript interfaces
+│   └── utils/                           # Helper functions & state utilities
+├── .env.example                         # Blueprint for environment variables
+├── .gitignore                           # Git file exclusion rules
+├── index.html                           # Single-page HTML entry point with metadata
+├── package.json                         # NPM manifest dependencies and scripts
+├── README.md                            # Project documentation (this file)
+├── server.ts                            # Node.js Express server
+├── tsconfig.json                        # TypeScript compiler config
+├── vercel.json                          # Vercel deployment configuration
+└── vite.config.ts                       # Vite build options & proxy configuration
 ```
+
+> **Image assets, at a glance**: everything the running app actually loads lives in `public/cars/` (vehicle photography, served at `/cars/...`) and `src/assets/` (brand logo/crest PNGs imported directly by the `*Logo.jsx` components). The top-level `img/` folder is a tidy holding area for extra reference photography that isn't wired into the UI, kept there instead of cluttering the project root.
 
 ---
 
 ## 🛡️ Quality Standards & Platform Engineering
 
-* **5-Star B-NCAP / G-NCAP Rating**: Highlighting SAVWIPL localized models (Slavia, Kushaq, Virtus, Taigun) achieving top adult & child safety scores.
-* **Platform Synergy**: Engineering insight covering **MQB-A0-IN**, **MQB EVO**, and **MLB Evo** modular matrix platforms.
+* **5-Star B-NCAP / G-NCAP Rating**: Highlighting localized models (Slavia, Kushaq, Virtus, Taigun) achieving top adult & child safety scores.
+* **Platform Synergy**: Engineering insight covering **MQB-A0-IN**, **MQB EVO**, and **MLB Evo** modular matrix platforms shared across Škoda, Volkswagen, Audi, SEAT, and Porsche.
 * **End-to-End Type Safety**: Complete dataset and API request/response contracts backed by strict TypeScript interfaces (`src/types.ts`). Run `npm run lint` to verify compliance.
 
 ---
