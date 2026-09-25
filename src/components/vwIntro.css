@@ -145,4 +145,35 @@
 .vwi .mgrid button small{display:block;margin-top:4px;font-size:13px;color:var(--muted)}
 .vwi .foot{max-width:1480px;margin:0 auto;padding:24px clamp(16px,4vw,56px) max(32px,env(safe-area-inset-bottom));font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line)}
 
+/* ── mobile ── */
+.vwi{overflow-x:clip}
+.vwi .hero>*{min-width:0}
+.vwi .hero h1,.vwi .show-name,.vwi .bigname,.vwi .t-line span{overflow-wrap:anywhere}
+@media (max-width:600px){
+  .vwi .mark{white-space:normal;font-size:13px;line-height:1.2;font-stretch:110%;min-width:0}
+  .vwi .topbar,.vwi .nav{gap:8px}
+  .vwi .btn-ghost{min-height:40px;padding:0 12px;font-size:13px;flex-shrink:0;white-space:nowrap}
+  .vwi .hero{padding:28px 16px 24px;gap:24px}
+  .vwi .hero h1{font-size:clamp(30px,9.5vw,42px);font-stretch:110%}
+  .vwi .lede{font-size:15px;margin-top:16px}
+  .vwi .ctas{margin-top:24px}
+  .vwi .ctas .btn{flex:1 1 100%;min-height:48px;font-size:15px}
+  .vwi .show{padding:16px}
+  .vwi .show-name{font-size:clamp(26px,8vw,34px);font-stretch:110%}
+  .vwi .chip{min-height:36px;padding:0 12px;font-size:13px}
+  .vwi .stat{padding:16px}
+  .vwi .stat:nth-child(2){border-right:0}
+  .vwi .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .vwi .stat b{font-size:28px}
+  .vwi .stat span{font-size:13px}
+  .vwi .brands{padding:40px 16px 0}
+  .vwi .modules{padding:28px 16px}
+  .vwi .mgrid{grid-template-columns:1fr}
+  .vwi .foot{padding:20px 16px 32px;flex-direction:column;gap:8px}
+  .vwi .bigname{font-size:clamp(34px,10vw,44px);font-stretch:110%}
+  .vwi .t-line span{font-size:clamp(30px,9vw,40px);font-stretch:115%}
+  .vwi .speed{font-size:56px}
+  .vwi .caption{font-size:15px}
+}
+
 @media (prefers-reduced-motion:reduce){.vwi *,.vwi *::before,.vwi *::after{animation-duration:.001s!important;animation-delay:0s!important;animation-iteration-count:1!important;transition:none!important}}
