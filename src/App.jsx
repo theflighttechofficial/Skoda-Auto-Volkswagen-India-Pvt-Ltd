@@ -229,6 +229,7 @@ export default function App() {
   const [hasEntered, setHasEntered] = useState(false);
   const [isLoadingBrand, setIsLoadingBrand] = useState(false);
   const [pendingBrand, setPendingBrand] = useState(null);
+  const [pendingTab, setPendingTab] = useState("overview");
   const [selectedModelId, setSelectedModelId] = useState("all");
   const [advisorPrompt, setAdvisorPrompt] = useState();
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -252,10 +253,12 @@ export default function App() {
   const handleBrandChange = (brand) => {
     if (brand === activeBrand) return;
     setPendingBrand(brand);
+    setPendingTab("overview");
     setIsLoadingBrand(true);
   };
-  const handleEnterSite = (brand) => {
+  const handleEnterSite = (brand, tab = "overview") => {
     setPendingBrand(brand);
+    setPendingTab(tab);
     setIsLoadingBrand(true);
   };
   useEffect(() => {
@@ -263,10 +266,9 @@ export default function App() {
     const timer = setTimeout(() => {
       setActiveBrand(pendingBrand);
       setSelectedModelId("all");
-      // Every brand switch — whether a fresh entry from the launch screen
-      // or switching brands mid-session — lands on that brand's homepage
-      // (overview tab) rather than keeping whatever tab was active.
-      setActiveTab("overview");
+      // Mid-session brand switches always land on the overview; launch-page
+      // links may deep-link into a specific tab.
+      setActiveTab(pendingTab);
       setHasEntered(true);
       setIsLoadingBrand(false);
       scrollToTop();

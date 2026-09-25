@@ -297,7 +297,7 @@ export const SCANIA_MODELS: CarModel[] = [
   },
   {
     id: 'scania-metrolink',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/8/88/Scania_Metrolink_HD_14.5_M_Ashwamedh.jpg',
+    image: '/cars/scania-metrolink.jpg',
     enthusiastNote: 'Several Indian state transport undertakings, including MSRTC’s "Shivneri" and "Ashwamedh" premium services, chose the Metrolink chassis specifically for its Scania Super engine and highway-cruising refinement over long intercity routes.',
     name: 'Scania Metrolink',
     badge: 'The Intercity Coach Bus',
